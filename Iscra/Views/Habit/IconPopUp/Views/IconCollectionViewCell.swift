@@ -13,9 +13,9 @@ class IconCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    func configure(iconArr: [String:Any], theme: String) {
-        img.image = UIImage(named: iconArr["IconName"] as! String)
-        if iconArr["Val"] as! Int == 1 {
+    func configure(iconArr: IconModel, theme: String) {
+        img.image = UIImage(named: iconArr.iconName ?? "")
+        if iconArr.value! == 1 {
             view.backgroundColor = UIColor(hex: theme)
             img.tintColor = .white
         }

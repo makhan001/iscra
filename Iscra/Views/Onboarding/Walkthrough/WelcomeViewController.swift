@@ -53,11 +53,14 @@ extension WelcomeViewController {
     
     private func startAction() {
         // navigate to walkthrough
-      /*  let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "LandingTabBarViewController") as! LandingTabBarViewController
+      /*  let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SetThemeViewController") as! SetThemeViewController
         navigationController?.pushViewController(vc, animated: true)*/
-          let VC = storyboard?.instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
-          navigationController?.pushViewController(VC, animated: true)
+        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LandingTabBarViewController") as! LandingTabBarViewController
+        navigationController?.pushViewController(vc, animated: true)
+         /* let VC = storyboard?.instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
+          navigationController?.pushViewController(VC, animated: true)*/
         }
 
     private func loginAction() {

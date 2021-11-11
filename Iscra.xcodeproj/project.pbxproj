@@ -12,24 +12,10 @@
 		880080782729346D008E3260 /* WeekCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080772729346D008E3260 /* WeekCollection.swift */; };
 		8800807D272934B4008E3260 /* WeekDaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800807B272934B4008E3260 /* WeekDaysCollectionViewCell.swift */; };
 		8800807E272934B4008E3260 /* WeekDaysCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8800807C272934B4008E3260 /* WeekDaysCollectionViewCell.xib */; };
-		880080A427297D7F008E3260 /* MyCommunityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800809527297D7F008E3260 /* MyCommunityCollectionView.swift */; };
-		880080A527297D7F008E3260 /* CommunityMyGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800809627297D7F008E3260 /* CommunityMyGroupsCell.swift */; };
-		880080A627297D7F008E3260 /* CommunityGroupHabit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8800809727297D7F008E3260 /* CommunityGroupHabit.xib */; };
-		880080A727297D7F008E3260 /* CommunityMyGroupsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8800809827297D7F008E3260 /* CommunityMyGroupsCell.xib */; };
-		880080A827297D7F008E3260 /* CommunityGroupHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800809927297D7F008E3260 /* CommunityGroupHabit.swift */; };
-		880080A927297D7F008E3260 /* NewCommunityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800809A27297D7F008E3260 /* NewCommunityCollectionView.swift */; };
-		880080AA27297D7F008E3260 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800809B27297D7F008E3260 /* CommunityViewController.swift */; };
-		880080AB27297D7F008E3260 /* GroupHabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800809D27297D7F008E3260 /* GroupHabitCell.swift */; };
-		880080AC27297D7F008E3260 /* CommunityFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800809E27297D7F008E3260 /* CommunityFriendCell.swift */; };
-		880080AD27297D7F008E3260 /* CommunityFriendTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800809F27297D7F008E3260 /* CommunityFriendTableView.swift */; };
-		880080AE27297D7F008E3260 /* GroupHabitTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080A027297D7F008E3260 /* GroupHabitTableView.swift */; };
-		880080AF27297D7F008E3260 /* GroupHabitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880080A127297D7F008E3260 /* GroupHabitCell.xib */; };
-		880080B027297D7F008E3260 /* CommunityFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880080A227297D7F008E3260 /* CommunityFriendCell.xib */; };
-		880080B127297D7F008E3260 /* CommunitySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080A327297D7F008E3260 /* CommunitySearchViewController.swift */; };
+		880D683F273AB89600B232CC /* EditHabitTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D683D273AB89600B232CC /* EditHabitTableView.swift */; };
+		880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D683E273AB89600B232CC /* EditHabitViewController.swift */; };
 		880E79FA273145D200FB277C /* HabitIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880E79F9273145D200FB277C /* HabitIcons.xcassets */; };
 		880E79FD2731503F00FB277C /* HabitIcons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 880E79FC2731503F00FB277C /* HabitIcons.plist */; };
-		880E7A282731715F00FB277C /* CommunityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E7A272731715F00FB277C /* CommunityDetailViewController.swift */; };
-		880E7A2B2731717700FB277C /* MatesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E7A2A2731717600FB277C /* MatesCollectionView.swift */; };
 		880F3E302727DE04007CA895 /* ColorPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E2F2727DE04007CA895 /* ColorPopUpViewController.swift */; };
 		880F3E362727EC73007CA895 /* IconPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E352727EC73007CA895 /* IconPopupViewController.swift */; };
 		880F3E412727EFFE007CA895 /* IconHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E402727EFFE007CA895 /* IconHeader.swift */; };
@@ -54,6 +40,30 @@
 		884549F727186F72003FBBC8 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884549F627186F72003FBBC8 /* SignUpModel.swift */; };
 		884549FB271872EC003FBBC8 /* SignUpMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 884549FA271872EC003FBBC8 /* SignUpMock.json */; };
 		8845B731271EF539007A5069 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8845B730271EF539007A5069 /* Onboarding.storyboard */; };
+		88799489273A5ABD00904D1F /* IconsHabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88799488273A5ABD00904D1F /* IconsHabitModel.swift */; };
+		8879948F273A7C9A00904D1F /* HabitIconsMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 8879948E273A7C9A00904D1F /* HabitIconsMock.json */; };
+		887994BA273AB2EE00904D1F /* MyCommunityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994A9273AB2ED00904D1F /* MyCommunityCollectionView.swift */; };
+		887994BB273AB2EE00904D1F /* CommunityMyGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994AA273AB2ED00904D1F /* CommunityMyGroupsCell.swift */; };
+		887994BC273AB2EE00904D1F /* CommunityGroupHabit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887994AB273AB2ED00904D1F /* CommunityGroupHabit.xib */; };
+		887994BD273AB2EE00904D1F /* CommunityMyGroupsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887994AC273AB2ED00904D1F /* CommunityMyGroupsCell.xib */; };
+		887994BE273AB2EE00904D1F /* CommunityGroupHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994AD273AB2ED00904D1F /* CommunityGroupHabit.swift */; };
+		887994BF273AB2EE00904D1F /* MatesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994AE273AB2ED00904D1F /* MatesCollectionView.swift */; };
+		887994C0273AB2EE00904D1F /* NewCommunityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994AF273AB2ED00904D1F /* NewCommunityCollectionView.swift */; };
+		887994C1273AB2EE00904D1F /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994B0273AB2ED00904D1F /* CommunityViewController.swift */; };
+		887994C2273AB2EE00904D1F /* GroupHabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994B2273AB2ED00904D1F /* GroupHabitCell.swift */; };
+		887994C3273AB2EE00904D1F /* CommunityFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994B3273AB2ED00904D1F /* CommunityFriendCell.swift */; };
+		887994C4273AB2EE00904D1F /* CommunityFriendTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994B4273AB2ED00904D1F /* CommunityFriendTableView.swift */; };
+		887994C5273AB2EE00904D1F /* GroupHabitTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994B5273AB2ED00904D1F /* GroupHabitTableView.swift */; };
+		887994C6273AB2EE00904D1F /* GroupHabitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887994B6273AB2ED00904D1F /* GroupHabitCell.xib */; };
+		887994C7273AB2EE00904D1F /* CommunityFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887994B7273AB2ED00904D1F /* CommunityFriendCell.xib */; };
+		887994C8273AB2EE00904D1F /* CommunitySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994B8273AB2ED00904D1F /* CommunitySearchViewController.swift */; };
+		887994C9273AB2EE00904D1F /* CommunityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994B9273AB2ED00904D1F /* CommunityDetailViewController.swift */; };
+		887994D3273AB34E00904D1F /* RepeatDaysPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994CE273AB34E00904D1F /* RepeatDaysPopUpViewController.swift */; };
+		887994D4273AB34E00904D1F /* RepeatDaysTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887994CF273AB34E00904D1F /* RepeatDaysTableViewCell.xib */; };
+		887994D5273AB34E00904D1F /* RepeatDaysTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994D0273AB34E00904D1F /* RepeatDaysTableView.swift */; };
+		887994D6273AB34E00904D1F /* EditReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994D1273AB34E00904D1F /* EditReminderViewController.swift */; };
+		887994D7273AB34E00904D1F /* RepeatDaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994D2273AB34E00904D1F /* RepeatDaysTableViewCell.swift */; };
+		887994DB273AB38D00904D1F /* HabitCalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994DA273AB38D00904D1F /* HabitCalenderViewController.swift */; };
 		88A529112730205000037464 /* PasswordChangeConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A5290F2730204F00037464 /* PasswordChangeConfirmationViewController.swift */; };
 		88A529122730205000037464 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A529102730205000037464 /* ChangePasswordViewController.swift */; };
 		88B0F95927180A9100EF92B3 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88B0F94D27180A9100EF92B3 /* SourceSansPro-Regular.ttf */; };
@@ -131,24 +141,10 @@
 		880080772729346D008E3260 /* WeekCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollection.swift; sourceTree = "<group>"; };
 		8800807B272934B4008E3260 /* WeekDaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysCollectionViewCell.swift; sourceTree = "<group>"; };
 		8800807C272934B4008E3260 /* WeekDaysCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekDaysCollectionViewCell.xib; sourceTree = "<group>"; };
-		8800809527297D7F008E3260 /* MyCommunityCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCommunityCollectionView.swift; sourceTree = "<group>"; };
-		8800809627297D7F008E3260 /* CommunityMyGroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityMyGroupsCell.swift; sourceTree = "<group>"; };
-		8800809727297D7F008E3260 /* CommunityGroupHabit.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityGroupHabit.xib; sourceTree = "<group>"; };
-		8800809827297D7F008E3260 /* CommunityMyGroupsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityMyGroupsCell.xib; sourceTree = "<group>"; };
-		8800809927297D7F008E3260 /* CommunityGroupHabit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupHabit.swift; sourceTree = "<group>"; };
-		8800809A27297D7F008E3260 /* NewCommunityCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCommunityCollectionView.swift; sourceTree = "<group>"; };
-		8800809B27297D7F008E3260 /* CommunityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
-		8800809D27297D7F008E3260 /* GroupHabitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHabitCell.swift; sourceTree = "<group>"; };
-		8800809E27297D7F008E3260 /* CommunityFriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityFriendCell.swift; sourceTree = "<group>"; };
-		8800809F27297D7F008E3260 /* CommunityFriendTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityFriendTableView.swift; sourceTree = "<group>"; };
-		880080A027297D7F008E3260 /* GroupHabitTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHabitTableView.swift; sourceTree = "<group>"; };
-		880080A127297D7F008E3260 /* GroupHabitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupHabitCell.xib; sourceTree = "<group>"; };
-		880080A227297D7F008E3260 /* CommunityFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityFriendCell.xib; sourceTree = "<group>"; };
-		880080A327297D7F008E3260 /* CommunitySearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunitySearchViewController.swift; sourceTree = "<group>"; };
+		880D683D273AB89600B232CC /* EditHabitTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitTableView.swift; sourceTree = "<group>"; };
+		880D683E273AB89600B232CC /* EditHabitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitViewController.swift; sourceTree = "<group>"; };
 		880E79F9273145D200FB277C /* HabitIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HabitIcons.xcassets; sourceTree = "<group>"; };
 		880E79FC2731503F00FB277C /* HabitIcons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HabitIcons.plist; sourceTree = "<group>"; };
-		880E7A272731715F00FB277C /* CommunityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityDetailViewController.swift; sourceTree = "<group>"; };
-		880E7A2A2731717600FB277C /* MatesCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatesCollectionView.swift; sourceTree = "<group>"; };
 		880F3E2F2727DE04007CA895 /* ColorPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPopUpViewController.swift; sourceTree = "<group>"; };
 		880F3E352727EC73007CA895 /* IconPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPopupViewController.swift; sourceTree = "<group>"; };
 		880F3E402727EFFE007CA895 /* IconHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconHeader.swift; sourceTree = "<group>"; };
@@ -173,6 +169,30 @@
 		884549F627186F72003FBBC8 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		884549FA271872EC003FBBC8 /* SignUpMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SignUpMock.json; sourceTree = "<group>"; };
 		8845B730271EF539007A5069 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		88799488273A5ABD00904D1F /* IconsHabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsHabitModel.swift; sourceTree = "<group>"; };
+		8879948E273A7C9A00904D1F /* HabitIconsMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HabitIconsMock.json; sourceTree = "<group>"; };
+		887994A9273AB2ED00904D1F /* MyCommunityCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCommunityCollectionView.swift; sourceTree = "<group>"; };
+		887994AA273AB2ED00904D1F /* CommunityMyGroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityMyGroupsCell.swift; sourceTree = "<group>"; };
+		887994AB273AB2ED00904D1F /* CommunityGroupHabit.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityGroupHabit.xib; sourceTree = "<group>"; };
+		887994AC273AB2ED00904D1F /* CommunityMyGroupsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityMyGroupsCell.xib; sourceTree = "<group>"; };
+		887994AD273AB2ED00904D1F /* CommunityGroupHabit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupHabit.swift; sourceTree = "<group>"; };
+		887994AE273AB2ED00904D1F /* MatesCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatesCollectionView.swift; sourceTree = "<group>"; };
+		887994AF273AB2ED00904D1F /* NewCommunityCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCommunityCollectionView.swift; sourceTree = "<group>"; };
+		887994B0273AB2ED00904D1F /* CommunityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		887994B2273AB2ED00904D1F /* GroupHabitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHabitCell.swift; sourceTree = "<group>"; };
+		887994B3273AB2ED00904D1F /* CommunityFriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityFriendCell.swift; sourceTree = "<group>"; };
+		887994B4273AB2ED00904D1F /* CommunityFriendTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityFriendTableView.swift; sourceTree = "<group>"; };
+		887994B5273AB2ED00904D1F /* GroupHabitTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHabitTableView.swift; sourceTree = "<group>"; };
+		887994B6273AB2ED00904D1F /* GroupHabitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupHabitCell.xib; sourceTree = "<group>"; };
+		887994B7273AB2ED00904D1F /* CommunityFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityFriendCell.xib; sourceTree = "<group>"; };
+		887994B8273AB2ED00904D1F /* CommunitySearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunitySearchViewController.swift; sourceTree = "<group>"; };
+		887994B9273AB2ED00904D1F /* CommunityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityDetailViewController.swift; sourceTree = "<group>"; };
+		887994CE273AB34E00904D1F /* RepeatDaysPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatDaysPopUpViewController.swift; sourceTree = "<group>"; };
+		887994CF273AB34E00904D1F /* RepeatDaysTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepeatDaysTableViewCell.xib; sourceTree = "<group>"; };
+		887994D0273AB34E00904D1F /* RepeatDaysTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatDaysTableView.swift; sourceTree = "<group>"; };
+		887994D1273AB34E00904D1F /* EditReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReminderViewController.swift; sourceTree = "<group>"; };
+		887994D2273AB34E00904D1F /* RepeatDaysTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatDaysTableViewCell.swift; sourceTree = "<group>"; };
+		887994DA273AB38D00904D1F /* HabitCalenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitCalenderViewController.swift; sourceTree = "<group>"; };
 		88A5290F2730204F00037464 /* PasswordChangeConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordChangeConfirmationViewController.swift; sourceTree = "<group>"; };
 		88A529102730205000037464 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		88B0F94D27180A9100EF92B3 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
@@ -290,43 +310,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		8800809327297D7F008E3260 /* Community */ = {
+		880D683B273AB89600B232CC /* Edit Habit */ = {
 			isa = PBXGroup;
 			children = (
-				8800809427297D7F008E3260 /* Collection */,
-				880080A327297D7F008E3260 /* CommunitySearchViewController.swift */,
-				880E7A272731715F00FB277C /* CommunityDetailViewController.swift */,
-				8800809B27297D7F008E3260 /* CommunityViewController.swift */,
-				8800809C27297D7F008E3260 /* Table */,
+				880D683C273AB89600B232CC /* CellView */,
+				880D683E273AB89600B232CC /* EditHabitViewController.swift */,
 			);
-			path = Community;
+			path = "Edit Habit";
 			sourceTree = "<group>";
 		};
-		8800809427297D7F008E3260 /* Collection */ = {
+		880D683C273AB89600B232CC /* CellView */ = {
 			isa = PBXGroup;
 			children = (
-				8800809527297D7F008E3260 /* MyCommunityCollectionView.swift */,
-				8800809627297D7F008E3260 /* CommunityMyGroupsCell.swift */,
-				8800809727297D7F008E3260 /* CommunityGroupHabit.xib */,
-				8800809827297D7F008E3260 /* CommunityMyGroupsCell.xib */,
-				880E7A2A2731717600FB277C /* MatesCollectionView.swift */,
-				8800809927297D7F008E3260 /* CommunityGroupHabit.swift */,
-				8800809A27297D7F008E3260 /* NewCommunityCollectionView.swift */,
+				880D683D273AB89600B232CC /* EditHabitTableView.swift */,
 			);
-			path = Collection;
-			sourceTree = "<group>";
-		};
-		8800809C27297D7F008E3260 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				8800809D27297D7F008E3260 /* GroupHabitCell.swift */,
-				8800809E27297D7F008E3260 /* CommunityFriendCell.swift */,
-				8800809F27297D7F008E3260 /* CommunityFriendTableView.swift */,
-				880080A027297D7F008E3260 /* GroupHabitTableView.swift */,
-				880080A127297D7F008E3260 /* GroupHabitCell.xib */,
-				880080A227297D7F008E3260 /* CommunityFriendCell.xib */,
-			);
-			path = Table;
+			path = CellView;
 			sourceTree = "<group>";
 		};
 		880E79F8273145A700FB277C /* HabitIconResources */ = {
@@ -446,6 +444,74 @@
 			path = "Login Model";
 			sourceTree = "<group>";
 		};
+		8879948B273A5B0800904D1F /* Habit Model */ = {
+			isa = PBXGroup;
+			children = (
+				88799488273A5ABD00904D1F /* IconsHabitModel.swift */,
+			);
+			path = "Habit Model";
+			sourceTree = "<group>";
+		};
+		887994A7273AB2ED00904D1F /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				887994A8273AB2ED00904D1F /* Collection */,
+				887994B0273AB2ED00904D1F /* CommunityViewController.swift */,
+				887994B1273AB2ED00904D1F /* Table */,
+				887994B8273AB2ED00904D1F /* CommunitySearchViewController.swift */,
+				887994B9273AB2ED00904D1F /* CommunityDetailViewController.swift */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		887994A8273AB2ED00904D1F /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				887994A9273AB2ED00904D1F /* MyCommunityCollectionView.swift */,
+				887994AA273AB2ED00904D1F /* CommunityMyGroupsCell.swift */,
+				887994AB273AB2ED00904D1F /* CommunityGroupHabit.xib */,
+				887994AC273AB2ED00904D1F /* CommunityMyGroupsCell.xib */,
+				887994AD273AB2ED00904D1F /* CommunityGroupHabit.swift */,
+				887994AE273AB2ED00904D1F /* MatesCollectionView.swift */,
+				887994AF273AB2ED00904D1F /* NewCommunityCollectionView.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		887994B1273AB2ED00904D1F /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				887994B2273AB2ED00904D1F /* GroupHabitCell.swift */,
+				887994B3273AB2ED00904D1F /* CommunityFriendCell.swift */,
+				887994B4273AB2ED00904D1F /* CommunityFriendTableView.swift */,
+				887994B5273AB2ED00904D1F /* GroupHabitTableView.swift */,
+				887994B6273AB2ED00904D1F /* GroupHabitCell.xib */,
+				887994B7273AB2ED00904D1F /* CommunityFriendCell.xib */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		887994CD273AB34E00904D1F /* EditHabit */ = {
+			isa = PBXGroup;
+			children = (
+				880D683B273AB89600B232CC /* Edit Habit */,
+				887994CE273AB34E00904D1F /* RepeatDaysPopUpViewController.swift */,
+				887994CF273AB34E00904D1F /* RepeatDaysTableViewCell.xib */,
+				887994D0273AB34E00904D1F /* RepeatDaysTableView.swift */,
+				887994D1273AB34E00904D1F /* EditReminderViewController.swift */,
+				887994D2273AB34E00904D1F /* RepeatDaysTableViewCell.swift */,
+			);
+			path = EditHabit;
+			sourceTree = "<group>";
+		};
+		887994D9273AB38D00904D1F /* HabitCalender */ = {
+			isa = PBXGroup;
+			children = (
+				887994DA273AB38D00904D1F /* HabitCalenderViewController.swift */,
+			);
+			path = HabitCalender;
+			sourceTree = "<group>";
+		};
 		88B4A26B27205DDC00488AA3 /* ChangePassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,6 +581,7 @@
 		88E0284C2716F73F00D90BB1 /* Mock JSON */ = {
 			isa = PBXGroup;
 			children = (
+				8879948E273A7C9A00904D1F /* HabitIconsMock.json */,
 				88CA2A4A271E9F1B003D590D /* LogInMock.json */,
 				884549FA271872EC003FBBC8 /* SignUpMock.json */,
 			);
@@ -555,6 +622,7 @@
 		88E028502716F73F00D90BB1 /* ResponseModels */ = {
 			isa = PBXGroup;
 			children = (
+				8879948B273A5B0800904D1F /* Habit Model */,
 				884549F527186F56003FBBC8 /* Login Model */,
 				884549F427186F4A003FBBC8 /* Signup Model */,
 			);
@@ -642,7 +710,7 @@
 			children = (
 				882F3DFE2721A47F00A409A6 /* LandingTabbar */,
 				88E580432722E70300D4CAFB /* Home */,
-				8800809327297D7F008E3260 /* Community */,
+				887994A7273AB2ED00904D1F /* Community */,
 				882F3E072721A78600A409A6 /* AddHabit */,
 				88E028802716FE2500D90BB1 /* Chat */,
 				88E028812716FE3400D90BB1 /* My Account */,
@@ -671,6 +739,8 @@
 		88E028942716FEF500D90BB1 /* Habit */ = {
 			isa = PBXGroup;
 			children = (
+				887994D9273AB38D00904D1F /* HabitCalender */,
+				887994CD273AB34E00904D1F /* EditHabit */,
 				88E5802E2722D5C500D4CAFB /* AddHabit */,
 				8800806F272926A8008E3260 /* SetTheme */,
 				880F3E2E2727DDB6007CA895 /* ColorPopUp */,
@@ -865,10 +935,10 @@
 				88E028962716FF0A00D90BB1 /* Habit.storyboard in Resources */,
 				884549FB271872EC003FBBC8 /* SignUpMock.json in Resources */,
 				88B0F95B27180A9100EF92B3 /* SourceSansPro-BoldItalic.ttf in Resources */,
+				887994BC273AB2EE00904D1F /* CommunityGroupHabit.xib in Resources */,
 				88E028922716FECF00D90BB1 /* Landing.storyboard in Resources */,
 				880F3E4A2727F03F007CA895 /* IconHeaderCollectionViewCell.xib in Resources */,
 				88B0F95A27180A9100EF92B3 /* SourceSansPro-Bold.ttf in Resources */,
-				880080A627297D7F008E3260 /* CommunityGroupHabit.xib in Resources */,
 				880E79FD2731503F00FB277C /* HabitIcons.plist in Resources */,
 				8845B731271EF539007A5069 /* Onboarding.storyboard in Resources */,
 				88B0F95E27180A9100EF92B3 /* SourceSansPro-BlackItalic.ttf in Resources */,
@@ -877,13 +947,15 @@
 				88CA2C88271EBD00003D590D /* Iscra_Info.plist in Resources */,
 				8800807E272934B4008E3260 /* WeekDaysCollectionViewCell.xib in Resources */,
 				880E79FA273145D200FB277C /* HabitIcons.xcassets in Resources */,
-				880080B027297D7F008E3260 /* CommunityFriendCell.xib in Resources */,
 				88CA2A56271EACCA003D590D /* SF-Pro-Display-Regular.ttf in Resources */,
 				88CA2A5A271EACCA003D590D /* SF-Pro-Display-Black.ttf in Resources */,
 				88CA2A4B271E9F1B003D590D /* LogInMock.json in Resources */,
 				88CA2A55271EACCA003D590D /* SF-Pro-Display-Heavy.ttf in Resources */,
 				88B0F98927180CE900EF92B3 /* SourceSansPro-Black.ttf in Resources */,
 				88CA2A5C271EACCA003D590D /* SF-Pro-Display-Medium.ttf in Resources */,
+				887994D4273AB34E00904D1F /* RepeatDaysTableViewCell.xib in Resources */,
+				887994C7273AB2EE00904D1F /* CommunityFriendCell.xib in Resources */,
+				887994BD273AB2EE00904D1F /* CommunityMyGroupsCell.xib in Resources */,
 				88CA2A57271EACCA003D590D /* SF-Pro-Display-UltralightItalic.ttf in Resources */,
 				88E5804E2722E70300D4CAFB /* MatesCollectionCell.xib in Resources */,
 				88B0F95927180A9100EF92B3 /* SourceSansPro-Regular.ttf in Resources */,
@@ -897,13 +969,13 @@
 				880F3E5227280C6B007CA895 /* IconCollectionViewCell.xib in Resources */,
 				88C7C2FB2726D39800EAA8CA /* ColorCollectionViewCell.xib in Resources */,
 				88E028692716F73F00D90BB1 /* LaunchScreen.storyboard in Resources */,
-				880080AF27297D7F008E3260 /* GroupHabitCell.xib in Resources */,
 				88E580502722E70300D4CAFB /* HabitDaysCell.xib in Resources */,
-				880080A727297D7F008E3260 /* CommunityMyGroupsCell.xib in Resources */,
+				8879948F273A7C9A00904D1F /* HabitIconsMock.json in Resources */,
 				88E0289A2716FF4800D90BB1 /* Chat.storyboard in Resources */,
 				88B0F95D27180A9100EF92B3 /* SourceSansPro-SemiBoldItalic.ttf in Resources */,
 				88B0F96127180A9100EF92B3 /* SourceSansPro-Light.ttf in Resources */,
 				88CA2A5B271EACCA003D590D /* SF-Pro-Display-Bold.ttf in Resources */,
+				887994C6273AB2EE00904D1F /* GroupHabitCell.xib in Resources */,
 				88E580532722E70300D4CAFB /* HabitCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -957,34 +1029,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				880080A927297D7F008E3260 /* NewCommunityCollectionView.swift in Sources */,
 				88E580762722F5F300D4CAFB /* SetThemeViewController.swift in Sources */,
 				880F3E412727EFFE007CA895 /* IconHeader.swift in Sources */,
 				88E0289D2716FFE500D90BB1 /* SignupViewController.swift in Sources */,
 				880F3E362727EC73007CA895 /* IconPopupViewController.swift in Sources */,
 				8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */,
+				887994C4273AB2EE00904D1F /* CommunityFriendTableView.swift in Sources */,
+				887994BF273AB2EE00904D1F /* MatesCollectionView.swift in Sources */,
 				882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */,
 				88E028712716FBB100D90BB1 /* LoginViewController.swift in Sources */,
-				880080AC27297D7F008E3260 /* CommunityFriendCell.swift in Sources */,
+				887994C9273AB2EE00904D1F /* CommunityDetailViewController.swift in Sources */,
 				880F3E302727DE04007CA895 /* ColorPopUpViewController.swift in Sources */,
 				88A529112730205000037464 /* PasswordChangeConfirmationViewController.swift in Sources */,
 				88E580522722E70300D4CAFB /* HomeViewController.swift in Sources */,
 				884549F727186F72003FBBC8 /* SignUpModel.swift in Sources */,
 				88B0FABF2718594100EF92B3 /* IscraCustomTextField.swift in Sources */,
+				887994DB273AB38D00904D1F /* HabitCalenderViewController.swift in Sources */,
 				8822D4E72731775500C68EE5 /* VerificationViewController.swift in Sources */,
 				88E028FA27170D0600D90BB1 /* APIConstants.swift in Sources */,
-				880080A827297D7F008E3260 /* CommunityGroupHabit.swift in Sources */,
 				882F3E162721AAC300A409A6 /* MyAccountTableViewCell.swift in Sources */,
+				887994BA273AB2EE00904D1F /* MyCommunityCollectionView.swift in Sources */,
 				88202D5F2719AAAA00F0EA2E /* WalkthroughViewController.swift in Sources */,
+				887994C2273AB2EE00904D1F /* GroupHabitCell.swift in Sources */,
 				88E028A42716FFF900D90BB1 /* LoginViewModel.swift in Sources */,
 				880F3E4D27280C48007CA895 /* IconCollectionView.swift in Sources */,
+				887994C3273AB2EE00904D1F /* CommunityFriendCell.swift in Sources */,
 				8800807D272934B4008E3260 /* WeekDaysCollectionViewCell.swift in Sources */,
+				887994D5273AB34E00904D1F /* RepeatDaysTableView.swift in Sources */,
 				880080732729282F008E3260 /* AddHabitViewController.swift in Sources */,
+				880D683F273AB89600B232CC /* EditHabitTableView.swift in Sources */,
+				887994D6273AB34E00904D1F /* EditReminderViewController.swift in Sources */,
 				88202D592719923700F0EA2E /* WelcomeViewController.swift in Sources */,
+				887994C0273AB2EE00904D1F /* NewCommunityCollectionView.swift in Sources */,
 				88E028652716F73F00D90BB1 /* AppDelegate.swift in Sources */,
-				880080B127297D7F008E3260 /* CommunitySearchViewController.swift in Sources */,
 				88E028F127170B7F00D90BB1 /* AlamofireManager.swift in Sources */,
 				8816D88F272678B000127DDC /* AddHabitViewModel.swift in Sources */,
+				887994C8273AB2EE00904D1F /* CommunitySearchViewController.swift in Sources */,
+				880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */,
 				88B4A225271FF9C300488AA3 /* AddMyPictureViewController.swift in Sources */,
 				882F3E002721A50A00A409A6 /* LandingTabBarViewController.swift in Sources */,
 				88E028F427170B7F00D90BB1 /* Utils.swift in Sources */,
@@ -993,28 +1074,24 @@
 				880080782729346D008E3260 /* WeekCollection.swift in Sources */,
 				882F3E182721AAC300A409A6 /* MyAccountViewController.swift in Sources */,
 				882F3E172721AAC300A409A6 /* MyAccountTableView.swift in Sources */,
+				887994BE273AB2EE00904D1F /* CommunityGroupHabit.swift in Sources */,
 				88E028F227170B7F00D90BB1 /* WebRouter.swift in Sources */,
+				887994C5273AB2EE00904D1F /* GroupHabitTableView.swift in Sources */,
 				88E028662716F73F00D90BB1 /* SceneDelegate.swift in Sources */,
 				880F3E69272816D9007CA895 /* InviteFriendViewController.swift in Sources */,
+				887994D7273AB34E00904D1F /* RepeatDaysTableViewCell.swift in Sources */,
 				88E029302717104C00D90BB1 /* Extentions.swift in Sources */,
-				880E7A282731715F00FB277C /* CommunityDetailViewController.swift in Sources */,
 				88B0F9D7271824CF00EF92B3 /* IscraCustomView.swift in Sources */,
 				880F3E492727F03F007CA895 /* IconHeaderCollectionViewCell.swift in Sources */,
 				88C7C2F52726CDE600EAA8CA /* ColorCollectionView.swift in Sources */,
-				880080A427297D7F008E3260 /* MyCommunityCollectionView.swift in Sources */,
 				88E028A12716FFEE00D90BB1 /* SignupViewModel.swift in Sources */,
 				88E028F527170B7F00D90BB1 /* WebserviceManager.swift in Sources */,
-				880080A527297D7F008E3260 /* CommunityMyGroupsCell.swift in Sources */,
-				880080AD27297D7F008E3260 /* CommunityFriendTableView.swift in Sources */,
-				880E7A2B2731717700FB277C /* MatesCollectionView.swift in Sources */,
 				88C7C2FA2726D39800EAA8CA /* ColorCollectionViewCell.swift in Sources */,
 				88E028872716FE6300D90BB1 /* ChatViewController.swift in Sources */,
 				88B4A228271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift in Sources */,
 				88B4A27027205DDD00488AA3 /* EditNameViewController.swift in Sources */,
-				880080AB27297D7F008E3260 /* GroupHabitCell.swift in Sources */,
 				88202D55271968B900F0EA2E /* InputValidation.swift in Sources */,
 				88E580512722E70300D4CAFB /* MatesCollectionCell.swift in Sources */,
-				880080AE27297D7F008E3260 /* GroupHabitTableView.swift in Sources */,
 				880F3E5127280C6B007CA895 /* IconCollectionViewCell.swift in Sources */,
 				88CA2A48271E9DE1003D590D /* LoginModel.swift in Sources */,
 				88E028672716F73F00D90BB1 /* Iscra.xcdatamodeld in Sources */,
@@ -1022,9 +1099,12 @@
 				88E580542722E70300D4CAFB /* HabitTableView.swift in Sources */,
 				88E580552722E70300D4CAFB /* HabitCell.swift in Sources */,
 				88E0297B271717A500D90BB1 /* IscraCustomLabel.swift in Sources */,
+				88799489273A5ABD00904D1F /* IconsHabitModel.swift in Sources */,
+				887994D3273AB34E00904D1F /* RepeatDaysPopUpViewController.swift in Sources */,
 				88E5805D2722E92A00D4CAFB /* CustomCollectionViewLayout.swift in Sources */,
+				887994C1273AB2EE00904D1F /* CommunityViewController.swift in Sources */,
+				887994BB273AB2EE00904D1F /* CommunityMyGroupsCell.swift in Sources */,
 				8822D4EC2731777E00C68EE5 /* GetSubcriptionViewController.swift in Sources */,
-				880080AA27297D7F008E3260 /* CommunityViewController.swift in Sources */,
 				88B0F9C027181A4B00EF92B3 /* IscraCustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

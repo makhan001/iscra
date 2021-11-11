@@ -83,18 +83,25 @@ extension LandingTabBarViewController : UITabBarControllerDelegate {
 
 extension LandingTabBarViewController: selectHabitToAddProtocol{
     func addHabit(habitType: habitType) {
-        switch  habitType {
-        case .good:
-            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "AddHabitViewController") as! AddHabitViewController
-            navigationController?.pushViewController(vc, animated: true)
-        case .bad:
-            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ReminderViewController") as! ReminderViewController
-            navigationController?.pushViewController(vc, animated: true)
-        case .group:
-            print("group habit")
-        }
+        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AddHabitViewController") as! AddHabitViewController
+        vc.habitType = habitType
+        navigationController?.pushViewController(vc, animated: true)
+//        switch  habitType {
+//        case .good:
+//            AddHabitNAvigation()
+//        case .bad:
+//            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "AddHabitViewController") as! AddHabitViewController
+//            vc.habitType = habitType
+//            navigationController?.pushViewController(vc, animated: true)
+//        case .group:
+//            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "AddHabitViewController") as! AddHabitViewController
+//            vc.habitType = habitType
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
+//   }
     }
 }
 

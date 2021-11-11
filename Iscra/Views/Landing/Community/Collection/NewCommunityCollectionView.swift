@@ -10,6 +10,7 @@ import UIKit
 protocol communityGroupHabitDetail: class {
     func navigate()
 }
+
 class NewCommunityCollectionView: UICollectionView , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
 
     var count: Int = 0

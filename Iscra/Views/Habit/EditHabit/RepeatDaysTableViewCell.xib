@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RepeatDaysTableViewCell" id="fIz-Ia-NVN" customClass="RepeatDaysTableViewCell" customModule="Iscra" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fIz-Ia-NVN" id="dAz-AQ-po2">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DRl-uD-jEq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BKQ-4i-86L">
+                                <rect key="frame" x="24" y="10" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="VqW-PE-SB2"/>
+                                    <constraint firstAttribute="height" constant="24" id="jNf-vj-uAX"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gbs-if-4W7" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                <rect key="frame" x="64" y="11.5" width="340" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="rKe-bu-Pvj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="BlackAccent"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSMedium" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BKQ-4i-86L" firstAttribute="centerY" secondItem="DRl-uD-jEq" secondAttribute="centerY" id="X5i-hd-3pN"/>
+                            <constraint firstItem="Gbs-if-4W7" firstAttribute="leading" secondItem="BKQ-4i-86L" secondAttribute="trailing" constant="16" id="YGY-VN-qyh"/>
+                            <constraint firstItem="BKQ-4i-86L" firstAttribute="leading" secondItem="DRl-uD-jEq" secondAttribute="leading" constant="24" id="bmQ-Tw-Vwu"/>
+                            <constraint firstAttribute="trailing" secondItem="Gbs-if-4W7" secondAttribute="trailing" constant="10" id="fRF-z1-4Nj"/>
+                            <constraint firstItem="Gbs-if-4W7" firstAttribute="centerY" secondItem="DRl-uD-jEq" secondAttribute="centerY" id="lrh-xB-1y3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="DRl-uD-jEq" secondAttribute="bottom" id="1h0-lD-8zH"/>
+                    <constraint firstItem="DRl-uD-jEq" firstAttribute="leading" secondItem="dAz-AQ-po2" secondAttribute="leading" id="5LD-ko-dTi"/>
+                    <constraint firstItem="DRl-uD-jEq" firstAttribute="top" secondItem="dAz-AQ-po2" secondAttribute="top" id="BGr-ap-hLq"/>
+                    <constraint firstAttribute="trailing" secondItem="DRl-uD-jEq" secondAttribute="trailing" id="eRm-7x-ISX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imgSelect" destination="BKQ-4i-86L" id="9oj-0i-IDr"/>
+                <outlet property="lblDayName" destination="Gbs-if-4W7" id="cjW-r6-FrL"/>
+            </connections>
+            <point key="canvasLocation" x="29" y="83"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="Gbs-if-4W7">
+            <size key="intrinsicContentSize" width="49" height="24"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="BlackAccent">
+            <color red="0.10999999940395355" green="0.090000003576278687" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

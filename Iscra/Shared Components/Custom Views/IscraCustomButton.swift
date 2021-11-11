@@ -98,20 +98,8 @@ import QuartzCore
         }
         set {
             if newValue == true {
-                self.titleLabel?.font = UIFont(name: "SourceSansPro-Regular", size: CGFloat(fontSize))
-                contentScaleFactor = 0.5
-            }
-        }
-    }
-    
-    @IBInspectable
-    var SSItalic   : Bool {
-        get {
-            return false
-        }
-        set {
-            if newValue == true {
-                self.titleLabel?.font = UIFont(name: "SourceSansPro-Italic", size: CGFloat(fontSize))
+                //self.font = UIFont(name: "SourceSansPro-Regular", size: CGFloat(fontSize))
+                self.titleLabel?.font = UIFont.systemFont(ofSize:  CGFloat(fontSize), weight: .regular)
                 contentScaleFactor = 0.5
             }
         }
@@ -124,7 +112,8 @@ import QuartzCore
         }
         set {
             if newValue == true {
-                self.titleLabel?.font = UIFont(name: "SourceSansPro-ExtraLight", size: CGFloat(fontSize))
+                //self.font = UIFont(name: "SourceSansPro-ExtraLight", size: CGFloat(fontSize))
+                self.titleLabel?.font = UIFont.systemFont(ofSize:  CGFloat(fontSize), weight: .ultraLight)
                 contentScaleFactor = 0.5
             }
         }
@@ -137,20 +126,8 @@ import QuartzCore
         }
         set {
             if newValue == true {
-                self.titleLabel?.font = UIFont(name: "SourceSansPro-Light", size: CGFloat(fontSize))
-                contentScaleFactor = 0.5
-            }
-        }
-    }
-    
-    @IBInspectable
-    var SSLightItalic : Bool {
-        get {
-            return false
-        }
-        set {
-            if newValue == true {
-                self.titleLabel?.font = UIFont(name: "SourceSansPro-LightItalic", size: CGFloat(fontSize))
+                //self.font = UIFont(name: "SourceSansPro-Light", size: CGFloat(fontSize))
+                self.titleLabel?.font = UIFont.systemFont(ofSize:  CGFloat(fontSize), weight: .light)
                 contentScaleFactor = 0.5
             }
         }
@@ -163,7 +140,8 @@ import QuartzCore
         }
         set {
             if newValue == true {
-                self.titleLabel?.font = UIFont(name: "SourceSansPro-SemiBold", size: CGFloat(fontSize))
+                // self.font = UIFont(name: "SourceSansPro-SemiBold", size: CGFloat(fontSize))
+                self.titleLabel?.font = UIFont.systemFont(ofSize:  CGFloat(fontSize), weight: .semibold)
                 contentScaleFactor = 0.5
             }
         }
@@ -176,24 +154,13 @@ import QuartzCore
         }
         set {
             if newValue == true {
-                self.titleLabel?.font = UIFont(name: "SourceSansPro-Bold", size:  CGFloat(fontSize))
+                // self.font = UIFont(name: "SourceSansPro-Bold", size:  CGFloat(fontSize))
+                self.titleLabel?.font = UIFont.systemFont(ofSize:  CGFloat(fontSize), weight: .bold)
                 contentScaleFactor = 0.5
             }
         }
     }
     
-    @IBInspectable
-    var SSBoldItalic : Bool {
-        get {
-            return false
-        }
-        set {
-            if newValue == true {
-                self.titleLabel?.font = UIFont(name: "SourceSansPro-BoldItalic", size: CGFloat(fontSize))
-                contentScaleFactor = 0.5
-            }
-        }
-    }
     @IBInspectable
     var SSBlack  : Bool {
         get {
@@ -201,23 +168,26 @@ import QuartzCore
         }
         set {
             if newValue == true {
-                self.titleLabel?.font = UIFont(name: "SourceSansPro-Black", size: CGFloat(fontSize))
+                //self.font = UIFont(name: "SourceSansPro-Black", size: CGFloat(fontSize))
+                self.titleLabel?.font = UIFont.systemFont(ofSize:  CGFloat(fontSize), weight: .black)
                 contentScaleFactor = 0.5
             }
         }
     }
     @IBInspectable
-    var SSBlackItalic   : Bool {
+    var SSMedium  : Bool {
         get {
             return false
         }
         set {
             if newValue == true {
-                self.titleLabel?.font = UIFont(name: "SourceSansPro-BlackItalic", size: CGFloat(fontSize))
+                //self.font = UIFont(name: "SourceSansPro-Black", size: CGFloat(fontSize))
+                self.titleLabel?.font = UIFont.systemFont(ofSize:  CGFloat(fontSize), weight: .medium)
                 contentScaleFactor = 0.5
             }
         }
     }
+    
     
     @IBInspectable var stringId: String {
         

@@ -19,6 +19,7 @@ import UIKit
             return 16
         }
     }
+    
     @IBInspectable
     var SSRegular  : Bool {
         get {
@@ -102,6 +103,20 @@ import UIKit
             }
         }
     }
+    @IBInspectable
+    var SSMedium  : Bool {
+        get {
+            return false
+        }
+        set {
+            if newValue == true {
+                //self.font = UIFont(name: "SourceSansPro-Black", size: CGFloat(fontSize))
+                self.font = UIFont.systemFont(ofSize:  CGFloat(fontSize), weight: .medium)
+                contentScaleFactor = 0.5
+            }
+        }
+    }
+    
     @IBInspectable var stringId: String {
         set(value) {
         //self.text = AMPLocalizeUtils.defaultLocalizer.stringForKey(key: value)

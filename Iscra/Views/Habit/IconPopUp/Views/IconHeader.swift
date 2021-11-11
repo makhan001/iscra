@@ -12,10 +12,10 @@ protocol selectedIconCatogory : class {
 }
 
 class IconHeader: UICollectionView{
-    var iconsHeaderTitle = [[String:Any]]()
+    var iconsHeaderTitle = IconsHabitModel()
     weak var delegateIconCatogory:selectedIconCatogory?
     var selcteIndex = 0
-    func configure(iconHeader:[[String:Any]]) {
+    func configure(iconHeader:IconsHabitModel) {
         self.register(UINib(nibName: "IconHeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "IconHeaderCollectionViewCell")
         iconsHeaderTitle = iconHeader
         self.delegate = self
@@ -27,13 +27,13 @@ class IconHeader: UICollectionView{
 extension IconHeader:  UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return iconsHeaderTitle.count
+        return iconsHeaderTitle.iconCategory?.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = self.dequeueReusableCell(withReuseIdentifier: "IconHeaderCollectionViewCell", for: indexPath) as? IconHeaderCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(title: iconsHeaderTitle[indexPath.row]["habitName"] as! String, SelecedIndex: selcteIndex , index: indexPath.row)
+        cell.configure(title: iconsHeaderTitle.iconCategory?[indexPath.row].habitName as! String, SelecedIndex: selcteIndex , index: indexPath.row)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

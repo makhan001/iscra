@@ -7,13 +7,18 @@
 
 import Foundation
 import UIKit
+protocol selectedIcon : class {
+    func selectedIconIndex(Index:Int)
+}
 
 class IconCollectionView: UICollectionView{
     
-    var iconArray = [[String:Any]]()
+    var iconArray = [IconModel]()
     var selcteIndex = 0
     var themeColor = ""
-    func configure(icons : [[String:Any]], theme:String) {
+    weak var delegateIcon:selectedIcon?
+    
+    func configure(icons : [IconModel], theme:String) {
         self.register(UINib(nibName: "IconCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "IconCollectionViewCell")
         self.iconArray = icons
         themeColor = theme
@@ -44,6 +49,6 @@ extension IconCollectionView:  UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selcteIndex = indexPath.row
-        reloadData()
+        delegateIcon?.selectedIconIndex(Index: indexPath.row)
     }
 }

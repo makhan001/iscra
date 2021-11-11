@@ -19,6 +19,7 @@ class ReminderViewController: UIViewController {
     @IBOutlet weak var lblReminderTime: UILabel!
     @IBOutlet weak var pickerTime: UIDatePicker!
     @IBOutlet weak var btnSegment: UISegmentedControl!
+    var habitType : habitType = .good
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -91,8 +92,14 @@ extension ReminderViewController {
     }
     
     private func nextClick() {
+        if habitType == .group{
+            print("group")
+        }
+        else {
         let storyboard = UIStoryboard(name: "Habit", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "InviteFriendViewController") as! InviteFriendViewController
+        vc.habitType = habitType
         navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

@@ -6,11 +6,12 @@ target 'Iscra' do
   use_frameworks!
 
   # Pods for Iscra
- pod 'Alamofire', '~> 5.0'
+ pod 'Alamofire'
  pod 'SVProgressHUD'
  pod 'Firebase'
  pod 'Firebase/Database'
- pod 'SDWebImage', '~> 5.0'
+ pod 'SDWebImage'
  pod 'IQKeyboardManagerSwift'
  pod 'ParallaxHeader'
+ pod 'FSCalendar'
 end

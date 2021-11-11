@@ -31,6 +31,15 @@ extension HomeViewController {
         self.lblTitle.text = "Are you ready to create \nyour first habit?"
         self.lblSubTitle.text = "I am excited to help you to become \na better version of yourself. Let's \nstart our journey. Click plus button \nto create your first habit."
         self.tblHabit.configure(obj: 5)
+        self.tblHabit.delegate1 = self
     }
 }
 
+// MARK: - Navigation
+extension HomeViewController: HabitTableNavigation{
+    func navigate() {
+        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+         let vc = storyboard.instantiateViewController(withIdentifier: "HabitCalenderViewController") as! HabitCalenderViewController
+         navigationController?.pushViewController(vc, animated: true)
+    }
+}

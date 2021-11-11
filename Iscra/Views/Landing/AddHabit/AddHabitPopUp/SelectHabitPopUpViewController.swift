@@ -40,7 +40,6 @@ extension SelectHabitPopUpViewController {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }
-    
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         self.dismiss(animated: true, completion: nil)
     }

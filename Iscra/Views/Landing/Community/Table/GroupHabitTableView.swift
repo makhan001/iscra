@@ -9,7 +9,7 @@ import UIKit
 
 class GroupHabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     var count: Int = 0
-    
+    var navigateToDetail:((_ isSelect:Bool)   ->())?
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -40,6 +40,10 @@ class GroupHabitTableView: UITableView, UITableViewDataSource, UITableViewDelega
             cell.imgHabit.isHidden = false
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigateToDetail!(true)
     }
         
 }

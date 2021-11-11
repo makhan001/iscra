@@ -16,6 +16,9 @@ enum clickManager {
     case shareWithFriends
     case rateUs
     case contactDeveloper
+    case everyDay
+    case reminder
+    case changeColorTheme
 }
 struct MyAccount {
     let titleImage: String

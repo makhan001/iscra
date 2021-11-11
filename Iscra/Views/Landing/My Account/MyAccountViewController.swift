@@ -151,6 +151,12 @@ extension MyAccountViewController: clickManagerDelegate{
             print(performAction)
         case .contactDeveloper:
             print(performAction)
+        case .everyDay:
+            print(performAction)
+        case .reminder:
+            print(performAction)
+        case .changeColorTheme:
+            print(performAction)
         }
     }
 private func AddMemojiAction() {

@@ -40,6 +40,7 @@ extension CommunityViewController {
         [btnSearch, btnInviteFriends].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+        
     }
 }
 // MARK:- Button Action
@@ -59,6 +60,7 @@ extension CommunityViewController {
     private func searcheAction() {
         print("searcheAction")
         let vc = storyboard?.instantiateViewController(withIdentifier: "CommunitySearchViewController") as! CommunitySearchViewController
+        vc.delegate1 = self
         self.navigationController?.present(vc, animated: true, completion: nil)
     }
     
@@ -70,6 +72,7 @@ extension CommunityViewController {
 // MARK: - Navigation
 extension CommunityViewController: communityGroupHabitDetail{
     func navigate() {
+       
         let storyboard = UIStoryboard(name: "Landing", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CommunityDetailViewController") as! CommunityDetailViewController
         navigationController?.pushViewController(vc, animated: true)

@@ -10,7 +10,6 @@ import UIKit
 class CommunitySearchViewController: UIViewController {
     
     // MARK:-Outlets and variables
-    
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var viewNoGroups: UIView!
     @IBOutlet weak var txtSearch: UITextField!
@@ -19,6 +18,8 @@ class CommunitySearchViewController: UIViewController {
     @IBOutlet weak var btnSegment: UISegmentedControl!
     @IBOutlet weak var tableGroupHabit: GroupHabitTableView!
     @IBOutlet weak var tableFriends: CommunityFriendTableView!
+
+    weak var delegate1 : communityGroupHabitDetail?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +36,28 @@ extension CommunitySearchViewController {
         [btnSegment ].forEach {
             $0?.addTarget(self, action: #selector(segmentPressed(_:)), for: .valueChanged)
         }
-        self.viewNoGroups.isHidden = false
-        self.tableGroupHabit.isHidden = true
-        self.tableFriends.isHidden = true
-        self.viewNoGroups.isHidden = false
         
         self.tableGroupHabit.configure(obj: 10)
         self.tableFriends.configure(obj: 10)
+      //  self.tableGroupHabit.delegate1 = self
+        
+//        self.viewNoGroups.isHidden = false
+//        self.tableGroupHabit.isHidden = true
+//        self.tableFriends.isHidden = true
+//        self.viewNoGroups.isHidden = false
+                
+        self.viewGroupsHabit.isHidden = false
+        self.viewNoGroups.isHidden = true
+        self.tableGroupHabit.isHidden = false
+        self.tableFriends.isHidden = true
+        
+        self.tableGroupHabit.navigateToDetail = { [self]
+           seleted in
+           if seleted{
+            self.dismiss(animated: false, completion: nil)
+            self.delegate1?.navigate()
+           }
+       }
         
     }
 }
@@ -92,5 +108,5 @@ extension CommunitySearchViewController {
         self.viewGroupsHabit.isHidden = true
         self.tableFriends.isHidden = false
     }
-}
 
+}

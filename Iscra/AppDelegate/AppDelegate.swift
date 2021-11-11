@@ -7,7 +7,6 @@
 
 import UIKit
 import CoreData
-import CoreLocation
 import SVProgressHUD
 import IQKeyboardManagerSwift
 

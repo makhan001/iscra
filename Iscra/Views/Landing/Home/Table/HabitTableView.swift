@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol HabitTableNavigation: class {
+    func navigate()
+}
+
 class  HabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     var count: Int = 0
+    weak var delegate1 : HabitTableNavigation?
     
     override class func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +38,11 @@ class  HabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         cell.configure()
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("navigate")
+        delegate1?.navigate()
+        }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 

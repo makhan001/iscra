@@ -14,7 +14,8 @@ class SetThemeViewController: UIViewController {
     @IBOutlet weak var ViewColor:UIView!
     @IBOutlet weak var btnColor:UIButton!
     @IBOutlet weak var ImgIcon:UIImageView!
-    var iconResorces = [[String:Any]]()
+    var habitType : habitType = .good
+    var iconResorces = IconsHabitModel()
     var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
     
     override func viewDidLoad() {
@@ -29,11 +30,25 @@ extension SetThemeViewController {
         [btnColor, btnIcon, btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        if let URL = Bundle.main.url(forResource: "HabitIcons", withExtension: "plist") {
-            if let HabitIconsPlist = NSArray(contentsOf: URL) as? [[String:Any]] {
-                print("HabitIconsPlist\(HabitIconsPlist)")
-                iconResorces = HabitIconsPlist
-            }
+        
+//        if let URL = Bundle.main.url(forResource: "HabitIcons", withExtension: "plist") {
+//            if let HabitIconsPlist =  NSArray(contentsOf: URL) as? [[String:Any]] {
+//              //  print("HabitIconsPlist\(HabitIconsPlist)")
+//                iconResorces = HabitIconsPlist
+//            }
+//        }
+//        let IconsData = Utils.fetchDataFromLocalJson(name: "HabitIconsMock") as! [String : Any]
+        let IconsDataas = Utils.readLocalFile(forName: "HabitIconsMock")
+        parse(jsonData: IconsDataas ?? Data())
+        print(IconsDataas!)
+    }
+    private func parse(jsonData: Data) {
+        do {
+            let decodedData = try JSONDecoder().decode(IconsHabitModel.self,from: jsonData)
+            iconResorces = decodedData
+            print("iconResorces,\(iconResorces)")
+        } catch {
+            print("decode error")
         }
     }
 }
@@ -71,6 +86,7 @@ extension SetThemeViewController {
     private func nextClick() {
         let storyboard = UIStoryboard(name: "Habit", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ReminderViewController") as! ReminderViewController
+        vc.habitType = habitType
         navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -81,5 +97,15 @@ extension SetThemeViewController : selectedColordelegate{
         selectedColorTheme = color
         ViewColor.backgroundColor = UIColor(hex: color.colorHex)
         ImgIcon.tintColor = UIColor(hex: color.colorHex)
+    }
+}
+extension Collection where Iterator.Element == [String:AnyObject] {
+    func toJSONString(options: JSONSerialization.WritingOptions = .prettyPrinted) -> String {
+        if let arr = self as? [[String:AnyObject]],
+           let dat = try? JSONSerialization.data(withJSONObject: arr, options: options),
+           let str = String(data: dat, encoding: String.Encoding.utf8) {
+            return str
+        }
+        return "[]"
     }
 }

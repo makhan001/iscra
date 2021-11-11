@@ -1,0 +1,13 @@
+
+
+
+{
+    "code": 200,
+    "message": "Logged in succssfully",
+    "data": {
+        "login_data": {
+            "token": "3idH5ffsC_9zHJ_wNHmy"
+        }
+    }
+}
+

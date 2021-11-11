@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="WeekDaysCollectionViewCell" customModule="Iscra" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HL6-fd-Kph" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6XO-xR-yFt" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                <rect key="frame" x="7.5" y="4" width="17.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6XO-xR-yFt" firstAttribute="centerY" secondItem="HL6-fd-Kph" secondAttribute="centerY" id="E0T-c5-aO7"/>
+                            <constraint firstItem="6XO-xR-yFt" firstAttribute="centerX" secondItem="HL6-fd-Kph" secondAttribute="centerX" id="HvZ-1G-Ts1"/>
+                            <constraint firstAttribute="width" secondItem="HL6-fd-Kph" secondAttribute="height" multiplier="1:1" id="u3k-oF-SE6"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="BlueAccent"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="HL6-fd-Kph" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="C5W-2c-N3r"/>
+                <constraint firstAttribute="trailing" secondItem="HL6-fd-Kph" secondAttribute="trailing" id="FPH-Ln-1D0"/>
+                <constraint firstItem="HL6-fd-Kph" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" id="IRZ-gO-UYe"/>
+                <constraint firstItem="HL6-fd-Kph" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Phx-4v-Lgt"/>
+                <constraint firstAttribute="bottom" secondItem="HL6-fd-Kph" secondAttribute="bottom" id="Z6L-hg-HHk"/>
+            </constraints>
+            <size key="customSize" width="33" height="32"/>
+            <connections>
+                <outlet property="lblTitle" destination="6XO-xR-yFt" id="Kbp-oU-mLS"/>
+                <outlet property="view" destination="HL6-fd-Kph" id="mDb-zM-MvT"/>
+            </connections>
+            <point key="canvasLocation" x="127.53623188405798" y="112.5"/>
+        </collectionViewCell>
+    </objects>
+    <designables>
+        <designable name="6XO-xR-yFt">
+            <size key="intrinsicContentSize" width="17.5" height="24"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="BlueAccent">
+            <color red="0.48199999332427979" green="0.52499997615814209" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

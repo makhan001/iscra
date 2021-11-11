@@ -1,0 +1,15 @@
+{
+    "status": true,
+    "code": 200,
+    "data": {
+        "user": {
+            "id": 13,
+            "email": "demo1@example.com",
+            "created_at": "2021-10-18T05:27:08.538Z",
+            "updated_at": "2021-10-18T05:27:08.538Z",
+            "verification_code": null,
+            "authentication_token": "3idH5ffsC_9zHJ_wNHmy"
+        }
+    }
+}
+

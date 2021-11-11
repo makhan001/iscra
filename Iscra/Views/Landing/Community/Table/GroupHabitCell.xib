@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="GroupHabitCell" rowHeight="326" id="OMN-F7-IGM" customClass="GroupHabitCell" customModule="Iscra" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="637" height="229"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OMN-F7-IGM" id="hdM-18-bMu">
+                <rect key="frame" x="0.0" y="0.0" width="637" height="229"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uy4-sx-Krb" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="10" width="637" height="209"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="yyO-dI-RZw">
+                                <rect key="frame" x="0.0" y="5" width="637" height="199"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lHh-B4-npG">
+                                        <rect key="frame" x="0.0" y="0.0" width="637" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="YQs-IJ-SLz"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVD-h6-bmR">
+                                        <rect key="frame" x="0.0" y="110" width="637" height="89"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn English" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPg-kH-trY" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="16" width="605" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="uSU-gt-atw"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" name="BlackAccent"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I created this group to build new habit to learn foreign language." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijt-en-AuU" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="56" width="605" height="9"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" name="BlackAccent"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ijt-en-AuU" secondAttribute="bottom" constant="24" id="2Zr-Ju-1qF"/>
+                                            <constraint firstItem="BPg-kH-trY" firstAttribute="leading" secondItem="SVD-h6-bmR" secondAttribute="leading" constant="16" id="9gF-O6-NKv"/>
+                                            <constraint firstItem="ijt-en-AuU" firstAttribute="leading" secondItem="SVD-h6-bmR" secondAttribute="leading" constant="16" id="Cre-Ma-AWz"/>
+                                            <constraint firstAttribute="trailing" secondItem="ijt-en-AuU" secondAttribute="trailing" constant="16" id="diq-6f-Lw5"/>
+                                            <constraint firstItem="BPg-kH-trY" firstAttribute="top" secondItem="SVD-h6-bmR" secondAttribute="top" constant="16" id="fGI-2T-clc"/>
+                                            <constraint firstAttribute="trailing" secondItem="BPg-kH-trY" secondAttribute="trailing" constant="16" id="i40-OX-yxQ"/>
+                                            <constraint firstItem="ijt-en-AuU" firstAttribute="top" secondItem="BPg-kH-trY" secondAttribute="bottom" constant="8" id="pXa-px-0Lh"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="yyO-dI-RZw" secondAttribute="bottom" constant="5" id="IID-WE-yIu"/>
+                            <constraint firstItem="yyO-dI-RZw" firstAttribute="top" secondItem="uy4-sx-Krb" secondAttribute="top" constant="5" id="Pw9-bQ-MQ0"/>
+                            <constraint firstAttribute="trailing" secondItem="yyO-dI-RZw" secondAttribute="trailing" id="Tbm-Xm-ImW"/>
+                            <constraint firstItem="yyO-dI-RZw" firstAttribute="leading" secondItem="uy4-sx-Krb" secondAttribute="leading" id="uHF-VC-cPb"/>
+                            <constraint firstItem="lHh-B4-npG" firstAttribute="width" secondItem="uy4-sx-Krb" secondAttribute="width" id="vz9-lB-xN1"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.0" height="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" systemColor="systemGray6Color"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="uy4-sx-Krb" secondAttribute="bottom" constant="10" id="7tK-Oe-Lqr"/>
+                    <constraint firstItem="uy4-sx-Krb" firstAttribute="leading" secondItem="hdM-18-bMu" secondAttribute="leading" id="GQR-br-uC9"/>
+                    <constraint firstAttribute="trailing" secondItem="uy4-sx-Krb" secondAttribute="trailing" id="GRf-Fw-VYN"/>
+                    <constraint firstItem="uy4-sx-Krb" firstAttribute="top" secondItem="hdM-18-bMu" secondAttribute="top" constant="10" id="Rx2-O8-KrO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="imgHabit" destination="lHh-B4-npG" id="iwq-wb-IgD"/>
+                <outlet property="lblHabitSubtitle" destination="ijt-en-AuU" id="13f-R3-bD8"/>
+                <outlet property="lblHabitTitle" destination="BPg-kH-trY" id="PlR-xe-rpS"/>
+            </connections>
+            <point key="canvasLocation" x="-157.24637681159422" y="127.90178571428571"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="BPg-kH-trY">
+            <size key="intrinsicContentSize" width="146" height="29"/>
+        </designable>
+        <designable name="ijt-en-AuU">
+            <size key="intrinsicContentSize" width="463" height="19.5"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="BlackAccent">
+            <color red="0.10999999940395355" green="0.090000003576278687" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

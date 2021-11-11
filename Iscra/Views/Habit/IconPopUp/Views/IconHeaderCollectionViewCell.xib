@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="IconHeaderCollectionViewCell" customModule="Iscra" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="217" height="52"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="217" height="52"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C99-xG-dcn" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                        <rect key="frame" x="15" y="5" width="187" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSF-LV-Xbh" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
+                        <rect key="frame" x="15" y="48" width="187" height="4"/>
+                        <color key="backgroundColor" name="SecondryAccent"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="4" id="XWi-pW-i26"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="aSF-LV-Xbh" firstAttribute="leading" secondItem="C99-xG-dcn" secondAttribute="leading" id="gFJ-5F-g2b"/>
+                <constraint firstAttribute="bottom" secondItem="aSF-LV-Xbh" secondAttribute="bottom" id="j7t-yn-u7w"/>
+                <constraint firstItem="C99-xG-dcn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="ki6-VX-fNC"/>
+                <constraint firstItem="C99-xG-dcn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="pHz-iN-aM8"/>
+                <constraint firstItem="aSF-LV-Xbh" firstAttribute="trailing" secondItem="C99-xG-dcn" secondAttribute="trailing" id="vK3-bQ-Pzc"/>
+                <constraint firstAttribute="trailing" secondItem="C99-xG-dcn" secondAttribute="trailing" constant="15" id="wRv-Xp-4yj"/>
+                <constraint firstItem="aSF-LV-Xbh" firstAttribute="top" secondItem="C99-xG-dcn" secondAttribute="bottom" constant="15" id="wRx-1y-RD1"/>
+            </constraints>
+            <size key="customSize" width="217" height="52"/>
+            <connections>
+                <outlet property="lblTitle" destination="C99-xG-dcn" id="Zfu-SL-VYj"/>
+                <outlet property="viewBottomBar" destination="aSF-LV-Xbh" id="m9n-54-8Xg"/>
+            </connections>
+            <point key="canvasLocation" x="261.59420289855075" y="123.21428571428571"/>
+        </collectionViewCell>
+    </objects>
+    <designables>
+        <designable name="C99-xG-dcn">
+            <size key="intrinsicContentSize" width="51.5" height="24"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="SecondryAccent">
+            <color red="0.76800000667572021" green="0.65100002288818359" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

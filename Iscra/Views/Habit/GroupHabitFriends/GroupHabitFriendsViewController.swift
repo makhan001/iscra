@@ -1,20 +1,21 @@
 //
-//  HabitCalenderViewController.swift
+//  GroupHabitFriendsViewController.swift
 //  Iscra
 //
-//  Created by mac on 03/11/21.
+//  Created by mac on 11/11/21.
 //
 
 import UIKit
 import FSCalendar
 
-class HabitCalenderViewController: UIViewController {
+class GroupHabitFriendsViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnShare: UIButton!
     @IBOutlet weak var viewBottom: UIView!
     @IBOutlet var viewCalender: FSCalendar!
+    @IBOutlet weak var viewProgress: UIView!
     @IBOutlet weak var lblDaysCount: UILabel!
     @IBOutlet weak var viewEditHabit: UIView!
     @IBOutlet weak var btnEditHabit: UIButton!
@@ -23,11 +24,14 @@ class HabitCalenderViewController: UIViewController {
     @IBOutlet weak var btnDeleteHabit: UIButton!
     @IBOutlet weak var lblLongestStreak: UILabel!
     @IBOutlet weak var btnPreviousMonth: UIButton!
+    @IBOutlet weak var btnSegment: UISegmentedControl!
     @IBOutlet weak var viewCircular: CircularProgressBar!
+    @IBOutlet weak var tableFriends: GroupHabitFriendsTable!
     
-    var strTitleName = "Learn English"
     private var eventsDateArray: [Date] = []
     private var themeColor = UIColor(hex: "#7B86EB")
+    private let selectedColor = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "WhiteAccent")]
+    private let unselectedColor = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "BlackAccent")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +43,13 @@ class HabitCalenderViewController: UIViewController {
         super.viewWillAppear(animated)
     }
 }
+
 // MARK: Instance Methods
-extension HabitCalenderViewController {
+extension GroupHabitFriendsViewController {
     private func setup() {
+        self.tableFriends.configure(obj: 10)
         self.calenderSetup()
-        self.viewBottom.isHidden = true
         self.lblTitle.textColor = self.themeColor
-        self.lblTitle.text = self.strTitleName
         self.lblLongestStreak.text = "Longest \nStreak"
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
@@ -53,6 +57,17 @@ extension HabitCalenderViewController {
         [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+        [btnSegment ].forEach {
+            $0?.addTarget(self, action: #selector(segmentPressed(_:)), for: .valueChanged)
+        }
+        self.btnSegment.setTitleTextAttributes(unselectedColor as [NSAttributedString.Key : Any], for: .normal)
+        self.btnSegment.setTitleTextAttributes(selectedColor as [NSAttributedString.Key : Any], for: .selected)
+        if #available(iOS 13.0, *) {
+            self.btnSegment.selectedSegmentTintColor = self.themeColor
+        }
+        self.viewBottom.isHidden = true
+        self.viewProgress.isHidden = true
+        self.tableFriends.isHidden = false
     }
     
     private func calenderSetup() {
@@ -60,13 +75,14 @@ extension HabitCalenderViewController {
         viewCalender.delegate = self
         
         self.viewCalender.firstWeekday = 1
+        self.tableFriends.delegate1 = self
         self.viewCalender.placeholderType = .none
         self.viewCalender.allowsSelection = false
         self.viewCalender.appearance.borderRadius = 0.40
         self.viewCalender.appearance.headerDateFormat = "MMMM"
-        self.viewCalender.appearance.weekdayTextColor = UIColor.init(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1)
         self.viewCalender.appearance.headerTitleColor = UIColor.black
         self.viewCalender.appearance.headerMinimumDissolvedAlpha = 0.0;
+        self.viewCalender.appearance.weekdayTextColor = UIColor.init(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1)
         self.viewCalender.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
         self.viewCalender.appearance.headerTitleFont = UIFont.systemFont(ofSize:  CGFloat(22), weight: .medium)
         
@@ -90,9 +106,20 @@ extension HabitCalenderViewController {
 }
 
 // MARK:- Button Action
-extension HabitCalenderViewController {
+extension GroupHabitFriendsViewController {
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         self.viewBottom.isHidden = true
+    }
+    
+    @objc func segmentPressed(_ sender: UISegmentedControl) {
+        switch btnSegment.selectedSegmentIndex {
+        case 0:
+            friendsAction()
+        case 1:
+            progressAction()
+        default:
+            break
+        }
     }
     
     @objc func buttonPressed(_ sender: UIButton) {
@@ -114,15 +141,22 @@ extension HabitCalenderViewController {
         }
     }
     
+    private func progressAction() {
+        self.viewProgress.isHidden = false
+        self.tableFriends.isHidden = true
+    }
+    
+    private func friendsAction() {
+        self.viewProgress.isHidden = true
+        self.tableFriends.isHidden = false
+    }
+    
     private func backAction() {
         self.navigationController?.popViewController(animated: true)
     }
     
     private func bottomSheetAction() {
-        UIView.animate(withDuration: 3.0, animations: {
-            self.viewBottom.isHidden = false
-            self.view.layoutIfNeeded()
-        })
+        self.viewBottom.isHidden = false
     }
     
     private func editAction() {
@@ -148,6 +182,7 @@ extension HabitCalenderViewController {
         self.viewCalender.setCurrentPage(getPreviousMonth(date: self.viewCalender.currentPage), animated: true)
     }
     
+    
     func getPreviousMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
     }
@@ -168,7 +203,7 @@ extension HabitCalenderViewController {
     }
 }
 
-extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate , FSCalendarDelegateAppearance{
+extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDelegate , FSCalendarDelegateAppearance{
     // Return UIColor for numbers;
     func calendar(_ calendar: FSCalendar,appearance: FSCalendarAppearance,titleDefaultColorFor date: Date) -> UIColor? {
         
@@ -184,49 +219,19 @@ extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate
         if self.eventsDateArray.contains(date) {
             return self.themeColor! // Return UIColor for eventsDateArray
         }
-        // Return Default UIColor
-        return UIColor.white
+        return UIColor.white // Return Default UIColor
+    }
+    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date()
     }
 }
 
-class CircularProgressBar: UIView {
-    
-    //MARK: awakeFromNib
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.layer.sublayers = nil
-        drawBackgroundLayer()
-    }
-    
-    public var ringColor:UIColor =  UIColor.init(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1) {
-        didSet{
-            self.backgroundLayer.strokeColor = ringColor.cgColor
-            
-        }
-    }
-    
-    public var lineWidth:CGFloat = 10 {
-        didSet{
-            backgroundLayer.lineWidth = lineWidth - (0.20 * lineWidth)
-        }
-    }
-    
-    let backgroundLayer = CAShapeLayer()
-    private var radius: CGFloat {
-        get{
-            if self.frame.width < self.frame.height { return (self.frame.width - lineWidth)/2 }
-            else { return (self.frame.height - lineWidth)/2 }
-        }
-    }
-    
-    private var pathCenter: CGPoint{ get{ return self.convert(self.center, from:self.superview) } }
-    private func drawBackgroundLayer(){
-        let path = UIBezierPath(arcCenter: pathCenter, radius: self.radius, startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: true)
-        self.backgroundLayer.path = path.cgPath
-        self.backgroundLayer.lineWidth = lineWidth - (lineWidth * 20/100)
-        self.backgroundLayer.fillColor = UIColor.clear.cgColor
-        self.layer.addSublayer(backgroundLayer)
+extension GroupHabitFriendsViewController: FriendTableNavigation{
+    func didNavigateToCalender() {
+        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "HabitCalenderViewController") as! HabitCalenderViewController
+        vc.strTitleName = "Me"
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
-
-

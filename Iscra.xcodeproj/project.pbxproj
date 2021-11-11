@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0402C4AC273D4A150073DFB8 /* GroupHabitFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4AB273D4A150073DFB8 /* GroupHabitFriendsViewController.swift */; };
+		0402C4B1273D4A200073DFB8 /* GroupFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0402C4AE273D4A200073DFB8 /* GroupFriendsCell.xib */; };
+		0402C4B2273D4A200073DFB8 /* GroupHabitFriendsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */; };
+		0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */; };
 		8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800806B2729255E008E3260 /* ReminderViewController.swift */; };
 		880080732729282F008E3260 /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080722729282F008E3260 /* AddHabitViewController.swift */; };
 		880080782729346D008E3260 /* WeekCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080772729346D008E3260 /* WeekCollection.swift */; };
@@ -133,6 +137,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0402C4AB273D4A150073DFB8 /* GroupHabitFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHabitFriendsViewController.swift; sourceTree = "<group>"; };
+		0402C4AE273D4A200073DFB8 /* GroupFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupFriendsCell.xib; sourceTree = "<group>"; };
+		0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHabitFriendsTable.swift; sourceTree = "<group>"; };
+		0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupFriendsCell.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
 		5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iscra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738A14CE266552D2AB54A54A /* Pods-Iscra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.debug.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.debug.xcconfig"; sourceTree = "<group>"; };
@@ -275,6 +283,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0402C4A9273D49FE0073DFB8 /* GroupHabitFriends */ = {
+			isa = PBXGroup;
+			children = (
+				0402C4AB273D4A150073DFB8 /* GroupHabitFriendsViewController.swift */,
+				0402C4AA273D4A040073DFB8 /* Table */,
+			);
+			path = GroupHabitFriends;
+			sourceTree = "<group>";
+		};
+		0402C4AA273D4A040073DFB8 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */,
+				0402C4AE273D4A200073DFB8 /* GroupFriendsCell.xib */,
+				0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
 		527A79552898470E2C294946 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -739,6 +766,7 @@
 		88E028942716FEF500D90BB1 /* Habit */ = {
 			isa = PBXGroup;
 			children = (
+				0402C4A9273D49FE0073DFB8 /* GroupHabitFriends */,
 				887994D9273AB38D00904D1F /* HabitCalender */,
 				887994CD273AB34E00904D1F /* EditHabit */,
 				88E5802E2722D5C500D4CAFB /* AddHabit */,
@@ -973,6 +1001,7 @@
 				8879948F273A7C9A00904D1F /* HabitIconsMock.json in Resources */,
 				88E0289A2716FF4800D90BB1 /* Chat.storyboard in Resources */,
 				88B0F95D27180A9100EF92B3 /* SourceSansPro-SemiBoldItalic.ttf in Resources */,
+				0402C4B1273D4A200073DFB8 /* GroupFriendsCell.xib in Resources */,
 				88B0F96127180A9100EF92B3 /* SourceSansPro-Light.ttf in Resources */,
 				88CA2A5B271EACCA003D590D /* SF-Pro-Display-Bold.ttf in Resources */,
 				887994C6273AB2EE00904D1F /* GroupHabitCell.xib in Resources */,
@@ -1046,6 +1075,7 @@
 				88B0FABF2718594100EF92B3 /* IscraCustomTextField.swift in Sources */,
 				887994DB273AB38D00904D1F /* HabitCalenderViewController.swift in Sources */,
 				8822D4E72731775500C68EE5 /* VerificationViewController.swift in Sources */,
+				0402C4B2273D4A200073DFB8 /* GroupHabitFriendsTable.swift in Sources */,
 				88E028FA27170D0600D90BB1 /* APIConstants.swift in Sources */,
 				882F3E162721AAC300A409A6 /* MyAccountTableViewCell.swift in Sources */,
 				887994BA273AB2EE00904D1F /* MyCommunityCollectionView.swift in Sources */,
@@ -1060,6 +1090,7 @@
 				880D683F273AB89600B232CC /* EditHabitTableView.swift in Sources */,
 				887994D6273AB34E00904D1F /* EditReminderViewController.swift in Sources */,
 				88202D592719923700F0EA2E /* WelcomeViewController.swift in Sources */,
+				0402C4AC273D4A150073DFB8 /* GroupHabitFriendsViewController.swift in Sources */,
 				887994C0273AB2EE00904D1F /* NewCommunityCollectionView.swift in Sources */,
 				88E028652716F73F00D90BB1 /* AppDelegate.swift in Sources */,
 				88E028F127170B7F00D90BB1 /* AlamofireManager.swift in Sources */,
@@ -1068,6 +1099,7 @@
 				880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */,
 				88B4A225271FF9C300488AA3 /* AddMyPictureViewController.swift in Sources */,
 				882F3E002721A50A00A409A6 /* LandingTabBarViewController.swift in Sources */,
+				0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */,
 				88E028F427170B7F00D90BB1 /* Utils.swift in Sources */,
 				88E5804F2722E70300D4CAFB /* HabitDaysCell.swift in Sources */,
 				88E028F327170B7F00D90BB1 /* BaseExtensions.swift in Sources */,

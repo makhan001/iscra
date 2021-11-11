@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import SVProgressHUD
-import IQKeyboardManagerSwift
 
 class EditHabitViewController: UIViewController {
     
@@ -31,8 +29,6 @@ class EditHabitViewController: UIViewController {
 // MARK: Instance Methods
 extension EditHabitViewController {
     private func setup() {
-        IQKeyboardManager.shared.enable = true
-       // btnDeleteHabit.titleLabel?.font =  UIFont(name: "SF-Pro-Display-Black", size: 50)
         [btnDeleteHabit].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }

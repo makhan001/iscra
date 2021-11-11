@@ -93,13 +93,35 @@ extension ReminderViewController {
     
     private func nextClick() {
         if habitType == .group{
-            print("group")
+            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "AddGroupImageViewController") as! AddGroupImageViewController
+            vc.habitType = habitType
+           navigationController?.pushViewController(vc, animated: true)
         }
         else {
-        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "InviteFriendViewController") as! InviteFriendViewController
-        vc.habitType = habitType
-        navigationController?.pushViewController(vc, animated: true)
+            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "InviteFriendViewController") as! InviteFriendViewController
+            vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            vc.habitType = habitType
+            vc.delegateInvite = self
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+}
+
+extension ReminderViewController : InviteNavigation {
+    func navigate(inviteType: inviteType) {
+        if inviteType == .mayBeLatter{
+            guard let viewControllers = navigationController?.viewControllers else { return }
+            for vc in viewControllers {
+                if vc is LandingTabBarViewController {
+                    navigationController?.popToViewController(vc, animated: true)
+                    return
+                }
+            }
+        }
+        else{
+            
         }
     }
 }

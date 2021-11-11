@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import SVProgressHUD
-import IQKeyboardManagerSwift
 
 class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
@@ -27,7 +25,6 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
 // MARK: Instance Methods
 extension MyAccountViewController {
     private func setup() {
-        IQKeyboardManager.shared.enable = true
         btnGetSubscription.titleLabel?.font =  UIFont(name: "SF-Pro-Display-Black", size: 50)
         [btnGetSubscription,btnLogout].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)

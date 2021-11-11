@@ -35,7 +35,7 @@
                                                     <constraint firstAttribute="width" constant="25" id="be5-eJ-u5I"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghfghfghfgh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-QW-I6j" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghfghfghfgh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-QW-I6j" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="48" y="-12.5" width="404" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="qAh-U3-bzQ"/>
@@ -70,7 +70,7 @@
                                                     <constraint firstAttribute="width" constant="25" id="qjQ-0a-owy"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghfghfghfgh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYu-vK-RwO" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghfghfghfgh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYu-vK-RwO" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="48" y="30" width="404" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Glh-kO-zwr"/>
@@ -86,7 +86,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mates:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rex-sV-4pS" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="70" width="54.5" height="21"/>
+                                                <rect key="frame" x="15" y="70" width="51.5" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="bID-La-NBu"/>
                                                 </constraints>
@@ -212,13 +212,13 @@
     </objects>
     <designables>
         <designable name="Hxw-QW-I6j">
-            <size key="intrinsicContentSize" width="108" height="24"/>
+            <size key="intrinsicContentSize" width="94.5" height="20.5"/>
         </designable>
         <designable name="Rex-sV-4pS">
-            <size key="intrinsicContentSize" width="54.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="51.5" height="20.5"/>
         </designable>
         <designable name="mYu-vK-RwO">
-            <size key="intrinsicContentSize" width="108" height="24"/>
+            <size key="intrinsicContentSize" width="94.5" height="20.5"/>
         </designable>
     </designables>
     <resources>

@@ -33,7 +33,7 @@ extension IconHeader:  UICollectionViewDelegate, UICollectionViewDataSource,UICo
         guard let cell = self.dequeueReusableCell(withReuseIdentifier: "IconHeaderCollectionViewCell", for: indexPath) as? IconHeaderCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(title: iconsHeaderTitle.iconCategory?[indexPath.row].habitName as! String, SelecedIndex: selcteIndex , index: indexPath.row)
+        cell.configure(title: iconsHeaderTitle.iconCategory?[indexPath.row].habitName ?? "", SelecedIndex: selcteIndex , index: indexPath.row)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

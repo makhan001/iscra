@@ -38,9 +38,9 @@ extension SetThemeViewController {
 //            }
 //        }
 //        let IconsData = Utils.fetchDataFromLocalJson(name: "HabitIconsMock") as! [String : Any]
-        let IconsDataas = Utils.readLocalFile(forName: "HabitIconsMock")
-        parse(jsonData: IconsDataas ?? Data())
-        print(IconsDataas!)
+        let IconsDatas = Utils.readLocalFile(forName: "HabitIconsMock")
+        parse(jsonData: IconsDatas ?? Data())
+        print(IconsDatas!)
     }
     private func parse(jsonData: Data) {
         do {
@@ -81,6 +81,7 @@ extension SetThemeViewController {
         pvc.themeColor = selectedColorTheme
         pvc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         pvc.iconResorces = iconResorces
+        pvc.delegateIcon = self
         self.present(pvc, animated: true, completion: nil)
     }
     private func nextClick() {
@@ -92,20 +93,16 @@ extension SetThemeViewController {
     }
 }
 
-extension SetThemeViewController : selectedColordelegate{
+extension SetThemeViewController : selectedColordelegate ,selectedIcondelegate {
+    
+    func selectedIcon(Icon: String) {
+        ImgIcon.image = UIImage(named: Icon)
+    }
+    
     func selectedColorIndex(color: ColorStruct) {
         selectedColorTheme = color
         ViewColor.backgroundColor = UIColor(hex: color.colorHex)
         ImgIcon.tintColor = UIColor(hex: color.colorHex)
     }
 }
-extension Collection where Iterator.Element == [String:AnyObject] {
-    func toJSONString(options: JSONSerialization.WritingOptions = .prettyPrinted) -> String {
-        if let arr = self as? [[String:AnyObject]],
-           let dat = try? JSONSerialization.data(withJSONObject: arr, options: options),
-           let str = String(data: dat, encoding: String.Encoding.utf8) {
-            return str
-        }
-        return "[]"
-    }
-}
+

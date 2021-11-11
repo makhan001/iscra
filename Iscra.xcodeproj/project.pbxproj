@@ -12,6 +12,8 @@
 		880080782729346D008E3260 /* WeekCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080772729346D008E3260 /* WeekCollection.swift */; };
 		8800807D272934B4008E3260 /* WeekDaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800807B272934B4008E3260 /* WeekDaysCollectionViewCell.swift */; };
 		8800807E272934B4008E3260 /* WeekDaysCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8800807C272934B4008E3260 /* WeekDaysCollectionViewCell.xib */; };
+		88021C67273CF688004A58F5 /* AddGroupImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88021C66273CF688004A58F5 /* AddGroupImageViewController.swift */; };
+		88021C6A273D3897004A58F5 /* CustomDashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88021C69273D3897004A58F5 /* CustomDashedView.swift */; };
 		880D683F273AB89600B232CC /* EditHabitTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D683D273AB89600B232CC /* EditHabitTableView.swift */; };
 		880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D683E273AB89600B232CC /* EditHabitViewController.swift */; };
 		880E79FA273145D200FB277C /* HabitIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880E79F9273145D200FB277C /* HabitIcons.xcassets */; };
@@ -141,6 +143,8 @@
 		880080772729346D008E3260 /* WeekCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollection.swift; sourceTree = "<group>"; };
 		8800807B272934B4008E3260 /* WeekDaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysCollectionViewCell.swift; sourceTree = "<group>"; };
 		8800807C272934B4008E3260 /* WeekDaysCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekDaysCollectionViewCell.xib; sourceTree = "<group>"; };
+		88021C66273CF688004A58F5 /* AddGroupImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupImageViewController.swift; sourceTree = "<group>"; };
+		88021C69273D3897004A58F5 /* CustomDashedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashedView.swift; sourceTree = "<group>"; };
 		880D683D273AB89600B232CC /* EditHabitTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitTableView.swift; sourceTree = "<group>"; };
 		880D683E273AB89600B232CC /* EditHabitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitViewController.swift; sourceTree = "<group>"; };
 		880E79F9273145D200FB277C /* HabitIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HabitIcons.xcassets; sourceTree = "<group>"; };
@@ -308,6 +312,14 @@
 				8800807C272934B4008E3260 /* WeekDaysCollectionViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		88021C6D273D4499004A58F5 /* AddGroupImage */ = {
+			isa = PBXGroup;
+			children = (
+				88021C66273CF688004A58F5 /* AddGroupImageViewController.swift */,
+			);
+			path = AddGroupImage;
 			sourceTree = "<group>";
 		};
 		880D683B273AB89600B232CC /* Edit Habit */ = {
@@ -742,10 +754,6 @@
 				887994D9273AB38D00904D1F /* HabitCalender */,
 				887994CD273AB34E00904D1F /* EditHabit */,
 				88E5802E2722D5C500D4CAFB /* AddHabit */,
-				8800806F272926A8008E3260 /* SetTheme */,
-				880F3E2E2727DDB6007CA895 /* ColorPopUp */,
-				880F3E332727EC22007CA895 /* IconPopUp */,
-				8800806A27292536008E3260 /* Reminder */,
 				880F3E6627281685007CA895 /* InviteFriends */,
 				88E028952716FF0A00D90BB1 /* Habit.storyboard */,
 			);
@@ -803,6 +811,7 @@
 				88B0F9BF27181A4B00EF92B3 /* IscraCustomButton.swift */,
 				88B0F9D6271824CF00EF92B3 /* IscraCustomView.swift */,
 				88B0F9DA27183BD900EF92B3 /* IscraCustomImage.swift */,
+				88021C69273D3897004A58F5 /* CustomDashedView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -820,6 +829,11 @@
 			children = (
 				880080722729282F008E3260 /* AddHabitViewController.swift */,
 				8816D88E272678B000127DDC /* AddHabitViewModel.swift */,
+				8800806F272926A8008E3260 /* SetTheme */,
+				880F3E2E2727DDB6007CA895 /* ColorPopUp */,
+				880F3E332727EC22007CA895 /* IconPopUp */,
+				8800806A27292536008E3260 /* Reminder */,
+				88021C6D273D4499004A58F5 /* AddGroupImage */,
 			);
 			path = AddHabit;
 			sourceTree = "<group>";
@@ -1029,6 +1043,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88021C67273CF688004A58F5 /* AddGroupImageViewController.swift in Sources */,
 				88E580762722F5F300D4CAFB /* SetThemeViewController.swift in Sources */,
 				880F3E412727EFFE007CA895 /* IconHeader.swift in Sources */,
 				88E0289D2716FFE500D90BB1 /* SignupViewController.swift in Sources */,
@@ -1065,6 +1080,7 @@
 				88E028F127170B7F00D90BB1 /* AlamofireManager.swift in Sources */,
 				8816D88F272678B000127DDC /* AddHabitViewModel.swift in Sources */,
 				887994C8273AB2EE00904D1F /* CommunitySearchViewController.swift in Sources */,
+				88021C6A273D3897004A58F5 /* CustomDashedView.swift in Sources */,
 				880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */,
 				88B4A225271FF9C300488AA3 /* AddMyPictureViewController.swift in Sources */,
 				882F3E002721A50A00A409A6 /* LandingTabBarViewController.swift in Sources */,

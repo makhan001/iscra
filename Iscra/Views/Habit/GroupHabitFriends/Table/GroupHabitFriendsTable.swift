@@ -11,25 +11,25 @@ protocol FriendTableNavigation: class {
 }
 
 class  GroupHabitFriendsTable: UITableView, UITableViewDataSource, UITableViewDelegate {
-    var count: Int = 0
-    weak var delegate1: FriendTableNavigation?
+    // MARK: Varibles
+    private var count: Int = 0
+    weak var friendTableNavigationDelegate: FriendTableNavigation?
     
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     func configure(obj: Int) {
         self.register(UINib(nibName: "GroupFriendsCell", bundle: nil), forCellReuseIdentifier: "GroupFriendsCell")
         self.delegate = self
         self.dataSource = self
         self.count = obj
-        reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return 5
+        return self.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupFriendsCell") as? GroupFriendsCell else {
             return UITableViewCell()
@@ -39,6 +39,6 @@ class  GroupHabitFriendsTable: UITableView, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate1?.didNavigateToCalender()
-        }
+        friendTableNavigationDelegate?.didNavigateToCalender()
+    }
 }

@@ -14,23 +14,20 @@ class GroupFriendsCell: UITableViewCell {
     @IBOutlet weak var imgFriend: UIImageView!
     @IBOutlet weak var collectiondays: UICollectionView!
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
-        
-    let arr = ["1","1","1","1","1","1","1"]
+    
+    private let arr = ["1","1","1","1","1","1","1"]
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectiondays.register(UINib(nibName: "HabitDaysCell", bundle: nil), forCellWithReuseIdentifier: "HabitDaysCell")
-        self.collectiondays.dataSource = self
-        self.collectiondays.delegate = self
-        self.collectiondays.reloadData()
     }
     
     override func updateConstraints() {
         super.updateConstraints()
-        if arr.count <= 3 {
-            constraintWidth.constant =  CGFloat((arr.count * 60))
+        if self.arr.count <= 3 {
+            constraintWidth.constant =  CGFloat((self.arr.count * 60))
         }else{
-            constraintWidth.constant =  CGFloat((arr.count * 50))
+            constraintWidth.constant =  CGFloat((self.arr.count * 50))
         }
     }
     
@@ -47,18 +44,18 @@ class GroupFriendsCell: UITableViewCell {
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource and UICollectionViewDelegateFlowLayout
 extension GroupFriendsCell: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arr.count
+        return self.arr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            guard let cell = self.collectiondays.dequeueReusableCell(withReuseIdentifier: "HabitDaysCell", for: indexPath) as? HabitDaysCell else {
-                return UICollectionViewCell()
-            }
-            cell.configure()
-            return cell
+        guard let cell = self.collectiondays.dequeueReusableCell(withReuseIdentifier: "HabitDaysCell", for: indexPath) as? HabitDaysCell else {
+            return UICollectionViewCell()
+        }
+        cell.configure()
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Int(self.collectiondays.bounds.width) / arr.count , height: 125)
+        return CGSize(width: Int(self.collectiondays.bounds.width) / self.arr.count , height: 125)
     }
 }

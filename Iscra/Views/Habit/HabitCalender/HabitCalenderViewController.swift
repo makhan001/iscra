@@ -11,18 +11,20 @@ import FSCalendar
 class HabitCalenderViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnShare: UIButton!
-    @IBOutlet weak var viewBottom: UIView!
-    @IBOutlet var viewCalender: FSCalendar!
-    @IBOutlet weak var lblDaysCount: UILabel!
-    @IBOutlet weak var viewEditHabit: UIView!
     @IBOutlet weak var btnEditHabit: UIButton!
-    @IBOutlet weak var viewDeleteHabit: UIView!
     @IBOutlet weak var btnBottomSheet: UIButton!
     @IBOutlet weak var btnDeleteHabit: UIButton!
-    @IBOutlet weak var lblLongestStreak: UILabel!
     @IBOutlet weak var btnPreviousMonth: UIButton!
+    
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblDaysCount: UILabel!
+    @IBOutlet weak var lblLongestStreak: UILabel!
+    
+    @IBOutlet weak var viewBottom: UIView!
+    @IBOutlet weak var viewCalender: FSCalendar!
+    @IBOutlet weak var viewEditHabit: UIView!
+    @IBOutlet weak var viewDeleteHabit: UIView!
     @IBOutlet weak var viewCircular: CircularProgressBar!
     
     var strTitleName = "Learn English"
@@ -39,32 +41,30 @@ class HabitCalenderViewController: UIViewController {
         super.viewWillAppear(animated)
     }
 }
+
 // MARK: Instance Methods
 extension HabitCalenderViewController {
     private func setup() {
         self.calenderSetup()
+        self.circularViewSetup()
         self.viewBottom.isHidden = true
         self.lblTitle.textColor = self.themeColor
         self.lblTitle.text = self.strTitleName
         self.lblLongestStreak.text = "Longest \nStreak"
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
-        
         [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }
     
     private func calenderSetup() {
-        viewCalender.dataSource = self
-        viewCalender.delegate = self
-        
         self.viewCalender.firstWeekday = 1
         self.viewCalender.placeholderType = .none
         self.viewCalender.allowsSelection = false
         self.viewCalender.appearance.borderRadius = 0.40
         self.viewCalender.appearance.headerDateFormat = "MMMM"
-        self.viewCalender.appearance.weekdayTextColor = UIColor.init(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1)
+        self.viewCalender.appearance.weekdayTextColor = UIColor(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1)
         self.viewCalender.appearance.headerTitleColor = UIColor.black
         self.viewCalender.appearance.headerMinimumDissolvedAlpha = 0.0;
         self.viewCalender.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
@@ -80,7 +80,6 @@ extension HabitCalenderViewController {
             dateObjects.append(dateObject!)
         }
         self.eventsDateArray = dateObjects
-        self.circularViewSetup()
     }
     
     func circularViewSetup() {
@@ -154,11 +153,11 @@ extension HabitCalenderViewController {
     
     func showAlert() {
         let alertController = UIAlertController(title: "Delete Habit", message: "Are you sure? The habit will be permanently deleted.", preferredStyle: .alert)
-        let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action:UIAlertAction!) in
+        let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
             print("Delete button tapped");
         }
         deleteAction.setValue(UIColor.gray, forKey: "titleTextColor")
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction!) in
             print("Cancel button tapped");
         }
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
@@ -168,15 +167,15 @@ extension HabitCalenderViewController {
     }
 }
 
+// MARK: FSCalendarDataSource, FSCalendarDelegate
 extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate , FSCalendarDelegateAppearance{
     // Return UIColor for numbers;
     func calendar(_ calendar: FSCalendar,appearance: FSCalendarAppearance,titleDefaultColorFor date: Date) -> UIColor? {
-        
         if self.eventsDateArray.contains(date) {
             return UIColor.white
             // Return UIColor for eventsDateArray
         }
-        return  UIColor.init(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1) // Return Default Title Color  UIColor.gray
+        return UIColor(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1) // Return Default Title Color  UIColor.gray
     }
     
     // Return UIColor for Background;
@@ -187,10 +186,13 @@ extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate
         // Return Default UIColor
         return UIColor.white
     }
+    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date()
+    }
 }
 
 class CircularProgressBar: UIView {
-    
     //MARK: awakeFromNib
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -198,10 +200,9 @@ class CircularProgressBar: UIView {
         drawBackgroundLayer()
     }
     
-    public var ringColor:UIColor =  UIColor.init(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1) {
+    public var ringColor:UIColor =  UIColor(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1) {
         didSet{
             self.backgroundLayer.strokeColor = ringColor.cgColor
-            
         }
     }
     
@@ -219,8 +220,8 @@ class CircularProgressBar: UIView {
         }
     }
     
-    private var pathCenter: CGPoint{ get{ return self.convert(self.center, from:self.superview) } }
-    private func drawBackgroundLayer(){
+    private var pathCenter: CGPoint{ get{ return self.convert(self.center, from: self.superview) } }
+    private func drawBackgroundLayer() {
         let path = UIBezierPath(arcCenter: pathCenter, radius: self.radius, startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: true)
         self.backgroundLayer.path = path.cgPath
         self.backgroundLayer.lineWidth = lineWidth - (lineWidth * 20/100)

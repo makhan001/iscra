@@ -39,7 +39,7 @@ extension HomeViewController {
 extension HomeViewController: HabitTableNavigation{
     func navigate() {
         let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-         let vc = storyboard.instantiateViewController(withIdentifier: "HabitCalenderViewController") as! HabitCalenderViewController
-         navigationController?.pushViewController(vc, animated: true)
+        let vc = storyboard.instantiateViewController(withIdentifier: "HabitCalenderViewController") as! HabitCalenderViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

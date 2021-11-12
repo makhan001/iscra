@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="an9-gJ-2Hd">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="145"/>
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="111"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yjuyhjhjg" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9c-g6-pAd" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="50" height="25"/>
@@ -53,14 +53,14 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-Blanktick" translatesAutoresizingMaskIntoConstraints="NO" id="lpq-Hb-Uce">
-                                <rect key="frame" x="10" y="86" width="30" height="30"/>
+                                <rect key="frame" x="13" y="86" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="GdQ-8C-Eur"/>
-                                    <constraint firstAttribute="height" constant="30" id="tgd-v4-mTK"/>
+                                    <constraint firstAttribute="width" constant="24" id="GdQ-8C-Eur"/>
+                                    <constraint firstAttribute="height" constant="24" id="tgd-v4-mTK"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCg-jQ-whx">
-                                <rect key="frame" x="0.0" y="81" width="50" height="64"/>
+                                <rect key="frame" x="0.0" y="81" width="50" height="30"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -100,10 +100,10 @@
     </objects>
     <designables>
         <designable name="LkU-HZ-pef">
-            <size key="intrinsicContentSize" width="62.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="67" height="19.5"/>
         </designable>
         <designable name="Y9c-g6-pAd">
-            <size key="intrinsicContentSize" width="61" height="20.5"/>
+            <size key="intrinsicContentSize" width="64.5" height="19.5"/>
         </designable>
     </designables>
     <resources>

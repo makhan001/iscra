@@ -128,7 +128,7 @@ class Validation {
     
     func isValidCompanyName(string:String) -> Bool {
         do { //"[^A-Za-z0-9./\\&-/\\' ]"
-            //            "^[&]?[a-zA-Z0-9 ]+[ \\-.&()]?[ a-zA-Z0-9!()]$"
+             // "^[&]?[a-zA-Z0-9 ]+[ \\-.&()]?[ a-zA-Z0-9!()]$"
             let regex = try NSRegularExpression(pattern: "[^A-Za-z0-9./\\&-/\\' ]", options: .caseInsensitive)
             if let _ = regex.firstMatch(in: string, options: [], range: NSMakeRange(0, string.count)) {
                 return true

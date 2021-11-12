@@ -32,7 +32,7 @@ class SignupViewController: UIViewController {
 // MARK: Instance Methods
 extension SignupViewController {
     private func setup() {
-        lblHeaderTitle.text = "Let’s create your \naccount"
+        lblHeaderTitle.text = AppConstant.signUpHeaderTitle
         [btnRegister, btnRegisterWithGoogle,btnRegisterWithApple,btnShowPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }

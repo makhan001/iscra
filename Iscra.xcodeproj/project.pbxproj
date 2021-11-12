@@ -39,9 +39,11 @@
 		882F3E162721AAC300A409A6 /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */; };
 		882F3E172721AAC300A409A6 /* MyAccountTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E132721AAC300A409A6 /* MyAccountTableView.swift */; };
 		882F3E182721AAC300A409A6 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E142721AAC300A409A6 /* MyAccountViewController.swift */; };
+		8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8835BCEE273E8A7200261839 /* StringConstant.swift */; };
 		884549F727186F72003FBBC8 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884549F627186F72003FBBC8 /* SignUpModel.swift */; };
 		884549FB271872EC003FBBC8 /* SignUpMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 884549FA271872EC003FBBC8 /* SignUpMock.json */; };
 		8845B731271EF539007A5069 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8845B730271EF539007A5069 /* Onboarding.storyboard */; };
+		885F7FB6273E2F7500B8D4EF /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F7FB5273E2F7500B8D4EF /* UserStore.swift */; };
 		88799489273A5ABD00904D1F /* IconsHabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88799488273A5ABD00904D1F /* IconsHabitModel.swift */; };
 		8879948F273A7C9A00904D1F /* HabitIconsMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 8879948E273A7C9A00904D1F /* HabitIconsMock.json */; };
 		887994BA273AB2EE00904D1F /* MyCommunityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887994A9273AB2ED00904D1F /* MyCommunityCollectionView.swift */; };
@@ -170,9 +172,11 @@
 		882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
 		882F3E132721AAC300A409A6 /* MyAccountTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableView.swift; sourceTree = "<group>"; };
 		882F3E142721AAC300A409A6 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		8835BCEE273E8A7200261839 /* StringConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstant.swift; sourceTree = "<group>"; };
 		884549F627186F72003FBBC8 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		884549FA271872EC003FBBC8 /* SignUpMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SignUpMock.json; sourceTree = "<group>"; };
 		8845B730271EF539007A5069 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		885F7FB5273E2F7500B8D4EF /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		88799488273A5ABD00904D1F /* IconsHabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsHabitModel.swift; sourceTree = "<group>"; };
 		8879948E273A7C9A00904D1F /* HabitIconsMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HabitIconsMock.json; sourceTree = "<group>"; };
 		887994A9273AB2ED00904D1F /* MyCommunityCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCommunityCollectionView.swift; sourceTree = "<group>"; };
@@ -440,6 +444,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8835BCED273E8A7200261839 /* StringConstant */ = {
+			isa = PBXGroup;
+			children = (
+				8835BCEE273E8A7200261839 /* StringConstant.swift */,
+			);
+			path = StringConstant;
+			sourceTree = "<group>";
+		};
 		884549F427186F4A003FBBC8 /* Signup Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +466,14 @@
 				88CA2A47271E9DE1003D590D /* LoginModel.swift */,
 			);
 			path = "Login Model";
+			sourceTree = "<group>";
+		};
+		885F7FB4273E2F7500B8D4EF /* UserStore */ = {
+			isa = PBXGroup;
+			children = (
+				885F7FB5273E2F7500B8D4EF /* UserStore.swift */,
+			);
+			path = UserStore;
 			sourceTree = "<group>";
 		};
 		8879948B273A5B0800904D1F /* Habit Model */ = {
@@ -613,6 +633,7 @@
 		88E0284E2716F73F00D90BB1 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				885F7FB4273E2F7500B8D4EF /* UserStore */,
 				88E0284F2716F73F00D90BB1 /* Manager */,
 				88E028502716F73F00D90BB1 /* ResponseModels */,
 			);
@@ -688,6 +709,7 @@
 		88E028582716F73F00D90BB1 /* Shared Components */ = {
 			isa = PBXGroup;
 			children = (
+				8835BCED273E8A7200261839 /* StringConstant */,
 				88E5805B2722E92A00D4CAFB /* CollectionViewLayout */,
 				88E0292E2717102A00D90BB1 /* Extentions */,
 				88E029792717178A00D90BB1 /* Custom Views */,
@@ -1049,6 +1071,7 @@
 				88E0289D2716FFE500D90BB1 /* SignupViewController.swift in Sources */,
 				880F3E362727EC73007CA895 /* IconPopupViewController.swift in Sources */,
 				8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */,
+				885F7FB6273E2F7500B8D4EF /* UserStore.swift in Sources */,
 				887994C4273AB2EE00904D1F /* CommunityFriendTableView.swift in Sources */,
 				887994BF273AB2EE00904D1F /* MatesCollectionView.swift in Sources */,
 				882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */,
@@ -1096,6 +1119,7 @@
 				88E028662716F73F00D90BB1 /* SceneDelegate.swift in Sources */,
 				880F3E69272816D9007CA895 /* InviteFriendViewController.swift in Sources */,
 				887994D7273AB34E00904D1F /* RepeatDaysTableViewCell.swift in Sources */,
+				8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */,
 				88E029302717104C00D90BB1 /* Extentions.swift in Sources */,
 				88B0F9D7271824CF00EF92B3 /* IscraCustomView.swift in Sources */,
 				880F3E492727F03F007CA895 /* IconHeaderCollectionViewCell.swift in Sources */,

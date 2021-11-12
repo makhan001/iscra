@@ -346,7 +346,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oh1-7I-j5c">
                                         <rect key="frame" x="0.0" y="0.0" width="357" height="618"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-myaccount-image" translatesAutoresizingMaskIntoConstraints="NO" id="0fQ-wV-rxv" customClass="IscraCustomImage">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="0fQ-wV-rxv" customClass="IscraCustomImage">
                                                 <rect key="frame" x="136.66666666666666" y="24" width="84" height="84"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="0fQ-wV-rxv" secondAttribute="height" multiplier="1:1" id="jlt-Jd-H3i"/>
@@ -442,7 +442,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="Oh1-7I-j5c" firstAttribute="top" secondItem="nxL-Wb-8vL" secondAttribute="top" id="10t-eN-sms"/>
+                                    <constraint firstItem="Oh1-7I-j5c" firstAttribute="top" secondItem="nxL-Wb-8vL" secondAttribute="top" id="1Ew-xg-1a2"/>
                                     <constraint firstAttribute="bottom" secondItem="Oh1-7I-j5c" secondAttribute="bottom" id="NuS-NL-JvV"/>
                                     <constraint firstItem="Oh1-7I-j5c" firstAttribute="leading" secondItem="nxL-Wb-8vL" secondAttribute="leading" id="Xvl-Am-6hO"/>
                                     <constraint firstAttribute="trailing" secondItem="Oh1-7I-j5c" secondAttribute="trailing" id="u8h-nb-0Vk"/>
@@ -453,8 +453,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nxL-Wb-8vL" firstAttribute="leading" secondItem="sUH-i1-xYI" secondAttribute="leading" id="1lO-NK-F50"/>
+                            <constraint firstItem="nxL-Wb-8vL" firstAttribute="top" secondItem="sUH-i1-xYI" secondAttribute="top" id="Dgp-Q6-ZAz"/>
                             <constraint firstItem="nxL-Wb-8vL" firstAttribute="trailing" secondItem="sUH-i1-xYI" secondAttribute="trailing" id="EMI-nd-PBd"/>
-                            <constraint firstItem="nxL-Wb-8vL" firstAttribute="top" secondItem="SCm-2k-pQp" secondAttribute="top" id="ffh-pe-0az"/>
                             <constraint firstItem="nxL-Wb-8vL" firstAttribute="bottom" secondItem="sUH-i1-xYI" secondAttribute="bottom" id="v9i-2j-BsE"/>
                         </constraints>
                     </view>
@@ -470,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LiM-Bx-ZXp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="311" y="1058"/>
+            <point key="canvasLocation" x="310.86956521739131" y="1057.7445652173915"/>
         </scene>
         <!--Community Search View Controller-->
         <scene sceneID="2wG-2u-lJb">
@@ -796,7 +796,7 @@
                                                             <constraint firstAttribute="height" constant="38" id="0Rg-ke-261"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" name="DarkYellowAccent"/>
+                                                        <color key="textColor" name="SecondryAccent"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
@@ -840,7 +840,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Together is more fun" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnu-ZQ-P8Z" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="59.666666666666671" y="100" width="246.66666666666663" height="29"/>
+                                                                <rect key="frame" x="68.666666666666671" y="100" width="228.66666666666663" height="29"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="29" id="LRd-qA-JRD"/>
                                                                 </constraints>
@@ -853,31 +853,28 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="NO"/>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="NO"/>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBlack" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite friends and gain new habits together." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4e-RL-9tX" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="139" width="336" height="22"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="22" id="DGd-cG-LDF"/>
-                                                                </constraints>
+                                                                <rect key="frame" x="15" y="139" width="336" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="BlackAccent"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                                                        <integer key="value" value="15"/>
+                                                                        <integer key="value" value="16"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="NO"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqW-VE-MuM" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="98" y="177" width="170" height="40"/>
+                                                                <rect key="frame" x="123" y="185" width="120" height="32"/>
                                                                 <color key="backgroundColor" name="PrimaryAccent"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="40" id="BIE-bc-5Im"/>
-                                                                    <constraint firstAttribute="width" constant="170" id="bbL-PN-GTM"/>
+                                                                    <constraint firstAttribute="height" constant="32" id="BIE-bc-5Im"/>
+                                                                    <constraint firstAttribute="width" constant="120" id="bbL-PN-GTM"/>
                                                                 </constraints>
                                                                 <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                                                 <state key="normal" title="Invite Friends">
@@ -885,12 +882,12 @@
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="20"/>
+                                                                        <real key="value" value="16"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                                                        <integer key="value" value="22"/>
+                                                                        <integer key="value" value="12"/>
                                                                     </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSMedium" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </button>
                                                         </subviews>
@@ -933,7 +930,7 @@
                                                             <constraint firstAttribute="height" constant="38" id="ivV-7c-tmn"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" name="DarkYellowAccent"/>
+                                                        <color key="textColor" name="SecondryAccent"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
@@ -2040,7 +2037,7 @@
             <size key="intrinsicContentSize" width="238.66666666666666" height="26.333333333333332"/>
         </designable>
         <designable name="dnu-ZQ-P8Z">
-            <size key="intrinsicContentSize" width="246.66666666666666" height="28.666666666666668"/>
+            <size key="intrinsicContentSize" width="228.66666666666666" height="28.666666666666668"/>
         </designable>
         <designable name="ebr-vC-DYH">
             <size key="intrinsicContentSize" width="157" height="27"/>
@@ -2062,7 +2059,7 @@
             <size key="intrinsicContentSize" width="228.66666666666666" height="17"/>
         </designable>
         <designable name="oqW-VE-MuM">
-            <size key="intrinsicContentSize" width="157" height="27"/>
+            <size key="intrinsicContentSize" width="109" height="15"/>
         </designable>
         <designable name="t3P-1t-1Yj">
             <size key="intrinsicContentSize" width="53" height="38.333333333333336"/>
@@ -2071,7 +2068,7 @@
             <size key="intrinsicContentSize" width="1542.6666666666667" height="21.666666666666668"/>
         </designable>
         <designable name="w4e-RL-9tX">
-            <size key="intrinsicContentSize" width="294.66666666666669" height="18"/>
+            <size key="intrinsicContentSize" width="311.66666666666669" height="19.333333333333332"/>
         </designable>
         <designable name="w6F-yO-cCD">
             <size key="intrinsicContentSize" width="56" height="25.333333333333332"/>
@@ -2093,12 +2090,12 @@
         <image name="ic-MaleCommunity" width="85" height="85"/>
         <image name="ic-MaleCommunity1" width="85" height="85"/>
         <image name="ic-MaleSearch" width="164" height="148"/>
+        <image name="ic-Rectangle" width="289" height="108"/>
         <image name="ic-back-calender" width="26" height="24"/>
         <image name="ic-background-image" width="375" height="468"/>
         <image name="ic-deleteHabit" width="24" height="24"/>
         <image name="ic-dots" width="24" height="24"/>
         <image name="ic-edit" width="24" height="24"/>
-        <image name="ic-myaccount-image" width="84" height="84"/>
         <image name="ic-search" width="14" height="14"/>
         <image name="ic-shareWithFriends-image" width="24" height="24"/>
         <image name="ic_vectorlogo" width="50" height="60"/>
@@ -2108,9 +2105,6 @@
         <image name="tab5" width="24" height="24"/>
         <namedColor name="BlackAccent">
             <color red="0.10999999940395355" green="0.090000003576278687" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="DarkYellowAccent">
-            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="GrayAccent">
             <color red="0.61599999666213989" green="0.58399999141693115" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

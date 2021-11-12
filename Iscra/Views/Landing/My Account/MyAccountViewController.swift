@@ -50,7 +50,7 @@ extension MyAccountViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "GetSubcriptionViewController") as! GetSubcriptionViewController
         self.navigationController?.pushViewController(vc, animated: true)    }
     private func LogoutAction() {
-        print("LogoutAction")
+        logOutAction() 
     }
     
     // MARK:- AlertView
@@ -130,6 +130,21 @@ extension MyAccountViewController {
           imgProfile.image = selectedImage
           dismiss(animated: true, completion: nil)
       }
+    
+    func logOutAction()  {
+        let alertController = UIAlertController(title: "Logout", message: "Are you sure? logout from Iscra.", preferredStyle: .alert)
+        let Logoutaction = UIAlertAction(title: "Logout", style: .default) { (action:UIAlertAction!) in
+            print("Delete button tapped");
+        }
+        Logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        alertController.addAction(Logoutaction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
+    }
 }
  
 extension MyAccountViewController: clickManagerDelegate{
@@ -156,7 +171,7 @@ extension MyAccountViewController: clickManagerDelegate{
             print(performAction)
         }
     }
-private func AddMemojiAction() {
+    private func AddMemojiAction() {
         // navigate to addmemoji
         let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "LearnHowToAddMemojiViewController") as! LearnHowToAddMemojiViewController

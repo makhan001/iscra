@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class WalkthroughViewController: UIViewController {
     
     @IBOutlet weak var btnBack: UIButton!
@@ -37,7 +36,7 @@ class WalkthroughViewController: UIViewController {
 extension WalkthroughViewController {
     
     private func setup() {
-        lblHeaderTitle.text = "How do your \nfriends call you?"
+        lblHeaderTitle.text = AppConstant.onbordingName //"How do your \nfriends call you?"
         self.scrollview_Walkthrough.delegate = self
         self.setButtonStatus()
         [btnBack, btnNext, btnAddMyPicture, btnHowToAddMemoji].forEach {

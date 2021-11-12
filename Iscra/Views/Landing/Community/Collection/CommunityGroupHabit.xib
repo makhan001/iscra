@@ -35,9 +35,10 @@
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                        <integer key="value" value="30"/>
+                                        <integer key="value" value="24"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I created this group to build new habit to learn foreign language." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGi-sp-s7a" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
@@ -47,7 +48,7 @@
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                        <integer key="value" value="22"/>
+                                        <integer key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -109,10 +110,10 @@
     </objects>
     <designables>
         <designable name="cGp-ll-1Vn">
-            <size key="intrinsicContentSize" width="183" height="36"/>
+            <size key="intrinsicContentSize" width="150.5" height="29"/>
         </designable>
         <designable name="qGi-sp-s7a">
-            <size key="intrinsicContentSize" width="600.5" height="26.5"/>
+            <size key="intrinsicContentSize" width="463" height="19.5"/>
         </designable>
     </designables>
     <resources>

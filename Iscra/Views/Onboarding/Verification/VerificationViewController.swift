@@ -47,8 +47,8 @@ class VerificationViewController: UIViewController {
 // MARK:- Instance Methods
 extension VerificationViewController {
     private func setup() {
-        lblHeaderTitle.text = "Verify email"
-        lblMiddleTittle.text = "Enter the confirmation \ncode we sent to 'email'."
+        lblHeaderTitle.text = AppConstant.otpHeaderTitle
+        lblMiddleTittle.text = AppConstant.otpMiddleTittle
         otpTextFieldFirst.delegate = self
         otpTextFieldSecond.delegate = self
         otpTextFieldThird.delegate = self

@@ -21,7 +21,7 @@ class ChangePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.navigationItem.title = "Change Password"
+        self.navigationItem.title = AppConstant.nav_shangpassword
         setup()
        }
     

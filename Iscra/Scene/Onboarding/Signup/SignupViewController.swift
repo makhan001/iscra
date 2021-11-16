@@ -83,26 +83,7 @@ extension SignupViewController {
     }
     
     private func registerAction() {
-        
         viewModel.onAction(action: .inputComplete(.signup), for: .signup)
-        
-        
-//        if viewModel.ValidateUserInputs(emailId: txtEmail.text ?? "", password: txtPassword.text ?? "")
-//        {
-//            viewModel.signUp(emailId: txtEmail.text ?? "", password: txtPassword.text ?? "")
-//            {
-//                let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-//                let VC = storyboard.instantiateViewController(withIdentifier: "VerificationViewController") as! VerificationViewController
-//                VC.delegateOTP = self
-//                self.navigationController?.present(VC, animated: true, completion: {
-//                    VC.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
-//                })
-//            }
-//        }
-//        else {
-//            print(viewModel.errorMsg)
-//            self.showToast(message:viewModel.errorMsg , seconds: 1.0)
-//        }
     }
 
 }

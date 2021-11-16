@@ -52,6 +52,7 @@
 		8814B444274393EB00A6DE01 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */; };
 		8814B4472743950500A6DE01 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4462743950500A6DE01 /* APIResponse.swift */; };
 		8814B44A2743965400A6DE01 /* JSONNullResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4492743965400A6DE01 /* JSONNullResponse.swift */; };
+		8814B4772743D29300A6DE01 /* OnboadingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4762743D29300A6DE01 /* OnboadingUtils.swift */; };
 		8816D88F272678B000127DDC /* AddHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8816D88E272678B000127DDC /* AddHabitViewModel.swift */; };
 		88202D55271968B900F0EA2E /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202D54271968B900F0EA2E /* InputValidation.swift */; };
 		88202D592719923700F0EA2E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202D582719923700F0EA2E /* WelcomeViewController.swift */; };
@@ -210,6 +211,7 @@
 		8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		8814B4462743950500A6DE01 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		8814B4492743965400A6DE01 /* JSONNullResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNullResponse.swift; sourceTree = "<group>"; };
+		8814B4762743D29300A6DE01 /* OnboadingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboadingUtils.swift; sourceTree = "<group>"; };
 		8816D88E272678B000127DDC /* AddHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewModel.swift; sourceTree = "<group>"; };
 		88202D54271968B900F0EA2E /* InputValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
 		88202D582719923700F0EA2E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -811,6 +813,7 @@
 		88E028522716F73F00D90BB1 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				8814B4762743D29300A6DE01 /* OnboadingUtils.swift */,
 				8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */,
 				8814B441274393EB00A6DE01 /* OnboardingProvider.swift */,
 				8814B4082743844D00A6DE01 /* OnboardingAdaptables.swift */,
@@ -1284,6 +1287,7 @@
 				88E028A12716FFEE00D90BB1 /* SignupViewModel.swift in Sources */,
 				88E028F527170B7F00D90BB1 /* WebserviceManager.swift in Sources */,
 				88C7C2FA2726D39800EAA8CA /* ColorCollectionViewCell.swift in Sources */,
+				8814B4772743D29300A6DE01 /* OnboadingUtils.swift in Sources */,
 				8814B4132743858900A6DE01 /* Row.swift in Sources */,
 				8814B4322743874100A6DE01 /* Params.swift in Sources */,
 				88E028872716FE6300D90BB1 /* ChatViewController.swift in Sources */,

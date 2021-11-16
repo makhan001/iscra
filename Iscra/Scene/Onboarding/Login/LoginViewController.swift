@@ -37,6 +37,7 @@ extension LoginViewController {
     private func setup() {
         self.navigationController?.view.backgroundColor = UIColor.white
         lblHeaderTitle.text = AppConstant.loginHeaderTitle
+        
         [btnLogin, btnLoginWithGoogle,btnLoginWithApple,btnShowPassword,btnForgotPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -82,7 +83,7 @@ extension LoginViewController {
         {
             viewModel.Login(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
             {
-                self.showToast(message:self.viewModel.LoginData.message , seconds: 3.0)
+                self.showToast(message:self.viewModel.LoginData.message)
             }
         }
         else {

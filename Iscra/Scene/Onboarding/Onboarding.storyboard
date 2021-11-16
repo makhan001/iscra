@@ -823,7 +823,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attach or Drop photo here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fa-cy-S0B" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="115" y="241" width="145" height="43"/>
+                                                <rect key="frame" x="115" y="242" width="145" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2100,7 +2100,7 @@
                         <outlet property="btnNext" destination="idN-Og-V6N" id="nvR-vR-GjN"/>
                         <outlet property="lblHeaderTitle" destination="OOP-y3-uar" id="mkH-I5-lyr"/>
                         <outlet property="scrollview_Walkthrough" destination="oQF-vI-ZL9" id="kMD-sw-bcZ"/>
-                        <outlet property="txtFieldName" destination="O9o-lJ-DfX" id="rVN-C8-YgS"/>
+                        <outlet property="txtName" destination="O9o-lJ-DfX" id="boO-ef-8ZF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IrI-Ht-74Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2129,7 +2129,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your password was changed successfully" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0D-8G-Yih" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="88" width="251" height="57.5"/>
+                                        <rect key="frame" x="30" y="88" width="251" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="SecondryAccent"/>
                                         <nil key="highlightedColor"/>
@@ -2548,7 +2548,7 @@
             <size key="intrinsicContentSize" width="47" height="36"/>
         </designable>
         <designable name="1EZ-i5-6tx">
-            <size key="intrinsicContentSize" width="168" height="24"/>
+            <size key="intrinsicContentSize" width="158" height="24"/>
         </designable>
         <designable name="1HM-Uy-OsM">
             <size key="intrinsicContentSize" width="56" height="34"/>
@@ -2591,7 +2591,7 @@
             <size key="intrinsicContentSize" width="84" height="34"/>
         </designable>
         <designable name="Leg-Wz-dkp">
-            <size key="intrinsicContentSize" width="201" height="24"/>
+            <size key="intrinsicContentSize" width="191" height="24"/>
         </designable>
         <designable name="MJs-dO-gf3"/>
         <designable name="N04-yo-qRO"/>
@@ -2604,7 +2604,7 @@
             <size key="intrinsicContentSize" width="86" height="34"/>
         </designable>
         <designable name="PiD-Wu-Fdu">
-            <size key="intrinsicContentSize" width="190" height="24"/>
+            <size key="intrinsicContentSize" width="180" height="24"/>
         </designable>
         <designable name="QKd-y8-TpK">
             <size key="intrinsicContentSize" width="14.5" height="29"/>
@@ -2667,7 +2667,7 @@
             <size key="intrinsicContentSize" width="135" height="24"/>
         </designable>
         <designable name="tVA-Gj-8Fm">
-            <size key="intrinsicContentSize" width="179" height="24"/>
+            <size key="intrinsicContentSize" width="169" height="24"/>
         </designable>
         <designable name="uuI-Ne-qmK">
             <size key="intrinsicContentSize" width="114" height="30"/>

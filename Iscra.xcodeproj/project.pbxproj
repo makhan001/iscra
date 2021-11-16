@@ -11,6 +11,8 @@
 		0402C4B1273D4A200073DFB8 /* GroupFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0402C4AE273D4A200073DFB8 /* GroupFriendsCell.xib */; };
 		0402C4B2273D4A200073DFB8 /* GroupHabitFriendsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */; };
 		0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */; };
+		861CF1D12743DE9700727D1E /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D02743DE9700727D1E /* RootCoordinator.swift */; };
+		861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D22743E02300727D1E /* LoginCoordinator.swift */; };
 		8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800806B2729255E008E3260 /* ReminderViewController.swift */; };
 		880080732729282F008E3260 /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080722729282F008E3260 /* AddHabitViewController.swift */; };
 		880080782729346D008E3260 /* WeekCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080772729346D008E3260 /* WeekCollection.swift */; };
@@ -146,7 +148,7 @@
 		88E028F427170B7F00D90BB1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E028EF27170B7F00D90BB1 /* Utils.swift */; };
 		88E028F527170B7F00D90BB1 /* WebserviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E028F027170B7F00D90BB1 /* WebserviceManager.swift */; };
 		88E028FA27170D0600D90BB1 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E028F927170D0600D90BB1 /* APIConstants.swift */; };
-		88E029302717104C00D90BB1 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0292F2717104C00D90BB1 /* Extentions.swift */; };
+		88E029302717104C00D90BB1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0292F2717104C00D90BB1 /* Extensions.swift */; };
 		88E0297B271717A500D90BB1 /* IscraCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0297A271717A500D90BB1 /* IscraCustomLabel.swift */; };
 		88E5804E2722E70300D4CAFB /* MatesCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88E580452722E70300D4CAFB /* MatesCollectionCell.xib */; };
 		88E5804F2722E70300D4CAFB /* HabitDaysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E580462722E70300D4CAFB /* HabitDaysCell.swift */; };
@@ -169,6 +171,8 @@
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
 		5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iscra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738A14CE266552D2AB54A54A /* Pods-Iscra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.debug.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.debug.xcconfig"; sourceTree = "<group>"; };
+		861CF1D02743DE9700727D1E /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		861CF1D22743E02300727D1E /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		8800806B2729255E008E3260 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		880080722729282F008E3260 /* AddHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
 		880080772729346D008E3260 /* WeekCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollection.swift; sourceTree = "<group>"; };
@@ -307,7 +311,7 @@
 		88E028EF27170B7F00D90BB1 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		88E028F027170B7F00D90BB1 /* WebserviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebserviceManager.swift; sourceTree = "<group>"; };
 		88E028F927170D0600D90BB1 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
-		88E0292F2717104C00D90BB1 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		88E0292F2717104C00D90BB1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		88E0297A271717A500D90BB1 /* IscraCustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IscraCustomLabel.swift; sourceTree = "<group>"; };
 		88E580452722E70300D4CAFB /* MatesCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatesCollectionCell.xib; sourceTree = "<group>"; };
 		88E580462722E70300D4CAFB /* HabitDaysCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDaysCell.swift; sourceTree = "<group>"; };
@@ -811,9 +815,6 @@
 		88E028522716F73F00D90BB1 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */,
-				8814B441274393EB00A6DE01 /* OnboardingProvider.swift */,
-				8814B4082743844D00A6DE01 /* OnboardingAdaptables.swift */,
 				8822D4EA2731777E00C68EE5 /* Get Subscription */,
 				88202D572719920A00F0EA2E /* Walkthrough */,
 				88E028532716F73F00D90BB1 /* Signup */,
@@ -821,6 +822,9 @@
 				88E028542716F73F00D90BB1 /* Login */,
 				88B4A26B27205DDC00488AA3 /* ChangePassword */,
 				88B4A26D27205DDC00488AA3 /* EditName */,
+				8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */,
+				8814B441274393EB00A6DE01 /* OnboardingProvider.swift */,
+				8814B4082743844D00A6DE01 /* OnboardingAdaptables.swift */,
 				8845B730271EF539007A5069 /* Onboarding.storyboard */,
 			);
 			path = Onboarding;
@@ -840,6 +844,7 @@
 			children = (
 				88E028702716FBB100D90BB1 /* LoginViewController.swift */,
 				88E028A32716FFF900D90BB1 /* LoginViewModel.swift */,
+				861CF1D22743E02300727D1E /* LoginCoordinator.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -860,6 +865,7 @@
 			children = (
 				88E0285A2716F73F00D90BB1 /* AppDelegate.swift */,
 				88E0285B2716F73F00D90BB1 /* SceneDelegate.swift */,
+				861CF1D02743DE9700727D1E /* RootCoordinator.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -959,7 +965,7 @@
 		88E0292E2717102A00D90BB1 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
-				88E0292F2717104C00D90BB1 /* Extentions.swift */,
+				88E0292F2717104C00D90BB1 /* Extensions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -1255,6 +1261,7 @@
 				8816D88F272678B000127DDC /* AddHabitViewModel.swift in Sources */,
 				887994C8273AB2EE00904D1F /* CommunitySearchViewController.swift in Sources */,
 				88021C6A273D3897004A58F5 /* CustomDashedView.swift in Sources */,
+				861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */,
 				880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */,
 				88B4A225271FF9C300488AA3 /* AddMyPictureViewController.swift in Sources */,
 				882F3E002721A50A00A409A6 /* LandingTabBarViewController.swift in Sources */,
@@ -1277,8 +1284,9 @@
 				8814B419274385E600A6DE01 /* Scenes.swift in Sources */,
 				8814B4102743855A00A6DE01 /* AppAdaptables.swift in Sources */,
 				8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */,
-				88E029302717104C00D90BB1 /* Extentions.swift in Sources */,
+				88E029302717104C00D90BB1 /* Extensions.swift in Sources */,
 				88B0F9D7271824CF00EF92B3 /* IscraCustomView.swift in Sources */,
+				861CF1D12743DE9700727D1E /* RootCoordinator.swift in Sources */,
 				880F3E492727F03F007CA895 /* IconHeaderCollectionViewCell.swift in Sources */,
 				88C7C2F52726CDE600EAA8CA /* ColorCollectionView.swift in Sources */,
 				88E028A12716FFEE00D90BB1 /* SignupViewModel.swift in Sources */,
@@ -1459,7 +1467,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.adilbek.Iscra;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adilbek.iscra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1479,7 +1487,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.adilbek.Iscra;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adilbek.iscra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

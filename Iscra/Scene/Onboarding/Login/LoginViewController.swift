@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnLoginWithGoogle:UIButton!
     @IBOutlet weak var txtFieldEmailId:UITextField!
     @IBOutlet weak var txtFieldPassword:UITextField!
+
+    weak var router: NextSceneDismisser?
     private var viewModel : LoginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
@@ -78,6 +80,9 @@ extension LoginViewController {
     
     private func loginAction() {
         print("loginAction")
+        
+        router?.push(scene: .landing)
+        
         if viewModel.ValidateUserInputs(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
         {
             viewModel.Login(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
@@ -96,6 +101,7 @@ extension LoginViewController {
     }
     
     private func loginAppleAction() {
+        router?.dismiss(controller: .login)
         print("loginAppleAction")
     }
     

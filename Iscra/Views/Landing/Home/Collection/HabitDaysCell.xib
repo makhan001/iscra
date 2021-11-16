@@ -100,10 +100,10 @@
     </objects>
     <designables>
         <designable name="LkU-HZ-pef">
-            <size key="intrinsicContentSize" width="62.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="67" height="19.5"/>
         </designable>
         <designable name="Y9c-g6-pAd">
-            <size key="intrinsicContentSize" width="61" height="20.5"/>
+            <size key="intrinsicContentSize" width="64.5" height="19.5"/>
         </designable>
     </designables>
     <resources>

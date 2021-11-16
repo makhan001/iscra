@@ -28,7 +28,7 @@ extension GetSubcriptionViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
         friends_image.image = UIImage(named: "ic-getSubscription")
         lblHeaderTitle.text = "Dear Adil, we need your support"
-        lblMiddleText.text = "Thanks for using our app and making \nyourself and others better people. \nUnfortunately, for our development we \nneed money. You can choose between \ntwo options: subscribe for one dollar per \nmonth or allow ads."
+        lblMiddleText.text = AppConstant.subscriptionTitle
         [btnGetSubcription, btnAllowAds].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }

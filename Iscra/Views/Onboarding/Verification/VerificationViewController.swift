@@ -60,10 +60,7 @@ extension VerificationViewController {
     
     private func customTextFieldFont(){
         otpTextFieldFirst.becomeFirstResponder()
-        otpTextFieldFirst.font = UIFont(name: "SFProDisplay-Bold", size: 37)
-        otpTextFieldSecond.font = UIFont(name: "SFProDisplay-Bold", size: 37)
-        otpTextFieldThird.font = UIFont(name: "SFProDisplay-Bold", size: 37)
-        otpTextFieldFourth.font = UIFont(name: "SFProDisplay-Bold", size: 37)
+
     }
     @objc func handleTap() {
         print("tapped")

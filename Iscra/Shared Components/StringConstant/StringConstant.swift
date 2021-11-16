@@ -14,6 +14,12 @@ class AppConstant: NSObject {
     static let nav_addProfilePicture  = "Add Profile Picture"
     static let nav_memoji = "Memoji"
     static let nav_shangpassword = "Change Password"
+    
+    // Alert Messages
+    
+    static let alert_emptynameMsg = "Please enter your name"
+    
+    
     //Onboarding --
     static let welComeDiscription  = "We help people to become the best version of themself and connect with others people"
     
@@ -29,4 +35,6 @@ class AppConstant: NSObject {
     static let otpMiddleTittle = "Enter the confirmation \ncode we sent to 'email'."
     
     static let loginHeaderTitle = "Log in into your \naccount"
+    
+    static let subscriptionTitle = "Thanks for using our app and making \nyourself and others better people. \nUnfortunately, for our development we \nneed money. You can choose between \ntwo options: subscribe for one dollar per \nmonth or allow ads."
 }

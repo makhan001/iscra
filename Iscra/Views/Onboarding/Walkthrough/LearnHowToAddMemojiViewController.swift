@@ -36,7 +36,6 @@ extension LearnHowToAddMemojiViewController {
         lblFirstSubTitle.text = AppConstant.Sub1Title
         lblSecondSubTitle.text = AppConstant.Sub2Title
         lblThirdSubTitle.text = AppConstant.Sub3Title
-       // btnAddPhoto.titleLabel?.font =  UIFont(name: "SF-Pro-Display-Black", size: 50)
         [btnAddPhoto, btnCancel].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }

@@ -42,7 +42,6 @@ extension LoginViewController {
     private func setup() {
         self.navigationController?.view.backgroundColor = UIColor.white
         lblHeaderTitle.text = AppConstant.loginHeaderTitle
-        btnLogin.titleLabel?.font =  UIFont(name: "SF-Pro-Display-Black", size: 50)
         [btnLogin, btnLoginWithGoogle,btnLoginWithApple,btnShowPassword,btnForgotPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }

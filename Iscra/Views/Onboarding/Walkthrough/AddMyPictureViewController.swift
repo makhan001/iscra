@@ -27,7 +27,6 @@ extension AddMyPictureViewController {
   private func setup() {
    
     self.navigationItem.title = AppConstant.nav_addProfilePicture//"Add Profile Picture"
-    btnAddPhoto.titleLabel?.font = UIFont(name: "SF-Pro-Display-Black", size: 50)
     [btnAddPhoto, btnCancel].forEach {
       $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
     }

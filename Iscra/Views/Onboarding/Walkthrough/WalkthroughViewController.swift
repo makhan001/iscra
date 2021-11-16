@@ -79,7 +79,7 @@ extension WalkthroughViewController  {
         if self.currentIndex <= 2 {
             if currentIndex == 2 {
                 if txtFieldName.text == "" {
-                    showToast(message: "Please enter your name", seconds: 2.0)
+                    showToast(message: AppConstant.alert_emptynameMsg, seconds: 2.0)
                 }
                 else{
                     self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1
@@ -128,7 +128,7 @@ extension WalkthroughViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if currentIndex == 2 {
             if txtFieldName.text == "" {
-                showToast(message: "Please enter your name", seconds: 2.0)
+                showToast(message: AppConstant.alert_emptynameMsg, seconds: 2.0)
             }
             else{
                 self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1

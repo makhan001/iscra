@@ -19,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZg-wp-fi9" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                        <rect key="frame" x="24" y="8" width="469" height="145"/>
+                        <rect key="frame" x="14" y="8" width="489" height="145"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yCy-Cz-QJv">
-                                <rect key="frame" x="5" y="0.0" width="246.5" height="145"/>
+                                <rect key="frame" x="5" y="0.0" width="254.5" height="145"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="atI-eB-rU6">
-                                        <rect key="frame" x="0.0" y="0.0" width="246.5" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="254.5" height="0.0"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5YZ-5n-ypU">
                                                 <rect key="frame" x="15" y="-12.5" width="25" height="25"/>
@@ -35,7 +35,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghfghfghfgh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxl-Ge-AXr" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="-12.5" width="198.5" height="25"/>
+                                                <rect key="frame" x="48" y="-12.5" width="206.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="jLV-Ul-Fwd"/>
                                                 </constraints>
@@ -60,7 +60,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJj-D7-eQQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="246.5" height="145"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="254.5" height="145"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7fn-um-REM">
                                                 <rect key="frame" x="15" y="30" width="25" height="25"/>
@@ -70,7 +70,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghfghfghfgh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-ud-TX6" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="30" width="198.5" height="25"/>
+                                                <rect key="frame" x="48" y="30" width="206.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="R89-0U-iMn"/>
                                                 </constraints>
@@ -81,11 +81,12 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                         <integer key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSMedium" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mates:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRN-n6-Kc8" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="70" width="49" height="21"/>
+                                                <rect key="frame" x="15" y="70" width="54.5" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="ueb-DS-Z2t"/>
                                                 </constraints>
@@ -100,7 +101,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yTk-8D-vpw">
-                                                <rect key="frame" x="15" y="96" width="216.5" height="35"/>
+                                                <rect key="frame" x="15" y="96" width="224.5" height="35"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="7d0-Vs-sCB"/>
@@ -127,10 +128,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eM0-8u-lEA">
-                                <rect key="frame" x="251.5" y="0.0" width="212.5" height="145"/>
+                                <rect key="frame" x="259.5" y="0.0" width="224.5" height="145"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="OLh-kg-UEe">
-                                        <rect key="frame" x="10" y="0.0" width="202.5" height="145"/>
+                                        <rect key="frame" x="10" y="0.0" width="214.5" height="145"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vch-9k-gAP">
                                             <size key="itemSize" width="50" height="128"/>
@@ -161,23 +162,20 @@
                             <constraint firstAttribute="bottom" secondItem="yCy-Cz-QJv" secondAttribute="bottom" id="oYx-B7-jf7"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="12"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" systemColor="systemGray6Color"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" systemColor="systemGray4Color"/>
+                                <real key="value" value="0.0"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                 <real key="value" value="5"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                 <size key="value" width="0.0" height="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                 <real key="value" value="5"/>
@@ -189,8 +187,8 @@
                 <constraints>
                     <constraint firstItem="RZg-wp-fi9" firstAttribute="top" secondItem="0pY-IB-ZgK" secondAttribute="top" constant="8" id="YIW-Sy-tak"/>
                     <constraint firstAttribute="bottom" secondItem="RZg-wp-fi9" secondAttribute="bottom" constant="8" id="gnl-vB-8cs"/>
-                    <constraint firstAttribute="trailing" secondItem="RZg-wp-fi9" secondAttribute="trailing" constant="24" id="t7o-mg-UGi"/>
-                    <constraint firstItem="RZg-wp-fi9" firstAttribute="leading" secondItem="0pY-IB-ZgK" secondAttribute="leading" constant="24" id="xxi-af-SRX"/>
+                    <constraint firstAttribute="trailing" secondItem="RZg-wp-fi9" secondAttribute="trailing" constant="14" id="t7o-mg-UGi"/>
+                    <constraint firstItem="RZg-wp-fi9" firstAttribute="leading" secondItem="0pY-IB-ZgK" secondAttribute="leading" constant="14" id="xxi-af-SRX"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -211,13 +209,13 @@
     </objects>
     <designables>
         <designable name="PRN-n6-Kc8">
-            <size key="intrinsicContentSize" width="49" height="23"/>
+            <size key="intrinsicContentSize" width="54.5" height="21.5"/>
         </designable>
         <designable name="gSY-ud-TX6">
-            <size key="intrinsicContentSize" width="101" height="25.5"/>
+            <size key="intrinsicContentSize" width="112" height="24"/>
         </designable>
         <designable name="gxl-Ge-AXr">
-            <size key="intrinsicContentSize" width="101" height="25.5"/>
+            <size key="intrinsicContentSize" width="108" height="24"/>
         </designable>
     </designables>
     <resources>
@@ -227,8 +225,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

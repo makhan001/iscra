@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import SVProgressHUD
-import IQKeyboardManagerSwift
 
 class WalkthroughViewController: UIViewController {
     
@@ -38,7 +36,7 @@ class WalkthroughViewController: UIViewController {
 extension WalkthroughViewController {
     
     private func setup() {
-        lblHeaderTitle.text = "How do your \nfriends call you?"
+        lblHeaderTitle.text = AppConstant.onbordingName //"How do your \nfriends call you?"
         self.scrollview_Walkthrough.delegate = self
         self.setButtonStatus()
         [btnBack, btnNext, btnAddMyPicture, btnHowToAddMemoji].forEach {
@@ -81,7 +79,7 @@ extension WalkthroughViewController  {
         if self.currentIndex <= 2 {
             if currentIndex == 2 {
                 if txtFieldName.text == "" {
-                    showToast(message: "Please enter your name", seconds: 2.0)
+                    showToast(message: AppConstant.alert_emptynameMsg, seconds: 2.0)
                 }
                 else{
                     self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1
@@ -130,7 +128,7 @@ extension WalkthroughViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if currentIndex == 2 {
             if txtFieldName.text == "" {
-                showToast(message: "Please enter your name", seconds: 2.0)
+                showToast(message: AppConstant.alert_emptynameMsg, seconds: 2.0)
             }
             else{
                 self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1

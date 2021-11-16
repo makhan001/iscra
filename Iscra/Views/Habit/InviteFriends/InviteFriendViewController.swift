@@ -6,6 +6,13 @@
 //
 
 import UIKit
+enum inviteType {
+    case inviteFriend
+    case mayBeLatter
+}
+protocol InviteNavigation: class {
+    func navigate(inviteType:inviteType)
+}
 
 class InviteFriendViewController: UIViewController {
     
@@ -15,6 +22,7 @@ class InviteFriendViewController: UIViewController {
     @IBOutlet weak var btnInviteFriends: UIButton!
     @IBOutlet weak var btnMaybeLetter: UIButton!
     var habitType:habitType = .good
+    weak var delegateInvite : InviteNavigation?
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -25,6 +33,9 @@ extension InviteFriendViewController {
     
     private func setup() {
         setUpView(habitType:habitType)
+        if habitType == .group{
+            btnMaybeLetter.setTitle("Share public", for: .normal)
+        }
         [btnInviteFriends, btnMaybeLetter].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -64,52 +75,13 @@ extension InviteFriendViewController  {
     }
     private func InviteFriendsAction() {
         print("InviteFriendsAction")
+        delegateInvite?.navigate(inviteType: .inviteFriend)
+        self.dismiss(animated: true, completion: nil)
     }
     private func MaybeLetterAction() {
-        print("MaybeLetterAction")
-        guard let viewControllers = navigationController?.viewControllers else { return }
-        for vc in viewControllers {
-            if vc is LandingTabBarViewController {
-                navigationController?.popToViewController(vc, animated: true)
-                return
-            }
-        }
+        delegateInvite?.navigate(inviteType: .mayBeLatter)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 
-import UIKit
-
-class CustomDashedView: UIView {
-
-    @IBInspectable var cornerRadius: CGFloat = 0 {
-        didSet {
-            layer.cornerRadius = cornerRadius
-            layer.masksToBounds = cornerRadius > 0
-        }
-    }
-    @IBInspectable var dashWidth: CGFloat = 0
-    @IBInspectable var dashColor: UIColor = .clear
-    @IBInspectable var dashLength: CGFloat = 0
-    @IBInspectable var betweenDashesSpace: CGFloat = 0
-
-    var dashBorder: CAShapeLayer?
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        dashBorder?.removeFromSuperlayer()
-        let dashBorder = CAShapeLayer()
-        dashBorder.lineWidth = dashWidth
-        dashBorder.strokeColor = dashColor.cgColor
-        dashBorder.lineDashPattern = [dashLength, betweenDashesSpace] as [NSNumber]
-        dashBorder.frame = bounds
-        dashBorder.fillColor = nil
-        if cornerRadius > 0 {
-            dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
-        } else {
-            dashBorder.path = UIBezierPath(rect: bounds).cgPath
-        }
-        layer.addSublayer(dashBorder)
-        self.dashBorder = dashBorder
-    }
-}

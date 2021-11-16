@@ -33,15 +33,15 @@ class Validation {
             
         case .firstName:
             return( text == "" ? true :
-                       isTextContainspecialCharacters(string: text) == true ? true : false,
+                        isTextContainspecialCharacters(string: text) == true ? true : false,
                     text == "" ? "Field cant be empty" : "Please enter valid first name")
-        
+            
         case .lastName:
             return( text == "" ? true :
-                      isTextContainspecialCharacters(string: text) == true ? true : false,
+                        isTextContainspecialCharacters(string: text) == true ? true : false,
                     text == "" ? "Field cant be empty" : "Please enter valid last name")
             
-        
+            
             
         case .description:
             return( text == "" ? true :
@@ -54,7 +54,7 @@ class Validation {
                 text == "" ? true :
                     Validation().isValidEmail(emaiId: text) == false ? true : false,
                 text == "" ? "Field cant be empty" : "Please enter vaild email")
-          
+            
         case .phoneNumber:
             return(
                 text == "" ? true :
@@ -71,13 +71,13 @@ class Validation {
             else{
                 return(false,"")
             }
-        
+            
         case .location:
             return ( text == "" ? true : false ,  "Please select the country")
             
         case .country:
             return ( text == "" ? true : false ,  "Please select the country Code")
-    
+            
         case .password:
             return(
                 text == "" ? true :
@@ -85,10 +85,10 @@ class Validation {
                 text == "" ? "Please enter password" : "Please enter vaild password")
         }
     }
-
+    
     func isValidEmail(emaiId:String) -> Bool {
         let emailRegEx = NSPredicate(format: "SELF MATCHES %@",
-                                    "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$")
+                                     "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$")
         return emailRegEx.evaluate(with: emaiId)
     }
     
@@ -96,9 +96,9 @@ class Validation {
     
     func isValidPassword(password:String) -> Bool{
         let passwordRegEx = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
-             let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+        let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: password)
-      }
+    }
     
     // Special Characters Validations
     func isTextContainspecialCharacters(string: String) -> Bool {
@@ -114,7 +114,7 @@ class Validation {
             return true
         }
     }
-
+    
     // Check String Intiger Characters Validations
     func checkString(acceptCharSet: CharacterSet, IgnoreCharSet:  CharacterSet,oldValue: String) -> (isInvaild:Bool, newValue: String){
         let ignoreRange = oldValue.rangeOfCharacter(from: IgnoreCharSet)
@@ -128,7 +128,7 @@ class Validation {
     
     func isValidCompanyName(string:String) -> Bool {
         do { //"[^A-Za-z0-9./\\&-/\\' ]"
-//            "^[&]?[a-zA-Z0-9 ]+[ \\-.&()]?[ a-zA-Z0-9!()]$"
+             // "^[&]?[a-zA-Z0-9 ]+[ \\-.&()]?[ a-zA-Z0-9!()]$"
             let regex = try NSRegularExpression(pattern: "[^A-Za-z0-9./\\&-/\\' ]", options: .caseInsensitive)
             if let _ = regex.firstMatch(in: string, options: [], range: NSMakeRange(0, string.count)) {
                 return true
@@ -143,7 +143,7 @@ class Validation {
 }
 
 extension String {
-
+    
     func isValidURL() -> Bool {
         let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
         let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)

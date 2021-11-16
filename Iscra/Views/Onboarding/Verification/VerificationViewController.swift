@@ -47,8 +47,8 @@ class VerificationViewController: UIViewController {
 // MARK:- Instance Methods
 extension VerificationViewController {
     private func setup() {
-        lblHeaderTitle.text = "Verify email"
-        lblMiddleTittle.text = "Enter the confirmation \ncode we sent to 'email'."
+        lblHeaderTitle.text = AppConstant.otpHeaderTitle
+        lblMiddleTittle.text = AppConstant.otpMiddleTittle
         otpTextFieldFirst.delegate = self
         otpTextFieldSecond.delegate = self
         otpTextFieldThird.delegate = self
@@ -60,10 +60,7 @@ extension VerificationViewController {
     
     private func customTextFieldFont(){
         otpTextFieldFirst.becomeFirstResponder()
-        otpTextFieldFirst.font = UIFont(name: "SFProDisplay-Bold", size: 37)
-        otpTextFieldSecond.font = UIFont(name: "SFProDisplay-Bold", size: 37)
-        otpTextFieldThird.font = UIFont(name: "SFProDisplay-Bold", size: 37)
-        otpTextFieldFourth.font = UIFont(name: "SFProDisplay-Bold", size: 37)
+
     }
     @objc func handleTap() {
         print("tapped")

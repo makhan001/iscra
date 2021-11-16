@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import SVProgressHUD
-import IQKeyboardManagerSwift
+
 
 class ChangePasswordViewController: UIViewController {
     // MARK:-Outlets and variables
@@ -22,7 +21,7 @@ class ChangePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.navigationItem.title = "Change Password"
+        self.navigationItem.title = AppConstant.nav_shangpassword
         setup()
        }
     
@@ -35,8 +34,7 @@ class ChangePasswordViewController: UIViewController {
 // MARK: Instance Methods
 extension ChangePasswordViewController {
     private func setup() {
-        IQKeyboardManager.shared.enable = true
-        btnChangePassword.titleLabel?.font =  UIFont(name: "SF-Pro-Display-Black", size: 50)
+
         [btnChangePassword,btnForgotPassword,btnShowCurrentPassword,btnShowNewPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }

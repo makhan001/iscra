@@ -31,12 +31,11 @@ class LearnHowToAddMemojiViewController: UIViewController {
 // MARK: Instance Methods
 extension LearnHowToAddMemojiViewController {
     private func setup() {
-        self.navigationItem.title = "Memoji"
-        lblHeaderTitle.text = "How to add your own memoji?"
-        lblFirstSubTitle.text = "Open Notes on your iPhone. Click a new note."
-        lblSecondSubTitle.text = "Tap the Memoji button then swipe right and tap the New Memoji add new memoji button."
-        lblThirdSubTitle.text = "Share your memodji to your notes then click the memodji and save it to your gallery."
-        btnAddPhoto.titleLabel?.font =  UIFont(name: "SF-Pro-Display-Black", size: 50)
+        self.navigationItem.title = AppConstant.nav_memoji
+        lblHeaderTitle.text = AppConstant.nav_memoji
+        lblFirstSubTitle.text = AppConstant.Sub1Title
+        lblSecondSubTitle.text = AppConstant.Sub2Title
+        lblThirdSubTitle.text = AppConstant.Sub3Title
         [btnAddPhoto, btnCancel].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }

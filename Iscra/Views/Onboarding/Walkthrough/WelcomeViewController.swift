@@ -13,8 +13,6 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var btnStart:UIButton!
     @IBOutlet weak var lblHeaderTitle:UILabel!
     
-    let WELCOME_HEADER_TEXT: String = "We help people to become the best \nversion of themself and connect with \nothers people"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -30,7 +28,7 @@ class WelcomeViewController: UIViewController {
 extension WelcomeViewController {
     
     private func setup() {
-        lblHeaderTitle.text = WELCOME_HEADER_TEXT
+        lblHeaderTitle.text = AppConstant.welComeDiscription
         [btnLogin, btnStart].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -56,11 +54,11 @@ extension WelcomeViewController {
       /*  let storyboard = UIStoryboard(name: "Habit", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SetThemeViewController") as! SetThemeViewController
         navigationController?.pushViewController(vc, animated: true)*/
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+      /*  let storyboard = UIStoryboard(name: "Landing", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "LandingTabBarViewController") as! LandingTabBarViewController
-        navigationController?.pushViewController(vc, animated: true)
-         /* let VC = storyboard?.instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
-          navigationController?.pushViewController(VC, animated: true)*/
+        navigationController?.pushViewController(vc, animated: true)*/
+          let VC = storyboard?.instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
+          navigationController?.pushViewController(VC, animated: true)
         }
 
     private func loginAction() {

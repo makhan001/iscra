@@ -333,13 +333,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnApple" destination="PiD-Wu-Fdu" id="XJv-2n-vqw"/>
+                        <outlet property="btnGoogle" destination="Leg-Wz-dkp" id="7n9-04-K2e"/>
                         <outlet property="btnRegister" destination="2DJ-E7-g3S" id="sO1-kw-b9J"/>
-                        <outlet property="btnRegisterWithApple" destination="PiD-Wu-Fdu" id="c3q-j4-u8v"/>
-                        <outlet property="btnRegisterWithGoogle" destination="Leg-Wz-dkp" id="s3M-ho-8zc"/>
                         <outlet property="btnShowPassword" destination="lJ8-is-Faf" id="EjT-eG-D5j"/>
                         <outlet property="lblHeaderTitle" destination="7im-a1-yID" id="XNW-BH-hob"/>
-                        <outlet property="txtFieldEmailId" destination="GIm-Zr-UXl" id="k7q-Ab-7pt"/>
-                        <outlet property="txtFieldPassword" destination="cLa-Zj-htR" id="NPi-1v-brT"/>
+                        <outlet property="txtEmail" destination="GIm-Zr-UXl" id="e4I-cs-VP7"/>
+                        <outlet property="txtPassword" destination="cLa-Zj-htR" id="0cd-oU-NIH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hU-lA-Xj4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2548,7 +2548,7 @@
             <size key="intrinsicContentSize" width="47" height="36"/>
         </designable>
         <designable name="1EZ-i5-6tx">
-            <size key="intrinsicContentSize" width="158" height="24"/>
+            <size key="intrinsicContentSize" width="168" height="24"/>
         </designable>
         <designable name="1HM-Uy-OsM">
             <size key="intrinsicContentSize" width="56" height="34"/>
@@ -2591,7 +2591,7 @@
             <size key="intrinsicContentSize" width="84" height="34"/>
         </designable>
         <designable name="Leg-Wz-dkp">
-            <size key="intrinsicContentSize" width="191" height="24"/>
+            <size key="intrinsicContentSize" width="201" height="24"/>
         </designable>
         <designable name="MJs-dO-gf3"/>
         <designable name="N04-yo-qRO"/>
@@ -2604,7 +2604,7 @@
             <size key="intrinsicContentSize" width="86" height="34"/>
         </designable>
         <designable name="PiD-Wu-Fdu">
-            <size key="intrinsicContentSize" width="180" height="24"/>
+            <size key="intrinsicContentSize" width="190" height="24"/>
         </designable>
         <designable name="QKd-y8-TpK">
             <size key="intrinsicContentSize" width="14.5" height="29"/>
@@ -2667,7 +2667,7 @@
             <size key="intrinsicContentSize" width="135" height="24"/>
         </designable>
         <designable name="tVA-Gj-8Fm">
-            <size key="intrinsicContentSize" width="169" height="24"/>
+            <size key="intrinsicContentSize" width="179" height="24"/>
         </designable>
         <designable name="uuI-Ne-qmK">
             <size key="intrinsicContentSize" width="114" height="30"/>

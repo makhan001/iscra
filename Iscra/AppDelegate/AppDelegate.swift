@@ -20,8 +20,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        setUps()
+        self.initialConfiguration()
         return true
+    }
+    
+    func initialConfiguration() {
+        Thread.sleep(forTimeInterval: 0.0)
+        SVProgressHUD.setForegroundColor(UIColor.primaryAccent)
+        SVProgressHUD.setBackgroundColor(UIColor.black.withAlphaComponent(0.10))
+        SVProgressHUD.setRingThickness(5.0)
+        IQKeyboardManager.shared.enable = true
+        self.setNavigationBar()
+        self.setRootController()
+    }
+    
+    func setNavigationBar() {
+        //var naviObj : UINavigationController?
+        let navigation = UINavigationBar.appearance()
+        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        navigation.shadowImage = UIImage()
+        navigation.tintColor = UIColor.init(named: "GrayAccent")
+        navigation.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SourceSansPro-Black", size: 24) ?? UIFont(), NSAttributedString.Key.foregroundColor :UIColor(named: "GrayAccent") ?? UIColor.lightGray]
+        // naviObj?.interactivePopGestureRecognizer?.isEnabled = false
+        navigation.backIndicatorImage = UIImage(named: "Back")
+        navigation.backIndicatorTransitionMaskImage = UIImage(named: "Back")
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -60), for: .default)
+        navigation.setTitleVerticalPositionAdjustment(0, for: .default)
+        navigation.isTranslucent = false
+    }
+    
+    private func setRootController() {
+        
     }
     
     // MARK: UISceneSession Lifecycle
@@ -82,34 +111,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
 }
 
-@available(iOS 13.0, *)
-extension AppDelegate{
-    func setUps(){
-        SVProgressHUD.setForegroundColor(UIColor.primaryAccent)
-        SVProgressHUD.setBackgroundColor(UIColor.black.withAlphaComponent(0.10))
-        SVProgressHUD.setRingThickness(5.0)
-        IQKeyboardManager.shared.enable = true
-        navigationSetup()
-        Thread.sleep(forTimeInterval: 3.0)
-    }
-}
-@available(iOS 13.0, *)
-extension AppDelegate : CLLocationManagerDelegate {
-    func navigationSetup(){
-        //var naviObj : UINavigationController?
-        let navigation = UINavigationBar.appearance()
-        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        navigation.shadowImage = UIImage()
-        navigation.tintColor = UIColor.init(named: "GrayAccent")
-        navigation.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SourceSansPro-Black", size: 24) ?? UIFont(), NSAttributedString.Key.foregroundColor :UIColor(named: "GrayAccent") ?? UIColor.lightGray]
-        // naviObj?.interactivePopGestureRecognizer?.isEnabled = false
-        navigation.backIndicatorImage = UIImage(named: "Back")
-        navigation.backIndicatorTransitionMaskImage = UIImage(named: "Back")
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -60), for: .default)
-        navigation.setTitleVerticalPositionAdjustment(0, for: .default)
-        navigation.isTranslucent = false
-    }
-}

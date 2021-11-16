@@ -31,6 +31,27 @@
 		880F3E5127280C6B007CA895 /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E4F27280C6B007CA895 /* IconCollectionViewCell.swift */; };
 		880F3E5227280C6B007CA895 /* IconCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880F3E5027280C6B007CA895 /* IconCollectionViewCell.xib */; };
 		880F3E69272816D9007CA895 /* InviteFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E68272816D9007CA895 /* InviteFriendViewController.swift */; };
+		8814B4092743844D00A6DE01 /* OnboardingAdaptables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4082743844D00A6DE01 /* OnboardingAdaptables.swift */; };
+		8814B4102743855A00A6DE01 /* AppAdaptables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B40F2743855900A6DE01 /* AppAdaptables.swift */; };
+		8814B4132743858900A6DE01 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4122743858900A6DE01 /* Row.swift */; };
+		8814B418274385E600A6DE01 /* Coordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B416274385E600A6DE01 /* Coordinators.swift */; };
+		8814B419274385E600A6DE01 /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B417274385E600A6DE01 /* Scenes.swift */; };
+		8814B4302743874100A6DE01 /* UserTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B41E2743874000A6DE01 /* UserTask.swift */; };
+		8814B4322743874100A6DE01 /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4212743874000A6DE01 /* Params.swift */; };
+		8814B4332743874100A6DE01 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4232743874000A6DE01 /* APIModel.swift */; };
+		8814B4342743874100A6DE01 /* AuthRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4252743874100A6DE01 /* AuthRequests.swift */; };
+		8814B4352743874100A6DE01 /* UserRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4262743874100A6DE01 /* UserRequests.swift */; };
+		8814B4362743874100A6DE01 /* SaloonRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4272743874100A6DE01 /* SaloonRequests.swift */; };
+		8814B4372743874100A6DE01 /* APIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4292743874100A6DE01 /* APIParser.swift */; };
+		8814B4382743874100A6DE01 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B42A2743874100A6DE01 /* APIError.swift */; };
+		8814B43A2743874100A6DE01 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B42C2743874100A6DE01 /* APIClient.swift */; };
+		8814B43B2743874100A6DE01 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B42D2743874100A6DE01 /* Webservice.swift */; };
+		8814B43C2743874100A6DE01 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B42E2743874100A6DE01 /* Base.swift */; };
+		8814B43D2743874100A6DE01 /* APIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B42F2743874100A6DE01 /* APIResponder.swift */; };
+		8814B443274393EB00A6DE01 /* OnboardingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B441274393EB00A6DE01 /* OnboardingProvider.swift */; };
+		8814B444274393EB00A6DE01 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */; };
+		8814B4472743950500A6DE01 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4462743950500A6DE01 /* APIResponse.swift */; };
+		8814B44A2743965400A6DE01 /* JSONNullResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4492743965400A6DE01 /* JSONNullResponse.swift */; };
 		8816D88F272678B000127DDC /* AddHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8816D88E272678B000127DDC /* AddHabitViewModel.swift */; };
 		88202D55271968B900F0EA2E /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202D54271968B900F0EA2E /* InputValidation.swift */; };
 		88202D592719923700F0EA2E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202D582719923700F0EA2E /* WelcomeViewController.swift */; };
@@ -168,6 +189,27 @@
 		880F3E4F27280C6B007CA895 /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
 		880F3E5027280C6B007CA895 /* IconCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconCollectionViewCell.xib; sourceTree = "<group>"; };
 		880F3E68272816D9007CA895 /* InviteFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendViewController.swift; sourceTree = "<group>"; };
+		8814B4082743844D00A6DE01 /* OnboardingAdaptables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAdaptables.swift; sourceTree = "<group>"; };
+		8814B40F2743855900A6DE01 /* AppAdaptables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAdaptables.swift; sourceTree = "<group>"; };
+		8814B4122743858900A6DE01 /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		8814B416274385E600A6DE01 /* Coordinators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinators.swift; sourceTree = "<group>"; };
+		8814B417274385E600A6DE01 /* Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenes.swift; sourceTree = "<group>"; };
+		8814B41E2743874000A6DE01 /* UserTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTask.swift; sourceTree = "<group>"; };
+		8814B4212743874000A6DE01 /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Params.swift; sourceTree = "<group>"; };
+		8814B4232743874000A6DE01 /* APIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
+		8814B4252743874100A6DE01 /* AuthRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRequests.swift; sourceTree = "<group>"; };
+		8814B4262743874100A6DE01 /* UserRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequests.swift; sourceTree = "<group>"; };
+		8814B4272743874100A6DE01 /* SaloonRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaloonRequests.swift; sourceTree = "<group>"; };
+		8814B4292743874100A6DE01 /* APIParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIParser.swift; sourceTree = "<group>"; };
+		8814B42A2743874100A6DE01 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		8814B42C2743874100A6DE01 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		8814B42D2743874100A6DE01 /* Webservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		8814B42E2743874100A6DE01 /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		8814B42F2743874100A6DE01 /* APIResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponder.swift; sourceTree = "<group>"; };
+		8814B441274393EB00A6DE01 /* OnboardingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingProvider.swift; sourceTree = "<group>"; };
+		8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		8814B4462743950500A6DE01 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		8814B4492743965400A6DE01 /* JSONNullResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNullResponse.swift; sourceTree = "<group>"; };
 		8816D88E272678B000127DDC /* AddHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewModel.swift; sourceTree = "<group>"; };
 		88202D54271968B900F0EA2E /* InputValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
 		88202D582719923700F0EA2E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -418,6 +460,72 @@
 			path = InviteFriends;
 			sourceTree = "<group>";
 		};
+		8814B40C2743850200A6DE01 /* Adaptables */ = {
+			isa = PBXGroup;
+			children = (
+				8814B4122743858900A6DE01 /* Row.swift */,
+				8814B40F2743855900A6DE01 /* AppAdaptables.swift */,
+				885F7FB5273E2F7500B8D4EF /* UserStore.swift */,
+			);
+			path = Adaptables;
+			sourceTree = "<group>";
+		};
+		8814B415274385E600A6DE01 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				8814B416274385E600A6DE01 /* Coordinators.swift */,
+				8814B417274385E600A6DE01 /* Scenes.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		8814B41D2743874000A6DE01 /* api-task */ = {
+			isa = PBXGroup;
+			children = (
+				8814B41E2743874000A6DE01 /* UserTask.swift */,
+			);
+			path = "api-task";
+			sourceTree = "<group>";
+		};
+		8814B4202743874000A6DE01 /* api-request-params */ = {
+			isa = PBXGroup;
+			children = (
+				8814B4212743874000A6DE01 /* Params.swift */,
+			);
+			path = "api-request-params";
+			sourceTree = "<group>";
+		};
+		8814B4222743874000A6DE01 /* api-model */ = {
+			isa = PBXGroup;
+			children = (
+				8814B4232743874000A6DE01 /* APIModel.swift */,
+			);
+			path = "api-model";
+			sourceTree = "<group>";
+		};
+		8814B4242743874100A6DE01 /* api-request */ = {
+			isa = PBXGroup;
+			children = (
+				8814B4252743874100A6DE01 /* AuthRequests.swift */,
+				8814B4262743874100A6DE01 /* UserRequests.swift */,
+				8814B4272743874100A6DE01 /* SaloonRequests.swift */,
+			);
+			path = "api-request";
+			sourceTree = "<group>";
+		};
+		8814B4282743874100A6DE01 /* core-api */ = {
+			isa = PBXGroup;
+			children = (
+				8814B4292743874100A6DE01 /* APIParser.swift */,
+				8814B42A2743874100A6DE01 /* APIError.swift */,
+				8814B42C2743874100A6DE01 /* APIClient.swift */,
+				8814B42D2743874100A6DE01 /* Webservice.swift */,
+				8814B42E2743874100A6DE01 /* Base.swift */,
+				8814B42F2743874100A6DE01 /* APIResponder.swift */,
+			);
+			path = "core-api";
+			sourceTree = "<group>";
+		};
 		88202D572719920A00F0EA2E /* Walkthrough */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,14 +601,6 @@
 				88CA2A47271E9DE1003D590D /* LoginModel.swift */,
 			);
 			path = "Login Model";
-			sourceTree = "<group>";
-		};
-		885F7FB4273E2F7500B8D4EF /* UserStore */ = {
-			isa = PBXGroup;
-			children = (
-				885F7FB5273E2F7500B8D4EF /* UserStore.swift */,
-			);
-			path = UserStore;
 			sourceTree = "<group>";
 		};
 		8879948B273A5B0800904D1F /* Habit Model */ = {
@@ -627,12 +727,14 @@
 		88E028322716F70600D90BB1 /* Iscra */ = {
 			isa = PBXGroup;
 			children = (
+				8814B415274385E600A6DE01 /* Coordinators */,
 				88E028592716F73F00D90BB1 /* AppDelegate */,
+				8814B40C2743850200A6DE01 /* Adaptables */,
 				88E0284E2716F73F00D90BB1 /* API */,
 				88E0285C2716F73F00D90BB1 /* Resources */,
 				88E028582716F73F00D90BB1 /* Shared Components */,
 				88E0284D2716F73F00D90BB1 /* Utility */,
-				88E028512716F73F00D90BB1 /* Views */,
+				88E028512716F73F00D90BB1 /* Scene */,
 			);
 			path = Iscra;
 			sourceTree = "<group>";
@@ -660,7 +762,11 @@
 		88E0284E2716F73F00D90BB1 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				885F7FB4273E2F7500B8D4EF /* UserStore */,
+				8814B41D2743874000A6DE01 /* api-task */,
+				8814B4202743874000A6DE01 /* api-request-params */,
+				8814B4222743874000A6DE01 /* api-model */,
+				8814B4242743874100A6DE01 /* api-request */,
+				8814B4282743874100A6DE01 /* core-api */,
 				88E0284F2716F73F00D90BB1 /* Manager */,
 				88E028502716F73F00D90BB1 /* ResponseModels */,
 			);
@@ -682,6 +788,8 @@
 		88E028502716F73F00D90BB1 /* ResponseModels */ = {
 			isa = PBXGroup;
 			children = (
+				8814B4462743950500A6DE01 /* APIResponse.swift */,
+				8814B4492743965400A6DE01 /* JSONNullResponse.swift */,
 				8879948B273A5B0800904D1F /* Habit Model */,
 				884549F527186F56003FBBC8 /* Login Model */,
 				884549F427186F4A003FBBC8 /* Signup Model */,
@@ -689,7 +797,7 @@
 			path = ResponseModels;
 			sourceTree = "<group>";
 		};
-		88E028512716F73F00D90BB1 /* Views */ = {
+		88E028512716F73F00D90BB1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				88E028522716F73F00D90BB1 /* Onboarding */,
@@ -697,12 +805,15 @@
 				88E028942716FEF500D90BB1 /* Habit */,
 				88E028982716FF3C00D90BB1 /* Chat */,
 			);
-			path = Views;
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		88E028522716F73F00D90BB1 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */,
+				8814B441274393EB00A6DE01 /* OnboardingProvider.swift */,
+				8814B4082743844D00A6DE01 /* OnboardingAdaptables.swift */,
 				8822D4EA2731777E00C68EE5 /* Get Subscription */,
 				88202D572719920A00F0EA2E /* Walkthrough */,
 				88E028532716F73F00D90BB1 /* Signup */,
@@ -1095,12 +1206,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				88021C67273CF688004A58F5 /* AddGroupImageViewController.swift in Sources */,
+				8814B4342743874100A6DE01 /* AuthRequests.swift in Sources */,
 				88E580762722F5F300D4CAFB /* SetThemeViewController.swift in Sources */,
+				8814B43A2743874100A6DE01 /* APIClient.swift in Sources */,
 				880F3E412727EFFE007CA895 /* IconHeader.swift in Sources */,
+				8814B4372743874100A6DE01 /* APIParser.swift in Sources */,
 				88E0289D2716FFE500D90BB1 /* SignupViewController.swift in Sources */,
 				880F3E362727EC73007CA895 /* IconPopupViewController.swift in Sources */,
 				8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */,
 				885F7FB6273E2F7500B8D4EF /* UserStore.swift in Sources */,
+				8814B4352743874100A6DE01 /* UserRequests.swift in Sources */,
 				887994C4273AB2EE00904D1F /* CommunityFriendTableView.swift in Sources */,
 				887994BF273AB2EE00904D1F /* MatesCollectionView.swift in Sources */,
 				882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */,
@@ -1109,13 +1224,16 @@
 				880F3E302727DE04007CA895 /* ColorPopUpViewController.swift in Sources */,
 				88A529112730205000037464 /* PasswordChangeConfirmationViewController.swift in Sources */,
 				88E580522722E70300D4CAFB /* HomeViewController.swift in Sources */,
+				8814B4332743874100A6DE01 /* APIModel.swift in Sources */,
 				884549F727186F72003FBBC8 /* SignUpModel.swift in Sources */,
 				88B0FABF2718594100EF92B3 /* IscraCustomTextField.swift in Sources */,
 				887994DB273AB38D00904D1F /* HabitCalenderViewController.swift in Sources */,
 				8822D4E72731775500C68EE5 /* VerificationViewController.swift in Sources */,
 				0402C4B2273D4A200073DFB8 /* GroupHabitFriendsTable.swift in Sources */,
+				8814B443274393EB00A6DE01 /* OnboardingProvider.swift in Sources */,
 				88E028FA27170D0600D90BB1 /* APIConstants.swift in Sources */,
 				882F3E162721AAC300A409A6 /* MyAccountTableViewCell.swift in Sources */,
+				8814B43D2743874100A6DE01 /* APIResponder.swift in Sources */,
 				887994BA273AB2EE00904D1F /* MyCommunityCollectionView.swift in Sources */,
 				88202D5F2719AAAA00F0EA2E /* WalkthroughViewController.swift in Sources */,
 				887994C2273AB2EE00904D1F /* GroupHabitCell.swift in Sources */,
@@ -1130,8 +1248,10 @@
 				88202D592719923700F0EA2E /* WelcomeViewController.swift in Sources */,
 				0402C4AC273D4A150073DFB8 /* GroupHabitFriendsViewController.swift in Sources */,
 				887994C0273AB2EE00904D1F /* NewCommunityCollectionView.swift in Sources */,
+				8814B43C2743874100A6DE01 /* Base.swift in Sources */,
 				88E028652716F73F00D90BB1 /* AppDelegate.swift in Sources */,
 				88E028F127170B7F00D90BB1 /* AlamofireManager.swift in Sources */,
+				8814B444274393EB00A6DE01 /* OnboardingCoordinator.swift in Sources */,
 				8816D88F272678B000127DDC /* AddHabitViewModel.swift in Sources */,
 				887994C8273AB2EE00904D1F /* CommunitySearchViewController.swift in Sources */,
 				88021C6A273D3897004A58F5 /* CustomDashedView.swift in Sources */,
@@ -1142,15 +1262,20 @@
 				88E028F427170B7F00D90BB1 /* Utils.swift in Sources */,
 				88E5804F2722E70300D4CAFB /* HabitDaysCell.swift in Sources */,
 				88E028F327170B7F00D90BB1 /* BaseExtensions.swift in Sources */,
+				8814B43B2743874100A6DE01 /* Webservice.swift in Sources */,
 				880080782729346D008E3260 /* WeekCollection.swift in Sources */,
+				8814B4092743844D00A6DE01 /* OnboardingAdaptables.swift in Sources */,
 				882F3E182721AAC300A409A6 /* MyAccountViewController.swift in Sources */,
 				882F3E172721AAC300A409A6 /* MyAccountTableView.swift in Sources */,
+				8814B418274385E600A6DE01 /* Coordinators.swift in Sources */,
 				887994BE273AB2EE00904D1F /* CommunityGroupHabit.swift in Sources */,
 				88E028F227170B7F00D90BB1 /* WebRouter.swift in Sources */,
 				887994C5273AB2EE00904D1F /* GroupHabitTableView.swift in Sources */,
 				88E028662716F73F00D90BB1 /* SceneDelegate.swift in Sources */,
 				880F3E69272816D9007CA895 /* InviteFriendViewController.swift in Sources */,
 				887994D7273AB34E00904D1F /* RepeatDaysTableViewCell.swift in Sources */,
+				8814B419274385E600A6DE01 /* Scenes.swift in Sources */,
+				8814B4102743855A00A6DE01 /* AppAdaptables.swift in Sources */,
 				8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */,
 				88E029302717104C00D90BB1 /* Extentions.swift in Sources */,
 				88B0F9D7271824CF00EF92B3 /* IscraCustomView.swift in Sources */,
@@ -1159,17 +1284,23 @@
 				88E028A12716FFEE00D90BB1 /* SignupViewModel.swift in Sources */,
 				88E028F527170B7F00D90BB1 /* WebserviceManager.swift in Sources */,
 				88C7C2FA2726D39800EAA8CA /* ColorCollectionViewCell.swift in Sources */,
+				8814B4132743858900A6DE01 /* Row.swift in Sources */,
+				8814B4322743874100A6DE01 /* Params.swift in Sources */,
 				88E028872716FE6300D90BB1 /* ChatViewController.swift in Sources */,
 				88B4A228271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift in Sources */,
 				88B4A27027205DDD00488AA3 /* EditNameViewController.swift in Sources */,
 				88202D55271968B900F0EA2E /* InputValidation.swift in Sources */,
+				8814B4472743950500A6DE01 /* APIResponse.swift in Sources */,
 				88E580512722E70300D4CAFB /* MatesCollectionCell.swift in Sources */,
+				8814B4302743874100A6DE01 /* UserTask.swift in Sources */,
 				880F3E5127280C6B007CA895 /* IconCollectionViewCell.swift in Sources */,
 				88CA2A48271E9DE1003D590D /* LoginModel.swift in Sources */,
 				88E028672716F73F00D90BB1 /* Iscra.xcdatamodeld in Sources */,
 				88A529122730205000037464 /* ChangePasswordViewController.swift in Sources */,
+				8814B44A2743965400A6DE01 /* JSONNullResponse.swift in Sources */,
 				88E580542722E70300D4CAFB /* HabitTableView.swift in Sources */,
 				88E580552722E70300D4CAFB /* HabitCell.swift in Sources */,
+				8814B4362743874100A6DE01 /* SaloonRequests.swift in Sources */,
 				88E0297B271717A500D90BB1 /* IscraCustomLabel.swift in Sources */,
 				88799489273A5ABD00904D1F /* IconsHabitModel.swift in Sources */,
 				887994D3273AB34E00904D1F /* RepeatDaysPopUpViewController.swift in Sources */,
@@ -1178,6 +1309,7 @@
 				887994BB273AB2EE00904D1F /* CommunityMyGroupsCell.swift in Sources */,
 				8822D4EC2731777E00C68EE5 /* GetSubcriptionViewController.swift in Sources */,
 				88B0F9C027181A4B00EF92B3 /* IscraCustomButton.swift in Sources */,
+				8814B4382743874100A6DE01 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

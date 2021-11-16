@@ -13,6 +13,8 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var btnStart:UIButton!
     @IBOutlet weak var lblHeaderTitle:UILabel!
     
+    weak var router: NextSceneDismisser?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -37,7 +39,7 @@ extension WelcomeViewController {
 
 // MARK:- Button Action
 extension WelcomeViewController {
-        
+    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnStart:
@@ -50,21 +52,24 @@ extension WelcomeViewController {
     }
     
     private func startAction() {
+        router?.push(scene: .walkthrough)
+        
         // navigate to walkthrough
-      /*  let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SetThemeViewController") as! SetThemeViewController
-        navigationController?.pushViewController(vc, animated: true)*/
-      /*  let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "LandingTabBarViewController") as! LandingTabBarViewController
-        navigationController?.pushViewController(vc, animated: true)*/
-          let VC = storyboard?.instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
-          navigationController?.pushViewController(VC, animated: true)
-        }
-
+        /*  let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+         let vc = storyboard.instantiateViewController(withIdentifier: "SetThemeViewController") as! SetThemeViewController
+         navigationController?.pushViewController(vc, animated: true)*/
+        /*  let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+         let vc = storyboard.instantiateViewController(withIdentifier: "LandingTabBarViewController") as! LandingTabBarViewController
+         navigationController?.pushViewController(vc, animated: true)*/
+        //          let VC = storyboard?.instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
+        //          navigationController?.pushViewController(VC, animated: true)
+    }
+    
     private func loginAction() {
         // navigate to login
-        let VC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        navigationController?.pushViewController(VC, animated: true)
+        router?.push(scene: .login)
+        //        let VC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        //        navigationController?.pushViewController(VC, animated: true)
     }
 }
 

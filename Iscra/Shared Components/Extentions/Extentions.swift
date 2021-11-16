@@ -76,7 +76,7 @@ extension UIFont {
 
 extension UIViewController{
     
-    func showToast(message : String, seconds: Double){
+    func showToast(message : String, seconds: Double = 2.0){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.setMessage(font: UIFont(name: "SourceSansPro-Regular", size: 15), color: UIColor.black)
         alert.view.backgroundColor = UIColor.init(named: "PrimaryAccent")

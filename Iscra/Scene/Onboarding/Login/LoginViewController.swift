@@ -11,18 +11,14 @@ import UIKit
 class LoginViewController: UIViewController {
     
     // MARK:-Outlets and variables
-    
-    @IBOutlet weak var lblHeaderTitle:UILabel!
-
-    @IBOutlet weak var txtFieldEmailId:UITextField!
-    @IBOutlet weak var txtFieldPassword:UITextField!
-    
     @IBOutlet weak var btnLogin:UIButton!
+    @IBOutlet weak var lblHeaderTitle:UILabel!
     @IBOutlet weak var btnShowPassword:UIButton!
     @IBOutlet weak var btnForgotPassword:UIButton!
     @IBOutlet weak var btnLoginWithApple:UIButton!
     @IBOutlet weak var btnLoginWithGoogle:UIButton!
-
+    @IBOutlet weak var txtFieldEmailId:UITextField!
+    @IBOutlet weak var txtFieldPassword:UITextField!
     private var viewModel : LoginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
@@ -34,7 +30,6 @@ class LoginViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillAppear(animated)
     }
-    
 }
 
 // MARK: Instance Methods
@@ -46,7 +41,6 @@ extension LoginViewController {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }
-    
 }
 
 // MARK:- UITextFieldDelegate
@@ -64,7 +58,7 @@ extension LoginViewController:UITextFieldDelegate {
 
 // MARK:- Button Action
 extension LoginViewController {
-        
+    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnLogin:

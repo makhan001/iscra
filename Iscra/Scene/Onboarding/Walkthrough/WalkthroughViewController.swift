@@ -67,15 +67,19 @@ extension WalkthroughViewController  {
     }
     
     private func backButtonAction() {
+        print("currentIndex. \(currentIndex)")
         if self.currentIndex >= 1 {
             if self.currentIndex == 1 {
-                self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width)
-                scrollview_Walkthrough.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width , y: 0), animated: true)
+                navigationController?.popViewController(animated: true)
             }else{
                 self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) - 1
                 scrollview_Walkthrough.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width  , y: 0), animated: true)
             }
         }
+        else{
+            navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     private func nextButtonAction() {
@@ -113,14 +117,15 @@ extension WalkthroughViewController  {
     func setButtonStatus(){
         if self.currentIndex == 3 {
             btnNext.setTitle("Skip", for: .normal)
-        }else if self.currentIndex == 1 {
-            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 0.1495653609), for: .normal)
-            btnBack.isUserInteractionEnabled = false
-        }else{
-            btnNext.setTitle("Next", for: .normal)
-            btnBack.isUserInteractionEnabled = true
-            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
         }
+        //        }else if self.currentIndex == 1 {
+//            btnBack.setTitleColor(, for: .normal)
+//            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
+//        }else{
+//            btnNext.setTitle("Next", for: .normal)
+//            btnBack.isUserInteractionEnabled = true
+//            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
+//        }
     }
 
 }

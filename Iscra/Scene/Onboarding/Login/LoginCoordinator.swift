@@ -13,11 +13,9 @@ final class LoginCoordinator: Coordinator<Scenes> {
     weak var delegate: CoordinatorDimisser?
     let controller: LoginViewController = LoginViewController.from(from: .onboarding, with: .login)
     
-//    let forgot: ForgotPasswordViewController = ForgotPasswordViewController.from(from: .onboarding, with: .forgot)
-    
     var welcome: Bool!
 //    var signup: SignupCoordinator!
-//    var landing: LandingCoordinator!
+    var landing: LandingCoordinator!
 
     override func start() {
         super.start()
@@ -49,11 +47,11 @@ final class LoginCoordinator: Coordinator<Scenes> {
     
     
     private func startLanding() {
-//        landing = LandingCoordinator(router: Router())
-//        add(landing)
-//        landing.delegate = self
-//        landing.start()
-//        self.router.present(landing, animated: true)
+        landing = LandingCoordinator(router: Router())
+        add(landing)
+        landing.delegate = self
+        landing.start()
+        self.router.present(landing, animated: true)
     }
 }
 
@@ -63,7 +61,7 @@ extension LoginCoordinator: NextSceneDismisser {
         switch scene {
 //        case .forgot: router.present(forgot, animated: true)
         case .signup: startSignup()
-        case .landing: startLanding()
+        case .landingTab: startLanding()
         default: break
         }
         

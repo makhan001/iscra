@@ -10,19 +10,19 @@ import Foundation
 
 class RootCoordinator {
     private var window: UIWindow?
-    private var loginCoordinator: LoginCoordinator
+    private var landingCoordinator: LandingCoordinator
     private var onboardingCoordinator: OnboardingCoordinator
     
     init() {
-        loginCoordinator = LoginCoordinator(router: Router())
+        landingCoordinator = LandingCoordinator(router: Router())
         onboardingCoordinator = OnboardingCoordinator(router:Router())
     }
     
     func start(window:UIWindow) {
         self.window = window
         if UserStore.token != nil {
-            loginCoordinator.start()
-            window.rootViewController = loginCoordinator.toPresentable()
+            landingCoordinator.start()
+            window.rootViewController = landingCoordinator.toPresentable()
         } else {
             onboardingCoordinator.start()
             window.rootViewController = onboardingCoordinator.toPresentable()

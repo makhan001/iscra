@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum OnboardingScreenType: String {
     case signup
     case login
@@ -43,7 +42,7 @@ protocol InputViewDelegate:AnyObject {
 protocol OnboardingViewRepresentable:AnyObject {
     func onAction(_ action: OnboardingAction)
 }
-protocol OnboardingServiceProvidable:class {
+protocol OnboardingServiceProvidable:AnyObject {
     var  delegate: OnboardingServiceProvierDelegate? { get set }
     func login(param:UserParams.Login)
     func register(param:UserParams.Signup)
@@ -51,6 +50,6 @@ protocol OnboardingServiceProvidable:class {
     func changePassword(param:UserParams.ChangePassword)
     func forgotPassword(param:UserParams.ForgotPassword)
 }
-protocol OnboardingServiceProvierDelegate:class {
+protocol OnboardingServiceProvierDelegate:AnyObject {
     func completed<T>(for action:OnboardingAction, with response:T?, with error:APIError?)
 }

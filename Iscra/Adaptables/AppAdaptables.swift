@@ -43,7 +43,7 @@ protocol PushNextController:AnyObject {
     @objc optional func popController()
 }
 
-protocol CoordinatorDimisser:class {
+protocol CoordinatorDimisser:AnyObject {
     func dismiss(coordinator:Coordinator<Scenes>)
 }
 

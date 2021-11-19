@@ -1,5 +1,5 @@
 //
-//  extentions.swift
+//  Extensions.swift
 //  Iscra
 //
 //  Created by Lokesh Patil on 13/10/21.
@@ -86,6 +86,13 @@ extension UIViewController{
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true)
         }
+    }
+    
+    static func from<T>(from storyboard: Storyboard, with identifier: StoryboardIdentifier) -> T {
+        guard let controller = UIStoryboard(name: storyboard.rawValue, bundle: nil).instantiateViewController(withIdentifier: identifier.rawValue) as? T else {
+            fatalError("unable to instantiate view controller")
+        }
+        return controller
     }
 }
 

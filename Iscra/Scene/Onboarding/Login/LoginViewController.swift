@@ -15,12 +15,15 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var lblHeaderTitle:UILabel!
     @IBOutlet weak var btnShowPassword:UIButton!
     @IBOutlet weak var btnForgotPassword:UIButton!
+    
     @IBOutlet weak var btnApple:UIButton!
     @IBOutlet weak var btnGoogle:UIButton!
     @IBOutlet weak var txtEmail:UITextField!
     @IBOutlet weak var txtPassword:UITextField!
     @IBOutlet weak var viewNavigation:NavigationBarView!
+    
     private let viewModel: LoginViewModel = LoginViewModel(provider: OnboardingServiceProvider())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -85,6 +88,21 @@ extension LoginViewController {
     private func loginAction() {
         print("loginAction")
         viewModel.onAction(action: OnboardingAction.login, for: .login)
+
+        
+//        router?.push(scene: .landing)
+//
+//        if viewModel.ValidateUserInputs(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
+//        {
+//            viewModel.Login(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
+//            {
+//                self.showToast(message:self.viewModel.LoginData.message , seconds: 3.0)
+//            }
+//        }
+//        else {
+//            print(viewModel.errorMsg)
+//            self.showToast(message:viewModel.errorMsg , seconds: 1.0)
+//        }
     }
     
     private func loginGoogleAction() {
@@ -92,6 +110,7 @@ extension LoginViewController {
     }
     
     private func loginAppleAction() {
+        router?.dismiss(controller: .login)
         print("loginAppleAction")
     }
     

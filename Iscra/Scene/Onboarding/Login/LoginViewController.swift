@@ -20,7 +20,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnGoogle:UIButton!
     @IBOutlet weak var txtEmail:UITextField!
     @IBOutlet weak var txtPassword:UITextField!
-    @IBOutlet weak var viewNavigation:NavigationBarView!
+//    @IBOutlet weak var viewNavigation:NavigationBarView!
+    
+    weak var router: NextSceneDismisser?
     
     private let viewModel: LoginViewModel = LoginViewModel(provider: OnboardingServiceProvider())
     
@@ -32,8 +34,8 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.viewNavigation.lblTitle.text =  "Login"
-        self.viewNavigation.delegateBarAction = self
+//        self.viewNavigation.lblTitle.text =  "Login"
+//        self.viewNavigation.delegateBarAction = self
     }
 }
 
@@ -125,7 +127,7 @@ extension LoginViewController {
     }
     
     private func forgotPasswordAction() {
-        let VC = storyboard?.instantiateViewController(withIdentifier: "ForgotPsswordViewController") as! ForgotPsswordViewController
+        let VC = storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
         navigationController?.pushViewController(VC, animated: true)
     }
     

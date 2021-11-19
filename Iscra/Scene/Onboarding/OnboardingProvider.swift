@@ -25,7 +25,6 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
         }
     }
     
-    
     func login(param: UserParams.Login) {
         task.login(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {

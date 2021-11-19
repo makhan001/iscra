@@ -33,8 +33,8 @@ enum UserParams {
 //    }
     
     struct Login:Codable {
-        let email:String?
-        let password:String?
+        let email:String
+        let password:String
     }
     
     struct ForgotPassword:Codable {

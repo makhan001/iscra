@@ -205,8 +205,8 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
     private func prepareRequest(request: RequestRepresentable) -> URLRequest {
     
         let s = "\(host)\(APIEnvironment.APIVersion)\(request.endpoint)"
-        //let scaped = s.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        let url = URL(string: s)
+        let scaped = s.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        let url = URL(string: scaped!)
         var r = URLRequest(url: url!)
         headers(in: request, for: &r)
         params(in: request, for: &r)

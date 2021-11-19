@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -682,14 +682,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnApple" destination="1EZ-i5-6tx" id="YPO-jz-5vP"/>
                         <outlet property="btnForgotPassword" destination="OJH-Lx-dhQ" id="bL0-33-LVO"/>
+                        <outlet property="btnGoogle" destination="tVA-Gj-8Fm" id="GFO-8s-ZmU"/>
                         <outlet property="btnLogin" destination="R2Q-Yw-RDt" id="fCR-jD-tzP"/>
-                        <outlet property="btnLoginWithApple" destination="1EZ-i5-6tx" id="KoW-K6-i4l"/>
-                        <outlet property="btnLoginWithGoogle" destination="tVA-Gj-8Fm" id="9FN-IB-gzA"/>
                         <outlet property="btnShowPassword" destination="Ppa-bR-siW" id="Qcs-JJ-X8Z"/>
                         <outlet property="lblHeaderTitle" destination="vik-Ta-l6e" id="jqZ-4D-Y1E"/>
-                        <outlet property="txtFieldEmailId" destination="y7J-4T-9Tc" id="OhW-1c-Uco"/>
-                        <outlet property="txtFieldPassword" destination="hzh-hE-gJ9" id="frm-1r-YlE"/>
+                        <outlet property="txtEmail" destination="y7J-4T-9Tc" id="d89-bR-jnV"/>
+                        <outlet property="txtPassword" destination="hzh-hE-gJ9" id="qt5-Gw-D8h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZH5-jW-hn2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2539,10 +2539,10 @@
             <size key="intrinsicContentSize" width="67" height="34"/>
         </designable>
         <designable name="2ls-IB-Blx">
-            <size key="intrinsicContentSize" width="209.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="209" height="21.5"/>
         </designable>
         <designable name="3Fa-cy-S0B">
-            <size key="intrinsicContentSize" width="209.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="209" height="21.5"/>
         </designable>
         <designable name="3xM-69-dgw">
             <size key="intrinsicContentSize" width="66" height="30"/>
@@ -2561,7 +2561,7 @@
             <size key="intrinsicContentSize" width="58.5" height="24"/>
         </designable>
         <designable name="B9a-dm-i6h">
-            <size key="intrinsicContentSize" width="539" height="38.5"/>
+            <size key="intrinsicContentSize" width="539.5" height="38.5"/>
         </designable>
         <designable name="Bft-tY-T2W">
             <size key="intrinsicContentSize" width="567.5" height="57.5"/>
@@ -2599,7 +2599,7 @@
         </designable>
         <designable name="U7f-Of-Z0Q"/>
         <designable name="Uhw-aA-CSh">
-            <size key="intrinsicContentSize" width="804.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="804" height="21.5"/>
         </designable>
         <designable name="UwO-VI-JaW"/>
         <designable name="WMm-Js-G1K"/>

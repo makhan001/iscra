@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ForgotPsswordViewController: UIViewController {
+class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var btnSend:UIButton!
     @IBOutlet weak var textEmail:UITextField!
     @IBOutlet weak var viewNavigation: NavigationBarView!
@@ -22,14 +22,14 @@ class ForgotPsswordViewController: UIViewController {
 }
 
 // Initial Congfigrations
-extension ForgotPsswordViewController {
+extension ForgotPasswordViewController {
     func SetUps() {
         viewNavigation.lblTitle.text = "Forgot Password"
         viewNavigation.delegateBarAction = self
     }
 }
 // NAvigation Delegates
-extension ForgotPsswordViewController : navigationBarAction {
+extension ForgotPasswordViewController : navigationBarAction {
     func ActionType() {
         navigationController?.popViewController(animated: true)
     }

@@ -5,8 +5,9 @@
 //  Created by Lokesh Patil on 16/11/21.
 //
 
-import Foundation
 import UIKit
+import Foundation
+
 class OnboadingUtils {
 
     // MARK: - Properties

@@ -12,10 +12,11 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
     let controller: WelcomeViewController = WelcomeViewController.from(from: .onboarding, with: .welcome)
-    
+    let walktrough: WalkthroughViewController = WalkthroughViewController.from(from: .onboarding, with: .walkthrough)
+
     private var login: LoginCoordinator!
     private var landing: LandingCoordinator!
-    
+    private var onboarding: OnboardingCoordinator!
         
     override func start() {
         super.start()
@@ -27,6 +28,7 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
         controller.router = self
         UserStore.save(token: nil)
     }
+
     
     private func startLogin() {
         let router = Router()
@@ -38,12 +40,12 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
     }
     
     private func startWalkthrough() {
-//        let router = Router()
-//        walkthrough = WalkthroughCoordinator(router: router)
-//        add(walkthrough)
-//        walkthrough.delegate = self
-//        walkthrough.start()
-//        self.router.present(walkthrough, animated: true)
+        let router = Router()
+        onboarding = OnboardingCoordinator(router: router)
+        add(onboarding)
+        onboarding.delegate = self
+        onboarding.start()
+        self.router.present(onboarding, animated: true)
     }
     
     private func startLanding() {

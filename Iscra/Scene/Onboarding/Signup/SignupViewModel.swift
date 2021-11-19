@@ -50,7 +50,7 @@ final class SignupViewModel {
             return
         }
        // self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, fcm_token: UserStore.fcmtoken, device_id: nil, device_type: "ios"))
-        self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, password_confirmation: password ,profile_image : "asdasd"))
+        self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, devise_type: "ios"))
 
     }
 }

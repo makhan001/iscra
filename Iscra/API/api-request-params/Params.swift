@@ -16,12 +16,13 @@ enum UserParams {
         //        let password:String?
         //        let fcm_token:String?
         //        let device_id:String?
-        //        let device_type:String?
+               
         let email:String?
         let username:String?
         let password:String?
-        let password_confirmation:String?
-        let profile_image:String?
+        let devise_type:String?
+       // let password_confirmation:String?
+      //  let profile_image:String?
     }
     
 //    struct Login:Codable {

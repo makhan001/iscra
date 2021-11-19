@@ -60,6 +60,8 @@
 		88202D5F2719AAAA00F0EA2E /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */; };
 		8822D4E72731775500C68EE5 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822D4E62731775500C68EE5 /* VerificationViewController.swift */; };
 		8822D4EC2731777E00C68EE5 /* GetSubcriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822D4EB2731777E00C68EE5 /* GetSubcriptionViewController.swift */; };
+		88269DBB2744EE6A006A9F43 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88269DBA2744EE6A006A9F43 /* NavigationBarView.xib */; };
+		88269DBE2744EFC2006A9F43 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88269DBD2744EFC2006A9F43 /* NavigationBarView.swift */; };
 		882F3E002721A50A00A409A6 /* LandingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3DFF2721A50A00A409A6 /* LandingTabBarViewController.swift */; };
 		882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */; };
 		882F3E152721AAC300A409A6 /* MyAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882F3E112721AAC300A409A6 /* MyAccountTableViewCell.xib */; };
@@ -67,6 +69,9 @@
 		882F3E172721AAC300A409A6 /* MyAccountTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E132721AAC300A409A6 /* MyAccountTableView.swift */; };
 		882F3E182721AAC300A409A6 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E142721AAC300A409A6 /* MyAccountViewController.swift */; };
 		8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8835BCEE273E8A7200261839 /* StringConstant.swift */; };
+		883C52F12747914D00D129FC /* OnboadingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8841878927478DCB00C6EE39 /* OnboadingUtils.swift */; };
+		883C52F32747915800D129FC /* ForgotPsswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8841878327478D0F00C6EE39 /* ForgotPsswordViewController.swift */; };
+		8841878727478D9200C6EE39 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8841878627478D9100C6EE39 /* CameraHandler.swift */; };
 		884549F727186F72003FBBC8 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884549F627186F72003FBBC8 /* SignUpModel.swift */; };
 		884549FB271872EC003FBBC8 /* SignUpMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 884549FA271872EC003FBBC8 /* SignUpMock.json */; };
 		8845B731271EF539007A5069 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8845B730271EF539007A5069 /* Onboarding.storyboard */; };
@@ -220,6 +225,8 @@
 		88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		8822D4E62731775500C68EE5 /* VerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		8822D4EB2731777E00C68EE5 /* GetSubcriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSubcriptionViewController.swift; sourceTree = "<group>"; };
+		88269DBA2744EE6A006A9F43 /* NavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
+		88269DBD2744EFC2006A9F43 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		882F3DFF2721A50A00A409A6 /* LandingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTabBarViewController.swift; sourceTree = "<group>"; };
 		882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHabitPopUpViewController.swift; sourceTree = "<group>"; };
 		882F3E112721AAC300A409A6 /* MyAccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAccountTableViewCell.xib; sourceTree = "<group>"; };
@@ -227,6 +234,9 @@
 		882F3E132721AAC300A409A6 /* MyAccountTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableView.swift; sourceTree = "<group>"; };
 		882F3E142721AAC300A409A6 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		8835BCEE273E8A7200261839 /* StringConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstant.swift; sourceTree = "<group>"; };
+		8841878327478D0F00C6EE39 /* ForgotPsswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPsswordViewController.swift; sourceTree = "<group>"; };
+		8841878627478D9100C6EE39 /* CameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraHandler.swift; path = Iscra/CameraHandler.swift; sourceTree = SOURCE_ROOT; };
+		8841878927478DCB00C6EE39 /* OnboadingUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboadingUtils.swift; sourceTree = "<group>"; };
 		884549F627186F72003FBBC8 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		884549FA271872EC003FBBC8 /* SignUpMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SignUpMock.json; sourceTree = "<group>"; };
 		8845B730271EF539007A5069 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -557,6 +567,15 @@
 			path = "Get Subscription";
 			sourceTree = "<group>";
 		};
+		88269DAD2744E046006A9F43 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				88269DBA2744EE6A006A9F43 /* NavigationBarView.xib */,
+				88269DBD2744EFC2006A9F43 /* NavigationBarView.swift */,
+			);
+			path = NavigationBar;
+			sourceTree = "<group>";
+		};
 		882F3DFE2721A47F00A409A6 /* LandingTabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,6 +608,21 @@
 				8835BCEE273E8A7200261839 /* StringConstant.swift */,
 			);
 			path = StringConstant;
+			sourceTree = "<group>";
+		};
+		8841876C27478B2100C6EE39 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		8841878227478D0F00C6EE39 /* Forgot password */ = {
+			isa = PBXGroup;
+			children = (
+				8841878327478D0F00C6EE39 /* ForgotPsswordViewController.swift */,
+			);
+			path = "Forgot password";
 			sourceTree = "<group>";
 		};
 		884549F427186F4A003FBBC8 /* Signup Model */ = {
@@ -717,6 +751,7 @@
 				88E028312716F70600D90BB1 /* Products */,
 				C42C40B2097A2B0135276A15 /* Pods */,
 				527A79552898470E2C294946 /* Frameworks */,
+				8841876C27478B2100C6EE39 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -815,6 +850,8 @@
 		88E028522716F73F00D90BB1 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				8841878927478DCB00C6EE39 /* OnboadingUtils.swift */,
+				8841878227478D0F00C6EE39 /* Forgot password */,
 				8822D4EA2731777E00C68EE5 /* Get Subscription */,
 				88202D572719920A00F0EA2E /* Walkthrough */,
 				88E028532716F73F00D90BB1 /* Signup */,
@@ -852,6 +889,8 @@
 		88E028582716F73F00D90BB1 /* Shared Components */ = {
 			isa = PBXGroup;
 			children = (
+				8841878627478D9100C6EE39 /* CameraHandler.swift */,
+				88269DAD2744E046006A9F43 /* NavigationBar */,
 				8835BCED273E8A7200261839 /* StringConstant */,
 				88E5805B2722E92A00D4CAFB /* CollectionViewLayout */,
 				88E0292E2717102A00D90BB1 /* Extentions */,
@@ -1135,6 +1174,7 @@
 				88B0F98927180CE900EF92B3 /* SourceSansPro-Black.ttf in Resources */,
 				88CA2A5C271EACCA003D590D /* SF-Pro-Display-Medium.ttf in Resources */,
 				887994D4273AB34E00904D1F /* RepeatDaysTableViewCell.xib in Resources */,
+				88269DBB2744EE6A006A9F43 /* NavigationBarView.xib in Resources */,
 				887994C7273AB2EE00904D1F /* CommunityFriendCell.xib in Resources */,
 				887994BD273AB2EE00904D1F /* CommunityMyGroupsCell.xib in Resources */,
 				88CA2A57271EACCA003D590D /* SF-Pro-Display-UltralightItalic.ttf in Resources */,
@@ -1224,6 +1264,7 @@
 				8814B4352743874100A6DE01 /* UserRequests.swift in Sources */,
 				887994C4273AB2EE00904D1F /* CommunityFriendTableView.swift in Sources */,
 				887994BF273AB2EE00904D1F /* MatesCollectionView.swift in Sources */,
+				88269DBE2744EFC2006A9F43 /* NavigationBarView.swift in Sources */,
 				882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */,
 				88E028712716FBB100D90BB1 /* LoginViewController.swift in Sources */,
 				887994C9273AB2EE00904D1F /* CommunityDetailViewController.swift in Sources */,
@@ -1231,6 +1272,7 @@
 				88A529112730205000037464 /* PasswordChangeConfirmationViewController.swift in Sources */,
 				88E580522722E70300D4CAFB /* HomeViewController.swift in Sources */,
 				8814B4332743874100A6DE01 /* APIModel.swift in Sources */,
+				8841878727478D9200C6EE39 /* CameraHandler.swift in Sources */,
 				884549F727186F72003FBBC8 /* SignUpModel.swift in Sources */,
 				88B0FABF2718594100EF92B3 /* IscraCustomTextField.swift in Sources */,
 				887994DB273AB38D00904D1F /* HabitCalenderViewController.swift in Sources */,
@@ -1253,6 +1295,7 @@
 				887994D6273AB34E00904D1F /* EditReminderViewController.swift in Sources */,
 				88202D592719923700F0EA2E /* WelcomeViewController.swift in Sources */,
 				0402C4AC273D4A150073DFB8 /* GroupHabitFriendsViewController.swift in Sources */,
+				883C52F12747914D00D129FC /* OnboadingUtils.swift in Sources */,
 				887994C0273AB2EE00904D1F /* NewCommunityCollectionView.swift in Sources */,
 				8814B43C2743874100A6DE01 /* Base.swift in Sources */,
 				88E028652716F73F00D90BB1 /* AppDelegate.swift in Sources */,
@@ -1280,6 +1323,7 @@
 				887994C5273AB2EE00904D1F /* GroupHabitTableView.swift in Sources */,
 				88E028662716F73F00D90BB1 /* SceneDelegate.swift in Sources */,
 				880F3E69272816D9007CA895 /* InviteFriendViewController.swift in Sources */,
+				883C52F32747915800D129FC /* ForgotPsswordViewController.swift in Sources */,
 				887994D7273AB34E00904D1F /* RepeatDaysTableViewCell.swift in Sources */,
 				8814B419274385E600A6DE01 /* Scenes.swift in Sources */,
 				8814B4102743855A00A6DE01 /* AppAdaptables.swift in Sources */,

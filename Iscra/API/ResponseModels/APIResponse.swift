@@ -14,16 +14,18 @@ struct SuccessResponseModel: Codable {
     let code: Int?
     let message: String?
     let data: DataClass?
-  
 }
 
 
 // MARK: - DataClass
 struct DataClass: Codable {
-    
-    let register: Register?
+
+    var register: Register?
+    var loginData: LoginData?
+
     enum CodingKeys: String, CodingKey {
         case register
+        case loginData = "login_data"
     }
 }
 
@@ -42,6 +44,12 @@ struct Register: Codable {
         case authenticationToken = "authentication_token"
     }
 }
+
+// MARK: - LoginData
+struct LoginData: Codable {
+    var token: String?
+}
+
 
 
 

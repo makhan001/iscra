@@ -13,7 +13,7 @@ class WalkthroughViewController: UIViewController {
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var lblHeaderTitle:UILabel!
     @IBOutlet weak var btnAddMyPicture: UIButton!
-    @IBOutlet weak var txtFieldName:UITextField!
+    @IBOutlet weak var txtName:UITextField!
     @IBOutlet weak var btnHowToAddMemoji: UIButton!
     @IBOutlet weak var scrollview_Walkthrough: UIScrollView!
     
@@ -24,12 +24,15 @@ class WalkthroughViewController: UIViewController {
         self.setup()
         scrollview_Walkthrough.isPagingEnabled = true
         scrollview_Walkthrough.showsHorizontalScrollIndicator = false
+        [txtName].forEach {
+            $0?.delegate = self
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
     }
-
+    
 }
 
 // MARK:- Instance Methods
@@ -42,7 +45,7 @@ extension WalkthroughViewController {
         [btnBack, btnNext, btnAddMyPicture, btnHowToAddMemoji].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        txtFieldName.delegate = self
+        txtName.delegate = self
     }
 }
 
@@ -64,22 +67,26 @@ extension WalkthroughViewController  {
     }
     
     private func backButtonAction() {
+        print("currentIndex. \(currentIndex)")
         if self.currentIndex >= 1 {
             if self.currentIndex == 1 {
-                self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width)
-                scrollview_Walkthrough.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width , y: 0), animated: true)
+                navigationController?.popViewController(animated: true)
             }else{
                 self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) - 1
                 scrollview_Walkthrough.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width  , y: 0), animated: true)
             }
         }
+        else{
+            navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     private func nextButtonAction() {
         if self.currentIndex <= 2 {
             if currentIndex == 2 {
-                if txtFieldName.text == "" {
-                    showToast(message: AppConstant.alert_emptynameMsg, seconds: 2.0)
+                if OnboadingUtils.shared.username == "" {
+                    showToast(message: AppConstant.alert_emptynameMsg)
                 }
                 else{
                     self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1
@@ -110,16 +117,17 @@ extension WalkthroughViewController  {
     func setButtonStatus(){
         if self.currentIndex == 3 {
             btnNext.setTitle("Skip", for: .normal)
-        }else if self.currentIndex == 1 {
-            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 0.1495653609), for: .normal)
-            btnBack.isUserInteractionEnabled = false
-        }else{
-            btnNext.setTitle("Next", for: .normal)
-            btnBack.isUserInteractionEnabled = true
-            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
         }
+        //        }else if self.currentIndex == 1 {
+//            btnBack.setTitleColor(, for: .normal)
+//            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
+//        }else{
+//            btnNext.setTitle("Next", for: .normal)
+//            btnBack.isUserInteractionEnabled = true
+//            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
+//        }
     }
-    
+
 }
 
 // MARK:- UIScrollViewDelegate
@@ -127,8 +135,8 @@ extension WalkthroughViewController : UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if currentIndex == 2 {
-            if txtFieldName.text == "" {
-                showToast(message: AppConstant.alert_emptynameMsg, seconds: 2.0)
+            if txtName.text == "" {
+                showToast(message: AppConstant.alert_emptynameMsg)
             }
             else{
                 self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1
@@ -140,19 +148,22 @@ extension WalkthroughViewController : UIScrollViewDelegate {
             self.setButtonStatus()
         }
     }
-    
 }
-
 
 // MARK:- UITextFieldDelegate
 extension WalkthroughViewController : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
-                       if newLength <= 30 {
-                           return true
-                       } else {
-                           return false
-                       }
-           }
-
+        if newLength <= 30 {
+            if textField == txtName {
+                    if let text = txtName.text, let textRange = Range(range, in: text) {
+                    let updatedText = text.replacingCharacters(in: textRange, with: string)
+                    OnboadingUtils.shared.username = updatedText
+                }
+            }
+            return true
+        } else {
+            return false
+        }
+    }
 }

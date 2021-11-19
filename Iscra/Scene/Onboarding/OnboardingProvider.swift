@@ -15,6 +15,7 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
     private let task = UserTask()
     
     func register(param:UserParams.Signup) {
+        
         task.signup(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .register, with: resp, with: err)
@@ -23,7 +24,6 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
             self?.delegate?.completed(for: .register, with: resp, with: nil)
         }
     }
-    
     
     func login(param: UserParams.Login) {
         task.login(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in

@@ -55,6 +55,7 @@ extension WelcomeViewController {
         router?.push(scene: .walkthrough)
         
         // navigate to walkthrough
+
         /*  let storyboard = UIStoryboard(name: "Habit", bundle: nil)
          let vc = storyboard.instantiateViewController(withIdentifier: "SetThemeViewController") as! SetThemeViewController
          navigationController?.pushViewController(vc, animated: true)*/

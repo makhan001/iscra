@@ -1,31 +1,27 @@
 //
-//  OnboardingCoordinator.swift
-//  Clustry
+//  LandingCoordinator.swift
+//  Iscra
 //
-//  Created by Mohd Ali Khan on 05/11/2019.
-//  Copyright © 2021 m@k. All rights reserved.
+//  Created by m@k on 19/11/21.
 //
 
 import Foundation
 
-final class OnboardingCoordinator: Coordinator<Scenes> {
+final class LandingCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
-    let controller: WelcomeViewController = WelcomeViewController.from(from: .onboarding, with: .welcome)
+    let controller: LandingTabBarViewController = WelcomeViewController.from(from: .landing, with: .landingTab)
     
     private var login: LoginCoordinator!
-    private var landing: LandingCoordinator!
-    
         
     override func start() {
         super.start()
-        router.setRootModule(controller, hideBar: true)
+        router.setRootModule(controller, hideBar: false)
         self.onStart()
     }
     
     private func onStart() {
         controller.router = self
-        UserStore.save(token: nil)
     }
     
     private func startLogin() {
@@ -47,20 +43,20 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
     }
     
     private func startLanding() {
-        landing = LandingCoordinator(router: Router())
-        add(landing)
-        landing.delegate = self
-        landing.start()
-        self.router.present(landing, animated: true)
+//        landing = LandingCoordinator(router: Router())
+//        add(landing)
+//        landing.delegate = self
+//        landing.start(imageUrl: controller.viewModel.socialLoginImageURL)
+//        self.router.present(landing, animated: true)
     }
 }
 
-extension OnboardingCoordinator: NextSceneDismisser {
+extension LandingCoordinator: NextSceneDismisser {
     
     func push(scene: Scenes) {
         switch scene {
         case .login: startLogin()
-        case .landingTab: startLanding()
+        case .landing: startLanding()
         case .walkthrough: startWalkthrough()
         default: break
         }
@@ -69,7 +65,7 @@ extension OnboardingCoordinator: NextSceneDismisser {
     func dismiss(controller: Scenes) {}
 }
 
-extension OnboardingCoordinator: CoordinatorDimisser {
+extension LandingCoordinator: CoordinatorDimisser {
 
     func dismiss(coordinator: Coordinator<Scenes>) {
         remove(child: coordinator)

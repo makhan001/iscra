@@ -89,7 +89,7 @@ extension LoginViewController {
     
     private func loginAction() {
         print("loginAction")
-        viewModel.onAction(action: OnboardingAction.login, for: .login)
+        viewModel.onAction(action: .login, for: .login)
 
         
 //        router?.push(scene: .landing)
@@ -167,6 +167,7 @@ extension LoginViewController: OnboardingViewRepresentable {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
         case .login:
+            router?.push(scene: .landingTab)
             // navigate to verification screen
             
             break

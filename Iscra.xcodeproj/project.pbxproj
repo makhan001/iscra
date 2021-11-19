@@ -13,6 +13,7 @@
 		0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */; };
 		861CF1D12743DE9700727D1E /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D02743DE9700727D1E /* RootCoordinator.swift */; };
 		861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D22743E02300727D1E /* LoginCoordinator.swift */; };
+		8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A8392747D41100773C57 /* LandingCoordinator.swift */; };
 		8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800806B2729255E008E3260 /* ReminderViewController.swift */; };
 		880080732729282F008E3260 /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080722729282F008E3260 /* AddHabitViewController.swift */; };
 		880080782729346D008E3260 /* WeekCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080772729346D008E3260 /* WeekCollection.swift */; };
@@ -178,6 +179,7 @@
 		738A14CE266552D2AB54A54A /* Pods-Iscra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.debug.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.debug.xcconfig"; sourceTree = "<group>"; };
 		861CF1D02743DE9700727D1E /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		861CF1D22743E02300727D1E /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		8669A8392747D41100773C57 /* LandingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingCoordinator.swift; sourceTree = "<group>"; };
 		8800806B2729255E008E3260 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		880080722729282F008E3260 /* AddHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
 		880080772729346D008E3260 /* WeekCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollection.swift; sourceTree = "<group>"; };
@@ -932,6 +934,7 @@
 				88E028802716FE2500D90BB1 /* Chat */,
 				88E028812716FE3400D90BB1 /* My Account */,
 				88E028912716FECF00D90BB1 /* Landing.storyboard */,
+				8669A8392747D41100773C57 /* LandingCoordinator.swift */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -1255,6 +1258,7 @@
 				8814B4342743874100A6DE01 /* AuthRequests.swift in Sources */,
 				88E580762722F5F300D4CAFB /* SetThemeViewController.swift in Sources */,
 				8814B43A2743874100A6DE01 /* APIClient.swift in Sources */,
+				8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */,
 				880F3E412727EFFE007CA895 /* IconHeader.swift in Sources */,
 				8814B4372743874100A6DE01 /* APIParser.swift in Sources */,
 				88E0289D2716FFE500D90BB1 /* SignupViewController.swift in Sources */,

@@ -54,13 +54,13 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
     let host: String
     var isMultipart = false
     let boundary = "Boundary-\(UUID().uuidString)"
-    //    var imageArray = [[String:Any]]()
+//    var imageArray = [[String:Any]]()
     var imageArrayData = [Data]()
     var imageArrayName = [String]()
     var attachmentName = [String]()
     var multiPartData = Data()
     var apiRequest: RequestRepresentable!
-    
+
     var session: URLSession {
         let config = URLSessionConfiguration.default
         config.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
@@ -160,7 +160,7 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
         if !ok {
             
             let error = APIError(errorCode: code, responseData: APIErroResponseData(message: handleErrorMessage(errorCode: code), error: handleErrorMessage(errorCode: code)), statusCode: response.statusCode)
-            //            let error = APIError(errorCode: code, responseData: APIErroResponseData.from(data: data), statusCode: response.statusCode)
+//            let error = APIError(errorCode: code, responseData: APIErroResponseData.from(data: data), statusCode: response.statusCode)
             completion(nil, error)
             return
         }
@@ -203,8 +203,7 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
     }
     
     private func prepareRequest(request: RequestRepresentable) -> URLRequest {
-    
-        let s = "\(host)\(APIEnvironment.APIVersion)\(request.endpoint)"
+        let s = "\(host)/\(APIEnvironment.APIVersion)\(request.endpoint)"
         let scaped = s.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         let url = URL(string: scaped!)
         var r = URLRequest(url: url!)
@@ -218,7 +217,7 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
     
     private func headers(in request: RequestRepresentable, for urlRequest: inout URLRequest) {
         urlRequest.httpMethod = request.method.rawValue
-//        addDefaultHeaders()
+        addDefaultHeaders()
         headers.forEach({ key, value in
             urlRequest.setValue(value, forHTTPHeaderField: "\(key)")
         })
@@ -228,11 +227,17 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
     }
     
     private func addDefaultHeaders() {
-        if UserStore.token != nil {
-            headers["Authorization"] = UserStore.token ?? ""
-        }
-        headers["device_type"] = "ios"
-        headers["device_id"] = UIDevice.current.identifierForVendor?.uuidString
+//        if UserStore.token != nil {
+//            headers["Authorization"] = UserStore.token ?? ""
+//        }
+//        headers["device_type"] = "ios"
+//        headers["device_id"] = UIDevice.current.identifierForVendor?.uuidString
+//        headers["current_time_zone"] = "IST"
+//        headers["language"] = "en"
+        headers["Content-Type"] = "application/json"
+//        headers["current_country"] = "India"
+//        headers["lat"] = "22.7177"
+//        headers["lng"] = "75.8545"
     }
     
     private func params(in request: RequestRepresentable, for urlRequest: inout URLRequest) {

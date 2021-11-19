@@ -8,7 +8,9 @@
 import UIKit
 
 class LandingTabBarViewController: UITabBarController {
+    
     var toggle:Bool = false
+    weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
         super.viewDidLoad()

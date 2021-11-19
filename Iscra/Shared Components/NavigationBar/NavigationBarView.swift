@@ -38,6 +38,7 @@ class NavigationBarView: UIView {
         [btnBack].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+        btnBack.showsTouchWhenHighlighted = false
         switch navType {
         case .myProfie:
             btnRightBar.setImage(#imageLiteral(resourceName: "ic-checkmark"), for: .normal)
@@ -81,5 +82,4 @@ extension UIView
         NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
     }
 }
-
 

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 enum InputValidation:String {
     case name
     case description
@@ -30,7 +29,7 @@ class Validation {
             return(
                 text == "" ? true :
                     text.count < 6 ? true : false,
-                text == "" ? AppConstant.emptyEmail : "Please enter vaild password")
+                text == "" ? AppConstant.emptyPassword : AppConstant.invaliedPassword)
             
         case .name:
             return( text == "" ? true :

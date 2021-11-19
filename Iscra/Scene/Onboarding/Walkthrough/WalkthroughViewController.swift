@@ -156,7 +156,10 @@ extension WalkthroughViewController : UITextFieldDelegate {
         let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
         if newLength <= 30 {
             if textField == txtName {
-                OnboadingUtils.shared.username = textField.text ?? ""
+                    if let text = txtName.text, let textRange = Range(range, in: text) {
+                    let updatedText = text.replacingCharacters(in: textRange, with: string)
+                    OnboadingUtils.shared.username = updatedText
+                }
             }
             return true
         } else {

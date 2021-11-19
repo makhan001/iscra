@@ -69,6 +69,7 @@
 		882F3E172721AAC300A409A6 /* MyAccountTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E132721AAC300A409A6 /* MyAccountTableView.swift */; };
 		882F3E182721AAC300A409A6 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E142721AAC300A409A6 /* MyAccountViewController.swift */; };
 		8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8835BCEE273E8A7200261839 /* StringConstant.swift */; };
+		8841876A27477E9B00C6EE39 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8841876927477E9A00C6EE39 /* CameraHandler.swift */; };
 		884549F727186F72003FBBC8 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884549F627186F72003FBBC8 /* SignUpModel.swift */; };
 		884549FB271872EC003FBBC8 /* SignUpMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 884549FA271872EC003FBBC8 /* SignUpMock.json */; };
 		8845B731271EF539007A5069 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8845B730271EF539007A5069 /* Onboarding.storyboard */; };
@@ -231,6 +232,7 @@
 		882F3E132721AAC300A409A6 /* MyAccountTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableView.swift; sourceTree = "<group>"; };
 		882F3E142721AAC300A409A6 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		8835BCEE273E8A7200261839 /* StringConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstant.swift; sourceTree = "<group>"; };
+		8841876927477E9A00C6EE39 /* CameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		884549F627186F72003FBBC8 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		884549FA271872EC003FBBC8 /* SignUpMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SignUpMock.json; sourceTree = "<group>"; };
 		8845B730271EF539007A5069 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -874,6 +876,7 @@
 		88E028582716F73F00D90BB1 /* Shared Components */ = {
 			isa = PBXGroup;
 			children = (
+				8841876927477E9A00C6EE39 /* CameraHandler.swift */,
 				88269DAD2744E046006A9F43 /* NavigationBar */,
 				8835BCED273E8A7200261839 /* StringConstant */,
 				88E5805B2722E92A00D4CAFB /* CollectionViewLayout */,
@@ -1249,6 +1252,7 @@
 				887994BF273AB2EE00904D1F /* MatesCollectionView.swift in Sources */,
 				88269DBE2744EFC2006A9F43 /* NavigationBarView.swift in Sources */,
 				882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */,
+				8841876A27477E9B00C6EE39 /* CameraHandler.swift in Sources */,
 				88E028712716FBB100D90BB1 /* LoginViewController.swift in Sources */,
 				887994C9273AB2EE00904D1F /* CommunityDetailViewController.swift in Sources */,
 				880F3E302727DE04007CA895 /* ColorPopUpViewController.swift in Sources */,

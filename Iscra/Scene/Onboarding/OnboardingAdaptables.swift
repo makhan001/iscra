@@ -44,7 +44,7 @@ protocol OnboardingViewRepresentable:AnyObject {
     func onAction(_ action: OnboardingAction)
 }
 protocol OnboardingServiceProvidable:class {
-    var delegate: OnboardingServiceProvierDelegate? { get set }
+    var  delegate: OnboardingServiceProvierDelegate? { get set }
     func login(param:UserParams.Login)
     func register(param:UserParams.Signup)
     func socialLogin(param: UserParams.SocialLogin)

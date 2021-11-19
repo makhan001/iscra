@@ -11,6 +11,7 @@ class AddMyPictureViewController: UIViewController {
   // MARK:-Outlets and variables
   @IBOutlet weak var btnAddPhoto: UIButton!
   @IBOutlet weak var btnCancel: UIButton!
+  @IBOutlet weak var imgUser: UIImageView!
     
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -46,8 +47,24 @@ extension AddMyPictureViewController {
   }
   private func addPhotoButtonAction() {
     print("addPhotoButtonAction")
+    openCameraPhoto()
   }
   private func cancelButtonAction() {
     print("cancelButtonAction")
   }
+    
+    func openCameraPhoto() {
+            CameraHandler.shared.showActionSheetPrivate(vc: self, isEditable: false, isAlreadyExist: false)
+            //        CameraHandler.shared.camera(allowsEditing: false)
+            CameraHandler.shared.imagePickedBlock = { (image) in
+                /* get your image here */
+              //  self.privatePhoto = image
+                self.imgUser.image = image
+//                let timestamp = NSDate().timeIntervalSince1970
+//                let intTimeStemp = Int(timestamp)
+//                let strImgName = “img_\(intTimeStemp).png”
+//                self.lblImgName.text = strImgName
+//                self.btnUploadPic.setTitle(“”, for: .normal)
+            }
+        }
 }

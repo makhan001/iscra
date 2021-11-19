@@ -64,7 +64,7 @@ extension SignupViewController {
     }
     
     private func registerAppleAction() {
-       print("Applelogin")
+        print("Applelogin")
     }
     
     private func showPasswordAction() {
@@ -85,28 +85,7 @@ extension SignupViewController {
     private func registerAction() {
         viewModel.onAction(action: .inputComplete(.signup), for: .signup)
     }
-
-}
-
-// MARK:- Textfiled Delegate
-extension SignupViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == self.txtEmail {
-            self.txtPassword.becomeFirstResponder()
-        } else {
-            self.txtPassword.resignFirstResponder()
-        }
-        return false
-    }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == txtEmail {
-            viewModel.email = textField.text ?? ""
-        } else if textField == txtPassword {
-            viewModel.password = textField.text ?? ""
-        }
-        return true
-    }
 }
 
 // MARK:- Verification Delegate
@@ -127,9 +106,38 @@ extension SignupViewController: OnboardingViewRepresentable {
             self.showToast(message: msg)
         case .register:
             // navigate to verification screen
+            
             break
         default:
             break
         }
+    }
+}
+
+
+// MARK:- Textfiled Delegate
+extension SignupViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.txtEmail {
+            self.txtEmail.becomeFirstResponder()
+        } else {
+            self.txtPassword.resignFirstResponder()
+        }
+        return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == txtEmail {
+            if let text = txtEmail.text, let textRange = Range(range, in: text) {
+                let updatedText = text.replacingCharacters(in: textRange, with: string)
+                viewModel.email = updatedText
+            }
+        } else if textField == txtPassword {
+            if let text = txtPassword.text, let textRange = Range(range, in: text) {
+                let updatedText = text.replacingCharacters(in: textRange, with: string)
+                viewModel.password = updatedText
+            }
+        }
+        return true
     }
 }

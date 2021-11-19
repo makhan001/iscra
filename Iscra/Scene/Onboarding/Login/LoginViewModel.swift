@@ -1,67 +1,78 @@
 //
-//  LoginViewModel.swift
+//  SignupViewModel.swift
 //  Iscra
 //
-//  Created by Lokesh Patil on 13/10/21.
+//  Created by Lokesh Patil on 18/11/21.
 //
 
+import UIKit
 import Foundation
 
-class LoginViewModel : NSObject {
+final class LoginViewModel {
     
-//    var LoginStatus  : APILoadingStatus = .isLoading
-    var LoginData : LoginModel!
-    var isVaildEmail = false
-    var isVaildPassword = false
-    var errorMsg = ""
+    var email: String = ""
+    var password: String = ""
     
-    override init() {
-        super.init()
+    weak var view: OnboardingViewRepresentable?
+    let provider: OnboardingServiceProvidable
+    
+    init(provider: OnboardingServiceProvidable) {
+        self.provider = provider
+        self.provider.delegate = self
     }
     
-    //
-    //MARK:- API Calling
-    //
+    func onAction(action: OnboardingAction, for screen: OnboardingScreenType) {
+        switch action {
+        case .login: validateUserInput()
+        default: break
+        }
+    }
     
-    func Login(emailId:String,password:String,success: @escaping () -> Void) {
-        var params : [String : Any] = [:]
-        params.updateValue(emailId, forKey: "email")
-        params.updateValue(password, forKey: "password")
-//        WebserviceManager.shared.sendRequest(serviceType: .logIn, params: params) { (response) in
-//            if let resp = response as? [String : Any] {
-//                let data = LoginModel(response: resp)
-//                self.LoginData = data
-//                success()
-//            }
-////            self.LoginStatus = .success
-//        } failure: { (error) in
-//            print("LoginStatus error")
-//            
-//        } offline: { (error) in
-//            print("LoginStatus network error")
-//            self.LoginStatus = .failed(error:.noInternetConnection )
+    private func validateUserInput() {
+//        self.provider.login(param: UserParams.Login(email: email, password: password, fcm_token:  UserStore.fcmtoken, device_id: nil, device_type: "ios"))
+        self.provider.login(param: UserParams.Login(email: email, password: password))
+
+//        WebService().requestMultiPart(urlString: "users/login", httpMethod: .post, parameters: UserParams.Login(email: email, password: password), decodingType: SuccessResponseModel.self, imageArray: [], fileArray: []) { (resp, str) in
+//            print("resp ---> \(resp)")
+//            print("str ---> \(str)")
 //        }
-    }
-    
-    //
-    //MARK:- Validations
-    //
-    func ValidateUserInputs(emailId:String,password:String) -> Bool {
-        var isVaild = true
-        if Validation().textValidation(text: emailId, validationType: .email).0{
-            isVaild = false
-            errorMsg = Validation().textValidation(text: emailId, validationType: .email).1
-        }
-        else if Validation().textValidation(text: password, validationType: .password).0{
-            isVaild = false
-            errorMsg = Validation().textValidation(text: emailId, validationType: .password).1
-        }
-        else{
-            isVaild = true
-        }
-        return isVaild
+        
+//        if Validation().textValidation(text: email, validationType: .email).0 {
+//            view?.onAction(.requireFields(Validation().textValidation(text: email, validationType: .email).1))
+//            return
+//        }
+//
+//        if Validation().textValidation(text: password, validationType: .password).0 {
+//            view?.onAction(.requireFields(Validation().textValidation(text: password, validationType: .password).1))
+//            return
+//        }
+       // self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, fcm_token: UserStore.fcmtoken, device_id: nil, device_type: "ios"))
+       // self.provider.login(param: UserParams.Login(email: email, password: password, fcm_token:  UserStore.fcmtoken, device_id: nil, device_type: "ios"))
+
     }
 }
+
+extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
+    func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
+        DispatchQueue.main.async {
+            if error != nil {
+                //                guard let message = error?.responseData?.message else {
+                //                    self.view?.onAction(.errorMessage(ERROR_MESSAGE))
+                //                    return
+                //                }
+                self.view?.onAction(.errorMessage(ERROR_MESSAGE))
+            } else {
+                if let resp = response as? SuccessResponseModel, resp.status == true {
+                    //                   self.register = resp.data?.register
+                    self.view?.onAction(.login)
+                } else {
+                    self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
+                }
+            }
+        }
+    }
+}
+
 
 
 

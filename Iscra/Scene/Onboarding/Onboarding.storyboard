@@ -354,14 +354,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pK4-HW-H7O" customClass="NavigationBarView" customModule="Iscra" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="aKw-QT-3Nx"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ANE-y1-VHS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlU-FS-Whi">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fp0-46-aJa">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vik-Ta-l6e" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
                                                         <rect key="frame" x="30" y="10" width="315" height="0.0"/>
@@ -411,9 +418,6 @@
                                                                                         <integer key="value" value="18"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
-                                                                                <connections>
-                                                                                    <outlet property="delegate" destination="HhF-nG-klw" id="D1N-lw-I1O"/>
-                                                                                </connections>
                                                                             </textField>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -487,9 +491,6 @@
                                                                                         <integer key="value" value="18"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
-                                                                                <connections>
-                                                                                    <outlet property="delegate" destination="HhF-nG-klw" id="YYO-3s-cVD"/>
-                                                                                </connections>
                                                                             </textField>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppa-bR-siW">
                                                                                 <rect key="frame" x="295" y="0.0" width="40" height="60"/>
@@ -675,21 +676,25 @@
                         <viewLayoutGuide key="safeArea" id="cfu-Tl-ozA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="pK4-HW-H7O" firstAttribute="top" secondItem="cfu-Tl-ozA" secondAttribute="top" id="1b5-oB-cYK"/>
                             <constraint firstItem="cfu-Tl-ozA" firstAttribute="bottom" secondItem="ANE-y1-VHS" secondAttribute="bottom" id="5Xw-zI-3TK"/>
-                            <constraint firstItem="ANE-y1-VHS" firstAttribute="top" secondItem="cfu-Tl-ozA" secondAttribute="top" id="htr-6K-nPo"/>
+                            <constraint firstItem="pK4-HW-H7O" firstAttribute="leading" secondItem="cfu-Tl-ozA" secondAttribute="leading" id="UmR-b4-CY0"/>
+                            <constraint firstItem="ANE-y1-VHS" firstAttribute="top" secondItem="pK4-HW-H7O" secondAttribute="bottom" id="Xua-Xw-7pg"/>
+                            <constraint firstItem="pK4-HW-H7O" firstAttribute="trailing" secondItem="cfu-Tl-ozA" secondAttribute="trailing" id="aK2-li-cU2"/>
                             <constraint firstItem="ANE-y1-VHS" firstAttribute="leading" secondItem="cfu-Tl-ozA" secondAttribute="leading" id="kHT-IP-9rD"/>
                             <constraint firstItem="cfu-Tl-ozA" firstAttribute="trailing" secondItem="ANE-y1-VHS" secondAttribute="trailing" id="poD-Xt-Wj2"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnApple" destination="1EZ-i5-6tx" id="gLW-lt-ZB8"/>
                         <outlet property="btnForgotPassword" destination="OJH-Lx-dhQ" id="bL0-33-LVO"/>
+                        <outlet property="btnGoogle" destination="tVA-Gj-8Fm" id="qlI-u8-sOF"/>
                         <outlet property="btnLogin" destination="R2Q-Yw-RDt" id="fCR-jD-tzP"/>
-                        <outlet property="btnLoginWithApple" destination="1EZ-i5-6tx" id="KoW-K6-i4l"/>
-                        <outlet property="btnLoginWithGoogle" destination="tVA-Gj-8Fm" id="9FN-IB-gzA"/>
                         <outlet property="btnShowPassword" destination="Ppa-bR-siW" id="Qcs-JJ-X8Z"/>
                         <outlet property="lblHeaderTitle" destination="vik-Ta-l6e" id="jqZ-4D-Y1E"/>
-                        <outlet property="txtFieldEmailId" destination="y7J-4T-9Tc" id="OhW-1c-Uco"/>
-                        <outlet property="txtFieldPassword" destination="hzh-hE-gJ9" id="frm-1r-YlE"/>
+                        <outlet property="txtEmail" destination="y7J-4T-9Tc" id="c7S-Ne-xCO"/>
+                        <outlet property="txtPassword" destination="hzh-hE-gJ9" id="F05-aR-dFp"/>
+                        <outlet property="viewNavigation" destination="pK4-HW-H7O" id="BxR-dJ-f18"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZH5-jW-hn2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1406,13 +1411,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkI-pu-GWT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMm-S5-fyd">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="INx-BZ-e05">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6la-jN-kOy">
                                                         <rect key="frame" x="20" y="57" width="335" height="86"/>
@@ -1520,13 +1525,23 @@
                                     <constraint firstAttribute="trailing" secondItem="RMm-S5-fyd" secondAttribute="trailing" id="ys6-nr-tmq"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMS-7G-i7r" customClass="NavigationBarView" customModule="Iscra" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="mFe-S7-Oyn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ldZ-OR-oJn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hkI-pu-GWT" firstAttribute="top" secondItem="ldZ-OR-oJn" secondAttribute="top" id="M5B-Fs-7qU"/>
+                            <constraint firstItem="tMS-7G-i7r" firstAttribute="top" secondItem="ldZ-OR-oJn" secondAttribute="top" id="Lvy-Hb-ieD"/>
                             <constraint firstItem="hkI-pu-GWT" firstAttribute="leading" secondItem="ldZ-OR-oJn" secondAttribute="leading" id="QZN-aB-ceR"/>
+                            <constraint firstItem="hkI-pu-GWT" firstAttribute="top" secondItem="tMS-7G-i7r" secondAttribute="bottom" id="UoG-77-FCE"/>
                             <constraint firstItem="ldZ-OR-oJn" firstAttribute="bottom" secondItem="hkI-pu-GWT" secondAttribute="bottom" id="ZnC-AY-Ck6"/>
+                            <constraint firstItem="tMS-7G-i7r" firstAttribute="leading" secondItem="ABF-Qr-rhg" secondAttribute="leading" id="e20-Yt-lFE"/>
+                            <constraint firstItem="ldZ-OR-oJn" firstAttribute="trailing" secondItem="tMS-7G-i7r" secondAttribute="trailing" id="paw-fg-88y"/>
                             <constraint firstItem="ldZ-OR-oJn" firstAttribute="trailing" secondItem="hkI-pu-GWT" secondAttribute="trailing" id="v2p-DJ-qmY"/>
                         </constraints>
                     </view>

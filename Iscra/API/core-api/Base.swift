@@ -16,11 +16,11 @@ public enum Environment {
     var host: String {
         switch self {
         case .dev:
-            return "localhost:3000/api/v1"
+            return "http://3.21.113.243/api/v1/"
         case .staging:
-            return "localhost:3000/api/v1"
+            return "http://3.21.113.243/api/v1/"
         case .production:
-            return "localhost:3000/api/v1"
+            return "http://3.21.113.243/api/v1/"
         }
     }
     case staging
@@ -203,9 +203,10 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
     }
     
     private func prepareRequest(request: RequestRepresentable) -> URLRequest {
-        let s = "\(host)/\(APIEnvironment.APIVersion)\(request.endpoint)"
-        let scaped = s.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        let url = URL(string: scaped!)
+    
+        let s = "\(host)\(APIEnvironment.APIVersion)\(request.endpoint)"
+        //let scaped = s.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        let url = URL(string: s)
         var r = URLRequest(url: url!)
         headers(in: request, for: &r)
         params(in: request, for: &r)
@@ -217,7 +218,7 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
     
     private func headers(in request: RequestRepresentable, for urlRequest: inout URLRequest) {
         urlRequest.httpMethod = request.method.rawValue
-        addDefaultHeaders()
+//        addDefaultHeaders()
         headers.forEach({ key, value in
             urlRequest.setValue(value, forHTTPHeaderField: "\(key)")
         })

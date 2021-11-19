@@ -46,10 +46,12 @@ final class SignupViewModel {
         }
         
         if Validation().textValidation(text: password, validationType: .password).0 {
-            view?.onAction(.requireFields("Password is required"))
+            view?.onAction(.requireFields(Validation().textValidation(text: password, validationType: .password).1))
             return
         }
-        self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, fcm_token: UserStore.fcmtoken, device_id: nil, device_type: "ios"))
+       // self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, fcm_token: UserStore.fcmtoken, device_id: nil, device_type: "ios"))
+        self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, password_confirmation: password ,profile_image : "asdasd"))
+
     }
 }
 

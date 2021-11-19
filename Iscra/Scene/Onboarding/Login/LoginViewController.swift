@@ -1,5 +1,6 @@
 //
 //  LoginViewController.swift
+
 //  Iscra
 //
 //  Created by Lokesh Patil on 13/10/21.
@@ -89,7 +90,7 @@ extension LoginViewController {
     
     private func loginAction() {
         print("loginAction")
-        viewModel.onAction(action: .login, for: .login)
+        viewModel.onAction(action: .inputComplete(.login), for: .login)
 
         
 //        router?.push(scene: .landing)

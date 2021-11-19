@@ -17,6 +17,7 @@ class WalkthroughViewController: UIViewController {
     @IBOutlet weak var btnHowToAddMemoji: UIButton!
     @IBOutlet weak var scrollview_Walkthrough: UIScrollView!
     
+    weak var router: NextSceneDismisser?
     var currentIndex = 1
     
     override func viewDidLoad() {

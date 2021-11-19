@@ -2082,7 +2082,7 @@
                         <outlet property="btnNext" destination="idN-Og-V6N" id="nvR-vR-GjN"/>
                         <outlet property="lblHeaderTitle" destination="OOP-y3-uar" id="mkH-I5-lyr"/>
                         <outlet property="scrollview_Walkthrough" destination="oQF-vI-ZL9" id="kMD-sw-bcZ"/>
-                        <outlet property="txtFieldName" destination="O9o-lJ-DfX" id="rVN-C8-YgS"/>
+                        <outlet property="txtName" destination="O9o-lJ-DfX" id="X10-Nh-GiU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IrI-Ht-74Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

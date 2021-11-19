@@ -52,7 +52,8 @@ extension WelcomeViewController {
     }
     
     private func startAction() {
-        router?.push(scene: .walkthrough)
+//        router?.push(scene: .walkthrough)
+//        self.navigationController
         
         // navigate to walkthrough
 
@@ -62,8 +63,8 @@ extension WelcomeViewController {
         /*  let storyboard = UIStoryboard(name: "Landing", bundle: nil)
          let vc = storyboard.instantiateViewController(withIdentifier: "LandingTabBarViewController") as! LandingTabBarViewController
          navigationController?.pushViewController(vc, animated: true)*/
-        //          let VC = storyboard?.instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
-        //          navigationController?.pushViewController(VC, animated: true)
+        let VC = storyboard?.instantiateViewController(withIdentifier: "walkthrough") as! WalkthroughViewController
+        self.navigationController?.pushViewController(VC, animated: true)
     }
     
     private func loginAction() {

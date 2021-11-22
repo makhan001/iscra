@@ -106,7 +106,9 @@ extension SignupViewController: OnboardingViewRepresentable {
             self.showToast(message: msg)
         case .register:
             // navigate to verification screen
-            
+            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+                    let VC = storyboard.instantiateViewController(withIdentifier: "VerificationViewController") as! VerificationViewController
+                    navigationController?.present(VC, animated: true, completion: nil)
             break
         default:
             break

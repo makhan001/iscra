@@ -15,6 +15,7 @@ struct AuthRequests: RequestRepresentable {
     var changePassword: UserParams.ChangePassword?
     var forgotPassword: UserParams.ForgotPassword?
     var socialLogin: UserParams.SocialLogin?
+    var verification: UserParams.Verification?
 
     let requestType: RequestType
     enum RequestType {
@@ -28,6 +29,7 @@ struct AuthRequests: RequestRepresentable {
         case aboutus
         case aboutUsContent
         case logout
+        case verification
     }
     
     init(requestType: RequestType) {
@@ -47,6 +49,8 @@ struct AuthRequests: RequestRepresentable {
             self.forgotPassword = params as? UserParams.ForgotPassword
         case is UserParams.SocialLogin:
             self.socialLogin = params as? UserParams.SocialLogin
+        case is UserParams.Verification:
+            self.verification = params as? UserParams.Verification
         default:break
         }
     }
@@ -82,6 +86,8 @@ struct AuthRequests: RequestRepresentable {
             return "saloon/about"
         case .logout:
             return "users/logout"
+        case .verification:
+           return "users/verification"
         }
     }
     

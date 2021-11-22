@@ -14,6 +14,7 @@ enum Scenes:String {
     case signup
     case forgot
     case walkthrough
+    case verification
     case landing
     case home
     case notification

@@ -12,8 +12,7 @@ protocol verificationDelegate:class {
 }
 
 class VerificationViewController: UIViewController {
-    
-    
+   
     @IBOutlet weak var verificationTransparentView: UIView!
     @IBOutlet weak var lblHeaderTitle: UILabel!
     @IBOutlet weak var lblMiddleTittle: UILabel!
@@ -24,6 +23,8 @@ class VerificationViewController: UIViewController {
     @IBOutlet weak var otpTextFieldThird: UITextField!
     @IBOutlet weak var otpTextFieldFourth: UITextField!
     weak var delegateOTP:verificationDelegate?
+    private let viewModel: VerificationViewModel = VerificationViewModel(provider: OnboardingServiceProvider())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -47,6 +48,7 @@ class VerificationViewController: UIViewController {
 // MARK:- Instance Methods
 extension VerificationViewController {
     private func setup() {
+        viewModel.view = self
         lblHeaderTitle.text = AppConstant.otpHeaderTitle
         lblMiddleTittle.text = AppConstant.otpMiddleTittle
         otpTextFieldFirst.delegate = self
@@ -84,8 +86,13 @@ extension VerificationViewController {
         
     }
     private func btnSubmitAction() {
-        delegateOTP?.verified()
-        self.dismiss(animated: true, completion: nil)
+      //  delegateOTP?.verified()
+       // self.dismiss(animated: true, completion: nil)
+        self.viewModel.strText1 = self.otpTextFieldFirst.text ?? ""
+        self.viewModel.strText2 = self.otpTextFieldSecond.text ?? ""
+        self.viewModel.strText3 = self.otpTextFieldThird.text ?? ""
+        self.viewModel.strText4 = self.otpTextFieldFourth.text ?? ""
+        viewModel.onAction(action: .inputComplete(.varification), for: .varification)
     }
 }
 // MARK:- TextField Delegate
@@ -143,5 +150,20 @@ extension VerificationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+// MARK: API Callback
+extension VerificationViewController: OnboardingViewRepresentable {
+    func onAction(_ action: OnboardingAction) {
+        switch action {
+        case let .requireFields(msg), let .errorMessage(msg):
+            self.showToast(message: msg)
+        case .register:
+            // navigate to verification screen
+            
+            break
+        default:
+            break
+        }
     }
 }

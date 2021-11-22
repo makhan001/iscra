@@ -51,7 +51,6 @@ final class SignupViewModel {
         }
        // self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, fcm_token: UserStore.fcmtoken, device_id: nil, device_type: "ios"))
         self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, devise_type: "ios"))
-
     }
 }
 
@@ -67,6 +66,7 @@ extension SignupViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
             } else {
                 if let resp = response as? SuccessResponseModel, resp.status == true {
                     //                   self.register = resp.data?.register
+                    UserStore.save(token: resp.data?.register?.authenticationToken) 
                     self.view?.onAction(.register)
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))

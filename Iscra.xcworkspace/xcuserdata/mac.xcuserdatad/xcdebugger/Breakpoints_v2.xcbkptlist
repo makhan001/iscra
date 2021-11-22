@@ -3,4 +3,86 @@
    uuid = "C1A416B4-FD00-4AAD-9C09-F6927CCC734A"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11C5CB83-07F2-461C-BA39-3B371B31E71D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/AppDelegate/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "setRootController()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6943A1E0-3A12-4AAF-9A8F-2FC14CF9A9E6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/API/core-api/Base.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "execute(requst:modeling:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6943A1E0-3A12-4AAF-9A8F-2FC14CF9A9E6 - 782eb99ea07cf8cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Iscra.SessionDispatcher.execute&lt;A where A: Swift.Decodable, A: Swift.Encodable&gt;(requst: Iscra.RequestRepresentable, modeling: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Iscra.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Iscra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Documents/Ios%20Projects/git/iscra/Iscra/API/core-api/Base.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "415">
+               </Location>
+               <Location
+                  uuid = "6943A1E0-3A12-4AAF-9A8F-2FC14CF9A9E6 - 782eb99ea07cf8cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Iscra.SessionDispatcher.execute&lt;A where A: Swift.Decodable, A: Swift.Encodable&gt;(requst: Iscra.RequestRepresentable, modeling: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Iscra.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Iscra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Documents/Ios%20Projects/git/iscra/Iscra/API/core-api/Base.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "478">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9B2E8747-020A-47BF-A794-221D845D3EB6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/API/core-api/Base.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "execute(requst:modeling:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

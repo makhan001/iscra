@@ -203,7 +203,8 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
     }
     
     private func prepareRequest(request: RequestRepresentable) -> URLRequest {
-        let s = "\(host)/\(APIEnvironment.APIVersion)\(request.endpoint)"
+      //  let s = "\(host)/\(APIEnvironment.APIVersion)\(request.endpoint)"
+        let s = "\(host)\(APIEnvironment.APIVersion)\(request.endpoint)"
         let scaped = s.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         let url = URL(string: scaped!)
         var r = URLRequest(url: url!)
@@ -227,9 +228,9 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
     }
     
     private func addDefaultHeaders() {
-//        if UserStore.token != nil {
-//            headers["Authorization"] = UserStore.token ?? ""
-//        }
+        if UserStore.token != nil {
+            headers["Authorization"] = UserStore.token ?? ""
+        }
 //        headers["device_type"] = "ios"
 //        headers["device_id"] = UIDevice.current.identifierForVendor?.uuidString
 //        headers["current_time_zone"] = "IST"

@@ -10,7 +10,6 @@ import Foundation
 
 final class OnboardingServiceProvider: OnboardingServiceProvidable {
     
-    
     var delegate: OnboardingServiceProvierDelegate?
     private let task = UserTask()
     
@@ -34,8 +33,8 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
             self?.delegate?.completed(for: .login, with: resp, with: nil)
         }
     }
-        
-       
+    
+    
     func forgotPassword(param: UserParams.ForgotPassword) {
         task.forgotPassword(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
@@ -63,11 +62,22 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
                 self?.delegate?.completed(for: .socialLogin, with: resp, with: err)
                 return
             }
-//            if (resp?.status) != 0 {
-//                UserStore.save(userID: "\((resp?.data?.socialLogin?.userID)!)")
-//                UserStore.save(token: "\((resp?.data?.socialLogin?.authorization)!)")
-//            }
+            //            if (resp?.status) != 0 {
+            //                UserStore.save(userID: "\((resp?.data?.socialLogin?.userID)!)")
+            //                UserStore.save(token: "\((resp?.data?.socialLogin?.authorization)!)")
+            //            }
             self?.delegate?.completed(for: .socialLogin, with: resp, with: nil)
         }
     }
+    
+    func varification(param: UserParams.Verification) {
+        task.verification(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .varification, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .varification, with: resp, with: nil)
+        }
+    }
+    
 }

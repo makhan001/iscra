@@ -15,6 +15,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var btnLogout: UIButton!
     @IBOutlet weak var imgProfile: UIImageView!
     var imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -52,7 +53,7 @@ extension MyAccountViewController {
     private func LogoutAction() {
         logOutAction() 
     }
-    
+        
     // MARK:- AlertView
     func alertView(){
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -135,6 +136,8 @@ extension MyAccountViewController {
         let alertController = UIAlertController(title: "Logout", message: "Are you sure? logout from Iscra.", preferredStyle: .alert)
         let Logoutaction = UIAlertAction(title: "Logout", style: .default) { (action:UIAlertAction!) in
             print("Delete button tapped");
+            
+            UserDefaults.standard.removeObject(forKey: "token")
         }
         Logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in

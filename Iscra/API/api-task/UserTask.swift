@@ -30,6 +30,10 @@ final class UserTask {
     func socialLogin<T:Codable>(params: UserParams.SocialLogin, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: AuthRequests(type: .socialLogin, params: params), modeling: responseModel, completion: completion)
     }
+    
+    func verification<T:Codable>(params: UserParams.Verification, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: AuthRequests(type: .verification, params: params), modeling: responseModel, completion: completion)
+    }
 //
 //    func aboutUs(completion:@escaping APIResult<SuccessResponseModel> ) {
 //        dispatcher.execute(requst: AuthRequests(requestType: .aboutus), modeling: SuccessResponseModel.self, completion:   completion)

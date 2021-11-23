@@ -12,6 +12,7 @@ enum OnboardingScreenType: String {
     case login
     case forgot
     case verification
+    case forgotpassword
 }
 enum OnboardingAction {
     case inputComplete(_ screen: OnboardingScreenType)

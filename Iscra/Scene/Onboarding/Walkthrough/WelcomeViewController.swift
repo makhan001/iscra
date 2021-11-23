@@ -24,6 +24,7 @@ class WelcomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillAppear(animated)
     }
+    
 }
 
 // MARK:- Instance Methods
@@ -75,5 +76,4 @@ extension WelcomeViewController {
         //        navigationController?.pushViewController(VC, animated: true)
     }
 }
-
 

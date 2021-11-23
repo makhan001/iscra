@@ -48,6 +48,15 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
         self.router.present(onboarding, animated: true)
     }
     
+    private func startVerification() {
+        let router = Router()
+        onboarding = OnboardingCoordinator(router: router)
+        add(onboarding)
+        onboarding.delegate = self
+        onboarding.start()
+        self.router.present(onboarding, animated: true)
+    }
+    
     private func startLanding() {
         landing = LandingCoordinator(router: Router())
         add(landing)
@@ -64,6 +73,7 @@ extension OnboardingCoordinator: NextSceneDismisser {
         case .login: startLogin()
         case .landingTab: startLanding()
         case .walkthrough: startWalkthrough()
+        case .verification: startVerification()
         default: break
         }
     }
@@ -78,3 +88,4 @@ extension OnboardingCoordinator: CoordinatorDimisser {
         router.dismissModule(animated: true, completion: nil)
     }
 }
+

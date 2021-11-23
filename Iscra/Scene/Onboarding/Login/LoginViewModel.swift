@@ -51,7 +51,7 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200 {
                     UserStore.save(token: resp.data?.loginData?.token)
-                    self.view?.onAction(.login)
+                    self.view?.onAction(.login(resp.message ?? ""))
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

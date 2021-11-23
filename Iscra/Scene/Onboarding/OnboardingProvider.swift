@@ -9,7 +9,7 @@
 import Foundation
 
 final class OnboardingServiceProvider: OnboardingServiceProvidable {
-    
+      
     var delegate: OnboardingServiceProvierDelegate?
     private let task = UserTask()
     
@@ -27,10 +27,10 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
     func login(param: UserParams.Login) {
         task.login(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .login, with: resp, with: err)
+                self?.delegate?.completed(for: .login(resp?.message ?? ""), with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .login, with: resp, with: nil)
+            self?.delegate?.completed(for: .login(resp?.message ?? ""), with: resp, with: nil)
         }
     }
     
@@ -70,14 +70,25 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
         }
     }
     
-    func varification(param: UserParams.Verification) {
+    func verification(param: UserParams.Verification) {
         task.verification(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .varification, with: resp, with: err)
+                self?.delegate?.completed(for: .verification, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .varification, with: resp, with: nil)
+            self?.delegate?.completed(for: .verification, with: resp, with: nil)
         }
     }
     
+    func resendVerification(param: UserParams.ResendVerification) {
+        task.resendVerification(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .resendVerification, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .resendVerification, with: resp, with: nil)
+        }
+    }
 }
+
+// resendVerification

@@ -83,4 +83,3 @@ extension LoginCoordinator: CoordinatorDimisser {
         router.dismissModule(animated: true, completion: nil)
     }
 }
-

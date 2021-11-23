@@ -16,13 +16,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var lblHeaderTitle:UILabel!
     @IBOutlet weak var btnShowPassword:UIButton!
     @IBOutlet weak var btnForgotPassword:UIButton!
-    
     @IBOutlet weak var btnApple:UIButton!
     @IBOutlet weak var btnGoogle:UIButton!
     @IBOutlet weak var txtEmail:UITextField!
     @IBOutlet weak var txtPassword:UITextField!
-//    @IBOutlet weak var viewNavigation:NavigationBarView!
-    
+    @IBOutlet weak var viewNavigation:NavigationBarView!
     weak var router: NextSceneDismisser?
     
     private let viewModel: LoginViewModel = LoginViewModel(provider: OnboardingServiceProvider())
@@ -35,8 +33,8 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-//        self.viewNavigation.lblTitle.text =  "Login"
-//        self.viewNavigation.delegateBarAction = self
+        self.viewNavigation.lblTitle.text =  "Login"
+        self.viewNavigation.delegateBarAction = self
     }
 }
 
@@ -62,11 +60,9 @@ extension LoginViewController  : navigationBarAction {
     }
     
     func ActionType() {
-        navigationController?.popViewController(animated: true)
+        router?.dismiss(controller: .login)
     }
 }
-
-
 
 // MARK:- Button Action
 extension LoginViewController {
@@ -113,7 +109,7 @@ extension LoginViewController {
     }
     
     private func loginAppleAction() {
-        router?.dismiss(controller: .login)
+        //router?.dismiss(controller: .login)
         print("loginAppleAction")
     }
     
@@ -168,9 +164,9 @@ extension LoginViewController: OnboardingViewRepresentable {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
         case .login:
+           
             router?.push(scene: .landingTab)
             // navigate to verification screen
-            
             break
         default:
             break

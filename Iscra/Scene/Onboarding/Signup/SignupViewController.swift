@@ -13,11 +13,11 @@ class SignupViewController: UIViewController {
     // MARK:-Outlets and variables
     
     @IBOutlet weak var lblHeaderTitle:UILabel!
-    @IBOutlet weak var txtEmail:UITextField! // txtEmail txtViewAddress
-    @IBOutlet weak var txtPassword:UITextField! // txtPassword
+    @IBOutlet weak var txtEmail:UITextField!
+    @IBOutlet weak var txtPassword:UITextField!
     @IBOutlet weak var btnRegister:UIButton!
-    @IBOutlet weak var btnGoogle:UIButton! // btnGoogle
-    @IBOutlet weak var btnApple:UIButton! // btnApple
+    @IBOutlet weak var btnGoogle:UIButton!
+    @IBOutlet weak var btnApple:UIButton!
     @IBOutlet weak var btnShowPassword:UIButton!
     
     private let viewModel: SignupViewModel = SignupViewModel(provider: OnboardingServiceProvider())
@@ -108,7 +108,7 @@ extension SignupViewController: OnboardingViewRepresentable {
             // navigate to verification screen
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
                     let VC = storyboard.instantiateViewController(withIdentifier: "VerificationViewController") as! VerificationViewController
-                    navigationController?.present(VC, animated: true, completion: nil)
+                navigationController?.present(VC, animated: true, completion: nil)
             break
         default:
             break

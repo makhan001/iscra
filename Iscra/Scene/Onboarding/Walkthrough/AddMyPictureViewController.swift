@@ -26,7 +26,6 @@ class AddMyPictureViewController: UIViewController {
 // MARK: Instance Methods
 extension AddMyPictureViewController {
   private func setup() {
-   
     self.navigationItem.title = AppConstant.nav_addProfilePicture//"Add Profile Picture"
     [btnAddPhoto, btnCancel].forEach {
       $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -50,21 +49,16 @@ extension AddMyPictureViewController {
     openCameraPhoto()
   }
   private func cancelButtonAction() {
-    print("cancelButtonAction")
+    navigationController?.popViewController(animated: true)
   }
     
     func openCameraPhoto() {
             CameraHandler.shared.showActionSheetPrivate(vc: self, isEditable: false, isAlreadyExist: false)
-            //        CameraHandler.shared.camera(allowsEditing: false)
+            CameraHandler.shared.camera(allowsEditing: true)
             CameraHandler.shared.imagePickedBlock = { (image) in
-                /* get your image here */
-              //  self.privatePhoto = image
+/* get your image here */
                 self.imgUser.image = image
-//                let timestamp = NSDate().timeIntervalSince1970
-//                let intTimeStemp = Int(timestamp)
-//                let strImgName = “img_\(intTimeStemp).png”
-//                self.lblImgName.text = strImgName
-//                self.btnUploadPic.setTitle(“”, for: .normal)
+                OnboadingUtils.shared.userImage = image
             }
         }
 }

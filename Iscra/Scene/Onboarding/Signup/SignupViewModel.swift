@@ -31,15 +31,7 @@ final class SignupViewModel {
     }
     
     private func validateUserInput() {
-        //        if username == "" {
-        //            view?.onAction(.requireFields("Username is required"))
-        //            return
-        //        }
-        
-        //        if email == "" {
-        //            view?.onAction(.requireFields("Email is required"))
-        //            return
-        //        }
+     
         if Validation().textValidation(text: email, validationType: .email).0 {
             view?.onAction(.requireFields(Validation().textValidation(text: email, validationType: .email).1))
             return
@@ -50,7 +42,11 @@ final class SignupViewModel {
             return
         }
        // self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, fcm_token: UserStore.fcmtoken, device_id: nil, device_type: "ios"))
-        self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, devise_type: "ios"))
+    self.provider.register(param: UserParams.Signup(email: email, username: username, password: password, devise_type: "ios"))
+        
+//        WebService().requestMultiPart(urlString: "users/register", httpMethod: .post, parameters: UserParams.Signup(email: email, username: username, password: password, devise_type: "ios"), decodingType: SuccessResponseModel.self, imageArray: [["profile_image": UIImage()]], fileArray: [], file: nil) { resp, error in
+//            }
+        
     }
 }
 

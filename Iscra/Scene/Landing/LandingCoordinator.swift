@@ -13,6 +13,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
     let controller: LandingTabBarViewController = WelcomeViewController.from(from: .landing, with: .landingTab)
     
     private var login: LoginCoordinator!
+    
         
     override func start() {
         super.start()

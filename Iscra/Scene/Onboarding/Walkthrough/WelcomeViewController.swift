@@ -66,6 +66,7 @@ extension WelcomeViewController {
          navigationController?.pushViewController(vc, animated: true)*/
         let VC = storyboard?.instantiateViewController(withIdentifier: "walkthrough") as! WalkthroughViewController
         self.navigationController?.pushViewController(VC, animated: true)
+      
     }
     
     private func loginAction() {

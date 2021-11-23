@@ -21,7 +21,6 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var btnShowPassword:UIButton!
     
     private let viewModel: SignupViewModel = SignupViewModel(provider: OnboardingServiceProvider())
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -85,7 +84,6 @@ extension SignupViewController {
     private func registerAction() {
         viewModel.onAction(action: .inputComplete(.signup), for: .signup)
     }
-    
 }
 
 // MARK:- Verification Delegate
@@ -96,7 +94,6 @@ extension SignupViewController : verificationDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
-
 
 // MARK: API Callback
 extension SignupViewController: OnboardingViewRepresentable {
@@ -115,7 +112,6 @@ extension SignupViewController: OnboardingViewRepresentable {
         }
     }
 }
-
 
 // MARK:- Textfiled Delegate
 extension SignupViewController: UITextFieldDelegate {

@@ -138,6 +138,10 @@ extension MyAccountViewController {
             print("Delete button tapped");
             
             UserDefaults.standard.removeObject(forKey: "token")
+            self.dismiss(animated: true, completion: nil)
+            if #available(iOS 13.0, *) {
+                AppDelegate.shared.setRootController()
+            }
         }
         Logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in

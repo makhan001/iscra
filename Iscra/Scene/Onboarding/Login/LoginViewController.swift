@@ -118,12 +118,12 @@ extension LoginViewController {
     }
     
     private func showPasswordAction() {
-        if  txtEmail.isSecureTextEntry == true {
-            self.btnShowPassword.setImage(UIImage(named: "eyeHidden"), for: .normal)
-            txtPassword.isSecureTextEntry = false
-        }else{
-            self.btnShowPassword.setImage(UIImage(named: "eyeVisible"), for: .normal)
-            txtPassword.isSecureTextEntry = true
+        if self.btnShowPassword.isSelected {
+            self.btnShowPassword.isSelected = false
+            self.txtPassword.isSecureTextEntry = true
+        } else {
+            self.btnShowPassword.isSelected = true
+            self.txtPassword.isSecureTextEntry = false
         }
     }
     
@@ -167,8 +167,18 @@ extension LoginViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-        case .login:
-            router?.push(scene: .landingTab)
+        case let .login(msg), let .login(msg):
+            
+            self.showToast(message: msg)
+            let seconds = 2.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                self.router?.push(scene: .landingTab)
+            }
+          
+            
+//        case .login:
+//
+//            router?.push(scene: .landingTab)
             // navigate to verification screen
             
             break

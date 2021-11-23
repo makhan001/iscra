@@ -83,8 +83,9 @@ extension VerificationViewController {
     }
     
     private func resendCodeAction() {
-        
+        viewModel.onAction(action: .resendVerification, for: .verification)
     }
+    
     private func btnSubmitAction() {
       //  delegateOTP?.verified()
        // self.dismiss(animated: true, completion: nil)
@@ -92,7 +93,7 @@ extension VerificationViewController {
         self.viewModel.strText2 = self.otpTextFieldSecond.text ?? ""
         self.viewModel.strText3 = self.otpTextFieldThird.text ?? ""
         self.viewModel.strText4 = self.otpTextFieldFourth.text ?? ""
-        viewModel.onAction(action: .inputComplete(.varification), for: .varification)
+        viewModel.onAction(action: .inputComplete(.verification), for: .verification)
     }
 }
 // MARK:- TextField Delegate

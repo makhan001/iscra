@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigation.isTranslucent = false
     }
     
-    private func setRootController() {
+     func setRootController() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
             self.rootController.start(window: window)

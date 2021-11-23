@@ -34,6 +34,10 @@ final class UserTask {
     func verification<T:Codable>(params: UserParams.Verification, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: AuthRequests(type: .verification, params: params), modeling: responseModel, completion: completion)
     }
+    
+    func resendVerification<T:Codable>(params: UserParams.ResendVerification, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: AuthRequests(type: .resendVerification, params: params), modeling: responseModel, completion: completion)
+    }
 //
 //    func aboutUs(completion:@escaping APIResult<SuccessResponseModel> ) {
 //        dispatcher.execute(requst: AuthRequests(requestType: .aboutus), modeling: SuccessResponseModel.self, completion:   completion)

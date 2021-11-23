@@ -121,7 +121,7 @@ enum StoryboardIdentifier:String {
     case logout
     case myProfile
     case editProfile
-    
+    case VerificationViewController
     case findUsers
     case setPrivacy
     

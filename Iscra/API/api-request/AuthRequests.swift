@@ -16,6 +16,7 @@ struct AuthRequests: RequestRepresentable {
     var forgotPassword: UserParams.ForgotPassword?
     var socialLogin: UserParams.SocialLogin?
     var verification: UserParams.Verification?
+    var resendVerification: UserParams.ResendVerification?
 
     let requestType: RequestType
     enum RequestType {
@@ -30,6 +31,7 @@ struct AuthRequests: RequestRepresentable {
         case aboutUsContent
         case logout
         case verification
+        case resendVerification
     }
     
     init(requestType: RequestType) {
@@ -51,6 +53,8 @@ struct AuthRequests: RequestRepresentable {
             self.socialLogin = params as? UserParams.SocialLogin
         case is UserParams.Verification:
             self.verification = params as? UserParams.Verification
+        case is UserParams.ResendVerification:
+            self.resendVerification = params as? UserParams.ResendVerification
         default:break
         }
     }
@@ -88,6 +92,8 @@ struct AuthRequests: RequestRepresentable {
             return "users/logout"
         case .verification:
            return "users/verification"
+        case .resendVerification:
+           return "users/resendverification"
         }
     }
     
@@ -103,6 +109,10 @@ struct AuthRequests: RequestRepresentable {
             return .body(data: encodeBody(data: forgotPassword))
         case .socialLogin:
             return .body(data: encodeBody(data: socialLogin))
+        case .verification:
+            return .body(data: encodeBody(data: verification))
+        case .resendVerification:
+            return .body(data: encodeBody(data: resendVerification))
         default:
             return .none
         }

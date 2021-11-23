@@ -46,6 +46,10 @@ enum UserParams {
         let verification_code:String?
     }
     
+    struct ResendVerification:Codable {
+       // let verification_code:String?
+    }
+    
     struct ChangePassword:Codable {
         let user_id:String?
         let old_password:String?

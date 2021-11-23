@@ -497,7 +497,8 @@
                                                                                     <constraint firstAttribute="width" constant="40" id="LM3-qT-0k7"/>
                                                                                 </constraints>
                                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                <state key="normal" image="eyeVisible"/>
+                                                                                <state key="normal" image="eyeHidden"/>
+                                                                                <state key="selected" image="eyeVisible"/>
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -823,7 +824,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attach or Drop photo here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fa-cy-S0B" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="115" y="242" width="145" height="41"/>
+                                                <rect key="frame" x="115" y="241" width="145" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2111,7 +2112,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your password was changed successfully" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0D-8G-Yih" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="88" width="251" height="41"/>
+                                        <rect key="frame" x="30" y="88" width="251" height="57.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="SecondryAccent"/>
                                         <nil key="highlightedColor"/>
@@ -2660,6 +2661,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="eyeHidden" width="24" height="24"/>
         <image name="eyeVisible" width="24" height="24"/>
         <image name="google" width="24" height="24"/>
         <image name="ic-background-image" width="375" height="468"/>

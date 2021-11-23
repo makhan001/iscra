@@ -25,17 +25,20 @@ final class VerificationViewModel {
     
     private func validateUserInput() {
         if (!self.strText1.isEmpty && self.strText1 != "") && (!self.strText2.isEmpty && self.strText2 != "" ) && (!self.strText3.isEmpty && self.strText3 != "") && (!self.strText4.isEmpty && self.strText4 != "") {
-            self.provider.varification(param: UserParams.Verification(verification_code: strText1 + strText2 + strText3 + strText4))
+            self.provider.verification(param: UserParams.Verification(verification_code: strText1 + strText2 + strText3 + strText4))
         }else{
             view?.onAction(.requireFields("Please enter all charaters for verification"))
         }
     }
-    
+    private func resendVerification() {
+        self.provider.resendVerification(param: UserParams.ResendVerification())
+    }
 }
 extension VerificationViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
     func onAction(action: OnboardingAction, for screen: OnboardingScreenType) {
         switch action {
         case .inputComplete: validateUserInput()
+        case .resendVerification : resendVerification()
         default: break
         }
     }

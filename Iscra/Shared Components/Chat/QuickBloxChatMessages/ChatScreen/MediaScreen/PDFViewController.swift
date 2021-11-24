@@ -14,7 +14,7 @@ import SVProgressHUD
 @available(iOS 11.0, *)
 class PDFViewController: UIViewController {
     
-    private lazy var infoItem = UIBarButtonItem(image: UIImage(named: "moreInfo"),
+    private lazy var infoItem = UIBarButtonItem(image: UIImage(named: "ic_menu_image"),
                                                 style: .plain,
                                                 target: self,
                                                 action:#selector(didTapInfo(_:)))

@@ -13,7 +13,7 @@ import SVProgressHUD
 
 
 class ParentVideoVC: UIViewController {
-    private lazy var infoItem = UIBarButtonItem(image: UIImage(named: "moreInfo"),
+    private lazy var infoItem = UIBarButtonItem(image: UIImage(named: "ic_menu_image"),
                                                 style: .plain,
                                                 target: self,
                                                 action:#selector(didTapInfo(_:)))
@@ -32,7 +32,7 @@ class ParentVideoVC: UIViewController {
         backButtonItem.tintColor = UIColor(red: 0.758, green: 0.639, blue: 0.158, alpha: 1)
         
         navigationItem.rightBarButtonItem = infoItem
-        infoItem.tintColor = .white
+        infoItem.tintColor = UIColor(red: 0.758, green: 0.639, blue: 0.158, alpha: 1)
         
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.barStyle = .black

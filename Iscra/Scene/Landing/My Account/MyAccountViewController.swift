@@ -15,7 +15,9 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var btnLogout: UIButton!
     @IBOutlet weak var imgProfile: UIImageView!
     var imagePicker = UIImagePickerController()
-    
+    weak var router: NextSceneDismisser?
+    private let viewModel: MyAccountViewModel = MyAccountViewModel(provider: OnboardingServiceProvider())
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -26,6 +28,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
 // MARK: Instance Methods
 extension MyAccountViewController {
     private func setup() {
+        viewModel.view = self
         btnGetSubscription.titleLabel?.font =  UIFont(name: "SF-Pro-Display-Black", size: 50)
         [btnGetSubscription,btnLogout].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -49,7 +52,9 @@ extension MyAccountViewController {
     private func GetSubscriptionAction() {
         let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "GetSubcriptionViewController") as! GetSubcriptionViewController
-        self.navigationController?.pushViewController(vc, animated: true)    }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func LogoutAction() {
         logOutAction() 
     }
@@ -136,12 +141,7 @@ extension MyAccountViewController {
         let alertController = UIAlertController(title: "Logout", message: "Are you sure? logout from Iscra.", preferredStyle: .alert)
         let Logoutaction = UIAlertAction(title: "Logout", style: .default) { (action:UIAlertAction!) in
             print("Delete button tapped");
-            
-            UserDefaults.standard.removeObject(forKey: "token")
-            self.dismiss(animated: true, completion: nil)
-            if #available(iOS 13.0, *) {
-                AppDelegate.shared.setRootController()
-            }
+            self.viewModel.logout()
         }
         Logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
@@ -191,4 +191,22 @@ extension MyAccountViewController: clickManagerDelegate{
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-
+// MARK: API Callback
+extension MyAccountViewController: OnboardingViewRepresentable {
+    func onAction(_ action: OnboardingAction) {
+        switch action {
+        case let .requireFields(msg), let .errorMessage(msg):
+            self.showToast(message: msg)
+        case .logout: 
+         
+            if #available(iOS 13.0, *) {
+                AppDelegate.shared.setRootController()
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+            //self.router?.push(scene: .welcome)
+        default:
+            break
+        }
+    }
+}

@@ -12,7 +12,7 @@ protocol verificationDelegate:class {
 }
 
 class VerificationViewController: UIViewController {
-   
+    
     @IBOutlet weak var verificationTransparentView: UIView!
     @IBOutlet weak var lblHeaderTitle: UILabel!
     @IBOutlet weak var lblMiddleTittle: UILabel!
@@ -24,6 +24,7 @@ class VerificationViewController: UIViewController {
     @IBOutlet weak var otpTextFieldFourth: UITextField!
     weak var delegateOTP:verificationDelegate?
     private let viewModel: VerificationViewModel = VerificationViewModel(provider: OnboardingServiceProvider())
+   // weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +63,7 @@ extension VerificationViewController {
     
     private func customTextFieldFont(){
         otpTextFieldFirst.becomeFirstResponder()
-
+        
     }
     @objc func handleTap() {
         print("tapped")
@@ -87,8 +88,8 @@ extension VerificationViewController {
     }
     
     private func btnSubmitAction() {
-      //  delegateOTP?.verified()
-       // self.dismiss(animated: true, completion: nil)
+        //  delegateOTP?.verified()
+        // self.dismiss(animated: true, completion: nil)
         self.viewModel.strText1 = self.otpTextFieldFirst.text ?? ""
         self.viewModel.strText2 = self.otpTextFieldSecond.text ?? ""
         self.viewModel.strText3 = self.otpTextFieldThird.text ?? ""
@@ -159,9 +160,19 @@ extension VerificationViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-        case .register:
-            // navigate to verification screen
-            
+        case let .verification(msg):
+            self.showToast(message: msg)
+            dismiss(animated: false, completion: nil)
+            self.delegateOTP?.verified()
+           
+//            let seconds = 2.0
+//            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+//                self.router?.push(scene: .landingTab)
+//
+////                let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+////                let vc = storyboard.instantiateViewController(withIdentifier: "landingTab") as! LandingTabBarViewController
+////                self.navigationController?.pushViewController(vc, animated: true)
+//            }
             break
         default:
             break

@@ -22,7 +22,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtPassword:UITextField!
     @IBOutlet weak var viewNavigation:NavigationBarView!
     weak var router: NextSceneDismisser?
-    
     private let viewModel: LoginViewModel = LoginViewModel(provider: OnboardingServiceProvider())
     
     override func viewDidLoad() {
@@ -51,12 +50,12 @@ extension LoginViewController  : navigationBarAction {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         
-        if TARGET_OS_SIMULATOR == 1 {
-            viewModel.email = "lokesh@gmail.com"
-            viewModel.password = "123456"
-            txtEmail.text = viewModel.email
-            txtPassword.text = viewModel.password
-        }
+//        if TARGET_OS_SIMULATOR == 1 {
+//            viewModel.email = "ios6@gmail.com"
+//            viewModel.password = "123456"
+//            txtEmail.text = viewModel.email
+//            txtPassword.text = viewModel.password
+//        }
     }
     
     func ActionType() {
@@ -86,22 +85,24 @@ extension LoginViewController {
     
     private func loginAction() {
         print("loginAction")
+        self.txtEmail.resignFirstResponder()
+        self.txtPassword.resignFirstResponder()
         viewModel.onAction(action: .inputComplete(.login), for: .login)
-
         
-//        router?.push(scene: .landing)
-//
-//        if viewModel.ValidateUserInputs(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
-//        {
-//            viewModel.Login(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
-//            {
-//                self.showToast(message:self.viewModel.LoginData.message , seconds: 3.0)
-//            }
-//        }
-//        else {
-//            print(viewModel.errorMsg)
-//            self.showToast(message:viewModel.errorMsg , seconds: 1.0)
-//        }
+        
+        //        router?.push(scene: .landing)
+        //
+        //        if viewModel.ValidateUserInputs(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
+        //        {
+        //            viewModel.Login(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
+        //            {
+        //                self.showToast(message:self.viewModel.LoginData.message , seconds: 3.0)
+        //            }
+        //        }
+        //        else {
+        //            print(viewModel.errorMsg)
+        //            self.showToast(message:viewModel.errorMsg , seconds: 1.0)
+        //        }
     }
     
     private func loginGoogleAction() {
@@ -124,7 +125,7 @@ extension LoginViewController {
     }
     
     private func forgotPasswordAction() {
-        let VC = storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
+        let VC = storyboard?.instantiateViewController(withIdentifier: "forgot") as! ForgotPasswordViewController
         navigationController?.pushViewController(VC, animated: true)
     }
     
@@ -140,6 +141,7 @@ extension LoginViewController:UITextFieldDelegate {
         }
         return false
     }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == txtEmail {
             if let text = txtEmail.text, let textRange = Range(range, in: text) {
@@ -154,29 +156,57 @@ extension LoginViewController:UITextFieldDelegate {
         }
         return true
     }
-    
 }
 
 // MARK: API Callback
-extension LoginViewController: OnboardingViewRepresentable {
+extension LoginViewController: OnboardingViewRepresentable , verificationDelegate {
+    func verified() {
+        dismiss(animated: false, completion: nil)
+        self.router?.push(scene: .landingTab)
+//        let seconds = 2.0
+//        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+//            self.router?.push(scene: .landingTab)
+//            //                let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+//            //                let vc = storyboard.instantiateViewController(withIdentifier: "landingTab") as! LandingTabBarViewController
+//            //                self.navigationController?.pushViewController(vc, animated: true)
+//        }
+    }
+    
     func onAction(_ action: OnboardingAction) {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-
-        case let .login(msg), let .login(msg):
-            
-            self.showToast(message: msg)
-            let seconds = 2.0
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+        // deepak
+        case let .login(msg, isvarified):
+            print("isvarified =====>>>\(isvarified)")
+           
+           // self.showToast(message: msg)
+            //let seconds = 2.0
+            if isvarified == true{
                 self.router?.push(scene: .landingTab)
+//                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+//                    self.router?.push(scene: .landingTab)
+//                }
             }
-          
+            else {
+                let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+                let VC = storyboard.instantiateViewController(withIdentifier: "VerificationViewController") as! VerificationViewController
+                VC.delegateOTP = self
+                navigationController?.present(VC, animated: true, completion: nil)
+            }
             
-//        case .login:
-//
-//            router?.push(scene: .landingTab)
-
+            
+            //            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+            //                           let VC = storyboard.instantiateViewController(withIdentifier: "VerificationViewController") as! VerificationViewController
+            //            VC.delegateOTP = self
+            //                           navigationController?.present(VC, animated: true, completion: nil)
+            // deepak
+            
+            
+            //        case .login:
+            //
+            //            router?.push(scene: .landingTab)
+            
             // navigate to verification screen
             break
         default:

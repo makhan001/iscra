@@ -10,9 +10,9 @@ import Foundation
 enum OnboardingScreenType: String {
     case signup
     case login
-    case forgot
     case verification
-    case forgotpassword
+    case forgotPassword
+    case changePassword
 }
 enum OnboardingAction {
     case inputComplete(_ screen: OnboardingScreenType)
@@ -22,12 +22,14 @@ enum OnboardingAction {
     case validEmail(text:String)
     case errorMessage(_ text:String)
     case register
-    case login(_ text:String)
+  //  case login(_ text:String)
+    case login(_ text:String, _ is_varified:Bool)
+    //case login(SuccessResponseModel)
     case landing
-    case verification
+    case verification(_ text:String)
     case resendVerification
-    case forgotPassword
-    case changePassword
+    case forgotPassword(_ text:String )
+    case changePassword(_ text:String)
     case socialLogin
     case terms
     case privacy
@@ -36,6 +38,7 @@ enum OnboardingAction {
     case staticContent
     case aboutUsContent
     case sessionExpired
+    case logout
 }
 protocol InputFieldAlertDelegate:AnyObject {
     func userInput(_ text: String)
@@ -55,6 +58,7 @@ protocol OnboardingServiceProvidable:AnyObject {
     func forgotPassword(param:UserParams.ForgotPassword)
     func verification(param:UserParams.Verification)
     func resendVerification(param:UserParams.ResendVerification)
+    func logout(param:UserParams.logout)
 }
 protocol OnboardingServiceProvierDelegate:AnyObject {
     func completed<T>(for action:OnboardingAction, with response:T?, with error:APIError?)

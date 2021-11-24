@@ -1,17 +1,17 @@
 //
-//  SignupViewModel.swift
+//  ChangePasswordViewModel.swift
 //  Iscra
 //
-//  Created by Lokesh Patil on 18/11/21.
+//  Created by mac on 24/11/21.
 //
 
 import UIKit
 import Foundation
 
-final class LoginViewModel {
+final class ChangePasswordViewModel {
     
-    var email: String = ""
     var password: String = ""
+    var newPassword: String = ""
     
     weak var view: OnboardingViewRepresentable?
     let provider: OnboardingServiceProvidable
@@ -29,31 +29,27 @@ final class LoginViewModel {
     }
     
     private func validateUserInput() {
-        if Validation().textValidation(text: email, validationType: .email).0 {
-            view?.onAction(.requireFields(Validation().textValidation(text: email, validationType: .email).1))
-            return
-        }
-        
+   
         if Validation().textValidation(text: password, validationType: .password).0 {
             view?.onAction(.requireFields(Validation().textValidation(text: password, validationType: .password).1))
             return
         }
-                
-        self.provider.login(param: UserParams.Login(email: email, password: password, fcm_token: "fcmToken", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, device_udid: "" , device_type: "ios"))
+        if Validation().textValidation(text: newPassword, validationType: .newPassword).0 {
+            view?.onAction(.requireFields(Validation().textValidation(text: newPassword, validationType: .newPassword).1))
+            return
+        }
+        self.provider.changePassword(param: UserParams.ChangePassword(current_password: password, new_password: newPassword))
     }
 }
 
-extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
+extension ChangePasswordViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
             if error != nil {
-             //   self.view?.onAction(.errorMessage(ERROR_MESSAGE))
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200 {
-                    UserStore.save(token: resp.data?.loginData?.authenticationToken)
-                    //self.view?.onAction(.login(resp.message ?? ""))
-                    self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
+                    self.view?.onAction(.changePassword(resp.message ?? ""))
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

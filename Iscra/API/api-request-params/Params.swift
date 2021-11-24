@@ -11,31 +11,25 @@ import Foundation
 enum UserParams {
     
     struct Signup:Codable {
-        //        let email:String?
-        //        let username:String?
-        //        let password:String?
-        //        let fcm_token:String?
-        //        let device_id:String?
-               
         let email:String?
         let username:String?
         let password:String?
-        let devise_type:String?
-       // let password_confirmation:String?
-      //  let profile_image:String?
+        let fcm_token:String?
+        let os_version:String?
+        let device_model:String?
+        let device_udid:String?
+        let device_type:String?
+    //  let profile_image:String?
     }
     
-//    struct Login:Codable {
-//        let email:String?
-//        let password:String?
-//        let fcm_token:String?
-//        let device_id:String?
-//        let device_type:String?
-//    }
-    
     struct Login:Codable {
-        let email:String
-        let password:String
+        let email:String?
+        let password:String?
+        let fcm_token:String?
+        let os_version:String?
+        let device_model:String?
+        let device_udid:String?
+        let device_type:String?
     }
     
     struct ForgotPassword:Codable {
@@ -50,9 +44,14 @@ enum UserParams {
        // let verification_code:String?
     }
     
+    struct logout:Codable {
+    }
+    
     struct ChangePassword:Codable {
-        let user_id:String?
-        let old_password:String?
+        //let user_id:String?
+//        let old_password:String?
+//        let new_password:String?
+        let current_password:String?
         let new_password:String?
     }
     

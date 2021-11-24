@@ -1,17 +1,16 @@
 //
-//  SignupViewModel.swift
+//  ForgotPasswordViewModel.swift
 //  Iscra
 //
-//  Created by Lokesh Patil on 18/11/21.
+//  Created by mac on 24/11/21.
 //
 
 import UIKit
 import Foundation
 
-final class LoginViewModel {
+final class ForgotPasswordViewModel {
     
     var email: String = ""
-    var password: String = ""
     
     weak var view: OnboardingViewRepresentable?
     let provider: OnboardingServiceProvidable
@@ -33,17 +32,11 @@ final class LoginViewModel {
             view?.onAction(.requireFields(Validation().textValidation(text: email, validationType: .email).1))
             return
         }
-        
-        if Validation().textValidation(text: password, validationType: .password).0 {
-            view?.onAction(.requireFields(Validation().textValidation(text: password, validationType: .password).1))
-            return
-        }
-                
-        self.provider.login(param: UserParams.Login(email: email, password: password, fcm_token: "fcmToken", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, device_udid: "" , device_type: "ios"))
+        self.provider.forgotPassword(param: UserParams.ForgotPassword(email: email))
     }
 }
 
-extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
+extension ForgotPasswordViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
             if error != nil {
@@ -51,9 +44,8 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200 {
-                    UserStore.save(token: resp.data?.loginData?.authenticationToken)
-                    //self.view?.onAction(.login(resp.message ?? ""))
-                    self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
+                   
+                    self.view?.onAction(.forgotPassword(resp.message ?? ""))
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

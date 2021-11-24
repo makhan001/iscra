@@ -32,10 +32,10 @@ class WalkthroughViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
-        if TARGET_OS_SIMULATOR == 1 {
-            OnboadingUtils.shared.username = "Deepak"
-            self.txtName.text = "Deepak"
-        }
+//        if TARGET_OS_SIMULATOR == 1 {
+//            OnboadingUtils.shared.username = "Deepak"
+//            self.txtName.text = "Deepak"
+//        }
     }
 }
 

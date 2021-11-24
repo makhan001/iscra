@@ -124,7 +124,6 @@ enum StoryboardIdentifier:String {
     case VerificationViewController
     case findUsers
     case setPrivacy
-    
     case userProfile
     case createCluster
     case clusterDetail

@@ -11,6 +11,9 @@
 		0402C4B1273D4A200073DFB8 /* GroupFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0402C4AE273D4A200073DFB8 /* GroupFriendsCell.xib */; };
 		0402C4B2273D4A200073DFB8 /* GroupHabitFriendsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */; };
 		0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */; };
+		0418F612274E33E800858099 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F611274E33E800858099 /* ForgotPasswordViewModel.swift */; };
+		0418F615274E5F4500858099 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F614274E5F4500858099 /* MyAccountViewModel.swift */; };
+		0418F618274E6D0300858099 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F617274E6D0300858099 /* ChangePasswordViewModel.swift */; };
 		04397097274B762700898C91 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04397096274B762700898C91 /* VerificationViewModel.swift */; };
 		861CF1D12743DE9700727D1E /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D02743DE9700727D1E /* RootCoordinator.swift */; };
 		861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D22743E02300727D1E /* LoginCoordinator.swift */; };
@@ -175,6 +178,9 @@
 		0402C4AE273D4A200073DFB8 /* GroupFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupFriendsCell.xib; sourceTree = "<group>"; };
 		0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHabitFriendsTable.swift; sourceTree = "<group>"; };
 		0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupFriendsCell.swift; sourceTree = "<group>"; };
+		0418F611274E33E800858099 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		0418F614274E5F4500858099 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
+		0418F617274E6D0300858099 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		04397096274B762700898C91 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
 		5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iscra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -626,6 +632,7 @@
 			isa = PBXGroup;
 			children = (
 				8841878327478D0F00C6EE39 /* ForgotPsswordViewController.swift */,
+				0418F611274E33E800858099 /* ForgotPasswordViewModel.swift */,
 			);
 			path = "Forgot password";
 			sourceTree = "<group>";
@@ -718,6 +725,7 @@
 			isa = PBXGroup;
 			children = (
 				88A529102730205000037464 /* ChangePasswordViewController.swift */,
+				0418F617274E6D0300858099 /* ChangePasswordViewModel.swift */,
 				88A5290F2730204F00037464 /* PasswordChangeConfirmationViewController.swift */,
 			);
 			path = ChangePassword;
@@ -954,6 +962,7 @@
 			isa = PBXGroup;
 			children = (
 				882F3E142721AAC300A409A6 /* MyAccountViewController.swift */,
+				0418F614274E5F4500858099 /* MyAccountViewModel.swift */,
 				882F3E102721AAC300A409A6 /* View */,
 			);
 			path = "My Account";
@@ -1293,6 +1302,7 @@
 				88202D5F2719AAAA00F0EA2E /* WalkthroughViewController.swift in Sources */,
 				887994C2273AB2EE00904D1F /* GroupHabitCell.swift in Sources */,
 				88E028A42716FFF900D90BB1 /* LoginViewModel.swift in Sources */,
+				0418F612274E33E800858099 /* ForgotPasswordViewModel.swift in Sources */,
 				880F3E4D27280C48007CA895 /* IconCollectionView.swift in Sources */,
 				887994C3273AB2EE00904D1F /* CommunityFriendCell.swift in Sources */,
 				8800807D272934B4008E3260 /* WeekDaysCollectionViewCell.swift in Sources */,
@@ -1349,9 +1359,11 @@
 				88E028872716FE6300D90BB1 /* ChatViewController.swift in Sources */,
 				88B4A228271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift in Sources */,
 				88B4A27027205DDD00488AA3 /* EditNameViewController.swift in Sources */,
+				0418F615274E5F4500858099 /* MyAccountViewModel.swift in Sources */,
 				88202D55271968B900F0EA2E /* InputValidation.swift in Sources */,
 				8814B4472743950500A6DE01 /* APIResponse.swift in Sources */,
 				88E580512722E70300D4CAFB /* MatesCollectionCell.swift in Sources */,
+				0418F618274E6D0300858099 /* ChangePasswordViewModel.swift in Sources */,
 				8814B4302743874100A6DE01 /* UserTask.swift in Sources */,
 				880F3E5127280C6B007CA895 /* IconCollectionViewCell.swift in Sources */,
 				88CA2A48271E9DE1003D590D /* LoginModel.swift in Sources */,

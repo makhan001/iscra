@@ -14,6 +14,4 @@ target 'Iscra' do
  pod 'IQKeyboardManagerSwift'
  pod 'ParallaxHeader'
  pod 'FSCalendar'
- pod 'QuickBlox', '~> 2.17.10'
- pod 'TTTAttributedLabel', '~> 2.0.0'
 end

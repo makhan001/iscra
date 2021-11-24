@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import SVProgressHUD
-import IQKeyboardManagerSwift
+
 
 class LoginViewController: UIViewController {
     
@@ -41,7 +40,7 @@ class LoginViewController: UIViewController {
 // MARK: Instance Methods
 extension LoginViewController {
     private func setup() {
-        IQKeyboardManager.shared.enable = true
+        //IQKeyboardManager.shared.enable = true
         self.navigationController?.view.backgroundColor = UIColor.white
         lblHeaderTitle.text = "Log in into your \naccount"
         btnLogin.titleLabel?.font =  UIFont(name: "SF-Pro-Display-Black", size: 50)

@@ -28,7 +28,7 @@ struct MyAccount {
 class MyAccountTableView: UITableView {
     // MARK:-Outlets and variables
     let items = [
-        MyAccount(titleImage: "ic-changeProfilePhoto-image", titleName: "Change Profile Photo", clickManager: .changeProfilePhoto),
+        MyAccount(titleImage: "ic-changeProfilePhoto-image", titleName: "Change profile photo", clickManager: .changeProfilePhoto),
         MyAccount(titleImage: "ic-addYourOwnMemoji-image", titleName: "Add your own memoji", clickManager: .addYourOwnMemoji),
         MyAccount(titleImage: "ic-changePassword-image", titleName: "Change password", clickManager: .changePassword),
         MyAccount(titleImage: "ic-shareWithFriends-image", titleName: "Share with friends", clickManager: .shareWithFriends),
@@ -43,6 +43,7 @@ class MyAccountTableView: UITableView {
         self.separatorStyle = .none
         self.register(UINib(nibName: "MyAccountTableViewCell", bundle: nil), forCellReuseIdentifier: "MyAccountTableViewCell")
         self.delegate = self
+        
         self.dataSource = self
         reloadData()
     }

@@ -13,7 +13,6 @@ class MyCommunityCollectionView: UICollectionView , UICollectionViewDelegate , U
     override class func awakeFromNib() {
         super.awakeFromNib()
         
-        
     }
 
     func configure(obj: Int) {

@@ -9,6 +9,21 @@ import UIKit
 import CoreData
 import SVProgressHUD
 import IQKeyboardManagerSwift
+import UserNotifications
+import Quickblox
+
+struct CredentialsConstant {
+    static let applicationID:UInt = 94500
+    static let authKey = "UA5G7ZR4-z-hRM9"
+    static let authSecret = "cT-CPm-3TBU8-42"
+    static let accountKey = "qamiD7ximJfGsNrs-FyX"
+}
+//struct CredentialsConstant {
+//    static let applicationID:UInt = 93900
+//    static let authKey = "hyE37qMZc44eW9f"
+//    static let authSecret = "3qj7mPMx5jfqyfr"
+//    static let accountKey = "vs49Hh-LaaKEe7gyyEFA"
+//}
 
 @available(iOS 13.0, *)
 @main
@@ -21,8 +36,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setUps()
+        application.applicationIconBadgeNumber = 0
+       //Quick blox initial setup
+        self.setQuickBloxSetup()
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
         return true
     }
+    func setQuickBloxSetup() {
+        QBSettings.applicationID = CredentialsConstant.applicationID
+        QBSettings.authKey = CredentialsConstant.authKey
+        QBSettings.authSecret = CredentialsConstant.authSecret
+        QBSettings.accountKey = CredentialsConstant.accountKey
+        
+        // enabling carbons for chat with same id in multiple device
+        QBSettings.carbonsEnabled = true
+        // Enables detailed XMPP logging in console output.
+        QBSettings.enableXMPPLogging()
+        QBSettings.logLevel = .debug
+        QBSettings.autoReconnectEnabled = true
+
+    }
+//    func applicationDidEnterBackground(_ application: UIApplication) {
+//        // Logging out from chat.
+//        ChatManager.instance.disconnect()
+//    }
+//    
+//    func applicationWillEnterForeground(_ application: UIApplication) {
+//        // Logging in to chat.
+//        ChatManager.instance.connect()
+//    }
     
     // MARK: UISceneSession Lifecycle
     
@@ -36,6 +79,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    //MARK: - UNUserNotification
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        guard let identifierForVendor = UIDevice.current.identifierForVendor else {
+            return
+        }
+        
+        let deviceIdentifier = identifierForVendor.uuidString
+        let subscription = QBMSubscription()
+        subscription.notificationChannel = .APNS
+        subscription.deviceUDID = deviceIdentifier
+        subscription.deviceToken = deviceToken
+        QBRequest.createSubscription(subscription, successBlock: { response, objects in
+        }, errorBlock: { response in
+            debugPrint("[AppDelegate] createSubscription error: \(String(describing: response.error))")
+        })
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        debugPrint("[AppDelegate] Unable to register for remote notifications: \(error.localizedDescription)")
     }
     
     // MARK: - Core Data stack
@@ -113,3 +178,44 @@ extension AppDelegate : CLLocationManagerDelegate {
         navigation.isTranslucent = false
     }
 }
+//MARK: - UNUserNotificationCenterDelegate
+@available(iOS 13.0, *)
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        if UIApplication.shared.applicationState == .active {
+            completionHandler()
+            return
+        }
+        center.removeAllDeliveredNotifications()
+        center.removeAllPendingNotificationRequests()
+        
+        guard let dialogID = userInfo["SA_STR_PUSH_NOTIFICATION_DIALOG_ID".localized] as? String,
+              dialogID.isEmpty == false else {
+            completionHandler()
+            return
+        }
+        DispatchQueue.main.async {
+            if ChatManager.instance.storage.dialog(withID: dialogID) != nil {
+               // self.rootViewController.dialogID = dialogID
+            } else {
+                ChatManager.instance.loadDialog(withID: dialogID, completion: { (loadedDialog: QBChatDialog?) -> Void in
+                    guard loadedDialog != nil else {
+                        return
+                    }
+//self.rootViewController.dialogID = dialogID
+                })
+            }
+        }
+        completionHandler()
+    }
+}
+extension UIApplication {
+    static var appVersion: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    }
+}
+

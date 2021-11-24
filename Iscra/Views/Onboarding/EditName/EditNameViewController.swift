@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import SVProgressHUD
-import IQKeyboardManagerSwift
+
 
 class EditNameViewController: UIViewController {
     

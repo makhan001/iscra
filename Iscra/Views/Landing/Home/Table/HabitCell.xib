@@ -85,7 +85,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mates:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRN-n6-Kc8" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="70" width="49" height="21"/>
+                                                <rect key="frame" x="15" y="70" width="51.5" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="ueb-DS-Z2t"/>
                                                 </constraints>
@@ -211,13 +211,13 @@
     </objects>
     <designables>
         <designable name="PRN-n6-Kc8">
-            <size key="intrinsicContentSize" width="49" height="23"/>
+            <size key="intrinsicContentSize" width="51.5" height="20.5"/>
         </designable>
         <designable name="gSY-ud-TX6">
-            <size key="intrinsicContentSize" width="101" height="25.5"/>
+            <size key="intrinsicContentSize" width="94.5" height="20.5"/>
         </designable>
         <designable name="gxl-Ge-AXr">
-            <size key="intrinsicContentSize" width="101" height="25.5"/>
+            <size key="intrinsicContentSize" width="94.5" height="20.5"/>
         </designable>
     </designables>
     <resources>

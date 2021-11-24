@@ -111,7 +111,7 @@ extension VerificationViewController: UITextFieldDelegate {
             }
             textField.text = string
             return false
-        }else if ((textField.text?.count)! >= 1) && (string.count == 0) {
+        } else if ((textField.text?.count)! >= 1) && (string.count == 0) {
             if textField == otpTextFieldSecond{
                 otpTextFieldFirst.becomeFirstResponder()
             }

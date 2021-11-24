@@ -15,10 +15,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Chat View Controller-->
+        <!--My Chat View Controller-->
         <scene sceneID="9hs-nN-SoY">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" id="9FH-U3-SeB" customClass="ChatViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyChatViewController" id="9FH-U3-SeB" customClass="MyChatViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RjH-hP-d1g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bcb-p1-oyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-509" y="1085"/>
+            <point key="canvasLocation" x="152" y="1111"/>
         </scene>
         <!--Select Habit Pop Up View Controller-->
         <scene sceneID="5qY-Ei-Dsu">
@@ -324,15 +324,15 @@
                     <connections>
                         <segue destination="NyL-xM-cmJ" kind="relationship" relationship="viewControllers" id="DjW-3e-Wss"/>
                         <segue destination="UOV-KR-SZf" kind="relationship" relationship="viewControllers" id="RMB-7d-JQk"/>
-                        <segue destination="9FH-U3-SeB" kind="relationship" relationship="viewControllers" id="Bvt-ns-jrF"/>
-                        <segue destination="h3e-Dy-xrc" kind="relationship" relationship="viewControllers" id="nAB-iy-FIL"/>
+                        <segue destination="9FH-U3-SeB" kind="relationship" relationship="viewControllers" id="bIw-aC-S0D"/>
+                        <segue destination="h3e-Dy-xrc" kind="relationship" relationship="viewControllers" id="Jp8-X6-txR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fxw-z5-msN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-980" y="224"/>
         </scene>
-        <!--Item-->
+        <!--My Account View Controller-->
         <scene sceneID="lO1-8m-7v3">
             <objects>
                 <viewController storyboardIdentifier="MyAccountViewController" id="h3e-Dy-xrc" customClass="MyAccountViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
@@ -458,7 +458,7 @@
                             <constraint firstItem="nxL-Wb-8vL" firstAttribute="bottom" secondItem="sUH-i1-xYI" secondAttribute="bottom" id="v9i-2j-BsE"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="tab5" id="Vt9-Hl-8se"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab5" id="Vt9-Hl-8se"/>
                     <navigationItem key="navigationItem" id="nMm-g1-3KQ"/>
                     <size key="freeformSize" width="357" height="667"/>
                     <connections>
@@ -470,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LiM-Bx-ZXp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="311" y="1058"/>
+            <point key="canvasLocation" x="831" y="1016"/>
         </scene>
         <!--Community Search View Controller-->
         <scene sceneID="2wG-2u-lJb">

@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import SVProgressHUD
-import IQKeyboardManagerSwift
+
 
 class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
@@ -20,14 +19,15 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+       
     }
-    
+   
 }
 
 // MARK: Instance Methods
 extension MyAccountViewController {
     private func setup() {
-        IQKeyboardManager.shared.enable = true
+      
         btnGetSubscription.titleLabel?.font =  UIFont(name: "SF-Pro-Display-Black", size: 50)
         [btnGetSubscription,btnLogout].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -68,23 +68,23 @@ extension MyAccountViewController {
         let image = UIImage(named: "ic-popupClosebutton-image")
         let imageView = UIImageView()
         imageView.image = image
-        imageView.frame =  CGRect(x: 150, y: 18, width: 60, height: 30)
+        imageView.frame =  CGRect(x: (self.view.frame.size.width - 70)/2, y: 18, width: 60, height: 30)
         alert.view.addSubview(imageView)
 
         let imageFirst = UIImage(named: "ic-changeProfilePhoto-image")
         let imageViewFirst = UIImageView()
         imageViewFirst.image = imageFirst
         alert.view.addSubview(imageViewFirst)
-        imageViewFirst.frame = CGRect(x: 25, y: 75, width: 24, height: 24)
+        imageViewFirst.frame = CGRect(x: (self.view.frame.size.width - 380)/2, y: 75, width: 24, height: 24)
         
         let imageSecond = UIImage(named: "ic-gallery-image")
         let imageViewSecond = UIImageView()
         imageViewSecond.image = imageSecond
-        imageViewSecond.frame =  CGRect(x: 25, y: 125, width: 24, height: 24)
+        imageViewSecond.frame =  CGRect(x: (self.view.frame.size.width - 380)/2, y: 125, width: 24, height: 24)
         alert.view.addSubview(imageViewSecond)
         let back = UIAlertAction(title: "", style: .default)   {
             action in
-            
+         
         }
         let gallery = UIAlertAction(title: "Gallery", style: .default) {
             action in
@@ -101,6 +101,7 @@ extension MyAccountViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+   
     func openCamera()
         {
         if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))

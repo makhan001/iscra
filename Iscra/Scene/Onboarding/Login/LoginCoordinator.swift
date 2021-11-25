@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 final class LoginCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
@@ -94,3 +93,4 @@ extension LoginCoordinator: CoordinatorDimisser {
         router.dismissModule(animated: true, completion: nil)
     }
 }
+

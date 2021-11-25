@@ -159,8 +159,9 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
         let (ok, code) = statusOK(response: response)
         if !ok {
             
-           // let error = APIError(errorCode: code, responseData: APIErroResponseData(message: handleErrorMessage(errorCode: code), error: handleErrorMessage(errorCode: code)), statusCode: response.statusCode)
-            let error = APIError(errorCode: code, responseData: APIErroResponseData.from(data: data), statusCode: response.statusCode)// deepak
+          //  let error = APIError(errorCode: code, responseData: APIErroResponseData(message: handleErrorMessage(errorCode: code), error: handleErrorMessage(errorCode: code)), statusCode: response.statusCode) // old
+            
+            let error = APIError(errorCode: code, responseData: APIErroResponseData.from(data: data), statusCode: response.statusCode) // new to show backend message
             completion(nil, error)
             return
         }

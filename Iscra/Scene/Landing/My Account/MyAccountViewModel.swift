@@ -40,7 +40,12 @@ extension MyAccountViewModel: OnboardingServiceProvierDelegate {
                 self.view?.onAction(.errorMessage(ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.status == true {
+                    UserDefaults.standard.removeObject(forKey: "name")
+                    UserDefaults.standard.removeObject(forKey: "email")
                     UserDefaults.standard.removeObject(forKey: "token")
+                    UserDefaults.standard.removeObject(forKey: "user_id")
+                    UserDefaults.standard.removeObject(forKey: "is_verify_key")
+                    UserDefaults.standard.removeObject(forKey: "profile_image")
                     self.view?.onAction(.logout)
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))

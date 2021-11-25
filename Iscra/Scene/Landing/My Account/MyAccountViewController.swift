@@ -8,13 +8,16 @@
 import UIKit
 
 class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-
+    
     // MARK:-Outlets and variables
     @IBOutlet weak var tableView: MyAccountTableView!
     @IBOutlet weak var btnGetSubscription: UIButton!
     @IBOutlet weak var btnLogout: UIButton!
     @IBOutlet weak var imgProfile: UIImageView!
-    var imagePicker = UIImagePickerController()
+    
+    weak var router: NextSceneDismisser?
+    private var imagePicker = UIImagePickerController()
+    private let viewModel: MyAccountViewModel = MyAccountViewModel(provider: OnboardingServiceProvider())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
 // MARK: Instance Methods
 extension MyAccountViewController {
     private func setup() {
+        viewModel.view = self
         btnGetSubscription.titleLabel?.font =  UIFont(name: "SF-Pro-Display-Black", size: 50)
         [btnGetSubscription,btnLogout].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -36,30 +40,32 @@ extension MyAccountViewController {
 }
 // MARK:- Button Action
 extension MyAccountViewController {
-        @objc func buttonPressed(_ sender: UIButton) {
+    @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnGetSubscription:
             self.GetSubscriptionAction()
         case btnLogout:
             self.LogoutAction()
-       default:
+        default:
             break
         }
     }
     private func GetSubscriptionAction() {
         let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "GetSubcriptionViewController") as! GetSubcriptionViewController
-        self.navigationController?.pushViewController(vc, animated: true)    }
-    private func LogoutAction() {
-        logOutAction() 
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-        
+    
+    private func LogoutAction() {
+        logOutAction()
+    }
+    
     // MARK:- AlertView
     func alertView(){
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.view.tintColor = UIColor.black
         alert.view.layer.cornerRadius = 15
-      
+        
         let subview = (alert.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
         subview.backgroundColor = .white
         
@@ -68,7 +74,7 @@ extension MyAccountViewController {
         imageView.image = image
         imageView.frame =  CGRect(x: 150, y: 18, width: 60, height: 30)
         alert.view.addSubview(imageView)
-
+        
         let imageFirst = UIImage(named: "ic-changeProfilePhoto-image")
         let imageViewFirst = UIImageView()
         imageViewFirst.image = imageFirst
@@ -92,56 +98,51 @@ extension MyAccountViewController {
             action in
             self.openCamera()
         }
-         alert.addAction(back)
-         alert.addAction(camera)
-         alert.addAction(gallery)
+        alert.addAction(back)
+        alert.addAction(camera)
+        alert.addAction(gallery)
         DispatchQueue.main.async{
             self.present(alert, animated: true, completion: nil)
         }
     }
     func openCamera()
-        {
+    {
         if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
-           {
-               imagePicker.sourceType = UIImagePickerController.SourceType.camera
-               imagePicker.allowsEditing = true
-               self.present(imagePicker, animated: true, completion: nil)
-           }
-           else
-           {
-               let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
-               alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-               self.present(alert, animated: true, completion: nil)
-           }
-        }
-
-        func openGallary()
         {
-            let myPickerControllerGallery = UIImagePickerController()
-                    myPickerControllerGallery.delegate = self
-                    myPickerControllerGallery.sourceType = UIImagePickerController.SourceType.photoLibrary
-                    myPickerControllerGallery.allowsEditing = true
-                    self.present(myPickerControllerGallery, animated: true, completion: nil)
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
         }
+        else
+        {
+            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func openGallary()
+    {
+        let myPickerControllerGallery = UIImagePickerController()
+        myPickerControllerGallery.delegate = self
+        myPickerControllerGallery.sourceType = UIImagePickerController.SourceType.photoLibrary
+        myPickerControllerGallery.allowsEditing = true
+        self.present(myPickerControllerGallery, animated: true, completion: nil)
+    }
     //MARK: - ImagePicker delegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-              guard let selectedImage = info[.originalImage] as? UIImage else {
-              fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-          }
-          imgProfile.image = selectedImage
-          dismiss(animated: true, completion: nil)
-      }
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        imgProfile.image = selectedImage
+        dismiss(animated: true, completion: nil)
+    }
     
     func logOutAction()  {
         let alertController = UIAlertController(title: "Logout", message: "Are you sure? logout from Iscra.", preferredStyle: .alert)
         let Logoutaction = UIAlertAction(title: "Logout", style: .default) { (action:UIAlertAction!) in
             print("Delete button tapped");
-            
-            UserDefaults.standard.removeObject(forKey: "token")
-            self.dismiss(animated: true, completion: nil)
-            if #available(iOS 13.0, *) {
-                AppDelegate.shared.setRootController()
-            }
+            self.viewModel.logout()
         }
         Logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
@@ -153,7 +154,7 @@ extension MyAccountViewController {
         self.present(alertController, animated: true, completion:nil)
     }
 }
- 
+
 extension MyAccountViewController: clickManagerDelegate{
     func tableViewCellNavigation(performAction: clickManager) {
         switch performAction {
@@ -183,12 +184,24 @@ extension MyAccountViewController: clickManagerDelegate{
         let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "LearnHowToAddMemojiViewController") as! LearnHowToAddMemojiViewController
         navigationController?.pushViewController(vc, animated: true)
-     }
-     private func ChangePasswordAction() {
+    }
+    private func ChangePasswordAction() {
         // navigate to changePassword
         let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ChangePasswordViewController") as! ChangePasswordViewController
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-
+// MARK: API Callback
+extension MyAccountViewController: OnboardingViewRepresentable {
+    func onAction(_ action: OnboardingAction) {
+        switch action {
+        case let .requireFields(msg), let .errorMessage(msg):
+            self.showToast(message: msg)
+        case .logout:
+            self.router?.push(scene: .welcome)
+        default:
+            break
+        }
+    }
+}

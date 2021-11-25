@@ -20,7 +20,9 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var btnApple:UIButton!
     @IBOutlet weak var btnShowPassword:UIButton!
     
+    weak var router: NextSceneDismisser?
     private let viewModel: SignupViewModel = SignupViewModel(provider: OnboardingServiceProvider())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -37,6 +39,13 @@ extension SignupViewController {
         }
         [btnRegister, btnGoogle, btnApple, btnShowPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        }
+        
+        if TARGET_OS_SIMULATOR == 1 {
+            viewModel.email = "user87@gmail.com"
+            viewModel.password = "123456"
+            txtEmail.text = viewModel.email
+            txtPassword.text = viewModel.password
         }
     }
 }
@@ -82,34 +91,16 @@ extension SignupViewController {
     }
     
     private func registerAction() {
+        self.txtEmail.resignFirstResponder()
+        self.txtPassword.resignFirstResponder()
         viewModel.onAction(action: .inputComplete(.signup), for: .signup)
     }
 }
 
 // MARK:- Verification Delegate
-extension SignupViewController : verificationDelegate {
-    func verified() {
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "LandingTabBarViewController") as! LandingTabBarViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-// MARK: API Callback
-extension SignupViewController: OnboardingViewRepresentable {
-    func onAction(_ action: OnboardingAction) {
-        switch action {
-        case let .requireFields(msg), let .errorMessage(msg):
-            self.showToast(message: msg)
-        case .register:
-            // navigate to verification screen
-            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-                    let VC = storyboard.instantiateViewController(withIdentifier: "VerificationViewController") as! VerificationViewController
-                navigationController?.present(VC, animated: true, completion: nil)
-            break
-        default:
-            break
-        }
+extension SignupViewController : VerificationViewControllerDelegate {
+    func isUserVerified() {
+        router?.push(scene: .landing)
     }
 }
 
@@ -137,5 +128,18 @@ extension SignupViewController: UITextFieldDelegate {
             }
         }
         return true
+    }
+}
+// MARK: API Callback
+extension SignupViewController: OnboardingViewRepresentable {
+    func onAction(_ action: OnboardingAction) {
+        switch action {
+        case let .requireFields(msg), let .errorMessage(msg):
+            self.showToast(message: msg)
+        case .register:
+            router?.push(scene: .verification)
+        default:
+            break
+        }
     }
 }

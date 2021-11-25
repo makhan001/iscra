@@ -18,12 +18,13 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var btnForgotPassword: UIButton!
     @IBOutlet var changePasswordView: UIView!
     @IBOutlet weak var customView: UIView!
+    private let viewModel: ChangePasswordViewModel = ChangePasswordViewModel(provider: OnboardingServiceProvider())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = AppConstant.nav_shangpassword
         setup()
-       }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,15 +35,16 @@ class ChangePasswordViewController: UIViewController {
 // MARK: Instance Methods
 extension ChangePasswordViewController {
     private func setup() {
-
+        viewModel.view = self
         [btnChangePassword,btnForgotPassword,btnShowCurrentPassword,btnShowNewPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+        
     }
-
+    
 }
 // MARK:-TextField Delegate Methods
-extension ChangePasswordViewController:UITextFieldDelegate {
+extension ChangePasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.txtFieldCurrentPassword{
             self.txtFieldNewPassword.becomeFirstResponder()
@@ -50,6 +52,21 @@ extension ChangePasswordViewController:UITextFieldDelegate {
             self.txtFieldNewPassword.resignFirstResponder()
         }
         return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == txtFieldCurrentPassword {
+            if let text = txtFieldCurrentPassword.text, let textRange = Range(range, in: text) {
+                let updatedText = text.replacingCharacters(in: textRange, with: string)
+                viewModel.password = updatedText
+            }
+        } else if textField == txtFieldNewPassword {
+            if let text = txtFieldNewPassword.text, let textRange = Range(range, in: text) {
+                let updatedText = text.replacingCharacters(in: textRange, with: string)
+                viewModel.newPassword = updatedText
+            }
+        }
+        return true
     }
 }
 // MARK:- Button Action
@@ -64,9 +81,9 @@ extension ChangePasswordViewController {
             self.showCurrentPasswordAction()
         case btnShowNewPassword:
             self.showNewPasswordAction()
-       default:
+        default:
             break
-        
+            
         }
     }
     @objc func alertControllerBackTapped()
@@ -75,11 +92,10 @@ extension ChangePasswordViewController {
     }
     
     private func changePasswordAction() {
-    let VC = storyboard?.instantiateViewController(withIdentifier: "PasswordChangeConfirmationViewController") as! PasswordChangeConfirmationViewController
-        navigationController?.present(VC, animated: true, completion: {
-            VC.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
-        })
         print("changePasswordAction")
+        self.viewModel.password = self.txtFieldCurrentPassword.text ?? ""
+        self.viewModel.newPassword = self.txtFieldNewPassword.text ?? ""
+        self.viewModel.onAction(action: .inputComplete(.changePassword), for: .changePassword)
     }
     
     private func forgotPasswordAction() {
@@ -91,8 +107,8 @@ extension ChangePasswordViewController {
         alert.view.alpha = 0.7
         alert.view.layer.cornerRadius = 15
         self.present(alert, animated: true, completion:{
-        alert.view.superview?.isUserInteractionEnabled = true
-        alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackTapped)))
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackTapped)))
         })
         print("forgotPasswordAction")
     }
@@ -119,46 +135,68 @@ extension ChangePasswordViewController {
             txtFieldNewPassword.isSecureTextEntry = true
         }
     }
-
+    
     
 }
 // MARK:- AlertView
 extension UIAlertController {
     //Set title font and message color
     func setTitlet(font: UIFont?, color: UIColor?) {
-           guard let title = self.title else { return }
+        guard let title = self.title else { return }
         let paragraphStyle = NSMutableParagraphStyle()
-           paragraphStyle.alignment = NSTextAlignment.center
-           let attributeString = NSMutableAttributedString(string: title, attributes: [
-                            NSAttributedString.Key.paragraphStyle: paragraphStyle])//1
-           if let titleFont = font {
-               attributeString.addAttributes([NSAttributedString.Key.font : titleFont],//2
-                                             range: NSMakeRange(0, title.utf8.count))
-           }
-           if let titleColor = color {
-               attributeString.addAttributes([NSAttributedString.Key.foregroundColor : titleColor],//3
-                                             range: NSMakeRange(0, title.utf8.count))
-           }
-           self.setValue(attributeString, forKey: "attributedTitle")
+        paragraphStyle.alignment = NSTextAlignment.center
+        let attributeString = NSMutableAttributedString(string: title, attributes: [
+                                                            NSAttributedString.Key.paragraphStyle: paragraphStyle])//1
+        if let titleFont = font {
+            attributeString.addAttributes([NSAttributedString.Key.font : titleFont],//2
+                                          range: NSMakeRange(0, title.utf8.count))
+        }
+        if let titleColor = color {
+            attributeString.addAttributes([NSAttributedString.Key.foregroundColor : titleColor],//3
+                                          range: NSMakeRange(0, title.utf8.count))
+        }
+        self.setValue(attributeString, forKey: "attributedTitle")
     }
     
-  //Set message font and message color
-  func setForgotMessage(font: UIFont?, color: UIColor?) {
-    guard let title = self.message else {
-      return
+    //Set message font and message color
+    func setForgotMessage(font: UIFont?, color: UIColor?) {
+        guard let title = self.message else {
+            return
+        }
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.left
+        let attributedString = NSMutableAttributedString(string: title, attributes: [
+                                                            NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        if let titleFont = font {
+            attributedString.addAttributes([NSAttributedString.Key.font : titleFont], range: NSMakeRange(0, title.utf8.count))
+        }
+        if let titleColor = color {
+            attributedString.addAttributes([NSAttributedString.Key.foregroundColor : titleColor], range: NSMakeRange(0, title.utf8.count))
+        }
+        self.setValue(attributedString, forKey: "attributedMessage")
     }
-    let paragraphStyle = NSMutableParagraphStyle()
-       paragraphStyle.alignment = NSTextAlignment.left
-    let attributedString = NSMutableAttributedString(string: title, attributes: [
-                                                        NSAttributedString.Key.paragraphStyle: paragraphStyle])
-     if let titleFont = font {
-        attributedString.addAttributes([NSAttributedString.Key.font : titleFont], range: NSMakeRange(0, title.utf8.count))
+}
+// MARK: API Callback
+extension ChangePasswordViewController: OnboardingViewRepresentable {
+    func onAction(_ action: OnboardingAction) {
+        switch action {
+        case let .requireFields(msg), let .errorMessage(msg):
+            self.showToast(message: msg)
+        // deepak
+        case let .changePassword(msg):
+            self.showToast(message: msg)
+//            let VC = storyboard?.instantiateViewController(withIdentifier: "PasswordChangeConfirmationViewController") as! PasswordChangeConfirmationViewController
+//            navigationController?.present(VC, animated: true, completion: {
+//                VC.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
+//            })
+//            let seconds = 3.0
+//            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+//                self.dismiss(animated: true, completion: nil)
+//            }
+//
+            break
+        default:
+            break
+        }
     }
-    if let titleColor = color {
-      attributedString.addAttributes([NSAttributedString.Key.foregroundColor : titleColor], range: NSMakeRange(0, title.utf8.count))
-    }
-    self.setValue(attributedString, forKey: "attributedMessage")
-  }
-    
-    
 }

@@ -12,6 +12,9 @@
 		0402C4B2273D4A200073DFB8 /* GroupHabitFriendsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */; };
 		0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */; };
 		04397097274B762700898C91 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04397096274B762700898C91 /* VerificationViewModel.swift */; };
+		04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F28274FB917009763D1 /* MyAccountViewModel.swift */; };
+		04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */; };
+		04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */; };
 		5FF6CD20274E6A5A007ADC2F /* AddOccupantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CC90274E6A5A007ADC2F /* AddOccupantsVC.swift */; };
 		5FF6CD21274E6A5A007ADC2F /* DialogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF6CC92274E6A5A007ADC2F /* DialogCell.xib */; };
 		5FF6CD22274E6A5A007ADC2F /* DialogsSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CC93274E6A5A007ADC2F /* DialogsSelectionVC.swift */; };
@@ -278,6 +281,9 @@
 		0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHabitFriendsTable.swift; sourceTree = "<group>"; };
 		0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupFriendsCell.swift; sourceTree = "<group>"; };
 		04397096274B762700898C91 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
+		04D34F28274FB917009763D1 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
+		04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
 		5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iscra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FF6CC90274E6A5A007ADC2F /* AddOccupantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOccupantsVC.swift; sourceTree = "<group>"; };
@@ -1384,6 +1390,7 @@
 			isa = PBXGroup;
 			children = (
 				88A529102730205000037464 /* ChangePasswordViewController.swift */,
+				04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */,
 				88A5290F2730204F00037464 /* PasswordChangeConfirmationViewController.swift */,
 			);
 			path = ChangePassword;
@@ -1541,6 +1548,7 @@
 			isa = PBXGroup;
 			children = (
 				88E0289C2716FFE500D90BB1 /* SignupViewController.swift */,
+				04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */,
 				88E028A02716FFEE00D90BB1 /* SignupViewModel.swift */,
 			);
 			path = Signup;
@@ -1612,6 +1620,7 @@
 			isa = PBXGroup;
 			children = (
 				882F3E142721AAC300A409A6 /* MyAccountViewController.swift */,
+				04D34F28274FB917009763D1 /* MyAccountViewModel.swift */,
 				882F3E102721AAC300A409A6 /* View */,
 			);
 			path = "My Account";
@@ -2025,6 +2034,7 @@
 				88021C6A273D3897004A58F5 /* CustomDashedView.swift in Sources */,
 				861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */,
 				5FF6CD30274E6A5A007ADC2F /* UISearchBar+Extention.swift in Sources */,
+				04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */,
 				880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */,
 				88B4A225271FF9C300488AA3 /* AddMyPictureViewController.swift in Sources */,
 				882F3E002721A50A00A409A6 /* LandingTabBarViewController.swift in Sources */,
@@ -2036,6 +2046,7 @@
 				5FF6CD22274E6A5A007ADC2F /* DialogsSelectionVC.swift in Sources */,
 				8814B43B2743874100A6DE01 /* Webservice.swift in Sources */,
 				5FF6CD4B274E6A5A007ADC2F /* InfoTableViewCell.swift in Sources */,
+				04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */,
 				880080782729346D008E3260 /* WeekCollection.swift in Sources */,
 				5FF6CD72274E6A5A007ADC2F /* ChatAttachmentCell.swift in Sources */,
 				8814B4092743844D00A6DE01 /* OnboardingAdaptables.swift in Sources */,
@@ -2055,6 +2066,7 @@
 				883C52F32747915800D129FC /* ForgotPsswordViewController.swift in Sources */,
 				887994D7273AB34E00904D1F /* RepeatDaysTableViewCell.swift in Sources */,
 				5FF6CD4A274E6A5A007ADC2F /* UIViewController+InfoScreen.swift in Sources */,
+				04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */,
 				5FF6CD33274E6A5A007ADC2F /* String+Extention.swift in Sources */,
 				8814B419274385E600A6DE01 /* Scenes.swift in Sources */,
 				5FF6CD81274E6A5A007ADC2F /* ChatResources.swift in Sources */,

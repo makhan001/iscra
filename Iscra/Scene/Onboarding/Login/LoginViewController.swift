@@ -22,7 +22,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtPassword:UITextField!
     @IBOutlet weak var viewNavigation:NavigationBarView!
     weak var router: NextSceneDismisser?
-    
     private let viewModel: LoginViewModel = LoginViewModel(provider: OnboardingServiceProvider())
     
     override func viewDidLoad() {
@@ -52,7 +51,7 @@ extension LoginViewController  : navigationBarAction {
         }
         
         if TARGET_OS_SIMULATOR == 1 {
-            viewModel.email = "lokesh@gmail.com"
+            viewModel.email = "user74@gmail.com"
             viewModel.password = "123456"
             txtEmail.text = viewModel.email
             txtPassword.text = viewModel.password
@@ -61,6 +60,14 @@ extension LoginViewController  : navigationBarAction {
     
     func ActionType() {
         router?.dismiss(controller: .login)
+    }
+    
+    private func naviateUserAfterLogin(_ isVerified:Bool) {
+        if isVerified == true {
+            self.router?.push(scene: .landing)
+        } else {
+            self.router?.push(scene: .verification)
+        }
     }
 }
 
@@ -86,22 +93,24 @@ extension LoginViewController {
     
     private func loginAction() {
         print("loginAction")
+        self.txtEmail.resignFirstResponder()
+        self.txtPassword.resignFirstResponder()
         viewModel.onAction(action: .inputComplete(.login), for: .login)
-
         
-//        router?.push(scene: .landing)
-//
-//        if viewModel.ValidateUserInputs(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
-//        {
-//            viewModel.Login(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
-//            {
-//                self.showToast(message:self.viewModel.LoginData.message , seconds: 3.0)
-//            }
-//        }
-//        else {
-//            print(viewModel.errorMsg)
-//            self.showToast(message:viewModel.errorMsg , seconds: 1.0)
-//        }
+        
+        //        router?.push(scene: .landing)
+        //
+        //        if viewModel.ValidateUserInputs(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
+        //        {
+        //            viewModel.Login(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
+        //            {
+        //                self.showToast(message:self.viewModel.LoginData.message , seconds: 3.0)
+        //            }
+        //        }
+        //        else {
+        //            print(viewModel.errorMsg)
+        //            self.showToast(message:viewModel.errorMsg , seconds: 1.0)
+        //        }
     }
     
     private func loginGoogleAction() {
@@ -124,7 +133,7 @@ extension LoginViewController {
     }
     
     private func forgotPasswordAction() {
-        let VC = storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
+        let VC = storyboard?.instantiateViewController(withIdentifier: "forgot") as! ForgotPasswordViewController
         navigationController?.pushViewController(VC, animated: true)
     }
     
@@ -140,6 +149,7 @@ extension LoginViewController:UITextFieldDelegate {
         }
         return false
     }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == txtEmail {
             if let text = txtEmail.text, let textRange = Range(range, in: text) {
@@ -154,7 +164,13 @@ extension LoginViewController:UITextFieldDelegate {
         }
         return true
     }
-    
+}
+
+// MARK: Verification View Controller Delegate
+extension LoginViewController: VerificationViewControllerDelegate {
+    func isUserVerified() {
+        self.router?.push(scene: .landing)
+    }
 }
 
 // MARK: API Callback
@@ -163,24 +179,14 @@ extension LoginViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-
-        case let .login(msg), let .login(msg):
-            
-            self.showToast(message: msg)
-            let seconds = 2.0
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                self.router?.push(scene: .landingTab)
+        case let .login(msg, isVerified):
+            self.showToast(message: msg, seconds: 0.5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.naviateUserAfterLogin(isVerified)
             }
-          
-            
-//        case .login:
-//
-//            router?.push(scene: .landingTab)
-
-            // navigate to verification screen
-            break
         default:
             break
         }
     }
 }
+

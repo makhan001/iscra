@@ -159,8 +159,9 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
         let (ok, code) = statusOK(response: response)
         if !ok {
             
-            let error = APIError(errorCode: code, responseData: APIErroResponseData(message: handleErrorMessage(errorCode: code), error: handleErrorMessage(errorCode: code)), statusCode: response.statusCode)
-//            let error = APIError(errorCode: code, responseData: APIErroResponseData.from(data: data), statusCode: response.statusCode)
+          //  let error = APIError(errorCode: code, responseData: APIErroResponseData(message: handleErrorMessage(errorCode: code), error: handleErrorMessage(errorCode: code)), statusCode: response.statusCode) // old
+            
+            let error = APIError(errorCode: code, responseData: APIErroResponseData.from(data: data), statusCode: response.statusCode) // new to show backend message
             completion(nil, error)
             return
         }
@@ -229,7 +230,7 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
     
     private func addDefaultHeaders() {
         if UserStore.token != nil {
-            headers["Authorization"] = UserStore.token ?? ""
+            headers["Authentication-Token"] = UserStore.token ?? ""
         }
 //        headers["device_type"] = "ios"
 //        headers["device_id"] = UIDevice.current.identifierForVendor?.uuidString

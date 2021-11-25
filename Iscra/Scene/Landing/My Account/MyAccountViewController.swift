@@ -21,9 +21,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        //  print("UserStore.userDetail?.email is \(UserStore.userDetail?.email)")
-        
+        setup()        
     }
     
 }

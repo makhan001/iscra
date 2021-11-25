@@ -12,6 +12,7 @@ final class LoginCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
     let controller: LoginViewController = LoginViewController.from(from: .onboarding, with: .login)
+    let verification: VerificationViewController = VerificationViewController.from(from: .onboarding, with: .verification)
     
     var welcome: Bool!
 //    var signup: SignupCoordinator!
@@ -33,7 +34,7 @@ final class LoginCoordinator: Coordinator<Scenes> {
     
     private func onStart() {
         controller.router = self
-//        forgot.router = self
+        verification.router = self
     }
     
     private func startSignup() {
@@ -53,24 +54,34 @@ final class LoginCoordinator: Coordinator<Scenes> {
         landing.start()
         self.router.present(landing, animated: true)
     }
+    
+    private func startVerification() {
+        verification.delegate = controller
+        router.present(verification, animated: true)
+    }
 }
 
 extension LoginCoordinator: NextSceneDismisser {
     
     func push(scene: Scenes) {
         switch scene {
-//        case .forgot: router.present(forgot, animated: true)
         case .signup: startSignup()
-        case .landingTab: startLanding()
+        case .landing: startLanding()
+        case .verification: startVerification()
         default: break
         }
         
     }
     
     func dismiss(controller: Scenes) {
-        if controller == .forgot {
+        switch  controller {
+        case .forgot:
             router.dismissModule(animated: true, completion: nil)
-        } else {
+        case .verification:
+            router.dismissModule(animated: true) {
+                self.startLanding()
+            }
+        default:
             delegate?.dismiss(coordinator: self)
         }
     }

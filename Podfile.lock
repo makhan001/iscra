@@ -98,12 +98,10 @@ PODS:
   - nanopb/encode (2.30908.0)
   - ParallaxHeader (3.0.0)
   - PromisesObjC (2.0.0)
-  - QuickBlox (2.17.10)
   - SDWebImage (5.12.0):
     - SDWebImage/Core (= 5.12.0)
   - SDWebImage/Core (5.12.0)
   - SVProgressHUD (2.2.5)
-  - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -112,10 +110,8 @@ DEPENDENCIES:
   - FSCalendar
   - IQKeyboardManagerSwift
   - ParallaxHeader
-  - QuickBlox
   - SDWebImage
   - SVProgressHUD
-  - TTTAttributedLabel
 
 SPEC REPOS:
   trunk:
@@ -135,10 +131,8 @@ SPEC REPOS:
     - nanopb
     - ParallaxHeader
     - PromisesObjC
-    - QuickBlox
     - SDWebImage
     - SVProgressHUD
-    - TTTAttributedLabel
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
@@ -157,11 +151,9 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   ParallaxHeader: a343f55eb38f52a89c5820a77e14cf975b84e6aa
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  QuickBlox: 49d85c6e1782993fb2383001301b788a8d7dcad3
   SDWebImage: 4ea20cca2986adc5aacde07aa686742fd4c67a37
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 51cb8a495cb2f9f04fd463f070938ed59e254abb
+PODFILE CHECKSUM: 0e7ff49ad642c894e432148522ffffaf46cf59aa
 
 COCOAPODS: 1.11.2

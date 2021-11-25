@@ -17,6 +17,7 @@ struct AuthRequests: RequestRepresentable {
     var socialLogin: UserParams.SocialLogin?
     var verification: UserParams.Verification?
     var resendVerification: UserParams.ResendVerification?
+    var logout: UserParams.logout?
 
     let requestType: RequestType
     enum RequestType {
@@ -61,8 +62,10 @@ struct AuthRequests: RequestRepresentable {
     
     var method: HTTPMethod {
         switch self.requestType {
-        case .terms, .privacy, .aboutus, .aboutUsContent, .logout:
+        case .terms, .privacy, .aboutus, .aboutUsContent:
             return .get
+        case .logout:
+            return .delete
         default:
             return .post
         }
@@ -113,6 +116,8 @@ struct AuthRequests: RequestRepresentable {
             return .body(data: encodeBody(data: verification))
         case .resendVerification:
             return .body(data: encodeBody(data: resendVerification))
+        case .logout:
+            return .body(data: encodeBody(data: logout))
         default:
             return .none
         }

@@ -27,7 +27,7 @@ class WebService {
         let jsonString = String(data: jsonData, encoding: .utf8)
         print("jsonString: \(String(describing: jsonString))")
         
-        let s = "\(APIEnvironment.host)/\(urlString)"
+        let s = "\(APIEnvironment.host)\(urlString)"
         print("Requesting url == \(s)")
         let scaped = s.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         let url = URL(string: scaped!)
@@ -53,7 +53,9 @@ class WebService {
                         completion(genericModel, nil)
                     } catch let err {
                         completion(nil, err.localizedDescription)
+                        print("err.localizedDescription ---> \(err.localizedDescription)")
                     }
+
                 } else {
                     completion(nil, encodingResult.error?.localizedDescription)
                 }
@@ -78,17 +80,17 @@ class WebService {
     
     private func addDefaultHeaders() -> HTTPHeaders {
         let header: HTTPHeaders = [
-            "Authorization": UserStore.token ?? "",
+          //  "Authentication-Token": UserStore.token ?? "",
             "Content-Type": "application/json; charset=UTF-8",
-            "device_type" : "ios",
-            "device_id" : "12345",
-            "current_time_zone" : "IST",
-            "language" :"en",
-            "Content-Type": "application/json",
-            "version" : "1.0.0",
-            "current_country": "India",
-            "lat": "22.12541",
-            "lng": "22.12541"
+//            "device_type" : "ios",
+//            "device_id" : "12345",
+//            "current_time_zone" : "IST",
+//            "language" :"en",
+//            "Content-Type": "application/json",
+//            "version" : "1.0.0",
+//            "current_country": "India",
+//            "lat": "22.12541",
+//            "lng": "22.12541"
         ]
         return header
     }

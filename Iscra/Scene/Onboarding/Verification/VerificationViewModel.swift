@@ -46,11 +46,11 @@ extension VerificationViewModel: OnboardingServiceProvierDelegate, InputViewDele
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
             if error != nil {
-                self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
+                self.view?.onAction(.errorMessage(ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.status == true {
                     //                   self.register = resp.data?.register
-                    self.view?.onAction(.verification(resp.message ?? ""))
+                    self.view?.onAction(.register)
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

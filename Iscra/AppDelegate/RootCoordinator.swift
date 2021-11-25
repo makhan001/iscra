@@ -20,7 +20,6 @@ class RootCoordinator {
     
     func start(window:UIWindow) {
         self.window = window
-       // UserDefaults.standard.removeObject(forKey: "token")// deepak
         if UserStore.token != nil {
             landingCoordinator.start()
             window.rootViewController = landingCoordinator.toPresentable()

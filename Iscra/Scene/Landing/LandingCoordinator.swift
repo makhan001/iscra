@@ -10,10 +10,9 @@ import Foundation
 final class LandingCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
-    let controller: LandingTabBarViewController = LandingTabBarViewController.from(from: .landing, with: .landing)
+    let controller: LandingTabBarViewController = WelcomeViewController.from(from: .landing, with: .landingTab)
     
     private var login: LoginCoordinator!
-    private var welcome: OnboardingCoordinator!
     
         
     override func start() {
@@ -44,15 +43,6 @@ final class LandingCoordinator: Coordinator<Scenes> {
 //        self.router.present(walkthrough, animated: true)
     }
     
-    private func startWelcome() {
-        let router = Router()
-        welcome = OnboardingCoordinator(router: router)
-        add(welcome)
-        welcome.delegate = self
-        welcome.start()
-        self.router.present(welcome, animated: true)
-    }
-    
     private func startLanding() {
 //        landing = LandingCoordinator(router: Router())
 //        add(landing)
@@ -67,10 +57,8 @@ extension LandingCoordinator: NextSceneDismisser {
     func push(scene: Scenes) {
         switch scene {
         case .login: startLogin()
-        case .welcome: startWelcome()
         case .landing: startLanding()
         case .walkthrough: startWalkthrough()
-        
         default: break
         }
     }

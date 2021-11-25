@@ -12,9 +12,6 @@ class LandingTabBarViewController: UITabBarController {
     var toggle:Bool = false
     weak var router: NextSceneDismisser?
     
-    private var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
-    private var myAccount: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -68,11 +65,10 @@ extension LandingTabBarViewController {
 }
 extension LandingTabBarViewController : UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        self.getIndexVC(index: tabBarController.selectedIndex, viewController: viewController)
+        self.getIndexVC(index: tabBarController.selectedIndex)
     }
-    
-    func getIndexVC(index: Int, viewController: UIViewController) {
-        switch index {
+    func getIndexVC(index: Int) {
+        switch index{
         case 0:
             print("HomeVC")
         case 1:
@@ -80,9 +76,6 @@ extension LandingTabBarViewController : UITabBarControllerDelegate {
         case 2:
             print("chatVc")
         case 3:
-            if viewController.isKind(of: MyAccountViewController.self) {
-                (viewController as! MyAccountViewController).router = router
-            }
             print("MyAccount")
         default:
             print("default")

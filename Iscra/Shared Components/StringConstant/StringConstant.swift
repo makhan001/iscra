@@ -43,7 +43,7 @@ class AppConstant: NSObject {
     static let emptyEmail = "Email is required"
     static let invaliedEmail = "Please enter vaild email"
     static let emptyPassword = "Password is required"
-    static let emptyNewPassword = "New password is required"
     static let invaliedPassword = "Please enter vaild password"
-    static let invaliedNewPassword = "Please enter vaild new password"
+    
+    
 }

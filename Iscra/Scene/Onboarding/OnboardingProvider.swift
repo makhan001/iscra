@@ -9,7 +9,7 @@
 import Foundation
 
 final class OnboardingServiceProvider: OnboardingServiceProvidable {
-          
+      
     var delegate: OnboardingServiceProvierDelegate?
     private let task = UserTask()
     
@@ -27,41 +27,21 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
     func login(param: UserParams.Login) {
         task.login(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .login(resp?.message ?? "", resp?.data?.loginData?.isVerified ?? false), with: resp, with: err)
+                self?.delegate?.completed(for: .login(resp?.message ?? ""), with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .login(resp?.message ?? "",  resp?.data?.loginData?.isVerified ?? false), with: resp, with: nil)
+            self?.delegate?.completed(for: .login(resp?.message ?? ""), with: resp, with: nil)
         }
     }
-//    func login(param: UserParams.Login) {
-//        task.login(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
-//            if err != nil {
-//                self?.delegate?.completed(for: .login(resp?.message ?? ""), with: resp, with: err)
-//                return
-//            }
-//            self?.delegate?.completed(for: .login(resp?.message ?? ""), with: resp, with: nil)
-//        }
-//    }
     
-    
-//    func login(param: UserParams.Login) {
-//        task.login(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
-//            if err != nil {
-//                self?.delegate?.completed(for: .login(resp? ?? SuccessResponseModel), with: resp, with: err)
-//                return
-//            }
-//            self?.delegate?.completed(for: .login(resp), with: resp, with: nil)
-//        }
-//    }
-//
     
     func forgotPassword(param: UserParams.ForgotPassword) {
         task.forgotPassword(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .forgotPassword(resp?.message ?? ""), with: resp, with: err)
+                self?.delegate?.completed(for: .forgotPassword, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .forgotPassword(resp?.message ?? ""), with: resp, with: nil)
+            self?.delegate?.completed(for: .forgotPassword, with: resp, with: nil)
         }
     }
     
@@ -69,10 +49,10 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
     func changePassword(param: UserParams.ChangePassword) {
         task.changePassword(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .changePassword(resp?.message ?? ""), with: resp, with: err)
+                self?.delegate?.completed(for: .changePassword, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .changePassword(resp?.message ?? ""), with: resp, with: nil)
+            self?.delegate?.completed(for: .changePassword, with: resp, with: nil)
         }
     }
     
@@ -93,10 +73,10 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
     func verification(param: UserParams.Verification) {
         task.verification(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .verification(resp?.message ?? ""), with: resp, with: err)
+                self?.delegate?.completed(for: .verification, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .verification(resp?.message ?? ""), with: resp, with: nil)
+            self?.delegate?.completed(for: .verification, with: resp, with: nil)
         }
     }
     
@@ -109,16 +89,6 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
             self?.delegate?.completed(for: .resendVerification, with: resp, with: nil)
         }
     }
-    
-    func logout(param: UserParams.logout) {
-        task.logout(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
-            if err != nil {
-                self?.delegate?.completed(for: .logout, with: resp, with: err)
-                return
-            }
-            self?.delegate?.completed(for: .logout, with: resp, with: nil)
-        }
-    }
-   
 }
 
+// resendVerification

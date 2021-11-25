@@ -32,10 +32,10 @@ class WalkthroughViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
-        //        if TARGET_OS_SIMULATOR == 1 {
-        //            OnboadingUtils.shared.username = "Deepak"
-        //            self.txtName.text = "Deepak"
-        //        }
+        if TARGET_OS_SIMULATOR == 1 {
+            OnboadingUtils.shared.username = "Deepak"
+            self.txtName.text = "Deepak"
+        }
     }
 }
 
@@ -91,18 +91,20 @@ extension WalkthroughViewController  {
             if currentIndex == 2 {
                 if OnboadingUtils.shared.username == "" {
                     showToast(message: AppConstant.alert_emptynameMsg)
-                } else {
+                }
+                else{
                     self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1
                     scrollview_Walkthrough.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width, y: 0), animated: true)
                 }
-            } else {
+            }
+            else{
                 self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1
                 scrollview_Walkthrough.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width, y: 0), animated: true)
             }
         }
-        
         if self.currentIndex == 3 {
-            router?.push(scene: .signup)
+            let VC = storyboard?.instantiateViewController(withIdentifier: "SignupViewController") as! SignupViewController
+            navigationController?.pushViewController(VC, animated: true)
         }
     }
     
@@ -121,15 +123,15 @@ extension WalkthroughViewController  {
             btnNext.setTitle("Skip", for: .normal)
         }
         //        }else if self.currentIndex == 1 {
-        //            btnBack.setTitleColor(, for: .normal)
-        //            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
-        //        }else{
-        //            btnNext.setTitle("Next", for: .normal)
-        //            btnBack.isUserInteractionEnabled = true
-        //            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
-        //        }
+//            btnBack.setTitleColor(, for: .normal)
+//            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
+//        }else{
+//            btnNext.setTitle("Next", for: .normal)
+//            btnBack.isUserInteractionEnabled = true
+//            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
+//        }
     }
-    
+
 }
 
 // MARK:- UIScrollViewDelegate
@@ -158,7 +160,7 @@ extension WalkthroughViewController : UITextFieldDelegate {
         let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
         if newLength <= 30 {
             if textField == txtName {
-                if let text = txtName.text, let textRange = Range(range, in: text) {
+                    if let text = txtName.text, let textRange = Range(range, in: text) {
                     let updatedText = text.replacingCharacters(in: textRange, with: string)
                     OnboadingUtils.shared.username = updatedText
                 }
@@ -168,5 +170,5 @@ extension WalkthroughViewController : UITextFieldDelegate {
             return false
         }
     }
-    
+
 }

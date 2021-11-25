@@ -18,17 +18,12 @@ struct UserStore {
     private static let customer_key = "stripe_customer"
     private static let primeUserKey = "primeUser"
     private static let is_social_login_key = "is_social_login"
-    private static let is_verify_key = "is_verify_key"
     private static let empkey = "emp"
     
     static let fcmtoken_key = "fcmtoken"
     static let apns_token_key = "apns_token"
     static let socialLoginKey = "social_login_key"
-    
-    static var isVerify: String? {
-        return UserDefaults.standard.string(forKey: is_verify_key)
-    }
-    
+
     static var token: String? {
         return UserDefaults.standard.string(forKey: token_key)
     }
@@ -132,11 +127,7 @@ struct UserStore {
     static func save(isSocialLogin:Bool) {
         UserDefaults.standard.set(isSocialLogin, forKey:is_social_login_key)
     }
-
-    static func save(isVerify:Bool) {
-        UserDefaults.standard.set(isVerify, forKey:is_verify_key)
-    }
-        
+    
 //    static func save(dialHistory:[DialHistory]) {
 //        UserDefaults.standard.set(try? PropertyListEncoder().encode(dialHistory), forKey:dialHistoryKey)
 //    }

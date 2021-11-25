@@ -15,10 +15,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Chat View Controller-->
+        <!--My Chat View Controller-->
         <scene sceneID="9hs-nN-SoY">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" id="9FH-U3-SeB" customClass="ChatViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyChatViewController" id="9FH-U3-SeB" customClass="MyChatViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RjH-hP-d1g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +147,7 @@
         <!--Home View Controller-->
         <scene sceneID="BoJ-uv-ncl">
             <objects>
-                <viewController storyboardIdentifier="home" id="NyL-xM-cmJ" customClass="HomeViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="NyL-xM-cmJ" customClass="HomeViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1pJ-aR-W96">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -302,7 +302,7 @@
         <!--Landing Tab Bar View Controller-->
         <scene sceneID="H3c-mO-mUQ">
             <objects>
-                <tabBarController storyboardIdentifier="landing" hidesBottomBarWhenPushed="YES" id="1PD-2Z-rX9" customClass="LandingTabBarViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="landingTab" hidesBottomBarWhenPushed="YES" id="1PD-2Z-rX9" customClass="LandingTabBarViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ddl-Cw-UUl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -335,7 +335,7 @@
         <!--Item-->
         <scene sceneID="lO1-8m-7v3">
             <objects>
-                <viewController storyboardIdentifier="myAccount" id="h3e-Dy-xrc" customClass="MyAccountViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyAccountViewController" id="h3e-Dy-xrc" customClass="MyAccountViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SCm-2k-pQp">
                         <rect key="frame" x="0.0" y="0.0" width="357" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

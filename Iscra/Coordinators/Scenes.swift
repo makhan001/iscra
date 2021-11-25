@@ -17,7 +17,6 @@ enum Scenes:String {
     case verification
     case landing
     case home
-    case myAccount
     case notification
     case category
     case createCategory
@@ -77,6 +76,7 @@ enum Scenes:String {
     case nearby
     case appointments
     case myprofile
+    case landingTab
     case saloonDetail
     case bookingServices
     case bookingStaff
@@ -114,7 +114,6 @@ enum StoryboardIdentifier:String {
     case walkthrough
     case landing
     case home
-    case myAccount
     case notification
     case changePassword
     case feedback
@@ -122,9 +121,10 @@ enum StoryboardIdentifier:String {
     case logout
     case myProfile
     case editProfile
-    case verification
+    case VerificationViewController
     case findUsers
     case setPrivacy
+    
     case userProfile
     case createCluster
     case clusterDetail
@@ -194,6 +194,7 @@ enum StoryboardIdentifier:String {
     case nearby
     case appointments
     case myprofile
+    case landingTab
     case saloonDetail
     case bookingServices
     case bookingStaff

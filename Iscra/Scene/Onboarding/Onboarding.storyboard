@@ -18,7 +18,7 @@
         <!--Signup View Controller-->
         <scene sceneID="1vl-wn-up4">
             <objects>
-                <viewController storyboardIdentifier="signup" id="z1z-ay-mEx" customClass="SignupViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewController" id="z1z-ay-mEx" customClass="SignupViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O3N-mG-s91">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1045,9 +1045,6 @@
                                                                                         <integer key="value" value="18"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
-                                                                                <connections>
-                                                                                    <outlet property="delegate" destination="Y82-1A-5fk" id="PIQ-Le-mZq"/>
-                                                                                </connections>
                                                                             </textField>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQK-1P-X7u">
                                                                                 <rect key="frame" x="295" y="0.0" width="40" height="60"/>
@@ -1134,7 +1131,7 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                                 <connections>
-                                                                                    <outlet property="delegate" destination="Y82-1A-5fk" id="Ulg-hO-xR4"/>
+                                                                                    <outlet property="delegate" destination="Y82-1A-5fk" id="uRs-wI-715"/>
                                                                                 </connections>
                                                                             </textField>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRA-t9-SML">
@@ -1285,8 +1282,8 @@
                         <outlet property="btnForgotPassword" destination="bK9-SY-6ov" id="hTM-7v-J2p"/>
                         <outlet property="btnShowCurrentPassword" destination="gQK-1P-X7u" id="hjP-Rn-aiO"/>
                         <outlet property="btnShowNewPassword" destination="fRA-t9-SML" id="S7Y-lU-GFE"/>
-                        <outlet property="txtFieldCurrentPassword" destination="GLS-r4-0ba" id="vIP-Zh-VkB"/>
-                        <outlet property="txtFieldNewPassword" destination="bSU-ka-Uy9" id="tBW-je-2T8"/>
+                        <outlet property="txtFieldCurrentPassword" destination="GLS-r4-0ba" id="n56-8g-3vK"/>
+                        <outlet property="txtFieldNewPassword" destination="bSU-ka-Uy9" id="qZC-hs-nXe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDn-jb-cdA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2207,12 +2204,12 @@
                         <viewLayoutGuide key="safeArea" id="qJc-Fz-rgO"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ve0-ZN-VFJ" firstAttribute="top" secondItem="ai1-Gj-uqJ" secondAttribute="top" id="1S5-jS-js4"/>
+                            <constraint firstItem="Ve0-ZN-VFJ" firstAttribute="top" secondItem="qJc-Fz-rgO" secondAttribute="top" id="5hq-TP-abE"/>
                             <constraint firstItem="Ve0-ZN-VFJ" firstAttribute="trailing" secondItem="qJc-Fz-rgO" secondAttribute="trailing" id="bRd-jL-6qr"/>
                             <constraint firstItem="qeq-Ay-64B" firstAttribute="leading" secondItem="qJc-Fz-rgO" secondAttribute="leading" constant="32" id="iyv-ec-cUI"/>
-                            <constraint firstAttribute="bottom" secondItem="Ve0-ZN-VFJ" secondAttribute="bottom" id="kOI-mH-1Ah"/>
                             <constraint firstItem="qeq-Ay-64B" firstAttribute="centerY" secondItem="ai1-Gj-uqJ" secondAttribute="centerY" id="lcL-x2-6jR"/>
                             <constraint firstItem="qeq-Ay-64B" firstAttribute="centerX" secondItem="ai1-Gj-uqJ" secondAttribute="centerX" id="oxC-ML-18M"/>
+                            <constraint firstItem="Ve0-ZN-VFJ" firstAttribute="bottom" secondItem="qJc-Fz-rgO" secondAttribute="bottom" id="r94-ia-04t"/>
                             <constraint firstItem="Ve0-ZN-VFJ" firstAttribute="leading" secondItem="qJc-Fz-rgO" secondAttribute="leading" id="vog-Hf-7Bn"/>
                         </constraints>
                     </view>
@@ -2227,7 +2224,7 @@
         <!--Verification View Controller-->
         <scene sceneID="kpe-EY-WqC">
             <objects>
-                <viewController storyboardIdentifier="verification" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="F7I-hW-UiE" customClass="VerificationViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VerificationViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="F7I-hW-UiE" customClass="VerificationViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KUl-E1-9o5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2394,13 +2391,13 @@
                         <viewLayoutGuide key="safeArea" id="bKf-dh-crs"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QzQ-7Z-YTC" firstAttribute="top" secondItem="KUl-E1-9o5" secondAttribute="top" id="2eZ-at-dpo"/>
+                            <constraint firstItem="QzQ-7Z-YTC" firstAttribute="top" secondItem="bKf-dh-crs" secondAttribute="top" id="45X-JI-QTo"/>
                             <constraint firstItem="Ni0-8r-H9n" firstAttribute="leading" secondItem="bKf-dh-crs" secondAttribute="leading" constant="45" id="Cbu-sQ-Ppl"/>
                             <constraint firstItem="Ni0-8r-H9n" firstAttribute="centerX" secondItem="KUl-E1-9o5" secondAttribute="centerX" id="IUb-Ma-YM5"/>
                             <constraint firstItem="QzQ-7Z-YTC" firstAttribute="leading" secondItem="bKf-dh-crs" secondAttribute="leading" id="RYC-1p-GfE"/>
                             <constraint firstItem="Ni0-8r-H9n" firstAttribute="centerY" secondItem="KUl-E1-9o5" secondAttribute="centerY" id="aZd-WX-9Uv"/>
                             <constraint firstItem="QzQ-7Z-YTC" firstAttribute="trailing" secondItem="bKf-dh-crs" secondAttribute="trailing" id="gO3-1T-9Wd"/>
-                            <constraint firstAttribute="bottom" secondItem="QzQ-7Z-YTC" secondAttribute="bottom" id="nDX-5x-J2Y"/>
+                            <constraint firstItem="QzQ-7Z-YTC" firstAttribute="bottom" secondItem="bKf-dh-crs" secondAttribute="bottom" id="sLQ-5j-yGX"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2589,7 +2586,7 @@
         <!--Forgot Password View Controller-->
         <scene sceneID="Hol-AJ-D41">
             <objects>
-                <viewController storyboardIdentifier="forgot" id="MNl-QO-V3T" customClass="ForgotPasswordViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPasswordViewController" id="MNl-QO-V3T" customClass="ForgotPasswordViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Wn-0p-5sI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2627,16 +2624,13 @@
                                                                 <color key="tintColor" name="PrimaryAccent"/>
                                                                 <color key="textColor" name="BlackAccent"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="done"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="YES"/>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                                         <integer key="value" value="20"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <outlet property="delegate" destination="MNl-QO-V3T" id="ltl-iH-Mzf"/>
-                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2889,7 +2883,7 @@
         <image name="ic-walkThrough-first-image" width="349" height="210"/>
         <image name="ic-walkthrough-second-image" width="375" height="386"/>
         <image name="ic-walkthrough-third-image" width="375" height="431"/>
-        <image name="logo" width="300" height="308"/>
+        <image name="logo" width="126" height="25"/>
         <namedColor name="BlackAccent">
             <color red="0.10999999940395355" green="0.090000003576278687" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

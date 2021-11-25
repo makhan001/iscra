@@ -7,8 +7,12 @@
 
 import UIKit
 
+protocol verificationDelegate:class {
+    func verified()
+}
+
 class VerificationViewController: UIViewController {
-    
+   
     @IBOutlet weak var verificationTransparentView: UIView!
     @IBOutlet weak var lblHeaderTitle: UILabel!
     @IBOutlet weak var lblMiddleTittle: UILabel!
@@ -18,10 +22,7 @@ class VerificationViewController: UIViewController {
     @IBOutlet weak var otpTextFieldSecond: UITextField!
     @IBOutlet weak var otpTextFieldThird: UITextField!
     @IBOutlet weak var otpTextFieldFourth: UITextField!
-    
-    var verificationCode = ""
-    weak var router: NextSceneDismisser?
-    weak var delegate: VerificationViewControllerDelegate?
+    weak var delegateOTP:verificationDelegate?
     private let viewModel: VerificationViewModel = VerificationViewModel(provider: OnboardingServiceProvider())
     
     override func viewDidLoad() {
@@ -61,7 +62,7 @@ extension VerificationViewController {
     
     private func customTextFieldFont(){
         otpTextFieldFirst.becomeFirstResponder()
-        
+
     }
     @objc func handleTap() {
         print("tapped")
@@ -86,8 +87,8 @@ extension VerificationViewController {
     }
     
     private func btnSubmitAction() {
-        //  delegate?.verified()
-        // self.dismiss(animated: true, completion: nil)
+      //  delegateOTP?.verified()
+       // self.dismiss(animated: true, completion: nil)
         self.viewModel.strText1 = self.otpTextFieldFirst.text ?? ""
         self.viewModel.strText2 = self.otpTextFieldSecond.text ?? ""
         self.viewModel.strText3 = self.otpTextFieldThird.text ?? ""
@@ -158,9 +159,10 @@ extension VerificationViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-        case let .verification(msg):
-            self.showToast(message: msg, seconds: 0.5)
-            self.router?.dismiss(controller: .verification)
+        case .register:
+            // navigate to verification screen
+            
+            break
         default:
             break
         }

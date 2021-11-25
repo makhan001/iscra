@@ -4,18 +4,14 @@
 target 'Iscra' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  
+
   # Pods for Iscra
-  
-  pod 'Firebase'
-  pod 'Alamofire'
-  pod 'QuickBlox'
-  pod 'SDWebImage'
-  pod 'FSCalendar'
-  pod 'SVProgressHUD'
-  pod 'ParallaxHeader'
-  pod 'Firebase/Database'
-  pod 'TTTAttributedLabel'
-  pod 'IQKeyboardManagerSwift'
-  
+ pod 'Alamofire'
+ pod 'SVProgressHUD'
+ pod 'Firebase'
+ pod 'Firebase/Database'
+ pod 'SDWebImage'
+ pod 'IQKeyboardManagerSwift'
+ pod 'ParallaxHeader'
+ pod 'FSCalendar'
 end

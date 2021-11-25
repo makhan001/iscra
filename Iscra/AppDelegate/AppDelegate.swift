@@ -9,15 +9,6 @@ import UIKit
 import CoreData
 import SVProgressHUD
 import IQKeyboardManagerSwift
-import Quickblox
-
-
-struct CredentialsConstant {
-    static let applicationID:UInt = 94500
-    static let authKey = "UA5G7ZR4-z-hRM9"
-    static let authSecret = "cT-CPm-3TBU8-42"
-    static let accountKey = "qamiD7ximJfGsNrs-FyX"
-}
 
 @available(iOS 13.0, *)
 @main
@@ -35,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    private func initialConfiguration() {
+    func initialConfiguration() {
         Thread.sleep(forTimeInterval: 0.0)
         SVProgressHUD.setForegroundColor(UIColor.primaryAccent)
         SVProgressHUD.setBackgroundColor(UIColor.black.withAlphaComponent(0.10))
@@ -43,22 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         self.setNavigationBar()
         self.setRootController()
-        self.setupQuickBlox()
-    }
-    
-    private func setupQuickBlox() {
-        QBSettings.applicationID = CredentialsConstant.applicationID
-        QBSettings.authKey = CredentialsConstant.authKey
-        QBSettings.authSecret = CredentialsConstant.authSecret
-        QBSettings.accountKey = CredentialsConstant.accountKey
-        
-        // enabling carbons for chat with same id in multiple device
-        QBSettings.carbonsEnabled = true
-        // Enables detailed XMPP logging in console output.
-        QBSettings.enableXMPPLogging()
-        QBSettings.logLevel = .debug
-        QBSettings.autoReconnectEnabled = true
-
     }
     
     func setNavigationBar() {
@@ -140,47 +115,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-    }
-}
-
-//MARK: - UNUserNotificationCenterDelegate
-@available(iOS 13.0, *)
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping () -> Void) {
-        let userInfo = response.notification.request.content.userInfo
-        if UIApplication.shared.applicationState == .active {
-            completionHandler()
-            return
-        }
-        center.removeAllDeliveredNotifications()
-        center.removeAllPendingNotificationRequests()
-        
-        guard let dialogID = userInfo["SA_STR_PUSH_NOTIFICATION_DIALOG_ID".localized] as? String,
-              dialogID.isEmpty == false else {
-            completionHandler()
-            return
-        }
-        DispatchQueue.main.async {
-            if ChatManager.instance.storage.dialog(withID: dialogID) != nil {
-               // self.rootViewController.dialogID = dialogID
-            } else {
-                ChatManager.instance.loadDialog(withID: dialogID, completion: { (loadedDialog: QBChatDialog?) -> Void in
-                    guard loadedDialog != nil else {
-                        return
-                    }
-//self.rootViewController.dialogID = dialogID
-                })
-            }
-        }
-        completionHandler()
-    }
-}
-extension UIApplication {
-    static var appVersion: String? {
-        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
 }
 

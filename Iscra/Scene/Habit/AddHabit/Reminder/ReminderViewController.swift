@@ -76,8 +76,10 @@ extension ReminderViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnTime:
+            print("timeaction")
             self.timeClick()
         case btnNext:
+            print("btnNextAcion")
             self.nextClick()
         default:
             break

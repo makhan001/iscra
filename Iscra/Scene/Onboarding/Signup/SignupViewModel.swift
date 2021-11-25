@@ -12,6 +12,7 @@ final class SignupViewModel {
     
     var email: String = ""
     var password: String = ""
+    var verificationCode: String = ""
     var username: String = OnboadingUtils.shared.username // singeleton class
     var selectedImage: UIImage! = OnboadingUtils.shared.userImage // singleton class
     var delegate: OnboardingServiceProvierDelegate?
@@ -43,19 +44,29 @@ final class SignupViewModel {
             view?.onAction(.requireFields(Validation().textValidation(text: password, validationType: .password).1))
             return
         }
+        
+        let parameters =  UserParams.Signup(email: email, username: username, password: password, fcm_token: "fcmToken", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, device_udid: "", device_type: "ios")
+        
         WebService().requestMultiPart(urlString: "/users/registration",
                                       httpMethod: .post,
-                                      parameters: UserParams.Signup(email: email, username: username, password: password, fcm_token: "fcmToken", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, device_udid: "", device_type: "ios"),
+                                      parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
                                       imageArray: [["profile_image": selectedImage ?? UIImage()]],
                                       fileArray: [],
                                       file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
+                
                 self?.delegate?.completed(for: .register, with: resp, with: nil)
                 return
             } else {
                 if let response = resp as? SuccessResponseModel  {
-                    (response.status == true) ? self?.view?.onAction(.register) : self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
+                    if response.status == true {
+                        UserStore.save(token: response.data?.register?.authenticationToken)
+                        self?.verificationCode = response.data?.register?.verificationCode ?? ""
+                        self?.view?.onAction(.register)
+                    } else {
+                        self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
+                    }
                 }
             }
         }

@@ -15,6 +15,7 @@
 		0418F615274E5F4500858099 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F614274E5F4500858099 /* MyAccountViewModel.swift */; };
 		0418F618274E6D0300858099 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418F617274E6D0300858099 /* ChangePasswordViewModel.swift */; };
 		04397097274B762700898C91 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04397096274B762700898C91 /* VerificationViewModel.swift */; };
+		047F80CA274F73FE00BA62B9 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F80C9274F73FE00BA62B9 /* SignupCoordinator.swift */; };
 		861CF1D12743DE9700727D1E /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D02743DE9700727D1E /* RootCoordinator.swift */; };
 		861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D22743E02300727D1E /* LoginCoordinator.swift */; };
 		8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A8392747D41100773C57 /* LandingCoordinator.swift */; };
@@ -182,6 +183,7 @@
 		0418F614274E5F4500858099 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
 		0418F617274E6D0300858099 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		04397096274B762700898C91 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
+		047F80C9274F73FE00BA62B9 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
 		5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iscra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738A14CE266552D2AB54A54A /* Pods-Iscra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.debug.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.debug.xcconfig"; sourceTree = "<group>"; };
@@ -885,6 +887,7 @@
 			children = (
 				88E0289C2716FFE500D90BB1 /* SignupViewController.swift */,
 				88E028A02716FFEE00D90BB1 /* SignupViewModel.swift */,
+				047F80C9274F73FE00BA62B9 /* SignupCoordinator.swift */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -1375,6 +1378,7 @@
 				8814B4362743874100A6DE01 /* SaloonRequests.swift in Sources */,
 				88E0297B271717A500D90BB1 /* IscraCustomLabel.swift in Sources */,
 				88799489273A5ABD00904D1F /* IconsHabitModel.swift in Sources */,
+				047F80CA274F73FE00BA62B9 /* SignupCoordinator.swift in Sources */,
 				887994D3273AB34E00904D1F /* RepeatDaysPopUpViewController.swift in Sources */,
 				88E5805D2722E92A00D4CAFB /* CustomCollectionViewLayout.swift in Sources */,
 				887994C1273AB2EE00904D1F /* CommunityViewController.swift in Sources */,

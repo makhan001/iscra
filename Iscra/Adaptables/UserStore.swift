@@ -8,6 +8,7 @@
 import Foundation
 
 struct UserStore {
+    private static let userData = "userData"
     private static let token_key = "token"
     private static let phone_key = "phone"
     private static let country_key = "country"
@@ -24,6 +25,10 @@ struct UserStore {
     static let apns_token_key = "apns_token"
     static let socialLoginKey = "social_login_key"
 
+    static var userDetail: LoginData? {
+        return UserDefaults.standard.object(forKey: userData) as! LoginData
+    }
+    
     static var token: String? {
         return UserDefaults.standard.string(forKey: token_key)
     }
@@ -126,6 +131,10 @@ struct UserStore {
     
     static func save(isSocialLogin:Bool) {
         UserDefaults.standard.set(isSocialLogin, forKey:is_social_login_key)
+    }
+    
+    static func save(userDetail:LoginData?) {
+        UserDefaults.standard.set(userDetail.self, forKey:userData)
     }
     
 //    static func save(dialHistory:[DialHistory]) {

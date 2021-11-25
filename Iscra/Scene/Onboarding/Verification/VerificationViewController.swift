@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol verificationDelegate:class {
-    func verified()
-}
-
 class VerificationViewController: UIViewController {
     
     @IBOutlet weak var verificationTransparentView: UIView!
@@ -22,9 +18,11 @@ class VerificationViewController: UIViewController {
     @IBOutlet weak var otpTextFieldSecond: UITextField!
     @IBOutlet weak var otpTextFieldThird: UITextField!
     @IBOutlet weak var otpTextFieldFourth: UITextField!
-    weak var delegateOTP:verificationDelegate?
+    
+    var verificationCode = ""
+    weak var router: NextSceneDismisser?
+    weak var delegate: VerificationViewControllerDelegate?
     private let viewModel: VerificationViewModel = VerificationViewModel(provider: OnboardingServiceProvider())
-   // weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +86,7 @@ extension VerificationViewController {
     }
     
     private func btnSubmitAction() {
-        //  delegateOTP?.verified()
+        //  delegate?.verified()
         // self.dismiss(animated: true, completion: nil)
         self.viewModel.strText1 = self.otpTextFieldFirst.text ?? ""
         self.viewModel.strText2 = self.otpTextFieldSecond.text ?? ""
@@ -161,19 +159,8 @@ extension VerificationViewController: OnboardingViewRepresentable {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
         case let .verification(msg):
-            self.showToast(message: msg)
-            dismiss(animated: false, completion: nil)
-            self.delegateOTP?.verified()
-           
-//            let seconds = 2.0
-//            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-//                self.router?.push(scene: .landingTab)
-//
-////                let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-////                let vc = storyboard.instantiateViewController(withIdentifier: "landingTab") as! LandingTabBarViewController
-////                self.navigationController?.pushViewController(vc, animated: true)
-//            }
-            break
+            self.showToast(message: msg, seconds: 0.5)
+            self.router?.dismiss(controller: .verification)
         default:
             break
         }

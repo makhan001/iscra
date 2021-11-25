@@ -46,6 +46,9 @@ protocol InputFieldAlertDelegate:AnyObject {
 protocol InputViewDelegate:AnyObject {
     func onAction(action: OnboardingAction, for screen: OnboardingScreenType)
 }
+protocol VerificationViewControllerDelegate:class {
+    func isUserVerified()
+}
 protocol OnboardingViewRepresentable:AnyObject {
     func onAction(_ action: OnboardingAction)
 }

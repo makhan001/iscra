@@ -13,8 +13,9 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
     weak var delegate: CoordinatorDimisser?
     let controller: WelcomeViewController = WelcomeViewController.from(from: .onboarding, with: .welcome)
     let walktrough: WalkthroughViewController = WalkthroughViewController.from(from: .onboarding, with: .walkthrough)
-
+    
     private var login: LoginCoordinator!
+    private var signup: SignupCoordinator!
     private var landing: LandingCoordinator!
     private var onboarding: OnboardingCoordinator!
         
@@ -48,14 +49,6 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
         self.router.present(onboarding, animated: true)
     }
     
-    private func startVerification() {
-        let router = Router()
-        onboarding = OnboardingCoordinator(router: router)
-        add(onboarding)
-        onboarding.delegate = self
-        onboarding.start()
-        self.router.present(onboarding, animated: true)
-    }
     
     private func startLanding() {
         landing = LandingCoordinator(router: Router())
@@ -64,6 +57,14 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
         landing.start()
         self.router.present(landing, animated: true)
     }
+    
+    private func startSignup() {
+        signup = SignupCoordinator(router: Router())
+        add(signup)
+        signup.delegate = self
+        signup.start()
+        self.router.present(signup, animated: true)
+    }
 }
 
 extension OnboardingCoordinator: NextSceneDismisser {
@@ -71,14 +72,16 @@ extension OnboardingCoordinator: NextSceneDismisser {
     func push(scene: Scenes) {
         switch scene {
         case .login: startLogin()
-        case .landingTab: startLanding()
+        case .signup: startSignup()
+        case .landing: startLanding()
         case .walkthrough: startWalkthrough()
-        case .verification: startVerification()
         default: break
         }
     }
     
-    func dismiss(controller: Scenes) {}
+    func dismiss(controller: Scenes) {
+        router.dismissModule(animated: true, completion: nil)
+    }
 }
 
 extension OnboardingCoordinator: CoordinatorDimisser {

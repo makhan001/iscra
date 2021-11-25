@@ -50,16 +50,24 @@ extension LoginViewController  : navigationBarAction {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         
-//        if TARGET_OS_SIMULATOR == 1 {
-//            viewModel.email = "ios6@gmail.com"
-//            viewModel.password = "123456"
-//            txtEmail.text = viewModel.email
-//            txtPassword.text = viewModel.password
-//        }
+        if TARGET_OS_SIMULATOR == 1 {
+            viewModel.email = "user300@gmail.com"
+            viewModel.password = "123456"
+            txtEmail.text = viewModel.email
+            txtPassword.text = viewModel.password
+        }
     }
     
     func ActionType() {
         router?.dismiss(controller: .login)
+    }
+    
+    private func naviateUserAfterLogin(_ isVerified:Bool) {
+        if isVerified == true {
+            self.router?.push(scene: .landing)
+        } else {
+            self.router?.push(scene: .verification)
+        }
     }
 }
 
@@ -158,57 +166,24 @@ extension LoginViewController:UITextFieldDelegate {
     }
 }
 
-// MARK: API Callback
-extension LoginViewController: OnboardingViewRepresentable , verificationDelegate {
-    func verified() {
-        dismiss(animated: false, completion: nil)
-        self.router?.push(scene: .landingTab)
-//        let seconds = 2.0
-//        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-//            self.router?.push(scene: .landingTab)
-//            //                let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-//            //                let vc = storyboard.instantiateViewController(withIdentifier: "landingTab") as! LandingTabBarViewController
-//            //                self.navigationController?.pushViewController(vc, animated: true)
-//        }
+// MARK: Verification View Controller Delegate
+extension LoginViewController: VerificationViewControllerDelegate {
+    func isUserVerified() {
+        self.router?.push(scene: .landing)
     }
-    
+}
+
+// MARK: API Callback
+extension LoginViewController: OnboardingViewRepresentable {
     func onAction(_ action: OnboardingAction) {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-        // deepak
-        case let .login(msg, isvarified):
-            print("isvarified =====>>>\(isvarified)")
-           
-           // self.showToast(message: msg)
-            //let seconds = 2.0
-            if isvarified == true{
-                self.router?.push(scene: .landingTab)
-//                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-//                    self.router?.push(scene: .landingTab)
-//                }
+        case let .login(msg, isVerified):
+            self.showToast(message: msg, seconds: 0.5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.naviateUserAfterLogin(isVerified)
             }
-            else {
-                let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-                let VC = storyboard.instantiateViewController(withIdentifier: "VerificationViewController") as! VerificationViewController
-                VC.delegateOTP = self
-                navigationController?.present(VC, animated: true, completion: nil)
-            }
-            
-            
-            //            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-            //                           let VC = storyboard.instantiateViewController(withIdentifier: "VerificationViewController") as! VerificationViewController
-            //            VC.delegateOTP = self
-            //                           navigationController?.present(VC, animated: true, completion: nil)
-            // deepak
-            
-            
-            //        case .login:
-            //
-            //            router?.push(scene: .landingTab)
-            
-            // navigate to verification screen
-            break
         default:
             break
         }

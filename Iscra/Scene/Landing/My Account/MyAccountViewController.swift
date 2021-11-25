@@ -59,7 +59,7 @@ extension MyAccountViewController {
     }
     
     private func LogoutAction() {
-        logOutAction() 
+        logOutAction()
     }
     
     // MARK:- AlertView
@@ -200,7 +200,7 @@ extension MyAccountViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-        case .logout: 
+        case .logout:
             self.router?.push(scene: .welcome)
         default:
             break

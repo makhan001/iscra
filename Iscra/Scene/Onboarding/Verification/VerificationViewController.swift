@@ -65,7 +65,7 @@ extension VerificationViewController {
     }
     @objc func handleTap() {
         print("tapped")
-        self.dismiss(animated: true, completion: nil)
+       // self.dismiss(animated: true, completion: nil)
     }
 }
 // MARK:- Button Action
@@ -160,9 +160,12 @@ extension VerificationViewController: OnboardingViewRepresentable {
             self.showToast(message: msg)
         case let .verification(msg):
             self.showToast(message: msg, seconds: 0.5)
-            self.router?.dismiss(controller: .verification)
+            if self.viewModel.isResendVerification != true {
+                self.router?.dismiss(controller: .verification)
+            }
         default:
             break
         }
     }
 }
+

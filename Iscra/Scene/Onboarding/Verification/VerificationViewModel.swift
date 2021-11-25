@@ -14,6 +14,7 @@ final class VerificationViewModel {
     var strText2: String = ""
     var strText3: String = ""
     var strText4: String = ""
+    var isResendVerification: Bool = false
     weak var view: OnboardingViewRepresentable?
     let provider: OnboardingServiceProvidable
     
@@ -25,12 +26,14 @@ final class VerificationViewModel {
     
     private func validateUserInput() {
         if (!self.strText1.isEmpty && self.strText1 != "") && (!self.strText2.isEmpty && self.strText2 != "" ) && (!self.strText3.isEmpty && self.strText3 != "") && (!self.strText4.isEmpty && self.strText4 != "") {
+            self.isResendVerification = false
             self.provider.verification(param: UserParams.Verification(verification_code: strText1 + strText2 + strText3 + strText4))
         }else{
             view?.onAction(.requireFields("Please enter all charaters for verification"))
         }
     }
     private func resendVerification() {
+        self.isResendVerification = true
         self.provider.resendVerification(param: UserParams.ResendVerification())
     }
 }
@@ -49,8 +52,7 @@ extension VerificationViewModel: OnboardingServiceProvierDelegate, InputViewDele
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.status == true {
-                    //                   self.register = resp.data?.register
-                    self.view?.onAction(.verification(resp.message ?? ""))
+                        self.view?.onAction(.verification(resp.message ?? ""))
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }
@@ -58,3 +60,4 @@ extension VerificationViewModel: OnboardingServiceProvierDelegate, InputViewDele
         }
     }
 }
+

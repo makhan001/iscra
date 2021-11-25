@@ -62,6 +62,11 @@ final class SignupViewModel {
                 if let response = resp as? SuccessResponseModel  {
                     if response.status == true {
                         UserStore.save(token: response.data?.register?.authenticationToken)
+                        UserStore.save(isVerify: response.data?.register?.isVerified ?? false)
+                        UserStore.save(userEmail: response.data?.register?.email)
+                        UserStore.save(userName: response.data?.register?.username)
+                        UserStore.save(userID: response.data?.register?.id)
+                        UserStore.save(userImage: response.data?.register?.profileImage)
                         self?.verificationCode = response.data?.register?.verificationCode ?? ""
                         self?.view?.onAction(.register)
                     } else {

@@ -87,6 +87,7 @@ extension SetThemeViewController {
     private func nextClick() {
         let storyboard = UIStoryboard(name: "Habit", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ReminderViewController") as! ReminderViewController
+        vc.selectedColorTheme = selectedColorTheme
         vc.habitType = habitType
         navigationController?.pushViewController(vc, animated: true)
         

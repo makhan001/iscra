@@ -10,24 +10,19 @@ import  UIKit
 
 extension UIColor {
     static let primaryAccent: UIColor = UIColor(named: "PrimaryAccent")!
-    
-    public convenience init?(hex: String) {
+        public convenience init?(hex: String) {
         var hexInt: UInt32 = 0
-        // Create scanner
         let scanner: Scanner = Scanner(string: hex)
-        // Tell scanner to skip the # character
         scanner.charactersToBeSkipped = CharacterSet(charactersIn: "#")
-        // Scan hex value
         scanner.scanHexInt32(&hexInt)
-        //let hexint = Int(self.intFromHexString(hexStr: hex))
         let red = CGFloat((hexInt & 0xff0000) >> 16) / 255.0
         let green = CGFloat((hexInt & 0xff00) >> 8) / 255.0
         let blue = CGFloat((hexInt & 0xff) >> 0) / 255.0
-        // Create color object, specifying alpha as well
         self.init(red: red, green: green, blue: blue, alpha: 1)
         return
     }
 }
+
 enum CustomFontSize : CGFloat {
     case vvvsmall = 8
     /// size 10

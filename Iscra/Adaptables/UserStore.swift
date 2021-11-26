@@ -22,19 +22,16 @@ struct UserStore {
     static let fcmtoken_key = "fcmtoken"
     static let apns_token_key = "apns_token"
     static let socialLoginKey = "social_login_Id"
-    
     static var isVerify: Bool? {
         return UserDefaults.standard.bool(forKey: is_verify_key)
     }
-    
     static var token: String? {
         return UserDefaults.standard.string(forKey: token_key)
     }
-    
     static var emp: String? {
         return UserDefaults.standard.string(forKey: empkey)
     }
-
+    
     static var primeUser: Bool? {
         return UserDefaults.standard.bool(forKey: primeUserKey)
     }
@@ -74,7 +71,7 @@ struct UserStore {
     static var isSocialLogin:Bool? {
         return UserDefaults.standard.bool(forKey: is_social_login_key)
     }
-
+    
     static func save(token:String?) {
         UserDefaults.standard.set(token, forKey: token_key)
     }
@@ -82,7 +79,7 @@ struct UserStore {
     static func save(primeUser:Bool?) {
         UserDefaults.standard.set(primeUser, forKey: primeUserKey)
     }
-
+    
     static func save(phoneNo:String?) {
         UserDefaults.standard.set(phoneNo, forKey: phone_key)
     }
@@ -122,16 +119,16 @@ struct UserStore {
     static func save(isSocialLogin:Bool) {
         UserDefaults.standard.set(isSocialLogin, forKey:is_social_login_key)
     }
-
+    
     static func save(isVerify:Bool) {
         UserDefaults.standard.set(isVerify, forKey:is_verify_key)
-    }
-        
-//    static func save(dialHistory:[DialHistory]) {
-//        UserDefaults.standard.set(try? PropertyListEncoder().encode(dialHistory), forKey:dialHistoryKey)
-//    }
-//
-//    static func save(recordingFolder:[RecordingFolder]) {
-//        UserDefaults.standard.set(try? PropertyListEncoder().encode(recordingFolder), forKey:recordingFolderKey)
-//    }
+      }
+    
+    //    static func save(dialHistory:[DialHistory]) {
+    //        UserDefaults.standard.set(try? PropertyListEncoder().encode(dialHistory), forKey:dialHistoryKey)
+    //    }
+    //
+    //    static func save(recordingFolder:[RecordingFolder]) {
+    //        UserDefaults.standard.set(try? PropertyListEncoder().encode(recordingFolder), forKey:recordingFolderKey)
+    //    }
 }

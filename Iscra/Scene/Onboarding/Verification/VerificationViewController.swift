@@ -9,19 +9,22 @@ import UIKit
 
 class VerificationViewController: UIViewController {
     
-    @IBOutlet weak var verificationTransparentView: UIView!
+    
+    @IBOutlet weak var btnSubmit: UIButton!
+    @IBOutlet weak var btnResendCode: UIButton!
     @IBOutlet weak var lblHeaderTitle: UILabel!
     @IBOutlet weak var lblMiddleTittle: UILabel!
-    @IBOutlet weak var btnResendCode: UIButton!
-    @IBOutlet weak var btnSubmit: UIButton!
+    @IBOutlet weak var otpTextFieldThird: UITextField!
     @IBOutlet weak var otpTextFieldFirst: UITextField!
     @IBOutlet weak var otpTextFieldSecond: UITextField!
-    @IBOutlet weak var otpTextFieldThird: UITextField!
     @IBOutlet weak var otpTextFieldFourth: UITextField!
-    
-    var verificationCode = ""
+    @IBOutlet weak var verificationTransparentView: UIView!
+    @IBOutlet weak var lblTimer: UILabel!
+
     weak var router: NextSceneDismisser?
     weak var delegate: VerificationViewControllerDelegate?
+    var secondsRemaining = 30
+
     private let viewModel: VerificationViewModel = VerificationViewModel(provider: OnboardingServiceProvider())
     
     override func viewDidLoad() {
@@ -33,8 +36,7 @@ class VerificationViewController: UIViewController {
         addBottomLayerTo(textField: otpTextFieldThird)
         addBottomLayerTo(textField: otpTextFieldFourth)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        verificationTransparentView.addGestureRecognizer(tap)
+       
         
     }
     func addBottomLayerTo(textField: UITextField) {
@@ -57,15 +59,39 @@ extension VerificationViewController {
         [btnResendCode, btnSubmit].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+        self.startTimer()
     }
     
     private func customTextFieldFont(){
         otpTextFieldFirst.becomeFirstResponder()
-        
     }
-    @objc func handleTap() {
-        print("tapped")
-       // self.dismiss(animated: true, completion: nil)
+    
+    // MARK:- SetTimer for resend password
+    private func startTimer(){
+        self.btnResendCode.isHidden = true
+        self.lblTimer.isHidden = false
+        self.secondsRemaining = 30
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
+               if self.secondsRemaining > 0 {
+              
+                let attrs1 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .regular), NSAttributedString.Key.foregroundColor : UIColor.black]
+                
+                let attrs2 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .regular), NSAttributedString.Key.foregroundColor : UIColor(named: "PrimaryAccent")]
+
+                let attributedString1 = NSMutableAttributedString(string:"Resend code in ", attributes:attrs1)
+
+                let attributedString2 = NSMutableAttributedString(string:"\(self.secondsRemaining) seconds", attributes:attrs2)
+
+                attributedString1.append(attributedString2)
+                self.lblTimer.attributedText = attributedString1
+                   //self.lblTimer.text = "  code in " + "\(self.secondsRemaining) seconds"
+                   self.secondsRemaining -= 1
+               } else {
+                self.btnResendCode.isHidden = false
+                self.lblTimer.isHidden = true
+                   Timer.invalidate()
+               }
+           }
     }
 }
 // MARK:- Button Action
@@ -83,11 +109,10 @@ extension VerificationViewController {
     
     private func resendCodeAction() {
         viewModel.onAction(action: .resendVerification, for: .verification)
+        self.startTimer()
     }
     
     private func btnSubmitAction() {
-        //  delegate?.verified()
-        // self.dismiss(animated: true, completion: nil)
         self.viewModel.strText1 = self.otpTextFieldFirst.text ?? ""
         self.viewModel.strText2 = self.otpTextFieldSecond.text ?? ""
         self.viewModel.strText3 = self.otpTextFieldThird.text ?? ""
@@ -95,6 +120,7 @@ extension VerificationViewController {
         viewModel.onAction(action: .inputComplete(.verification), for: .verification)
     }
 }
+
 // MARK:- TextField Delegate
 extension VerificationViewController: UITextFieldDelegate {
     
@@ -141,12 +167,7 @@ extension VerificationViewController: UITextFieldDelegate {
         }
         return true
     }
-    func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-        print("Api calling")
-    }
-    
+   
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

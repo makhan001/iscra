@@ -16,6 +16,7 @@ struct weekStruct{
 }
 
 class WeekCollection: UICollectionView{
+    var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
     
     var selcteIndex = 0
     var weakDays = [weekStruct(id: 7, shortDayname: "S", dayname: "sunday", isSelect: false),
@@ -25,10 +26,11 @@ class WeekCollection: UICollectionView{
                     weekStruct(id: 4, shortDayname: "T", dayname: "thrusday", isSelect: false),
                     weekStruct(id: 5, shortDayname: "F", dayname: "friday", isSelect: false),
                     weekStruct(id: 6, shortDayname: "S", dayname: "suturday", isSelect: false)]
-    func configure() {
+    func configure(selectedColor:ColorStruct) {
         self.register(UINib(nibName: "WeekDaysCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WeekDaysCollectionViewCell")
         self.delegate = self
         self.dataSource = self
+        selectedColorTheme = selectedColor
         reloadData()
     }
 }
@@ -41,7 +43,7 @@ extension WeekCollection:  UICollectionViewDelegate, UICollectionViewDataSource,
         guard let cell = self.dequeueReusableCell(withReuseIdentifier: "WeekDaysCollectionViewCell", for: indexPath) as? WeekDaysCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(day: weakDays[indexPath.row])
+        cell.configure(day: weakDays[indexPath.row], selectedColor:selectedColorTheme)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -12,6 +12,7 @@ final class ChangePasswordViewModel {
     
     var password: String = ""
     var newPassword: String = ""
+    var confirmPassword: String = ""
     
     weak var view: OnboardingViewRepresentable?
     let provider: OnboardingServiceProvidable
@@ -30,14 +31,28 @@ final class ChangePasswordViewModel {
     
     private func validateUserInput() {
    
-        if Validation().textValidation(text: password, validationType: .password).0 {
-            view?.onAction(.requireFields(Validation().textValidation(text: password, validationType: .password).1))
+        if Validation().textValidation(text: password, validationType: .currentPassword).0 {
+            view?.onAction(.requireFields(Validation().textValidation(text: password, validationType: .currentPassword).1))
             return
         }
         if Validation().textValidation(text: newPassword, validationType: .newPassword).0 {
             view?.onAction(.requireFields(Validation().textValidation(text: newPassword, validationType: .newPassword).1))
             return
         }
+        
+        if Validation().textValidation(text: confirmPassword, validationType: .confirmPassword).0 {
+            view?.onAction(.requireFields(Validation().textValidation(text: confirmPassword, validationType: .confirmPassword).1))
+            return
+        }
+        
+        if newPassword != confirmPassword {
+            view?.onAction(.requireFields(AppConstant.invalidConfirmPasswordMatch))
+        }
+        
+        if password == newPassword {
+            view?.onAction(.requireFields(AppConstant.invalidCurrentPasswordMatch))
+        }
+        
         self.provider.changePassword(param: UserParams.ChangePassword(current_password: password, new_password: newPassword))
     }
 }

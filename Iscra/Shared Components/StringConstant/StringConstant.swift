@@ -41,9 +41,16 @@ class AppConstant: NSObject {
     
     // MARK:Validation Alert messages
     static let emptyEmail = "Email is required"
-    static let invaliedEmail = "Please enter vaild email"
+    static let invalidEmail = "Please enter valid email"
     static let emptyPassword = "Password is required"
     static let emptyNewPassword = "New password is required"
-    static let invaliedPassword = "Please enter vaild password"
-    static let invaliedNewPassword = "Please enter vaild new password"
+    static let invalidPassword = "Please enter valid password"
+    static let invalidNewPassword = "Please enter valid new password"
+    static let emptyCurrentPassword = "Current password is required"
+    static let emptyConfirmPassword = "Confirm password is required"
+    static let invalidCurrentPassword = "Please enter valid current password"
+    static let invalidConfirmPassword = "Please enter valid confirm password"
+    static let invalidCurrentPasswordMatch = "Current password and new password are not same"
+    static let invalidConfirmPasswordMatch = "New password and confirm password are not match"
+
 }

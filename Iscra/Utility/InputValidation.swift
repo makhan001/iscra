@@ -12,6 +12,8 @@ enum InputValidation:String {
     case email
     case password
     case newPassword
+    case currentPassword
+    case confirmPassword
 }
 
 class Validation {
@@ -24,19 +26,32 @@ class Validation {
             return(
                 text == "" ? true :
                     Validation().isValidEmail(emaiId: text) == false ? true : false,
-                text == "" ? AppConstant.emptyEmail :AppConstant.invaliedEmail)
+                text == "" ? AppConstant.emptyEmail :AppConstant.invalidEmail)
             
         case .password:
             return(
                 text == "" ? true :
                     text.count < 6 ? true : false,
-                text == "" ? AppConstant.emptyPassword : AppConstant.invaliedPassword)
+                text == "" ? AppConstant.emptyPassword : AppConstant.invalidPassword)
             
         case .newPassword:
             return(
                 text == "" ? true :
                     text.count < 6 ? true : false,
-                text == "" ? AppConstant.emptyNewPassword : AppConstant.invaliedNewPassword)
+                text == "" ? AppConstant.emptyNewPassword : AppConstant.invalidNewPassword)
+            
+        case .currentPassword:
+            return(
+                text == "" ? true :
+                    text.count < 6 ? true : false,
+                text == "" ? AppConstant.emptyCurrentPassword : AppConstant.invalidCurrentPassword)
+            
+        case .confirmPassword:
+            return(
+                text == "" ? true :
+                    text.count < 6 ? true : false,
+                text == "" ? AppConstant.emptyConfirmPassword : AppConstant.invalidConfirmPassword)
+            
         case .name:
             return( text == "" ? true :
                         isTextContainspecialCharacters(string: text) == true ? true : false,

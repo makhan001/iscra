@@ -18,7 +18,7 @@
         <!--Add Habit View Controller-->
         <scene sceneID="5pr-J3-mg8">
             <objects>
-                <viewController storyboardIdentifier="AddHabitViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tKh-md-e3z" customClass="AddHabitViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addHabit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tKh-md-e3z" customClass="AddHabitViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vt2-NL-xj1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,7 +201,7 @@
         <!--Set Theme View Controller-->
         <scene sceneID="Rc2-N7-X3h">
             <objects>
-                <viewController storyboardIdentifier="SetThemeViewController" id="PUf-zw-ZSy" customClass="SetThemeViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setTheme" id="PUf-zw-ZSy" customClass="SetThemeViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ohN-Qd-ere">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -471,7 +471,7 @@
         <!--Color Pop Up View Controller-->
         <scene sceneID="2hD-4e-S6N">
             <objects>
-                <viewController storyboardIdentifier="ColorPopUpViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mzQ-Yd-A8v" customClass="ColorPopUpViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="colorPopUp" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mzQ-Yd-A8v" customClass="ColorPopUpViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISa-F6-ywR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -582,7 +582,7 @@
         <!--Icon Popup View Controller-->
         <scene sceneID="SA6-x5-wIE">
             <objects>
-                <viewController storyboardIdentifier="IconPopupViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="crk-Pc-WEW" customClass="IconPopupViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="iconPopup" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="crk-Pc-WEW" customClass="IconPopupViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uge-jk-op1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -676,7 +676,7 @@
         <!--Reminder View Controller-->
         <scene sceneID="WYn-s3-k6v">
             <objects>
-                <viewController storyboardIdentifier="ReminderViewController" id="aij-J7-bsX" customClass="ReminderViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reminder" id="aij-J7-bsX" customClass="ReminderViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jfg-2p-orE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1024,7 +1024,7 @@
         <!--Invite Friend View Controller-->
         <scene sceneID="7Ks-5J-2hb">
             <objects>
-                <viewController storyboardIdentifier="InviteFriendViewController" id="BsC-4O-NCC" customClass="InviteFriendViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="inviteFriend" id="BsC-4O-NCC" customClass="InviteFriendViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pd1-ca-79N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1181,7 +1181,7 @@
         <!--Add Group Image View Controller-->
         <scene sceneID="e2C-4Z-dIq">
             <objects>
-                <viewController storyboardIdentifier="AddGroupImageViewController" id="DE6-lV-70h" customClass="AddGroupImageViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addGroupImage" id="DE6-lV-70h" customClass="AddGroupImageViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A9L-c0-DXz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1349,7 +1349,7 @@
         <!--Edit Habit View Controller-->
         <scene sceneID="i2z-cc-thU">
             <objects>
-                <viewController storyboardIdentifier="EditHabitViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="24j-kT-c97" customClass="EditHabitViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editHabit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="24j-kT-c97" customClass="EditHabitViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TAE-sF-Lhq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

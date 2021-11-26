@@ -70,7 +70,6 @@ extension LandingCoordinator: NextSceneDismisser {
         case .welcome: startWelcome()
         case .landing: startLanding()
         case .walkthrough: startWalkthrough()
-        
         default: break
         }
     }

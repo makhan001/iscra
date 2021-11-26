@@ -839,7 +839,7 @@
         <!--Add My Picture View Controller-->
         <scene sceneID="WnA-Qc-KPu">
             <objects>
-                <viewController storyboardIdentifier="AddMyPictureViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uEh-mY-Thk" customClass="AddMyPictureViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addMyPicture" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uEh-mY-Thk" customClass="AddMyPictureViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ipT-rI-xHL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -996,7 +996,7 @@
         <!--Change Password View Controller-->
         <scene sceneID="AYl-lC-unm">
             <objects>
-                <viewController storyboardIdentifier="ChangePasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y82-1A-5fk" customClass="ChangePasswordViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="changePassword" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y82-1A-5fk" customClass="ChangePasswordViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P6T-hB-pZT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1391,7 +1391,7 @@
         <!--Edit Name View Controller-->
         <scene sceneID="l1h-ZO-ZuD">
             <objects>
-                <viewController storyboardIdentifier="EditNameViewController" id="rb6-zJ-drJ" customClass="EditNameViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editName" id="rb6-zJ-drJ" customClass="EditNameViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ABF-Qr-rhg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1532,7 +1532,7 @@
         <!--Learn How To Add Memoji View Controller-->
         <scene sceneID="LBD-Aw-ers">
             <objects>
-                <viewController storyboardIdentifier="LearnHowToAddMemojiViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D01-vD-Qkh" customClass="LearnHowToAddMemojiViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="learnHowToAddMemoji" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D01-vD-Qkh" customClass="LearnHowToAddMemojiViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rdc-Q0-qfD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2249,7 +2249,7 @@
         <!--Password Change Confirmation View Controller-->
         <scene sceneID="0hS-k4-qqu">
             <objects>
-                <viewController storyboardIdentifier="PasswordChangeConfirmationViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="Eoo-yi-7Tl" customClass="PasswordChangeConfirmationViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="passwordChangeConfirmation" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="Eoo-yi-7Tl" customClass="PasswordChangeConfirmationViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ai1-Gj-uqJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2517,7 +2517,7 @@
         <!--Get Subcription View Controller-->
         <scene sceneID="Fk9-7o-5Zb">
             <objects>
-                <viewController storyboardIdentifier="GetSubcriptionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kCS-Rf-9xQ" customClass="GetSubcriptionViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="getSubcription" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kCS-Rf-9xQ" customClass="GetSubcriptionViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QCM-8Q-4sx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

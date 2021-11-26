@@ -852,7 +852,7 @@
                                                 <rect key="frame" x="75" y="30" width="225" height="225"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attach or Drop photo here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwU-ld-hQV" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="92" width="185" height="41"/>
+                                                        <rect key="frame" x="20" y="88.5" width="185" height="48"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1449,7 +1449,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attach or Drop photo here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ls-IB-Blx" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="122" y="109.5" width="131" height="41"/>
+                                                <rect key="frame" x="122" y="108.5" width="131" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="BlackAccent"/>
                                                 <nil key="highlightedColor"/>
@@ -1788,7 +1788,7 @@
                                                                 <rect key="frame" x="15" y="49" width="345" height="210"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Together is much easier" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bft-tY-T2W" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="35" y="278" width="305" height="20"/>
+                                                                <rect key="frame" x="35" y="278" width="305" height="115"/>
                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                 <color key="textColor" name="SecondryAccent"/>
                                                                 <nil key="highlightedColor"/>
@@ -1800,7 +1800,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Build good habits and get rid of bad ones with your friends. Challenge yourself to be a better person!" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uhw-aA-CSh" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="35" y="318" width="305" height="61"/>
+                                                                <rect key="frame" x="35" y="413" width="305" height="64.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1933,7 +1933,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cheese! Let’s add your profile image" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9a-dm-i6h" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="32" y="229" width="311" height="20.5"/>
+                                                                <rect key="frame" x="32" y="229" width="311" height="76.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="SecondryAccent"/>
                                                                 <nil key="highlightedColor"/>
@@ -1945,7 +1945,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QV-Om-mSM" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="32" y="269.5" width="311" height="101.5"/>
+                                                                <rect key="frame" x="32" y="325.5" width="311" height="107.5"/>
                                                                 <string key="text">Do you know it’s easier for your friend to recognize you If you add your profile picture. You can add your cute memoji or just choose your image from your gallery.</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="BlackAccent"/>
@@ -1958,7 +1958,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="UcS-b2-3im">
-                                                                <rect key="frame" x="32" y="401" width="311" height="152"/>
+                                                                <rect key="frame" x="32" y="463" width="311" height="152"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JUU-69-qwS">
                                                                         <rect key="frame" x="0.0" y="0.0" width="311" height="76"/>
@@ -2173,7 +2173,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your password was changed successfully" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0D-8G-Yih" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="88" width="251" height="41"/>
+                                        <rect key="frame" x="30" y="88" width="251" height="57.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="SecondryAccent"/>
                                         <nil key="highlightedColor"/>
@@ -2245,10 +2245,10 @@
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ni0-8r-H9n">
-                                <rect key="frame" x="45" y="220.5" width="285" height="226"/>
+                                <rect key="frame" x="45" y="197" width="285" height="273"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7f-Of-Z0Q" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="32" y="20" width="221" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sadfa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7f-Of-Z0Q" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                        <rect key="frame" x="32" y="20" width="221" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="BlackAccent"/>
                                         <nil key="highlightedColor"/>
@@ -2259,8 +2259,8 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buu-U2-5pm" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="32" y="29" width="221" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buu-U2-5pm" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                        <rect key="frame" x="32" y="55.5" width="221" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2271,31 +2271,49 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e98-ns-aTA" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="32" y="30" width="221" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="l4r-XU-eje"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Resend code">
-                                            <color key="titleColor" name="PrimaryAccent"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Zx-Z9-qH9">
+                                        <rect key="frame" x="63" y="89.5" width="159" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnI-oy-tRJ" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e98-ns-aTA" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
+                                                <rect key="frame" x="48" y="0.0" width="111" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="l4r-XU-eje"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Resend code">
+                                                    <color key="titleColor" name="PrimaryAccent"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                        <integer key="value" value="18"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZHF-gj-qj4">
-                                        <rect key="frame" x="32" y="84" width="221" height="55"/>
+                                        <rect key="frame" x="32" y="119.5" width="221" height="66.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-MZ-DDT" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="55"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="66.5"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" name="BlackAccent"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                         <integer key="value" value="37"/>
@@ -2304,11 +2322,11 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F77-LV-flF" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="58" y="0.0" width="47.5" height="55"/>
+                                                <rect key="frame" x="58" y="0.0" width="47.5" height="66.5"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" name="BlackAccent"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                         <integer key="value" value="37"/>
@@ -2317,11 +2335,11 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4nx-as-RJr" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="115.5" y="0.0" width="48" height="55"/>
+                                                <rect key="frame" x="115.5" y="0.0" width="48" height="66.5"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" name="BlackAccent"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                         <integer key="value" value="37"/>
@@ -2330,11 +2348,11 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ATG-w7-j2m" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="173.5" y="0.0" width="47.5" height="55"/>
+                                                <rect key="frame" x="173.5" y="0.0" width="47.5" height="66.5"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" name="BlackAccent"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                         <integer key="value" value="37"/>
@@ -2345,7 +2363,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79B-W6-Gea" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="87.5" y="169" width="110" height="37"/>
+                                        <rect key="frame" x="87.5" y="216" width="110" height="37"/>
                                         <color key="backgroundColor" name="PrimaryAccent"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="cmk-u4-2ke"/>
@@ -2366,23 +2384,22 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="ZHF-gj-qj4" firstAttribute="top" secondItem="e98-ns-aTA" secondAttribute="bottom" constant="34" id="17q-3y-uPQ"/>
+                                    <constraint firstItem="ZHF-gj-qj4" firstAttribute="top" secondItem="8Zx-Z9-qH9" secondAttribute="bottom" constant="10" id="1RM-YD-rnW"/>
                                     <constraint firstItem="U7f-Of-Z0Q" firstAttribute="leading" secondItem="Ni0-8r-H9n" secondAttribute="leading" constant="32" id="5n1-tO-pa6"/>
                                     <constraint firstItem="buu-U2-5pm" firstAttribute="leading" secondItem="Ni0-8r-H9n" secondAttribute="leading" constant="32" id="8AS-Kq-0Y6"/>
+                                    <constraint firstItem="8Zx-Z9-qH9" firstAttribute="top" secondItem="buu-U2-5pm" secondAttribute="bottom" constant="10" id="Bzf-s2-92W"/>
                                     <constraint firstItem="buu-U2-5pm" firstAttribute="top" secondItem="U7f-Of-Z0Q" secondAttribute="bottom" constant="9" id="F2V-Mu-ZRl"/>
                                     <constraint firstAttribute="bottom" secondItem="79B-W6-Gea" secondAttribute="bottom" constant="20" id="Iof-Sp-eI3"/>
                                     <constraint firstAttribute="trailing" secondItem="buu-U2-5pm" secondAttribute="trailing" constant="32" id="Nqi-yX-an7"/>
                                     <constraint firstItem="U7f-Of-Z0Q" firstAttribute="top" secondItem="Ni0-8r-H9n" secondAttribute="top" constant="20" id="PUW-Vk-kia"/>
+                                    <constraint firstItem="8Zx-Z9-qH9" firstAttribute="centerX" secondItem="buu-U2-5pm" secondAttribute="centerX" id="YIf-JJ-dbA"/>
                                     <constraint firstItem="ZHF-gj-qj4" firstAttribute="centerX" secondItem="Ni0-8r-H9n" secondAttribute="centerX" id="Z5v-mT-bXd"/>
                                     <constraint firstItem="79B-W6-Gea" firstAttribute="width" secondItem="Ni0-8r-H9n" secondAttribute="width" multiplier="0.385965" id="dYp-Qh-Gw3"/>
-                                    <constraint firstItem="e98-ns-aTA" firstAttribute="centerX" secondItem="Ni0-8r-H9n" secondAttribute="centerX" id="eej-aq-umn"/>
                                     <constraint firstItem="79B-W6-Gea" firstAttribute="top" secondItem="ZHF-gj-qj4" secondAttribute="bottom" constant="30" id="hDi-Ad-UAX"/>
-                                    <constraint firstItem="e98-ns-aTA" firstAttribute="top" secondItem="buu-U2-5pm" secondAttribute="bottom" constant="1" id="jbq-gw-51H"/>
                                     <constraint firstAttribute="trailing" secondItem="U7f-Of-Z0Q" secondAttribute="trailing" constant="32" id="mrY-SV-xhA"/>
                                     <constraint firstItem="79B-W6-Gea" firstAttribute="centerX" secondItem="Ni0-8r-H9n" secondAttribute="centerX" id="n2g-oq-06j"/>
                                     <constraint firstItem="ZHF-gj-qj4" firstAttribute="leading" secondItem="Ni0-8r-H9n" secondAttribute="leading" constant="32" id="nXS-0S-LIi"/>
                                     <constraint firstItem="ZHF-gj-qj4" firstAttribute="height" secondItem="Ni0-8r-H9n" secondAttribute="height" multiplier="0.244648" id="qld-BY-FqR"/>
-                                    <constraint firstItem="e98-ns-aTA" firstAttribute="leading" secondItem="Ni0-8r-H9n" secondAttribute="leading" constant="32" id="vli-1P-AIg"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2408,6 +2425,7 @@
                         <outlet property="btnSubmit" destination="79B-W6-Gea" id="Kv1-j7-c3v"/>
                         <outlet property="lblHeaderTitle" destination="U7f-Of-Z0Q" id="A3E-Fo-TPA"/>
                         <outlet property="lblMiddleTittle" destination="buu-U2-5pm" id="4sS-Mm-F0Z"/>
+                        <outlet property="lblTimer" destination="bnI-oy-tRJ" id="cgc-Vk-bVI"/>
                         <outlet property="otpTextFieldFirst" destination="0XM-MZ-DDT" id="aBh-Gd-33e"/>
                         <outlet property="otpTextFieldFourth" destination="ATG-w7-j2m" id="9dS-dW-E0S"/>
                         <outlet property="otpTextFieldSecond" destination="F77-LV-flF" id="oR4-gf-J9e"/>
@@ -2740,142 +2758,149 @@
     </scenes>
     <designables>
         <designable name="0gO-vr-Rco">
-            <size key="intrinsicContentSize" width="34" height="30"/>
+            <size key="intrinsicContentSize" width="47" height="36"/>
         </designable>
         <designable name="1EZ-i5-6tx">
-            <size key="intrinsicContentSize" width="168" height="24"/>
+            <size key="intrinsicContentSize" width="158" height="24"/>
         </designable>
         <designable name="1HM-Uy-OsM">
             <size key="intrinsicContentSize" width="56" height="34"/>
         </designable>
         <designable name="2DJ-E7-g3S">
-            <size key="intrinsicContentSize" width="57" height="30"/>
+            <size key="intrinsicContentSize" width="67" height="34"/>
         </designable>
         <designable name="2ls-IB-Blx">
-            <size key="intrinsicContentSize" width="198.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="209" height="21.5"/>
         </designable>
         <designable name="3xM-69-dgw">
             <size key="intrinsicContentSize" width="66" height="30"/>
         </designable>
         <designable name="5s7-Du-rXL">
-            <size key="intrinsicContentSize" width="7.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="11" height="29"/>
         </designable>
         <designable name="79B-W6-Gea">
-            <size key="intrinsicContentSize" width="32" height="30"/>
+            <size key="intrinsicContentSize" width="30" height="29"/>
         </designable>
         <designable name="7QV-Om-mSM">
-            <size key="intrinsicContentSize" width="1219" height="20.5"/>
+            <size key="intrinsicContentSize" width="1285" height="21.5"/>
         </designable>
         <designable name="7im-a1-yID"/>
         <designable name="9Ve-9n-vUQ">
-            <size key="intrinsicContentSize" width="45" height="20.5"/>
+            <size key="intrinsicContentSize" width="54.5" height="24"/>
         </designable>
         <designable name="AgB-Tx-BbC">
-            <size key="intrinsicContentSize" width="48.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="58.5" height="24"/>
         </designable>
         <designable name="B9a-dm-i6h">
-            <size key="intrinsicContentSize" width="277.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="539.5" height="38.5"/>
         </designable>
         <designable name="Bft-tY-T2W">
-            <size key="intrinsicContentSize" width="180.5" height="20"/>
+            <size key="intrinsicContentSize" width="567.5" height="57.5"/>
         </designable>
         <designable name="Bsl-KE-yVy">
-            <size key="intrinsicContentSize" width="48" height="30"/>
+            <size key="intrinsicContentSize" width="56" height="34"/>
         </designable>
         <designable name="FAj-WO-zbi">
-            <size key="intrinsicContentSize" width="72" height="30"/>
+            <size key="intrinsicContentSize" width="84" height="34"/>
         </designable>
         <designable name="Leg-Wz-dkp">
-            <size key="intrinsicContentSize" width="201" height="24"/>
+            <size key="intrinsicContentSize" width="191" height="24"/>
         </designable>
         <designable name="MJs-dO-gf3"/>
         <designable name="N04-yo-qRO"/>
         <designable name="Nob-9l-Kt8">
-            <size key="intrinsicContentSize" width="121" height="30"/>
+            <size key="intrinsicContentSize" width="143" height="34"/>
         </designable>
         <designable name="Nyg-Pp-IgW"/>
         <designable name="OJH-Lx-dhQ">
-            <size key="intrinsicContentSize" width="115" height="30"/>
+            <size key="intrinsicContentSize" width="159" height="36"/>
         </designable>
         <designable name="OOP-y3-uar"/>
         <designable name="Odh-Ru-mfn">
-            <size key="intrinsicContentSize" width="73" height="30"/>
+            <size key="intrinsicContentSize" width="86" height="34"/>
         </designable>
         <designable name="PiD-Wu-Fdu">
-            <size key="intrinsicContentSize" width="190" height="24"/>
+            <size key="intrinsicContentSize" width="180" height="24"/>
         </designable>
         <designable name="QKd-y8-TpK">
-            <size key="intrinsicContentSize" width="10.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="14.5" height="29"/>
         </designable>
         <designable name="R2Q-Yw-RDt">
-            <size key="intrinsicContentSize" width="38" height="30"/>
+            <size key="intrinsicContentSize" width="44" height="34"/>
         </designable>
         <designable name="RCV-CF-Obw">
-            <size key="intrinsicContentSize" width="123" height="30"/>
+            <size key="intrinsicContentSize" width="145" height="34"/>
         </designable>
-        <designable name="U7f-Of-Z0Q"/>
+        <designable name="U7f-Of-Z0Q">
+            <size key="intrinsicContentSize" width="57.5" height="26.5"/>
+        </designable>
         <designable name="Uhw-aA-CSh">
-            <size key="intrinsicContentSize" width="763" height="20.5"/>
+            <size key="intrinsicContentSize" width="804" height="21.5"/>
         </designable>
         <designable name="UwO-VI-JaW"/>
         <designable name="WMm-Js-G1K"/>
         <designable name="WhY-CL-WU1">
-            <size key="intrinsicContentSize" width="10" height="20.5"/>
+            <size key="intrinsicContentSize" width="14" height="29"/>
         </designable>
         <designable name="YTY-Xr-Eih"/>
         <designable name="Ysp-xF-SZL">
-            <size key="intrinsicContentSize" width="104" height="30"/>
+            <size key="intrinsicContentSize" width="122" height="34"/>
         </designable>
         <designable name="arQ-ui-1tB">
-            <size key="intrinsicContentSize" width="72" height="30"/>
+            <size key="intrinsicContentSize" width="84" height="34"/>
         </designable>
         <designable name="bK9-SY-6ov">
             <size key="intrinsicContentSize" width="135" height="34"/>
         </designable>
         <designable name="bWJ-AN-qZy">
-            <size key="intrinsicContentSize" width="70" height="20.5"/>
+            <size key="intrinsicContentSize" width="84" height="24"/>
         </designable>
-        <designable name="buu-U2-5pm"/>
+        <designable name="bnI-oy-tRJ">
+            <size key="intrinsicContentSize" width="48" height="24"/>
+        </designable>
+        <designable name="buu-U2-5pm">
+            <size key="intrinsicContentSize" width="28" height="24"/>
+        </designable>
         <designable name="e98-ns-aTA">
-            <size key="intrinsicContentSize" width="115" height="36"/>
+            <size key="intrinsicContentSize" width="111" height="34"/>
         </designable>
         <designable name="fsc-0q-XEP">
             <size key="intrinsicContentSize" width="204" height="34"/>
         </designable>
         <designable name="fxj-4S-ZWm">
-            <size key="intrinsicContentSize" width="73.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="89.5" height="24"/>
         </designable>
         <designable name="gwU-ld-hQV">
-            <size key="intrinsicContentSize" width="198.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="227.5" height="24"/>
         </designable>
         <designable name="idN-Og-V6N">
-            <size key="intrinsicContentSize" width="32" height="30"/>
+            <size key="intrinsicContentSize" width="45" height="36"/>
         </designable>
         <designable name="jcT-7Q-KPU"/>
         <designable name="jzf-cq-gLj">
-            <size key="intrinsicContentSize" width="73.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="89.5" height="24"/>
         </designable>
         <designable name="l0D-8G-Yih">
-            <size key="intrinsicContentSize" width="315.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="427.5" height="29"/>
         </designable>
         <designable name="lw6-0a-q03">
-            <size key="intrinsicContentSize" width="48.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="58.5" height="24"/>
         </designable>
         <designable name="sMN-ug-wSH">
-            <size key="intrinsicContentSize" width="172" height="30"/>
+            <size key="intrinsicContentSize" width="202" height="34"/>
         </designable>
         <designable name="t4d-Pd-CL8">
-            <size key="intrinsicContentSize" width="112" height="20.5"/>
+            <size key="intrinsicContentSize" width="135" height="24"/>
         </designable>
         <designable name="tVA-Gj-8Fm">
-            <size key="intrinsicContentSize" width="179" height="24"/>
+            <size key="intrinsicContentSize" width="169" height="24"/>
         </designable>
         <designable name="uuI-Ne-qmK">
             <size key="intrinsicContentSize" width="114" height="30"/>
         </designable>
         <designable name="vik-Ta-l6e"/>
         <designable name="z9R-dH-RSL">
-            <size key="intrinsicContentSize" width="171.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="207.5" height="24"/>
         </designable>
     </designables>
     <resources>

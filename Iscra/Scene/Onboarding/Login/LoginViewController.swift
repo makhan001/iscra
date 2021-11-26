@@ -49,13 +49,7 @@ extension LoginViewController  : navigationBarAction {
         [btnLogin, btnApple, btnGoogle, btnShowPassword, btnForgotPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        
-//        if TARGET_OS_SIMULATOR == 1 {
-//            viewModel.email = "user300@gmail.com"
-//            viewModel.password = "123456"
-//            txtEmail.text = viewModel.email
-//            txtPassword.text = viewModel.password
-//        }
+
         if TARGET_OS_SIMULATOR == 1 {
             viewModel.email = "user74@gmail.com"
             viewModel.password = "123456"
@@ -103,21 +97,6 @@ extension LoginViewController {
         self.txtEmail.resignFirstResponder()
         self.txtPassword.resignFirstResponder()
         viewModel.onAction(action: .inputComplete(.login), for: .login)
-        
-        
-        //        router?.push(scene: .landing)
-        //
-        //        if viewModel.ValidateUserInputs(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
-        //        {
-        //            viewModel.Login(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
-        //            {
-        //                self.showToast(message:self.viewModel.LoginData.message , seconds: 3.0)
-        //            }
-        //        }
-        //        else {
-        //            print(viewModel.errorMsg)
-        //            self.showToast(message:viewModel.errorMsg , seconds: 1.0)
-        //        }
     }
     
     private func loginGoogleAction() {
@@ -125,7 +104,6 @@ extension LoginViewController {
     }
     
     private func loginAppleAction() {
-        //router?.dismiss(controller: .login)
         print("loginAppleAction")
     }
     

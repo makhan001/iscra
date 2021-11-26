@@ -120,9 +120,9 @@ struct UserStore {
         UserDefaults.standard.set(isSocialLogin, forKey:is_social_login_key)
     }
     
-    static func save(userDetail:LoginData?) {
-        UserDefaults.standard.set(userDetail.self, forKey:userData)
-    }
+    static func save(isVerify:Bool) {
+        UserDefaults.standard.set(isVerify, forKey:is_verify_key)
+      }
     
     //    static func save(dialHistory:[DialHistory]) {
     //        UserDefaults.standard.set(try? PropertyListEncoder().encode(dialHistory), forKey:dialHistoryKey)

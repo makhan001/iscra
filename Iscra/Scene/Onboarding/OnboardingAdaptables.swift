@@ -22,9 +22,7 @@ enum OnboardingAction {
     case validEmail(text:String)
     case errorMessage(_ text:String)
     case register
-  //  case login(_ text:String)
     case login(_ text:String, _ is_varified:Bool)
-    //case login(SuccessResponseModel)
     case landing
     case verification(_ text:String)
     case resendVerification

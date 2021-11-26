@@ -73,8 +73,6 @@ extension UIViewController{
     
     func showToast(message : String, seconds: Double = 1.0){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-//        alert.setMessage(font: UIFont(name: "SourceSansPro-Regular", size: 15), color: UIColor.black)
-//        alert.setMessage(font: .systemFont(ofSize: 15), color: UIColor.black)
         alert.view.backgroundColor = UIColor.init(named: "PrimaryAccent")
         alert.view.alpha = 0.7
         alert.view.layer.cornerRadius = 15
@@ -89,6 +87,9 @@ extension UIViewController{
             fatalError("unable to instantiate view controller")
         }
         return controller
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

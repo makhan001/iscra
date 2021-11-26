@@ -61,8 +61,10 @@ struct AuthRequests: RequestRepresentable {
     
     var method: HTTPMethod {
         switch self.requestType {
-        case .terms, .privacy, .aboutus, .aboutUsContent, .logout:
+        case .terms, .privacy, .aboutus, .aboutUsContent:
             return .get
+        case .logout:
+            return .delete
         default:
             return .post
         }

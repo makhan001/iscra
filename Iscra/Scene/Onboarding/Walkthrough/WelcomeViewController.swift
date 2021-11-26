@@ -62,8 +62,6 @@ extension WelcomeViewController {
     private func loginAction() {
         // navigate to login
         router?.push(scene: .login)
-        //        let VC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        //        navigationController?.pushViewController(VC, animated: true)
     }
 }
 

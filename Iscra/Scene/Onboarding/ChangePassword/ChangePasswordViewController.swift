@@ -203,6 +203,13 @@ extension ChangePasswordViewController: OnboardingViewRepresentable {
         // deepak
         case let .changePassword(msg):
             self.showToast(message: msg)
+            
+//            let passwordChangeConfirmation: PasswordChangeConfirmationViewController = PasswordChangeConfirmationViewController.from(from: .onboarding, with: .passwordChangeConfirmation)
+//                        navigationController?.present(passwordChangeConfirmation, animated: true, completion: {
+//                            passwordChangeConfirmation.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
+//                        })
+            
+            
 //            let VC = storyboard?.instantiateViewController(withIdentifier: "PasswordChangeConfirmationViewController") as! PasswordChangeConfirmationViewController
 //            navigationController?.present(VC, animated: true, completion: {
 //                VC.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false

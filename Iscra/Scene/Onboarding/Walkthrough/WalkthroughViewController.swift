@@ -107,13 +107,21 @@ extension WalkthroughViewController  {
     }
     
     private func addMyPictureAction() {
-        let VC = storyboard?.instantiateViewController(withIdentifier: "AddMyPictureViewController") as! AddMyPictureViewController
-        navigationController?.pushViewController(VC, animated: true)
+//        let VC = storyboard?.instantiateViewController(withIdentifier: "AddMyPictureViewController") as! AddMyPictureViewController
+//        navigationController?.pushViewController(VC, animated: true)
+        
+        let addMyPicture: AddMyPictureViewController = AddMyPictureViewController.from(from: .onboarding, with: .addMyPicture)
+        self.navigationController?.pushViewController(addMyPicture, animated: true)
+
     }
     
     private func howToAddMemojiAction() {
-        let VC = storyboard?.instantiateViewController(withIdentifier: "LearnHowToAddMemojiViewController") as! LearnHowToAddMemojiViewController
-        navigationController?.pushViewController(VC, animated: true)
+//        let VC = storyboard?.instantiateViewController(withIdentifier: "LearnHowToAddMemojiViewController") as! LearnHowToAddMemojiViewController
+//        navigationController?.pushViewController(VC, animated: true)
+        
+        let learnHowToAddMemoji: LearnHowToAddMemojiViewController = LearnHowToAddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
+        self.navigationController?.pushViewController(learnHowToAddMemoji, animated: true)
+
     }
     
     func setButtonStatus(){

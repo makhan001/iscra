@@ -17,7 +17,7 @@ struct AuthRequests: RequestRepresentable {
     var socialLogin: UserParams.SocialLogin?
     var verification: UserParams.Verification?
     var resendVerification: UserParams.ResendVerification?
-
+    
     let requestType: RequestType
     enum RequestType {
         case signup
@@ -27,8 +27,6 @@ struct AuthRequests: RequestRepresentable {
         case terms
         case privacy
         case socialLogin
-        case aboutus
-        case aboutUsContent
         case logout
         case verification
         case resendVerification
@@ -61,8 +59,10 @@ struct AuthRequests: RequestRepresentable {
     
     var method: HTTPMethod {
         switch self.requestType {
-        case .terms, .privacy, .aboutus, .aboutUsContent, .logout:
+        case .terms, .privacy:
             return .get
+        case .logout:
+            return .delete
         default:
             return .post
         }
@@ -84,16 +84,12 @@ struct AuthRequests: RequestRepresentable {
             return "static_page/privacy_policy"
         case .socialLogin:
             return "users/social_login"
-        case .aboutUsContent:
-            return "saloon/about"
-        case .aboutus:
-            return "saloon/about"
         case .logout:
             return "users/logout"
         case .verification:
-           return "users/verification"
+            return "users/verification"
         case .resendVerification:
-           return "users/resendverification"
+            return "users/resendverification"
         }
     }
     

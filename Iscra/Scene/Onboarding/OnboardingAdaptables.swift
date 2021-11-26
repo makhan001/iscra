@@ -34,9 +34,7 @@ enum OnboardingAction {
     case terms
     case privacy
     case feedback
-    case aboutUs
     case staticContent
-    case aboutUsContent
     case sessionExpired
     case logout
 }

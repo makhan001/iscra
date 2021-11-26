@@ -51,9 +51,12 @@ extension MyAccountViewController {
         }
     }
     private func GetSubscriptionAction() {
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "GetSubcriptionViewController") as! GetSubcriptionViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "GetSubcriptionViewController") as! GetSubcriptionViewController
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
+        let getSubcription: GetSubcriptionViewController = GetSubcriptionViewController.from(from: .onboarding, with: .getSubcription)
+        self.navigationController?.pushViewController(getSubcription, animated: true)
     }
     
     private func LogoutAction() {
@@ -180,16 +183,22 @@ extension MyAccountViewController: clickManagerDelegate{
         }
     }
     private func AddMemojiAction() {
-        // navigate to addmemoji
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "LearnHowToAddMemojiViewController") as! LearnHowToAddMemojiViewController
-        navigationController?.pushViewController(vc, animated: true)
+//        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "LearnHowToAddMemojiViewController") as! LearnHowToAddMemojiViewController
+//        navigationController?.pushViewController(vc, animated: true)
+        
+        let learnHowToAddMemoji: LearnHowToAddMemojiViewController = LearnHowToAddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
+        self.navigationController?.pushViewController(learnHowToAddMemoji, animated: true)
+
     }
+    
     private func ChangePasswordAction() {
-        // navigate to changePassword
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ChangePasswordViewController") as! ChangePasswordViewController
-        navigationController?.pushViewController(vc, animated: true)
+//        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ChangePasswordViewController") as! ChangePasswordViewController
+//        navigationController?.pushViewController(vc, animated: true)
+        
+        let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
+        self.navigationController?.pushViewController(changePassword, animated: true)
     }
 }
 // MARK: API Callback
@@ -205,3 +214,4 @@ extension MyAccountViewController: OnboardingViewRepresentable {
         }
     }
 }
+

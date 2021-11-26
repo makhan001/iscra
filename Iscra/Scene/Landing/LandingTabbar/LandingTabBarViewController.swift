@@ -14,7 +14,7 @@ class LandingTabBarViewController: UITabBarController {
     
     private var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
     private var myAccount: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -41,9 +41,14 @@ extension LandingTabBarViewController {
     }
     
     func openAddHabitPopupVC() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SelectHabitPopUpViewController") as! SelectHabitPopUpViewController
-        vc.delegate = self
-        self.navigationController?.present(vc, animated: true, completion: nil)
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "selectHabitPopUp") as! SelectHabitPopUpViewController
+//        vc.delegate = self
+//        self.navigationController?.present(vc, animated: true, completion: nil)
+        
+        let selectHabitPopUp: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
+        selectHabitPopUp.delegate = self
+        self.navigationController?.present(selectHabitPopUp, animated: true, completion: nil)
+        
     }
     
     func addCenterButton(withImage buttonImage : UIImage, highlightImage: UIImage) {
@@ -92,10 +97,15 @@ extension LandingTabBarViewController : UITabBarControllerDelegate {
 
 extension LandingTabBarViewController: selectHabitToAddProtocol{
     func addHabit(habitType: habitType) {
-        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AddHabitViewController") as! AddHabitViewController
-        vc.habitType = habitType
-        navigationController?.pushViewController(vc, animated: true)
+        let addHabit: AddHabitViewController = AddHabitViewController.from(from: .habit, with: .addHabit)
+        addHabit.habitType = habitType
+        navigationController?.pushViewController(addHabit, animated: true)
+        
+//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "AddHabitViewController") as! AddHabitViewController
+//        vc.habitType = habitType
+//        navigationController?.pushViewController(vc, animated: true)
+        
 //        switch  habitType {
 //        case .good:
 //            AddHabitNAvigation()

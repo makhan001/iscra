@@ -126,16 +126,23 @@ extension HabitCalenderViewController {
     
     private func editAction() {
         self.viewBottom.isHidden = true
-        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EditHabitViewController") as! EditHabitViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "EditHabitViewController") as! EditHabitViewController
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
+        let editHabit: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
+        self.navigationController?.pushViewController(editHabit, animated: true)
+        
     }
     
     private func shareAction() {
         self.viewBottom.isHidden = true
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EditReminderViewController") as! EditReminderViewController
-        self.navigationController?.present(vc, animated: false, completion: nil)
+//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "EditReminderViewController") as! EditReminderViewController
+//        self.navigationController?.present(vc, animated: false, completion: nil)
+        
+        let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
+        self.navigationController?.present(editReminder, animated: false, completion: nil)
     }
     
     private func deleteAction() {

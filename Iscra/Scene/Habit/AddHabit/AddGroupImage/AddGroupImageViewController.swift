@@ -44,12 +44,19 @@ extension AddGroupImageViewController {
     }
     
     private func nextClick() {
-        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "InviteFriendViewController") as! InviteFriendViewController
-        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        vc.habitType = habitType
-        vc.delegateInvite = self
-        self.present(vc, animated: true, completion: nil)
+//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "InviteFriendViewController") as! InviteFriendViewController
+//        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//        vc.habitType = habitType
+//        vc.delegateInvite = self
+//        self.present(vc, animated: true, completion: nil)
+        
+        let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
+        inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        inviteFriend.habitType = habitType
+        inviteFriend.delegateInvite = self
+        self.present(inviteFriend, animated: true, completion: nil)
+        
     }
     private func skipClick() {
         

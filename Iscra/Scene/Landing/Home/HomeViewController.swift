@@ -17,6 +17,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var viewFirstHabit:UIView!
     @IBOutlet weak var tblHabit:HabitTableView!
     
+    weak var router: NextSceneDismisser?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -38,8 +40,9 @@ extension HomeViewController {
 // MARK: - Navigation
 extension HomeViewController: HabitTableNavigation{
     func navigate() {
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "HabitCalenderViewController") as! HabitCalenderViewController
-        navigationController?.pushViewController(vc, animated: true)
+        let habitCalender: HabitCalenderViewController = WalkthroughViewController.from(from: .landing, with: .habitCalender)
+        self.navigationController?.pushViewController(habitCalender, animated: true)
+        
+       // self.router?.push(scene: .habitCalender)
     }
 }

@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rj-vD-jDM" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="170.66666666666666" y="350" width="72.666666666666657" height="36"/>
+                                <rect key="frame" x="189" y="358" width="36.333333333333343" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="BlackAccent"/>
                                 <nil key="highlightedColor"/>
@@ -56,7 +56,7 @@
         <!--Select Habit Pop Up View Controller-->
         <scene sceneID="5qY-Ei-Dsu">
             <objects>
-                <viewController storyboardIdentifier="SelectHabitPopUpViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="vgk-Yn-IIx" customClass="SelectHabitPopUpViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectHabitPopUp" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="vgk-Yn-IIx" customClass="SelectHabitPopUpViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kxd-ol-ec8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -359,7 +359,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USER NAME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbM-Nj-7Cb" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="117.99999999999999" width="337" height="38.333333333333329"/>
+                                                <rect key="frame" x="10" y="118.00000000000001" width="337" height="21.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                 <color key="textColor" name="SecondryAccent"/>
                                                 <nil key="highlightedColor"/>
@@ -372,15 +372,15 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2se-TB-CcR" customClass="MyAccountTableView" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="176.33333333333334" width="341" height="314.66666666666663"/>
+                                                <rect key="frame" x="8" y="159.66666666666666" width="341" height="337.33333333333337"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzI-dq-UI8">
-                                                <rect key="frame" x="0.0" y="491" width="357" height="127"/>
+                                                <rect key="frame" x="0.0" y="497" width="357" height="121"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cfd-Xj-QFi">
-                                                <rect key="frame" x="10" y="501" width="337" height="107"/>
+                                                <rect key="frame" x="10" y="507" width="337" height="101"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzi-eY-W0N" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="337" height="56"/>
@@ -402,7 +402,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMg-w0-bk0" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="71" width="337" height="36"/>
+                                                        <rect key="frame" x="0.0" y="71" width="337" height="30"/>
                                                         <state key="normal" title="Log out">
                                                             <color key="titleColor" name="GrayAccent"/>
                                                         </state>
@@ -475,7 +475,7 @@
         <!--Community Search View Controller-->
         <scene sceneID="2wG-2u-lJb">
             <objects>
-                <viewController storyboardIdentifier="CommunitySearchViewController" modalPresentationStyle="fullScreen" id="cWu-Wt-wmS" customClass="CommunitySearchViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="communitySearch" modalPresentationStyle="fullScreen" id="cWu-Wt-wmS" customClass="CommunitySearchViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Q9-P8-fcf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -719,7 +719,7 @@
         <!--Community View Controller-->
         <scene sceneID="Kak-eA-gJ7">
             <objects>
-                <viewController storyboardIdentifier="CommunityViewController" id="UOV-KR-SZf" customClass="CommunityViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="community" id="UOV-KR-SZf" customClass="CommunityViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="02j-7e-OBu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1023,7 +1023,7 @@
         <!--Community Detail View Controller-->
         <scene sceneID="mEy-mk-XoO">
             <objects>
-                <viewController storyboardIdentifier="CommunityDetailViewController" modalPresentationStyle="fullScreen" id="sOw-OM-GT5" customClass="CommunityDetailViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="communityDetail" modalPresentationStyle="fullScreen" id="sOw-OM-GT5" customClass="CommunityDetailViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xG1-SV-rPs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1180,7 +1180,7 @@
         <!--Repeat Days Pop Up View Controller-->
         <scene sceneID="DSb-IC-pvM">
             <objects>
-                <viewController storyboardIdentifier="RepeatDaysPopUpViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gfE-x8-wJy" customClass="RepeatDaysPopUpViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="repeatDaysPopUp" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gfE-x8-wJy" customClass="RepeatDaysPopUpViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mVc-z6-GrN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1284,7 +1284,7 @@
         <!--Edit Reminder View Controller-->
         <scene sceneID="hpt-K9-lw4">
             <objects>
-                <viewController storyboardIdentifier="EditReminderViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QSM-W1-AhA" customClass="EditReminderViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editReminder" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QSM-W1-AhA" customClass="EditReminderViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NlO-Gn-2EI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1582,7 +1582,7 @@
         <!--Habit Calender View Controller-->
         <scene sceneID="EHB-J3-Esr">
             <objects>
-                <viewController storyboardIdentifier="HabitCalenderViewController" id="eBe-Do-11N" customClass="HabitCalenderViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="habitCalender" id="eBe-Do-11N" customClass="HabitCalenderViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JO1-P0-zyU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1994,7 +1994,7 @@
         <!--Group Habit Friends View Controller-->
         <scene sceneID="GWJ-Rp-Kak">
             <objects>
-                <viewController storyboardIdentifier="GroupHabitFriendsViewController" id="AEP-Nr-KBk" customClass="GroupHabitFriendsViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="groupHabitFriends" id="AEP-Nr-KBk" customClass="GroupHabitFriendsViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="op3-nY-aFh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

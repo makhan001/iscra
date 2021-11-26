@@ -118,8 +118,12 @@ extension LoginViewController {
     }
     
     private func forgotPasswordAction() {
-        let VC = storyboard?.instantiateViewController(withIdentifier: "forgot") as! ForgotPasswordViewController
-        navigationController?.pushViewController(VC, animated: true)
+//        let VC = storyboard?.instantiateViewController(withIdentifier: "forgot") as! ForgotPasswordViewController
+//        navigationController?.pushViewController(VC, animated: true)
+        
+        let forgot: ForgotPasswordViewController = ForgotPasswordViewController.from(from: .onboarding, with: .forgot)
+        self.navigationController?.pushViewController(forgot, animated: true)
+
     }
     
 }

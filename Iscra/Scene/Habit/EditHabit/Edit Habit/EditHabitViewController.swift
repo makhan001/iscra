@@ -78,19 +78,29 @@ extension EditHabitViewController: clickManagerDelegate{
         }
     }
     private func EveryDayAction() {
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "RepeatDaysPopUpViewController") as! RepeatDaysPopUpViewController
-        self.navigationController?.present(vc, animated: false, completion: nil)
+//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "RepeatDaysPopUpViewController") as! RepeatDaysPopUpViewController
+//        self.navigationController?.present(vc, animated: false, completion: nil)
+        
+        let repeatDaysPopUp: RepeatDaysPopUpViewController = RepeatDaysPopUpViewController.from(from: .landing, with: .RepeatDaysPopUp)
+        self.navigationController?.present(repeatDaysPopUp, animated: false, completion: nil)
+
     }
     private func ReminderAction() {
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EditReminderViewController") as! EditReminderViewController
-        self.navigationController?.present(vc, animated: false, completion: nil)
+//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "EditReminderViewController") as! EditReminderViewController
+//        self.navigationController?.present(vc, animated: false, completion: nil)
+        
+        let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
+        self.navigationController?.present(editReminder, animated: false, completion: nil)
     }
     private func ChangeColorThemeAction() {
-        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ColorPopUpViewController") as! ColorPopUpViewController
-        self.navigationController?.present(vc, animated: false, completion: nil)
+//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ColorPopUpViewController") as! ColorPopUpViewController
+//        self.navigationController?.present(vc, animated: false, completion: nil)
+        
+        let colorPopUp: ColorPopUpViewController = ColorPopUpViewController.from(from: .habit, with: .colorPopUp)
+        self.navigationController?.present(colorPopUp, animated: false, completion: nil)
     }
 }
 

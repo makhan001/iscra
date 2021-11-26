@@ -27,7 +27,6 @@ struct SignUpModel {
         if let data = response["data"] as? [String : Any] {
             self.signUpData = SignUpUserData( response : data )
         }
-        
     }
 }
 
@@ -74,6 +73,5 @@ struct User {
         if let authentication_token = response["authentication_token"] as? String {
             self.authenticationToken = authentication_token
         }
-        
     }
 }

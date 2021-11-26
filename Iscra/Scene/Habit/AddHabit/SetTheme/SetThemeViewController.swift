@@ -69,27 +69,44 @@ extension SetThemeViewController {
     }
     
     private func showColor() {
-        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let pvc = storyboard.instantiateViewController(withIdentifier: "ColorPopUpViewController") as! ColorPopUpViewController
-        pvc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        pvc.delegateColor = self
-        self.present(pvc, animated: true, completion: nil)
+//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//        let pvc = storyboard.instantiateViewController(withIdentifier: "ColorPopUpViewController") as! ColorPopUpViewController
+//        pvc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//        pvc.delegateColor = self
+//        self.present(pvc, animated: true, completion: nil)
+        
+        let colorPopUp: ColorPopUpViewController = ColorPopUpViewController.from(from: .habit, with: .colorPopUp)
+        colorPopUp.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        colorPopUp.delegateColor = self
+        self.present(colorPopUp, animated: true, completion: nil)
+
     }
     private func showIcons() {
-        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let pvc = storyboard.instantiateViewController(withIdentifier: "IconPopupViewController") as! IconPopupViewController
-        pvc.themeColor = selectedColorTheme
-        pvc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        pvc.iconResorces = iconResorces
-        pvc.delegateIcon = self
-        self.present(pvc, animated: true, completion: nil)
+//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//        let pvc = storyboard.instantiateViewController(withIdentifier: "IconPopupViewController") as! IconPopupViewController
+//        pvc.themeColor = selectedColorTheme
+//        pvc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//        pvc.iconResorces = iconResorces
+//        pvc.delegateIcon = self
+//        self.present(pvc, animated: true, completion: nil)
+        
+        let iconPopup: IconPopupViewController = IconPopupViewController.from(from: .habit, with: .iconPopup)
+        iconPopup.themeColor = selectedColorTheme
+        iconPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        iconPopup.iconResorces = iconResorces
+        iconPopup.delegateIcon = self
+        self.present(iconPopup, animated: true, completion: nil)
+
     }
     private func nextClick() {
-        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ReminderViewController") as! ReminderViewController
-        vc.selectedColorTheme = selectedColorTheme
-        vc.habitType = habitType
-        navigationController?.pushViewController(vc, animated: true)
+//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ReminderViewController") as! ReminderViewController
+//        vc.habitType = habitType
+//        navigationController?.pushViewController(vc, animated: true)
+        
+        let reminder: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
+        reminder.habitType = habitType
+        self.navigationController?.pushViewController(reminder, animated: true)
         
     }
 }

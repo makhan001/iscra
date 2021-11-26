@@ -48,10 +48,13 @@ extension AddHabitViewController {
     
     private func NextClick() {
         
-        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SetThemeViewController") as! SetThemeViewController
-        vc.habitType = habitType
-        navigationController?.pushViewController(vc, animated: true)
+//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "SetThemeViewController") as! SetThemeViewController
+//        vc.habitType = habitType
+//        navigationController?.pushViewController(vc, animated: true)
         
+        let setTheme: SetThemeViewController = SetThemeViewController.from(from: .habit, with: .setTheme)
+        setTheme.habitType = habitType
+        self.navigationController?.pushViewController(setTheme, animated: true)
     }
 }

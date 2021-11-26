@@ -96,18 +96,29 @@ extension ReminderViewController {
     
     private func nextClick() {
         if habitType == .group{
-            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "AddGroupImageViewController") as! AddGroupImageViewController
-            vc.habitType = habitType
-           navigationController?.pushViewController(vc, animated: true)
-        }
-        else {
-            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "InviteFriendViewController") as! InviteFriendViewController
-            vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-            vc.habitType = habitType
-            vc.delegateInvite = self
-            self.present(vc, animated: true, completion: nil)
+//            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "AddGroupImageViewController") as! AddGroupImageViewController
+//            vc.habitType = habitType
+//           navigationController?.pushViewController(vc, animated: true)
+            
+            let addGroupImage: AddGroupImageViewController = AddGroupImageViewController.from(from: .habit, with: .addGroupImage)
+            addGroupImage.habitType = habitType
+            self.navigationController?.pushViewController(addGroupImage, animated: true)
+            
+        }else {
+//            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "InviteFriendViewController") as! InviteFriendViewController
+//            vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//            vc.habitType = habitType
+//            vc.delegateInvite = self
+//            self.present(vc, animated: true, completion: nil)
+            
+            let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
+            inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            inviteFriend.habitType = habitType
+            inviteFriend.delegateInvite = self
+            self.present(inviteFriend, animated: true, completion: nil)
+            
         }
     }
 }

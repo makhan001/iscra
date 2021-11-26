@@ -76,13 +76,12 @@ extension SignupViewController {
     }
     
     private func showPasswordAction() {
-        print("showPasswordAction is \(txtPassword.isSecureTextEntry)")
-        if  txtPassword.isSecureTextEntry == true {
-            self.btnShowPassword.setImage(UIImage(named: "eyeHidden"), for: .normal)
-            txtPassword.isSecureTextEntry = false
-        }else{
-            self.btnShowPassword.setImage(UIImage(named: "eyeVisible"), for: .normal)
-            txtPassword.isSecureTextEntry = true
+        if self.btnShowPassword.isSelected {
+            self.btnShowPassword.isSelected = false
+            self.txtPassword.isSecureTextEntry = true
+        } else {
+            self.btnShowPassword.isSelected = true
+            self.txtPassword.isSecureTextEntry = false
         }
     }
     

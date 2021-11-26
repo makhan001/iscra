@@ -542,7 +542,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="g2V-iR-VLB"/>
+        <segue reference="MVP-NN-qjU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" width="12" height="10"/>

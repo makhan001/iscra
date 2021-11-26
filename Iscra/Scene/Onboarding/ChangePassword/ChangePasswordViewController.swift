@@ -10,9 +10,11 @@ import UIKit
 
 class ChangePasswordViewController: UIViewController {
     // MARK:-Outlets and variables
+    @IBOutlet weak var txtFieldConfirmPassword: UITextField!
     @IBOutlet weak var txtFieldCurrentPassword: UITextField!
     @IBOutlet weak var txtFieldNewPassword: UITextField!
     @IBOutlet weak var btnShowCurrentPassword: UIButton!
+    @IBOutlet weak var btnShowConfirmPassword: UIButton!
     @IBOutlet weak var btnShowNewPassword: UIButton!
     @IBOutlet weak var btnChangePassword: UIButton!
     @IBOutlet weak var btnForgotPassword: UIButton!
@@ -36,7 +38,7 @@ class ChangePasswordViewController: UIViewController {
 extension ChangePasswordViewController {
     private func setup() {
         viewModel.view = self
-        [btnChangePassword,btnForgotPassword,btnShowCurrentPassword,btnShowNewPassword].forEach {
+        [btnChangePassword,btnForgotPassword,btnShowCurrentPassword,btnShowNewPassword,btnShowConfirmPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         
@@ -48,8 +50,10 @@ extension ChangePasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.txtFieldCurrentPassword{
             self.txtFieldNewPassword.becomeFirstResponder()
+        }else if textField == self.txtFieldNewPassword{
+            self.txtFieldConfirmPassword.becomeFirstResponder()
         }else{
-            self.txtFieldNewPassword.resignFirstResponder()
+            self.txtFieldConfirmPassword.resignFirstResponder()
         }
         return false
     }
@@ -64,6 +68,11 @@ extension ChangePasswordViewController: UITextFieldDelegate {
             if let text = txtFieldNewPassword.text, let textRange = Range(range, in: text) {
                 let updatedText = text.replacingCharacters(in: textRange, with: string)
                 viewModel.newPassword = updatedText
+            }
+        } else if textField == txtFieldConfirmPassword {
+            if let text = txtFieldConfirmPassword.text, let textRange = Range(range, in: text) {
+                let updatedText = text.replacingCharacters(in: textRange, with: string)
+                viewModel.confirmPassword = updatedText
             }
         }
         return true
@@ -81,6 +90,8 @@ extension ChangePasswordViewController {
             self.showCurrentPasswordAction()
         case btnShowNewPassword:
             self.showNewPasswordAction()
+        case btnShowConfirmPassword:
+            self.showConfirmPasswordAction()
         default:
             break
             
@@ -95,6 +106,7 @@ extension ChangePasswordViewController {
         print("changePasswordAction")
         self.viewModel.password = self.txtFieldCurrentPassword.text ?? ""
         self.viewModel.newPassword = self.txtFieldNewPassword.text ?? ""
+        self.viewModel.confirmPassword = self.txtFieldConfirmPassword.text ?? ""
         self.viewModel.onAction(action: .inputComplete(.changePassword), for: .changePassword)
     }
     
@@ -113,31 +125,37 @@ extension ChangePasswordViewController {
         print("forgotPasswordAction")
     }
     
-    
     private func showCurrentPasswordAction() {
-        print("showCurrentPasswordAction is \(txtFieldCurrentPassword.isSecureTextEntry)")
-        if  txtFieldCurrentPassword.isSecureTextEntry == true {
-            self.btnShowCurrentPassword.setImage(UIImage(named: "eyeHidden"), for: .normal)
-            txtFieldCurrentPassword.isSecureTextEntry = false
-        }else{
-            self.btnShowCurrentPassword.setImage(UIImage(named: "eyeVisible"), for: .normal)
-            txtFieldCurrentPassword.isSecureTextEntry = true
+        if self.btnShowCurrentPassword.isSelected {
+            self.btnShowCurrentPassword.isSelected = false
+            self.txtFieldCurrentPassword.isSecureTextEntry = true
+        } else {
+            self.btnShowCurrentPassword.isSelected = true
+            self.txtFieldCurrentPassword.isSecureTextEntry = false
         }
     }
     
     private func showNewPasswordAction() {
-        print("ShowNewPasswordAction is \(txtFieldNewPassword.isSecureTextEntry)")
-        if  txtFieldNewPassword.isSecureTextEntry == true {
-            self.btnShowNewPassword.setImage(UIImage(named: "eyeHidden"), for: .normal)
-            txtFieldNewPassword.isSecureTextEntry = false
-        }else{
-            self.btnShowNewPassword.setImage(UIImage(named: "eyeVisible"), for: .normal)
-            txtFieldNewPassword.isSecureTextEntry = true
+        if self.btnShowNewPassword.isSelected {
+            self.btnShowNewPassword.isSelected = false
+            self.txtFieldNewPassword.isSecureTextEntry = true
+        } else {
+            self.btnShowNewPassword.isSelected = true
+            self.txtFieldNewPassword.isSecureTextEntry = false
         }
     }
     
-    
+    private func showConfirmPasswordAction() {
+        if self.btnShowConfirmPassword.isSelected {
+            self.btnShowConfirmPassword.isSelected = false
+            self.txtFieldConfirmPassword.isSecureTextEntry = true
+        } else {
+            self.btnShowConfirmPassword.isSelected = true
+            self.txtFieldConfirmPassword.isSecureTextEntry = false
+        }
+    }
 }
+
 // MARK:- AlertView
 extension UIAlertController {
     //Set title font and message color

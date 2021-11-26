@@ -19,7 +19,10 @@ class ReminderViewController: UIViewController {
     @IBOutlet weak var lblReminderTime: UILabel!
     @IBOutlet weak var pickerTime: UIDatePicker!
     @IBOutlet weak var btnSegment: UISegmentedControl!
+    
     var habitType : habitType = .good
+    var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -34,7 +37,7 @@ extension ReminderViewController {
     func setup()  {
         navigationController?.navigationBar.isHidden = false
         switchReminder.addTarget(self, action:#selector(self.reminderSwitchValueChanged(_:)), for: .valueChanged)
-        weekCollection.configure()
+        weekCollection.configure(selectedColor: selectedColorTheme)
         [btnTime, btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -76,10 +79,8 @@ extension ReminderViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnTime:
-            print("timeaction")
             self.timeClick()
         case btnNext:
-            print("btnNextAcion")
             self.nextClick()
         default:
             break

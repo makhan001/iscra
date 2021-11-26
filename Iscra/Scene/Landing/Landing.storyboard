@@ -332,7 +332,7 @@
             </objects>
             <point key="canvasLocation" x="-980" y="224"/>
         </scene>
-        <!--Item-->
+        <!--My Account View Controller-->
         <scene sceneID="lO1-8m-7v3">
             <objects>
                 <viewController storyboardIdentifier="myAccount" id="h3e-Dy-xrc" customClass="MyAccountViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
@@ -458,7 +458,7 @@
                             <constraint firstItem="nxL-Wb-8vL" firstAttribute="bottom" secondItem="sUH-i1-xYI" secondAttribute="bottom" id="v9i-2j-BsE"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="tab5" id="Vt9-Hl-8se"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab5" id="Vt9-Hl-8se"/>
                     <navigationItem key="navigationItem" id="nMm-g1-3KQ"/>
                     <size key="freeformSize" width="357" height="667"/>
                     <connections>

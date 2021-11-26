@@ -60,7 +60,6 @@ extension WelcomeViewController {
     }
     
     private func loginAction() {
-        // navigate to login
         router?.push(scene: .login)
     }
 }

@@ -22,6 +22,8 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        print("UserStore.userDetail?.email is \(UserStore.userName)")
+        
     }
     
 }
@@ -30,7 +32,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
 extension MyAccountViewController {
     private func setup() {
         viewModel.view = self
-        btnGetSubscription.titleLabel?.font =  UIFont(name: "SF-Pro-Display-Black", size: 50)
+      
         [btnGetSubscription,btnLogout].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }

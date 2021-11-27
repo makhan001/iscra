@@ -6,8 +6,9 @@
 //
 
 import UIKit
-protocol navigationBarAction:class {
+@objc protocol navigationBarAction:class {
     func ActionType()
+    @objc optional func RightButtonAction()
 }
 enum navRightViewType{
     case myProfie
@@ -35,7 +36,7 @@ class NavigationBarView: UIView {
     func commonInit() {
         Bundle.main.loadNibNamed(XIB_NAME, owner: self, options: nil)
         viewContent.fixInView(self)
-        [btnBack].forEach {
+        [btnBack, btnRightBar].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         btnBack.showsTouchWhenHighlighted = false
@@ -58,6 +59,8 @@ extension NavigationBarView {
         switch  sender {
         case btnBack:
             self.backClick()
+        case btnRightBar:
+            self.rightButtonClick()
         default:
             break
         }
@@ -66,9 +69,10 @@ extension NavigationBarView {
     private func backClick() {
         delegateBarAction?.ActionType()
     }
+    private func rightButtonClick() {
+        delegateBarAction?.RightButtonAction?()
+    }
 }
-
-
 
 extension UIView
 {

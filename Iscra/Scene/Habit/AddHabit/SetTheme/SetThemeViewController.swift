@@ -99,14 +99,11 @@ extension SetThemeViewController {
 
     }
     private func nextClick() {
-//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "ReminderViewController") as! ReminderViewController
-//        vc.habitType = habitType
-//        navigationController?.pushViewController(vc, animated: true)
-        
-        let reminder: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
-        reminder.habitType = habitType
-        self.navigationController?.pushViewController(reminder, animated: true)
+
+        let reminderVC: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
+        reminderVC.habitType = habitType
+        reminderVC.selectedColorTheme = selectedColorTheme
+        self.navigationController?.pushViewController(reminderVC, animated: true)
         
     }
 }

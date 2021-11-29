@@ -8,9 +8,10 @@
 import Foundation
 enum InputValidation:String {
     case name
-    case description
     case email
     case password
+    case habitName
+    case description
     case newPassword
     case currentPassword
     case confirmPassword
@@ -60,9 +61,12 @@ class Validation {
         case .description:
             return( text == "" ? true :
                         text.count > 140 ? true : false,
-                    text == "" ? "Field cant be empty" : "Not more than 140 words")
+                    text == "" ? "Description cant be empty" : "Description not more than 140 words")
             
-        
+        case .habitName:
+            return( text == "" ? true :
+                        isTextContainspecialCharacters(string: text) == true ? true : false,
+                    text == "" ? "Habit name cant be empty" : "Please enter valid habit name")
         }
     }
     

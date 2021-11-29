@@ -7,33 +7,27 @@
 
 import Foundation
 
-//enum HabitScreenType:  String {
-//    case signup
-//    case login
-//    case verification
-//    case forgotPassword
-//    case changePassword
-//}
+enum HabitScreenType: String {
+    case createHabit
+}
+
 enum HabitAction {
-   // case inputComplete(_ screen:  HabitScreenType)
-//    case editingDidEnd(_ field: String, _ value: String)
-//    case editingDidChange(_ field: String, _ value: String)
-//    case requireFields(_ text: String)
     case createHabit
     case deleteHabit
     case habitDetail
     case habitList
     case updateHabit
+    case requireFields(_ text:String)
+    case inputComplete(_ screen: HabitScreenType)
+    case editingDidEnd(_ field:String, _ value:String)
+    case editingDidChange(_ field:String, _ value:String)
+    case errorMessage(_ text:String)
 }
-//protocol InputFieldAlertDelegate: AnyObject {
-//    func userInput(_ text:  String)
-//}
-//protocol InputViewDelegate: AnyObject {
-//    func onAction(action:  HabitAction, for screen:  HabitScreenType)
-//}
-
 protocol HabitViewRepresentable: AnyObject {
     func onAction(_ action:  HabitAction)
+}
+protocol HabitInputViewDelegate:AnyObject {
+    func onAction(action: HabitAction, for screen: HabitScreenType)
 }
 protocol HabitServiceProvidable: AnyObject {
     var  delegate: HabitServiceProvierDelegate? { get set }

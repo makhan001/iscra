@@ -14,7 +14,6 @@ class CommunityDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionMates: MatesCollectionView!
 
-
     var vibrantLabel = UILabel()
     var headerImageView: UIView?
     

@@ -12,9 +12,12 @@
 		0402C4B2273D4A200073DFB8 /* GroupHabitFriendsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */; };
 		0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */; };
 		04397097274B762700898C91 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04397096274B762700898C91 /* VerificationViewModel.swift */; };
+		0440B9312752050D0096DC2D /* HabitCalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */; };
 		0456AE972750CA4500DB3ED4 /* HabitProvider.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940B2750BC1A00503123 /* HabitProvider.swift */; };
 		0456AE982750CA4500DB3ED4 /* HabitAdaptables.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940E2750BC9A00503123 /* HabitAdaptables.swift */; };
 		0456AE9B2750D1E300DB3ED4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */; };
+		045791DF27549EAA006E0410 /* MyAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */; };
+		045791E22754AA67006E0410 /* HabitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045791E12754AA67006E0410 /* HabitUtils.swift */; };
 		04BE94092750B13200503123 /* HabitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE94082750B13200503123 /* HabitRequests.swift */; };
 		04BE940C2750BC1A00503123 /* HabitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE940B2750BC1A00503123 /* HabitProvider.swift */; };
 		04BE940F2750BC9A00503123 /* HabitAdaptables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE940E2750BC9A00503123 /* HabitAdaptables.swift */; };
@@ -177,7 +180,7 @@
 		88269DBB2744EE6A006A9F43 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88269DBA2744EE6A006A9F43 /* NavigationBarView.xib */; };
 		88269DBE2744EFC2006A9F43 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88269DBD2744EFC2006A9F43 /* NavigationBarView.swift */; };
 		8827C3C12750C125009D12C4 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827C3C02750C124009D12C4 /* CameraHandler.swift */; };
-		882F3E002721A50A00A409A6 /* LandingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3DFF2721A50A00A409A6 /* LandingTabBarViewController.swift */; };
+		882F3E002721A50A00A409A6 /* LandingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */; };
 		882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */; };
 		882F3E152721AAC300A409A6 /* MyAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882F3E112721AAC300A409A6 /* MyAccountTableViewCell.xib */; };
 		882F3E162721AAC300A409A6 /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */; };
@@ -286,7 +289,10 @@
 		0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHabitFriendsTable.swift; sourceTree = "<group>"; };
 		0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupFriendsCell.swift; sourceTree = "<group>"; };
 		04397096274B762700898C91 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
+		0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderCoordinator.swift; sourceTree = "<group>"; };
 		0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountCoordinator.swift; sourceTree = "<group>"; };
+		045791E12754AA67006E0410 /* HabitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitUtils.swift; sourceTree = "<group>"; };
 		04BE94082750B13200503123 /* HabitRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRequests.swift; sourceTree = "<group>"; };
 		04BE940B2750BC1A00503123 /* HabitProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitProvider.swift; sourceTree = "<group>"; };
 		04BE940E2750BC9A00503123 /* HabitAdaptables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitAdaptables.swift; sourceTree = "<group>"; };
@@ -452,7 +458,7 @@
 		88269DBA2744EE6A006A9F43 /* NavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
 		88269DBD2744EFC2006A9F43 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		8827C3C02750C124009D12C4 /* CameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
-		882F3DFF2721A50A00A409A6 /* LandingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTabBarViewController.swift; sourceTree = "<group>"; };
+		882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTabBarController.swift; sourceTree = "<group>"; };
 		882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHabitPopUpViewController.swift; sourceTree = "<group>"; };
 		882F3E112721AAC300A409A6 /* MyAccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAccountTableViewCell.xib; sourceTree = "<group>"; };
 		882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -1272,7 +1278,7 @@
 		882F3DFE2721A47F00A409A6 /* LandingTabbar */ = {
 			isa = PBXGroup;
 			children = (
-				882F3DFF2721A50A00A409A6 /* LandingTabBarViewController.swift */,
+				882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */,
 			);
 			path = LandingTabbar;
 			sourceTree = "<group>";
@@ -1636,6 +1642,7 @@
 			isa = PBXGroup;
 			children = (
 				882F3E142721AAC300A409A6 /* MyAccountViewController.swift */,
+				045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */,
 				04D34F28274FB917009763D1 /* MyAccountViewModel.swift */,
 				882F3E102721AAC300A409A6 /* View */,
 			);
@@ -1653,6 +1660,7 @@
 				88E028952716FF0A00D90BB1 /* Habit.storyboard */,
 				04BE940B2750BC1A00503123 /* HabitProvider.swift */,
 				04BE940E2750BC9A00503123 /* HabitAdaptables.swift */,
+				045791E12754AA67006E0410 /* HabitUtils.swift */,
 			);
 			path = Habit;
 			sourceTree = "<group>";
@@ -1731,6 +1739,7 @@
 			isa = PBXGroup;
 			children = (
 				88E580492722E70300D4CAFB /* HomeViewController.swift */,
+				0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */,
 				0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */,
 				88E5804A2722E70300D4CAFB /* Table */,
 				88E580442722E70300D4CAFB /* Collection */,
@@ -2042,6 +2051,7 @@
 				883C52F12747914D00D129FC /* OnboadingUtils.swift in Sources */,
 				887994C0273AB2EE00904D1F /* NewCommunityCollectionView.swift in Sources */,
 				5FF6CD3B274E6A5A007ADC2F /* AttachmentDownloadOperation.swift in Sources */,
+				045791DF27549EAA006E0410 /* MyAccountCoordinator.swift in Sources */,
 				5FF6CD66274E6A5A007ADC2F /* ChatPrivateTitleView.swift in Sources */,
 				5FF6CD5C274E6A5A007ADC2F /* SelectAssetCell.swift in Sources */,
 				8814B43C2743874100A6DE01 /* Base.swift in Sources */,
@@ -2060,7 +2070,7 @@
 				04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */,
 				880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */,
 				88B4A225271FF9C300488AA3 /* AddMyPictureViewController.swift in Sources */,
-				882F3E002721A50A00A409A6 /* LandingTabBarViewController.swift in Sources */,
+				882F3E002721A50A00A409A6 /* LandingTabBarController.swift in Sources */,
 				0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */,
 				88E028F427170B7F00D90BB1 /* Utils.swift in Sources */,
 				88E5804F2722E70300D4CAFB /* HabitDaysCell.swift in Sources */,
@@ -2088,6 +2098,7 @@
 				880F3E69272816D9007CA895 /* InviteFriendViewController.swift in Sources */,
 				883C52F32747915800D129FC /* ForgotPsswordViewController.swift in Sources */,
 				887994D7273AB34E00904D1F /* RepeatDaysTableViewCell.swift in Sources */,
+				045791E22754AA67006E0410 /* HabitUtils.swift in Sources */,
 				5FF6CD4A274E6A5A007ADC2F /* UIViewController+InfoScreen.swift in Sources */,
 				8827C3C12750C125009D12C4 /* CameraHandler.swift in Sources */,
 				04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */,
@@ -2128,6 +2139,7 @@
 				88B4A27027205DDD00488AA3 /* EditNameViewController.swift in Sources */,
 				5FF6CD4C274E6A5A007ADC2F /* InfoTableViewController.swift in Sources */,
 				5FF6CD2D274E6A5A007ADC2F /* Date+Extention.swift in Sources */,
+				0440B9312752050D0096DC2D /* HabitCalenderCoordinator.swift in Sources */,
 				88202D55271968B900F0EA2E /* InputValidation.swift in Sources */,
 				5FF6CD52274E6A5A007ADC2F /* RootParentVC.swift in Sources */,
 				8814B4472743950500A6DE01 /* APIResponse.swift in Sources */,

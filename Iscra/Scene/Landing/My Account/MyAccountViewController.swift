@@ -10,11 +10,12 @@ import UIKit
 class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     // MARK:-Outlets and variables
-    @IBOutlet weak var tableView: MyAccountTableView!
-    @IBOutlet weak var btnGetSubscription: UIButton!
     @IBOutlet weak var btnLogout: UIButton!
+    @IBOutlet weak var lblUserName:UILabel!
     @IBOutlet weak var imgProfile: UIImageView!
-    
+    @IBOutlet weak var btnGetSubscription: UIButton!
+    @IBOutlet weak var tableView: MyAccountTableView!
+
     weak var router: NextSceneDismisser?
     private var imagePicker = UIImagePickerController()
     private let viewModel: MyAccountViewModel = MyAccountViewModel(provider: OnboardingServiceProvider())
@@ -22,17 +23,19 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        print("UserStore.userDetail?.email is \(UserStore.userName)")
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //print("self.router is \(self.router)")
+    }
 }
 
 // MARK: Instance Methods
 extension MyAccountViewController {
     private func setup() {
         viewModel.view = self
-      
+        self.lblUserName.text = UserStore.userName
         [btnGetSubscription,btnLogout].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -199,8 +202,10 @@ extension MyAccountViewController: clickManagerDelegate{
 //        let vc = storyboard.instantiateViewController(withIdentifier: "ChangePasswordViewController") as! ChangePasswordViewController
 //        navigationController?.pushViewController(vc, animated: true)
         
-        let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
-        self.navigationController?.pushViewController(changePassword, animated: true)
+//        let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
+//        self.navigationController?.pushViewController(changePassword, animated: true)
+        
+        self.router?.push(scene: .changePassword)
     }
 }
 // MARK: API Callback

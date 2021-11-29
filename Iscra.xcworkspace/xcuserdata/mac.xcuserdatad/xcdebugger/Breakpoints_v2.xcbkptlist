@@ -7,64 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0FF81634-FA58-445F-AC45-514020B62ACB"
+            uuid = "A26EB824-0B7B-4846-8FED-6016DC415822"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Onboarding/ChangePassword/ChangePasswordViewModel.swift"
+            filePath = "Iscra/Scene/Landing/LandingCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "validateUserInput()"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "startMyAccount()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AE5C3C9B-0BCE-4B0A-BF0C-203BD5B5DFE1"
+            uuid = "A3C07312-08A3-493C-981D-212F2B8697B9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Onboarding/ChangePassword/ChangePasswordViewModel.swift"
+            filePath = "Iscra/Scene/Landing/My Account/MyAccountCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "validateUserInput()"
-            landmarkType = "7">
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BD64211E-2F2B-4C93-92B9-24D825B7B23B"
+            uuid = "774B4038-9A3F-466D-8BAE-1316C5AE1A34"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Habit/GroupHabitFriends/GroupHabitFriendsViewController.swift"
+            filePath = "Iscra/Scene/Landing/My Account/MyAccountCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "editAction()"
-            landmarkType = "7">
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C7508A24-5DB6-4A08-865B-8E924D75AE37"
+            uuid = "54E89CFF-D751-4450-B8B3-DBB3445F1A8F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Habit/HabitCalender/HabitCalenderViewController.swift"
+            filePath = "Iscra/Scene/Landing/LandingCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "editAction()"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "push(scene:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

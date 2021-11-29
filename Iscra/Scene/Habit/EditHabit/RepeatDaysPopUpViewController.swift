@@ -9,7 +9,7 @@ import UIKit
 
 class RepeatDaysPopUpViewController: UIViewController {
     @IBOutlet weak var viewBackground: UIView!
-    @IBOutlet weak var tblDays: RepeatDaysTableView!
+    @IBOutlet weak var tableView: RepeatDaysTableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ extension RepeatDaysPopUpViewController {
     private func setup() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBackground.addGestureRecognizer(tap)
-        self.tblDays.configure()
+        self.tableView.configure()
     }
     
     

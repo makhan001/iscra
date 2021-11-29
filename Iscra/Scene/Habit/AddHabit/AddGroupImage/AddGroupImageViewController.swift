@@ -113,7 +113,7 @@ extension AddGroupImageViewController : InviteNavigation {
         if inviteType == .mayBeLatter{
             guard let viewControllers = navigationController?.viewControllers else { return }
             for vc in viewControllers {
-                if vc is LandingTabBarViewController {
+                if vc is LandingTabBarController {
                     navigationController?.popToViewController(vc, animated: true)
                     return
                 }

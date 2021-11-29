@@ -18,13 +18,13 @@
         <!--My Chat View Controller-->
         <scene sceneID="9hs-nN-SoY">
             <objects>
-                <viewController storyboardIdentifier="MyChatViewController" id="9FH-U3-SeB" customClass="MyChatViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="myChat" id="9FH-U3-SeB" customClass="MyChatViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RjH-hP-d1g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rj-vD-jDM" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="189" y="358" width="36.333333333333343" height="20.333333333333314"/>
+                                <rect key="frame" x="170.66666666666666" y="350" width="72.666666666666657" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="BlackAccent"/>
                                 <nil key="highlightedColor"/>
@@ -291,7 +291,7 @@
                         <outlet property="lblSubTitle" destination="jda-y7-1cp" id="wNB-Tg-tzX"/>
                         <outlet property="lblTitle" destination="WxE-cT-KuF" id="3F8-4M-47y"/>
                         <outlet property="lblUserName" destination="leD-m2-AYT" id="AKP-Ks-R6Y"/>
-                        <outlet property="tblHabit" destination="Bgn-jD-pf2" id="v8R-39-3x2"/>
+                        <outlet property="tableView" destination="Bgn-jD-pf2" id="PEX-nV-NUr"/>
                         <outlet property="viewFirstHabit" destination="RrV-qg-wug" id="nZV-PX-Dt0"/>
                     </connections>
                 </viewController>
@@ -299,10 +299,10 @@
             </objects>
             <point key="canvasLocation" x="-2293" y="1086"/>
         </scene>
-        <!--Landing Tab Bar View Controller-->
+        <!--Landing Tab Bar Controller-->
         <scene sceneID="H3c-mO-mUQ">
             <objects>
-                <tabBarController storyboardIdentifier="landing" hidesBottomBarWhenPushed="YES" id="1PD-2Z-rX9" customClass="LandingTabBarViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="landing" hidesBottomBarWhenPushed="YES" id="1PD-2Z-rX9" customClass="LandingTabBarController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ddl-Cw-UUl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -359,7 +359,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USER NAME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbM-Nj-7Cb" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="118.00000000000001" width="337" height="21.666666666666671"/>
+                                                <rect key="frame" x="10" y="117.99999999999999" width="337" height="38.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                 <color key="textColor" name="SecondryAccent"/>
                                                 <nil key="highlightedColor"/>
@@ -372,15 +372,15 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2se-TB-CcR" customClass="MyAccountTableView" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="159.66666666666666" width="341" height="337.33333333333337"/>
+                                                <rect key="frame" x="8" y="176.33333333333334" width="341" height="314.66666666666663"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzI-dq-UI8">
-                                                <rect key="frame" x="0.0" y="497" width="357" height="121"/>
+                                                <rect key="frame" x="0.0" y="491" width="357" height="127"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cfd-Xj-QFi">
-                                                <rect key="frame" x="10" y="507" width="337" height="101"/>
+                                                <rect key="frame" x="10" y="501" width="337" height="107"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzi-eY-W0N" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="337" height="56"/>
@@ -402,7 +402,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMg-w0-bk0" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="71" width="337" height="30"/>
+                                                        <rect key="frame" x="0.0" y="71" width="337" height="36"/>
                                                         <state key="normal" title="Log out">
                                                             <color key="titleColor" name="GrayAccent"/>
                                                         </state>
@@ -465,6 +465,7 @@
                         <outlet property="btnGetSubscription" destination="Pzi-eY-W0N" id="Ah0-BS-j7B"/>
                         <outlet property="btnLogout" destination="TMg-w0-bk0" id="cd1-Q6-u7X"/>
                         <outlet property="imgProfile" destination="0fQ-wV-rxv" id="dxH-qj-EDs"/>
+                        <outlet property="lblUserName" destination="BbM-Nj-7Cb" id="Hcc-VO-N2n"/>
                         <outlet property="tableView" destination="2se-TB-CcR" id="KJ8-gC-mZ1"/>
                     </connections>
                 </viewController>
@@ -1273,7 +1274,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tblDays" destination="A3A-by-No5" id="oT6-69-Bvy"/>
+                        <outlet property="tableView" destination="A3A-by-No5" id="KuC-Fc-98Y"/>
                         <outlet property="viewBackground" destination="gAy-Jp-eqp" id="XnP-ii-HG5"/>
                     </connections>
                 </viewController>

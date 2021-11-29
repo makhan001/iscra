@@ -30,6 +30,7 @@ extension HomeViewController {
     private func setup() {
         self.viewFirstHabit.isHidden = true
         self.tblHabit.isHidden = false
+        self.lblUserName.text = "Hi \(UserStore.userName?.capitalized ?? "")"
         self.lblTitle.text = "Are you ready to create \nyour first habit?"
         self.lblSubTitle.text = "I am excited to help you to become \na better version of yourself. Let's \nstart our journey. Click plus button \nto create your first habit."
         self.tblHabit.configure(obj: 5)

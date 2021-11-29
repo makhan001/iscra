@@ -42,7 +42,7 @@ class WebService {
             }
             self.manageMultipartAssets(multipartFormData: multipartFormData, file: file)
         },to: url!, usingThreshold: UInt64.init(),
-        method: .post,
+        method: httpMethod,
         headers: headers).response { encodingResult in
             switch encodingResult.result {
             case .success(let result):
@@ -80,7 +80,7 @@ class WebService {
     
     private func addDefaultHeaders() -> HTTPHeaders {
         let header: HTTPHeaders = [
-          //  "Authentication-Token": UserStore.token ?? "",
+            "Authentication-Token": UserStore.token ?? "",
             "Content-Type": "application/json; charset=UTF-8",
 //            "device_type" : "ios",
 //            "device_id" : "12345",

@@ -10,14 +10,14 @@ import UIKit
 
 protocol RequestRepresentable {
     var endpoint: String { get }
-    var method: HTTPMethod { get }
+    var method: HTTPSMethod { get }
     var parameters: Parameters { get }
     var headers: [String: String]? { get }
 }
 
 extension RequestRepresentable {
     var headers:[String:String]? { return nil   }
-    var method: HTTPMethod         { return .post  }
+    var method: HTTPSMethod         { return .post  }
     var parameters: Parameters   { return .none }
     
     func encodeBody<T: Codable>(data: T) -> Data? {

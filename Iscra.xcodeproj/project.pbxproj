@@ -21,6 +21,7 @@
 		04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F28274FB917009763D1 /* MyAccountViewModel.swift */; };
 		04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */; };
 		04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */; };
+		5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */; };
 		5FF6CD20274E6A5A007ADC2F /* AddOccupantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CC90274E6A5A007ADC2F /* AddOccupantsVC.swift */; };
 		5FF6CD21274E6A5A007ADC2F /* DialogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF6CC92274E6A5A007ADC2F /* DialogCell.xib */; };
 		5FF6CD22274E6A5A007ADC2F /* DialogsSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CC93274E6A5A007ADC2F /* DialogsSelectionVC.swift */; };
@@ -125,6 +126,9 @@
 		5FF6CD85274E6A5A007ADC2F /* ParentVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CD1E274E6A5A007ADC2F /* ParentVideoVC.swift */; };
 		5FF6CD86274E6A5A007ADC2F /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF6CD1F274E6A5A007ADC2F /* Chat.storyboard */; };
 		5FF6CDA0274E6AA0007ADC2F /* MyChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CD9F274E6AA0007ADC2F /* MyChatViewController.swift */; };
+		5FFDDB3A2755054600051011 /* MyAccountPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFDDB392755054600051011 /* MyAccountPopupViewController.swift */; };
+		5FFDDB7227550F1800051011 /* MyAccountPopUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFDDB7027550F1800051011 /* MyAccountPopUpTableViewCell.swift */; };
+		5FFDDB7327550F1800051011 /* MyAccountPopUpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FFDDB7127550F1800051011 /* MyAccountPopUpTableViewCell.xib */; };
 		861CF1D12743DE9700727D1E /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D02743DE9700727D1E /* RootCoordinator.swift */; };
 		861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D22743E02300727D1E /* LoginCoordinator.swift */; };
 		8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A8392747D41100773C57 /* LandingCoordinator.swift */; };
@@ -232,8 +236,8 @@
 		88B0F9D7271824CF00EF92B3 /* IscraCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0F9D6271824CF00EF92B3 /* IscraCustomView.swift */; };
 		88B0FABF2718594100EF92B3 /* IscraCustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0FABE2718594100EF92B3 /* IscraCustomTextField.swift */; };
 		88B4A225271FF9C300488AA3 /* AddMyPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4A224271FF9C300488AA3 /* AddMyPictureViewController.swift */; };
-		88B4A228271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4A227271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift */; };
-		88B4A27027205DDD00488AA3 /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4A26E27205DDC00488AA3 /* EditNameViewController.swift */; };
+		88B4A228271FFA8100488AA3 /* AddMemojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4A227271FFA8100488AA3 /* AddMemojiViewController.swift */; };
+		88B4A27027205DDD00488AA3 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4A26E27205DDC00488AA3 /* UpdateProfileViewController.swift */; };
 		88C7C2F52726CDE600EAA8CA /* ColorCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7C2F42726CDE500EAA8CA /* ColorCollectionView.swift */; };
 		88C7C2FA2726D39800EAA8CA /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7C2F82726D39800EAA8CA /* ColorCollectionViewCell.swift */; };
 		88C7C2FB2726D39800EAA8CA /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C7C2F92726D39800EAA8CA /* ColorCollectionViewCell.xib */; };
@@ -294,6 +298,7 @@
 		04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
+		5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iscra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FF6CC90274E6A5A007ADC2F /* AddOccupantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOccupantsVC.swift; sourceTree = "<group>"; };
 		5FF6CC92274E6A5A007ADC2F /* DialogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogCell.xib; sourceTree = "<group>"; };
@@ -399,6 +404,9 @@
 		5FF6CD1E274E6A5A007ADC2F /* ParentVideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentVideoVC.swift; sourceTree = "<group>"; };
 		5FF6CD1F274E6A5A007ADC2F /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		5FF6CD9F274E6AA0007ADC2F /* MyChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyChatViewController.swift; sourceTree = "<group>"; };
+		5FFDDB392755054600051011 /* MyAccountPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountPopupViewController.swift; sourceTree = "<group>"; };
+		5FFDDB7027550F1800051011 /* MyAccountPopUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountPopUpTableViewCell.swift; sourceTree = "<group>"; };
+		5FFDDB7127550F1800051011 /* MyAccountPopUpTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyAccountPopUpTableViewCell.xib; sourceTree = "<group>"; };
 		738A14CE266552D2AB54A54A /* Pods-Iscra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.debug.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.debug.xcconfig"; sourceTree = "<group>"; };
 		861CF1D02743DE9700727D1E /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		861CF1D22743E02300727D1E /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
@@ -509,8 +517,8 @@
 		88B0F9DA27183BD900EF92B3 /* IscraCustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IscraCustomImage.swift; sourceTree = "<group>"; };
 		88B0FABE2718594100EF92B3 /* IscraCustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IscraCustomTextField.swift; sourceTree = "<group>"; };
 		88B4A224271FF9C300488AA3 /* AddMyPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyPictureViewController.swift; sourceTree = "<group>"; };
-		88B4A227271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnHowToAddMemojiViewController.swift; sourceTree = "<group>"; };
-		88B4A26E27205DDC00488AA3 /* EditNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
+		88B4A227271FFA8100488AA3 /* AddMemojiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemojiViewController.swift; sourceTree = "<group>"; };
+		88B4A26E27205DDC00488AA3 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		88C7C2F42726CDE500EAA8CA /* ColorCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionView.swift; sourceTree = "<group>"; };
 		88C7C2F82726D39800EAA8CA /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		88C7C2F92726D39800EAA8CA /* ColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1058,6 +1066,16 @@
 			path = "My Chat";
 			sourceTree = "<group>";
 		};
+		5FFDDB6F27550ECF00051011 /* MyAccountPopUpView */ = {
+			isa = PBXGroup;
+			children = (
+				5FFDDB392755054600051011 /* MyAccountPopupViewController.swift */,
+				5FFDDB7027550F1800051011 /* MyAccountPopUpTableViewCell.swift */,
+				5FFDDB7127550F1800051011 /* MyAccountPopUpTableViewCell.xib */,
+			);
+			path = MyAccountPopUpView;
+			sourceTree = "<group>";
+		};
 		8800806A27292536008E3260 /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1230,7 +1248,7 @@
 				88202D582719923700F0EA2E /* WelcomeViewController.swift */,
 				88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */,
 				88B4A224271FF9C300488AA3 /* AddMyPictureViewController.swift */,
-				88B4A227271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift */,
+				88B4A227271FFA8100488AA3 /* AddMemojiViewController.swift */,
 			);
 			path = Walkthrough;
 			sourceTree = "<group>";
@@ -1412,12 +1430,13 @@
 			path = ChangePassword;
 			sourceTree = "<group>";
 		};
-		88B4A26D27205DDC00488AA3 /* EditName */ = {
+		88B4A26D27205DDC00488AA3 /* UpdateProfile */ = {
 			isa = PBXGroup;
 			children = (
-				88B4A26E27205DDC00488AA3 /* EditNameViewController.swift */,
+				88B4A26E27205DDC00488AA3 /* UpdateProfileViewController.swift */,
+				5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */,
 			);
-			path = EditName;
+			path = UpdateProfile;
 			sourceTree = "<group>";
 		};
 		88C7C2F12726C93B00EAA8CA /* Views */ = {
@@ -1554,7 +1573,7 @@
 				8822D4E52731775500C68EE5 /* Verification */,
 				88E028542716F73F00D90BB1 /* Login */,
 				88B4A26B27205DDC00488AA3 /* ChangePassword */,
-				88B4A26D27205DDC00488AA3 /* EditName */,
+				88B4A26D27205DDC00488AA3 /* UpdateProfile */,
 				8845B730271EF539007A5069 /* Onboarding.storyboard */,
 			);
 			path = Onboarding;
@@ -1637,6 +1656,7 @@
 			children = (
 				882F3E142721AAC300A409A6 /* MyAccountViewController.swift */,
 				04D34F28274FB917009763D1 /* MyAccountViewModel.swift */,
+				5FFDDB6F27550ECF00051011 /* MyAccountPopUpView */,
 				882F3E102721AAC300A409A6 /* View */,
 			);
 			path = "My Account";
@@ -1862,6 +1882,7 @@
 				5FF6CD63274E6A5A007ADC2F /* HeaderCollectionReusableView.xib in Resources */,
 				88CA2A56271EACCA003D590D /* SF-Pro-Display-Regular.ttf in Resources */,
 				5FF6CD5D274E6A5A007ADC2F /* AttachmentUploadBar.xib in Resources */,
+				5FFDDB7327550F1800051011 /* MyAccountPopUpTableViewCell.xib in Resources */,
 				88CA2A5A271EACCA003D590D /* SF-Pro-Display-Black.ttf in Resources */,
 				88CA2A4B271E9F1B003D590D /* LogInMock.json in Resources */,
 				5FF6CD25274E6A5A007ADC2F /* Dialogs.storyboard in Resources */,
@@ -1971,6 +1992,7 @@
 				5FF6CD3A274E6A5A007ADC2F /* CacheManager.swift in Sources */,
 				5FF6CD7C274E6A5A007ADC2F /* ChatCollectionViewFlowLayout.swift in Sources */,
 				5FF6CD28274E6A5A007ADC2F /* Double+Extention.swift in Sources */,
+				5FFDDB3A2755054600051011 /* MyAccountPopupViewController.swift in Sources */,
 				5FF6CD62274E6A5A007ADC2F /* InputToolbar.swift in Sources */,
 				5FF6CD47274E6A5A007ADC2F /* UserTableViewCell.swift in Sources */,
 				5FF6CD76274E6A5A007ADC2F /* ChatAttachmentIncomingCell.swift in Sources */,
@@ -2092,6 +2114,7 @@
 				8827C3C12750C125009D12C4 /* CameraHandler.swift in Sources */,
 				04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */,
 				5FF6CD33274E6A5A007ADC2F /* String+Extention.swift in Sources */,
+				5FFDDB7227550F1800051011 /* MyAccountPopUpTableViewCell.swift in Sources */,
 				8814B419274385E600A6DE01 /* Scenes.swift in Sources */,
 				5FF6CD81274E6A5A007ADC2F /* ChatResources.swift in Sources */,
 				8814B4102743855A00A6DE01 /* AppAdaptables.swift in Sources */,
@@ -2124,8 +2147,8 @@
 				5FF6CD29274E6A5A007ADC2F /* URL+Extention.swift in Sources */,
 				5FF6CD5A274E6A5A007ADC2F /* ChatDataSource.swift in Sources */,
 				5FF6CD2C274E6A5A007ADC2F /* UIView+Extention.swift in Sources */,
-				88B4A228271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift in Sources */,
-				88B4A27027205DDD00488AA3 /* EditNameViewController.swift in Sources */,
+				88B4A228271FFA8100488AA3 /* AddMemojiViewController.swift in Sources */,
+				88B4A27027205DDD00488AA3 /* UpdateProfileViewController.swift in Sources */,
 				5FF6CD4C274E6A5A007ADC2F /* InfoTableViewController.swift in Sources */,
 				5FF6CD2D274E6A5A007ADC2F /* Date+Extention.swift in Sources */,
 				88202D55271968B900F0EA2E /* InputValidation.swift in Sources */,
@@ -2154,6 +2177,7 @@
 				5FF6CD46274E6A5A007ADC2F /* EnterChatNameVC.swift in Sources */,
 				8822D4EC2731777E00C68EE5 /* GetSubcriptionViewController.swift in Sources */,
 				88B0F9C027181A4B00EF92B3 /* IscraCustomButton.swift in Sources */,
+				5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */,
 				5FF6CD67274E6A5A007ADC2F /* TypingView.swift in Sources */,
 				5FF6CD40274E6A5A007ADC2F /* ChatNotificationTableViewCell.swift in Sources */,
 				8814B4382743874100A6DE01 /* APIError.swift in Sources */,

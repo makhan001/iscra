@@ -23,11 +23,15 @@ struct DataClass: Codable {
     var register: Register?
     var loginData: LoginData?
     var forgotPassword: String?
+    var user: User?
+   // var username: String?
 
     enum CodingKeys: String, CodingKey {
         case register
         case loginData = "login_data"
         case forgotPassword = "forgot_password"
+       case user
+       // case username = "username"
     }
 }
 // MARK: - Register
@@ -87,5 +91,40 @@ struct LoginData: Codable {
         case memoji
         case isVerified = "is_verified"
         case forgotPassword = "forgot_password"
+    }
+}
+//Mark:- UserData
+struct User: Codable {
+    let username, email: String?
+    let id: Int?
+    let createdAt, updatedAt, verificationCode, authenticationToken: String?
+    let profileImage: String?
+    let memoji: JSONNull?
+    let isVerified: Bool?
+    let deviceType, osVersion, deviceModel, fcmToken: String?
+    let forgotPassword: JSONNull?
+    let deviceUdid: String?
+    let loginType, socialID: JSONNull?
+    let isGoogle, isApple: Bool?
+
+    enum CodingKeys: String, CodingKey {
+        case username, email, id
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case verificationCode = "verification_code"
+        case authenticationToken = "authentication_token"
+        case profileImage = "profile_image"
+        case memoji
+        case isVerified = "is_verified"
+        case deviceType = "device_type"
+        case osVersion = "os_version"
+        case deviceModel = "device_model"
+        case fcmToken = "fcm_token"
+        case forgotPassword = "forgot_password"
+        case deviceUdid = "device_udid"
+        case loginType = "login_type"
+        case socialID = "social_id"
+        case isGoogle = "is_google"
+        case isApple = "is_apple"
     }
 }

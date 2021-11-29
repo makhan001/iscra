@@ -42,6 +42,9 @@ final class UserTask {
     func logout<T:Codable>(params: UserParams.logout, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: AuthRequests(type: .logout, params: params), modeling: responseModel, completion: completion)
     }
+    func updateProfile<T:Codable>(params: UserParams.UpdateProfile, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: AuthRequests(type: .updateProfile, params: params), modeling: responseModel, completion: completion)
+    }
     
     func createHabit<T:Codable>(params: HabitParams.CreateHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: HabitRequests(type: .createHabit, params: params), modeling: responseModel, completion: completion)

@@ -12,7 +12,7 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
           
     var delegate: OnboardingServiceProvierDelegate?
     private let task = UserTask()
-    
+
     func register(param:UserParams.Signup) {
         
         task.signup(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
@@ -119,6 +119,17 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
             self?.delegate?.completed(for: .logout, with: resp, with: nil)
         }
     }
+    func updateProfile(param: UserParams.UpdateProfile) {
+        task.updateProfile(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .updateProfile, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .updateProfile, with: resp, with: nil)
+        }
+    }
+  
+    
    
 }
 

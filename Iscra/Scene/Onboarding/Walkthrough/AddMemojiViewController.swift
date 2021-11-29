@@ -7,7 +7,7 @@
 
 
 import UIKit
-class LearnHowToAddMemojiViewController: UIViewController {
+class AddMemojiViewController: UIViewController {
   
     // MARK:-Outlets and variables
     
@@ -29,7 +29,7 @@ class LearnHowToAddMemojiViewController: UIViewController {
 }
 
 // MARK: Instance Methods
-extension LearnHowToAddMemojiViewController {
+extension AddMemojiViewController {
     private func setup() {
         self.navigationItem.title = AppConstant.nav_memoji
         lblHeaderTitle.text = AppConstant.nav_memoji
@@ -42,7 +42,7 @@ extension LearnHowToAddMemojiViewController {
     }
 }
 // MARK:- Button Action
-extension LearnHowToAddMemojiViewController {
+extension AddMemojiViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {

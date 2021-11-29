@@ -31,10 +31,11 @@ struct UserRequests:RequestRepresentable {
 //        }
 //    }
     
-    var method: HTTPMethod {
+    var method: HTTPSMethod {
         switch requestType {
         case .profile, .logout:
             return .get
+        
         default:
             return .post
         }

@@ -1,20 +1,18 @@
 //
-//  MyAccountViewModel.swift
+//  UpdateProfileViewModel.swift
 //  Iscra
 //
-//  Created by mac on 24/11/21.
+//  Created by Dr.Mac on 27/11/21.
 //
 
 import UIKit
 import Foundation
 
-final class MyAccountViewModel {
+final class UpdateProfileViewModel {
     
-    var email: String = ""
-    var password: String = ""
-    var username: String = OnboadingUtils.shared.username // singeleton class
+
+    var username: String = ""
     var selectedImage: UIImage = UIImage()
-    //var selectedImage: UIImage! = OnboadingUtils.shared.userImage // singleton class
     var delegate: OnboardingServiceProvierDelegate?
 
     weak var view: OnboardingViewRepresentable?
@@ -25,25 +23,20 @@ final class MyAccountViewModel {
         self.provider.delegate = self
         delegate = self
     }
-//    func updateProfile(){
-//        self.provider.updateProfile(param: UserParams.UpdateProfile())
-//    }
+    
     func onAction(action: OnboardingAction, for screen: OnboardingScreenType) {
         switch action {
         case .inputComplete: validateUserInput()
         default: break
         }
     }
-    func logout() {
-        self.provider.logout(param: UserParams.logout())
-    }
     
     private func validateUserInput() {
         
-//        if Validation().textValidation(text: username, validationType: .name).0 {
-//            view?.onAction(.requireFields(Validation().textValidation(text: username, validationType: .name).1))
-//            return
-//        }
+        if Validation().textValidation(text: username, validationType: .name).0 {
+            view?.onAction(.requireFields(Validation().textValidation(text: username, validationType: .name).1))
+            return
+        }
         let parameters =  UserParams.UpdateProfile(username: username)
         WebService().requestMultiPart(urlString: "/users/update",
                                       httpMethod: .put,
@@ -75,20 +68,16 @@ final class MyAccountViewModel {
     }
 }
 
-extension MyAccountViewModel: OnboardingServiceProvierDelegate {
+extension UpdateProfileViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
             if error != nil {
-               self.view?.onAction(.errorMessage(ERROR_MESSAGE))
+                self.view?.onAction(.errorMessage(ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.status == true {
-                    UserDefaults.standard.removeObject(forKey: "name")
-                    UserDefaults.standard.removeObject(forKey: "email")
-                    UserDefaults.standard.removeObject(forKey: "token")
-                    UserDefaults.standard.removeObject(forKey: "user_id")
-                    UserDefaults.standard.removeObject(forKey: "is_verify_key")
-                    UserDefaults.standard.removeObject(forKey: "profile_image")
-                    self.view?.onAction(.logout)
+                                   //    self.register = resp.data?.register
+                    UserStore.save(token: resp.data?.register?.authenticationToken)
+                    
                     self.view?.onAction(.updateProfile)
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
@@ -97,5 +86,4 @@ extension MyAccountViewModel: OnboardingServiceProvierDelegate {
         }
     }
 }
-
 

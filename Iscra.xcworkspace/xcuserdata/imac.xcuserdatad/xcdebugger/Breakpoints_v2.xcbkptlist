@@ -7,32 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "70F7FD88-6A6F-4F48-9907-D81315043C6D"
+            uuid = "4A82BE8E-2D73-478B-937E-78FE259CF80E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Habit/AddHabit/SetTheme/SetThemeViewController.swift"
+            filePath = "Iscra/Scene/Onboarding/Walkthrough/AddMyPictureViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "selectedIcon(Icon:)"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "openCameraPhoto()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "32305133-6019-40D7-9ED5-5829E7DAED18"
+            uuid = "710FC188-13C7-4BCF-8031-3D3BF3DB8634"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Habit/AddHabit/ColorPopUp/Views/Collection/ColorCollectionView.swift"
+            filePath = "Iscra/Scene/Onboarding/Verification/VerificationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "onAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

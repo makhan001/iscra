@@ -48,6 +48,15 @@ extension IconPopupViewController: selectedIconCatogory , selectedIcon{
     
     func selectedIconIndex(Index: Int) {
         let dict = iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index]
+        /* if dict?.value == 0 {
+         iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].value = 1
+         }
+         else {
+         iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].value = 0
+         }
+         icons =  iconResorces.iconCategory?[selectedCategoryIndex].icons ?? [IconModel]()
+         IconCollection.configure(icons: icons, theme: themeColor.colorHex)
+         */
         for iconCategoryIndex in 0..<iconResorces.iconCategory!.count{
             if iconCategoryIndex != selectedCategoryIndex {
                 for iconCategoryIndex in 0..<(iconResorces.iconCategory?[selectedCategoryIndex].icons!.count)!{
@@ -58,7 +67,6 @@ extension IconPopupViewController: selectedIconCatogory , selectedIcon{
                 if dict?.value == 0 {
                     iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].value = 1
                     selectedIcon = iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].iconName ?? "sport1"
-                    delegateIcon?.selectedIcon(Icon: selectedIcon)
                 }
                 else {
                     iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].value = 0

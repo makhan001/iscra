@@ -13,21 +13,26 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var btnLogout: UIButton!
     @IBOutlet weak var lblUserName:UILabel!
     @IBOutlet weak var imgProfile: UIImageView!
+    @IBOutlet weak var lblName: IscraCustomLabel!
     @IBOutlet weak var btnGetSubscription: UIButton!
     @IBOutlet weak var tableView: MyAccountTableView!
-
+    @IBOutlet weak var viewNavigation: NavigationBarView!
+    
+    
+    
     weak var router: NextSceneDismisser?
     private var imagePicker = UIImagePickerController()
     private let viewModel: MyAccountViewModel = MyAccountViewModel(provider: OnboardingServiceProvider())
+    var delegateBarAction:navigationBarAction?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //print("self.router is \(self.router)")
+        self.lblName.text = UserStore.userName
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
 
@@ -35,14 +40,32 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
 extension MyAccountViewController {
     private func setup() {
         viewModel.view = self
-        self.lblUserName.text = UserStore.userName
         [btnGetSubscription,btnLogout].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         tableView.configure()
         tableView.delegateNavigate = self
+        self.viewNavigation.navType = .myProfie
+        self.viewNavigation.commonInit()
+        self.viewNavigation.lblTitle.text =  "My profile"
+        self.viewNavigation.delegateBarAction = self
+        
+        //  self.imgProfile.image = viewModel.selectedImage
+    }
+    
+}
+
+// MARK: Navigation Methods
+extension MyAccountViewController: navigationBarAction {
+    func ActionType() {}
+    
+    func RightButtonAction() {
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "UpdateProfileViewController") as! UpdateProfileViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+
 // MARK:- Button Action
 extension MyAccountViewController {
     @objc func buttonPressed(_ sender: UIButton) {
@@ -56,10 +79,6 @@ extension MyAccountViewController {
         }
     }
     private func GetSubscriptionAction() {
-//        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "GetSubcriptionViewController") as! GetSubcriptionViewController
-//        self.navigationController?.pushViewController(vc, animated: true)
-        
         let getSubcription: GetSubcriptionViewController = GetSubcriptionViewController.from(from: .onboarding, with: .getSubcription)
         self.navigationController?.pushViewController(getSubcription, animated: true)
     }
@@ -135,6 +154,7 @@ extension MyAccountViewController {
         myPickerControllerGallery.delegate = self
         myPickerControllerGallery.sourceType = UIImagePickerController.SourceType.photoLibrary
         myPickerControllerGallery.allowsEditing = true
+        
         self.present(myPickerControllerGallery, animated: true, completion: nil)
     }
     //MARK: - ImagePicker delegate
@@ -143,6 +163,8 @@ extension MyAccountViewController {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         imgProfile.image = selectedImage
+        // self.viewModel.selectedImage = imgProfile.image!
+        viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
         dismiss(animated: true, completion: nil)
     }
     
@@ -161,13 +183,15 @@ extension MyAccountViewController {
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
     }
+    
 }
 
 extension MyAccountViewController: clickManagerDelegate{
     func tableViewCellNavigation(performAction: clickManager) {
         switch performAction {
         case .changeProfilePhoto:
-            self.alertView()
+            // self.alertView()
+//            self.changeProfilePhoto()
             print("changePhoto")
         case .addYourOwnMemoji:
             self.AddMemojiAction()
@@ -188,23 +212,12 @@ extension MyAccountViewController: clickManagerDelegate{
         }
     }
     private func AddMemojiAction() {
-//        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "LearnHowToAddMemojiViewController") as! LearnHowToAddMemojiViewController
-//        navigationController?.pushViewController(vc, animated: true)
-        
-        let learnHowToAddMemoji: LearnHowToAddMemojiViewController = LearnHowToAddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
+        let learnHowToAddMemoji: AddMemojiViewController = AddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
         self.navigationController?.pushViewController(learnHowToAddMemoji, animated: true)
-
+        
     }
     
     private func ChangePasswordAction() {
-//        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "ChangePasswordViewController") as! ChangePasswordViewController
-//        navigationController?.pushViewController(vc, animated: true)
-        
-//        let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
-//        self.navigationController?.pushViewController(changePassword, animated: true)
-        
         self.router?.push(scene: .changePassword)
     }
 }

@@ -45,7 +45,7 @@ struct HabitRequests: RequestRepresentable {
         }
     }
     
-    var method: HTTPMethod {
+    var method: HTTPSMethod {
         switch self.requestType {
         case .allHabitList:
             return .get

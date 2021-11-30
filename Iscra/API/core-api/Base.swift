@@ -35,7 +35,7 @@ let imageBaseUrl = "https://nodevg82.elb.cisinlive.com/"
 let placeHolder = UIImage(named: "defaultUser-Male")
 let ownerPlaceHolder = UIImage(named: "usersIcon")
 
-public enum HTTPMethod: String {
+public enum HTTPSMethod: String {
     case post = "POST"
     case get = "GET"
     case put = "PUT"

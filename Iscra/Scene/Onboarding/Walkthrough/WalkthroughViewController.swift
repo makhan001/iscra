@@ -119,7 +119,7 @@ extension WalkthroughViewController  {
 //        let VC = storyboard?.instantiateViewController(withIdentifier: "LearnHowToAddMemojiViewController") as! LearnHowToAddMemojiViewController
 //        navigationController?.pushViewController(VC, animated: true)
         
-        let learnHowToAddMemoji: LearnHowToAddMemojiViewController = LearnHowToAddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
+        let learnHowToAddMemoji: AddMemojiViewController = AddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
         self.navigationController?.pushViewController(learnHowToAddMemoji, animated: true)
 
     }

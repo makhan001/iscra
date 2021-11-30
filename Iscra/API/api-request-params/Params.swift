@@ -63,8 +63,9 @@ enum UserParams {
     }
     
     struct UpdateProfile: Codable {
-        let user_id: String?
+       // let user_id: String?
         let username: String?
+        
     }
 }
 

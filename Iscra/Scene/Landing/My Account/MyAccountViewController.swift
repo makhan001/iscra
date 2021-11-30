@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import MessageUI
 
-class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+
+class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     // MARK:-Outlets and variables
     @IBOutlet weak var btnLogout: UIButton!
@@ -17,9 +19,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var btnGetSubscription: UIButton!
     @IBOutlet weak var tableView: MyAccountTableView!
     @IBOutlet weak var viewNavigation: NavigationBarView!
-    
-    
-    
+
     weak var router: NextSceneDismisser?
     private var imagePicker = UIImagePickerController()
     private let viewModel: MyAccountViewModel = MyAccountViewModel(provider: OnboardingServiceProvider())
@@ -49,16 +49,18 @@ extension MyAccountViewController {
         self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text =  "My profile"
         self.viewNavigation.delegateBarAction = self
-        
-        //  self.imgProfile.image = viewModel.selectedImage
-    }
+        if !MFMailComposeViewController.canSendMail() {
+                print("Mail services are not available")
+                return
+            }
+      }
+
     
 }
 
 // MARK: Navigation Methods
 extension MyAccountViewController: navigationBarAction {
     func ActionType() {}
-    
     func RightButtonAction() {
         let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "UpdateProfileViewController") as! UpdateProfileViewController
@@ -82,103 +84,23 @@ extension MyAccountViewController {
         let getSubcription: GetSubcriptionViewController = GetSubcriptionViewController.from(from: .onboarding, with: .getSubcription)
         self.navigationController?.pushViewController(getSubcription, animated: true)
     }
-    
     private func LogoutAction() {
         logOutAction()
     }
-    
-    // MARK:- AlertView
-    func alertView(){
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.view.tintColor = UIColor.black
-        alert.view.layer.cornerRadius = 15
-        
-        let subview = (alert.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
-        subview.backgroundColor = .white
-        
-        let image = UIImage(named: "ic-popupClosebutton-image")
-        let imageView = UIImageView()
-        imageView.image = image
-        imageView.frame =  CGRect(x: 150, y: 18, width: 60, height: 30)
-        alert.view.addSubview(imageView)
-        
-        let imageFirst = UIImage(named: "ic-changeProfilePhoto-image")
-        let imageViewFirst = UIImageView()
-        imageViewFirst.image = imageFirst
-        alert.view.addSubview(imageViewFirst)
-        imageViewFirst.frame = CGRect(x: 25, y: 75, width: 24, height: 24)
-        
-        let imageSecond = UIImage(named: "ic-gallery-image")
-        let imageViewSecond = UIImageView()
-        imageViewSecond.image = imageSecond
-        imageViewSecond.frame =  CGRect(x: 25, y: 125, width: 24, height: 24)
-        alert.view.addSubview(imageViewSecond)
-        let back = UIAlertAction(title: "", style: .default)   {
-            action in
-            
-        }
-        let gallery = UIAlertAction(title: "Gallery", style: .default) {
-            action in
-            self.openGallary()
-        }
-        let camera = UIAlertAction(title: "Camera", style: .default)   {
-            action in
-            self.openCamera()
-        }
-        alert.addAction(back)
-        alert.addAction(camera)
-        alert.addAction(gallery)
-        DispatchQueue.main.async{
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    func openCamera()
-    {
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
-        {
-            imagePicker.sourceType = UIImagePickerController.SourceType.camera
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-        else
-        {
-            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    func openGallary()
-    {
-        let myPickerControllerGallery = UIImagePickerController()
-        myPickerControllerGallery.delegate = self
-        myPickerControllerGallery.sourceType = UIImagePickerController.SourceType.photoLibrary
-        myPickerControllerGallery.allowsEditing = true
-        
-        self.present(myPickerControllerGallery, animated: true, completion: nil)
-    }
-    //MARK: - ImagePicker delegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let selectedImage = info[.originalImage] as? UIImage else {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-        }
-        imgProfile.image = selectedImage
-        // self.viewModel.selectedImage = imgProfile.image!
-        viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func logOutAction()  {
+    private func logOutAction()  {
+
         let alertController = UIAlertController(title: "Logout", message: "Are you sure? logout from Iscra.", preferredStyle: .alert)
         let Logoutaction = UIAlertAction(title: "Logout", style: .default) { (action:UIAlertAction!) in
             print("Delete button tapped");
             self.viewModel.logout()
         }
+        
         Logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
             print("Cancel button tapped");
         }
-        cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        cancelAction;.setValue(UIColor.gray, forKey: "titleTextColor")
         alertController.addAction(Logoutaction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
@@ -190,23 +112,21 @@ extension MyAccountViewController: clickManagerDelegate{
     func tableViewCellNavigation(performAction: clickManager) {
         switch performAction {
         case .changeProfilePhoto:
-            // self.alertView()
-//            self.changeProfilePhoto()
-            print("changePhoto")
+            self.changeProfilePhoto()
         case .addYourOwnMemoji:
             self.AddMemojiAction()
         case .changePassword:
             self.ChangePasswordAction()
         case .shareWithFriends:
-            print(performAction)
+          self.showActivityViewController(url: URL(string: "https://www.apple.com")!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
         case .rateUs:
-            print(performAction)
+            self.rateUs()
         case .contactDeveloper:
-            print(performAction)
+             self.composerEmail()
         case .everyDay:
             print(performAction)
         case .reminder:
-            print(performAction)
+           print(performAction)
         case .changeColorTheme:
             print(performAction)
         }
@@ -214,13 +134,63 @@ extension MyAccountViewController: clickManagerDelegate{
     private func AddMemojiAction() {
         let learnHowToAddMemoji: AddMemojiViewController = AddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
         self.navigationController?.pushViewController(learnHowToAddMemoji, animated: true)
-        
     }
-    
     private func ChangePasswordAction() {
-        self.router?.push(scene: .changePassword)
+       let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
+       self.navigationController?.pushViewController(changePassword, animated: true)
+    }
+    private func changeProfilePhoto(){
+        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MyAccountPopupViewController") as! MyAccountPopupViewController
+        vc.delegate = self
+        self.navigationController?.present(vc, animated: false, completion: nil)
+
+    }
+    private func showActivityViewController(url:URL,  text: String,  image: UIImage) {
+        let items = [url, text, image] as [Any]
+        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(ac, animated: true)
+      }
+    private func rateUs(){
+        if let url = URL(string: "https://itunes.apple.com/in/app/facebook/id284882215?mt=8"),
+        //if let url = URL(string: "https://www.google.co.in/"),
+            UIApplication.shared.canOpenURL(url){
+            UIApplication.shared.open(url, options: [:]) { (opened) in
+                if(opened){
+                    print("App Store Opened")
+                }
+            }
+        } else {
+            print("Can't Open URL on Simulator")
+        }
+    }
+    private func composerEmail(){
+        let composeVC = MFMailComposeViewController()
+           composeVC.mailComposeDelegate = self
+            // Configure the fields of the interface.
+           composeVC.setToRecipients(["exampleEmail@email.com"])
+           composeVC.setSubject("Message Subject")
+           composeVC.setMessageBody("Message content.", isHTML: false)
+          navigationController?.pushViewController(composeVC, animated: true)
     }
 }
+//Mark:- Mail Composer Delegate
+extension MyAccountViewController: MFMailComposeViewControllerDelegate{
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult, error: Error?) {
+       controller.dismiss(animated: true, completion: nil)
+       }
+}
+
+//Mark:- Image picker Delegate
+extension MyAccountViewController: ImagePickerDelegate{
+    func fetchedImage(img: UIImage) {
+        imgProfile.image = img
+        viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
 // MARK: API Callback
 extension MyAccountViewController: OnboardingViewRepresentable {
     func onAction(_ action: OnboardingAction) {

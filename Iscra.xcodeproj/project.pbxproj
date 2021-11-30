@@ -130,8 +130,6 @@
 		5FF6CD86274E6A5A007ADC2F /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF6CD1F274E6A5A007ADC2F /* Chat.storyboard */; };
 		5FF6CDA0274E6AA0007ADC2F /* MyChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CD9F274E6AA0007ADC2F /* MyChatViewController.swift */; };
 		5FFDDB3A2755054600051011 /* MyAccountPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFDDB392755054600051011 /* MyAccountPopupViewController.swift */; };
-		5FFDDB7227550F1800051011 /* MyAccountPopUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFDDB7027550F1800051011 /* MyAccountPopUpTableViewCell.swift */; };
-		5FFDDB7327550F1800051011 /* MyAccountPopUpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FFDDB7127550F1800051011 /* MyAccountPopUpTableViewCell.xib */; };
 		861CF1D12743DE9700727D1E /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D02743DE9700727D1E /* RootCoordinator.swift */; };
 		861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D22743E02300727D1E /* LoginCoordinator.swift */; };
 		8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A8392747D41100773C57 /* LandingCoordinator.swift */; };
@@ -411,8 +409,6 @@
 		5FF6CD1F274E6A5A007ADC2F /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		5FF6CD9F274E6AA0007ADC2F /* MyChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyChatViewController.swift; sourceTree = "<group>"; };
 		5FFDDB392755054600051011 /* MyAccountPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountPopupViewController.swift; sourceTree = "<group>"; };
-		5FFDDB7027550F1800051011 /* MyAccountPopUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountPopUpTableViewCell.swift; sourceTree = "<group>"; };
-		5FFDDB7127550F1800051011 /* MyAccountPopUpTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyAccountPopUpTableViewCell.xib; sourceTree = "<group>"; };
 		738A14CE266552D2AB54A54A /* Pods-Iscra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.debug.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.debug.xcconfig"; sourceTree = "<group>"; };
 		861CF1D02743DE9700727D1E /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		861CF1D22743E02300727D1E /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
@@ -1076,8 +1072,6 @@
 			isa = PBXGroup;
 			children = (
 				5FFDDB392755054600051011 /* MyAccountPopupViewController.swift */,
-				5FFDDB7027550F1800051011 /* MyAccountPopUpTableViewCell.swift */,
-				5FFDDB7127550F1800051011 /* MyAccountPopUpTableViewCell.xib */,
 			);
 			path = MyAccountPopUpView;
 			sourceTree = "<group>";
@@ -1891,7 +1885,6 @@
 				5FF6CD63274E6A5A007ADC2F /* HeaderCollectionReusableView.xib in Resources */,
 				88CA2A56271EACCA003D590D /* SF-Pro-Display-Regular.ttf in Resources */,
 				5FF6CD5D274E6A5A007ADC2F /* AttachmentUploadBar.xib in Resources */,
-				5FFDDB7327550F1800051011 /* MyAccountPopUpTableViewCell.xib in Resources */,
 				88CA2A5A271EACCA003D590D /* SF-Pro-Display-Black.ttf in Resources */,
 				88CA2A4B271E9F1B003D590D /* LogInMock.json in Resources */,
 				5FF6CD25274E6A5A007ADC2F /* Dialogs.storyboard in Resources */,
@@ -2125,7 +2118,6 @@
 				8827C3C12750C125009D12C4 /* CameraHandler.swift in Sources */,
 				04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */,
 				5FF6CD33274E6A5A007ADC2F /* String+Extention.swift in Sources */,
-				5FFDDB7227550F1800051011 /* MyAccountPopUpTableViewCell.swift in Sources */,
 				8814B419274385E600A6DE01 /* Scenes.swift in Sources */,
 				5FF6CD81274E6A5A007ADC2F /* ChatResources.swift in Sources */,
 				8814B4102743855A00A6DE01 /* AppAdaptables.swift in Sources */,

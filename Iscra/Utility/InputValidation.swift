@@ -15,6 +15,8 @@ enum InputValidation:String {
     case newPassword
     case currentPassword
     case confirmPassword
+//    case icon
+//    case colorTheme
 }
 
 class Validation {

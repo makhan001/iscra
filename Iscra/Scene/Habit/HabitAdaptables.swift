@@ -9,6 +9,9 @@ import Foundation
 
 enum HabitScreenType: String {
     case createHabit
+    case setTheme
+    case daysSelection
+    case setGroupImage
 }
 
 enum HabitAction {
@@ -17,8 +20,13 @@ enum HabitAction {
     case habitDetail
     case habitList
     case updateHabit
+    case callApi(_ sucess: Bool)
+    case navigateToGroupImage(_ isNavigate: Bool)
     case requireFields(_ text:String)
     case inputComplete(_ screen: HabitScreenType)
+    case setTheme(_ screen: HabitScreenType)
+    case setDaySelection(_ screen: HabitScreenType)
+    case setGroupImage(_ screen: HabitScreenType)
     case editingDidEnd(_ field:String, _ value:String)
     case editingDidChange(_ field:String, _ value:String)
     case errorMessage(_ text:String)

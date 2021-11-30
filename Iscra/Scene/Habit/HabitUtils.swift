@@ -14,13 +14,13 @@ class HabitUtils {
     static let shared = HabitUtils()
     
     // MARK: -
-    var name: String = ""
-    var color_theme: String = ""
-    var description: String = ""
-    var icon: String = ""
+    var name: String = "" ///
+    var colorTheme: String = "" /// "#7B86EB"
+    var description: String = "" ///
+    var icon: String = "" /// "sport1"
     var days: String = ""
-    var timer: String = ""
-    var reminders: Bool = false
-    var group_image: UIImage = UIImage()
-    var habitType : habitType = .good
+    var timer: String = "" ///
+    var reminders: Bool = false ///
+    var groupImage: UIImage = UIImage()
+    var habitType: habitType = .good ///
 }

@@ -18,6 +18,8 @@ struct weekStruct{
 class WeekCollection: UICollectionView{
     var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
     
+    var didSelectedDayAtIndex: ((String) -> Void)?
+
     var selcteIndex = 0
     var weakDays = [weekStruct(id: 7, shortDayname: "S", dayname: "sunday", isSelect: false),
                     weekStruct(id: 1, shortDayname: "M", dayname: "monday", isSelect: false),
@@ -26,6 +28,7 @@ class WeekCollection: UICollectionView{
                     weekStruct(id: 4, shortDayname: "T", dayname: "thrusday", isSelect: false),
                     weekStruct(id: 5, shortDayname: "F", dayname: "friday", isSelect: false),
                     weekStruct(id: 6, shortDayname: "S", dayname: "suturday", isSelect: false)]
+    
     func configure(selectedColor:ColorStruct) {
         self.register(UINib(nibName: "WeekDaysCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WeekDaysCollectionViewCell")
         self.delegate = self
@@ -58,7 +61,13 @@ extension WeekCollection:  UICollectionViewDelegate, UICollectionViewDataSource,
             temp[indexPath.row].isSelect = true
         }
         weakDays = temp
-        
+        var strDays = ""
+        for i in temp {
+            if i.isSelect == true {
+                strDays =  i.dayname + "," + strDays
+            }
+        }
+        self.didSelectedDayAtIndex?(strDays)
         reloadData()
     }
     

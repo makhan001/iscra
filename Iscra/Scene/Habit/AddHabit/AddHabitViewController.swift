@@ -55,7 +55,9 @@ extension AddHabitViewController {
     }
     
     private func NextClick() {
+        
         viewModel.habitType = self.habitType
+        HabitUtils.shared.habitType = self.habitType
         viewModel.onAction(action: .inputComplete(.createHabit), for: .createHabit)
         viewModel.didNavigateToSetTheme = {
             isNavigate in

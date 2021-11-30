@@ -9,17 +9,56 @@
 import Foundation
 
 enum Scenes:String {
+//    case welcome
+//    case login
+//    case signup
+//    case forgot
+//    case walkthrough
+//    case verification
+//    case landing
+//    case home
+//    case myAccount
+//    case habitCalender
+//    case changePassword
+//    case community
+//    case myChat
+    
     case welcome
     case login
     case signup
     case forgot
     case walkthrough
-    case verification
     case landing
     case home
     case myAccount
-    case habitCalender
     case changePassword
+    case verification
+    
+    case addHabit
+    case setTheme
+    case colorPopUp
+    case iconPopup
+    case reminder
+    case inviteFriend
+    case addGroupImage
+    case editHabit
+
+    case addMyPicture
+    case editName
+    case learnHowToAddMemoji
+    case passwordChangeConfirmation
+    case getSubcription
+    case selectHabitPopUp
+    case myChat
+    case communitySearch
+    case community
+    case communityDetail
+    case repeatDaysPopUp
+    case editReminder
+    case habitCalender
+    case groupHabitFriends
+    case RepeatDaysPopUp
+    
 }
 
 enum Storyboard:String {
@@ -44,7 +83,6 @@ enum StoryboardIdentifier:String {
     case changePassword
     case verification
     
-   // UIStoryboard(name: "Habit", bundle: nil)
     case addHabit
     case setTheme
     case colorPopUp
@@ -53,18 +91,14 @@ enum StoryboardIdentifier:String {
     case inviteFriend
     case addGroupImage
     case editHabit
-    
-   //  UIStoryboard(name: "Onboarding", bundle: nil)
 
     case addMyPicture
-   // case changePassword
     case editName
     case learnHowToAddMemoji
     case passwordChangeConfirmation
     case getSubcription
-    
-        //    UIStoryboard(name: "Landing", bundle: nil)
     case selectHabitPopUp
+    case myChat
     case communitySearch
     case community
     case communityDetail
@@ -73,33 +107,4 @@ enum StoryboardIdentifier:String {
     case habitCalender
     case groupHabitFriends
     case RepeatDaysPopUp
-    
-   // EditNameViewController
-//    HabitCalenderViewController
-//    AddMyPictureViewController
-//    LearnHowToAddMemojiViewController
-//    PasswordChangeConfirmationViewController
-//    SelectHabitPopUpViewController
-//    CommunitySearchViewController
-//    CommunityDetailViewController
-//    AddHabitViewController
-//    GetSubcriptionViewController
-//    ChangePasswordViewController
-//    EditHabitViewController
-//    InviteFriendViewController
-//    SetThemeViewController
-//    RepeatDaysPopUpViewController
-//    EditReminderViewController
-//    ColorPopUpViewController
-//    IconPopupViewController
-//    ReminderViewController
-//    AddGroupImageViewController
-//    InviteFriendViewController
-// MyChatViewController
-// CommunityViewController
- //   GroupHabitFriendsViewController
-    
-//    let walkthrough: WalkthroughViewController = WalkthroughViewController.from(from: .onboarding, with: .walkthrough)
-//    walkthrough.router = router
-//    self.navigationController?.pushViewController(walkthrough, animated: true)
 }

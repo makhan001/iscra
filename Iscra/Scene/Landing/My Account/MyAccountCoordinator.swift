@@ -1,17 +1,17 @@
 //
-//  SignupCoordinator.swift
+//  MyAccountCoordinator.swift
 //  Iscra
 //
-//  Created by mac on 25/11/21.
+//  Created by mac on 29/11/21.
 //
 
 import Foundation
 
-final class SignupCoordinator: Coordinator<Scenes> {
+final class MyAccountCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
-    let controller: SignupViewController = SignupViewController.from(from: .onboarding, with: .signup)
-    let verification: VerificationViewController = VerificationViewController.from(from: .onboarding, with: .verification)
+    let controller: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
+    let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
     
     private var landing: LandingCoordinator!
     
@@ -23,12 +23,15 @@ final class SignupCoordinator: Coordinator<Scenes> {
     
     private func onStart() {
         controller.router = self
-        verification.router = self
-        verification.delegate = controller
+        changePassword.router = self
     }
     
-    private func startVerification() {
-        router.present(verification, animated: true)
+//    private func startVerification() {
+//        router.present(changePassword, animated: true)
+//    }
+    
+    private func startChangePassword() {
+        
     }
     
     private func startLanding() {
@@ -41,12 +44,12 @@ final class SignupCoordinator: Coordinator<Scenes> {
     }
 }
 
-extension SignupCoordinator: NextSceneDismisser {
+extension MyAccountCoordinator: NextSceneDismisser {
     
     func push(scene: Scenes) {
         switch scene {
         case .landing: startLanding()
-        case .verification: startVerification()
+        case .changePassword: startChangePassword()
         default: break
         }
     }
@@ -63,7 +66,7 @@ extension SignupCoordinator: NextSceneDismisser {
     }
 }
 
-extension SignupCoordinator: CoordinatorDimisser {
+extension MyAccountCoordinator: CoordinatorDimisser {
     
     func dismiss(coordinator: Coordinator<Scenes>) {
         remove(child: coordinator)

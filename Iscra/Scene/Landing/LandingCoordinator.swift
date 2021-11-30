@@ -10,12 +10,19 @@ import Foundation
 final class LandingCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
-    let controller: LandingTabBarViewController = LandingTabBarViewController.from(from: .landing, with: .landing)
+    let controller: LandingTabBarController = LandingTabBarController.from(from: .landing, with: .landing)
+    
+//    let newHome: HomeViewController = HomeViewController.from(from: .landing, with: .home)
+//      let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
+
     
     private var login: LoginCoordinator!
     private var welcome: OnboardingCoordinator!
+    private var habitCalender: HabitCalenderCoordinator!
+   // private var home: HomeCoordinator!
+      
+    private var myAccount: MyAccountCoordinator!
     
-        
     override func start() {
         super.start()
         router.setRootModule(controller, hideBar: false)
@@ -24,6 +31,8 @@ final class LandingCoordinator: Coordinator<Scenes> {
     
     private func onStart() {
         controller.router = self
+//        newHome.router = self
+//        habitCalender.router = self
     }
     
     private func startLogin() {
@@ -53,6 +62,14 @@ final class LandingCoordinator: Coordinator<Scenes> {
         self.router.present(welcome, animated: true)
     }
     
+    private func startMyAccount() {
+        myAccount = MyAccountCoordinator(router: Router())
+        add(myAccount)
+        myAccount.delegate = self
+        myAccount.start()
+        self.router.present(myAccount, animated: true)
+    }
+    
     private func startLanding() {
 //        landing = LandingCoordinator(router: Router())
 //        add(landing)
@@ -60,6 +77,25 @@ final class LandingCoordinator: Coordinator<Scenes> {
 //        landing.start(imageUrl: controller.viewModel.socialLoginImageURL)
 //        self.router.present(landing, animated: true)
     }
+    
+    private func startHome() {
+//        home = HomeCoordinator(router: Router())
+//        add(home)
+//        home.delegate = self
+//        home.start()
+//        self.router.present(home, animated: true)
+    }
+    
+    private func startHabitCalender() {
+        habitCalender = HabitCalenderCoordinator(router: Router())
+        add(habitCalender)
+        habitCalender.delegate = self
+        habitCalender.start()
+        self.router.present(habitCalender, animated: true)
+        
+        router.present(habitCalender, animated: true)
+    }
+    
 }
 
 extension LandingCoordinator: NextSceneDismisser {
@@ -70,6 +106,9 @@ extension LandingCoordinator: NextSceneDismisser {
         case .welcome: startWelcome()
         case .landing: startLanding()
         case .walkthrough: startWalkthrough()
+        case .home: startHome()
+        case .habitCalender: startHabitCalender()
+        case.myAccount: startMyAccount()
         default: break
         }
     }

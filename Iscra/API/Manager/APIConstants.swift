@@ -10,7 +10,7 @@ import Foundation
 let BAD_REQUEST_ERROR_MESSAGE = "Incorrect request by user"
 let NETWORK_ERROR_MESSAGE = "Please check you internet connection"
 let SERVER_ERROR_MESSAGE = "Server is not available try later"
-let AUTHORISATION_ERROR_MESSAGE  = "You are not authorized, please login again"
+let AUTHORISATION_ERROR_MESSAGE = "You are not authorized, please login again"
 let PARSING_ERROR_MESSAGE = "Request response is incorrect parse issue"
 let ERROR_MESSAGE = "Something went wrong"
 

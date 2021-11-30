@@ -82,8 +82,9 @@ enum HabitParams {
         let icon: String?
         let name: String?
         let timer: String?
-        let reminders: String?
+        let reminders: Bool?
         let habit_type: String?
+       // let habit_type: habitType = String?
         let color_theme: String?
         let description: String?
        // let group_image: String?

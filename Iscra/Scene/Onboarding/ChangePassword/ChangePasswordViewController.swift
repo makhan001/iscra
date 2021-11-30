@@ -22,6 +22,8 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var customView: UIView!
     private let viewModel: ChangePasswordViewModel = ChangePasswordViewModel(provider: OnboardingServiceProvider())
     
+    weak var router: NextSceneDismisser?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = AppConstant.nav_shangpassword
@@ -31,6 +33,7 @@ class ChangePasswordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+       // print("self.router is \(self.router)")
     }
 }
 

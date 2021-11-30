@@ -30,7 +30,8 @@ class HabitCalenderViewController: UIViewController {
     var strTitleName = "Learn English"
     private var eventsDateArray: [Date] = []
     private var themeColor = UIColor(hex: "#7B86EB")
-    
+    weak var router: NextSceneDismisser?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -115,6 +116,8 @@ extension HabitCalenderViewController {
     
     private func backAction() {
         self.navigationController?.popViewController(animated: true)
+      //  self.router?.dismiss(controller: .habitCalender)
+       // self.dismiss(animated: true, completion: nil)
     }
     
     private func bottomSheetAction() {

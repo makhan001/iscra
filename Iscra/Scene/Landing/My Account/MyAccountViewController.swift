@@ -13,11 +13,13 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     
     // MARK:-Outlets and variables
     @IBOutlet weak var btnLogout: UIButton!
+    @IBOutlet weak var lblUserName:UILabel!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblName: IscraCustomLabel!
     @IBOutlet weak var btnGetSubscription: UIButton!
     @IBOutlet weak var tableView: MyAccountTableView!
     @IBOutlet weak var viewNavigation: NavigationBarView!
+
     weak var router: NextSceneDismisser?
     private var imagePicker = UIImagePickerController()
     private let viewModel: MyAccountViewModel = MyAccountViewModel(provider: OnboardingServiceProvider())
@@ -29,9 +31,9 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         self.lblName.text = UserStore.userName
+        self.lblName.text = UserStore.userName
         navigationController?.setNavigationBarHidden(true, animated: animated)
-       }
+    }
 }
 
 // MARK: Instance Methods
@@ -52,17 +54,17 @@ extension MyAccountViewController {
                 return
             }
       }
+
     
 }
 
 // MARK: Navigation Methods
 extension MyAccountViewController: navigationBarAction {
     func ActionType() {}
-    
     func RightButtonAction() {
-      let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-      let vc = storyboard.instantiateViewController(withIdentifier: "UpdateProfileViewController") as! UpdateProfileViewController
-      self.navigationController?.pushViewController(vc, animated: true)
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "UpdateProfileViewController") as! UpdateProfileViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -86,16 +88,19 @@ extension MyAccountViewController {
         logOutAction()
     }
     private func logOutAction()  {
+
         let alertController = UIAlertController(title: "Logout", message: "Are you sure? logout from Iscra.", preferredStyle: .alert)
         let Logoutaction = UIAlertAction(title: "Logout", style: .default) { (action:UIAlertAction!) in
             print("Delete button tapped");
             self.viewModel.logout()
         }
+        
         Logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
             print("Cancel button tapped");
         }
-        cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        cancelAction;.setValue(UIColor.gray, forKey: "titleTextColor")
         alertController.addAction(Logoutaction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
@@ -139,6 +144,7 @@ extension MyAccountViewController: clickManagerDelegate{
         let vc = storyboard.instantiateViewController(withIdentifier: "MyAccountPopupViewController") as! MyAccountPopupViewController
         vc.delegate = self
         self.navigationController?.present(vc, animated: false, completion: nil)
+
     }
     private func showActivityViewController(url:URL,  text: String,  image: UIImage) {
         let items = [url, text, image] as [Any]

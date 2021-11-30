@@ -52,5 +52,6 @@ class AppConstant: NSObject {
     static let invalidConfirmPassword = "Please enter valid confirm password"
     static let invalidCurrentPasswordMatch = "Current password and new password are not same"
     static let invalidConfirmPasswordMatch = "New password and confirm password are not match"
-
+    static let emptyDays = "Please select days"
+    static let emptyGroupImage = "Please select group image"
 }

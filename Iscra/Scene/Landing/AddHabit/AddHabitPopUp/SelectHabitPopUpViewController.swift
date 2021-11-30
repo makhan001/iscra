@@ -7,15 +7,16 @@
 
 
 import UIKit
-enum habitType {
+enum HabitType {
     case good
     case bad
     case group
 }
 
-protocol selectHabitToAddProtocol: class {
-    func addHabit(habitType:habitType)
+protocol SelectHabitPopUpDelegate: AnyObject {
+    func addHabit(type: HabitType)
 }
+
 class SelectHabitPopUpViewController: UIViewController {
     
     @IBOutlet weak var btnBadHabit:UIButton!
@@ -23,7 +24,9 @@ class SelectHabitPopUpViewController: UIViewController {
     @IBOutlet weak var btnGoodHabit:UIButton!
     @IBOutlet weak var btnGroupHabit:UIButton!
     
-    weak var delegate : selectHabitToAddProtocol?
+    var habitType: HabitType = .good
+    weak var router: NextSceneDismisser?
+    weak var delegate: SelectHabitPopUpDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,14 +66,14 @@ extension SelectHabitPopUpViewController {
     
     private func addGoodHabit() {
         self.dismiss(animated: true, completion: nil)
-        delegate?.addHabit(habitType: .good)
+        delegate?.addHabit(type: .good)
     }
     private func addBadHabit() {
         self.dismiss(animated: true, completion: nil)
-        delegate?.addHabit(habitType: .bad)
+        delegate?.addHabit(type: .bad)
     }
     private func addGroupHabit() {
         self.dismiss(animated: true, completion: nil)
-        delegate?.addHabit(habitType: .group)
+        delegate?.addHabit(type: .group)
     }
 }

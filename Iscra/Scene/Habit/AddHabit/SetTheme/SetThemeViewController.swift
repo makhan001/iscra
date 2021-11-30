@@ -16,10 +16,10 @@ class SetThemeViewController: UIViewController {
     @IBOutlet weak var ImgIcon:UIImageView!
     
     private var selectedIcons = "sport1"
-    var habitType : habitType = .good
+    var habitType: HabitType = .good
     var iconResorces = IconsHabitModel()
     var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
-    private let viewModel = AddHabitViewModel()
+    private let viewModel = HabitNameViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

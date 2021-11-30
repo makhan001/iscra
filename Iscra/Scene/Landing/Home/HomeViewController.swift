@@ -17,7 +17,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var viewFirstHabit:UIView!
     @IBOutlet weak var tableView:HabitTableView!
     
-    
     weak var router: NextSceneDismisser?
 
     override func viewDidLoad() {
@@ -50,9 +49,9 @@ extension HomeViewController {
     private func didSelectedAtIndex(_ index: Int) {
 //        self.router?.push(scene: .habitCalender)
 //        print("self.router is \(self.router)")
-        
-        let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-        self.navigationController?.pushViewController(habitCalender, animated: true)
+        self.router?.push(scene: .habitCalender)
+//        let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
+//        self.navigationController?.pushViewController(habitCalender, animated: true)
     }
 }
 
@@ -64,6 +63,6 @@ extension HomeViewController: HabitTableNavigation{
 //        self.navigationController?.pushViewController(habitCalender, animated: true)
 //
         self.router?.push(scene: .habitCalender)
-       // print("self.router is \(self.router)")
+
     }
 }

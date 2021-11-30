@@ -33,7 +33,7 @@ enum Scenes:String {
     case myAccount
     case changePassword
     case verification
-    
+    case habitName
     case addHabit
     case setTheme
     case colorPopUp
@@ -82,7 +82,7 @@ enum StoryboardIdentifier:String {
     case myAccount
     case changePassword
     case verification
-    
+    case habitName
     case addHabit
     case setTheme
     case colorPopUp

@@ -11,13 +11,13 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
 
     weak var delegate: CoordinatorDimisser?
     let controller: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-    let habitCalender: HomeViewController = HomeViewController.from(from: .landing, with: .home)
+//    let habitCalender: HomeViewController = HomeViewController.from(from: .landing, with: .home)
 
   //  private var landing: LandingCoordinator!
 
     override func start() {
         super.start()
-        router.setRootModule(habitCalender, hideBar: true)
+        router.setRootModule(controller, hideBar: true)
         self.onStart()
     }
 
@@ -26,7 +26,7 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
     }
 
     private func startHabitCalender() {
-        router.present(habitCalender, animated: true)
+        router.present(controller, animated: true)
     }
 
 //    private func startLanding() {

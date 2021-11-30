@@ -22,5 +22,5 @@ class HabitUtils {
     var timer: String = "" ///
     var reminders: Bool = false ///
     var groupImage: UIImage = UIImage()
-    var habitType: habitType = .good ///
+    var habitType: HabitType = .good ///
 }

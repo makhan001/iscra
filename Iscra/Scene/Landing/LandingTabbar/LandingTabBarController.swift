@@ -9,50 +9,116 @@ import UIKit
 class LandingTabBarController: UITabBarController {
     
     var toggle:Bool = false
+    let kBarHeight: CGFloat = 100
     weak var router: NextSceneDismisser?
     
     private var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
+    private var myChat: MyChatViewController = MyChatViewController.from(from: .landing, with: .myChat)
+    private var addHabit: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
+    private var community: CommunityViewController = CommunityViewController.from(from: .landing, with: .community)
     private var myAccount: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
+        self.setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        var tabFrame = self.tabBar.frame
+        tabFrame.size.height = kBarHeight
+        tabFrame.origin.y = self.view.frame.size.height - kBarHeight
+        self.tabBar.frame = tabFrame
+    }
+    
+    
+}
+
+// MARK: Instance Method
+extension LandingTabBarController {
+    
+    private func setup() {
+        self.setupItems()
+        self.setTabbar()
         if let newButtonImage = UIImage(named: "tab3") {
             self.addCenterButton(withImage: newButtonImage, highlightImage: newButtonImage)
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
-        tabBar.layer.shadowRadius = 5
-        tabBar.layer.shadowColor = UIColor.black.cgColor
-        tabBar.layer.shadowOpacity = 0.3
-        tabBarController?.selectedIndex = 1
+    private func setTabbar() {
+        self.delegate = self
+        self.tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.tabBar.layer.shadowRadius = 5
+        self.tabBar.layer.shadowColor = UIColor.black.cgColor
+        self.tabBar.layer.shadowOpacity = 0.3
+        self.tabBar.isTranslucent = false
+        self.tabBar.clipsToBounds = true
+        self.tabBar.tintColor = .black
+        self.tabBar.unselectedItemTintColor = UIColor(named: "GrayAccent")
+        self.tabBar.itemPositioning = .automatic
+        self.selectedIndex = 0
     }
     
+    func setupItems() {
+        
+        let home = UITabBarItem()
+        home.image = UIImage(named: "tab1")
+        home.tag = 1
+        
+        let community = UITabBarItem()
+        community.image = UIImage(named: "tab2")
+        community.tag = 2
+        
+        let addHabit = UITabBarItem()
+        addHabit.tag = 3
+        
+        let myChat = UITabBarItem()
+        myChat.image = UIImage(named: "tab4")
+        myChat.tag = 4
+        
+        let myAccount = UITabBarItem()
+        myAccount.image = UIImage(named: "tab5")
+        myAccount.tag = 5
+        
+        self.home.tabBarItem = home
+        self.home.router = router
+        
+        self.community.tabBarItem = community
+        self.community.router = router
+        
+        self.addHabit.tabBarItem = addHabit
+        self.addHabit.router = router
+        
+        self.myChat.tabBarItem = myChat
+        self.myChat.router = router
+        
+        self.myAccount.tabBarItem = myAccount
+        self.myAccount.router = router
+        
+        self.viewControllers = [self.home, self.community, self.addHabit, self.myChat, self.myAccount]
+        self.setViewControllers(self.viewControllers, animated: true)
+    }
 }
+
+
 extension LandingTabBarController {
     
     @objc func handleTouchTabbarCenter(sender : UIButton) {
-        self.openAddHabitPopupVC()
+        router?.push(scene: .selectHabitPopUp)
     }
     
     func openAddHabitPopupVC() {
-//        let vc = storyboard?.instantiateViewController(withIdentifier: "selectHabitPopUp") as! SelectHabitPopUpViewController
-//        vc.delegate = self
-//        self.navigationController?.present(vc, animated: true, completion: nil)
-        
         let selectHabitPopUp: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
         selectHabitPopUp.delegate = self
         self.navigationController?.present(selectHabitPopUp, animated: true, completion: nil)
-        
     }
     
     func addCenterButton(withImage buttonImage : UIImage, highlightImage: UIImage) {
         let paddingBottom : CGFloat = -4.0
-        
         let button = UIButton()
         button.frame = CGRect(x: 0.0, y: 0.0, width: 60, height: 60)
         button.setImage(buttonImage, for: .normal)
@@ -67,9 +133,9 @@ extension LandingTabBarController {
         self.tabBar.addSubview(button)
         self.tabBar.bringSubviewToFront(button)
         button.addTarget(self, action: #selector(handleTouchTabbarCenter), for: .touchUpInside)
-        
     }
 }
+
 extension LandingTabBarController : UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.getIndexVC(index: tabBarController.selectedIndex, viewController: viewController)
@@ -98,32 +164,12 @@ extension LandingTabBarController : UITabBarControllerDelegate {
     }
 }
 
-extension LandingTabBarController: selectHabitToAddProtocol{
-    func addHabit(habitType: habitType) {
-        let addHabit: AddHabitViewController = AddHabitViewController.from(from: .habit, with: .addHabit)
-        addHabit.habitType = habitType
-        navigationController?.pushViewController(addHabit, animated: true)
-        
-//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "AddHabitViewController") as! AddHabitViewController
-//        vc.habitType = habitType
-//        navigationController?.pushViewController(vc, animated: true)
-        
-//        switch  habitType {
-//        case .good:
-//            AddHabitNAvigation()
-//        case .bad:
-//            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "AddHabitViewController") as! AddHabitViewController
-//            vc.habitType = habitType
-//            navigationController?.pushViewController(vc, animated: true)
-//        case .group:
-//            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "AddHabitViewController") as! AddHabitViewController
-//            vc.habitType = habitType
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
-//   }
+extension LandingTabBarController: SelectHabitPopUpDelegate{
+    func addHabit(type: HabitType) {
+        router?.push(scene: .selectHabitPopUp)
+//        let addHabit: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .addHabit)
+//        addHabit.habitType = habitType
+//        navigationController?.pushViewController(addHabit, animated: true)
     }
 }
 

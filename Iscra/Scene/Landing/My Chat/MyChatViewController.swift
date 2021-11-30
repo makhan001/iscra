@@ -10,6 +10,8 @@ import Quickblox
 
 class MyChatViewController: UIViewController {
 
+    weak var router: NextSceneDismisser?
+    
     private var inputedLogin: String?
     private var inputedUsername: String?
 

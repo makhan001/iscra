@@ -37,7 +37,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lko-s3-7it" userLabel="Last message" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="25" width="203" height="18"/>
+                                <rect key="frame" x="0.0" y="30" width="203" height="18"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <color key="textColor" red="0.10980392156862745" green="0.090196078431372548" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,7 +55,7 @@
                             <constraint firstItem="Lko-s3-7it" firstAttribute="height" secondItem="dYX-vs-4r8" secondAttribute="height" multiplier="0.45" id="5GY-jc-Vx8"/>
                             <constraint firstAttribute="height" constant="40" id="5rT-Rl-zbW"/>
                             <constraint firstItem="Lko-s3-7it" firstAttribute="leading" secondItem="dYX-vs-4r8" secondAttribute="leading" id="7kw-dA-oiR"/>
-                            <constraint firstItem="Lko-s3-7it" firstAttribute="top" secondItem="2gH-Sf-eEU" secondAttribute="bottom" constant="5" id="aTA-sV-Xmh"/>
+                            <constraint firstItem="Lko-s3-7it" firstAttribute="top" secondItem="2gH-Sf-eEU" secondAttribute="bottom" constant="10" id="aTA-sV-Xmh"/>
                             <constraint firstItem="2gH-Sf-eEU" firstAttribute="leading" secondItem="dYX-vs-4r8" secondAttribute="leading" id="cAq-3F-7qL"/>
                             <constraint firstItem="2gH-Sf-eEU" firstAttribute="top" secondItem="dYX-vs-4r8" secondAttribute="top" id="ncc-oX-mC6"/>
                             <constraint firstAttribute="trailing" secondItem="Lko-s3-7it" secondAttribute="trailing" constant="6" id="pyt-Az-ZVh"/>
@@ -63,10 +63,10 @@
                         </constraints>
                     </view>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBB-dF-brF">
-                        <rect key="frame" x="286" y="32" width="24" height="24"/>
+                        <rect key="frame" x="286" y="35.5" width="24" height="27"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3x-tJ-Keh">
-                                <rect key="frame" x="2" y="2" width="20" height="20"/>
+                                <rect key="frame" x="2" y="5" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="VJl-FK-zcz"/>
                                     <constraint firstAttribute="height" constant="20" id="bzU-UY-0US"/>
@@ -78,7 +78,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.75686274509803919" green="0.63921568627450975" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="b3x-tJ-Keh" firstAttribute="top" secondItem="BBB-dF-brF" secondAttribute="top" constant="2" id="0nw-qh-bqK"/>
+                            <constraint firstItem="b3x-tJ-Keh" firstAttribute="top" secondItem="BBB-dF-brF" secondAttribute="top" constant="5" id="0nw-qh-bqK"/>
                             <constraint firstAttribute="bottom" secondItem="b3x-tJ-Keh" secondAttribute="bottom" constant="2" id="495-R2-tLV"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="Nd3-bk-aCA"/>
                             <constraint firstAttribute="trailing" secondItem="b3x-tJ-Keh" secondAttribute="trailing" constant="2" id="QHM-GT-MEv"/>
@@ -86,7 +86,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1t-NY-PVz" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                        <rect key="frame" x="266.5" y="17" width="43.5" height="14"/>
+                        <rect key="frame" x="266.5" y="20.5" width="43.5" height="14"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43.5" id="GUR-XE-NK7"/>
                             <constraint firstAttribute="height" constant="14" id="zI4-nw-Cck"/>
@@ -157,10 +157,10 @@
     </objects>
     <designables>
         <designable name="2gH-Sf-eEU">
-            <size key="intrinsicContentSize" width="45" height="20.5"/>
+            <size key="intrinsicContentSize" width="55" height="24"/>
         </designable>
         <designable name="Lko-s3-7it">
-            <size key="intrinsicContentSize" width="94" height="18"/>
+            <size key="intrinsicContentSize" width="78" height="14.5"/>
         </designable>
         <designable name="S1t-NY-PVz">
             <size key="intrinsicContentSize" width="27.5" height="14.5"/>

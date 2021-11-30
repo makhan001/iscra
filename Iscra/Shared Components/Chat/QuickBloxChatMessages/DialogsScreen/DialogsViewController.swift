@@ -170,9 +170,9 @@ class DialogsViewController: UITableViewController {
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItems = []
         navigationItem.leftBarButtonItems = []
-        let leftMyChatBarButtonItem = UIBarButtonItem(title: "My Chat", style: .done, target: self, action: #selector(logoutUser))
+        let leftMyChatBarButtonItem = UIBarButtonItem(title: "My chats", style: .done, target: self, action: #selector(logoutUser))
         leftMyChatBarButtonItem.setTitleTextAttributes([
-                                                        NSAttributedString.Key.font: UIFont(name: "Helvetica-Bold", size: 32.0)!,
+                                                        NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 32.0)!,
                                                         NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1)],
             for: .normal)
         self.navigationItem.leftBarButtonItem  = leftMyChatBarButtonItem

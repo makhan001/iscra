@@ -32,6 +32,7 @@ extension UpdateProfileViewController:  navigationBarAction{
     private func setUp() {
         viewModel.view = self
         self.txtName.text = UserStore.userName
+        viewModel.username = UserStore.userName  ?? ""
         self.viewNavigation.navType = .editName
         self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text =  "Edit name"
@@ -42,12 +43,10 @@ extension UpdateProfileViewController:  navigationBarAction{
     }
     func ActionType() {
       self.navigationController?.popViewController(animated: true)
-
-    }
+}
     func RightButtonAction() {
         viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
     }
-   
 }
 
 // MARK:- Textfiled Delegate
@@ -58,8 +57,7 @@ extension UpdateProfileViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
+       let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
         if newLength <= 30 {
             if textField == txtName {
                 if let text = txtName.text, let textRange = Range(range, in: text) {
@@ -81,7 +79,7 @@ extension UpdateProfileViewController: OnboardingViewRepresentable {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
         case .updateProfile:
-            router?.push(scene: .verification)
+            navigationController?.popViewController(animated: true)
        default:
             break
         }

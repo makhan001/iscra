@@ -14,20 +14,14 @@ final class MyAccountViewModel {
     var password: String = ""
     var username: String = OnboadingUtils.shared.username // singeleton class
     var selectedImage: UIImage = UIImage()
-    //var selectedImage: UIImage! = OnboadingUtils.shared.userImage // singleton class
-    var delegate: OnboardingServiceProvierDelegate?
-
-    weak var view: OnboardingViewRepresentable?
     let provider: OnboardingServiceProvidable
-    
+    weak var view: OnboardingViewRepresentable?
+    var delegate: OnboardingServiceProvierDelegate?
     init(provider: OnboardingServiceProvidable) {
         self.provider = provider
         self.provider.delegate = self
         delegate = self
     }
-//    func updateProfile(){
-//        self.provider.updateProfile(param: UserParams.UpdateProfile())
-//    }
     func onAction(action: OnboardingAction, for screen: OnboardingScreenType) {
         switch action {
         case .inputComplete: validateUserInput()
@@ -37,13 +31,7 @@ final class MyAccountViewModel {
     func logout() {
         self.provider.logout(param: UserParams.logout())
     }
-    
     private func validateUserInput() {
-        
-//        if Validation().textValidation(text: username, validationType: .name).0 {
-//            view?.onAction(.requireFields(Validation().textValidation(text: username, validationType: .name).1))
-//            return
-//        }
         let parameters =  UserParams.UpdateProfile(username: username)
         WebService().requestMultiPart(urlString: "/users/update",
                                       httpMethod: .put,
@@ -53,7 +41,6 @@ final class MyAccountViewModel {
                                       fileArray: [],
                                       file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
-                
                 self?.delegate?.completed(for: .updateProfile, with: resp, with: nil)
                 return
             } else {
@@ -74,7 +61,7 @@ final class MyAccountViewModel {
         }
     }
 }
-
+//Mark:- OnboardingServiceProvierDelegate
 extension MyAccountViewModel: OnboardingServiceProvierDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {

@@ -98,6 +98,7 @@ extension SetThemeViewController {
         iconPopup.themeColor = selectedColorTheme
         iconPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         iconPopup.iconResorces = iconResorces
+        iconPopup.selectedIcon = self.selectedIcons
         iconPopup.delegateIcon = self
         self.present(iconPopup, animated: true, completion: nil)
 
@@ -120,6 +121,7 @@ extension SetThemeViewController {
             if isNavigate{
                 let reminder: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
                 reminder.habitType = self.habitType
+                reminder.selectedColorTheme = self.selectedColorTheme
                 self.navigationController?.pushViewController(reminder, animated: true)
             }
         }

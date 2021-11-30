@@ -366,11 +366,8 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USER NAME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbM-Nj-7Cb" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-<<<<<<< HEAD
-                                                <rect key="frame" x="10" y="117.99999999999999" width="337" height="38.333333333333329"/>
-=======
+
                                                 <rect key="frame" x="10" y="119" width="337" height="20"/>
->>>>>>> development
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                 <color key="textColor" name="SecondryAccent"/>
                                                 <nil key="highlightedColor"/>
@@ -383,17 +380,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2se-TB-CcR" customClass="MyAccountTableView" customModule="Iscra" customModuleProvider="target">
-<<<<<<< HEAD
-                                                <rect key="frame" x="8" y="176.33333333333334" width="341" height="314.66666666666663"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </tableView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzI-dq-UI8">
-                                                <rect key="frame" x="0.0" y="491" width="357" height="127"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cfd-Xj-QFi">
-                                                <rect key="frame" x="10" y="501" width="337" height="107"/>
-=======
+
                                                 <rect key="frame" x="8" y="159" width="341" height="268"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
@@ -403,7 +390,6 @@
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cfd-Xj-QFi">
                                                 <rect key="frame" x="10" y="437" width="337" height="101"/>
->>>>>>> development
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzi-eY-W0N" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="337" height="56"/>
@@ -491,11 +477,8 @@
                         <outlet property="btnGetSubscription" destination="Pzi-eY-W0N" id="Ah0-BS-j7B"/>
                         <outlet property="btnLogout" destination="TMg-w0-bk0" id="cd1-Q6-u7X"/>
                         <outlet property="imgProfile" destination="0fQ-wV-rxv" id="dxH-qj-EDs"/>
-<<<<<<< HEAD
-                        <outlet property="lblUserName" destination="BbM-Nj-7Cb" id="Hcc-VO-N2n"/>
-=======
+
                         <outlet property="lblName" destination="BbM-Nj-7Cb" id="ndD-tv-IeA"/>
->>>>>>> development
                         <outlet property="tableView" destination="2se-TB-CcR" id="KJ8-gC-mZ1"/>
                         <outlet property="viewNavigation" destination="Vv9-q6-fvO" id="JPU-MY-Awg"/>
                     </connections>

@@ -1,13 +1,12 @@
 //
-//  LandingTabBarViewController.swift
+//  LandingTabBarController.swift
 //  Iscra
 //
 //  Created by Lokesh Patil on 21/10/21.
 //
 
 import UIKit
-
-class LandingTabBarViewController: UITabBarController {
+class LandingTabBarController: UITabBarController {
     
     var toggle:Bool = false
     weak var router: NextSceneDismisser?
@@ -34,7 +33,7 @@ class LandingTabBarViewController: UITabBarController {
     }
     
 }
-extension LandingTabBarViewController {
+extension LandingTabBarController {
     
     @objc func handleTouchTabbarCenter(sender : UIButton) {
         self.openAddHabitPopupVC()
@@ -71,7 +70,7 @@ extension LandingTabBarViewController {
         
     }
 }
-extension LandingTabBarViewController : UITabBarControllerDelegate {
+extension LandingTabBarController : UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.getIndexVC(index: tabBarController.selectedIndex, viewController: viewController)
     }
@@ -80,6 +79,9 @@ extension LandingTabBarViewController : UITabBarControllerDelegate {
         switch index {
         case 0:
             print("HomeVC")
+            if viewController.isKind(of: HomeViewController.self) {
+                (viewController as! HomeViewController).router = router
+            }
         case 1:
             print("Comunity")
         case 2:
@@ -91,11 +93,12 @@ extension LandingTabBarViewController : UITabBarControllerDelegate {
             print("MyAccount")
         default:
             print("default")
+            
         }
     }
 }
 
-extension LandingTabBarViewController: selectHabitToAddProtocol{
+extension LandingTabBarController: selectHabitToAddProtocol{
     func addHabit(habitType: habitType) {
         let addHabit: AddHabitViewController = AddHabitViewController.from(from: .habit, with: .addHabit)
         addHabit.habitType = habitType

@@ -14,9 +14,12 @@ class SetThemeViewController: UIViewController {
     @IBOutlet weak var ViewColor:UIView!
     @IBOutlet weak var btnColor:UIButton!
     @IBOutlet weak var ImgIcon:UIImageView!
+    
+    private var selectedIcons = "sport1"
     var habitType : habitType = .good
     var iconResorces = IconsHabitModel()
     var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
+    private let viewModel = AddHabitViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,7 @@ class SetThemeViewController: UIViewController {
 
 extension SetThemeViewController {
     func setup() {
+        viewModel.view = self
         navigationController?.navigationBar.isHidden = false
         [btnColor, btnIcon, btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -94,6 +98,7 @@ extension SetThemeViewController {
         iconPopup.themeColor = selectedColorTheme
         iconPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         iconPopup.iconResorces = iconResorces
+        iconPopup.selectedIcon = self.selectedIcons
         iconPopup.delegateIcon = self
         self.present(iconPopup, animated: true, completion: nil)
 
@@ -104,10 +109,22 @@ extension SetThemeViewController {
 //        vc.habitType = habitType
 //        navigationController?.pushViewController(vc, animated: true)
         
-        let reminder: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
-        reminder.habitType = habitType
-        self.navigationController?.pushViewController(reminder, animated: true)
+//        let reminder: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
+//        reminder.habitType = habitType
+//        self.navigationController?.pushViewController(reminder, animated: true)
         
+        self.viewModel.icon = self.selectedIcons
+        self.viewModel.colorTheme = self.selectedColorTheme.colorHex //"#7B86EB"
+        viewModel.onAction(action: .setTheme(.setTheme), for: .setTheme)
+        viewModel.didNavigateToSetTheme = {
+            isNavigate in
+            if isNavigate{
+                let reminder: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
+                reminder.habitType = self.habitType
+                reminder.selectedColorTheme = self.selectedColorTheme
+                self.navigationController?.pushViewController(reminder, animated: true)
+            }
+        }
     }
 }
 
@@ -115,12 +132,27 @@ extension SetThemeViewController : selectedColordelegate ,selectedIcondelegate {
     
     func selectedIcon(Icon: String) {
         ImgIcon.image = UIImage(named: Icon)
+        self.selectedIcons = Icon
+       // self.viewModel.icon = Icon
     }
     
     func selectedColorIndex(color: ColorStruct) {
         selectedColorTheme = color
         ViewColor.backgroundColor = UIColor(hex: color.colorHex)
         ImgIcon.tintColor = UIColor(hex: color.colorHex)
+       // self.viewModel.colorTheme = color.colorHex
     }
 }
 
+// MARK: API Callback
+extension SetThemeViewController: HabitViewRepresentable {
+    func onAction(_ action: HabitAction) {
+        switch action {
+        case let .requireFields(msg), let .errorMessage(msg):
+            self.showToast(message: msg)
+        default:
+            break
+        }
+    }
+    
+}

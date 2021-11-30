@@ -11,12 +11,13 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     
     // MARK:-Outlets and variables
     @IBOutlet weak var btnLogout: UIButton!
+    @IBOutlet weak var lblUserName:UILabel!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblName: IscraCustomLabel!
     @IBOutlet weak var btnGetSubscription: UIButton!
     @IBOutlet weak var tableView: MyAccountTableView!
     @IBOutlet weak var viewNavigation: NavigationBarView!
-   
+    
     
     
     weak var router: NextSceneDismisser?
@@ -30,9 +31,9 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         self.lblName.text = UserStore.userName
+        self.lblName.text = UserStore.userName
         navigationController?.setNavigationBarHidden(true, animated: animated)
-       }
+    }
 }
 
 // MARK: Instance Methods
@@ -48,8 +49,8 @@ extension MyAccountViewController {
         self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text =  "My profile"
         self.viewNavigation.delegateBarAction = self
-       
-      //  self.imgProfile.image = viewModel.selectedImage
+        
+        //  self.imgProfile.image = viewModel.selectedImage
     }
     
 }
@@ -59,9 +60,9 @@ extension MyAccountViewController: navigationBarAction {
     func ActionType() {}
     
     func RightButtonAction() {
-      let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-      let vc = storyboard.instantiateViewController(withIdentifier: "UpdateProfileViewController") as! UpdateProfileViewController
-      self.navigationController?.pushViewController(vc, animated: true)
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "UpdateProfileViewController") as! UpdateProfileViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -162,7 +163,7 @@ extension MyAccountViewController {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         imgProfile.image = selectedImage
-       // self.viewModel.selectedImage = imgProfile.image!
+        // self.viewModel.selectedImage = imgProfile.image!
         viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
         dismiss(animated: true, completion: nil)
     }
@@ -189,8 +190,8 @@ extension MyAccountViewController: clickManagerDelegate{
     func tableViewCellNavigation(performAction: clickManager) {
         switch performAction {
         case .changeProfilePhoto:
-           // self.alertView()
-            self.changeProfilePhoto()
+            // self.alertView()
+//            self.changeProfilePhoto()
             print("changePhoto")
         case .addYourOwnMemoji:
             self.AddMemojiAction()
@@ -217,14 +218,7 @@ extension MyAccountViewController: clickManagerDelegate{
     }
     
     private func ChangePasswordAction() {
-       let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
-       self.navigationController?.pushViewController(changePassword, animated: true)
-    }
-    private func changeProfilePhoto(){
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MyAccountPopupViewController") as! MyAccountPopupViewController
-       
-        self.navigationController?.present(vc, animated: false, completion: nil)
+        self.router?.push(scene: .changePassword)
     }
 }
 // MARK: API Callback

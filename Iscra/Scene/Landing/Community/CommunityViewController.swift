@@ -8,12 +8,13 @@ import UIKit
 
 class CommunityViewController: UIViewController {
 
-    // MARK:-Outlets and variables
+    @IBOutlet weak var btnSearch: UIButton!
+    @IBOutlet weak var btnInviteFriends: UIButton!
     
     @IBOutlet weak var collectionMyGroups: MyCommunityCollectionView!
     @IBOutlet weak var collectionNewGroupHabit: NewCommunityCollectionView!
-    @IBOutlet weak var btnSearch: UIButton!
-    @IBOutlet weak var btnInviteFriends: UIButton!
+    
+    weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
         super.viewDidLoad()

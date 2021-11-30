@@ -10,7 +10,7 @@ enum inviteType {
     case inviteFriend
     case mayBeLatter
 }
-protocol InviteNavigation: class {
+protocol InviteNavigation: AnyObject {
     func navigate(inviteType:inviteType)
 }
 
@@ -21,8 +21,10 @@ class InviteFriendViewController: UIViewController {
     @IBOutlet weak var lblMiddleText: UILabel!
     @IBOutlet weak var btnInviteFriends: UIButton!
     @IBOutlet weak var btnMaybeLetter: UIButton!
-    var habitType:habitType = .good
+    
+    var habitType: HabitType = .good
     weak var delegateInvite : InviteNavigation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -41,7 +43,7 @@ extension InviteFriendViewController {
         }
     }
     
-    func setUpView(habitType:habitType) {
+    func setUpView(habitType: HabitType) {
         switch habitType {
         case .good:
             imgIcon.image = UIImage(named: "goodhabitfriends")

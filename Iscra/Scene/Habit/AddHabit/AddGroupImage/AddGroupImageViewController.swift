@@ -13,8 +13,8 @@ class AddGroupImageViewController: UIViewController {
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var imgGroup: UIImageView!
     @IBOutlet weak var btnImagePicker: UIButton!
-    var habitType : habitType = .good
-    private let viewModel = AddHabitViewModel()
+    var habitType : HabitType = .good
+    private let viewModel = HabitNameViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

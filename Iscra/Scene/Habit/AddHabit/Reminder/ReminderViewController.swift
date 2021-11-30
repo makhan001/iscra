@@ -20,8 +20,8 @@ class ReminderViewController: UIViewController {
     @IBOutlet weak var pickerTime: UIDatePicker!
     @IBOutlet weak var btnSegment: UISegmentedControl!
     
-    var habitType : habitType = .good
-    private let viewModel = AddHabitViewModel()
+    var habitType : HabitType = .good
+    private let viewModel = HabitNameViewModel()
     var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
 
     override func viewDidLoad() {

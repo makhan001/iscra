@@ -132,9 +132,10 @@
 		5FFDDB3A2755054600051011 /* MyAccountPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFDDB392755054600051011 /* MyAccountPopupViewController.swift */; };
 		861CF1D12743DE9700727D1E /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D02743DE9700727D1E /* RootCoordinator.swift */; };
 		861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D22743E02300727D1E /* LoginCoordinator.swift */; };
+		862E5AFB27565B5A00225894 /* HabitNameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */; };
 		8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A8392747D41100773C57 /* LandingCoordinator.swift */; };
 		8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800806B2729255E008E3260 /* ReminderViewController.swift */; };
-		880080732729282F008E3260 /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080722729282F008E3260 /* AddHabitViewController.swift */; };
+		880080732729282F008E3260 /* HabitNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080722729282F008E3260 /* HabitNameViewController.swift */; };
 		880080782729346D008E3260 /* WeekCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080772729346D008E3260 /* WeekCollection.swift */; };
 		8800807D272934B4008E3260 /* WeekDaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800807B272934B4008E3260 /* WeekDaysCollectionViewCell.swift */; };
 		8800807E272934B4008E3260 /* WeekDaysCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8800807C272934B4008E3260 /* WeekDaysCollectionViewCell.xib */; };
@@ -173,7 +174,7 @@
 		8814B444274393EB00A6DE01 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */; };
 		8814B4472743950500A6DE01 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4462743950500A6DE01 /* APIResponse.swift */; };
 		8814B44A2743965400A6DE01 /* JSONNullResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4492743965400A6DE01 /* JSONNullResponse.swift */; };
-		8816D88F272678B000127DDC /* AddHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8816D88E272678B000127DDC /* AddHabitViewModel.swift */; };
+		8816D88F272678B000127DDC /* HabitNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8816D88E272678B000127DDC /* HabitNameViewModel.swift */; };
 		88202D55271968B900F0EA2E /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202D54271968B900F0EA2E /* InputValidation.swift */; };
 		88202D592719923700F0EA2E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202D582719923700F0EA2E /* WelcomeViewController.swift */; };
 		88202D5F2719AAAA00F0EA2E /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */; };
@@ -412,9 +413,10 @@
 		738A14CE266552D2AB54A54A /* Pods-Iscra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.debug.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.debug.xcconfig"; sourceTree = "<group>"; };
 		861CF1D02743DE9700727D1E /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		861CF1D22743E02300727D1E /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameCoordinator.swift; sourceTree = "<group>"; };
 		8669A8392747D41100773C57 /* LandingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingCoordinator.swift; sourceTree = "<group>"; };
 		8800806B2729255E008E3260 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
-		880080722729282F008E3260 /* AddHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
+		880080722729282F008E3260 /* HabitNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameViewController.swift; sourceTree = "<group>"; };
 		880080772729346D008E3260 /* WeekCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollection.swift; sourceTree = "<group>"; };
 		8800807B272934B4008E3260 /* WeekDaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysCollectionViewCell.swift; sourceTree = "<group>"; };
 		8800807C272934B4008E3260 /* WeekDaysCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekDaysCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -453,7 +455,7 @@
 		8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		8814B4462743950500A6DE01 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		8814B4492743965400A6DE01 /* JSONNullResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNullResponse.swift; sourceTree = "<group>"; };
-		8816D88E272678B000127DDC /* AddHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewModel.swift; sourceTree = "<group>"; };
+		8816D88E272678B000127DDC /* HabitNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameViewModel.swift; sourceTree = "<group>"; };
 		88202D54271968B900F0EA2E /* InputValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
 		88202D582719923700F0EA2E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
@@ -1074,6 +1076,16 @@
 				5FFDDB392755054600051011 /* MyAccountPopupViewController.swift */,
 			);
 			path = MyAccountPopUpView;
+			sourceTree = "<group>";
+		};
+		862E5AF927565B1000225894 /* HabitName */ = {
+			isa = PBXGroup;
+			children = (
+				880080722729282F008E3260 /* HabitNameViewController.swift */,
+				8816D88E272678B000127DDC /* HabitNameViewModel.swift */,
+				862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */,
+			);
+			path = HabitName;
 			sourceTree = "<group>";
 		};
 		8800806A27292536008E3260 /* Reminder */ = {
@@ -1738,8 +1750,7 @@
 		88E5802E2722D5C500D4CAFB /* AddHabit */ = {
 			isa = PBXGroup;
 			children = (
-				880080722729282F008E3260 /* AddHabitViewController.swift */,
-				8816D88E272678B000127DDC /* AddHabitViewModel.swift */,
+				862E5AF927565B1000225894 /* HabitName */,
 				8800806F272926A8008E3260 /* SetTheme */,
 				880F3E2E2727DDB6007CA895 /* ColorPopUp */,
 				880F3E332727EC22007CA895 /* IconPopUp */,
@@ -2019,6 +2030,7 @@
 				88A529112730205000037464 /* PasswordChangeConfirmationViewController.swift in Sources */,
 				88E580522722E70300D4CAFB /* HomeViewController.swift in Sources */,
 				8814B4332743874100A6DE01 /* APIModel.swift in Sources */,
+				862E5AFB27565B5A00225894 /* HabitNameCoordinator.swift in Sources */,
 				5FF6CD80274E6A5A007ADC2F /* KVOView.swift in Sources */,
 				884549F727186F72003FBBC8 /* SignUpModel.swift in Sources */,
 				5FF6CD6C274E6A5A007ADC2F /* ChatAttachmentOutgoingCell.swift in Sources */,
@@ -2055,7 +2067,7 @@
 				887994C3273AB2EE00904D1F /* CommunityFriendCell.swift in Sources */,
 				8800807D272934B4008E3260 /* WeekDaysCollectionViewCell.swift in Sources */,
 				887994D5273AB34E00904D1F /* RepeatDaysTableView.swift in Sources */,
-				880080732729282F008E3260 /* AddHabitViewController.swift in Sources */,
+				880080732729282F008E3260 /* HabitNameViewController.swift in Sources */,
 				880D683F273AB89600B232CC /* EditHabitTableView.swift in Sources */,
 				887994D6273AB34E00904D1F /* EditReminderViewController.swift in Sources */,
 				5FF6CD6D274E6A5A007ADC2F /* ChatCell.swift in Sources */,
@@ -2076,7 +2088,7 @@
 				5FF6CD58274E6A5A007ADC2F /* ActionsMenuViewController.swift in Sources */,
 				8814B444274393EB00A6DE01 /* OnboardingCoordinator.swift in Sources */,
 				5FF6CD84274E6A5A007ADC2F /* ZoomedAttachmentViewController.swift in Sources */,
-				8816D88F272678B000127DDC /* AddHabitViewModel.swift in Sources */,
+				8816D88F272678B000127DDC /* HabitNameViewModel.swift in Sources */,
 				887994C8273AB2EE00904D1F /* CommunitySearchViewController.swift in Sources */,
 				88021C6A273D3897004A58F5 /* CustomDashedView.swift in Sources */,
 				861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */,

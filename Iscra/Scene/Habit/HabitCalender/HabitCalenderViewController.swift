@@ -115,9 +115,7 @@ extension HabitCalenderViewController {
     }
     
     private func backAction() {
-        self.navigationController?.popViewController(animated: true)
-      //  self.router?.dismiss(controller: .habitCalender)
-       // self.dismiss(animated: true, completion: nil)
+        self.router?.dismiss(controller: .habitCalender)
     }
     
     private func bottomSheetAction() {

@@ -1,14 +1,15 @@
 //
-//  AddHabitViewModel.swift
+//  HabitNameViewModel.swift
 //  Iscra
 //
 //  Created by Lokesh Patil on 25/10/21.
 //
 
+
 import UIKit
 import Foundation
 
-final class AddHabitViewModel {
+final class HabitNameViewModel {
     
     var habitName = ""
     var icon: String = ""
@@ -17,7 +18,7 @@ final class AddHabitViewModel {
     var colorTheme: String = ""
     var description: String = ""
     var reminders: Bool = false
-    var habitType : habitType = .good
+    var habitType : HabitType = .good
     var groupImage: UIImage = UIImage()
     var didNavigateToSetTheme:((_ :Bool)   ->())?
     
@@ -94,7 +95,7 @@ final class AddHabitViewModel {
     }
 }
 
-extension AddHabitViewModel: HabitInputViewDelegate {
+extension HabitNameViewModel: HabitInputViewDelegate {
     func onAction(action: HabitAction, for screen: HabitScreenType) {
         if HabitUtils.shared.habitType == .group {
             switch action {
@@ -116,7 +117,7 @@ extension AddHabitViewModel: HabitInputViewDelegate {
 }
 
 // MARK: Api Call
-extension AddHabitViewModel {
+extension HabitNameViewModel {
     
     func apiForCreateHabit() {
         

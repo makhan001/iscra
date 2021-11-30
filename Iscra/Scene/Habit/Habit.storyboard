@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -15,10 +15,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Add Habit View Controller-->
+        <!--Habit Name View Controller-->
         <scene sceneID="5pr-J3-mg8">
             <objects>
-                <viewController storyboardIdentifier="addHabit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tKh-md-e3z" customClass="AddHabitViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="habitName" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tKh-md-e3z" customClass="HabitNameViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vt2-NL-xj1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1509,7 +1509,7 @@
             <size key="intrinsicContentSize" width="57.5" height="26.5"/>
         </designable>
         <designable name="ewC-tX-9sa">
-            <size key="intrinsicContentSize" width="107" height="34"/>
+            <size key="intrinsicContentSize" width="108" height="34"/>
         </designable>
         <designable name="gnX-iX-iXz"/>
         <designable name="kOI-fX-1Qj">
@@ -1534,7 +1534,7 @@
             <size key="intrinsicContentSize" width="81.5" height="24"/>
         </designable>
         <designable name="uIH-EB-Upd">
-            <size key="intrinsicContentSize" width="561" height="36"/>
+            <size key="intrinsicContentSize" width="560.5" height="36"/>
         </designable>
         <designable name="v0i-oI-y9X">
             <size key="intrinsicContentSize" width="150" height="29"/>

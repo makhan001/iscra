@@ -20,7 +20,7 @@ enum HabitAction {
     case habitDetail
     case habitList
     case updateHabit
-    case callApi(_ sucess: Bool)
+    //case callApi(_ sucess: Bool)
     case navigateToGroupImage(_ isNavigate: Bool)
     case requireFields(_ text:String)
     case inputComplete(_ screen: HabitScreenType)
@@ -30,6 +30,7 @@ enum HabitAction {
     case editingDidEnd(_ field:String, _ value:String)
     case editingDidChange(_ field:String, _ value:String)
     case errorMessage(_ text:String)
+    case sucessMessage(_ text:String)
 }
 protocol HabitViewRepresentable: AnyObject {
     func onAction(_ action:  HabitAction)

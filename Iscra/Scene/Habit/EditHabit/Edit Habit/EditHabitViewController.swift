@@ -11,10 +11,9 @@ class EditHabitViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: EditHabitTableView!
-    
     @IBOutlet weak var btnDeleteHabit: UIButton!
-    
     @IBOutlet weak var txtMyHabit: UITextField!
+    @IBOutlet weak var viewNavigation:NavigationBarView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +28,9 @@ class EditHabitViewController: UIViewController {
 // MARK: Instance Methods
 extension EditHabitViewController {
     private func setup() {
+        self.viewNavigation.lblTitle.text = ""
+        self.viewNavigation.delegateBarAction = self
+        navigationController?.setNavigationBarHidden(true, animated: false)
         [btnDeleteHabit].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -115,4 +117,13 @@ extension EditHabitViewController : UITextFieldDelegate {
         }
     }
     
+}
+// MARK: navigationBarAction Callback
+extension EditHabitViewController  : navigationBarAction {
+    
+    func ActionType()  {
+      //  router?.dismiss(controller: .addHabit)
+       // self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+    }
 }

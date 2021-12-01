@@ -69,7 +69,7 @@ extension VerificationViewController {
     // MARK:- SetTimer for resend password
     private func startTimer(){
         self.btnResendCode.isHidden = true
-        self.lblTimer.isHidden = false
+       // self.lblTimer.isHidden = false
         self.secondsRemaining = 30
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
                if self.secondsRemaining > 0 {
@@ -83,12 +83,12 @@ extension VerificationViewController {
                 let attributedString2 = NSMutableAttributedString(string:"\(self.secondsRemaining) seconds", attributes:attrs2)
 
                 attributedString1.append(attributedString2)
-                self.lblTimer.attributedText = attributedString1
+               // self.lblTimer.attributedText = attributedString1
                    //self.lblTimer.text = "  code in " + "\(self.secondsRemaining) seconds"
                    self.secondsRemaining -= 1
                } else {
                 self.btnResendCode.isHidden = false
-                self.lblTimer.isHidden = true
+              //  self.lblTimer.isHidden = true
                    Timer.invalidate()
                }
            }

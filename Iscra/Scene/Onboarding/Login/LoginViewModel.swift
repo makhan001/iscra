@@ -57,7 +57,16 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                     UserStore.save(userName: resp.data?.loginData?.username)
                     UserStore.save(userID: resp.data?.loginData?.id)
                     UserStore.save(userImage: resp.data?.loginData?.profileImage)
-                    self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
+                    if resp.data?.loginData?.isVerified == true {
+                        self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
+
+                    }else{
+                        let code =  resp.data?.loginData?.verificationCode
+                        let msg = (resp.message! + " code is " + code!)
+                        self.view?.onAction(.login(msg, resp.data?.loginData?.isVerified ?? false))
+                    }
+                    
+                  //  self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

@@ -167,6 +167,7 @@ extension LandingTabBarController : UITabBarControllerDelegate {
 extension LandingTabBarController: SelectHabitPopUpDelegate{
     func addHabit(type: HabitType) {
         router?.push(scene: .selectHabitPopUp)
+        
 //        let addHabit: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .addHabit)
 //        addHabit.habitType = habitType
 //        navigationController?.pushViewController(addHabit, animated: true)

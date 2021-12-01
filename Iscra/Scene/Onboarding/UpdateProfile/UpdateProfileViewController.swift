@@ -31,7 +31,7 @@ class UpdateProfileViewController: UIViewController {
 extension UpdateProfileViewController:  navigationBarAction{
     private func setUp() {
         viewModel.view = self
-        self.txtName.text = UserStore.userName
+        self.txtName.text = UserStore.userName?.capitalized
         viewModel.username = UserStore.userName  ?? ""
         self.viewNavigation.navType = .editName
         self.viewNavigation.commonInit()

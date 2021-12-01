@@ -95,6 +95,7 @@ class DialogsViewController: UITableViewController {
        tableView.register(UINib(nibName: DialogCellConstant.reuseIdentifier, bundle: nil), forCellReuseIdentifier: DialogCellConstant.reuseIdentifier)
         setupNavigationBar()
         setupNavigationTitle()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -356,12 +357,11 @@ class DialogsViewController: UITableViewController {
         }
         
         cell.dialogName.text = cellModel.textLabelText.capitalized
-//        cell.dialogAvatarLabel.backgroundColor = UInt(chatDialog.createdAt!.timeIntervalSince1970).generateColor()
-//        cell.dialogAvatarLabel.text = String(cellModel.textLabelText.stringByTrimingWhitespace().capitalized.first ?? Character("C"))
+
         print("cell for row ---> \(Date().timeIntervalSince1970)")
         print("cellModel.customData\(cellModel.customData)")
         cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as! String), placeholderImage: UIImage(named: "group"))
-        
+    
         return cell
     }
     

@@ -27,13 +27,13 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // print("self.router is \(self.router)")
+        self.lblUserName.text = UserStore.userName
     }
 }
 
 // MARK: Instance Methods
 extension HomeViewController {
     private func setup() {
-        self.lblUserName.text = UserStore.userName
         self.viewFirstHabit.isHidden = true
         self.tableView.didSelectedAtIndex = didSelectedAtIndex
         self.tableView.isHidden = false

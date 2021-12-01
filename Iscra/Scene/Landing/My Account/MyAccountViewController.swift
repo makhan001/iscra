@@ -100,7 +100,7 @@ extension MyAccountViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
             print("Cancel button tapped");
         }
-        cancelAction;.setValue(UIColor.gray, forKey: "titleTextColor")
+        cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
         alertController.addAction(Logoutaction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)

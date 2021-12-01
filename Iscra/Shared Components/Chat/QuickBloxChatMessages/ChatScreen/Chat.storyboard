@@ -40,7 +40,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VL8-Aj-gku"/>
-                        <color key="backgroundColor" red="0.95651179552078247" green="0.96457701921463013" blue="0.9769250750541687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="pkn-Yy-0fU" secondAttribute="bottom" id="Hev-M0-gxN"/>
                             <constraint firstItem="pkn-Yy-0fU" firstAttribute="leading" secondItem="VL8-Aj-gku" secondAttribute="leading" id="PjE-Lv-R8K"/>
@@ -378,7 +378,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="xjP-Ge-F0T"/>
                                 </constraints>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" systemColor="systemGreenColor"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="U1v-Zg-9Kv" id="pwF-MP-nx5"/>
@@ -394,6 +394,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUf-Oh-X9a">
                                 <rect key="frame" x="319" y="0.0" width="56" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="0fQ-aT-Dns"/>
                                 </constraints>
@@ -444,7 +445,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLc-H7-3AW" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="307.5" width="375" height="374.5"/>
+                                <rect key="frame" x="0.0" y="299" width="375" height="383"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgU-bq-7vN" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="159.5" y="24" width="56" height="8"/>
@@ -460,7 +461,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1B-ra-dKo" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="48" width="335" height="20.5"/>
+                                        <rect key="frame" x="20" y="48" width="335" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="BlackAccent"/>
                                         <nil key="highlightedColor"/>
@@ -476,7 +477,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kUm-rz-kpS" customClass="ChatNotificationTableView" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="84.5" width="375" height="250"/>
+                                        <rect key="frame" x="0.0" y="93" width="375" height="250"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="l4o-jb-veS"/>
@@ -538,11 +539,11 @@
     </scenes>
     <designables>
         <designable name="K1B-ra-dKo">
-            <size key="intrinsicContentSize" width="87.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="123.5" height="29"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="MVP-NN-qjU"/>
+        <segue reference="g2V-iR-VLB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" width="12" height="10"/>
@@ -557,6 +558,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

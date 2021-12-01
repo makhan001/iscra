@@ -36,6 +36,7 @@ class UsersInfoTableViewController: UITableViewController {
     private var titleView = TitleView()
     private var dialog: QBChatDialog!
     var users : [QBUUser] = []
+    var customData : String?
     let chatManager = ChatManager.instance
     private lazy var addUsersItem = UIBarButtonItem(image: UIImage(named: "add_user"),
                                                     style: .plain,
@@ -92,10 +93,13 @@ class UsersInfoTableViewController: UITableViewController {
     //MARK: - Internal Methods
     private func setupNavigationTitleByAction() {
         var title = dialog.name ?? ""
+        var customData = dialog.photo ?? ""
         if action == .ViewedBy {
             title = UsersInfoConstant.viewed
+            customData = UsersInfoConstant.viewed
         } else if action == .DeliveredTo {
             title = UsersInfoConstant.delivered
+            customData = UsersInfoConstant.delivered
         }
         
         let numberUsers = "\(self.users.count) members"
@@ -192,15 +196,19 @@ class UsersInfoTableViewController: UITableViewController {
         }
         let user = self.users[indexPath.row]
         cell.userColor = user.id.generateColor()
-        let userName = user.fullName ?? user.login ?? "QB user"
+        
+        let userName = user.fullName?.capitalized ?? user.login ?? "QB user"
         if currentUser.ID == user.id {
 
-            cell.userNameLabel.text = userName + " (You)"
+            cell.userNameLabel.text = userName.capitalized + " (You)"
         } else {
-            cell.userNameLabel.text = userName
+            cell.userNameLabel.text = userName.capitalized
         }
         
-        cell.userAvatarLabel.text = String(user.fullName?.capitalized.first ?? Character("U"))
+       //cell.userAvatarLabel.text = String(user.fullName?.capitalized.first ?? Character("U"))
+        let customData = user.customData ?? user.login ?? "QB user"
+        cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+      
         cell.tag = indexPath.row
         cell.checkBoxView.isHidden = true
         cell.checkBoxImageView.isHidden = true

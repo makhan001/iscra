@@ -86,7 +86,6 @@ class ChatViewController: UIViewController, ChatContextMenu {
     
     private var isUploading = false
     private var attachmentMessage: QBChatMessage?
-    
     /**
      *  This property is required when creating a ChatViewController.
      */
@@ -159,7 +158,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
     
     private var willResignActiveBlock: AnyObject?
     private var willActiveBlock: AnyObject?
-    
+    var customData : String?
     private var selectedIndexPathForMenu: IndexPath?
     
     private lazy var systemInputToolbar: KVOView = {

@@ -31,7 +31,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.lblName.text = UserStore.userName
+        self.lblName.text = UserStore.userName?.capitalized
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }

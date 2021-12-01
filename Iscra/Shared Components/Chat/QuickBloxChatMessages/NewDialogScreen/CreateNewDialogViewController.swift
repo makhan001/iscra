@@ -27,7 +27,11 @@ class CreateNewDialogViewController: UIViewController {
     
     @IBOutlet weak var cancelSearchButton: UIButton!
     @IBOutlet var tableView: UITableView!
+    
+    @IBOutlet weak var chatView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var chatSegment: UISegmentedControl!
     private var titleView = TitleView()
     //MARK: - Properties
     private var users : [QBUUser] = []
@@ -72,6 +76,9 @@ class CreateNewDialogViewController: UIViewController {
                                              action: #selector(didTapBack(_:)))
         navigationItem.leftBarButtonItem = backButtonItem
         backButtonItem.tintColor = #colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1)
+        [chatSegment ].forEach {
+            $0?.addTarget(self, action: #selector(segmentPressed(_:)), for: .valueChanged)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,10 +147,30 @@ class CreateNewDialogViewController: UIViewController {
                searchTextField.backgroundColor = .white
                searchTextField.clearButtonMode = .never
            }
+           searchBar.layer.borderWidth = 10
+            searchBar.layer.borderColor = UIColor.white.cgColor
            searchBar.showsCancelButton = false
            cancelSearchButton.isHidden = true
        }
-    
+    @objc func segmentPressed(_ sender: UISegmentedControl) {
+        switch chatSegment.selectedSegmentIndex {
+        case 0:
+            chatAction()
+        case 1:
+            friendsAction()
+        default:
+            break
+        }
+    }
+    private func chatAction(){
+        chatView.isHidden = false
+        tableView.isHidden = true
+    }
+    private func friendsAction(){
+        chatView.isHidden = true
+        tableView.isHidden = false
+       // self.dismiss(animated: true, completion: nil)
+    }
     private func setupNavigationTitle() {
         let title = CreateNewDialogConstant.newChat
         var users = "users"
@@ -312,8 +339,8 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
         }
         let user = self.users[indexPath.row]
         cell.userColor = user.id.generateColor()
-        cell.userNameLabel.text = user.fullName ?? user.login
-        cell.userAvatarLabel.text = String(user.fullName?.capitalized.first ?? Character("U"))
+        cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
+       cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
         cell.tag = indexPath.row
         
         let lastItemNumber = users.count - 1

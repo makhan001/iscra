@@ -375,7 +375,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2se-TB-CcR" customClass="MyAccountTableView" customModule="Iscra" customModuleProvider="target">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2se-TB-CcR" customClass="MyAccountTableView" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="177.33333333333334" width="341" height="292.66666666666663"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>

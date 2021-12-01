@@ -53,7 +53,9 @@ extension HabitNameCoordinator: NextSceneDismisser {
         }
     }
     
-    func dismiss(controller: Scenes) { }
+    func dismiss(controller: Scenes) {
+        delegate?.dismiss(coordinator: self)
+    }
 }
 
 extension HabitNameCoordinator: CoordinatorDimisser {

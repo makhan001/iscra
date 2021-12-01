@@ -14,6 +14,7 @@ class SetThemeViewController: UIViewController {
     @IBOutlet weak var ViewColor:UIView!
     @IBOutlet weak var btnColor:UIButton!
     @IBOutlet weak var ImgIcon:UIImageView!
+    @IBOutlet weak var viewNavigation:NavigationBarView!
     
     private var selectedIcons = "sport1"
     var habitType: HabitType = .good
@@ -30,7 +31,9 @@ class SetThemeViewController: UIViewController {
 extension SetThemeViewController {
     func setup() {
         viewModel.view = self
-        navigationController?.navigationBar.isHidden = false
+        self.viewNavigation.lblTitle.text = ""
+        self.viewNavigation.delegateBarAction = self
+        navigationController?.setNavigationBarHidden(true, animated: false)
         [btnColor, btnIcon, btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -155,4 +158,14 @@ extension SetThemeViewController: HabitViewRepresentable {
         }
     }
     
+}
+
+// MARK: navigationBarAction Callback
+extension SetThemeViewController  : navigationBarAction {
+    
+    func ActionType()  {
+      //  router?.dismiss(controller: .addHabit)
+      //  self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+    }
 }

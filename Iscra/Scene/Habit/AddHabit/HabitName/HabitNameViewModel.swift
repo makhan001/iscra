@@ -19,14 +19,14 @@ final class HabitNameViewModel {
     var description: String = ""
     var reminders: Bool = false
     var habitType : HabitType = .good
-    var groupImage: UIImage = UIImage()
+    var groupImage: UIImage?
     var didNavigateToSetTheme:((_ :Bool)   ->())?
     
     weak var view: HabitViewRepresentable?
     
     private func validateHabitInput() {
-        self.habitName = "Qwerty"
-        self.description = "Qwerty"
+//        self.habitName = "Qwerty"
+//        self.description = "Qwerty"
         if habitType == .group{
             if Validation().textValidation(text: habitName, validationType: .habitName).0 {
                 view?.onAction(.requireFields(Validation().textValidation(text: habitName, validationType: .habitName).1))
@@ -44,7 +44,7 @@ final class HabitNameViewModel {
             }
         }
         HabitUtils.shared.name = self.habitName
-        HabitUtils.shared.habitType = self.habitType
+      //  HabitUtils.shared.habitType = self.habitType
         HabitUtils.shared.description = self.description
         self.didNavigateToSetTheme?(true)
     }
@@ -57,13 +57,13 @@ final class HabitNameViewModel {
     
     private func validateDaysSelection() {
         if HabitUtils.shared.habitType != .group {
-        if self.days == "" {
-            view?.onAction(.requireFields(AppConstant.emptyDays))
-        }else{
-            HabitUtils.shared.days = self.days
-               print("Api call")
+            if self.days == "" {
+                view?.onAction(.requireFields(AppConstant.emptyDays))
+            }else{
+                HabitUtils.shared.days = self.days
+                print("Api call")
                 self.apiForCreateHabit()
-        }
+            }
         }else{
             if self.days == "" {
                 view?.onAction(.requireFields(AppConstant.emptyDays))
@@ -73,22 +73,19 @@ final class HabitNameViewModel {
                 print("navigateToGroupImage")
             }
         }
-        
-        
-//        if HabitUtils.shared.habitType == .group {
-//            //  view?.onAction(.requireFields(AppConstant.emptyGroupImage))
-//        }else{
-//            view?.onAction(.navigateToGroupImage(true))
-//        }
-        
     }
     
     private func validateGroupImageSelection() {
         if HabitUtils.shared.habitType == .group {
-            if (groupImage.size.width == 0){
+               // if (HabitUtils.shared.groupImage == nil){
+            if (self.groupImage == nil){
                 view?.onAction(.requireFields(AppConstant.emptyGroupImage))
-            }
+                    print("image unavailable")
+                }else{
+                    print("image available")
+                    self.apiForCreateHabit()
             HabitUtils.shared.groupImage = self.groupImage
+                }
         }else{
             view?.onAction(.createHabit)
         }
@@ -121,41 +118,33 @@ extension HabitNameViewModel {
     
     func apiForCreateHabit() {
         
-//        let parameters =  UserParams.Signup(email: email, username: username, password: password, fcm_token: "fcmToken", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, device_udid: "", device_type: "ios")
         let obj = HabitUtils.shared
-        
-        let parameters = HabitParams.CreateHabit(days: obj.days, icon: obj.icon, name: obj.name, timer: obj.timer, reminders: obj.reminders, habit_type: "good", color_theme: obj.colorTheme , description: obj.description)
+        let parameters = HabitParams.CreateHabit(days: obj.days, icon: obj.icon, name: obj.name, timer: obj.timer, reminders: obj.reminders, habit_type: obj.habitType.rawValue ?? "good", color_theme: obj.colorTheme , description: obj.description)
         print("param is  \(parameters)")
-        
-        WebService().requestMultiPart(urlString: "habits",
+
+        WebService().requestMultiPart(urlString: "habits/add_habit",
                                       httpMethod: .post,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
-                                      imageArray: [["group_image": obj.groupImage ?? UIImage()]],
+                                      imageArray: [["group_image": self.groupImage ?? UIImage()]],
                                       fileArray: [],
-                                      file: ["group_image": obj.groupImage ?? UIImage()]){ [weak self](resp, err) in
+                                      file: ["group_image": self.groupImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
-                
-              //  self?.delegate?.completed(for: .register, with: resp, with: nil)
+                //  self?.delegate?.completed(for: .register, with: resp, with: nil)
                 print("error is \(err)")
                 return
             } else {
                 if let response = resp as? SuccessResponseModel  {
-//                    if response.status == true {
-//                        UserStore.save(token: response.data?.register?.authenticationToken)
-//                        UserStore.save(isVerify: response.data?.register?.isVerified ?? false)
-//                        UserStore.save(userEmail: response.data?.register?.email)
-//                        UserStore.save(userName: response.data?.register?.username)
-//                        UserStore.save(userID: response.data?.register?.id)
-//                        UserStore.save(userImage: response.data?.register?.profileImage)
-//                        self?.verificationCode = response.data?.register?.verificationCode ?? ""
-//                        self?.view?.onAction(.register)
-//                    } else {
-//                        self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
-//                    }
+
+                    if response.status == true {
+                        print("response.data?.habit?.id is \(response.data?.habit?.id)")
+                      //  self?.view?.onAction(.createHabit)
+                        self?.view?.onAction(.sucessMessage(response.message ?? ""))
+                    } else {
+                        self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
+                    }
                 }
             }
+        }
     }
-    
-}
 }

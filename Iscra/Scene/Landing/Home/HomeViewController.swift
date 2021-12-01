@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // print("self.router is \(self.router)")
-        self.lblUserName.text = UserStore.userName
+        self.lblUserName.text = "Hi," + (UserStore.userName ?? "").capitalized
     }
 }
 

@@ -53,6 +53,7 @@ extension VerificationViewModel: OnboardingServiceProvierDelegate, InputViewDele
             } else {
                 if let resp = response as? SuccessResponseModel, resp.status == true {
                         self.view?.onAction(.verification(resp.message ?? ""))
+                    UserStore.save(isVerify: resp.status ?? false)
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

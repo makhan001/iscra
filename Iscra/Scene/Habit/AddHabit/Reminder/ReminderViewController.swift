@@ -23,12 +23,15 @@ class ReminderViewController: UIViewController {
     
     var reminderTime = ""
     var habitType : HabitType = .good
-    private let viewModel = HabitNameViewModel()
+    private let viewModel = AddHabitViewModel()
     var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
-    
+    weak var router: NextSceneDismisser?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        print("self.router is \(self.router)")
+
     }
     @IBAction func TimePickerClick(_ sender: Any) {
         timemanager()
@@ -110,7 +113,6 @@ extension ReminderViewController {
     
     private func nextClick() {
         
-        print("viewModel.habitType is \(viewModel.habitType)")
         let currentDate = Date().string(format: "yyyy-MM-dd")
         let yourDate = currentDate + "-" + self.reminderTime
          let dateFormatter = DateFormatter()
@@ -190,14 +192,13 @@ extension ReminderViewController: HabitViewRepresentable {
                 inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                 inviteFriend.habitType = self.habitType
                 inviteFriend.delegateInvite = self
+                inviteFriend.router = self.router
                 self.present(inviteFriend, animated: true, completion: nil)
             }
-            
-            
-            
         case .navigateToGroupImage(true):
             let addGroupImage: AddGroupImageViewController = AddGroupImageViewController.from(from: .habit, with: .addGroupImage)
             addGroupImage.habitType = habitType
+            addGroupImage.router = self.router
             self.navigationController?.pushViewController(addGroupImage, animated: true)
             break
         default:

@@ -19,6 +19,7 @@ enum HabitAction {
     case deleteHabit
     case habitDetail
     case habitList
+   // case habitList([AllHabits])
     case updateHabit
     //case callApi(_ sucess: Bool)
     case navigateToGroupImage(_ isNavigate: Bool)

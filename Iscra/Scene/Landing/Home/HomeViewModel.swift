@@ -5,40 +5,46 @@
 //  Created by mac on 26/11/21.
 //
 
+
 import UIKit
 import Foundation
 
 final class HomeViewModel {
     
+   // var habitId: String = ""
+    var habitList = [AllHabits]()
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
-    
+
     init(provider: HabitServiceProvidable) {
         self.provider = provider
         self.provider.delegate = self
     }
     
-    private func validateUserInput() {
-        
+     func fetchHabitList() {
         self.provider.habitList(param: HabitParams.AllHabitList())
-        
     }
+    
+    func deleteHabit(habitId: String) {
+        self.provider.deleteHabit(param: HabitParams.DeleteHabit(id: habitId))
+   }
 }
 
 extension HomeViewModel: HabitServiceProvierDelegate {
     func completed<T>(for action: HabitAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
             if error != nil {
-                //  self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
+                self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
-                //                if let resp = response as? SuccessResponseModel, resp.code == 200 {
-                //                    self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
-                //                } else {
-                //                    self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
-                //                }
+                if let resp = response as? SuccessResponseModel, resp.code == 200 {
+                    self.habitList = resp.data!.habits
+                    self.view?.onAction(.sucessMessage(resp.message ?? ""))
+                } else {
+                    self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
+                }
             }
-        }
     }
+    
 }
-
+}

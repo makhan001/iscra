@@ -10,7 +10,6 @@ import Foundation
 
 final class UpdateProfileViewModel {
     
-
     var username: String = ""
     var selectedImage: UIImage = UIImage()
     var delegate: OnboardingServiceProvierDelegate?

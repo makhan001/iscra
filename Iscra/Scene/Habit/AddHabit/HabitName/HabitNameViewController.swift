@@ -19,12 +19,12 @@ class HabitNameViewController: UIViewController {
     @IBOutlet weak var viewNavigation:NavigationBarView!
 
     weak var router: NextSceneDismisser?
-    let viewModel = HabitNameViewModel()
+    let viewModel = AddHabitViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        print("viewModel.habitType is \(viewModel.habitType)")
+        print("self.router is \(self.router)")
     }
     
 }
@@ -68,6 +68,7 @@ extension HabitNameViewController {
             isNavigate in
             if isNavigate{
                 let setTheme: SetThemeViewController = SetThemeViewController.from(from: .habit, with: .setTheme)
+                setTheme.router = self.router
                // setTheme.habitType = self.viewModel.habitType
                        self.navigationController?.pushViewController(setTheme, animated: true)
             }

@@ -25,10 +25,12 @@ class InviteFriendViewController: UIViewController {
     
     var habitType: HabitType = .good
     weak var delegateInvite : InviteNavigation?
+    weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        print("self.router is \(self.router)")
     }
 }
 // MARK:- Instance Methods
@@ -81,19 +83,22 @@ extension InviteFriendViewController  {
     }
     private func InviteFriendsAction() {
         print("InviteFriendsAction")
-//        delegateInvite?.navigate(inviteType: .inviteFriend)
-//        self.dismiss(animated: true, completion: nil)
-        self.showToast(message: "Under development", seconds: 0.5)
+        //        delegateInvite?.navigate(inviteType: .inviteFriend)
+        //        self.dismiss(animated: true, completion: nil)
+        // self.showToast(message: "Under development", seconds: 0.5)
+        self.router?.dismiss(controller: .addHabit)
     }
     private func MaybeLetterAction() {
-//        delegateInvite?.navigate(inviteType: .mayBeLatter)
-//        self.dismiss(animated: true, completion: nil)
+        //        delegateInvite?.navigate(inviteType: .mayBeLatter)
+        //        self.dismiss(animated: true, completion: nil)
         if self.btnMaybeLetter.currentTitle == "Share public" {
             print("Share public")
         }else{
             print("MaybeLetterAction")
         }
-        self.showToast(message: "Under development", seconds: 0.5)
+        //   self.showToast(message: "Under development", seconds: 0.5)
+        
+        self.router?.dismiss(controller: .addHabit)
     }
 }
 
@@ -101,8 +106,8 @@ extension InviteFriendViewController  {
 extension InviteFriendViewController  : navigationBarAction {
     
     func ActionType()  {
-       // router?.dismiss(controller: .addHabit)
-     //  self.dismiss(animated: true, completion: nil)
-        self.showToast(message: "Under development", seconds: 0.5)
+        router?.dismiss(controller: .addHabit)
+        //  self.dismiss(animated: true, completion: nil)
+        // self.showToast(message: "Under development", seconds: 0.5)
     }
 }

@@ -12,31 +12,33 @@ protocol HabitTableNavigation: class {
 }
 
 class  HabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
-    var count: Int = 0
     weak var delegate1 : HabitTableNavigation?
     var didSelectedAtIndex: ((Int) -> Void)?
+    var habitList = [AllHabits]()
+    var isHabitDelete:((_ isSelect:Bool, _ habitId: String)   ->())?
     
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure(obj: Int) {
+    func configure(habits: [AllHabits]) {
         self.register(UINib(nibName: "HabitCell", bundle: nil), forCellReuseIdentifier: "HabitCell")
         self.delegate = self
         self.dataSource = self
-        self.count = obj
+        self.habitList = habits
         reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.habitList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as? HabitCell else {
             return UITableViewCell()
         }
-        cell.configure()
+        let objHabitList = self.habitList[indexPath.row]
+        cell.configure(obj: objHabitList)
         return cell
     }
     
@@ -47,8 +49,9 @@ class  HabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
+        let objHabitList = self.habitList[indexPath.row]
         let deleteAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.isHabitDelete!(true, String(objHabitList.id!))
         })
         deleteAction.image = #imageLiteral(resourceName: "ic_deleteShadow")
         deleteAction.backgroundColor = UIColor(white: 1, alpha: 0.001)

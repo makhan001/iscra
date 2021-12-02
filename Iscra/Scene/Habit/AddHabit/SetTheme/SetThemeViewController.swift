@@ -20,11 +20,13 @@ class SetThemeViewController: UIViewController {
     var habitType: HabitType = .good
     var iconResorces = IconsHabitModel()
     var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
-    private let viewModel = HabitNameViewModel()
-    
+    private let viewModel = AddHabitViewModel()
+    weak var router: NextSceneDismisser?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        print("self.router is \(self.router)")
     }
 }
 
@@ -124,6 +126,7 @@ extension SetThemeViewController {
             if isNavigate{
                 let reminder: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
                 reminder.habitType = self.habitType
+                reminder.router = self.router
                 reminder.selectedColorTheme = self.selectedColorTheme
                 self.navigationController?.pushViewController(reminder, animated: true)
             }

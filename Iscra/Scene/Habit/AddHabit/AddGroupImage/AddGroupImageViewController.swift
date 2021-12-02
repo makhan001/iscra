@@ -15,11 +15,13 @@ class AddGroupImageViewController: UIViewController {
     @IBOutlet weak var btnImagePicker: UIButton!
     @IBOutlet weak var viewNavigation:NavigationBarView!
     var habitType : HabitType = .good
-    private let viewModel = HabitNameViewModel()
+    private let viewModel = AddHabitViewModel()
+    weak var router: NextSceneDismisser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         SetUp()
+        print("self.router is \(self.router)")
     }
 }
 
@@ -165,6 +167,7 @@ extension AddGroupImageViewController: HabitViewRepresentable {
                 inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                 inviteFriend.habitType = self.habitType
                 inviteFriend.delegateInvite = self
+                inviteFriend.router = self.router
                 self.present(inviteFriend, animated: true, completion: nil)
             }
 //        case .callApi(true):

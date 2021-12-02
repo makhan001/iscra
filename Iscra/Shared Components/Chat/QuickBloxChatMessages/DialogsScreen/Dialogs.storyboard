@@ -200,7 +200,23 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2v-gC-xBQ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="481"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FAz-Mc-Avy">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="481"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="Vel-6d-V4i" id="ljc-Ie-TsE"/>
+                                                    <outlet property="delegate" destination="Vel-6d-V4i" id="XBZ-yY-90o"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="FAz-Mc-Avy" firstAttribute="leading" secondItem="q2v-gC-xBQ" secondAttribute="leading" id="CZx-83-wGj"/>
+                                            <constraint firstAttribute="trailing" secondItem="FAz-Mc-Avy" secondAttribute="trailing" id="Gnr-Ig-mcK"/>
+                                            <constraint firstItem="FAz-Mc-Avy" firstAttribute="top" secondItem="q2v-gC-xBQ" secondAttribute="top" id="QWY-wt-918"/>
+                                            <constraint firstAttribute="bottom" secondItem="FAz-Mc-Avy" secondAttribute="bottom" id="WcK-fg-5Fu"/>
+                                        </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rx3-a5-fmK">
                                         <rect key="frame" x="375" y="0.0" width="0.0" height="481"/>
@@ -237,6 +253,7 @@
                     <navigationItem key="navigationItem" id="X47-40-6Qb"/>
                     <connections>
                         <outlet property="cancelSearchButton" destination="3C0-8u-123" id="0am-oV-5kP"/>
+                        <outlet property="chatListTblView" destination="FAz-Mc-Avy" id="Yw6-GL-pMJ"/>
                         <outlet property="chatSegment" destination="DTT-yJ-C0L" id="E5l-oC-on2"/>
                         <outlet property="chatView" destination="q2v-gC-xBQ" id="HeG-Z7-sHo"/>
                         <outlet property="searchBar" destination="YFg-I8-0pr" id="W8X-Nb-NX6"/>

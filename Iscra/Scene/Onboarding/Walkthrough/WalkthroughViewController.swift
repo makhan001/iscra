@@ -16,7 +16,6 @@ class WalkthroughViewController: UIViewController {
     @IBOutlet weak var txtName:UITextField!
     @IBOutlet weak var btnHowToAddMemoji: UIButton!
     @IBOutlet weak var scrollview_Walkthrough: UIScrollView!
-    
     weak var router: NextSceneDismisser?
     var currentIndex = 1
     
@@ -32,16 +31,11 @@ class WalkthroughViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
-        //        if TARGET_OS_SIMULATOR == 1 {
-        //            OnboadingUtils.shared.username = "Deepak"
-        //            self.txtName.text = "Deepak"
-        //        }
-    }
+       }
 }
 
 // MARK:- Instance Methods
 extension WalkthroughViewController {
-    
     private func setup() {
         lblHeaderTitle.text = AppConstant.onbordingName //"How do your \nfriends call you?"
         self.scrollview_Walkthrough.delegate = self
@@ -107,37 +101,27 @@ extension WalkthroughViewController  {
     }
     
     private func addMyPictureAction() {
-//        let VC = storyboard?.instantiateViewController(withIdentifier: "AddMyPictureViewController") as! AddMyPictureViewController
-//        navigationController?.pushViewController(VC, animated: true)
-        
         let addMyPicture: AddMyPictureViewController = AddMyPictureViewController.from(from: .onboarding, with: .addMyPicture)
         self.navigationController?.pushViewController(addMyPicture, animated: true)
-
-    }
+}
     
     private func howToAddMemojiAction() {
-//        let VC = storyboard?.instantiateViewController(withIdentifier: "LearnHowToAddMemojiViewController") as! LearnHowToAddMemojiViewController
-//        navigationController?.pushViewController(VC, animated: true)
-        
-        let learnHowToAddMemoji: AddMemojiViewController = AddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
+      let learnHowToAddMemoji: AddMemojiViewController = AddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
         self.navigationController?.pushViewController(learnHowToAddMemoji, animated: true)
-
-    }
+}
     
     func setButtonStatus(){
         if self.currentIndex == 3 {
             btnNext.setTitle("Skip", for: .normal)
         }
-        //        }else if self.currentIndex == 1 {
-        //            btnBack.setTitleColor(, for: .normal)
-        //            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
-        //        }else{
-        //            btnNext.setTitle("Next", for: .normal)
-        //            btnBack.isUserInteractionEnabled = true
-        //            btnBack.setTitleColor(#colorLiteral(red: 0.1098039216, green: 0.09019607843, blue: 0.02745098039, alpha: 1), for: .normal)
-        //        }
-    }
-    
+        else if
+            self.currentIndex == 2 {
+                btnNext.setTitle("Next", for: .normal)
+            }
+        else if self.currentIndex == 1 {
+            btnNext.setTitle("Next", for: .normal)
+        }
+}
 }
 
 // MARK:- UIScrollViewDelegate

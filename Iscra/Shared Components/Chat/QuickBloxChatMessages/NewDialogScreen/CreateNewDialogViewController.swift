@@ -23,11 +23,12 @@ struct CreateNewDialogConstant {
     static let noUsers = "No user with that name"
 }
 
-class CreateNewDialogViewController: UIViewController {
+class CreateNewDialogViewController: UIViewController, QBChatDelegate {
     
     @IBOutlet weak var cancelSearchButton: UIButton!
     @IBOutlet var tableView: UITableView!
     
+    @IBOutlet weak var chatListTblView: UITableView!
     @IBOutlet weak var chatView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -35,6 +36,7 @@ class CreateNewDialogViewController: UIViewController {
     private var titleView = TitleView()
     //MARK: - Properties
     private var users : [QBUUser] = []
+    private var dialogs: [QBChatDialog] = []
     private var downloadedUsers : [QBUUser] = []
     private var selectedUsers: Set<QBUUser> = []
     private var foundedUsers : [QBUUser] = []
@@ -52,16 +54,13 @@ class CreateNewDialogViewController: UIViewController {
         
         navigationItem.titleView = titleView
         setupNavigationTitle()
-
         checkCreateChatButtonState()
-        
         tableView.register(UINib(nibName: UserCellConstant.reuseIdentifier, bundle: nil), forCellReuseIdentifier: UserCellConstant.reuseIdentifier)
-        
         tableView.keyboardDismissMode = .onDrag
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
+        chatListTblView.delegate = self
+        chatListTblView.dataSource = self
         let createButtonItem = UIBarButtonItem(title: "Create",
                                                style: .plain,
                                                target: self,
@@ -69,7 +68,6 @@ class CreateNewDialogViewController: UIViewController {
         navigationItem.rightBarButtonItem = createButtonItem
         createButtonItem.tintColor = UIColor(red: 0.758, green: 0.639, blue: 0.158, alpha: 1)
         navigationItem.rightBarButtonItem?.isEnabled = false
-        
         let backButtonItem = UIBarButtonItem(image: UIImage(named: "ic_Back_Image"),
                                              style: .plain,
                                              target: self,
@@ -83,9 +81,7 @@ class CreateNewDialogViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         setupViews()
-        
         //MARK: - Reachability
         let updateConnectionStatus: ((_ status: NetworkConnectionStatus) -> Void)? = { [weak self] status in
             guard let self = self else {
@@ -120,15 +116,12 @@ class CreateNewDialogViewController: UIViewController {
            let iconSearch = UIImageView(image: UIImage(named: "search"))
            iconSearch.frame = CGRect(x: 0, y: 0, width: 35.0, height: 35.0)
            iconSearch.contentMode = .center
-         //  searchBar.setRoundBorderEdgeColorView(cornerRadius: 0.0, borderWidth: 1.0, borderColor: .white)
-           
            if let searchTextField = searchBar.value(forKey: "searchField") as? UITextField {
-               if let systemPlaceholderLabel = searchTextField.value(forKey: "placeholderLabel") as? UILabel {
-                   searchBar.placeholder = " "
-
-                   // Create custom placeholder label
-                  let placeholderLabel = UILabel(frame: .zero)
-                placeholderLabel.frame = CGRect(x: 3, y: -16, width: 300, height: 50)
+            if let systemPlaceholderLabel = searchTextField.value(forKey: "placeholderLabel") as? UILabel {
+            searchBar.placeholder = " "
+            // Create custom placeholder label
+            let placeholderLabel = UILabel(frame: .zero)
+            placeholderLabel.frame = CGRect(x: 3, y: -16, width: 300, height: 50)
                    placeholderLabel.text = "Search for a member"
                    placeholderLabel.font = .systemFont(ofSize: 15.0, weight: .regular)
                    placeholderLabel.textColor = #colorLiteral(red: 0.4255777597, green: 0.476770997, blue: 0.5723374486, alpha: 1)
@@ -165,6 +158,7 @@ class CreateNewDialogViewController: UIViewController {
     private func chatAction(){
         chatView.isHidden = false
         tableView.isHidden = true
+        chatListTblView.reloadData()
     }
     private func friendsAction(){
         chatView.isHidden = true
@@ -272,7 +266,40 @@ class CreateNewDialogViewController: UIViewController {
             self.performSegue(withIdentifier: "enterChatName", sender: nil)
         }
     }
-    
+    //Chat list TableView
+    private func reloadContent() {
+        dialogs = chatManager.storage.dialogsSortByUpdatedAt()
+        if dialogs.count > 0 {
+          print("Chat list not empty")
+        }
+        else {
+            print("chat is EMPTY")
+        }
+        chatListTblView.reloadData()
+    }
+    //Chat list TableView
+    fileprivate func setupDate(_ dateSent: Date) -> String {
+        let formatter = DateFormatter()
+        var dateString = ""
+        
+        if Calendar.current.isDateInToday(dateSent) == true {
+            dateString = messageTimeDateFormatter.string(from: dateSent)
+        } else if Calendar.current.isDateInYesterday(dateSent) == true {
+            dateString = "Yesterday"
+        } else if dateSent.hasSame([.year], as: Date()) == true {
+            formatter.dateFormat = "d MMM"
+            dateString = formatter.string(from: dateSent)
+        } else {
+            formatter.dateFormat = "d.MM.yy"
+            var anotherYearDate = formatter.string(from: dateSent)
+            if (anotherYearDate.hasPrefix("0")) {
+                anotherYearDate.remove(at: anotherYearDate.startIndex)
+            }
+            dateString = anotherYearDate
+        }
+        
+        return dateString
+    }
     private func openNewDialog(_ newDialog: QBChatDialog) {
         guard let navigationController = navigationController else {
             return
@@ -324,36 +351,118 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if users.count == 0, isSearch == true {
-            tableView.setupEmptyView("No user with that name")
-        } else {
-            tableView.removeEmptyView()
-        }
-        return users.count;
+//        if users.count == 0, isSearch == true {
+//            tableView.setupEmptyView("No user with that name")
+//        } else {
+//            tableView.removeEmptyView()
+//        }
+//        return users.count;
+        
+        if tableView == chatListTblView {
+            return dialogs.count
+               } else {
+                if users.count == 0, isSearch == true {
+                    tableView.setupEmptyView("No user with that name")
+                } else {
+                    tableView.removeEmptyView()
+                }
+                return users.count;
+               }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserCellConstant.reuseIdentifier,
-                                                       for: indexPath) as? UserTableViewCell else {
-                                                        return UITableViewCell()
-        }
-        let user = self.users[indexPath.row]
-        cell.userColor = user.id.generateColor()
-        cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
-       cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
-        cell.tag = indexPath.row
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserCellConstant.reuseIdentifier,
+//                                                       for: indexPath) as? UserTableViewCell else {
+//                                                        return UITableViewCell()
+//        }
+//        let user = self.users[indexPath.row]
+//        cell.userColor = user.id.generateColor()
+//        cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
+//       cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+//        cell.tag = indexPath.row
+//
+//        let lastItemNumber = users.count - 1
+//        if indexPath.row == lastItemNumber {
+//            if isSearch == true, cancel == false {
+//                if let searchText = searchBar.text {
+//                    searchUsers(searchText)
+//                }
+//            } else if isSearch == false, cancelFetch == false {
+//                fetchUsers()
+//            }
+//        }
+//        return cell
         
-        let lastItemNumber = users.count - 1
-        if indexPath.row == lastItemNumber {
-            if isSearch == true, cancel == false {
-                if let searchText = searchBar.text {
-                    searchUsers(searchText)
-                }
-            } else if isSearch == false, cancelFetch == false {
-                fetchUsers()
+        if tableView == chatListTblView,
+               let cell = tableView.dequeueReusableCell(withIdentifier: DialogCellConstant.reuseIdentifier) as? DialogCell {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: DialogCellConstant.reuseIdentifier,
+//                                                           for: indexPath) as? DialogCell else {
+//                return UITableViewCell()
+//            }
+            
+            cell.isExclusiveTouch = true
+            cell.contentView.isExclusiveTouch = true
+            cell.tag = indexPath.row
+            
+            let chatDialog = dialogs[indexPath.row]
+            let cellModel = DialogTableViewCellModel(dialog: chatDialog)
+            
+            tableView.allowsMultipleSelection = false
+            cell.checkBoxImageView.isHidden = true
+            cell.checkBoxView.isHidden = true
+            cell.unreadMessageCounterLabel.isHidden = false
+            cell.unreadMessageCounterHolder.isHidden = false
+            cell.lastMessageDateLabel.isHidden = false
+            cell.contentView.backgroundColor = .clear
+            
+            if let dateSend = chatDialog.lastMessageDate {
+                cell.lastMessageDateLabel.text = setupDate(dateSend)
+            } else if let dateUpdate = chatDialog.updatedAt {
+                cell.lastMessageDateLabel.text = setupDate(dateUpdate)
             }
-        }
-        return cell
+            
+            cell.unreadMessageCounterLabel.text = cellModel.unreadMessagesCounterLabelText
+            cell.unreadMessageCounterHolder.isHidden = cellModel.unreadMessagesCounterHiden
+            
+            cell.dialogLastMessage.text = chatDialog.lastMessageText
+            if chatDialog.lastMessageText == nil && chatDialog.lastMessageID != nil {
+                cell.dialogLastMessage.text = "[Attachment]"
+            }
+            if let dateSend = chatDialog.lastMessageDate {
+                cell.lastMessageDateLabel.text = setupDate(dateSend)
+            } else if let dateUpdate = chatDialog.updatedAt {
+                cell.lastMessageDateLabel.text = setupDate(dateUpdate)
+            }
+            
+            cell.dialogName.text = cellModel.textLabelText.capitalized
+
+            print("cell for row ---> \(Date().timeIntervalSince1970)")
+            print("cellModel.customData\(cellModel.customData)")
+            cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as! String), placeholderImage: UIImage(named: "group"))
+            
+               return cell
+           } else if tableView == tableView,
+               let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell") as? UserTableViewCell {
+                    let user = self.users[indexPath.row]
+                    cell.userColor = user.id.generateColor()
+                    cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
+                   cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+                    cell.tag = indexPath.row
+            
+                    let lastItemNumber = users.count - 1
+                    if indexPath.row == lastItemNumber {
+                        if isSearch == true, cancel == false {
+                            if let searchText = searchBar.text {
+                                searchUsers(searchText)
+                            }
+                        } else if isSearch == false, cancelFetch == false {
+                            fetchUsers()
+                        }
+                    }
+               return cell
+           }
+
+           return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -440,6 +549,29 @@ extension CreateNewDialogViewController: UISearchBarDelegate {
             } else {
                 self?.tableView.setupEmptyView(CreateNewDialogConstant.noUsers)
             }
+        }
+    }
+}
+// MARK: - ChatManagerDelegate
+extension CreateNewDialogViewController: ChatManagerDelegate {
+    func chatManager(_ chatManager: ChatManager, didUpdateChatDialog chatDialog: QBChatDialog) {
+        reloadContent()
+        SVProgressHUD.dismiss()
+    }
+    
+    func chatManager(_ chatManager: ChatManager, didFailUpdateStorage message: String) {
+        SVProgressHUD.showError(withStatus: message)
+    }
+    
+    func chatManager(_ chatManager: ChatManager, didUpdateStorage message: String) {
+        reloadContent()
+        SVProgressHUD.dismiss()
+        QBChat.instance.addDelegate(self)
+    }
+    
+    func chatManagerWillUpdateStorage(_ chatManager: ChatManager) {
+        if navigationController?.topViewController == self {
+            SVProgressHUD.show()
         }
     }
 }

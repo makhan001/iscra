@@ -14,24 +14,36 @@ class GetSubcriptionViewController: UIViewController {
     @IBOutlet weak var lblMiddleText: UILabel!
     @IBOutlet weak var btnGetSubcription: UIButton!
     @IBOutlet weak var btnAllowAds: UIButton!
+    @IBOutlet weak var viewNavigation:NavigationBarView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       setup()
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.viewNavigation.lblTitle.text =  ""
+        self.viewNavigation.delegateBarAction = self
+    }
     
 }
 // MARK:- Instance Methods
-extension GetSubcriptionViewController {
+extension GetSubcriptionViewController : navigationBarAction {
     
     private func setup() {
-        navigationController?.setNavigationBarHidden(false, animated: false)
+//        navigationController?.setNavigationBarHidden(false, animated: false)
         friends_image.image = UIImage(named: "ic-getSubscription")
-        lblHeaderTitle.text = "Dear Adil, we need your support"
+        lblHeaderTitle.text = "Dear \(UserStore.userName ?? ""), we need your support"
         lblMiddleText.text = AppConstant.subscriptionTitle
         [btnGetSubcription, btnAllowAds].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+    }
+    func ActionType()  {
+       // router?.dismiss(controller: .login)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

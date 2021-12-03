@@ -102,11 +102,13 @@ extension WalkthroughViewController  {
     
     private func addMyPictureAction() {
         let addMyPicture: AddMyPictureViewController = AddMyPictureViewController.from(from: .onboarding, with: .addMyPicture)
+        addMyPicture.router = self.router
         self.navigationController?.pushViewController(addMyPicture, animated: true)
 }
     
     private func howToAddMemojiAction() {
       let learnHowToAddMemoji: AddMemojiViewController = AddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
+        learnHowToAddMemoji.router = self.router
         self.navigationController?.pushViewController(learnHowToAddMemoji, animated: true)
 }
     

@@ -18,6 +18,8 @@ class AddMemojiViewController: UIViewController {
     @IBOutlet weak var btnAddPhoto: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var viewNavigation:NavigationBarView!
+    weak var router: NextSceneDismisser?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

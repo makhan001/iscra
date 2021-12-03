@@ -25,8 +25,6 @@ final class AddHabitViewModel {
     weak var view: HabitViewRepresentable?
     
     private func validateHabitInput() {
-//        self.habitName = "Qwerty"
-//        self.description = "Qwerty"
         if habitType == .group{
             if Validation().textValidation(text: habitName, validationType: .habitName).0 {
                 view?.onAction(.requireFields(Validation().textValidation(text: habitName, validationType: .habitName).1))

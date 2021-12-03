@@ -54,4 +54,12 @@ class AppConstant: NSObject {
     static let invalidConfirmPasswordMatch = "New password and confirm password are not match"
     static let emptyDays = "Please select days"
     static let emptyGroupImage = "Please select group image"
+    static let deleteHabit = "Are you sure? The habit will be permanently deleted."
+    static let emptyName = "name can't be empty"
+    static let invalidName = "Please enter valid name"
+    static let emptyDescription = "Description cant be empty"
+    static let invalidDescription = "Description not more than 140 words"
+    static let emptyHabitName = "Habit name can't be empty"
+    static let invalidHabitName = "Habit name not more than 30 words"
 }
+

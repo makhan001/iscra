@@ -119,7 +119,7 @@ extension ReminderViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd-hh:mm a"
          let dateString = dateFormatter.date(from: yourDate)
          let dateTimeStamp  = dateString!.timeIntervalSince1970
-        
+
         if self.viewModel.reminders == true {
             HabitUtils.shared.timer = String(dateTimeStamp)
             self.viewModel.timer = String(dateTimeStamp)
@@ -129,7 +129,7 @@ extension ReminderViewController {
             self.viewModel.timer = ""
         }
         viewModel.onAction(action: .setDaySelection(.daysSelection), for: .daysSelection)
-    
+            
         //        if habitType == .group{
         ////            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
         ////            let vc = storyboard.instantiateViewController(withIdentifier: "AddGroupImageViewController") as! AddGroupImageViewController

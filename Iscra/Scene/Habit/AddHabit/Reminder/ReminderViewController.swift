@@ -129,7 +129,7 @@ extension ReminderViewController {
             self.viewModel.timer = ""
         }
         viewModel.onAction(action: .setDaySelection(.daysSelection), for: .daysSelection)
-            
+
         //        if habitType == .group{
         ////            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
         ////            let vc = storyboard.instantiateViewController(withIdentifier: "AddGroupImageViewController") as! AddGroupImageViewController

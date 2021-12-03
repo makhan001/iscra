@@ -77,7 +77,7 @@ extension AddMyPictureViewController {
             CameraHandler.shared.showActionSheetPrivate(vc: self, isEditable: false, isAlreadyExist: false)
             CameraHandler.shared.camera(allowsEditing: true)
             CameraHandler.shared.imagePickedBlock = { (image) in
-/* get your image here */
+            /* get your image here */
                 self.imgUser.image = image
                 OnboadingUtils.shared.userImage = image
                 self.manageButtonTitle()

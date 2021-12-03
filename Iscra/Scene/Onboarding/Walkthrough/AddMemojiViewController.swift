@@ -21,7 +21,7 @@ class AddMemojiViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-   }
+    }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
@@ -35,12 +35,18 @@ extension AddMemojiViewController: navigationBarAction {
     private func setup() {
         self.navigationItem.title = AppConstant.nav_memoji
         lblHeaderTitle.text = AppConstant.nav_memoji
-        lblFirstSubTitle.text = AppConstant.Sub1Title
+        //lblFirstSubTitle.text = AppConstant.Sub1Title
         lblSecondSubTitle.text = AppConstant.Sub2Title
         lblThirdSubTitle.text = AppConstant.Sub3Title
         [btnAddPhoto, btnCancel].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+        let fullString = NSMutableAttributedString(string: AppConstant.Sub1Title)
+        let image1Attachment = NSTextAttachment()
+        image1Attachment.image = UIImage(named: "ic-addNote-image")
+        let image1String = NSAttributedString(attachment: image1Attachment)
+        fullString.append(image1String)
+        lblFirstSubTitle.attributedText = fullString
     }
     func ActionType()  {
       //  router?.dismiss(controller: .addMyPicture)

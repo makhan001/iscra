@@ -32,6 +32,7 @@ final class HomeViewModel {
 }
 
 extension HomeViewModel: HabitServiceProvierDelegate {
+
     func completed<T>(for action: HabitAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
             if error != nil {

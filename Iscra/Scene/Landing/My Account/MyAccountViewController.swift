@@ -54,7 +54,6 @@ extension MyAccountViewController {
                 return
             }
       }
-
     
 }
 

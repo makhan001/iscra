@@ -100,7 +100,6 @@ class DialogsViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.tabBarController?.tabBar.isHidden = false
         reloadContent()
         QBChat.instance.addDelegate(self)
@@ -136,7 +135,6 @@ class DialogsViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         QBChat.instance.removeDelegate(self)
     }
     
@@ -317,8 +315,7 @@ class DialogsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DialogCellConstant.reuseIdentifier,
-                                                       for: indexPath) as? DialogCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DialogCellConstant.reuseIdentifier,for: indexPath) as? DialogCell else {
             return UITableViewCell()
         }
         
@@ -360,7 +357,7 @@ class DialogsViewController: UITableViewController {
 
         print("cell for row ---> \(Date().timeIntervalSince1970)")
         print("cellModel.customData\(cellModel.customData)")
-        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as! String), placeholderImage: UIImage(named: "group"))
+        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
     
         return cell
     }

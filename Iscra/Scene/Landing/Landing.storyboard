@@ -212,7 +212,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="612.33333333333337"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxE-cT-KuF" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                        <rect key="frame" x="50" y="534.33333333333337" width="314" height="0.0"/>
+                                                        <rect key="frame" x="50" y="527.33333333333337" width="314" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" name="BlackAccent"/>
                                                         <nil key="highlightedColor"/>
@@ -226,7 +226,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jda-y7-1cp" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                        <rect key="frame" x="50" y="552.33333333333337" width="314" height="0.0"/>
+                                                        <rect key="frame" x="50" y="547.33333333333337" width="314" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" name="BlackAccent"/>
                                                         <nil key="highlightedColor"/>
@@ -240,9 +240,9 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="jda-y7-1cp" firstAttribute="top" secondItem="WxE-cT-KuF" secondAttribute="bottom" constant="18" id="EFb-WX-VfD"/>
+                                                    <constraint firstItem="jda-y7-1cp" firstAttribute="top" secondItem="WxE-cT-KuF" secondAttribute="bottom" constant="20" id="EFb-WX-VfD"/>
                                                     <constraint firstAttribute="trailing" secondItem="WxE-cT-KuF" secondAttribute="trailing" constant="50" id="VKs-JF-QS7"/>
-                                                    <constraint firstAttribute="bottom" secondItem="jda-y7-1cp" secondAttribute="bottom" constant="60" id="gcn-TU-rks"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jda-y7-1cp" secondAttribute="bottom" constant="65" id="gcn-TU-rks"/>
                                                     <constraint firstItem="jda-y7-1cp" firstAttribute="leading" secondItem="RrV-qg-wug" secondAttribute="leading" constant="50" id="rf4-81-MNf"/>
                                                     <constraint firstAttribute="trailing" secondItem="jda-y7-1cp" secondAttribute="trailing" constant="50" id="v4E-0f-Rbg"/>
                                                     <constraint firstItem="WxE-cT-KuF" firstAttribute="leading" secondItem="RrV-qg-wug" secondAttribute="leading" constant="50" id="yr9-NC-IQq"/>

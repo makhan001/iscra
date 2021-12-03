@@ -93,15 +93,21 @@ extension HabitNameViewController: UITextFieldDelegate {
         }
         return false
     }
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == txtFieldTitle {
-            if let text = txtFieldTitle.text, let textRange = Range(range, in: text) {
-                let updatedText = text.replacingCharacters(in: textRange, with: string)
-                viewModel.habitName = updatedText
+       let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
+        if newLength <= 30 {
+            if textField == txtFieldTitle {
+                if let text = txtFieldTitle.text, let textRange = Range(range, in: text) {
+                    let updatedText = text.replacingCharacters(in: textRange, with: string)
+                    viewModel.habitName = updatedText
+                }
             }
+            return true
+        } else {
+            return false
         }
-        return true
+       
     }
 }
 

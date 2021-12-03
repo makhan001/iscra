@@ -21,7 +21,6 @@ class InviteFriendViewController: UIViewController {
     @IBOutlet weak var lblMiddleText: UILabel!
     @IBOutlet weak var btnInviteFriends: UIButton!
     @IBOutlet weak var btnMaybeLetter: UIButton!
-    @IBOutlet weak var viewNavigation:NavigationBarView!
     
     var habitType: HabitType = .good
     weak var delegateInvite : InviteNavigation?
@@ -33,13 +32,12 @@ class InviteFriendViewController: UIViewController {
         print("self.router is \(self.router)")
     }
 }
+
 // MARK:- Instance Methods
 extension InviteFriendViewController {
     
     private func setup() {
         setUpView(habitType:habitType)
-        self.viewNavigation.lblTitle.text = ""
-        self.viewNavigation.delegateBarAction = self
         navigationController?.setNavigationBarHidden(true, animated: false)
         if habitType == .group{
             btnMaybeLetter.setTitle("Share public", for: .normal)
@@ -81,33 +79,23 @@ extension InviteFriendViewController  {
             break
         }
     }
+    
     private func InviteFriendsAction() {
         print("InviteFriendsAction")
-        //        delegateInvite?.navigate(inviteType: .inviteFriend)
-        //        self.dismiss(animated: true, completion: nil)
-        // self.showToast(message: "Under development", seconds: 0.5)
-        self.router?.dismiss(controller: .addHabit)
+        self.showToast(message: "Under development", seconds: 0.5)
+
+        // delegateInvite?.navigate(inviteType: .inviteFriend)
+        //self.router?.dismiss(controller: .addHabit)
     }
+    
     private func MaybeLetterAction() {
         //        delegateInvite?.navigate(inviteType: .mayBeLatter)
-        //        self.dismiss(animated: true, completion: nil)
         if self.btnMaybeLetter.currentTitle == "Share public" {
             print("Share public")
         }else{
             print("MaybeLetterAction")
         }
-        //   self.showToast(message: "Under development", seconds: 0.5)
-        
-        self.router?.dismiss(controller: .addHabit)
-    }
-}
-
-// MARK: navigationBarAction Callback
-extension InviteFriendViewController  : navigationBarAction {
-    
-    func ActionType()  {
-        router?.dismiss(controller: .addHabit)
-        //  self.dismiss(animated: true, completion: nil)
-        // self.showToast(message: "Under development", seconds: 0.5)
+      ///  self.router?.dismiss(controller: .addHabit)
+        self.router?.push(scene: .landing)
     }
 }

@@ -16,7 +16,8 @@ final class HabitNameCoordinator: Coordinator<Scenes> {
     let selectHabitPopUp: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
     
     private var myAccount: MyAccountCoordinator!
-    
+    private var landing: LandingCoordinator!
+
     override func start() {
         super.start()
         router.setRootModule(controller, hideBar: true)
@@ -35,6 +36,15 @@ final class HabitNameCoordinator: Coordinator<Scenes> {
         selectHabitPopUp.router = self
     }
     
+    private func startLanding() {
+        router.dismissModule(animated: false, completion: nil)
+        landing = LandingCoordinator(router: Router())
+        add(landing)
+        landing.delegate = self
+        landing.start()
+        self.router.present(landing, animated: false)
+    }
+    
     private func startHabitName() {
 //        habitName = HabitNameCoordinator(router: Router())
 //        add(habitName)
@@ -49,6 +59,7 @@ extension HabitNameCoordinator: NextSceneDismisser {
     func push(scene: Scenes) {
         switch scene {
         case .selectHabitPopUp: startHabitName()
+        case .landing: startLanding()
         default: break
         }
     }

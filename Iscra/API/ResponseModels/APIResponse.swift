@@ -20,12 +20,14 @@ struct DataClass: Codable {
     var user: User?
     var habit: Habit?
     var habits: [AllHabits]?
+
     enum CodingKeys: String, CodingKey {
         case register, user, habit, habits
         case loginData = "login_data"
         case forgotPassword = "forgot_password"
     }
 }
+
 // MARK: - Register
 struct Register: Codable {
     var id: Int?

@@ -10,7 +10,6 @@ import Foundation
 final class HabitServiceProvider: HabitServiceProvidable {
    
     var delegate: HabitServiceProvierDelegate?
-
     private let task = UserTask()
 
     func createHabit(param: HabitParams.CreateHabit) {

@@ -16,13 +16,15 @@ class HabitNameViewController: UIViewController {
     @IBOutlet weak var viewDescription:UIView!
     @IBOutlet weak var txtFieldTitle:UITextField!
     @IBOutlet weak var txtViewDescription:UITextView!
+    @IBOutlet weak var viewNavigation:NavigationBarView!
 
     weak var router: NextSceneDismisser?
-    let viewModel = HabitNameViewModel()
+    let viewModel = AddHabitViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        print("self.router is \(self.router)")
     }
     
 }
@@ -30,8 +32,10 @@ class HabitNameViewController: UIViewController {
 extension HabitNameViewController {
     func setup() {
         self.viewModel.view = self
+        self.viewNavigation.lblTitle.text = ""
+        self.viewNavigation.delegateBarAction = self
         self.lblUserName.text = "Alright \(UserStore.userName!), let’s \ndefine your habit"
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         [btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -58,13 +62,14 @@ extension HabitNameViewController {
     }
     
     private func NextClick() {
-        HabitUtils.shared.habitType = viewModel.habitType
+        HabitUtils.shared.habitType = self.viewModel.habitType
         viewModel.onAction(action: .inputComplete(.createHabit), for: .createHabit)
         viewModel.didNavigateToSetTheme = {
             isNavigate in
             if isNavigate{
                 let setTheme: SetThemeViewController = SetThemeViewController.from(from: .habit, with: .setTheme)
-                setTheme.habitType = self.viewModel.habitType
+                setTheme.router = self.router
+               // setTheme.habitType = self.viewModel.habitType
                        self.navigationController?.pushViewController(setTheme, animated: true)
             }
         }
@@ -75,7 +80,7 @@ extension HabitNameViewController {
 extension HabitNameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if viewModel.habitType == .group {
+        if self.viewModel.habitType == .group {
             if textField == self.txtFieldTitle {
                 self.txtViewDescription.becomeFirstResponder()
             } else {
@@ -147,3 +152,10 @@ extension HabitNameViewController: HabitViewRepresentable {
     
 }
 
+// MARK: navigationBarAction Callback
+extension HabitNameViewController  : navigationBarAction {
+    
+    func ActionType()  {
+        router?.dismiss(controller: .addHabit)
+    }
+}

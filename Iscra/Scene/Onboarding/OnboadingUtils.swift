@@ -15,6 +15,6 @@ class OnboadingUtils {
     
     // MARK: -
     var username: String = ""
-    var userImage: UIImage = UIImage()
+    var userImage: UIImage?
 
 }

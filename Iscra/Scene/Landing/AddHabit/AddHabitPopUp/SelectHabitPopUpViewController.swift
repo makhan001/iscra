@@ -7,10 +7,10 @@
 
 
 import UIKit
-enum HabitType {
-    case good
-    case bad
-    case group
+enum HabitType: String {
+    case good = "good"
+    case bad = "bad"
+    case group = "group"
 }
 
 protocol SelectHabitPopUpDelegate: AnyObject {

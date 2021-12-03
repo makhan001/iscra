@@ -59,7 +59,7 @@ class Validation {
             return( text == "" ? true :
                        isTextContainspecialCharacters(string: text) == true ? true : false,
                        // Validation().isValidname(name: text) == false ? true : false,
-                    text == "" ? "Field cant be empty" : "Please enter valid name")
+                    text == "" ? "Field can't be empty" : "Please enter valid name")
             
         case .description:
             return( text == "" ? true :
@@ -67,9 +67,10 @@ class Validation {
                     text == "" ? "Description cant be empty" : "Description not more than 140 words")
             
         case .habitName:
+            
             return( text == "" ? true :
-                        isTextContainspecialCharacters(string: text) == true ? true : false,
-                    text == "" ? "Habit name cant be empty" : "Please enter valid habit name")
+                        text.count > 30 ? true : false,
+                    text == "" ? "Habit name can't be empty" : "Habit name not more than 30 words")
         }
     }
     

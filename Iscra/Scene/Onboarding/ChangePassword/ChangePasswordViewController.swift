@@ -21,30 +21,36 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet var changePasswordView: UIView!
     @IBOutlet weak var customView: UIView!
     private let viewModel: ChangePasswordViewModel = ChangePasswordViewModel(provider: OnboardingServiceProvider())
-    
+    @IBOutlet weak var viewNavigation:NavigationBarView!
     weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = AppConstant.nav_shangpassword
+       // self.navigationItem.title = AppConstant.nav_shangpassword
         setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
        // print("self.router is \(self.router)")
+        self.viewNavigation.lblTitle.text =  "Change password"
+        self.viewNavigation.delegateBarAction = self
     }
 }
 
 // MARK: Instance Methods
-extension ChangePasswordViewController {
+extension ChangePasswordViewController: navigationBarAction {
     private func setup() {
         viewModel.view = self
         [btnChangePassword,btnForgotPassword,btnShowCurrentPassword,btnShowNewPassword,btnShowConfirmPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         
+    }
+    func ActionType()  {
+        //router?.dismiss(controller: .login)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

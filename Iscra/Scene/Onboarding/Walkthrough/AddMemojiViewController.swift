@@ -17,19 +17,21 @@ class AddMemojiViewController: UIViewController {
     @IBOutlet weak var lblThirdSubTitle: UILabel!
     @IBOutlet weak var btnAddPhoto: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
-    
+    @IBOutlet weak var viewNavigation:NavigationBarView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
    }
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        self.viewNavigation.lblTitle.text =  "Memoji"
+        self.viewNavigation.delegateBarAction = self
     }
 }
 
 // MARK: Instance Methods
-extension AddMemojiViewController {
+extension AddMemojiViewController: navigationBarAction {
     private func setup() {
         self.navigationItem.title = AppConstant.nav_memoji
         lblHeaderTitle.text = AppConstant.nav_memoji
@@ -39,6 +41,10 @@ extension AddMemojiViewController {
         [btnAddPhoto, btnCancel].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+    }
+    func ActionType()  {
+      //  router?.dismiss(controller: .addMyPicture)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 // MARK:- Button Action

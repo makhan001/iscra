@@ -20,11 +20,11 @@ class VerificationViewController: UIViewController {
     @IBOutlet weak var otpTextFieldFourth: UITextField!
     @IBOutlet weak var verificationTransparentView: UIView!
     @IBOutlet weak var lblTimer: UILabel!
-
+    
     weak var router: NextSceneDismisser?
     weak var delegate: VerificationViewControllerDelegate?
     var secondsRemaining = 30
-
+    
     private let viewModel: VerificationViewModel = VerificationViewModel(provider: OnboardingServiceProvider())
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class VerificationViewController: UIViewController {
         addBottomLayerTo(textField: otpTextFieldThird)
         addBottomLayerTo(textField: otpTextFieldFourth)
         
-       
+        
         
     }
     func addBottomLayerTo(textField: UITextField) {
@@ -72,26 +72,26 @@ extension VerificationViewController {
         self.lblTimer.isHidden = false
         self.secondsRemaining = 30
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
-               if self.secondsRemaining > 0 {
-              
+            if self.secondsRemaining > 0 {
+                
                 let attrs1 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .regular), NSAttributedString.Key.foregroundColor : UIColor.black]
                 
                 let attrs2 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .regular), NSAttributedString.Key.foregroundColor : UIColor(named: "PrimaryAccent")]
-
+                
                 let attributedString1 = NSMutableAttributedString(string:"Resend code in ", attributes:attrs1)
-
+                
                 let attributedString2 = NSMutableAttributedString(string:"\(self.secondsRemaining) seconds", attributes:attrs2)
-
+                
                 attributedString1.append(attributedString2)
                 self.lblTimer.attributedText = attributedString1
-                   //self.lblTimer.text = "  code in " + "\(self.secondsRemaining) seconds"
-                   self.secondsRemaining -= 1
-               } else {
+                self.lblTimer.text = "Resend code in " + "\(self.secondsRemaining) seconds"
+                self.secondsRemaining -= 1
+            } else {
                 self.btnResendCode.isHidden = false
                 self.lblTimer.isHidden = true
-                   Timer.invalidate()
-               }
-           }
+                Timer.invalidate()
+            }
+        }
     }
 }
 // MARK:- Button Action
@@ -167,7 +167,7 @@ extension VerificationViewController: UITextFieldDelegate {
         }
         return true
     }
-   
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

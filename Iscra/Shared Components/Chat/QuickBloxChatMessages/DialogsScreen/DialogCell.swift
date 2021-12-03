@@ -31,6 +31,7 @@ class DialogCell: UITableViewCell {
         unreadMessageCounterHolder.layer.cornerRadius = 6.0
        // dialogAvatarLabel.setRoundedLabel(cornerRadius: 20.0)
         imgTitle.setRoundedView(cornerRadius: 20.0)
+      
     }
 
     // MARK: - Overrides

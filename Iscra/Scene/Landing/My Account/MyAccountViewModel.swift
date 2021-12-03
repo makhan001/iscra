@@ -12,7 +12,7 @@ final class MyAccountViewModel {
     
     var email: String = ""
     var password: String = ""
-    var username: String = OnboadingUtils.shared.username // singeleton class
+    var username: String = ""
     var selectedImage: UIImage = UIImage()
     let provider: OnboardingServiceProvidable
     weak var view: OnboardingViewRepresentable?
@@ -32,7 +32,7 @@ final class MyAccountViewModel {
         self.provider.logout(param: UserParams.logout())
     }
     private func validateUserInput() {
-        let parameters =  UserParams.UpdateProfile(username: username)
+        let parameters =  UserParams.UpdateProfile(username: UserStore.userName)
         WebService().requestMultiPart(urlString: "/users/update",
                                       httpMethod: .put,
                                       parameters: parameters,

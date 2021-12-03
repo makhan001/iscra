@@ -61,9 +61,9 @@ struct HabitRequests: RequestRepresentable {
     var endpoint: String {
         switch self.requestType {
         case .createHabit:
-            return "habits"
+            return "habits/add_habit"
         case .allHabitList:
-            return "habits"
+            return "habits/fetch_habit"
         case .updateHabit:
             return "habits/edit"
         case .deleteHabit:
@@ -78,7 +78,7 @@ struct HabitRequests: RequestRepresentable {
         case .createHabit:
             return .body(data: encodeBody(data: createHabit))
         case .allHabitList:
-            return .body(data: encodeBody(data: allHabitList))
+            return .none
         case .updateHabit:
             return .body(data: encodeBody(data: updateHabit))
         case .deleteHabit:

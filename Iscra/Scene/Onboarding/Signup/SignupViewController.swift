@@ -40,13 +40,6 @@ extension SignupViewController {
         [btnRegister, btnGoogle, btnApple, btnShowPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        
-//        if TARGET_OS_SIMULATOR == 1 {
-//            viewModel.email = "user87@gmail.com"
-//            viewModel.password = "123456"
-//            txtEmail.text = viewModel.email
-//            txtPassword.text = viewModel.password
-//        }
     }
 }
 

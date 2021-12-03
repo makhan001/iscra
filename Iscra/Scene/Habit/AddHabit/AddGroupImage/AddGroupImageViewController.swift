@@ -13,18 +13,24 @@ class AddGroupImageViewController: UIViewController {
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var imgGroup: UIImageView!
     @IBOutlet weak var btnImagePicker: UIButton!
+    @IBOutlet weak var viewNavigation:NavigationBarView!
     var habitType : HabitType = .good
-    private let viewModel = HabitNameViewModel()
+    private let viewModel = AddHabitViewModel()
+    weak var router: NextSceneDismisser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         SetUp()
+        print("self.router is \(self.router)")
     }
 }
 
 extension AddGroupImageViewController {
     func SetUp() {
         viewModel.view = self
+        self.viewNavigation.lblTitle.text = ""
+        self.viewNavigation.delegateBarAction = self
+        navigationController?.setNavigationBarHidden(true, animated: false)
         [btnSkip, btnNext, btnImagePicker].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -63,11 +69,14 @@ extension AddGroupImageViewController {
     }
     
     private func skipClick() {
-        let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
-        inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        inviteFriend.habitType = habitType
-        inviteFriend.delegateInvite = self
-        self.present(inviteFriend, animated: true, completion: nil)
+        
+        self.viewModel.apiForCreateHabit()
+        
+//        let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
+//        inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//        inviteFriend.habitType = habitType
+//        inviteFriend.delegateInvite = self
+//        self.present(inviteFriend, animated: true, completion: nil)
     }
     
     private func imageClick() {
@@ -133,7 +142,9 @@ extension AddGroupImageViewController: UINavigationControllerDelegate, UIImagePi
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let tempImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        imgGroup.image  = tempImage
+        imgGroup.image = tempImage
+        self.viewModel.groupImage = tempImage
+        //HabitUtils.shared.groupImage = tempImage
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -149,12 +160,31 @@ extension AddGroupImageViewController: HabitViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-        case .callApi(true):
-            self.viewModel.apiForCreateHabit()
-            break
+        case let .sucessMessage(msg):
+            self.showToast(message: msg, seconds: 0.5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
+                inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                inviteFriend.habitType = self.habitType
+                inviteFriend.delegateInvite = self
+                inviteFriend.router = self.router
+                self.present(inviteFriend, animated: true, completion: nil)
+            }
+//        case .callApi(true):
+//            self.viewModel.apiForCreateHabit()
+//            break
         default:
             break
         }
     }
     
+}
+// MARK: navigationBarAction Callback
+extension AddGroupImageViewController  : navigationBarAction {
+    
+    func ActionType()  {
+       // router?.dismiss(controller: .addHabit)
+       // self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+    }
 }

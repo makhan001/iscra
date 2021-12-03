@@ -10,7 +10,6 @@ import Foundation
 
 final class UpdateProfileViewModel {
     
-
     var username: String = ""
     var selectedImage: UIImage = UIImage()
     var delegate: OnboardingServiceProvierDelegate?
@@ -53,7 +52,7 @@ final class UpdateProfileViewModel {
                 if let response = resp as? SuccessResponseModel  {
                     if response.status == true {
                         UserStore.save(token: response.data?.user?.authenticationToken)
-                        UserStore.save(userName: response.data?.user?.username)
+                        UserStore.save(userName: response.data?.user?.username?.capitalized)
                         print("updateProfileApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)

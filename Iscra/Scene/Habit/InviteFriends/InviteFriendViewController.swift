@@ -82,22 +82,20 @@ extension InviteFriendViewController  {
     
     private func InviteFriendsAction() {
         print("InviteFriendsAction")
-        //        delegateInvite?.navigate(inviteType: .inviteFriend)
-        //        self.dismiss(animated: true, completion: nil)
         self.showToast(message: "Under development", seconds: 0.5)
+
+        // delegateInvite?.navigate(inviteType: .inviteFriend)
         //self.router?.dismiss(controller: .addHabit)
     }
     
     private func MaybeLetterAction() {
         //        delegateInvite?.navigate(inviteType: .mayBeLatter)
-        //        self.dismiss(animated: true, completion: nil)
         if self.btnMaybeLetter.currentTitle == "Share public" {
             print("Share public")
         }else{
             print("MaybeLetterAction")
         }
-        //   self.showToast(message: "Under development", seconds: 0.5)
-        self.router?.dismiss(controller: .addHabit)
-       // self.router?.push(scene: .landing)
+      ///  self.router?.dismiss(controller: .addHabit)
+        self.router?.push(scene: .landing)
     }
 }

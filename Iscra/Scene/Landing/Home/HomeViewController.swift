@@ -28,8 +28,11 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // print("self.router is \(self.router)")
-        self.lblUserName.text = "Hi," + (UserStore.userName ?? "").capitalized
+        if let first = (UserStore.userName ?? "").components(separatedBy: " ").first {
+            self.lblUserName.text = "Hi," + first.capitalized
+        }else{
+            self.lblUserName.text = "Hi," + (UserStore.userName ?? "").capitalized
+        }
         self.viewModel.fetchHabitList()
     }
 }

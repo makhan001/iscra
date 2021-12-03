@@ -89,7 +89,7 @@ extension ForgotPasswordViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-        case let .changePassword(msg):
+        case let .forgotPassword(msg):
             self.showToast(message: msg, seconds: 0.5)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.navigationController?.popViewController(animated: true)

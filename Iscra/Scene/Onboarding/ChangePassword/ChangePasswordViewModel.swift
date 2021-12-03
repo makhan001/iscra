@@ -47,13 +47,12 @@ final class ChangePasswordViewModel {
         
         if newPassword != confirmPassword {
             view?.onAction(.requireFields(AppConstant.invalidConfirmPasswordMatch))
-        }
-        
-        if password == newPassword {
+        }else if password == newPassword {
             view?.onAction(.requireFields(AppConstant.invalidCurrentPasswordMatch))
-        }
+        }else{
         
         self.provider.changePassword(param: UserParams.ChangePassword(current_password: password, new_password: newPassword))
+        }
     }
 }
 

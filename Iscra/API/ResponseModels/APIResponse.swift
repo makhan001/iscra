@@ -17,6 +17,7 @@ struct DataClass: Codable {
     var register: Register?
     var loginData: LoginData?
     var forgotPassword: String?
+    var verificationCode: Int?
     var user: User?
     var habit: Habit?
     var habits: [AllHabits]?
@@ -25,6 +26,7 @@ struct DataClass: Codable {
         case register, user, habit, habits
         case loginData = "login_data"
         case forgotPassword = "forgot_password"
+        case verificationCode = "verification_code"
     }
 }
 

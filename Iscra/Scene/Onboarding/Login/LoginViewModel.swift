@@ -47,7 +47,6 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
             if error != nil {
-             //   self.view?.onAction(.errorMessage(ERROR_MESSAGE))
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200 {

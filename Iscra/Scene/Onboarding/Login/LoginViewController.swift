@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     
@@ -21,8 +21,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtEmail:UITextField!
     @IBOutlet weak var txtPassword:UITextField!
     @IBOutlet weak var viewNavigation:NavigationBarView!
+    
     weak var router: NextSceneDismisser?
     private let viewModel: LoginViewModel = LoginViewModel(provider: OnboardingServiceProvider())
+    let signInConfig = GIDConfiguration.init(clientID: AppConstant.googleClientID)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,14 +51,6 @@ extension LoginViewController  : navigationBarAction {
         [btnLogin, btnApple, btnGoogle, btnShowPassword, btnForgotPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-
-//        if TARGET_OS_SIMULATOR == 1 {
-//            viewModel.email = "user74@gmail.com"
-//            viewModel.password = "123456"
-//            txtEmail.text = viewModel.email
-//            txtPassword.text = viewModel.password
-//        }
-
     }
     
     func ActionType()  {
@@ -100,12 +94,31 @@ extension LoginViewController {
     }
     
     private func loginGoogleAction() {
-        print("loginGoogleAction")
+        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+           guard error == nil else { return }
+//            print(user?.authentication.accessToken)
+//            print(user?.authentication.idToken)
+//            print(user?.profile?.email)
+//            print(user?.profile?.name)
+//            print(user?.profile?.hasImage)
+            self.viewModel.onAction(action: .inputComplete(.socialLogin), for: .socialLogin)
+         }
     }
     
     private func loginAppleAction() {
-        print("loginAppleAction")
+        if #available(iOS 13.0, *) {
+          let appleIDProvider = ASAuthorizationAppleIDProvider()
+          let request = appleIDProvider.createRequest()
+          request.requestedScopes = [.fullName, .email]
+          let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+          authorizationController.delegate = self
+          authorizationController.presentationContextProvider = self
+          authorizationController.performRequests()
+        } else {
+          // Fallback on earlier versions
+        }
     }
+    
     
     private func showPasswordAction() {
         if self.btnShowPassword.isSelected {
@@ -118,9 +131,6 @@ extension LoginViewController {
     }
     
     private func forgotPasswordAction() {
-//        let VC = storyboard?.instantiateViewController(withIdentifier: "forgot") as! ForgotPasswordViewController
-//        navigationController?.pushViewController(VC, animated: true)
-        
         let forgot: ForgotPasswordViewController = ForgotPasswordViewController.from(from: .onboarding, with: .forgot)
         self.navigationController?.pushViewController(forgot, animated: true)
 
@@ -179,3 +189,15 @@ extension LoginViewController: OnboardingViewRepresentable {
     }
 }
 
+extension LoginViewController: ASAuthorizationControllerDelegate {
+  @available(iOS 13.0, *)
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
+      self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
+    }
+  }
+  @available(iOS 13.0, *)
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    print(error.localizedDescription)
+  }
+}

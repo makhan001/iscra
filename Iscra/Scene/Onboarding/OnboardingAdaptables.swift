@@ -10,6 +10,7 @@ import Foundation
 enum OnboardingScreenType: String {
     case signup
     case login
+    case socialLogin
     case verification
     case forgotPassword
     case changePassword
@@ -24,17 +25,12 @@ enum OnboardingAction {
     case errorMessage(_ text:String)
     case register
     case login(_ text:String, _ is_varified:Bool)
+    case socialLogin(_ text:String)
     case landing
     case verification(_ text:String)
     case resendVerification
     case forgotPassword(_ text:String )
     case changePassword(_ text:String)
-    case socialLogin
-    case terms
-    case privacy
-    case feedback
-    case staticContent
-    case sessionExpired
     case logout
     case updateProfile
 }

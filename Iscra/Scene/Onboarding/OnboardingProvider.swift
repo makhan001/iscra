@@ -79,14 +79,10 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
     func socialLogin(param: UserParams.SocialLogin) {
         task.socialLogin(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .socialLogin, with: resp, with: err)
+                self?.delegate?.completed(for: .socialLogin(resp?.message ?? ""), with: resp, with: err)
                 return
             }
-            //            if (resp?.status) != 0 {
-            //                UserStore.save(userID: "\((resp?.data?.socialLogin?.userID)!)")
-            //                UserStore.save(token: "\((resp?.data?.socialLogin?.authorization)!)")
-            //            }
-            self?.delegate?.completed(for: .socialLogin, with: resp, with: nil)
+            self?.delegate?.completed(for: .socialLogin(resp?.message ?? ""), with: resp, with: nil)
         }
     }
     

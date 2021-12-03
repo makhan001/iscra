@@ -67,6 +67,7 @@ extension IconPopupViewController: selectedIconCatogory , selectedIcon{
                 if dict?.value == 0 {
                     iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].value = 1
                     selectedIcon = iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].iconName ?? "sport1"
+                    delegateIcon?.selectedIcon(Icon: selectedIcon)
                 }
                 else {
                     iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].value = 0

@@ -37,14 +37,20 @@ extension HomeViewModel: HabitServiceProvierDelegate {
             if error != nil {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
-                if let resp = response as? SuccessResponseModel, resp.code == 200 {
-                    self.habitList = resp.data!.habits
+                if let resp = response as? SuccessResponseModel, resp.code == 200, let habitList = resp.data?.habits {
+                    self.habitList = habitList
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
+                } else if let resp = response as? SuccessResponseModel, resp.code == 200, let status = resp.status {
+                   // self.view?.onAction(.isHabitDelete(true))
+                    if status == true {
+                        print("data is nil")
+                      //  self.view?.onAction(.isHabitDelete(true))
+                        self.view?.onAction(.isHabitDelete(true, resp.message ?? ""))
+                    }
                 } else {
-                    self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
+                    self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }
             }
+        }
     }
-    
-}
 }

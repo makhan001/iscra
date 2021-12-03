@@ -19,24 +19,20 @@ struct SuccessResponseModel: Codable {
 
 // MARK: - DataClass
 struct DataClass: Codable {
-
     var register: Register?
     var loginData: LoginData?
     var forgotPassword: String?
     var user: User?
     var habit: Habit?
-    var habits: [AllHabits]
+    var habits: [AllHabits]?
 
     enum CodingKeys: String, CodingKey {
-        case register
+        case register, user, habit, habits
         case loginData = "login_data"
         case forgotPassword = "forgot_password"
-        case user
-        case habit
-        case habits
-       // case username = "username"
     }
 }
+
 // MARK: - Register
 struct Register: Codable {
   var id: Int?

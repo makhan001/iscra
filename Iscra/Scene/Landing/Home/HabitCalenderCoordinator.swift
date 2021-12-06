@@ -20,14 +20,15 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
     
     func start(habitId: Int) {
         super.start()
-//        controller.viewModel.habitId = habitId
+        print("habitId is HabitCalenderCoordinator  \(habitId)")
+       controller.viewModel.habitId = habitId
+      //  controller.habitId = habitId
         router.setRootModule(controller, hideBar: true)
         self.onStart()
     }
 
     private func onStart() {
         controller.router = self
-//        controller.strHabitId = 5
     }
 
     private func startHabitCalender() {

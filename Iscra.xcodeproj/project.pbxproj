@@ -19,6 +19,8 @@
 		0456AE9B2750D1E300DB3ED4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */; };
 		045791DF27549EAA006E0410 /* MyAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */; };
 		045791E22754AA67006E0410 /* HabitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045791E12754AA67006E0410 /* HabitUtils.swift */; };
+		0496E011275E0253005C982A /* HabitCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E010275E0253005C982A /* HabitCalenderViewModel.swift */; };
+		0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */; };
 		04A79DDE27575A8D009ADC89 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A79DDD27575A8C009ADC89 /* HabitModel.swift */; };
 		04BE94092750B13200503123 /* HabitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE94082750B13200503123 /* HabitRequests.swift */; };
 		04BE940C2750BC1A00503123 /* HabitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE940B2750BC1A00503123 /* HabitProvider.swift */; };
@@ -300,6 +302,8 @@
 		0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountCoordinator.swift; sourceTree = "<group>"; };
 		045791E12754AA67006E0410 /* HabitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitUtils.swift; sourceTree = "<group>"; };
+		0496E010275E0253005C982A /* HabitCalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderViewModel.swift; sourceTree = "<group>"; };
+		0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCircularProgressBar.swift; sourceTree = "<group>"; };
 		04A79DDD27575A8C009ADC89 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		04BE94082750B13200503123 /* HabitRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRequests.swift; sourceTree = "<group>"; };
 		04BE940B2750BC1A00503123 /* HabitProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitProvider.swift; sourceTree = "<group>"; };
@@ -604,6 +608,14 @@
 				0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */,
 			);
 			path = Table;
+			sourceTree = "<group>";
+		};
+		0496E013275E41B3005C982A /* CircularProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */,
+			);
+			path = CircularProgressBar;
 			sourceTree = "<group>";
 		};
 		527A79552898470E2C294946 /* Frameworks */ = {
@@ -1436,6 +1448,7 @@
 			isa = PBXGroup;
 			children = (
 				887994DA273AB38D00904D1F /* HabitCalenderViewController.swift */,
+				0496E010275E0253005C982A /* HabitCalenderViewModel.swift */,
 			);
 			path = HabitCalender;
 			sourceTree = "<group>";
@@ -1622,6 +1635,7 @@
 		88E028582716F73F00D90BB1 /* Shared Components */ = {
 			isa = PBXGroup;
 			children = (
+				0496E013275E41B3005C982A /* CircularProgressBar */,
 				5FF6CC8D274E6A5A007ADC2F /* Chat */,
 				8827C3BF2750C0DD009D12C4 /* CameraHandler */,
 				88269DAD2744E046006A9F43 /* NavigationBar */,
@@ -2009,6 +2023,7 @@
 				880F3E412727EFFE007CA895 /* IconHeader.swift in Sources */,
 				8814B4372743874100A6DE01 /* APIParser.swift in Sources */,
 				88E0289D2716FFE500D90BB1 /* SignupViewController.swift in Sources */,
+				0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */,
 				880F3E362727EC73007CA895 /* IconPopupViewController.swift in Sources */,
 				8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */,
 				5FF6CD3A274E6A5A007ADC2F /* CacheManager.swift in Sources */,
@@ -2172,6 +2187,7 @@
 				5FF6CD64274E6A5A007ADC2F /* HeaderCollectionReusableView.swift in Sources */,
 				04C99D4A2759FEF5002D5B7F /* ForgotPasswordViewModel.swift in Sources */,
 				5FF6CD29274E6A5A007ADC2F /* URL+Extention.swift in Sources */,
+				0496E011275E0253005C982A /* HabitCalenderViewModel.swift in Sources */,
 				5FF6CD5A274E6A5A007ADC2F /* ChatDataSource.swift in Sources */,
 				5FF6CD2C274E6A5A007ADC2F /* UIView+Extention.swift in Sources */,
 				88B4A228271FFA8100488AA3 /* AddMemojiViewController.swift in Sources */,

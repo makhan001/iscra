@@ -58,9 +58,11 @@ extension MyAccountPopupViewController {
     {
         if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
         {
-            imagePicker.sourceType = UIImagePickerController.SourceType.camera
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self;
+            imagePickerController.sourceType = UIImagePickerController.SourceType.camera
+            imagePickerController.allowsEditing = true
+            self.present(imagePickerController, animated: true, completion: nil)
         }
         else
         {
@@ -68,6 +70,7 @@ extension MyAccountPopupViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+     
     }
     
     func openGallary()

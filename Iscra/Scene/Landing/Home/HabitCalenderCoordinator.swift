@@ -17,10 +17,17 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
         router.setRootModule(controller, hideBar: true)
         self.onStart()
     }
+    
+    func start(habitId: Int) {
+        super.start()
+//        controller.viewModel.habitId = habitId
+        router.setRootModule(controller, hideBar: true)
+        self.onStart()
+    }
 
     private func onStart() {
         controller.router = self
-        controller.strHabitId = 5
+//        controller.strHabitId = 5
     }
 
     private func startHabitCalender() {

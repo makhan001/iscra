@@ -12,11 +12,11 @@ class LandingTabBarController: UITabBarController {
     let kBarHeight: CGFloat = 100
     weak var router: NextSceneDismisser?
     
-    private var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
-    private var myChat: MyChatViewController = MyChatViewController.from(from: .landing, with: .myChat)
-    private var addHabit: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
-    private var community: CommunityViewController = CommunityViewController.from(from: .landing, with: .community)
-    private var myAccount: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
+    var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
+    var myChat: MyChatViewController = MyChatViewController.from(from: .landing, with: .myChat)
+    var addHabit: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
+    var community: CommunityViewController = CommunityViewController.from(from: .landing, with: .community)
+    var myAccount: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,9 +168,9 @@ extension LandingTabBarController: SelectHabitPopUpDelegate{
     func addHabit(type: HabitType) {
         router?.push(scene: .selectHabitPopUp)
         
-//        let addHabit: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .addHabit)
-//        addHabit.habitType = habitType
-//        navigationController?.pushViewController(addHabit, animated: true)
+        //        let addHabit: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .addHabit)
+        //        addHabit.habitType = habitType
+        //        navigationController?.pushViewController(addHabit, animated: true)
     }
 }
 

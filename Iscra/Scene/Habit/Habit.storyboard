@@ -30,7 +30,7 @@
                                     <constraint firstAttribute="height" constant="70" id="ZmC-Aj-FZ5"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-myaccount-image" translatesAutoresizingMaskIntoConstraints="NO" id="fh1-dC-5ce" customClass="IscraCustomImage">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="good" translatesAutoresizingMaskIntoConstraints="NO" id="fh1-dC-5ce" customClass="IscraCustomImage">
                                 <rect key="frame" x="145.5" y="90" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fh1-dC-5ce" secondAttribute="height" multiplier="1:1" id="sjb-aM-jsW"/>
@@ -49,7 +49,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEj-uZ-CQ3" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="20" y="291" width="335" height="77"/>
+                                <rect key="frame" x="20" y="219" width="335" height="77"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="My Habit" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hFT-gq-AVD" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="10" y="0.0" width="315" height="77"/>
@@ -93,8 +93,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alright Anastasya, let’s define your habit" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIH-EB-Upd" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="30" y="189" width="315" height="72"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIH-EB-Upd" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                <rect key="frame" x="30" y="189" width="315" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="SecondryAccent"/>
                                 <nil key="highlightedColor"/>
@@ -109,7 +109,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jSc-Z9-qfz">
-                                <rect key="frame" x="20" y="388" width="335" height="170"/>
+                                <rect key="frame" x="20" y="316" width="335" height="170"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1P-qw-t46" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="170"/>
@@ -205,6 +205,7 @@
                     </view>
                     <connections>
                         <outlet property="btnNext" destination="mvf-8r-5Xp" id="k05-MR-Q0m"/>
+                        <outlet property="imageEmoji" destination="fh1-dC-5ce" id="9Es-oM-eha"/>
                         <outlet property="lblUserName" destination="uIH-EB-Upd" id="2qF-xs-obm"/>
                         <outlet property="txtFieldTitle" destination="hFT-gq-AVD" id="0FM-eH-txv"/>
                         <outlet property="txtViewDescription" destination="dIb-n7-Mrl" id="8al-cF-oxM"/>
@@ -1588,9 +1589,7 @@
         <designable name="sej-nX-PiZ">
             <size key="intrinsicContentSize" width="81.5" height="24"/>
         </designable>
-        <designable name="uIH-EB-Upd">
-            <size key="intrinsicContentSize" width="561" height="36"/>
-        </designable>
+        <designable name="uIH-EB-Upd"/>
         <designable name="v0i-oI-y9X">
             <size key="intrinsicContentSize" width="150" height="29"/>
         </designable>
@@ -1603,9 +1602,9 @@
     </designables>
     <resources>
         <image name="Leftarrow" width="26" height="24"/>
+        <image name="good" width="84" height="84"/>
         <image name="goodhabitfriends" width="349" height="194"/>
         <image name="ic-background-image" width="375" height="468"/>
-        <image name="ic-myaccount-image" width="84" height="84"/>
         <image name="sport1" width="24" height="24"/>
         <namedColor name="BlackAccent">
             <color red="0.10999999940395355" green="0.090000003576278687" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

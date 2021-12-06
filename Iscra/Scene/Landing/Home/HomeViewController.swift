@@ -41,12 +41,12 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     private func setup() {
         viewModel.view = self
-        self.viewFirstHabit.isHidden = true
+        self.tableView.isHidden = true
+        self.viewFirstHabit.isHidden = false
         self.tableView.didSelectedAtIndex = didSelectedAtIndex
-        self.tableView.isHidden = false
-        self.lblTitle.text = "Are you ready to create \nyour first habit?"
-        self.lblSubTitle.text = "I am excited to help you to become \na better version of yourself. Let's \nstart our journey. Click plus button \nto create your first habit."
-        self.tableView.delegate1 = self
+        self.lblTitle.text = AppConstant.firstHabitTitle
+        self.lblSubTitle.text = AppConstant.firstHabitSubTitle
+       // self.tableView.delegate1 = self
         self.tableView.isHabitDelete = {
             seleted , id in
             if seleted {
@@ -60,23 +60,8 @@ extension HomeViewController {
 // MARK: Callbacks
 extension HomeViewController {
     private func didSelectedAtIndex(_ index: Int) {
-        //        self.router?.push(scene: .habitCalender)
-        //        print("self.router is \(self.router)")
+               print("habit id is \(index)")
         self.router?.push(scene: .habitCalender)
-        //        let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-        //        self.navigationController?.pushViewController(habitCalender, animated: true)
-    }
-}
-
-
-// MARK: - Navigation
-extension HomeViewController: HabitTableNavigation{
-    func navigate() {
-        //        let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-        //        self.navigationController?.pushViewController(habitCalender, animated: true)
-        //
-        self.router?.push(scene: .habitCalender)
-        
     }
 }
 

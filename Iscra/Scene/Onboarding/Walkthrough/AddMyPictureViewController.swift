@@ -63,6 +63,7 @@ extension AddMyPictureViewController {
   private func nextButtonAction() {
    // navigationController?.popViewController(animated: true)
     let signUp: SignupViewController = SignupViewController.from(from: .onboarding, with: .signup)
+    signUp.router = self.router
     self.navigationController?.pushViewController(signUp, animated: true)
   }
     func manageButtonTitle(){
@@ -77,7 +78,7 @@ extension AddMyPictureViewController {
             CameraHandler.shared.showActionSheetPrivate(vc: self, isEditable: false, isAlreadyExist: false)
             CameraHandler.shared.camera(allowsEditing: true)
             CameraHandler.shared.imagePickedBlock = { (image) in
-/* get your image here */
+            /* get your image here */
                 self.imgUser.image = image
                 OnboadingUtils.shared.userImage = image
                 self.manageButtonTitle()

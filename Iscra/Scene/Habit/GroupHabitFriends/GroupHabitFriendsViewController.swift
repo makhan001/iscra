@@ -192,7 +192,7 @@ extension GroupHabitFriendsViewController {
     }
     
     func showAlert() {
-        let alertController = UIAlertController(title: "Delete Habit", message: "Are you sure? The habit will be permanently deleted.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
             print("Delete button tapped");
         }

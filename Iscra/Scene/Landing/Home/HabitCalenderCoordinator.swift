@@ -28,22 +28,12 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
     private func startHabitCalender() {
         router.present(controller, animated: true)
     }
-
-//    private func startLanding() {
-//        landing = LandingCoordinator(router: Router())
-//        add(landing)
-//        landing.delegate = self
-//        landing.start()
-//        self.router.present(landing, animated: true)
-//    }
-
 }
 
 extension HabitCalenderCoordinator: NextSceneDismisser {
 
     func push(scene: Scenes) {
         switch scene {
-       // case .landing: startLanding()
         case .habitCalender: startHabitCalender()
         default: break
         }

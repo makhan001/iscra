@@ -1,71 +1,64 @@
-
 //
-//  Responses.swift
-//  CallRecording
+// Responses.swift
+// CallRecording
 //
-//  Created by Mohd Ali Khan on 21/07/2020.
-//  Copyright © 2020 cis. All rights reserved.
+// Created by Mohd Ali Khan on 21/07/2020.
+// Copyright © 2020 cis. All rights reserved.
 //
-
 import Foundation
-
 struct SuccessResponseModel: Codable {
     let status: Bool?
     let code: Int?
     let message: String?
     let data: DataClass?
 }
-
-
 // MARK: - DataClass
 struct DataClass: Codable {
-
     var register: Register?
     var loginData: LoginData?
     var forgotPassword: String?
+    var verificationCode: Int?
     var user: User?
     var habit: Habit?
-    var habits: [AllHabits]
+    var habits: [AllHabits]?
 
     enum CodingKeys: String, CodingKey {
-        case register
+        case register, user, habit, habits
         case loginData = "login_data"
         case forgotPassword = "forgot_password"
-        case user
-        case habit
-        case habits
-       // case username = "username"
+        case verificationCode = "verification_code"
     }
 }
+
 // MARK: - Register
 struct Register: Codable {
-  var id: Int?
-  var email, createdAt, updatedAt, verificationCode: String?
-  var authenticationToken, username, profileImage: String?
-  var memoji: JSONNull?
-  var isVerified: Bool?
-  var deviceType, osVersion, deviceModel, fcmToken: String?
-  var forgotPassword: JSONNull?
-  var deviceUdid: String?
-  enum CodingKeys: String, CodingKey {
-    case id, email
-    case createdAt = "created_at"
-    case updatedAt = "updated_at"
-    case verificationCode = "verification_code"
-    case authenticationToken = "authentication_token"
-    case username
-    case profileImage = "profile_image"
-    case memoji
-    case isVerified = "is_verified"
-    case deviceType = "device_type"
-    case osVersion = "os_version"
-    case deviceModel = "device_model"
-    case fcmToken = "fcm_token"
-    case forgotPassword = "forgot_password"
-    case deviceUdid = "device_udid"
-  }
+    var id: Int?
+    var email, createdAt, updatedAt, verificationCode: String?
+    var authenticationToken, username, profileImage: String?
+    var memoji: JSONNull?
+    var isVerified: Bool?
+    var deviceType, osVersion, deviceModel, fcmToken: String?
+    var forgotPassword: JSONNull?
+    var deviceUdid: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id, email
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case verificationCode = "verification_code"
+        case authenticationToken = "authentication_token"
+        case username
+        case profileImage = "profile_image"
+        case memoji
+        case isVerified = "is_verified"
+        case deviceType = "device_type"
+        case osVersion = "os_version"
+        case deviceModel = "device_model"
+        case fcmToken = "fcm_token"
+        case forgotPassword = "forgot_password"
+        case deviceUdid = "device_udid"
+    }
 }
-
 // MARK: - LoginData
 struct LoginData: Codable {
     let email, deviceType, osVersion, deviceModel: String?
@@ -76,7 +69,6 @@ struct LoginData: Codable {
     let profileImage, memoji: String?
     let isVerified: Bool?
     let forgotPassword: String?
-
     enum CodingKeys: String, CodingKey {
         case email
         case deviceType = "device_type"
@@ -109,7 +101,6 @@ struct User: Codable {
     let deviceUdid: String?
     let loginType, socialID: JSONNull?
     let isGoogle, isApple: Bool?
-
     enum CodingKeys: String, CodingKey {
         case username, email, id
         case createdAt = "created_at"

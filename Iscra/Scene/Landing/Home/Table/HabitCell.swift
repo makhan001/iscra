@@ -53,14 +53,14 @@ class HabitCell: UITableViewCell {
     }
     
     func configure(obj: AllHabits) {
-        self.lblHabitTitle.text =  obj.name?.capitalized //"GYM Workout"
-        self.lblHabitTitleMates.text = obj.name?.capitalized //"GYM Workout"
+        self.lblHabitTitle.text =  obj.name?.capitalized
+        self.lblHabitTitleMates.text = obj.name?.capitalized
         self.imgHabit.image = UIImage(named: obj.icon ?? "sport1")
         self.imgHabitMates.image = UIImage(named: obj.icon ?? "sport1")
         self.imgHabit.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
         self.imgHabitMates.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
-        self.viewNomates.isHidden = true
-       // self.viewMates.isHidden = true
+        self.viewNomates.isHidden = false
+        self.viewMates.isHidden = true
     }
 }
 

@@ -62,13 +62,13 @@
             filePath = "Iscra/Scene/Habit/AddHabit/AddHabitViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "onAction(action:for:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "9F69E18E-AC48-4A90-82F5-05EC07C20BE9 - 32cbef156c548b0"
+                  uuid = "9F69E18E-AC48-4A90-82F5-05EC07C20BE9 - 32cbef156c54872"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -78,12 +78,12 @@
                   urlString = "file:///Users/mac/Documents/Ios%20Projects/git/iscra/Iscra/Scene/Habit/AddHabit/AddHabitViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
                   offsetFromSymbolStart = "830">
                </Location>
                <Location
-                  uuid = "9F69E18E-AC48-4A90-82F5-05EC07C20BE9 - 32cbef156c548b0"
+                  uuid = "9F69E18E-AC48-4A90-82F5-05EC07C20BE9 - 32cbef156c54872"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -93,8 +93,8 @@
                   urlString = "file:///Users/mac/Documents/Ios%20Projects/git/iscra/Iscra/Scene/Habit/AddHabit/AddHabitViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
                   offsetFromSymbolStart = "839">
                </Location>
             </Locations>
@@ -110,13 +110,13 @@
             filePath = "Iscra/Scene/Habit/AddHabit/AddHabitViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "onAction(action:for:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "34BF74CC-5000-443C-8D66-6ABEE7ED610A - 32cbef156c5475b"
+                  uuid = "34BF74CC-5000-443C-8D66-6ABEE7ED610A - 32cbef156c54715"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -126,12 +126,12 @@
                   urlString = "file:///Users/mac/Documents/Ios%20Projects/git/iscra/Iscra/Scene/Habit/AddHabit/AddHabitViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
                   offsetFromSymbolStart = "1223">
                </Location>
                <Location
-                  uuid = "34BF74CC-5000-443C-8D66-6ABEE7ED610A - 32cbef156c5475b"
+                  uuid = "34BF74CC-5000-443C-8D66-6ABEE7ED610A - 32cbef156c54715"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -141,8 +141,8 @@
                   urlString = "file:///Users/mac/Documents/Ios%20Projects/git/iscra/Iscra/Scene/Habit/AddHabit/AddHabitViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
                   offsetFromSymbolStart = "1232">
                </Location>
             </Locations>
@@ -151,64 +151,128 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2ABB1957-C19A-4B22-93DC-80E0E45FCABD"
+            uuid = "4B960E9E-BB7B-4472-B0EE-4EFDE310DADA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Habit/AddHabit/AddHabitViewModel.swift"
+            filePath = "Iscra/Scene/Onboarding/Forgot password/ForgotPasswordViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "validateDaysSelection()"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "validateUserInput()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7D2AA1FC-0EEC-4ACD-AE7E-1884464B43FE"
+            uuid = "1060CD66-A2D7-45C9-AA27-41D3E16E7D43"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Habit/AddHabit/AddHabitViewModel.swift"
+            filePath = "Iscra/Scene/Habit/InviteFriends/InviteFriendViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "validateDaysSelection()"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "InviteFriendsAction()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E040ED6A-AEF4-4766-B2A0-CB5066AB5E0F"
+            uuid = "9F748B8C-00FF-4569-B134-4DD249F708A1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Habit/AddHabit/AddHabitViewModel.swift"
+            filePath = "Iscra/Scene/Habit/AddHabit/HabitName/HabitNameCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "push(scene:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BECEB3C1-C021-41DF-BE1C-314EC252C5F5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Habit/AddHabit/HabitName/HabitNameCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "startLanding()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "35C16D02-2260-410A-A46A-F9A921D7FA85"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Habit/AddHabit/HabitName/HabitNameCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "startLanding()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DAC83A07-522E-4040-AA22-0F29D886FFD8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Habit/AddHabit/HabitName/HabitNameCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "startLanding()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA859380-5CB9-4F85-88E5-EC7A7CD60427"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Onboarding/Signup/SignupViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "onAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "601C9889-1527-48D5-A60F-443CD35A80E7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Onboarding/Signup/SignupViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
-            landmarkName = "validateDaysSelection()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "44855CE6-6DB6-451B-AA27-58F501F64254"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Landing/Home/HomeViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "deleteHabit(habitId:)"
+            landmarkName = "validateUserInput()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

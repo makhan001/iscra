@@ -30,9 +30,9 @@ class AppConstant: NSObject {
     static let onbordingName  = "How do your \nfriends call you?"
     
     static let HeaderTitle = "How to add your own memoji?"
-    static let Sub1Title = "Open Notes on your iPhone. Click a new note."
+    static let Sub1Title = "Open Notes on your iPhone. Click a new note.  "
     static let Sub2Title = "Tap the Memoji button then swipe right and tap the New Memoji add new memoji button."
-    static let Sub3Title = "Share your memodji to your notes then click the memoji and save it to your gallery."
+    static let Sub3Title = "Share your memoji to your notes then click the memoji and save it to your gallery."
     
     static let signUpHeaderTitle = "Let’s create your \naccount"
     static let otpHeaderTitle = "Verify email"
@@ -59,4 +59,12 @@ class AppConstant: NSObject {
     static let invalidConfirmPasswordMatch = "New password and confirm password are not match"
     static let emptyDays = "Please select days"
     static let emptyGroupImage = "Please select group image"
+    static let deleteHabit = "Are you sure? The habit will be permanently deleted."
+    static let emptyName = "name can't be empty"
+    static let invalidName = "Please enter valid name"
+    static let emptyDescription = "Description cant be empty"
+    static let invalidDescription = "Description not more than 140 words"
+    static let emptyHabitName = "Habit name can't be empty"
+    static let invalidHabitName = "Habit name not more than 30 words"
 }
+

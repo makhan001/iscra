@@ -209,9 +209,12 @@ extension ChangePasswordViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-        // deepak
         case let .changePassword(msg):
             self.showToast(message: msg)
+            self.txtFieldNewPassword.text = ""
+            self.txtFieldConfirmPassword.text = ""
+            self.txtFieldCurrentPassword.text = ""
+
             
 //            let passwordChangeConfirmation: PasswordChangeConfirmationViewController = PasswordChangeConfirmationViewController.from(from: .onboarding, with: .passwordChangeConfirmation)
 //                        navigationController?.present(passwordChangeConfirmation, animated: true, completion: {

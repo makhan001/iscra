@@ -22,6 +22,7 @@ enum HabitAction {
    // case habitList([AllHabits])
     case updateHabit
     //case callApi(_ sucess: Bool)
+    case isHabitDelete(_ isDelete: Bool, _ msg:String)
     case navigateToGroupImage(_ isNavigate: Bool)
     case requireFields(_ text:String)
     case inputComplete(_ screen: HabitScreenType)

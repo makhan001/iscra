@@ -27,6 +27,7 @@ class HabitCalenderViewController: UIViewController {
     @IBOutlet weak var viewDeleteHabit: UIView!
     @IBOutlet weak var viewCircular: CircularProgressBar!
     
+    var strHabitId = 0
     var strTitleName = "Learn English"
     private var eventsDateArray: [Date] = []
     private var themeColor = UIColor(hex: "#7B86EB")
@@ -35,6 +36,7 @@ class HabitCalenderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        print("self.strHabitId is \(self.strHabitId)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

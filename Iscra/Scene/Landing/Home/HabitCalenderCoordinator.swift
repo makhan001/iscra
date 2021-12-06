@@ -11,9 +11,6 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
 
     weak var delegate: CoordinatorDimisser?
     let controller: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-//    let habitCalender: HomeViewController = HomeViewController.from(from: .landing, with: .home)
-
-  //  private var landing: LandingCoordinator!
 
     override func start() {
         super.start()
@@ -23,6 +20,7 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
 
     private func onStart() {
         controller.router = self
+        controller.strHabitId = 5
     }
 
     private func startHabitCalender() {

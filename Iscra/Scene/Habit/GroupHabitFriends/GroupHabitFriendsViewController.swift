@@ -232,14 +232,8 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
 
 extension GroupHabitFriendsViewController: FriendTableNavigation{
     func didNavigateToCalender() {
-//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "HabitCalenderViewController") as! HabitCalenderViewController
-//        vc.strTitleName = "Me"
-//        navigationController?.pushViewController(vc, animated: true)
-        
         let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
         habitCalender.strTitleName = "Me"
         self.navigationController?.pushViewController(habitCalender, animated: true)
-        
     }
 }

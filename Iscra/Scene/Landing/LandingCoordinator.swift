@@ -12,21 +12,12 @@ final class LandingCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
     let controller: LandingTabBarController = LandingTabBarController.from(from: .landing, with: .landing)
-    
     let selectHabitPopUp: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
 
-    
-    //    let newHome: HomeViewController = HomeViewController.from(from: .landing, with: .home)
-    //      let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-    
-    
     private var login: LoginCoordinator!
     private var welcome: OnboardingCoordinator!
     private var habitName: HabitNameCoordinator!
     private var habitCalender: HabitCalenderCoordinator!
-    
-    // private var home: HomeCoordinator!
-    
     private var myAccount: MyAccountCoordinator!
     
     override func start() {
@@ -96,7 +87,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         habitCalender = HabitCalenderCoordinator(router: Router())
         add(habitCalender)
         habitCalender.delegate = self
-        habitCalender.start()
+        habitCalender.start(habitId: controller.home.viewModel.habitId)
         self.router.present(habitCalender, animated: true)
     }
     

@@ -21,24 +21,22 @@ class AppConstant: NSObject {
     
     //Onboarding --
     static let welComeDiscription  = "We help people to become the best version of themself and connect with others people"
-    
     static let onbordingName  = "How do your \nfriends call you?"
-    
     static let HeaderTitle = "How to add your own memoji?"
     static let Sub1Title = "Open Notes on your iPhone. Click a new note.  "
     static let Sub2Title = "Tap the Memoji button then swipe right and tap the New Memoji add new memoji button."
     static let Sub3Title = "Share your memoji to your notes then click the memoji and save it to your gallery."
-    
     static let signUpHeaderTitle = "Let’s create your \naccount"
     static let otpHeaderTitle = "Verify email"
     static let otpMiddleTittle = "Enter the confirmation \ncode we sent to 'email'."
-    
     static let loginHeaderTitle = "Log in into your \naccount"
-    
     static let subscriptionTitle = "Thanks for using our app and making yourself and others better people. Unfortunately, for our development we need money. You can choose between two options: subscribe for one dollar per month or allow ads."
-    
-    
-    
+    static let firstHabitTitle = "Are you ready to create \nyour first habit?"
+    static let firstHabitSubTitle = "I am excited to help you to become \na better version of yourself. Let's \nstart our journey. Click plus button \nto create your first habit."
+    static let goodHabitTitle = ", let’s define your habit"
+    static let badHabitTitle = "! I will help you to get rid of bad habit"
+    static let groupHabitTitle = "Let’s become better together"
+
     // MARK:Validation Alert messages
     static let emptyEmail = "Email is required"
     static let invalidEmail = "Please enter valid email"

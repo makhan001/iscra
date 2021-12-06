@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView:HabitTableView!
     
     weak var router: NextSceneDismisser?
-    private let viewModel: HomeViewModel = HomeViewModel(provider: HabitServiceProvider())
+    let viewModel: HomeViewModel = HomeViewModel(provider: HabitServiceProvider())
     //  private var viewModel = AddHabitViewModel()
     
     override func viewDidLoad() {
@@ -41,15 +41,15 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     private func setup() {
         viewModel.view = self
-        self.viewFirstHabit.isHidden = true
+        self.tableView.isHidden = true
+        self.viewFirstHabit.isHidden = false
         self.tableView.didSelectedAtIndex = didSelectedAtIndex
-        self.tableView.isHidden = false
-        self.lblTitle.text = "Are you ready to create \nyour first habit?"
-        self.lblSubTitle.text = "I am excited to help you to become \na better version of yourself. Let's \nstart our journey. Click plus button \nto create your first habit."
-        self.tableView.delegate1 = self
+        self.lblTitle.text = AppConstant.firstHabitTitle
+        self.lblSubTitle.text = AppConstant.firstHabitSubTitle
+       // self.tableView.delegate1 = self
         self.tableView.isHabitDelete = {
-            seleted , id in
-            if seleted {
+            selected , id in
+            if selected {
                 print("is is \(id)")
                 self.showAlert(habitId: id)
             }
@@ -60,23 +60,9 @@ extension HomeViewController {
 // MARK: Callbacks
 extension HomeViewController {
     private func didSelectedAtIndex(_ index: Int) {
-        //        self.router?.push(scene: .habitCalender)
-        //        print("self.router is \(self.router)")
+        self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0  // viewModel.habitList[index].id ?? 0
+        print("habit id is in HomeViewController  \(viewModel.habitList[index].id ?? 0)")
         self.router?.push(scene: .habitCalender)
-        //        let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-        //        self.navigationController?.pushViewController(habitCalender, animated: true)
-    }
-}
-
-
-// MARK: - Navigation
-extension HomeViewController: HabitTableNavigation{
-    func navigate() {
-        //        let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-        //        self.navigationController?.pushViewController(habitCalender, animated: true)
-        //
-        self.router?.push(scene: .habitCalender)
-        
     }
 }
 

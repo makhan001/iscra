@@ -14,6 +14,7 @@ class HabitNameViewController: UIViewController {
     @IBOutlet weak var btnNext:UIButton!
     @IBOutlet weak var lblUserName:UILabel!
     @IBOutlet weak var viewDescription:UIView!
+    @IBOutlet weak var imageEmoji:UIImageView!
     @IBOutlet weak var txtFieldTitle:UITextField!
     @IBOutlet weak var txtViewDescription:UITextView!
     @IBOutlet weak var viewNavigation:NavigationBarView!
@@ -31,6 +32,7 @@ class HabitNameViewController: UIViewController {
 
 extension HabitNameViewController {
     func setup() {
+        
         self.viewModel.view = self
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.delegateBarAction = self
@@ -43,7 +45,16 @@ extension HabitNameViewController {
         if viewModel.habitType == .group {
             self.viewDescription.isHidden = false
             self.txtFieldTitle.returnKeyType = .next
+            self.lblUserName.text = AppConstant.groupHabitTitle
+            self.imageEmoji.image = #imageLiteral(resourceName: "group")
         }else{
+            if viewModel.habitType == .good {
+                self.lblUserName.text = "Alright \(UserStore.userName!)" + AppConstant.goodHabitTitle
+                self.imageEmoji.image = #imageLiteral(resourceName: "good")
+            }else{
+                self.lblUserName.text = "Hi \(UserStore.userName!)" + AppConstant.badHabitTitle
+                self.imageEmoji.image = #imageLiteral(resourceName: "bad")
+            }
             self.viewDescription.isHidden = true
             self.txtFieldTitle.returnKeyType = .done
         }

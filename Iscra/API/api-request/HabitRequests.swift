@@ -84,7 +84,7 @@ struct HabitRequests: RequestRepresentable {
         case .deleteHabit:
             return .body(data: encodeBody(data: deleteHabit))
         case .habitDetail:
-            return .body(data: encodeBody(data: allHabitList))
+            return .body(data: encodeBody(data: habitDetail))
         default:
             return .none
         }

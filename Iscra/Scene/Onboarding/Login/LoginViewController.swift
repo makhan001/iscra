@@ -51,7 +51,7 @@ extension LoginViewController  : navigationBarAction {
         }
 
 //        if TARGET_OS_SIMULATOR == 1 {
-//            viewModel.email = "user74@gmail.com"
+//            viewModel.email = "user10@gmail.com"
 //            viewModel.password = "123456"
 //            txtEmail.text = viewModel.email
 //            txtPassword.text = viewModel.password

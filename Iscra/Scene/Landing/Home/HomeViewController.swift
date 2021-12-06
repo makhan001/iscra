@@ -48,8 +48,8 @@ extension HomeViewController {
         self.lblSubTitle.text = AppConstant.firstHabitSubTitle
        // self.tableView.delegate1 = self
         self.tableView.isHabitDelete = {
-            seleted , id in
-            if seleted {
+            selected , id in
+            if selected {
                 print("is is \(id)")
                 self.showAlert(habitId: id)
             }
@@ -60,8 +60,8 @@ extension HomeViewController {
 // MARK: Callbacks
 extension HomeViewController {
     private func didSelectedAtIndex(_ index: Int) {
-               print("habit id is \(index)")
-        self.viewModel.habitId = viewModel.habitList[index].id ?? 0
+        self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0  // viewModel.habitList[index].id ?? 0
+        print("habit id is in HomeViewController  \(viewModel.habitList[index].id ?? 0)")
         self.router?.push(scene: .habitCalender)
     }
 }

@@ -39,7 +39,7 @@ class  HabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("navigate")
-        didSelectedAtIndex?(self.habitList[indexPath.row].id ?? 0)
+        didSelectedAtIndex?(indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

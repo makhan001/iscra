@@ -52,8 +52,8 @@ extension CommunitySearchViewController {
         self.tableFriends.isHidden = true
         
         self.tableGroupHabit.navigateToDetail = { [self]
-           seleted in
-           if seleted{
+            selected in
+           if selected{
             self.dismiss(animated: false, completion: nil)
             self.delegate1?.navigate()
            }

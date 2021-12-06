@@ -14,15 +14,17 @@ class EditHabitViewController: UIViewController {
     @IBOutlet weak var btnDeleteHabit: UIButton!
     @IBOutlet weak var txtMyHabit: UITextField!
     @IBOutlet weak var viewNavigation:NavigationBarView!
-    
+    var objHabitDetail: AllHabits?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        self.txtMyHabit.text = objHabitDetail?.name
     }
 }
 // MARK: Instance Methods
@@ -80,11 +82,8 @@ extension EditHabitViewController: clickManagerDelegate{
         }
     }
     private func EveryDayAction() {
-//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "RepeatDaysPopUpViewController") as! RepeatDaysPopUpViewController
-//        self.navigationController?.present(vc, animated: false, completion: nil)
         
-        let repeatDaysPopUp: RepeatDaysPopUpViewController = RepeatDaysPopUpViewController.from(from: .landing, with: .RepeatDaysPopUp)
+        let repeatDaysPopUp: RepeatDaysPopUpViewController = RepeatDaysPopUpViewController.from(from: .landing, with: .repeatDaysPopUp)
         self.navigationController?.present(repeatDaysPopUp, animated: false, completion: nil)
 
     }

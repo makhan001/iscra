@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView:HabitTableView!
     
     weak var router: NextSceneDismisser?
-    private let viewModel: HomeViewModel = HomeViewModel(provider: HabitServiceProvider())
+    let viewModel: HomeViewModel = HomeViewModel(provider: HabitServiceProvider())
     //  private var viewModel = AddHabitViewModel()
     
     override func viewDidLoad() {
@@ -61,6 +61,7 @@ extension HomeViewController {
 extension HomeViewController {
     private func didSelectedAtIndex(_ index: Int) {
                print("habit id is \(index)")
+        self.viewModel.habitId = viewModel.habitList[index].id ?? 0
         self.router?.push(scene: .habitCalender)
     }
 }

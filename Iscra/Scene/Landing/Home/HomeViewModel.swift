@@ -12,6 +12,7 @@ import Foundation
 final class HomeViewModel {
     
    // var habitId: String = ""
+    var habitId: Int = 0
     var habitList = [AllHabits]()
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?

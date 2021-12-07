@@ -8,12 +8,13 @@ import UIKit
 
 class CommunityViewController: UIViewController {
 
-    // MARK:-Outlets and variables
+    @IBOutlet weak var btnSearch: UIButton!
+    @IBOutlet weak var btnInviteFriends: UIButton!
     
     @IBOutlet weak var collectionMyGroups: MyCommunityCollectionView!
     @IBOutlet weak var collectionNewGroupHabit: NewCommunityCollectionView!
-    @IBOutlet weak var btnSearch: UIButton!
-    @IBOutlet weak var btnInviteFriends: UIButton!
+    
+    weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,10 +59,14 @@ extension CommunityViewController {
     }
     
     private func searcheAction() {
-        print("searcheAction")
-        let vc = storyboard?.instantiateViewController(withIdentifier: "CommunitySearchViewController") as! CommunitySearchViewController
-        vc.delegate1 = self
-        self.navigationController?.present(vc, animated: true, completion: nil)
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "CommunitySearchViewController") as! CommunitySearchViewController
+//        vc.delegate1 = self
+//        self.navigationController?.present(vc, animated: true, completion: nil)
+        
+        let communitySearch: CommunitySearchViewController = CommunitySearchViewController.from(from: .landing, with: .communitySearch)
+        communitySearch.delegate1 = self
+        self.navigationController?.present(communitySearch, animated: true, completion: nil)
+        
     }
     
     private func inviteFriendsAction() {
@@ -73,8 +78,11 @@ extension CommunityViewController {
 extension CommunityViewController: communityGroupHabitDetail{
     func navigate() {
        
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CommunityDetailViewController") as! CommunityDetailViewController
-        navigationController?.pushViewController(vc, animated: true)
+//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "CommunityDetailViewController") as! CommunityDetailViewController
+//        navigationController?.pushViewController(vc, animated: true)
+        
+        let communityDetail: CommunityDetailViewController = CommunityDetailViewController.from(from: .landing, with: .communityDetail)
+        self.navigationController?.pushViewController(communityDetail, animated: true)
     }
 }

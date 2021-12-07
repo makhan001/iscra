@@ -8,9 +8,15 @@
 import Foundation
 enum InputValidation:String {
     case name
-    case description
     case email
     case password
+    case habitName
+    case description
+    case newPassword
+    case currentPassword
+    case confirmPassword
+//    case icon
+//    case colorTheme
 }
 
 class Validation {
@@ -23,25 +29,48 @@ class Validation {
             return(
                 text == "" ? true :
                     Validation().isValidEmail(emaiId: text) == false ? true : false,
-                text == "" ? AppConstant.emptyEmail :AppConstant.invaliedEmail)
+                text == "" ? AppConstant.emptyEmail :AppConstant.invalidEmail)
             
         case .password:
             return(
                 text == "" ? true :
                     text.count < 6 ? true : false,
-                text == "" ? AppConstant.emptyPassword : AppConstant.invaliedPassword)
+                text == "" ? AppConstant.emptyPassword : AppConstant.invalidPassword)
+            
+        case .newPassword:
+            return(
+                text == "" ? true :
+                    text.count < 6 ? true : false,
+                text == "" ? AppConstant.emptyNewPassword : AppConstant.invalidNewPassword)
+            
+        case .currentPassword:
+            return(
+                text == "" ? true :
+                    text.count < 6 ? true : false,
+                text == "" ? AppConstant.emptyCurrentPassword : AppConstant.invalidCurrentPassword)
+            
+        case .confirmPassword:
+            return(
+                text == "" ? true :
+                    text.count < 6 ? true : false,
+                text == "" ? AppConstant.emptyConfirmPassword : AppConstant.invalidConfirmPassword)
             
         case .name:
             return( text == "" ? true :
-                        isTextContainspecialCharacters(string: text) == true ? true : false,
-                    text == "" ? "Field cant be empty" : "Please enter valid name")
+                       isTextContainspecialCharacters(string: text) == true ? true : false,
+                       // Validation().isValidname(name: text) == false ? true : false,
+                    text == "" ? AppConstant.emptyName : AppConstant.invalidName)
             
         case .description:
             return( text == "" ? true :
                         text.count > 140 ? true : false,
-                    text == "" ? "Field cant be empty" : "Not more than 140 words")
+                    text == "" ? AppConstant.emptyDescription : AppConstant.invalidDescription)
             
-        
+        case .habitName:
+            
+            return( text == "" ? true :
+                        text.count > 30 ? true : false,
+                    text == "" ? AppConstant.emptyHabitName : AppConstant.invalidHabitName)
         }
     }
     
@@ -58,6 +87,11 @@ class Validation {
         let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: password)
     }
+//    func isValidname(name:String) -> Bool {
+//        let nameRegEx = NSPredicate(format: "SELF MATCHES %@",
+//                                     "^[A-Z]+[a-zA-Z]*$")
+//        return nameRegEx.evaluate(with: name)
+//    }
     
     // Special Characters Validations
     func isTextContainspecialCharacters(string: String) -> Bool {

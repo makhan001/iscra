@@ -95,11 +95,11 @@ class DialogsViewController: UITableViewController {
        tableView.register(UINib(nibName: DialogCellConstant.reuseIdentifier, bundle: nil), forCellReuseIdentifier: DialogCellConstant.reuseIdentifier)
         setupNavigationBar()
         setupNavigationTitle()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.tabBarController?.tabBar.isHidden = false
         reloadContent()
         QBChat.instance.addDelegate(self)
@@ -135,7 +135,6 @@ class DialogsViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         QBChat.instance.removeDelegate(self)
     }
     
@@ -170,9 +169,9 @@ class DialogsViewController: UITableViewController {
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItems = []
         navigationItem.leftBarButtonItems = []
-        let leftMyChatBarButtonItem = UIBarButtonItem(title: "My Chat", style: .done, target: self, action: #selector(logoutUser))
+        let leftMyChatBarButtonItem = UIBarButtonItem(title: "My chats", style: .done, target: self, action: #selector(logoutUser))
         leftMyChatBarButtonItem.setTitleTextAttributes([
-                                                        NSAttributedString.Key.font: UIFont(name: "Helvetica-Bold", size: 32.0)!,
+                                                        NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 32.0)!,
                                                         NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1)],
             for: .normal)
         self.navigationItem.leftBarButtonItem  = leftMyChatBarButtonItem
@@ -316,8 +315,7 @@ class DialogsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DialogCellConstant.reuseIdentifier,
-                                                       for: indexPath) as? DialogCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DialogCellConstant.reuseIdentifier,for: indexPath) as? DialogCell else {
             return UITableViewCell()
         }
         
@@ -356,12 +354,11 @@ class DialogsViewController: UITableViewController {
         }
         
         cell.dialogName.text = cellModel.textLabelText.capitalized
-//        cell.dialogAvatarLabel.backgroundColor = UInt(chatDialog.createdAt!.timeIntervalSince1970).generateColor()
-//        cell.dialogAvatarLabel.text = String(cellModel.textLabelText.stringByTrimingWhitespace().capitalized.first ?? Character("C"))
+
         print("cell for row ---> \(Date().timeIntervalSince1970)")
         print("cellModel.customData\(cellModel.customData)")
-        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as! String), placeholderImage: UIImage(named: "group"))
-        
+        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+    
         return cell
     }
     

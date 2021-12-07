@@ -11,7 +11,25 @@
 		0402C4B1273D4A200073DFB8 /* GroupFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0402C4AE273D4A200073DFB8 /* GroupFriendsCell.xib */; };
 		0402C4B2273D4A200073DFB8 /* GroupHabitFriendsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */; };
 		0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */; };
+		04295A2B2758BC60001BF65E /* FetchHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04295A2A2758BC60001BF65E /* FetchHabit.swift */; };
 		04397097274B762700898C91 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04397096274B762700898C91 /* VerificationViewModel.swift */; };
+		0440B9312752050D0096DC2D /* HabitCalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */; };
+		0456AE972750CA4500DB3ED4 /* HabitProvider.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940B2750BC1A00503123 /* HabitProvider.swift */; };
+		0456AE982750CA4500DB3ED4 /* HabitAdaptables.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940E2750BC9A00503123 /* HabitAdaptables.swift */; };
+		0456AE9B2750D1E300DB3ED4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */; };
+		045791DF27549EAA006E0410 /* MyAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */; };
+		045791E22754AA67006E0410 /* HabitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045791E12754AA67006E0410 /* HabitUtils.swift */; };
+		0496E011275E0253005C982A /* HabitCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E010275E0253005C982A /* HabitCalenderViewModel.swift */; };
+		0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */; };
+		04A79DDE27575A8D009ADC89 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A79DDD27575A8C009ADC89 /* HabitModel.swift */; };
+		04BE94092750B13200503123 /* HabitRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE94082750B13200503123 /* HabitRequests.swift */; };
+		04BE940C2750BC1A00503123 /* HabitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE940B2750BC1A00503123 /* HabitProvider.swift */; };
+		04BE940F2750BC9A00503123 /* HabitAdaptables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE940E2750BC9A00503123 /* HabitAdaptables.swift */; };
+		04C99D4A2759FEF5002D5B7F /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C99D492759FEF5002D5B7F /* ForgotPasswordViewModel.swift */; };
+		04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F28274FB917009763D1 /* MyAccountViewModel.swift */; };
+		04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */; };
+		04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */; };
+		5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */; };
 		5FF6CD20274E6A5A007ADC2F /* AddOccupantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CC90274E6A5A007ADC2F /* AddOccupantsVC.swift */; };
 		5FF6CD21274E6A5A007ADC2F /* DialogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF6CC92274E6A5A007ADC2F /* DialogCell.xib */; };
 		5FF6CD22274E6A5A007ADC2F /* DialogsSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CC93274E6A5A007ADC2F /* DialogsSelectionVC.swift */; };
@@ -116,11 +134,13 @@
 		5FF6CD85274E6A5A007ADC2F /* ParentVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CD1E274E6A5A007ADC2F /* ParentVideoVC.swift */; };
 		5FF6CD86274E6A5A007ADC2F /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF6CD1F274E6A5A007ADC2F /* Chat.storyboard */; };
 		5FF6CDA0274E6AA0007ADC2F /* MyChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CD9F274E6AA0007ADC2F /* MyChatViewController.swift */; };
+		5FFDDB3A2755054600051011 /* MyAccountPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFDDB392755054600051011 /* MyAccountPopupViewController.swift */; };
 		861CF1D12743DE9700727D1E /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D02743DE9700727D1E /* RootCoordinator.swift */; };
 		861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D22743E02300727D1E /* LoginCoordinator.swift */; };
+		862E5AFB27565B5A00225894 /* HabitNameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */; };
 		8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A8392747D41100773C57 /* LandingCoordinator.swift */; };
 		8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800806B2729255E008E3260 /* ReminderViewController.swift */; };
-		880080732729282F008E3260 /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080722729282F008E3260 /* AddHabitViewController.swift */; };
+		880080732729282F008E3260 /* HabitNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080722729282F008E3260 /* HabitNameViewController.swift */; };
 		880080782729346D008E3260 /* WeekCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080772729346D008E3260 /* WeekCollection.swift */; };
 		8800807D272934B4008E3260 /* WeekDaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800807B272934B4008E3260 /* WeekDaysCollectionViewCell.swift */; };
 		8800807E272934B4008E3260 /* WeekDaysCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8800807C272934B4008E3260 /* WeekDaysCollectionViewCell.xib */; };
@@ -149,7 +169,6 @@
 		8814B4332743874100A6DE01 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4232743874000A6DE01 /* APIModel.swift */; };
 		8814B4342743874100A6DE01 /* AuthRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4252743874100A6DE01 /* AuthRequests.swift */; };
 		8814B4352743874100A6DE01 /* UserRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4262743874100A6DE01 /* UserRequests.swift */; };
-		8814B4362743874100A6DE01 /* SaloonRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4272743874100A6DE01 /* SaloonRequests.swift */; };
 		8814B4372743874100A6DE01 /* APIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B4292743874100A6DE01 /* APIParser.swift */; };
 		8814B4382743874100A6DE01 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B42A2743874100A6DE01 /* APIError.swift */; };
 		8814B43A2743874100A6DE01 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814B42C2743874100A6DE01 /* APIClient.swift */; };
@@ -168,7 +187,8 @@
 		8822D4EC2731777E00C68EE5 /* GetSubcriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822D4EB2731777E00C68EE5 /* GetSubcriptionViewController.swift */; };
 		88269DBB2744EE6A006A9F43 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88269DBA2744EE6A006A9F43 /* NavigationBarView.xib */; };
 		88269DBE2744EFC2006A9F43 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88269DBD2744EFC2006A9F43 /* NavigationBarView.swift */; };
-		882F3E002721A50A00A409A6 /* LandingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3DFF2721A50A00A409A6 /* LandingTabBarViewController.swift */; };
+		8827C3C12750C125009D12C4 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827C3C02750C124009D12C4 /* CameraHandler.swift */; };
+		882F3E002721A50A00A409A6 /* LandingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */; };
 		882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */; };
 		882F3E152721AAC300A409A6 /* MyAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882F3E112721AAC300A409A6 /* MyAccountTableViewCell.xib */; };
 		882F3E162721AAC300A409A6 /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */; };
@@ -177,7 +197,6 @@
 		8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8835BCEE273E8A7200261839 /* StringConstant.swift */; };
 		883C52F12747914D00D129FC /* OnboadingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8841878927478DCB00C6EE39 /* OnboadingUtils.swift */; };
 		883C52F32747915800D129FC /* ForgotPsswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8841878327478D0F00C6EE39 /* ForgotPsswordViewController.swift */; };
-		8841878727478D9200C6EE39 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8841878627478D9100C6EE39 /* CameraHandler.swift */; };
 		884549F727186F72003FBBC8 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884549F627186F72003FBBC8 /* SignUpModel.swift */; };
 		884549FB271872EC003FBBC8 /* SignUpMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 884549FA271872EC003FBBC8 /* SignUpMock.json */; };
 		8845B731271EF539007A5069 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8845B730271EF539007A5069 /* Onboarding.storyboard */; };
@@ -224,8 +243,8 @@
 		88B0F9D7271824CF00EF92B3 /* IscraCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0F9D6271824CF00EF92B3 /* IscraCustomView.swift */; };
 		88B0FABF2718594100EF92B3 /* IscraCustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0FABE2718594100EF92B3 /* IscraCustomTextField.swift */; };
 		88B4A225271FF9C300488AA3 /* AddMyPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4A224271FF9C300488AA3 /* AddMyPictureViewController.swift */; };
-		88B4A228271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4A227271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift */; };
-		88B4A27027205DDD00488AA3 /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4A26E27205DDC00488AA3 /* EditNameViewController.swift */; };
+		88B4A228271FFA8100488AA3 /* AddMemojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4A227271FFA8100488AA3 /* AddMemojiViewController.swift */; };
+		88B4A27027205DDD00488AA3 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B4A26E27205DDC00488AA3 /* UpdateProfileViewController.swift */; };
 		88C7C2F52726CDE600EAA8CA /* ColorCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7C2F42726CDE500EAA8CA /* ColorCollectionView.swift */; };
 		88C7C2FA2726D39800EAA8CA /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7C2F82726D39800EAA8CA /* ColorCollectionViewCell.swift */; };
 		88C7C2FB2726D39800EAA8CA /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C7C2F92726D39800EAA8CA /* ColorCollectionViewCell.xib */; };
@@ -277,8 +296,24 @@
 		0402C4AE273D4A200073DFB8 /* GroupFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupFriendsCell.xib; sourceTree = "<group>"; };
 		0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHabitFriendsTable.swift; sourceTree = "<group>"; };
 		0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupFriendsCell.swift; sourceTree = "<group>"; };
+		04295A2A2758BC60001BF65E /* FetchHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHabit.swift; sourceTree = "<group>"; };
 		04397096274B762700898C91 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
+		0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderCoordinator.swift; sourceTree = "<group>"; };
+		0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountCoordinator.swift; sourceTree = "<group>"; };
+		045791E12754AA67006E0410 /* HabitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitUtils.swift; sourceTree = "<group>"; };
+		0496E010275E0253005C982A /* HabitCalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderViewModel.swift; sourceTree = "<group>"; };
+		0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCircularProgressBar.swift; sourceTree = "<group>"; };
+		04A79DDD27575A8C009ADC89 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
+		04BE94082750B13200503123 /* HabitRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRequests.swift; sourceTree = "<group>"; };
+		04BE940B2750BC1A00503123 /* HabitProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitProvider.swift; sourceTree = "<group>"; };
+		04BE940E2750BC9A00503123 /* HabitAdaptables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitAdaptables.swift; sourceTree = "<group>"; };
+		04C99D492759FEF5002D5B7F /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		04D34F28274FB917009763D1 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
+		04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
+		5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iscra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FF6CC90274E6A5A007ADC2F /* AddOccupantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOccupantsVC.swift; sourceTree = "<group>"; };
 		5FF6CC92274E6A5A007ADC2F /* DialogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogCell.xib; sourceTree = "<group>"; };
@@ -384,12 +419,14 @@
 		5FF6CD1E274E6A5A007ADC2F /* ParentVideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentVideoVC.swift; sourceTree = "<group>"; };
 		5FF6CD1F274E6A5A007ADC2F /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		5FF6CD9F274E6AA0007ADC2F /* MyChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyChatViewController.swift; sourceTree = "<group>"; };
+		5FFDDB392755054600051011 /* MyAccountPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountPopupViewController.swift; sourceTree = "<group>"; };
 		738A14CE266552D2AB54A54A /* Pods-Iscra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.debug.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.debug.xcconfig"; sourceTree = "<group>"; };
 		861CF1D02743DE9700727D1E /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		861CF1D22743E02300727D1E /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameCoordinator.swift; sourceTree = "<group>"; };
 		8669A8392747D41100773C57 /* LandingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingCoordinator.swift; sourceTree = "<group>"; };
 		8800806B2729255E008E3260 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
-		880080722729282F008E3260 /* AddHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
+		880080722729282F008E3260 /* HabitNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameViewController.swift; sourceTree = "<group>"; };
 		880080772729346D008E3260 /* WeekCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollection.swift; sourceTree = "<group>"; };
 		8800807B272934B4008E3260 /* WeekDaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysCollectionViewCell.swift; sourceTree = "<group>"; };
 		8800807C272934B4008E3260 /* WeekDaysCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekDaysCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -418,7 +455,6 @@
 		8814B4232743874000A6DE01 /* APIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
 		8814B4252743874100A6DE01 /* AuthRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRequests.swift; sourceTree = "<group>"; };
 		8814B4262743874100A6DE01 /* UserRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequests.swift; sourceTree = "<group>"; };
-		8814B4272743874100A6DE01 /* SaloonRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaloonRequests.swift; sourceTree = "<group>"; };
 		8814B4292743874100A6DE01 /* APIParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIParser.swift; sourceTree = "<group>"; };
 		8814B42A2743874100A6DE01 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		8814B42C2743874100A6DE01 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -437,7 +473,8 @@
 		8822D4EB2731777E00C68EE5 /* GetSubcriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSubcriptionViewController.swift; sourceTree = "<group>"; };
 		88269DBA2744EE6A006A9F43 /* NavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
 		88269DBD2744EFC2006A9F43 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
-		882F3DFF2721A50A00A409A6 /* LandingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTabBarViewController.swift; sourceTree = "<group>"; };
+		8827C3C02750C124009D12C4 /* CameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
+		882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTabBarController.swift; sourceTree = "<group>"; };
 		882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHabitPopUpViewController.swift; sourceTree = "<group>"; };
 		882F3E112721AAC300A409A6 /* MyAccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAccountTableViewCell.xib; sourceTree = "<group>"; };
 		882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -445,7 +482,6 @@
 		882F3E142721AAC300A409A6 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		8835BCEE273E8A7200261839 /* StringConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstant.swift; sourceTree = "<group>"; };
 		8841878327478D0F00C6EE39 /* ForgotPsswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPsswordViewController.swift; sourceTree = "<group>"; };
-		8841878627478D9100C6EE39 /* CameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraHandler.swift; path = Iscra/CameraHandler.swift; sourceTree = SOURCE_ROOT; };
 		8841878927478DCB00C6EE39 /* OnboadingUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboadingUtils.swift; sourceTree = "<group>"; };
 		884549F627186F72003FBBC8 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		884549FA271872EC003FBBC8 /* SignUpMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SignUpMock.json; sourceTree = "<group>"; };
@@ -495,8 +531,8 @@
 		88B0F9DA27183BD900EF92B3 /* IscraCustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IscraCustomImage.swift; sourceTree = "<group>"; };
 		88B0FABE2718594100EF92B3 /* IscraCustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IscraCustomTextField.swift; sourceTree = "<group>"; };
 		88B4A224271FF9C300488AA3 /* AddMyPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyPictureViewController.swift; sourceTree = "<group>"; };
-		88B4A227271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnHowToAddMemojiViewController.swift; sourceTree = "<group>"; };
-		88B4A26E27205DDC00488AA3 /* EditNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
+		88B4A227271FFA8100488AA3 /* AddMemojiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemojiViewController.swift; sourceTree = "<group>"; };
+		88B4A26E27205DDC00488AA3 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		88C7C2F42726CDE500EAA8CA /* ColorCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionView.swift; sourceTree = "<group>"; };
 		88C7C2F82726D39800EAA8CA /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		88C7C2F92726D39800EAA8CA /* ColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -572,6 +608,14 @@
 				0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */,
 			);
 			path = Table;
+			sourceTree = "<group>";
+		};
+		0496E013275E41B3005C982A /* CircularProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */,
+			);
+			path = CircularProgressBar;
 			sourceTree = "<group>";
 		};
 		527A79552898470E2C294946 /* Frameworks */ = {
@@ -1044,6 +1088,23 @@
 			path = "My Chat";
 			sourceTree = "<group>";
 		};
+		5FFDDB6F27550ECF00051011 /* MyAccountPopUpView */ = {
+			isa = PBXGroup;
+			children = (
+				5FFDDB392755054600051011 /* MyAccountPopupViewController.swift */,
+			);
+			path = MyAccountPopUpView;
+			sourceTree = "<group>";
+		};
+		862E5AF927565B1000225894 /* HabitName */ = {
+			isa = PBXGroup;
+			children = (
+				880080722729282F008E3260 /* HabitNameViewController.swift */,
+				862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */,
+			);
+			path = HabitName;
+			sourceTree = "<group>";
+		};
 		8800806A27292536008E3260 /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1192,7 +1253,7 @@
 			children = (
 				8814B4252743874100A6DE01 /* AuthRequests.swift */,
 				8814B4262743874100A6DE01 /* UserRequests.swift */,
-				8814B4272743874100A6DE01 /* SaloonRequests.swift */,
+				04BE94082750B13200503123 /* HabitRequests.swift */,
 			);
 			path = "api-request";
 			sourceTree = "<group>";
@@ -1216,7 +1277,7 @@
 				88202D582719923700F0EA2E /* WelcomeViewController.swift */,
 				88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */,
 				88B4A224271FF9C300488AA3 /* AddMyPictureViewController.swift */,
-				88B4A227271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift */,
+				88B4A227271FFA8100488AA3 /* AddMemojiViewController.swift */,
 			);
 			path = Walkthrough;
 			sourceTree = "<group>";
@@ -1247,10 +1308,18 @@
 			path = NavigationBar;
 			sourceTree = "<group>";
 		};
+		8827C3BF2750C0DD009D12C4 /* CameraHandler */ = {
+			isa = PBXGroup;
+			children = (
+				8827C3C02750C124009D12C4 /* CameraHandler.swift */,
+			);
+			path = CameraHandler;
+			sourceTree = "<group>";
+		};
 		882F3DFE2721A47F00A409A6 /* LandingTabbar */ = {
 			isa = PBXGroup;
 			children = (
-				882F3DFF2721A50A00A409A6 /* LandingTabBarViewController.swift */,
+				882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */,
 			);
 			path = LandingTabbar;
 			sourceTree = "<group>";
@@ -1292,6 +1361,7 @@
 			isa = PBXGroup;
 			children = (
 				8841878327478D0F00C6EE39 /* ForgotPsswordViewController.swift */,
+				04C99D492759FEF5002D5B7F /* ForgotPasswordViewModel.swift */,
 			);
 			path = "Forgot password";
 			sourceTree = "<group>";
@@ -1316,6 +1386,8 @@
 			isa = PBXGroup;
 			children = (
 				88799488273A5ABD00904D1F /* IconsHabitModel.swift */,
+				04A79DDD27575A8C009ADC89 /* HabitModel.swift */,
+				04295A2A2758BC60001BF65E /* FetchHabit.swift */,
 			);
 			path = "Habit Model";
 			sourceTree = "<group>";
@@ -1376,6 +1448,7 @@
 			isa = PBXGroup;
 			children = (
 				887994DA273AB38D00904D1F /* HabitCalenderViewController.swift */,
+				0496E010275E0253005C982A /* HabitCalenderViewModel.swift */,
 			);
 			path = HabitCalender;
 			sourceTree = "<group>";
@@ -1384,17 +1457,19 @@
 			isa = PBXGroup;
 			children = (
 				88A529102730205000037464 /* ChangePasswordViewController.swift */,
+				04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */,
 				88A5290F2730204F00037464 /* PasswordChangeConfirmationViewController.swift */,
 			);
 			path = ChangePassword;
 			sourceTree = "<group>";
 		};
-		88B4A26D27205DDC00488AA3 /* EditName */ = {
+		88B4A26D27205DDC00488AA3 /* UpdateProfile */ = {
 			isa = PBXGroup;
 			children = (
-				88B4A26E27205DDC00488AA3 /* EditNameViewController.swift */,
+				88B4A26E27205DDC00488AA3 /* UpdateProfileViewController.swift */,
+				5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */,
 			);
-			path = EditName;
+			path = UpdateProfile;
 			sourceTree = "<group>";
 		};
 		88C7C2F12726C93B00EAA8CA /* Views */ = {
@@ -1521,6 +1596,9 @@
 			isa = PBXGroup;
 			children = (
 				8841878927478DCB00C6EE39 /* OnboadingUtils.swift */,
+				8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */,
+				8814B441274393EB00A6DE01 /* OnboardingProvider.swift */,
+				8814B4082743844D00A6DE01 /* OnboardingAdaptables.swift */,
 				8841878227478D0F00C6EE39 /* Forgot password */,
 				8822D4EA2731777E00C68EE5 /* Get Subscription */,
 				88202D572719920A00F0EA2E /* Walkthrough */,
@@ -1528,10 +1606,7 @@
 				8822D4E52731775500C68EE5 /* Verification */,
 				88E028542716F73F00D90BB1 /* Login */,
 				88B4A26B27205DDC00488AA3 /* ChangePassword */,
-				88B4A26D27205DDC00488AA3 /* EditName */,
-				8814B442274393EB00A6DE01 /* OnboardingCoordinator.swift */,
-				8814B441274393EB00A6DE01 /* OnboardingProvider.swift */,
-				8814B4082743844D00A6DE01 /* OnboardingAdaptables.swift */,
+				88B4A26D27205DDC00488AA3 /* UpdateProfile */,
 				8845B730271EF539007A5069 /* Onboarding.storyboard */,
 			);
 			path = Onboarding;
@@ -1541,6 +1616,7 @@
 			isa = PBXGroup;
 			children = (
 				88E0289C2716FFE500D90BB1 /* SignupViewController.swift */,
+				04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */,
 				88E028A02716FFEE00D90BB1 /* SignupViewModel.swift */,
 			);
 			path = Signup;
@@ -1559,8 +1635,9 @@
 		88E028582716F73F00D90BB1 /* Shared Components */ = {
 			isa = PBXGroup;
 			children = (
+				0496E013275E41B3005C982A /* CircularProgressBar */,
 				5FF6CC8D274E6A5A007ADC2F /* Chat */,
-				8841878627478D9100C6EE39 /* CameraHandler.swift */,
+				8827C3BF2750C0DD009D12C4 /* CameraHandler */,
 				88269DAD2744E046006A9F43 /* NavigationBar */,
 				8835BCED273E8A7200261839 /* StringConstant */,
 				88E5805B2722E92A00D4CAFB /* CollectionViewLayout */,
@@ -1612,6 +1689,9 @@
 			isa = PBXGroup;
 			children = (
 				882F3E142721AAC300A409A6 /* MyAccountViewController.swift */,
+				045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */,
+				04D34F28274FB917009763D1 /* MyAccountViewModel.swift */,
+				5FFDDB6F27550ECF00051011 /* MyAccountPopUpView */,
 				882F3E102721AAC300A409A6 /* View */,
 			);
 			path = "My Account";
@@ -1626,6 +1706,9 @@
 				88E5802E2722D5C500D4CAFB /* AddHabit */,
 				880F3E6627281685007CA895 /* InviteFriends */,
 				88E028952716FF0A00D90BB1 /* Habit.storyboard */,
+				04BE940B2750BC1A00503123 /* HabitProvider.swift */,
+				04BE940E2750BC9A00503123 /* HabitAdaptables.swift */,
+				045791E12754AA67006E0410 /* HabitUtils.swift */,
 			);
 			path = Habit;
 			sourceTree = "<group>";
@@ -1689,8 +1772,8 @@
 		88E5802E2722D5C500D4CAFB /* AddHabit */ = {
 			isa = PBXGroup;
 			children = (
-				880080722729282F008E3260 /* AddHabitViewController.swift */,
 				8816D88E272678B000127DDC /* AddHabitViewModel.swift */,
+				862E5AF927565B1000225894 /* HabitName */,
 				8800806F272926A8008E3260 /* SetTheme */,
 				880F3E2E2727DDB6007CA895 /* ColorPopUp */,
 				880F3E332727EC22007CA895 /* IconPopUp */,
@@ -1704,6 +1787,8 @@
 			isa = PBXGroup;
 			children = (
 				88E580492722E70300D4CAFB /* HomeViewController.swift */,
+				0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */,
+				0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */,
 				88E5804A2722E70300D4CAFB /* Table */,
 				88E580442722E70300D4CAFB /* Collection */,
 			);
@@ -1808,6 +1893,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0456AE972750CA4500DB3ED4 /* HabitProvider.swift in Resources */,
+				0456AE982750CA4500DB3ED4 /* HabitAdaptables.swift in Resources */,
 				88E028962716FF0A00D90BB1 /* Habit.storyboard in Resources */,
 				884549FB271872EC003FBBC8 /* SignUpMock.json in Resources */,
 				5FF6CD69274E6A5A007ADC2F /* ChatIncomingCell.xib in Resources */,
@@ -1936,11 +2023,13 @@
 				880F3E412727EFFE007CA895 /* IconHeader.swift in Sources */,
 				8814B4372743874100A6DE01 /* APIParser.swift in Sources */,
 				88E0289D2716FFE500D90BB1 /* SignupViewController.swift in Sources */,
+				0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */,
 				880F3E362727EC73007CA895 /* IconPopupViewController.swift in Sources */,
 				8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */,
 				5FF6CD3A274E6A5A007ADC2F /* CacheManager.swift in Sources */,
 				5FF6CD7C274E6A5A007ADC2F /* ChatCollectionViewFlowLayout.swift in Sources */,
 				5FF6CD28274E6A5A007ADC2F /* Double+Extention.swift in Sources */,
+				5FFDDB3A2755054600051011 /* MyAccountPopupViewController.swift in Sources */,
 				5FF6CD62274E6A5A007ADC2F /* InputToolbar.swift in Sources */,
 				5FF6CD47274E6A5A007ADC2F /* UserTableViewCell.swift in Sources */,
 				5FF6CD76274E6A5A007ADC2F /* ChatAttachmentIncomingCell.swift in Sources */,
@@ -1956,6 +2045,7 @@
 				5FF6CD34274E6A5A007ADC2F /* CALayer+Blur.swift in Sources */,
 				88269DBE2744EFC2006A9F43 /* NavigationBarView.swift in Sources */,
 				5FF6CD3F274E6A5A007ADC2F /* ChatNotificationPopUpViewController.swift in Sources */,
+				04BE940C2750BC1A00503123 /* HabitProvider.swift in Sources */,
 				882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */,
 				88E028712716FBB100D90BB1 /* LoginViewController.swift in Sources */,
 				887994C9273AB2EE00904D1F /* CommunityDetailViewController.swift in Sources */,
@@ -1964,10 +2054,11 @@
 				88A529112730205000037464 /* PasswordChangeConfirmationViewController.swift in Sources */,
 				88E580522722E70300D4CAFB /* HomeViewController.swift in Sources */,
 				8814B4332743874100A6DE01 /* APIModel.swift in Sources */,
+				862E5AFB27565B5A00225894 /* HabitNameCoordinator.swift in Sources */,
 				5FF6CD80274E6A5A007ADC2F /* KVOView.swift in Sources */,
-				8841878727478D9200C6EE39 /* CameraHandler.swift in Sources */,
 				884549F727186F72003FBBC8 /* SignUpModel.swift in Sources */,
 				5FF6CD6C274E6A5A007ADC2F /* ChatAttachmentOutgoingCell.swift in Sources */,
+				0456AE9B2750D1E300DB3ED4 /* HomeViewModel.swift in Sources */,
 				5FF6CD7D274E6A5A007ADC2F /* ChatContextMenu.swift in Sources */,
 				5FF6CD2A274E6A5A007ADC2F /* UIViewController+Extention.swift in Sources */,
 				5FF6CD41274E6A5A007ADC2F /* ChatNotificationTableView.swift in Sources */,
@@ -2000,7 +2091,7 @@
 				887994C3273AB2EE00904D1F /* CommunityFriendCell.swift in Sources */,
 				8800807D272934B4008E3260 /* WeekDaysCollectionViewCell.swift in Sources */,
 				887994D5273AB34E00904D1F /* RepeatDaysTableView.swift in Sources */,
-				880080732729282F008E3260 /* AddHabitViewController.swift in Sources */,
+				880080732729282F008E3260 /* HabitNameViewController.swift in Sources */,
 				880D683F273AB89600B232CC /* EditHabitTableView.swift in Sources */,
 				887994D6273AB34E00904D1F /* EditReminderViewController.swift in Sources */,
 				5FF6CD6D274E6A5A007ADC2F /* ChatCell.swift in Sources */,
@@ -2011,6 +2102,8 @@
 				883C52F12747914D00D129FC /* OnboadingUtils.swift in Sources */,
 				887994C0273AB2EE00904D1F /* NewCommunityCollectionView.swift in Sources */,
 				5FF6CD3B274E6A5A007ADC2F /* AttachmentDownloadOperation.swift in Sources */,
+				045791DF27549EAA006E0410 /* MyAccountCoordinator.swift in Sources */,
+				04A79DDE27575A8D009ADC89 /* HabitModel.swift in Sources */,
 				5FF6CD66274E6A5A007ADC2F /* ChatPrivateTitleView.swift in Sources */,
 				5FF6CD5C274E6A5A007ADC2F /* SelectAssetCell.swift in Sources */,
 				8814B43C2743874100A6DE01 /* Base.swift in Sources */,
@@ -2025,9 +2118,11 @@
 				88021C6A273D3897004A58F5 /* CustomDashedView.swift in Sources */,
 				861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */,
 				5FF6CD30274E6A5A007ADC2F /* UISearchBar+Extention.swift in Sources */,
+				04BE940F2750BC9A00503123 /* HabitAdaptables.swift in Sources */,
+				04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */,
 				880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */,
 				88B4A225271FF9C300488AA3 /* AddMyPictureViewController.swift in Sources */,
-				882F3E002721A50A00A409A6 /* LandingTabBarViewController.swift in Sources */,
+				882F3E002721A50A00A409A6 /* LandingTabBarController.swift in Sources */,
 				0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */,
 				88E028F427170B7F00D90BB1 /* Utils.swift in Sources */,
 				88E5804F2722E70300D4CAFB /* HabitDaysCell.swift in Sources */,
@@ -2036,12 +2131,14 @@
 				5FF6CD22274E6A5A007ADC2F /* DialogsSelectionVC.swift in Sources */,
 				8814B43B2743874100A6DE01 /* Webservice.swift in Sources */,
 				5FF6CD4B274E6A5A007ADC2F /* InfoTableViewCell.swift in Sources */,
+				04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */,
 				880080782729346D008E3260 /* WeekCollection.swift in Sources */,
 				5FF6CD72274E6A5A007ADC2F /* ChatAttachmentCell.swift in Sources */,
 				8814B4092743844D00A6DE01 /* OnboardingAdaptables.swift in Sources */,
 				882F3E182721AAC300A409A6 /* MyAccountViewController.swift in Sources */,
 				882F3E172721AAC300A409A6 /* MyAccountTableView.swift in Sources */,
 				5FF6CD83274E6A5A007ADC2F /* PDFViewController.swift in Sources */,
+				04295A2B2758BC60001BF65E /* FetchHabit.swift in Sources */,
 				5FF6CD68274E6A5A007ADC2F /* CircularProgressBar.swift in Sources */,
 				8814B418274385E600A6DE01 /* Coordinators.swift in Sources */,
 				887994BE273AB2EE00904D1F /* CommunityGroupHabit.swift in Sources */,
@@ -2054,12 +2151,16 @@
 				880F3E69272816D9007CA895 /* InviteFriendViewController.swift in Sources */,
 				883C52F32747915800D129FC /* ForgotPsswordViewController.swift in Sources */,
 				887994D7273AB34E00904D1F /* RepeatDaysTableViewCell.swift in Sources */,
+				045791E22754AA67006E0410 /* HabitUtils.swift in Sources */,
 				5FF6CD4A274E6A5A007ADC2F /* UIViewController+InfoScreen.swift in Sources */,
+				8827C3C12750C125009D12C4 /* CameraHandler.swift in Sources */,
+				04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */,
 				5FF6CD33274E6A5A007ADC2F /* String+Extention.swift in Sources */,
 				8814B419274385E600A6DE01 /* Scenes.swift in Sources */,
 				5FF6CD81274E6A5A007ADC2F /* ChatResources.swift in Sources */,
 				8814B4102743855A00A6DE01 /* AppAdaptables.swift in Sources */,
 				5FF6CD61274E6A5A007ADC2F /* ToolbarContentView.swift in Sources */,
+				04BE94092750B13200503123 /* HabitRequests.swift in Sources */,
 				8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */,
 				88E029302717104C00D90BB1 /* Extensions.swift in Sources */,
 				88B0F9D7271824CF00EF92B3 /* IscraCustomView.swift in Sources */,
@@ -2084,13 +2185,16 @@
 				8814B4322743874100A6DE01 /* Params.swift in Sources */,
 				5FF6CD39274E6A5A007ADC2F /* ChatManager.swift in Sources */,
 				5FF6CD64274E6A5A007ADC2F /* HeaderCollectionReusableView.swift in Sources */,
+				04C99D4A2759FEF5002D5B7F /* ForgotPasswordViewModel.swift in Sources */,
 				5FF6CD29274E6A5A007ADC2F /* URL+Extention.swift in Sources */,
+				0496E011275E0253005C982A /* HabitCalenderViewModel.swift in Sources */,
 				5FF6CD5A274E6A5A007ADC2F /* ChatDataSource.swift in Sources */,
 				5FF6CD2C274E6A5A007ADC2F /* UIView+Extention.swift in Sources */,
-				88B4A228271FFA8100488AA3 /* LearnHowToAddMemojiViewController.swift in Sources */,
-				88B4A27027205DDD00488AA3 /* EditNameViewController.swift in Sources */,
+				88B4A228271FFA8100488AA3 /* AddMemojiViewController.swift in Sources */,
+				88B4A27027205DDD00488AA3 /* UpdateProfileViewController.swift in Sources */,
 				5FF6CD4C274E6A5A007ADC2F /* InfoTableViewController.swift in Sources */,
 				5FF6CD2D274E6A5A007ADC2F /* Date+Extention.swift in Sources */,
+				0440B9312752050D0096DC2D /* HabitCalenderCoordinator.swift in Sources */,
 				88202D55271968B900F0EA2E /* InputValidation.swift in Sources */,
 				5FF6CD52274E6A5A007ADC2F /* RootParentVC.swift in Sources */,
 				8814B4472743950500A6DE01 /* APIResponse.swift in Sources */,
@@ -2107,7 +2211,6 @@
 				5FF6CD74274E6A5A007ADC2F /* ChatOutgoingCell.swift in Sources */,
 				88E580542722E70300D4CAFB /* HabitTableView.swift in Sources */,
 				88E580552722E70300D4CAFB /* HabitCell.swift in Sources */,
-				8814B4362743874100A6DE01 /* SaloonRequests.swift in Sources */,
 				88E0297B271717A500D90BB1 /* IscraCustomLabel.swift in Sources */,
 				88799489273A5ABD00904D1F /* IconsHabitModel.swift in Sources */,
 				5FF6CD56274E6A5A007ADC2F /* MenuAction.swift in Sources */,
@@ -2118,6 +2221,7 @@
 				5FF6CD46274E6A5A007ADC2F /* EnterChatNameVC.swift in Sources */,
 				8822D4EC2731777E00C68EE5 /* GetSubcriptionViewController.swift in Sources */,
 				88B0F9C027181A4B00EF92B3 /* IscraCustomButton.swift in Sources */,
+				5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */,
 				5FF6CD67274E6A5A007ADC2F /* TypingView.swift in Sources */,
 				5FF6CD40274E6A5A007ADC2F /* ChatNotificationTableViewCell.swift in Sources */,
 				8814B4382743874100A6DE01 /* APIError.swift in Sources */,
@@ -2264,15 +2368,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = FC2MYRZ954;
 				INFOPLIST_FILE = Iscra/Resources/Iscra_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.adilbek.iscra;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scarlett.user;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Scarlett_User_Development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2284,15 +2391,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = FC2MYRZ954;
 				INFOPLIST_FILE = Iscra/Resources/Iscra_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.adilbek.iscra;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scarlett.user;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Scarlett_User_Development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

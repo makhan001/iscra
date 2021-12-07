@@ -46,7 +46,7 @@ class EnterChatNameVC: UITableViewController {
         navigationItem.rightBarButtonItem = createButtonItem
         createButtonItem.tintColor = UIColor(red: 0.758, green: 0.639, blue: 0.158, alpha: 1)
         
-       // title = "New Chat"
+      
         title = "New Chat"
         setupViews()
         
@@ -70,7 +70,7 @@ class EnterChatNameVC: UITableViewController {
     }
     
     
-    //MARK - Setup
+    //MARK - New Chat Setup
     private func setupViews() {
         chatNameTextField.becomeFirstResponder()
         hintLabel.text = ""

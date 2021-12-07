@@ -16,19 +16,24 @@ struct weekStruct{
 }
 
 class WeekCollection: UICollectionView{
+    var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
     
+    var didSelectedDayAtIndex: ((String) -> Void)?
+
     var selcteIndex = 0
     var weakDays = [weekStruct(id: 7, shortDayname: "S", dayname: "sunday", isSelect: false),
                     weekStruct(id: 1, shortDayname: "M", dayname: "monday", isSelect: false),
                     weekStruct(id: 2, shortDayname: "T", dayname: "tuesday", isSelect: false),
-                    weekStruct(id: 3, shortDayname: "W", dayname: "wednusday", isSelect: false),
-                    weekStruct(id: 4, shortDayname: "T", dayname: "thrusday", isSelect: false),
+                    weekStruct(id: 3, shortDayname: "W", dayname: "wednesday", isSelect: false),
+                    weekStruct(id: 4, shortDayname: "T", dayname: "thursday", isSelect: false),
                     weekStruct(id: 5, shortDayname: "F", dayname: "friday", isSelect: false),
                     weekStruct(id: 6, shortDayname: "S", dayname: "suturday", isSelect: false)]
-    func configure() {
+    
+    func configure(selectedColor:ColorStruct) {
         self.register(UINib(nibName: "WeekDaysCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WeekDaysCollectionViewCell")
         self.delegate = self
         self.dataSource = self
+        selectedColorTheme = selectedColor
         reloadData()
     }
 }
@@ -41,7 +46,7 @@ extension WeekCollection:  UICollectionViewDelegate, UICollectionViewDataSource,
         guard let cell = self.dequeueReusableCell(withReuseIdentifier: "WeekDaysCollectionViewCell", for: indexPath) as? WeekDaysCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(day: weakDays[indexPath.row])
+        cell.configure(day: weakDays[indexPath.row], selectedColor:selectedColorTheme)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -56,7 +61,13 @@ extension WeekCollection:  UICollectionViewDelegate, UICollectionViewDataSource,
             temp[indexPath.row].isSelect = true
         }
         weakDays = temp
-        
+        var strDays = ""
+        for i in temp {
+            if i.isSelect == true {
+                strDays =  i.dayname + "," + strDays
+            }
+        }
+        self.didSelectedDayAtIndex?(strDays)
         reloadData()
     }
     

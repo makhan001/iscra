@@ -124,7 +124,7 @@ class AddOccupantsVC: UIViewController {
 
                 placeholderLabel.text = "Search"
                 placeholderLabel.font = .systemFont(ofSize: 15.0, weight: .regular)
-                placeholderLabel.textColor = #colorLiteral(red: 0.4255777597, green: 0.476770997, blue: 0.5723374486, alpha: 1)
+                placeholderLabel.textColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
 
                 systemPlaceholderLabel.addSubview(placeholderLabel)
 
@@ -369,8 +369,9 @@ extension AddOccupantsVC: UITableViewDelegate, UITableViewDataSource {
         }
         let user = self.users[indexPath.row]
         cell.userColor = user.id.generateColor()
-        cell.userNameLabel.text = user.fullName ?? user.login
-        cell.userAvatarLabel.text = String(user.fullName?.capitalized.first ?? Character("U"))
+        cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
+      
+        cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
         cell.tag = indexPath.row
         
         let lastItemNumber = users.count - 1

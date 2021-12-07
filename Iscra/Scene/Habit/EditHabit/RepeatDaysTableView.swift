@@ -12,8 +12,8 @@ class  RepeatDaysTableView: UITableView, UITableViewDataSource, UITableViewDeleg
     var weakDays = [weekStruct(id: 7, shortDayname: "S", dayname: "sunday", isSelect: false),
                     weekStruct(id: 1, shortDayname: "M", dayname: "monday", isSelect: false),
                     weekStruct(id: 2, shortDayname: "T", dayname: "tuesday", isSelect: false),
-                    weekStruct(id: 3, shortDayname: "W", dayname: "wednusday", isSelect: false),
-                    weekStruct(id: 4, shortDayname: "T", dayname: "thrusday", isSelect: false),
+                    weekStruct(id: 3, shortDayname: "W", dayname: "wednesday", isSelect: false),
+                    weekStruct(id: 4, shortDayname: "T", dayname: "thursday", isSelect: false),
                     weekStruct(id: 5, shortDayname: "F", dayname: "friday", isSelect: false),
                     weekStruct(id: 6, shortDayname: "S", dayname: "suturday", isSelect: false)]
     

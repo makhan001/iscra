@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import GoogleSignIn
+import AuthenticationServices
 
 class LoginViewController: UIViewController {
     
@@ -22,8 +23,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtPassword:UITextField!
     @IBOutlet weak var viewNavigation:NavigationBarView!
     weak var router: NextSceneDismisser?
-    
     private let viewModel: LoginViewModel = LoginViewModel(provider: OnboardingServiceProvider())
+    let signInConfig = GIDConfiguration.init(clientID: AppConstant.googleClientID)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,16 +52,25 @@ extension LoginViewController  : navigationBarAction {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         
-        if TARGET_OS_SIMULATOR == 1 {
-            viewModel.email = "lokesh@gmail.com"
-            viewModel.password = "123456"
-            txtEmail.text = viewModel.email
-            txtPassword.text = viewModel.password
-        }
+        //        if TARGET_OS_SIMULATOR == 1 {
+        //            viewModel.email = "user10@gmail.com"
+        //            viewModel.password = "123456"
+        //            txtEmail.text = viewModel.email
+        //            txtPassword.text = viewModel.password
+        //        }
+        
     }
     
-    func ActionType() {
+    func ActionType()  {
         router?.dismiss(controller: .login)
+    }
+    
+    private func naviateUserAfterLogin(_ isVerified:Bool) {
+        if isVerified == true {
+            self.router?.push(scene: .landing)
+        } else {
+            self.router?.push(scene: .verification)
+        }
     }
 }
 
@@ -86,31 +96,38 @@ extension LoginViewController {
     
     private func loginAction() {
         print("loginAction")
+        self.txtEmail.resignFirstResponder()
+        self.txtPassword.resignFirstResponder()
         viewModel.onAction(action: .inputComplete(.login), for: .login)
-
-        
-//        router?.push(scene: .landing)
-//
-//        if viewModel.ValidateUserInputs(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
-//        {
-//            viewModel.Login(emailId: txtFieldEmailId.text ?? "", password: txtFieldPassword.text ?? "")
-//            {
-//                self.showToast(message:self.viewModel.LoginData.message , seconds: 3.0)
-//            }
-//        }
-//        else {
-//            print(viewModel.errorMsg)
-//            self.showToast(message:viewModel.errorMsg , seconds: 1.0)
-//        }
     }
     
     private func loginGoogleAction() {
-        print("loginGoogleAction")
+        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+            guard error == nil else { return }
+            print("accessToken --> \(user?.authentication.accessToken)")
+            print("idToken --> \(user?.authentication.idToken)")
+            print("email --> \(user?.profile?.email)")
+            print("name --> \(user?.profile?.name)")
+            print(user?.profile?.hasImage)
+            self.viewModel.email = user?.profile?.email ?? ""
+            self.viewModel.username = user?.profile?.name ?? ""
+            self.viewModel.social_id = user?.userID ?? ""
+            self.viewModel.socialLogin()
+        }
     }
     
     private func loginAppleAction() {
-        //router?.dismiss(controller: .login)
-        print("loginAppleAction")
+        if #available(iOS 13.0, *) {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+            //          authorizationController.delegate = self
+            //          authorizationController.presentationContextProvider = self
+            authorizationController.performRequests()
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     private func showPasswordAction() {
@@ -124,8 +141,12 @@ extension LoginViewController {
     }
     
     private func forgotPasswordAction() {
-        let VC = storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
-        navigationController?.pushViewController(VC, animated: true)
+        //        let VC = storyboard?.instantiateViewController(withIdentifier: "forgot") as! ForgotPasswordViewController
+        //        navigationController?.pushViewController(VC, animated: true)
+        
+        let forgot: ForgotPasswordViewController = ForgotPasswordViewController.from(from: .onboarding, with: .forgot)
+        self.navigationController?.pushViewController(forgot, animated: true)
+        
     }
     
 }
@@ -140,6 +161,7 @@ extension LoginViewController:UITextFieldDelegate {
         }
         return false
     }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == txtEmail {
             if let text = txtEmail.text, let textRange = Range(range, in: text) {
@@ -154,7 +176,13 @@ extension LoginViewController:UITextFieldDelegate {
         }
         return true
     }
-    
+}
+
+// MARK: Verification View Controller Delegate
+extension LoginViewController: VerificationViewControllerDelegate {
+    func isUserVerified() {
+        self.router?.push(scene: .landing)
+    }
 }
 
 // MARK: API Callback
@@ -163,24 +191,32 @@ extension LoginViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-
-        case let .login(msg), let .login(msg):
-            
-            self.showToast(message: msg)
-            let seconds = 2.0
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                self.router?.push(scene: .landingTab)
+        case let .login(msg, isVerified):
+            self.showToast(message: msg, seconds: 0.5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.naviateUserAfterLogin(isVerified)
             }
-          
-            
-//        case .login:
-//
-//            router?.push(scene: .landingTab)
-
-            // navigate to verification screen
-            break
+        case let .socialLogin(msg):
+            self.showToast(message: msg, seconds: 0.45)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.router?.push(scene: .landing)
+            }
         default:
             break
         }
     }
 }
+
+
+//extension LoginViewController: ASAuthorizationControllerDelegate {
+//  @available(iOS 13.0, *)
+//  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+//    if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
+//      self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
+//    }
+//  }
+//  @available(iOS 13.0, *)
+//  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+//    print(error.localizedDescription)
+//  }
+//}

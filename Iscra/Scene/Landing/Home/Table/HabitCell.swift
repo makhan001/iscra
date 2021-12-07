@@ -20,7 +20,7 @@ class HabitCell: UITableViewCell {
     @IBOutlet weak var collectionMates: UICollectionView!
     @IBOutlet weak var collectiondays: UICollectionView!
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
-    
+    var habitList = [AllHabits]()
     let arr = ["1","1","1"]
     
     override func awakeFromNib() {
@@ -52,12 +52,15 @@ class HabitCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure() {
-        self.lblHabitTitle.text = "GYM Workout"
-        self.lblHabitTitleMates.text = "GYM Workout"
-        self.imgHabit.image = #imageLiteral(resourceName: "google")
-        self.imgHabitMates.image = #imageLiteral(resourceName: "google")
-        self.viewNomates.isHidden = true
+    func configure(obj: AllHabits) {
+        self.lblHabitTitle.text =  obj.name?.capitalized
+        self.lblHabitTitleMates.text = obj.name?.capitalized
+        self.imgHabit.image = UIImage(named: obj.icon ?? "sport1")
+        self.imgHabitMates.image = UIImage(named: obj.icon ?? "sport1")
+        self.imgHabit.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
+        self.imgHabitMates.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
+        self.viewNomates.isHidden = false
+        self.viewMates.isHidden = true
     }
 }
 

@@ -10,9 +10,11 @@ import UIKit
 
 class AppConstant: NSObject {
     
+    // SocialLogin Constants
+      static let googleClientID = "39692170766-8vkfqscsq4ommlmsnrdmeld8knjne2ec.apps.googleusercontent.com"
     //Navigationtitle
     static let nav_addProfilePicture  = "Add Profile Picture"
-    static let nav_memoji = "Memoji"
+    static let nav_memoji = "How to add your own memoji?"
     static let nav_shangpassword = "Change Password"
     
     // Alert Messages
@@ -21,29 +23,43 @@ class AppConstant: NSObject {
     
     //Onboarding --
     static let welComeDiscription  = "We help people to become the best version of themself and connect with others people"
-    
     static let onbordingName  = "How do your \nfriends call you?"
-    
     static let HeaderTitle = "How to add your own memoji?"
-    static let Sub1Title = "Open Notes on your iPhone. Click a new note."
+    static let Sub1Title = "Open Notes on your iPhone. Click a new note.  "
     static let Sub2Title = "Tap the Memoji button then swipe right and tap the New Memoji add new memoji button."
-    static let Sub3Title = "Share your memodji to your notes then click the memodji and save it to your gallery."
-    
+    static let Sub3Title = "Share your memoji to your notes then click the memoji and save it to your gallery."
     static let signUpHeaderTitle = "Let’s create your \naccount"
     static let otpHeaderTitle = "Verify email"
     static let otpMiddleTittle = "Enter the confirmation \ncode we sent to 'email'."
-    
     static let loginHeaderTitle = "Log in into your \naccount"
-    
-    static let subscriptionTitle = "Thanks for using our app and making \nyourself and others better people. \nUnfortunately, for our development we \nneed money. You can choose between \ntwo options: subscribe for one dollar per \nmonth or allow ads."
-    
-    
-    
+    static let subscriptionTitle = "Thanks for using our app and making yourself and others better people. Unfortunately, for our development we need money. You can choose between two options: subscribe for one dollar per month or allow ads."
+    static let firstHabitTitle = "Are you ready to create \nyour first habit?"
+    static let firstHabitSubTitle = "I am excited to help you to become \na better version of yourself. Let's \nstart our journey. Click plus button \nto create your first habit."
+    static let goodHabitTitle = ", let’s define your habit"
+    static let badHabitTitle = "! I will help you to get rid of bad habit"
+    static let groupHabitTitle = "Let’s become better together"
+
     // MARK:Validation Alert messages
     static let emptyEmail = "Email is required"
-    static let invaliedEmail = "Please enter vaild email"
+    static let invalidEmail = "Please enter valid email"
     static let emptyPassword = "Password is required"
-    static let invaliedPassword = "Please enter vaild password"
-    
-    
+    static let emptyNewPassword = "New password is required"
+    static let invalidPassword = "Please enter valid password"
+    static let invalidNewPassword = "Please enter valid new password"
+    static let emptyCurrentPassword = "Current password is required"
+    static let emptyConfirmPassword = "Confirm password is required"
+    static let invalidCurrentPassword = "Please enter valid current password"
+    static let invalidConfirmPassword = "Please enter valid confirm password"
+    static let invalidCurrentPasswordMatch = "Current password and new password are not same"
+    static let invalidConfirmPasswordMatch = "New password and confirm password are not match"
+    static let emptyDays = "Please select days"
+    static let emptyGroupImage = "Please select group image"
+    static let deleteHabit = "Are you sure? The habit will be permanently deleted."
+    static let emptyName = "name can't be empty"
+    static let invalidName = "Please enter valid name"
+    static let emptyDescription = "Description cant be empty"
+    static let invalidDescription = "Description not more than 140 words"
+    static let emptyHabitName = "Habit name can't be empty"
+    static let invalidHabitName = "Habit name not more than 30 words"
 }
+

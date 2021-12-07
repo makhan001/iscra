@@ -9,6 +9,7 @@ import UIKit
 import FSCalendar
 
 class HabitCalenderViewController: UIViewController {
+    
     // MARK: Outlets
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnShare: UIButton!
@@ -27,9 +28,13 @@ class HabitCalenderViewController: UIViewController {
     @IBOutlet weak var viewDeleteHabit: UIView!
     @IBOutlet weak var viewCircular: CircularProgressBar!
     
+    var objHabitDetail: AllHabits?
     var strTitleName = "Learn English"
     private var eventsDateArray: [Date] = []
     private var themeColor = UIColor(hex: "#7B86EB")
+    weak var router: NextSceneDismisser?
+    let viewModel: HabitCalenderViewModel = HabitCalenderViewModel(provider: HabitServiceProvider())
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,25 +42,24 @@ class HabitCalenderViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
 
 // MARK: Instance Methods
 extension HabitCalenderViewController {
     private func setup() {
-        self.calenderSetup()
-        self.circularViewSetup()
+        self.viewModel.view = self
         self.viewBottom.isHidden = true
-        self.lblTitle.textColor = self.themeColor
-        self.lblTitle.text = self.strTitleName
         self.lblLongestStreak.text = "Longest \nStreak"
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
         [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+        self.viewModel.getHabitDetail()
+        self.habitDetailSetup()
     }
     
     private func calenderSetup() {
@@ -80,6 +84,13 @@ extension HabitCalenderViewController {
             dateObjects.append(dateObject!)
         }
         self.eventsDateArray = dateObjects
+    }
+    
+    func habitDetailSetup() {
+        self.calenderSetup()
+        self.circularViewSetup()
+        self.lblTitle.textColor = self.themeColor
+        self.lblTitle.text = self.strTitleName.capitalized
     }
     
     func circularViewSetup() {
@@ -114,7 +125,7 @@ extension HabitCalenderViewController {
     }
     
     private func backAction() {
-        self.navigationController?.popViewController(animated: true)
+        self.router?.dismiss(controller: .habitCalender)
     }
     
     private func bottomSheetAction() {
@@ -126,16 +137,24 @@ extension HabitCalenderViewController {
     
     private func editAction() {
         self.viewBottom.isHidden = true
-        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EditHabitViewController") as! EditHabitViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "EditHabitViewController") as! EditHabitViewController
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
+        let editHabit: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
+        editHabit.objHabitDetail = self.viewModel.objHabitDetail
+        self.navigationController?.pushViewController(editHabit, animated: true)
+        
     }
     
     private func shareAction() {
         self.viewBottom.isHidden = true
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EditReminderViewController") as! EditReminderViewController
-        self.navigationController?.present(vc, animated: false, completion: nil)
+//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "EditReminderViewController") as! EditReminderViewController
+//        self.navigationController?.present(vc, animated: false, completion: nil)
+        
+        let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
+        self.navigationController?.present(editReminder, animated: false, completion: nil)
     }
     
     private func deleteAction() {
@@ -152,7 +171,7 @@ extension HabitCalenderViewController {
     }
     
     func showAlert() {
-        let alertController = UIAlertController(title: "Delete Habit", message: "Are you sure? The habit will be permanently deleted.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
             print("Delete button tapped");
         }
@@ -192,42 +211,72 @@ extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate
     }
 }
 
-class CircularProgressBar: UIView {
-    //MARK: awakeFromNib
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.layer.sublayers = nil
-        drawBackgroundLayer()
-    }
-    
-    public var ringColor:UIColor =  UIColor(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1) {
-        didSet{
-            self.backgroundLayer.strokeColor = ringColor.cgColor
+//class CircularProgressBar: UIView {
+//    //MARK: awakeFromNib
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        self.layer.sublayers = nil
+//        drawBackgroundLayer()
+//    }
+//    
+//    public var ringColor:UIColor =  UIColor(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1) {
+//        didSet{
+//            self.backgroundLayer.strokeColor = ringColor.cgColor
+//        }
+//    }
+//    
+//    public var lineWidth:CGFloat = 10 {
+//        didSet{
+//            backgroundLayer.lineWidth = lineWidth - (0.20 * lineWidth)
+//        }
+//    }
+//    
+//    let backgroundLayer = CAShapeLayer()
+//    private var radius: CGFloat {
+//        get{
+//            if self.frame.width < self.frame.height { return (self.frame.width - lineWidth)/2 }
+//            else { return (self.frame.height - lineWidth)/2 }
+//        }
+//    }
+//    
+//    private var pathCenter: CGPoint{ get{ return self.convert(self.center, from: self.superview) } }
+//    private func drawBackgroundLayer() {
+//        let path = UIBezierPath(arcCenter: pathCenter, radius: self.radius, startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: true)
+//        self.backgroundLayer.path = path.cgPath
+//        self.backgroundLayer.lineWidth = lineWidth - (lineWidth * 20/100)
+//        self.backgroundLayer.fillColor = UIColor.clear.cgColor
+//        self.layer.addSublayer(backgroundLayer)
+//    }
+//}
+
+// MARK: API Callback
+extension HabitCalenderViewController: HabitViewRepresentable {
+    func onAction(_ action: HabitAction) {
+        switch action {
+        case  let .errorMessage(msg):
+            self.showToast(message: msg)
+        case let .sucessMessage(msg):
+            self.showToast(message: msg)
+//            print("self.viewModel.objHabitDetail?.colorTheme is \(self.viewModel.objHabitDetail?.colorTheme)")
+//            print("self.viewModel.objHabitDetail?.name is \(self.viewModel.objHabitDetail?.name)")
+
+            self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
+            self.strTitleName = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
+            self.habitDetailSetup()
+           // self.getDateFromTimeStamp(timeStamp: (self.viewModel.objHabitDetail?.timer)!)
+            break
+        default:
+            break
         }
     }
     
-    public var lineWidth:CGFloat = 10 {
-        didSet{
-            backgroundLayer.lineWidth = lineWidth - (0.20 * lineWidth)
-        }
-    }
-    
-    let backgroundLayer = CAShapeLayer()
-    private var radius: CGFloat {
-        get{
-            if self.frame.width < self.frame.height { return (self.frame.width - lineWidth)/2 }
-            else { return (self.frame.height - lineWidth)/2 }
-        }
-    }
-    
-    private var pathCenter: CGPoint{ get{ return self.convert(self.center, from: self.superview) } }
-    private func drawBackgroundLayer() {
-        let path = UIBezierPath(arcCenter: pathCenter, radius: self.radius, startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: true)
-        self.backgroundLayer.path = path.cgPath
-        self.backgroundLayer.lineWidth = lineWidth - (lineWidth * 20/100)
-        self.backgroundLayer.fillColor = UIColor.clear.cgColor
-        self.layer.addSublayer(backgroundLayer)
-    }
+//    func getDateFromTimeStamp(timeStamp : String) -> String {
+//        let date = NSDate(timeIntervalSince1970: Double(timeStamp) ?? 0.0 / 1000)
+//            let dayTimePeriodFormatter = DateFormatter()
+//            dayTimePeriodFormatter.dateFormat = "dd MMM YY, hh:mm a, EEEE"
+//        dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
+//            let dateString = dayTimePeriodFormatter.string(from: date as Date)
+//        print("dateString is \(dateString)")
+//            return dateString
+//        }
 }
-
-

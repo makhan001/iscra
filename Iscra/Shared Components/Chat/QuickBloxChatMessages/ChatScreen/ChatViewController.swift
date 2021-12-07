@@ -62,7 +62,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
      *  This view controller is the toolbar's delegate.
      */
     @IBOutlet weak var inputToolbar: InputToolbar!
-    
+    @IBOutlet weak var mainView: UIView!
     
     //MARK: - Private IBOutlets
     @IBOutlet private weak var collectionBottomConstraint: NSLayoutConstraint!
@@ -86,7 +86,6 @@ class ChatViewController: UIViewController, ChatContextMenu {
     
     private var isUploading = false
     private var attachmentMessage: QBChatMessage?
-    
     /**
      *  This property is required when creating a ChatViewController.
      */
@@ -159,7 +158,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
     
     private var willResignActiveBlock: AnyObject?
     private var willActiveBlock: AnyObject?
-    
+    var customData : String?
     private var selectedIndexPathForMenu: IndexPath?
     
     private lazy var systemInputToolbar: KVOView = {
@@ -228,7 +227,6 @@ class ChatViewController: UIViewController, ChatContextMenu {
         dataSource.delegate = self
         inputToolbar.inputToolbarDelegate = self
         inputToolbar.toggleSendButtonEnabled(isUploaded: isUploading)
-        
         edgesForExtendedLayout = [] //same UIRectEdgeNone
         
         let backButtonItem = UIBarButtonItem(image: UIImage(named: "ic_Back_Image"),
@@ -247,16 +245,39 @@ class ChatViewController: UIViewController, ChatContextMenu {
         currentUserID = currentUser.ID
         
         setupTitleView()
-        self.tabBarController?.tabBar.isHidden = true
+        self.mainViewTappedSetup()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+       
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        self.toolbarBottomLayoutGuide.constant = 250
     }
     
+    func mainViewTappedSetup() {
+            let stackTap = UITapGestureRecognizer(target: self, action: #selector(self.collectionTapped(_:)))
+            self.mainView?.isUserInteractionEnabled = true
+           self.mainView?.addGestureRecognizer(stackTap)
+            
+    }
+    @objc func collectionTapped(_ sender: UITapGestureRecognizer) {
+            debugPrint("collectionTapped")
+        self.hideKeyboard(animated: true)
+     }
+    func hideTabBarSetup() {
+        tabBarController?.tabBar.isHidden = true
+        tabBarController?.view.backgroundColor = .white
+        edgesForExtendedLayout = UIRectEdge.bottom
+        extendedLayoutIncludesOpaqueBars = true
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.hideTabBarSetup()
         QBChat.instance.addDelegate(self)
-        
         selectedIndexPathForMenu = nil
-        
         willResignActiveBlock = NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
                                                                        object: nil,
                                                                        queue: nil) { [weak self] (notification) in
@@ -519,8 +540,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         accessoryButton.setImage(highlightedImage, for: .highlighted)
         accessoryButton.contentMode = .scaleAspectFit
         accessoryButton.backgroundColor = .clear
-       // accessoryButton.tintColor = #colorLiteral(red: 0.2216441333, green: 0.4713830948, blue: 0.9869660735, alpha: 1)
-        
+       
         inputToolbar.contentView.leftBarButtonItem = accessoryButton
         
         let accessorySendImage = UIImage(named: "ic_send_image")
@@ -532,7 +552,6 @@ class ChatViewController: UIViewController, ChatContextMenu {
         accessorySendButton.setImage(highlightedSendImage, for: .highlighted)
         accessorySendButton.contentMode = .scaleAspectFit
         accessorySendButton.backgroundColor = .clear
-        //accessorySendButton.tintColor = #colorLiteral(red: 0.2216441333, green: 0.4713830948, blue: 0.9869660735, alpha: 1)
         
         inputToolbar.contentView.rightBarButtonItem = accessorySendButton
         inputToolbar.contentView.textView.inputAccessoryView = systemInputToolbar
@@ -631,15 +650,15 @@ class ChatViewController: UIViewController, ChatContextMenu {
                                                          .font: font as Any,
                                                          .paragraphStyle: paragrpahStyle]
         var topLabelString = ""
-//        if messageItem.senderID == currentUserID {
-//            topLabelString = "You"
-//        } else {
-//            if let fullName = chatManager.storage.user(withID: messageItem.senderID)?.fullName {
-//                topLabelString = fullName
-//            } else {
-//                return nil
-//            }
-//        }
+        if messageItem.senderID == currentUserID {
+            topLabelString = "You"
+        } else {
+            if let fullName = chatManager.storage.user(withID: messageItem.senderID)?.fullName {
+                topLabelString = fullName
+            } else {
+                return nil
+            }
+        }
         
         return NSAttributedString(string: topLabelString, attributes: attributes)
     }
@@ -1753,12 +1772,24 @@ extension ChatViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if textView != inputToolbar.contentView.textView {
+            view.endEditing(true)
             return false
         }
-        
+
         return true
     }
-    
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+//    {
+//        if(text == "\n")
+//        {
+//            view.endEditing(true)
+//            return false
+//        }
+//        else
+//        {
+//            return true
+//        }
+//    }
     override func paste(_ sender: Any?) {
         let textAttachment = NSTextAttachment()
         textAttachment.image = UIPasteboard.general.image

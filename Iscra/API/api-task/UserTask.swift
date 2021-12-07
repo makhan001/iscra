@@ -38,15 +38,34 @@ final class UserTask {
     func resendVerification<T:Codable>(params: UserParams.ResendVerification, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: AuthRequests(type: .resendVerification, params: params), modeling: responseModel, completion: completion)
     }
-//
-//    func aboutUs(completion:@escaping APIResult<SuccessResponseModel> ) {
-//        dispatcher.execute(requst: AuthRequests(requestType: .aboutus), modeling: SuccessResponseModel.self, completion:   completion)
-//    }
-//
-//    func aboutUsContent(completion:@escaping APIResult<SuccessResponseModel> ) {
-//        dispatcher.execute(requst: AuthRequests(requestType: .aboutUsContent), modeling: SuccessResponseModel.self, completion:   completion)
-//    }
-//
+    
+    func logout<T:Codable>(params: UserParams.logout, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: AuthRequests(type: .logout, params: params), modeling: responseModel, completion: completion)
+    }
+    func updateProfile<T:Codable>(params: UserParams.UpdateProfile, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: AuthRequests(type: .updateProfile, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func createHabit<T:Codable>(params: HabitParams.CreateHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .createHabit, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func allHabitList<T:Codable>(params: HabitParams.AllHabitList, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .allHabitList, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func updateHabit<T:Codable>(params: HabitParams.UpdateHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .updateHabit, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func deleteHabit<T:Codable>(params: HabitParams.DeleteHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .deleteHabit, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func habitDetail<T:Codable>(params: HabitParams.HabitDetail, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .habitDetail, params: params), modeling: responseModel, completion: completion)
+    }
+    
 //    func termsAndConditions(completion:@escaping APIResult<SuccessResponseModel> ) {
 //        dispatcher.execute(requst: AuthRequests(requestType: .terms), modeling: SuccessResponseModel.self, completion:   completion)
 //    }
@@ -63,3 +82,4 @@ final class UserTask {
 //        dispatcher.execute(requst: AuthRequests(requestType: .logout), modeling: SuccessResponseModel.self, completion:   completion)
 //    }
 }
+

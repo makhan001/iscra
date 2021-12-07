@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZpA-u0-Lj0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZpA-u0-Lj0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--Enter to chat-->
         <scene sceneID="cPz-BC-pIq">
             <objects>
-                <tableViewController storyboardIdentifier="AuthViewController" id="6FT-IX-ZLf" customClass="AuthViewController" customModule="sample_chat_swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AuthViewController" id="6FT-IX-ZLf" customClass="AuthViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FKO-n3-c4a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,7 +189,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiP-di-Fv5" customClass="LoadingButton" customModule="sample_chat_swift" customModuleProvider="target">
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiP-di-Fv5" customClass="LoadingButton" customModule="Iscra" customModuleProvider="target">
                                                     <rect key="frame" x="99.5" y="23" width="215" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="215" id="bPr-lV-R8i"/>
@@ -256,7 +256,7 @@
         <!--Splash ScreenVC-->
         <scene sceneID="FNO-d9-toe">
             <objects>
-                <viewController storyboardIdentifier="SplashScreenVC" id="fTT-hF-MQc" customClass="SplashScreenVC" customModule="sample_chat_swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashScreenVC" id="fTT-hF-MQc" customClass="SplashScreenVC" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EZX-ib-YN1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -290,6 +290,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="WFr-y0-qrD"/>
                         <color key="backgroundColor" red="0.22164413329999999" green="0.47138309480000001" blue="0.98696607349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="WcH-tv-C3o" secondAttribute="bottom" constant="34" id="cPI-y3-Dto"/>
@@ -299,7 +300,6 @@
                             <constraint firstItem="Z6h-W8-Ivb" firstAttribute="centerY" secondItem="EZX-ib-YN1" secondAttribute="centerY" id="pSA-2W-yaH"/>
                             <constraint firstItem="Z6h-W8-Ivb" firstAttribute="centerX" secondItem="EZX-ib-YN1" secondAttribute="centerX" id="pws-e0-0oi"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="WFr-y0-qrD"/>
                     </view>
                     <navigationItem key="navigationItem" id="9J5-x1-HUO"/>
                     <connections>

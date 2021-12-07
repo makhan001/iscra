@@ -11,24 +11,28 @@ class EditHabitViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: EditHabitTableView!
-    
     @IBOutlet weak var btnDeleteHabit: UIButton!
-    
     @IBOutlet weak var txtMyHabit: UITextField!
-    
+    @IBOutlet weak var viewNavigation:NavigationBarView!
+    var objHabitDetail: AllHabits?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        self.txtMyHabit.text = objHabitDetail?.name
     }
 }
 // MARK: Instance Methods
 extension EditHabitViewController {
     private func setup() {
+        self.viewNavigation.lblTitle.text = ""
+        self.viewNavigation.delegateBarAction = self
+        navigationController?.setNavigationBarHidden(true, animated: false)
         [btnDeleteHabit].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -78,19 +82,26 @@ extension EditHabitViewController: clickManagerDelegate{
         }
     }
     private func EveryDayAction() {
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "RepeatDaysPopUpViewController") as! RepeatDaysPopUpViewController
-        self.navigationController?.present(vc, animated: false, completion: nil)
+        
+        let repeatDaysPopUp: RepeatDaysPopUpViewController = RepeatDaysPopUpViewController.from(from: .landing, with: .repeatDaysPopUp)
+        self.navigationController?.present(repeatDaysPopUp, animated: false, completion: nil)
+
     }
     private func ReminderAction() {
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EditReminderViewController") as! EditReminderViewController
-        self.navigationController?.present(vc, animated: false, completion: nil)
+//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "EditReminderViewController") as! EditReminderViewController
+//        self.navigationController?.present(vc, animated: false, completion: nil)
+        
+        let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
+        self.navigationController?.present(editReminder, animated: false, completion: nil)
     }
     private func ChangeColorThemeAction() {
-        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ColorPopUpViewController") as! ColorPopUpViewController
-        self.navigationController?.present(vc, animated: false, completion: nil)
+//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ColorPopUpViewController") as! ColorPopUpViewController
+//        self.navigationController?.present(vc, animated: false, completion: nil)
+        
+        let colorPopUp: ColorPopUpViewController = ColorPopUpViewController.from(from: .habit, with: .colorPopUp)
+        self.navigationController?.present(colorPopUp, animated: false, completion: nil)
     }
 }
 
@@ -105,4 +116,13 @@ extension EditHabitViewController : UITextFieldDelegate {
         }
     }
     
+}
+// MARK: navigationBarAction Callback
+extension EditHabitViewController  : navigationBarAction {
+    
+    func ActionType()  {
+      //  router?.dismiss(controller: .addHabit)
+       // self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+    }
 }

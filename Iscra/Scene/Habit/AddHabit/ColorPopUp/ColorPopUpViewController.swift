@@ -37,6 +37,7 @@ class ColorPopUpViewController: UIViewController {
 extension ColorPopUpViewController: selectedColordelegate {
     func selectedColorIndex(color: ColorStruct) {
         print(color)
+        delegateColor?.selectedColorIndex(color: color)
         selectedColor = color
     }
 }

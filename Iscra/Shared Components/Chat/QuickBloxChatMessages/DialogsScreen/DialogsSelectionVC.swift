@@ -257,18 +257,17 @@ class DialogsSelectionVC: UITableViewController {
                                                           borderColor: UIColor(red:0.42, green:0.48, blue:0.57, alpha:1))
             cell.checkBoxImageView.isHidden = true
         }
-        
+        //Mark:- Delete chat change title name and image
         cell.dialogLastMessage.text = chatDialog.lastMessageText
         if chatDialog.lastMessageText == nil && chatDialog.lastMessageID != nil {
             cell.dialogLastMessage.text = "[Attachment]"
         }
         
-        cell.dialogName.text = cellModel.textLabelText
-//        cell.dialogAvatarLabel.backgroundColor = UInt(chatDialog.createdAt!.timeIntervalSince1970).generateColor()
-//        cell.dialogAvatarLabel.text = String(cellModel.textLabelText.stringByTrimingWhitespace().capitalized.first ?? Character("C"))
-        
-        print("show:\(cellModel.customData)")
-        cell.imgTitle.sd_setImage(with: URL(string: "https://mcdn.wallpapersafari.com/medium/19/37/ViB3eq.jpg"), placeholderImage: UIImage(named: "group"))
+        cell.dialogName.text = cellModel.textLabelText.capitalized
+       print("show:\(cellModel.customData)")
+        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+       
+            
         
         return cell
         

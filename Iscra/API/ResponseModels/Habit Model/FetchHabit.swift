@@ -33,3 +33,32 @@ struct AllHabits: Codable {
         case updatedAt = "updated_at"
     }
 }
+
+
+//import Foundation
+//
+//enum HabitUnion {
+//    case fluffyHabit(FluffyHabit)
+//    case purpleHabitArray([PurpleHabit])
+//}
+//
+//// MARK: - PurpleHabit
+//struct PurpleHabit {
+//    let id, habitID: Int?
+//    let habitDay, createdAt, updatedAt: String?
+//    let isCompleted: Bool?
+//}
+//
+//// MARK: - FluffyHabit
+//struct FluffyHabit {
+//    let id: Int?
+//    let habitType: String?
+//    let days: [String]?
+//    let name, colorTheme, icon: String?
+//    let reminders: Bool?
+//    let habitDescription: String?
+//    let groupImage: String?
+//    let userID: Int?
+//    let timer, createdAt, updatedAt: String?
+//}
+

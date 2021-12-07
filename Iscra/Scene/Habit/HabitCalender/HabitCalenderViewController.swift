@@ -58,6 +58,7 @@ extension HabitCalenderViewController {
         [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+        self.viewModel.habitId = 10 //4 // deepak static
         self.viewModel.getHabitDetail()
         self.habitDetailSetup()
     }
@@ -126,6 +127,7 @@ extension HabitCalenderViewController {
     
     private func backAction() {
         self.router?.dismiss(controller: .habitCalender)
+       // self.navigationController?.popViewController(animated: true) // deepak
     }
     
     private func bottomSheetAction() {
@@ -137,10 +139,6 @@ extension HabitCalenderViewController {
     
     private func editAction() {
         self.viewBottom.isHidden = true
-//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "EditHabitViewController") as! EditHabitViewController
-//        self.navigationController?.pushViewController(vc, animated: true)
-        
         let editHabit: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
         editHabit.objHabitDetail = self.viewModel.objHabitDetail
         self.navigationController?.pushViewController(editHabit, animated: true)
@@ -149,10 +147,6 @@ extension HabitCalenderViewController {
     
     private func shareAction() {
         self.viewBottom.isHidden = true
-//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "EditReminderViewController") as! EditReminderViewController
-//        self.navigationController?.present(vc, animated: false, completion: nil)
-        
         let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
         self.navigationController?.present(editReminder, animated: false, completion: nil)
     }
@@ -211,55 +205,14 @@ extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate
     }
 }
 
-//class CircularProgressBar: UIView {
-//    //MARK: awakeFromNib
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        self.layer.sublayers = nil
-//        drawBackgroundLayer()
-//    }
-//    
-//    public var ringColor:UIColor =  UIColor(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1) {
-//        didSet{
-//            self.backgroundLayer.strokeColor = ringColor.cgColor
-//        }
-//    }
-//    
-//    public var lineWidth:CGFloat = 10 {
-//        didSet{
-//            backgroundLayer.lineWidth = lineWidth - (0.20 * lineWidth)
-//        }
-//    }
-//    
-//    let backgroundLayer = CAShapeLayer()
-//    private var radius: CGFloat {
-//        get{
-//            if self.frame.width < self.frame.height { return (self.frame.width - lineWidth)/2 }
-//            else { return (self.frame.height - lineWidth)/2 }
-//        }
-//    }
-//    
-//    private var pathCenter: CGPoint{ get{ return self.convert(self.center, from: self.superview) } }
-//    private func drawBackgroundLayer() {
-//        let path = UIBezierPath(arcCenter: pathCenter, radius: self.radius, startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: true)
-//        self.backgroundLayer.path = path.cgPath
-//        self.backgroundLayer.lineWidth = lineWidth - (lineWidth * 20/100)
-//        self.backgroundLayer.fillColor = UIColor.clear.cgColor
-//        self.layer.addSublayer(backgroundLayer)
-//    }
-//}
-
 // MARK: API Callback
 extension HabitCalenderViewController: HabitViewRepresentable {
     func onAction(_ action: HabitAction) {
         switch action {
         case  let .errorMessage(msg):
             self.showToast(message: msg)
-        case let .sucessMessage(msg):
-            self.showToast(message: msg)
-//            print("self.viewModel.objHabitDetail?.colorTheme is \(self.viewModel.objHabitDetail?.colorTheme)")
-//            print("self.viewModel.objHabitDetail?.name is \(self.viewModel.objHabitDetail?.name)")
-
+        case .sucessMessage(_):
+           // self.showToast(message: msg)
             self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
             self.strTitleName = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
             self.habitDetailSetup()

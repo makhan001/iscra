@@ -69,7 +69,7 @@ struct HabitRequests: RequestRepresentable {
         case .deleteHabit:
             return "habits/delete"
         case .habitDetail:
-            return "habits/groupdetails"
+            return "habits/habit_details"
         }
     }
     

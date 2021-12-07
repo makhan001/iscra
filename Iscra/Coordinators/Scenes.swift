@@ -57,7 +57,7 @@ enum Scenes:String {
     case editReminder
     case habitCalender
     case groupHabitFriends
-    case RepeatDaysPopUp
+//    case RepeatDaysPopUp
     
 }
 
@@ -106,5 +106,5 @@ enum StoryboardIdentifier:String {
     case editReminder
     case habitCalender
     case groupHabitFriends
-    case RepeatDaysPopUp
+//    case RepeatDaysPopUp
 }

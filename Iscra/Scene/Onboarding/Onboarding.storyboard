@@ -1568,7 +1568,7 @@
                                 <rect key="frame" x="0.0" y="70" width="414" height="596"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfH-xt-wRd">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="596"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSe-UP-sFa" customClass="CustomDashedView" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="94.666666666666686" y="30" width="225" height="225"/>
@@ -1612,9 +1612,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qcd-nm-zpE" customClass="IscraCustomImage">
-                                                <rect key="frame" x="94.666666666666686" y="30" width="225" height="225"/>
-                                            </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wwE-dZ-wja">
                                                 <rect key="frame" x="32" y="280" width="350" height="330"/>
                                                 <subviews>
@@ -1808,6 +1805,14 @@
                                                     <constraint firstItem="LfK-5Z-yrc" firstAttribute="top" secondItem="sba-kJ-lqU" secondAttribute="bottom" id="nYU-Yj-5D1"/>
                                                 </constraints>
                                             </stackView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qcd-nm-zpE" customClass="IscraCustomImage" customModule="Iscra" customModuleProvider="target">
+                                                <rect key="frame" x="94.666666666666686" y="30" width="225" height="225"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="112.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -1815,11 +1820,11 @@
                                             <constraint firstItem="wwE-dZ-wja" firstAttribute="leading" secondItem="wfH-xt-wRd" secondAttribute="leading" constant="32" id="4fs-bP-5Ze"/>
                                             <constraint firstItem="SSe-UP-sFa" firstAttribute="trailing" secondItem="qcd-nm-zpE" secondAttribute="trailing" id="ENB-Bi-xiO"/>
                                             <constraint firstItem="wwE-dZ-wja" firstAttribute="top" secondItem="qcd-nm-zpE" secondAttribute="bottom" constant="25" id="Sle-Sc-MOg"/>
+                                            <constraint firstAttribute="bottom" secondItem="wwE-dZ-wja" secondAttribute="bottom" constant="10" id="TMe-D5-GvB"/>
                                             <constraint firstItem="SSe-UP-sFa" firstAttribute="leading" secondItem="qcd-nm-zpE" secondAttribute="leading" id="dAo-1V-pmy"/>
                                             <constraint firstItem="SSe-UP-sFa" firstAttribute="centerX" secondItem="wfH-xt-wRd" secondAttribute="centerX" id="ekE-i2-cj6"/>
                                             <constraint firstItem="SSe-UP-sFa" firstAttribute="top" secondItem="wfH-xt-wRd" secondAttribute="top" constant="30" id="erG-XV-eTR"/>
                                             <constraint firstItem="wwE-dZ-wja" firstAttribute="centerX" secondItem="qcd-nm-zpE" secondAttribute="centerX" id="niw-gj-PpL"/>
-                                            <constraint firstAttribute="height" constant="596" id="uZx-ok-npX"/>
                                             <constraint firstItem="SSe-UP-sFa" firstAttribute="top" secondItem="qcd-nm-zpE" secondAttribute="top" id="vJm-qH-xlL"/>
                                             <constraint firstItem="qcd-nm-zpE" firstAttribute="top" secondItem="wfH-xt-wRd" secondAttribute="top" constant="30" id="wZJ-7U-P9Q"/>
                                         </constraints>
@@ -1921,6 +1926,7 @@
                     <connections>
                         <outlet property="btnAddPhoto" destination="FAj-WO-zbi" id="3Id-uy-0DU"/>
                         <outlet property="btnCancel" destination="1HM-Uy-OsM" id="4on-aA-8fv"/>
+                        <outlet property="imgUser" destination="qcd-nm-zpE" id="vJZ-gZ-rMz"/>
                         <outlet property="lblFirstSubTitle" destination="YTY-Xr-Eih" id="QbJ-XH-ZfZ"/>
                         <outlet property="lblHeaderTitle" destination="WMm-Js-G1K" id="sje-YI-yry"/>
                         <outlet property="lblSecondSubTitle" destination="N04-yo-qRO" id="w6v-Wj-RaJ"/>
@@ -2480,10 +2486,11 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-MZ-DDT" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="67"/>
+                                                <color key="backgroundColor" red="0.75686274509999996" green="0.63921568630000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" name="BlackAccent"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                         <integer key="value" value="37"/>
@@ -2493,10 +2500,11 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F77-LV-flF" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="72.333333333333343" y="0.0" width="57.333333333333343" height="67"/>
+                                                <color key="backgroundColor" red="0.75686274509999996" green="0.63921568630000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" name="BlackAccent"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                         <integer key="value" value="37"/>
@@ -2506,10 +2514,11 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4nx-as-RJr" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="144.66666666666666" y="0.0" width="57" height="67"/>
+                                                <color key="backgroundColor" red="0.75686274509999996" green="0.63921568630000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" name="BlackAccent"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                         <integer key="value" value="37"/>
@@ -2519,10 +2528,11 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ATG-w7-j2m" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="216.66666666666669" y="0.0" width="57.333333333333314" height="67"/>
+                                                <color key="backgroundColor" red="0.75686274509999996" green="0.63921568630000003" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" name="BlackAccent"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                         <integer key="value" value="37"/>

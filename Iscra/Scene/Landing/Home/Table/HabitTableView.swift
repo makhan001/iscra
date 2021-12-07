@@ -7,12 +7,7 @@
 
 import UIKit
 
-protocol HabitTableNavigation: class {
-    func navigate()
-}
-
 class  HabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
-    weak var delegate1 : HabitTableNavigation?
     var didSelectedAtIndex: ((Int) -> Void)?
     var habitList = [AllHabits]()
     var isHabitDelete:((_ isSelect:Bool, _ habitId: String)   ->())?
@@ -44,7 +39,6 @@ class  HabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("navigate")
-//        delegate1?.navigate()
         didSelectedAtIndex?(indexPath.row)
     }
     

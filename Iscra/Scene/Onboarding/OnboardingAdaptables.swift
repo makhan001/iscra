@@ -14,6 +14,7 @@ enum OnboardingScreenType: String {
     case forgotPassword
     case changePassword
    case updateProfile
+    case socialLogin
 }
 enum OnboardingAction {
     case inputComplete(_ screen: OnboardingScreenType)
@@ -29,7 +30,7 @@ enum OnboardingAction {
     case resendVerification
     case forgotPassword(_ text:String )
     case changePassword(_ text:String)
-    case socialLogin
+    case socialLogin(_ text:String)
     case terms
     case privacy
     case feedback
@@ -61,6 +62,7 @@ protocol OnboardingServiceProvidable:AnyObject {
     func resendVerification(param:UserParams.ResendVerification)
     func logout(param:UserParams.logout)
     func updateProfile(param:UserParams.UpdateProfile)
+    
 }
 protocol OnboardingServiceProvierDelegate:AnyObject {
     func completed<T>(for action:OnboardingAction, with response:T?, with error:APIError?)

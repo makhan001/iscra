@@ -12,7 +12,11 @@ final class LoginViewModel {
     
     var email: String = ""
     var password: String = ""
-    
+    var username: String = ""
+    var social_id: String = ""
+    var selectedImage: UIImage = UIImage()
+    var delegate: OnboardingServiceProvierDelegate?
+
     weak var view: OnboardingViewRepresentable?
     let provider: OnboardingServiceProvidable
     
@@ -41,6 +45,42 @@ final class LoginViewModel {
                 
         self.provider.login(param: UserParams.Login(email: email, password: password, fcm_token: "fcmToken", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, device_udid: "" , device_type: "ios"))
     }
+    
+    //Mark:- Social Login Api-----------------------
+     func socialLogin(){
+        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: .google)
+        print("parameter---> \(parameters)")
+        
+        WebService().requestMultiPart(urlString: "/users/sociallogin",
+                                      httpMethod: .post,
+                                      parameters: parameters,
+                                      decodingType: SuccessResponseModel.self,
+                                      imageArray: [["profile_image": selectedImage ?? UIImage()]],
+                                      fileArray: [],
+                                      file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
+            if err != nil {
+              //  self?.delegate?.completed(for: .socialLogin(<#T##text: String##String#>), with: resp, with: nil)
+                //self?.view?.onAction(.errorMessage(err?.responseData?.message ?? ERROR_MESSAGE))
+                self?.view?.onAction(.errorMessage(err ?? ERROR_MESSAGE))
+                print(err)
+                return
+            } else {
+                if let response = resp as? SuccessResponseModel {
+                    if response.status == true {
+                        UserStore.save(token: response.data?.user?.authenticationToken)
+                        UserStore.save(userName: response.data?.user?.email)
+                        UserStore.save(userName: response.data?.user?.username?.capitalized)
+                        print("socialLoginApi Success---> \(response)")
+                        UserStore.save(userID: response.data?.user?.id)
+                        UserStore.save(userImage: response.data?.user?.profileImage)
+                        self?.view?.onAction(.socialLogin(response.message ?? ""))
+                    } else {
+                        self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
+                    }
+                }
+            }
+        }
+    }
 }
 
 extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
@@ -59,7 +99,6 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                     UserStore.save(userImage: resp.data?.loginData?.profileImage)
                     if resp.data?.loginData?.isVerified == true {
                         self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
-
                     }else{
                         let code =  resp.data?.loginData?.verificationCode
                         let msg = (resp.message! + " code is " + code!)

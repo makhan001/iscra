@@ -45,7 +45,7 @@
                             <constraint firstAttribute="width" constant="20" id="j4d-Ho-BLT"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="3r1-86-nWc">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3r1-86-nWc">
                         <rect key="frame" x="12" y="2" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="OVz-5J-r4q"/>
@@ -80,7 +80,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="avatar" width="64" height="64"/>
         <image name="checkmark" width="12" height="10"/>
     </resources>
 </document>

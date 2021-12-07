@@ -1772,12 +1772,24 @@ extension ChatViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if textView != inputToolbar.contentView.textView {
+            view.endEditing(true)
             return false
         }
-        
+
         return true
     }
-    
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+//    {
+//        if(text == "\n")
+//        {
+//            view.endEditing(true)
+//            return false
+//        }
+//        else
+//        {
+//            return true
+//        }
+//    }
     override func paste(_ sender: Any?) {
         let textAttachment = NSTextAttachment()
         textAttachment.image = UIPasteboard.general.image

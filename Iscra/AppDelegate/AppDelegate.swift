@@ -7,9 +7,10 @@
 
 import UIKit
 import CoreData
+import Quickblox
+import GoogleSignIn
 import SVProgressHUD
 import IQKeyboardManagerSwift
-import Quickblox
 
 
 struct CredentialsConstant {
@@ -34,7 +35,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initialConfiguration()
         return true
     }
-    
+    func application(
+      _ app: UIApplication,
+      open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+      var handled: Bool
+      handled = GIDSignIn.sharedInstance.handle(url)
+      if handled {
+        return true
+      }
+      // Handle other custom URL types.
+
+      // If not handled by this app, return false.
+      return false
+    }
     private func initialConfiguration() {
         Thread.sleep(forTimeInterval: 0.0)
         SVProgressHUD.setForegroundColor(UIColor.primaryAccent)

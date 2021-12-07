@@ -376,57 +376,66 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2se-TB-CcR" customClass="MyAccountTableView" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="177.33333333333334" width="341" height="292.66666666666663"/>
+                                                <rect key="frame" x="8" y="177.33333333333337" width="341" height="242.66666666666663"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzI-dq-UI8">
-                                                <rect key="frame" x="0.0" y="470" width="357" height="127"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cfd-Xj-QFi">
-                                                <rect key="frame" x="10" y="480" width="337" height="107"/>
+                                                <rect key="frame" x="0.0" y="420" width="357" height="157"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzi-eY-W0N" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="337" height="56"/>
-                                                        <color key="backgroundColor" name="SecondryAccent"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="56" id="eUU-X2-MdK"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Get subsciption">
-                                                            <color key="titleColor" name="BlackAccent"/>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="24"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                                                <integer key="value" value="18"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMg-w0-bk0" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="71" width="337" height="36"/>
-                                                        <state key="normal" title="Log out">
-                                                            <color key="titleColor" name="GrayAccent"/>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                                                <integer key="value" value="20"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="24"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cfd-Xj-QFi">
+                                                        <rect key="frame" x="10" y="15" width="337" height="127"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzi-eY-W0N" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="337" height="56"/>
+                                                                <color key="backgroundColor" name="SecondryAccent"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="56" id="eUU-X2-MdK"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Get subsciption">
+                                                                    <color key="titleColor" name="BlackAccent"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="24"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                                        <integer key="value" value="18"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMg-w0-bk0" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="71" width="337" height="56"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="56" id="cam-yc-z1a"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Log out">
+                                                                    <color key="titleColor" name="GrayAccent"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                                        <integer key="value" value="20"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="24"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
-                                            </stackView>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="cfd-Xj-QFi" firstAttribute="top" secondItem="dzI-dq-UI8" secondAttribute="top" constant="15" id="4ab-4V-ZqK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cfd-Xj-QFi" secondAttribute="trailing" constant="10" id="67c-3v-mKf"/>
+                                                    <constraint firstAttribute="bottom" secondItem="cfd-Xj-QFi" secondAttribute="bottom" constant="15" id="sCM-X3-Dvn"/>
+                                                    <constraint firstItem="cfd-Xj-QFi" firstAttribute="leading" secondItem="dzI-dq-UI8" secondAttribute="leading" constant="10" id="zO2-AB-0qm"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="cfd-Xj-QFi" firstAttribute="leading" secondItem="Oh1-7I-j5c" secondAttribute="leading" constant="10" id="Amk-7e-WZv"/>
-                                            <constraint firstAttribute="trailing" secondItem="cfd-Xj-QFi" secondAttribute="trailing" constant="10" id="Bb1-zh-TsD"/>
                                             <constraint firstItem="dzI-dq-UI8" firstAttribute="top" secondItem="2se-TB-CcR" secondAttribute="bottom" id="Lrb-vs-CJM"/>
                                             <constraint firstItem="0fQ-wV-rxv" firstAttribute="top" secondItem="Oh1-7I-j5c" secondAttribute="top" constant="10" id="QtW-Uu-TfH"/>
                                             <constraint firstItem="BbM-Nj-7Cb" firstAttribute="top" secondItem="0fQ-wV-rxv" secondAttribute="bottom" constant="25" id="RPG-Ka-fzt"/>
@@ -436,10 +445,8 @@
                                             <constraint firstItem="BbM-Nj-7Cb" firstAttribute="leading" secondItem="Oh1-7I-j5c" secondAttribute="leading" constant="10" id="db7-TM-uVa"/>
                                             <constraint firstItem="BbM-Nj-7Cb" firstAttribute="centerX" secondItem="Oh1-7I-j5c" secondAttribute="centerX" id="flt-8P-6J2"/>
                                             <constraint firstItem="dzI-dq-UI8" firstAttribute="leading" secondItem="Oh1-7I-j5c" secondAttribute="leading" id="gev-An-Evd"/>
-                                            <constraint firstAttribute="bottom" secondItem="cfd-Xj-QFi" secondAttribute="bottom" constant="10" id="jWp-zb-1TS"/>
-                                            <constraint firstAttribute="bottom" secondItem="dzI-dq-UI8" secondAttribute="bottom" id="pW6-S2-O9y"/>
+                                            <constraint firstAttribute="bottom" secondItem="dzI-dq-UI8" secondAttribute="bottom" constant="20" id="pW6-S2-O9y"/>
                                             <constraint firstAttribute="trailing" secondItem="dzI-dq-UI8" secondAttribute="trailing" id="qWp-ID-8pZ"/>
-                                            <constraint firstItem="cfd-Xj-QFi" firstAttribute="top" secondItem="2se-TB-CcR" secondAttribute="bottom" constant="10" id="tzX-bW-IAr"/>
                                             <constraint firstItem="0fQ-wV-rxv" firstAttribute="centerX" secondItem="Oh1-7I-j5c" secondAttribute="centerX" id="xQ9-5j-APu"/>
                                         </constraints>
                                     </view>

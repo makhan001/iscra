@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import AuthenticationServices
 
 class LoginViewController: UIViewController {
     
@@ -95,27 +96,27 @@ extension LoginViewController {
     
     private func loginGoogleAction() {
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
-           guard error == nil else { return }
-//            print(user?.authentication.accessToken)
-//            print(user?.authentication.idToken)
-//            print(user?.profile?.email)
-//            print(user?.profile?.name)
-//            print(user?.profile?.hasImage)
-            self.viewModel.onAction(action: .inputComplete(.socialLogin), for: .socialLogin)
-         }
+            guard error == nil else { return }
+            print(user?.authentication.accessToken)
+            print(user?.authentication.idToken)
+            print(user?.profile?.email)
+            print(user?.profile?.name)
+            print(user?.profile?.hasImage)
+            //          self.viewModel.onAction(action: .inputComplete(.socialLogin), for: .socialLogin)
+        }
     }
     
     private func loginAppleAction() {
         if #available(iOS 13.0, *) {
-          let appleIDProvider = ASAuthorizationAppleIDProvider()
-          let request = appleIDProvider.createRequest()
-          request.requestedScopes = [.fullName, .email]
-          let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-          authorizationController.delegate = self
-          authorizationController.presentationContextProvider = self
-          authorizationController.performRequests()
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+            authorizationController.delegate = self
+            //authorizationController.presentationContextProvider = self
+            authorizationController.performRequests()
         } else {
-          // Fallback on earlier versions
+            // Fallback on earlier versions
         }
     }
     
@@ -133,7 +134,7 @@ extension LoginViewController {
     private func forgotPasswordAction() {
         let forgot: ForgotPasswordViewController = ForgotPasswordViewController.from(from: .onboarding, with: .forgot)
         self.navigationController?.pushViewController(forgot, animated: true)
-
+        
     }
     
 }
@@ -190,14 +191,18 @@ extension LoginViewController: OnboardingViewRepresentable {
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate {
-  @available(iOS 13.0, *)
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-    if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
-      self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
+            // self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
+            print( appleCredentials.email ?? "")
+            print( appleCredentials.email ?? "")
+            print( appleCredentials.email ?? "")
+            print( appleCredentials.email ?? "")
+        }
     }
-  }
-  @available(iOS 13.0, *)
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-    print(error.localizedDescription)
-  }
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print(error.localizedDescription)
+    }
 }

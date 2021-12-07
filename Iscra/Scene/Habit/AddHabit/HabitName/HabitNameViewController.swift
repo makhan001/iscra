@@ -25,9 +25,7 @@ class HabitNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        print("self.router is \(self.router)")
     }
-    
 }
 
 extension HabitNameViewController {

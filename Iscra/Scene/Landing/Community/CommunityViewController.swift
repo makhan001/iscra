@@ -71,17 +71,18 @@ extension CommunityViewController {
     
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
+        // deepak static
+        let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
+        habitCalender.strTitleName = "Me"
+        self.navigationController?.pushViewController(habitCalender, animated: true)
+        // deepak static
     }
 }
 
 // MARK: - Navigation
 extension CommunityViewController: communityGroupHabitDetail{
     func navigate() {
-       
-//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "CommunityDetailViewController") as! CommunityDetailViewController
-//        navigationController?.pushViewController(vc, animated: true)
-        
+               
         let communityDetail: CommunityDetailViewController = CommunityDetailViewController.from(from: .landing, with: .communityDetail)
         self.navigationController?.pushViewController(communityDetail, animated: true)
     }

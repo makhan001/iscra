@@ -19,6 +19,7 @@
 		0456AE9B2750D1E300DB3ED4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */; };
 		045791DF27549EAA006E0410 /* MyAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */; };
 		045791E22754AA67006E0410 /* HabitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045791E12754AA67006E0410 /* HabitUtils.swift */; };
+		04810DBE275F7B5000DEC36F /* EditHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */; };
 		0496E011275E0253005C982A /* HabitCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E010275E0253005C982A /* HabitCalenderViewModel.swift */; };
 		0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */; };
 		04A79DDE27575A8D009ADC89 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A79DDD27575A8C009ADC89 /* HabitModel.swift */; };
@@ -302,6 +303,7 @@
 		0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountCoordinator.swift; sourceTree = "<group>"; };
 		045791E12754AA67006E0410 /* HabitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitUtils.swift; sourceTree = "<group>"; };
+		04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitViewModel.swift; sourceTree = "<group>"; };
 		0496E010275E0253005C982A /* HabitCalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderViewModel.swift; sourceTree = "<group>"; };
 		0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCircularProgressBar.swift; sourceTree = "<group>"; };
 		04A79DDD27575A8C009ADC89 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
@@ -1145,6 +1147,7 @@
 			children = (
 				880D683C273AB89600B232CC /* CellView */,
 				880D683E273AB89600B232CC /* EditHabitViewController.swift */,
+				04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */,
 			);
 			path = "Edit Habit";
 			sourceTree = "<group>";
@@ -2193,6 +2196,7 @@
 				88B4A228271FFA8100488AA3 /* AddMemojiViewController.swift in Sources */,
 				88B4A27027205DDD00488AA3 /* UpdateProfileViewController.swift in Sources */,
 				5FF6CD4C274E6A5A007ADC2F /* InfoTableViewController.swift in Sources */,
+				04810DBE275F7B5000DEC36F /* EditHabitViewModel.swift in Sources */,
 				5FF6CD2D274E6A5A007ADC2F /* Date+Extention.swift in Sources */,
 				0440B9312752050D0096DC2D /* HabitCalenderCoordinator.swift in Sources */,
 				88202D55271968B900F0EA2E /* InputValidation.swift in Sources */,

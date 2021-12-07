@@ -69,7 +69,10 @@
                                         <constraint firstAttribute="width" secondItem="3Hx-dB-YiH" secondAttribute="height" multiplier="1:1" id="8LQ-Nv-Xvn"/>
                                         <constraint firstAttribute="width" constant="48" id="kpe-4x-ycS"/>
                                     </constraints>
-                                    <state key="normal" image="back-asdasd"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                             <color key="value" red="0.98823529409999999" green="0.97647058819999999" blue="0.86543246789999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -82,6 +85,10 @@
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                             <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                            <integer key="value" value="20"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </button>
@@ -115,7 +122,7 @@
     </objects>
     <designables>
         <designable name="3Hx-dB-YiH">
-            <size key="intrinsicContentSize" width="48" height="48"/>
+            <size key="intrinsicContentSize" width="30" height="24"/>
         </designable>
         <designable name="Aqc-wV-fyn">
             <size key="intrinsicContentSize" width="48" height="48"/>

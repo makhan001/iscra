@@ -9,7 +9,6 @@ import UIKit
 
 class EditHabitViewController: UIViewController {
     
-    
     @IBOutlet weak var tableView: EditHabitTableView!
     @IBOutlet weak var btnDeleteHabit: UIButton!
     @IBOutlet weak var txtMyHabit: UITextField!
@@ -30,6 +29,8 @@ class EditHabitViewController: UIViewController {
 // MARK: Instance Methods
 extension EditHabitViewController {
     private func setup() {
+        self.viewNavigation.navType = .editHabit
+        self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.delegateBarAction = self
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -39,69 +40,98 @@ extension EditHabitViewController {
         tableView.configure()
         tableView.delegateNavigate = self
         txtMyHabit.delegate = self
-        self.navigationItem.title = "Edit habit"
-        // self.navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: nil), animated: true)
-     
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(rightHandAction))
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes([.font : UIFont.systemFont(ofSize: 24, weight: .bold), .foregroundColor : UIColor.black], for: .normal)
+//        self.navigationItem.title = "Edit habit"
+//        // self.navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: nil), animated: true)
+//
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
+//                                                                 style: .plain,
+//                                                                 target: self,
+//                                                                 action: #selector(rightHandAction))
+//        navigationItem.rightBarButtonItem?.setTitleTextAttributes([.font : UIFont.systemFont(ofSize: 24, weight: .bold), .foregroundColor : UIColor.black], for: .normal)
 
     }
-    @objc func rightHandAction(){
-        print("save")
-    }
+  
 }
 // MARK:- Button Action
 extension EditHabitViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnDeleteHabit:
-            self.DeleteHabitAction()
+            self.deleteHabitAction()
         default:
             break
         }
     }
-    private func DeleteHabitAction() {
-        print("DeleteHabitAction")
-    }
     
+    private func deleteHabitAction() {
+        print("DeleteHabitAction")
+        self.showAlert()
+    }
 }
+
 extension EditHabitViewController: clickManagerDelegate{
     func tableViewCellNavigation(performAction: clickManager) {
         switch performAction {
         case .everyDay:
-            EveryDayAction()
+            everyDayAction()
         case .reminder:
-            ReminderAction()
+            reminderAction()
         case .changeColorTheme:
-            ChangeColorThemeAction()
+            changeColorThemeAction()
         default:
             print("default")
         }
     }
-    private func EveryDayAction() {
-        
+    
+    private func everyDayAction() {
         let repeatDaysPopUp: RepeatDaysPopUpViewController = RepeatDaysPopUpViewController.from(from: .landing, with: .repeatDaysPopUp)
+        repeatDaysPopUp.days = self.objHabitDetail?.days
+        repeatDaysPopUp.objHabitDetail = self.objHabitDetail
+        repeatDaysPopUp.getRepeatDays = {
+            repeatDays in
+            print("RepeatDays on edit is \(repeatDays)")
+        }
         self.navigationController?.present(repeatDaysPopUp, animated: false, completion: nil)
-
     }
-    private func ReminderAction() {
-//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "EditReminderViewController") as! EditReminderViewController
-//        self.navigationController?.present(vc, animated: false, completion: nil)
-        
+    
+    private func reminderAction() {
         let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
+        editReminder.objHabitDetail = self.objHabitDetail
+        editReminder.getReminderTime = {
+            isReminderOn , reminderTime in
+            if isReminderOn {
+                print("updated time is \(reminderTime)  and remainder is \(isReminderOn)")
+            }else{
+                print("updated time is \(reminderTime)  and remainder is \(isReminderOn)")
+            }
+        }
         self.navigationController?.present(editReminder, animated: false, completion: nil)
     }
-    private func ChangeColorThemeAction() {
-//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "ColorPopUpViewController") as! ColorPopUpViewController
-//        self.navigationController?.present(vc, animated: false, completion: nil)
-        
+    
+    private func changeColorThemeAction() {
         let colorPopUp: ColorPopUpViewController = ColorPopUpViewController.from(from: .habit, with: .colorPopUp)
+        colorPopUp.objHabitDetail = self.objHabitDetail
+        colorPopUp.isFormEditHabit = true
+        colorPopUp.getUpdetedColorHex = {
+            updatedColorHex in
+            print("updatedColorHex is \(updatedColorHex)")
+        }
         self.navigationController?.present(colorPopUp, animated: false, completion: nil)
+    }
+    
+    func showAlert() {
+        let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
+            print("Delete button tapped");
+        }
+        deleteAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
     }
 }
 
@@ -124,5 +154,9 @@ extension EditHabitViewController  : navigationBarAction {
       //  router?.dismiss(controller: .addHabit)
        // self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func RightButtonAction() {
+        print("Save")
     }
 }

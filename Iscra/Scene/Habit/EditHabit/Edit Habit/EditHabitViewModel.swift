@@ -1,14 +1,15 @@
 //
-//  HabitCalenderViewModel.swift
+//  EditHabitViewModel.swift
 //  Iscra
 //
-//  Created by mac on 06/12/21.
+//  Created by mac on 07/12/21.
 //
 
+import Foundation
 import UIKit
 import Foundation
 
-final class HabitCalenderViewModel {
+final class EditHabitViewModel {
     
     var habitId: Int = 0
     let provider: HabitServiceProvidable
@@ -27,7 +28,7 @@ final class HabitCalenderViewModel {
     }
 }
 
-extension HabitCalenderViewModel: HabitServiceProvierDelegate {
+extension EditHabitViewModel: HabitServiceProvierDelegate {
 
     func completed<T>(for action: HabitAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
@@ -36,7 +37,7 @@ extension HabitCalenderViewModel: HabitServiceProvierDelegate {
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200 {
                     self.objHabitDetail = resp.data?.groupDetails
-                    self.view?.onAction(.sucessMessage(resp.message ?? ""))                    
+                    self.view?.onAction(.sucessMessage(resp.message ?? ""))
                 }  else {
                     self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

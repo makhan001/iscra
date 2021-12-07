@@ -9,6 +9,7 @@ import UIKit
 
 class  RepeatDaysTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
+    var didSelectedDayAtIndex: ((String) -> Void)?
     var weakDays = [weekStruct(id: 7, shortDayname: "S", dayname: "sunday", isSelect: false),
                     weekStruct(id: 1, shortDayname: "M", dayname: "monday", isSelect: false),
                     weekStruct(id: 2, shortDayname: "T", dayname: "tuesday", isSelect: false),
@@ -21,7 +22,7 @@ class  RepeatDaysTableView: UITableView, UITableViewDataSource, UITableViewDeleg
         super.awakeFromNib()
     }
     
-    func configure() {
+        func configure() {
         self.register(UINib(nibName: "RepeatDaysTableViewCell", bundle: nil), forCellReuseIdentifier: "RepeatDaysTableViewCell")
         self.delegate = self
         self.dataSource = self
@@ -49,6 +50,13 @@ class  RepeatDaysTableView: UITableView, UITableViewDataSource, UITableViewDeleg
             temp[indexPath.row].isSelect = true
         }
         weakDays = temp
+        var strDays = ""
+        for i in temp {
+            if i.isSelect == true {
+                strDays =  i.dayname + "," + strDays
+            }
+        }
+        self.didSelectedDayAtIndex?(strDays)
         reloadData()
     }
     

@@ -10,13 +10,14 @@ import UIKit
 protocol selectedColordelegate:class {
     func selectedColorIndex(color:ColorStruct)
 }
+
 struct ColorStruct{
     var id : String
     var colorHex: String
     var isSelect: Bool
 }
 
-class ColorCollection: UICollectionView{
+class ColorCollection: UICollectionView {
     var colorItem = [ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true),
                      ColorStruct(id: "2", colorHex: "#ff9F7BEB", isSelect: false),
                      ColorStruct(id: "3", colorHex: "#ffEB7BAA", isSelect: false),
@@ -25,8 +26,9 @@ class ColorCollection: UICollectionView{
                      ColorStruct(id: "6", colorHex: "#ff59C196", isSelect: false),
                      ColorStruct(id: "7", colorHex: "#ff62ACF0", isSelect: false),
                      ColorStruct(id: "8", colorHex: "#ffC69466", isSelect: false)]
+
     var delegateColor:selectedColordelegate?
-    
+
     func configure() {
         self.register(UINib(nibName: "ColorCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ColorCollectionViewCell")
         self.delegate = self
@@ -59,12 +61,10 @@ extension ColorCollection:  UICollectionViewDelegate, UICollectionViewDataSource
             if indexPath.row == index{
                 if colorItem[index].isSelect == true{
                     colorItem[index].isSelect = false
-                }
-                else{
+                } else{
                     colorItem[index].isSelect = true
                 }
-            }
-            else {
+            }else {
                 colorItem[index].isSelect = false
             }
         }
@@ -74,5 +74,4 @@ extension ColorCollection:  UICollectionViewDelegate, UICollectionViewDataSource
             delegateColor?.selectedColorIndex(color: filtered[0])
         }
     }
-    
 }

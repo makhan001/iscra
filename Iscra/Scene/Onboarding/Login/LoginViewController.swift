@@ -208,15 +208,15 @@ extension LoginViewController: OnboardingViewRepresentable {
 }
 
 
-//extension LoginViewController: ASAuthorizationControllerDelegate {
-//  @available(iOS 13.0, *)
-//  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-//    if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
-//      self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
-//    }
-//  }
-//  @available(iOS 13.0, *)
-//  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-//    print(error.localizedDescription)
-//  }
-//}
+extension LoginViewController: ASAuthorizationControllerDelegate {
+  @available(iOS 13.0, *)
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
+      //self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
+    }
+  }
+  @available(iOS 13.0, *)
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    print(error.localizedDescription)
+  }
+}

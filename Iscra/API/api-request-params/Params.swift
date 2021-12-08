@@ -52,14 +52,15 @@ enum UserParams {
     }
     
     struct SocialLogin: Codable {
-        let type: SocialLoginType?
-        let social_id: String?
-        let username: String?
         let email: String?
+        let username: String?
+        let social_id: String?
         let fcm_token: String?
-        let image_url: String?
-        let device_id: String?
+        let device_udid: String?
         let device_type: String?
+        let os_version: String?
+        let device_model: String?
+        let login_type: SocialLoginType?
     }
     
     struct UpdateProfile: Codable {

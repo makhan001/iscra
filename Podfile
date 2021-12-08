@@ -12,6 +12,7 @@ target 'Iscra' do
   pod 'QuickBlox'
   pod 'SDWebImage'
   pod 'FSCalendar'
+  pod 'GoogleSignIn'
   pod 'SVProgressHUD'
   pod 'ParallaxHeader'
   pod 'Firebase/Database'

@@ -98,12 +98,12 @@ struct User: Codable {
     let id: Int?
     let createdAt, updatedAt, verificationCode, authenticationToken: String?
     let profileImage: String?
-    let memoji: JSONNull?
     let isVerified: Bool?
     let deviceType, osVersion, deviceModel, fcmToken: String?
-    let forgotPassword: JSONNull?
     let deviceUdid: String?
-    let loginType, socialID: JSONNull?
+  //  let loginType, socialID, forgotPassword, memoji: JSONNull?
+    let loginType, socialID, forgotPassword, memoji: String?
+
     let isGoogle, isApple: Bool?
     enum CodingKeys: String, CodingKey {
         case username, email, id

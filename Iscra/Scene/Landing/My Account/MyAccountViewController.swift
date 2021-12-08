@@ -13,7 +13,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     
     // MARK:-Outlets and variables
     @IBOutlet weak var btnLogout: UIButton!
-    @IBOutlet weak var lblUserName:UILabel!
+   // @IBOutlet weak var lblUserName:UILabel!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblName: IscraCustomLabel!
     @IBOutlet weak var btnGetSubscription: UIButton!

@@ -42,7 +42,7 @@ class VerificationViewController: UIViewController {
     func addBottomLayerTo(textField: UITextField) {
         let layer = CALayer()
         layer.backgroundColor = UIColor.black.cgColor
-        layer.frame = CGRect(x: 8, y: textField.frame.height + 5, width: textField.frame.width - 10 , height: 2)
+        layer.frame = CGRect(x: -5, y: textField.frame.height + 5, width: textField.frame.width  , height: 2)
         textField.layer.addSublayer(layer)
     }
 }

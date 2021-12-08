@@ -10,6 +10,8 @@ import UIKit
 
 class AppConstant: NSObject {
     
+    // SocialLogin Constants
+      static let googleClientID = "39692170766-8vkfqscsq4ommlmsnrdmeld8knjne2ec.apps.googleusercontent.com"
     //Navigationtitle
     static let nav_addProfilePicture  = "Add Profile Picture"
     static let nav_memoji = "How to add your own memoji?"

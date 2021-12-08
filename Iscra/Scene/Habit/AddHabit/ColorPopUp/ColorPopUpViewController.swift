@@ -11,12 +11,13 @@ class ColorPopUpViewController: UIViewController {
     @IBOutlet weak var backGroundView: UIView!
     @IBOutlet weak var colorCollection: ColorCollection!
     @IBOutlet weak var cnsCollectionHeight: NSLayoutConstraint!
-    var objHabitDetail: AllHabits?
-    var isFormEditHabit: Bool = false
-    var getUpdetedColorHex:((_ updetedColorHex: String)  ->())?
 
+    var isFormEditHabit: Bool = false
+    var colorTheme: String = "#ff7B86EB"
     var delegateColor:selectedColordelegate?
+    var getUpdetedColorHex:((_ updetedColorHex: String)  ->())?
     var selectedColor:ColorStruct = ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -40,7 +41,7 @@ class ColorPopUpViewController: UIViewController {
         if self.isFormEditHabit == true {
                 var updatedArray:[ColorStruct] = []
                 for i in self.colorCollection.colorItem {
-                if  i.colorHex == objHabitDetail?.colorTheme {
+                    if  i.colorHex == self.colorTheme {
                     updatedArray.append(ColorStruct(id: i.id, colorHex: i.colorHex, isSelect: true))
                 }else{
                     updatedArray.append(ColorStruct(id: i.id, colorHex: i.colorHex, isSelect: false))
@@ -50,7 +51,7 @@ class ColorPopUpViewController: UIViewController {
             }
         colorCollection.configure()
         colorCollection.delegateColor = self
-        self.selectedColor.colorHex = objHabitDetail?.colorTheme ?? "#ff7B86EB"
+        self.selectedColor.colorHex = self.colorTheme
     }
 }
 

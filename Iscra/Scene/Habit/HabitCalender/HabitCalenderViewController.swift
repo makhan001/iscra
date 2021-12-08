@@ -58,7 +58,7 @@ extension HabitCalenderViewController {
         [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        self.viewModel.habitId = 10 //4 // deepak static
+        self.viewModel.habitId = 18 //16 // deepak static
         self.viewModel.getHabitDetail()
         self.habitDetailSetup()
     }

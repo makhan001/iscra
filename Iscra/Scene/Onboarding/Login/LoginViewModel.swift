@@ -104,7 +104,6 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                         let msg = (resp.message! + " code is " + code!)
                         self.view?.onAction(.login(msg, resp.data?.loginData?.isVerified ?? false))
                     }
-                    
                   //  self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))

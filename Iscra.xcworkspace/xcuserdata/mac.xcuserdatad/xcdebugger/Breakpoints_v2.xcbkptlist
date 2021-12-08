@@ -28,16 +28,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E78C3572-5447-4AFF-89B6-C9CF75FB63B8"
+            uuid = "084E43DC-730A-4945-940F-D955416A6105"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Shared Components/NavigationBar/NavigationBarView.swift"
+            filePath = "Iscra/Scene/Habit/EditHabit/Edit Habit/EditHabitViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "commonInit()"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "apiForUpdateHabit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B3D1EC7E-D5B9-4A5D-8459-3D9BD7DAD52A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Habit/EditHabit/EditReminderViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "setDefalutTime()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

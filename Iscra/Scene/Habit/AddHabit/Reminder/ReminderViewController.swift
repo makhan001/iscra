@@ -35,7 +35,6 @@ class ReminderViewController: UIViewController {
     @IBAction func TimePickerClick(_ sender: Any) {
         timemanager()
     }
-    
 }
 
 extension ReminderViewController {

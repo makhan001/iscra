@@ -28,8 +28,8 @@ class HabitCalenderViewController: UIViewController {
     @IBOutlet weak var viewDeleteHabit: UIView!
     @IBOutlet weak var viewCircular: CircularProgressBar!
     
-    var objHabitDetail: AllHabits?
-    var strTitleName = "Learn English"
+  //  var objHabitDetail: AllHabits?
+    var strTitleName = ""
     private var eventsDateArray: [Date] = []
     private var themeColor = UIColor(hex: "#7B86EB")
     weak var router: NextSceneDismisser?
@@ -39,6 +39,7 @@ class HabitCalenderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+         print("self.router is \(self.router)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +59,6 @@ extension HabitCalenderViewController {
         [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        self.viewModel.habitId = 18 //16 // deepak static
         self.viewModel.getHabitDetail()
         self.habitDetailSetup()
     }
@@ -127,7 +127,6 @@ extension HabitCalenderViewController {
     
     private func backAction() {
         self.router?.dismiss(controller: .habitCalender)
-       // self.navigationController?.popViewController(animated: true) // deepak
     }
     
     private func bottomSheetAction() {
@@ -141,19 +140,31 @@ extension HabitCalenderViewController {
         self.viewBottom.isHidden = true
         let editHabit: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
         editHabit.objHabitDetail = self.viewModel.objHabitDetail
+        editHabit.router = self.router
         self.navigationController?.pushViewController(editHabit, animated: true)
-        
+         
     }
     
     private func shareAction() {
-        self.viewBottom.isHidden = true
-        let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
-        self.navigationController?.present(editReminder, animated: false, completion: nil)
+       self.viewBottom.isHidden = true
+//        let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
+//        self.navigationController?.present(editReminder, animated: false, completion: nil)
+//
+//
+//        let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
+//        inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//        inviteFriend.habitType = self.habitType
+//        inviteFriend.delegateInvite = self
+//        inviteFriend.router = self.router
+//        self.navigationController?.present(editReminder, animated: true, completion: nil)
+        
+        self.showToast(message: "Under development", seconds: 0.5)
+
     }
     
     private func deleteAction() {
         self.viewBottom.isHidden = true
-        self.showAlert()
+        self.showAlert(habitId: String(self.viewModel.habitId))
     }
     
     private func previousMonthAction() {
@@ -162,21 +173,6 @@ extension HabitCalenderViewController {
     
     func getPreviousMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
-    }
-    
-    func showAlert() {
-        let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
-        let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
-            print("Delete button tapped");
-        }
-        deleteAction.setValue(UIColor.gray, forKey: "titleTextColor")
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction!) in
-            print("Cancel button tapped");
-        }
-        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion:nil)
     }
 }
 
@@ -218,6 +214,11 @@ extension HabitCalenderViewController: HabitViewRepresentable {
             self.habitDetailSetup()
            // self.getDateFromTimeStamp(timeStamp: (self.viewModel.objHabitDetail?.timer)!)
             break
+        case let .isHabitDelete(true, msg):
+            self.showToast(message: msg, seconds: 0.5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.router?.push(scene: .landing)
+            }
         default:
             break
         }
@@ -232,4 +233,23 @@ extension HabitCalenderViewController: HabitViewRepresentable {
 //        print("dateString is \(dateString)")
 //            return dateString
 //        }
+}
+
+
+// MARK: showAlert for delete habit
+extension HabitCalenderViewController {
+    func showAlert(habitId: String) {
+        let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
+            self.viewModel.deleteHabit(habitId: habitId)
+        }
+        deleteAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
+    }
 }

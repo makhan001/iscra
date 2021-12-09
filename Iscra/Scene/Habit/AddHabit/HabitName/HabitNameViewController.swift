@@ -25,6 +25,7 @@ class HabitNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        print("self.router is \(self.router)")
     }
 }
 
@@ -163,8 +164,7 @@ extension HabitNameViewController: HabitViewRepresentable {
 
 // MARK: navigationBarAction Callback
 extension HabitNameViewController  : navigationBarAction {
-    
-    func ActionType()  {
+    func ActionType() {
         router?.dismiss(controller: .addHabit)
     }
 }

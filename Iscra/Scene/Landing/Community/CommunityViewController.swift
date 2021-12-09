@@ -71,11 +71,6 @@ extension CommunityViewController {
     
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
-        // deepak static
-        let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-        habitCalender.strTitleName = "Me"
-        self.navigationController?.pushViewController(habitCalender, animated: true)
-        // deepak static
     }
 }
 

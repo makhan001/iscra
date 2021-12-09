@@ -25,6 +25,10 @@ final class HabitCalenderViewModel {
         print("self.habitId is in HabitCalenderViewModel \(String(habitId))")
         self.provider.habitDetail(param: HabitParams.HabitDetail(id: String(self.habitId)))
     }
+    
+    func deleteHabit(habitId: String) {
+        self.provider.deleteHabit(param: HabitParams.DeleteHabit(id: habitId))
+    }
 }
 
 extension HabitCalenderViewModel: HabitServiceProvierDelegate {
@@ -34,10 +38,15 @@ extension HabitCalenderViewModel: HabitServiceProvierDelegate {
             if error != nil {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
-                if let resp = response as? SuccessResponseModel, resp.code == 200 {
-                    self.objHabitDetail = resp.data?.groupDetails
+                if let resp = response as? SuccessResponseModel, resp.code == 200 , let objGroupDetails = resp.data?.groupDetails{
+                    self.objHabitDetail = objGroupDetails
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))                    
-                }  else {
+                }else if let resp = response as? SuccessResponseModel, resp.code == 200, let status = resp.status {
+                     if status == true {
+                         print("data is nil")
+                         self.view?.onAction(.isHabitDelete(true, resp.message ?? ""))
+                     }
+                 }  else {
                     self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }
             }

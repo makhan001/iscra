@@ -21,7 +21,6 @@ class  RepeatDaysTableView: UITableView, UITableViewDataSource, UITableViewDeleg
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
-    
         func configure() {
         self.register(UINib(nibName: "RepeatDaysTableViewCell", bundle: nil), forCellReuseIdentifier: "RepeatDaysTableViewCell")
         self.delegate = self

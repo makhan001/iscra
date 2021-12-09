@@ -16,7 +16,7 @@ final class LoginViewModel {
     var social_id: String = ""
     var selectedImage: UIImage = UIImage()
     var delegate: OnboardingServiceProvierDelegate?
-
+    
     weak var view: OnboardingViewRepresentable?
     let provider: OnboardingServiceProvidable
     
@@ -42,13 +42,13 @@ final class LoginViewModel {
             view?.onAction(.requireFields(Validation().textValidation(text: password, validationType: .password).1))
             return
         }
-                
+        
         self.provider.login(param: UserParams.Login(email: email, password: password, fcm_token: "fcmToken", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, device_udid: "" , device_type: "ios"))
     }
     
     //Mark:- Social Login Api-----------------------
-     func socialLogin(){
-        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: .google)
+    func socialLogin(logintype:SocialLoginType){
+        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: SocialLoginType(rawValue: logintype.rawValue))
         print("parameter---> \(parameters)")
         
         WebService().requestMultiPart(urlString: "/users/sociallogin",
@@ -59,10 +59,8 @@ final class LoginViewModel {
                                       fileArray: [],
                                       file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
-              //  self?.delegate?.completed(for: .socialLogin(<#T##text: String##String#>), with: resp, with: nil)
-                //self?.view?.onAction(.errorMessage(err?.responseData?.message ?? ERROR_MESSAGE))
                 self?.view?.onAction(.errorMessage(err ?? ERROR_MESSAGE))
-               // print(err)
+                // print(err)
                 return
             } else {
                 if let response = resp as? SuccessResponseModel {
@@ -87,7 +85,7 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
             if error != nil {
-             //   self.view?.onAction(.errorMessage(ERROR_MESSAGE))
+                //   self.view?.onAction(.errorMessage(ERROR_MESSAGE))
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200 {
@@ -104,7 +102,7 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                         let msg = (resp.message! + " code is " + code!)
                         self.view?.onAction(.login(msg, resp.data?.loginData?.isVerified ?? false))
                     }
-                  //  self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
+                    //  self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

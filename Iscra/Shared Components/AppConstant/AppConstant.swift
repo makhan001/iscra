@@ -11,10 +11,7 @@ import UIKit
 class AppConstant: NSObject {
     
     // SocialLogin Constants
-    static let googleClientID  = "39692170766-8vkfqscsq4ommlmsnrdmeld8knjne2ec.apps.googleusercontent.com"
-    
-    
-    
+      static let googleClientID = "39692170766-8vkfqscsq4ommlmsnrdmeld8knjne2ec.apps.googleusercontent.com"
     //Navigationtitle
     static let nav_addProfilePicture  = "Add Profile Picture"
     static let nav_memoji = "How to add your own memoji?"
@@ -41,6 +38,14 @@ class AppConstant: NSObject {
     static let goodHabitTitle = ", let’s define your habit"
     static let badHabitTitle = "! I will help you to get rid of bad habit"
     static let groupHabitTitle = "Let’s become better together"
+    
+    static let inviteFriendsGoodTitle = "Together is \nmore fun"
+    static let inviteFriendsGoodSubTitle = "Do you know it’s much easier to build a new habits when your friend can support you. Invite your friends, build good habits together and have fun!"
+    static let inviteFriendsBadTitle = "Together we \nare stronger"
+    static let inviteFriendsBadSubTitle = "It’s much easier to get rid of bad habits together! Support each other to become better people."
+    
+    static let inviteFriendsGroupTitle = "Let’s invite \nyour friends"
+    static let inviteFriendsGroupSubTitle = "Invite your friends, build good habits together and have fun (if your friends are already with Iscra, they can find your habit in search and join you). You can make your group public and find new friends!"
 
     // MARK:Validation Alert messages
     static let emptyEmail = "Email is required"

@@ -13,7 +13,9 @@ enum navRightViewType{
   case myProfie
   case editName
   case other
+  case editHabit
 }
+
 class NavigationBarView: UIView {
   let XIB_NAME = "NavigationBarView"
   @IBOutlet var viewContent: UIView!
@@ -40,12 +42,17 @@ class NavigationBarView: UIView {
     switch navType {
     case .myProfie:
       btnRightBar.setImage(#imageLiteral(resourceName: "ic-edit-image"), for: .normal)
-        
       btnRightBar.isHidden = false
         btnBack.isHidden = true
     case .editName:
       btnRightBar.isHidden = false
       btnRightBar.setImage(#imageLiteral(resourceName: "ic-checkmark"), for: .normal)
+    case .editHabit:
+      btnRightBar.isHidden = false
+      btnRightBar.setTitle("Save", for: .normal)
+       // btnRightBar.tintColor = .black
+        //btnRightBar.setImage(#imageLiteral(resourceName: "ic-checkmark"), for: .normal)
+     //   btnRightBar.titleLabel?.text = "Save"
     case .other:
       btnRightBar.isHidden = true
     }

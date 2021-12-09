@@ -12,6 +12,7 @@ final class SignupViewModel {
     
     var email: String = ""
     var password: String = ""
+    var social_id: String = ""
     var verificationCode: String = ""
     var username: String = OnboadingUtils.shared.username // singeleton class
     var selectedImage: UIImage! = OnboadingUtils.shared.userImage // singleton class
@@ -76,6 +77,40 @@ final class SignupViewModel {
             }
         }
     }
+    //Mark:- Social Login Api-----------------------
+    func socialLogin(logintype:SocialLoginType){
+        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: logintype)
+        print("parameter---> \(parameters)")
+        
+        WebService().requestMultiPart(urlString: "/users/sociallogin",
+                                      httpMethod: .post,
+                                      parameters: parameters,
+                                      decodingType: SuccessResponseModel.self,
+                                      imageArray: [["profile_image": selectedImage ?? UIImage()]],
+                                      fileArray: [],
+                                      file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
+            if err != nil {
+                self?.view?.onAction(.errorMessage(err ?? ERROR_MESSAGE))
+               // print(err)
+                return
+            } else {
+                if let response = resp as? SuccessResponseModel {
+                    if response.status == true {
+                        UserStore.save(token: response.data?.user?.authenticationToken)
+                        UserStore.save(userName: response.data?.user?.email)
+                        UserStore.save(userName: response.data?.user?.username?.capitalized)
+                        print("socialLoginApi Success---> \(response)")
+                        UserStore.save(userID: response.data?.user?.id)
+                        UserStore.save(userImage: response.data?.user?.profileImage)
+                        self?.view?.onAction(.socialLogin(response.message ?? ""))
+                    } else {
+                        self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 extension SignupViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {

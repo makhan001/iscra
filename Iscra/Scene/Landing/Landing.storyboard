@@ -1375,7 +1375,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hL5-i5-gsI" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="0.0"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:30" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6F-yO-cCD" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6F-yO-cCD" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="0.0"/>
                                                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                                 <color key="textColor" name="BlackAccent"/>
@@ -1619,8 +1619,8 @@
                                                 </constraints>
                                                 <state key="normal" title="Button" image="ic-dots"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQa-R7-4qp" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="132" y="25" width="150.33333333333337" height="38"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQa-R7-4qp" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                                <rect key="frame" x="207" y="25" width="0.0" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="ean-pB-Pyd"/>
                                                 </constraints>
@@ -2645,18 +2645,14 @@
         <designable name="oqW-VE-MuM">
             <size key="intrinsicContentSize" width="109" height="15"/>
         </designable>
-        <designable name="sQa-R7-4qp">
-            <size key="intrinsicContentSize" width="150.33333333333334" height="28.666666666666668"/>
-        </designable>
+        <designable name="sQa-R7-4qp"/>
         <designable name="tts-6m-XGA">
             <size key="intrinsicContentSize" width="1542.6666666666667" height="21.666666666666668"/>
         </designable>
         <designable name="w4e-RL-9tX">
             <size key="intrinsicContentSize" width="311.66666666666669" height="19.333333333333332"/>
         </designable>
-        <designable name="w6F-yO-cCD">
-            <size key="intrinsicContentSize" width="56" height="25.333333333333332"/>
-        </designable>
+        <designable name="w6F-yO-cCD"/>
         <designable name="w6Q-oo-kiY">
             <size key="intrinsicContentSize" width="53" height="38.333333333333336"/>
         </designable>

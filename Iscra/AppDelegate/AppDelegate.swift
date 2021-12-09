@@ -7,10 +7,12 @@
 
 import UIKit
 import CoreData
-import SVProgressHUD
-import IQKeyboardManagerSwift
 import Quickblox
 import GoogleSignIn
+import SVProgressHUD
+import IQKeyboardManagerSwift
+
+
 struct CredentialsConstant {
     static let applicationID:UInt = 94500
     static let authKey = "UA5G7ZR4-z-hRM9"
@@ -47,8 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // If not handled by this app, return false.
       return false
     }
-    
-    
     private func initialConfiguration() {
         Thread.sleep(forTimeInterval: 0.0)
         SVProgressHUD.setForegroundColor(UIColor.primaryAccent)
@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.setNavigationBar()
         self.setRootController()
         self.setupQuickBlox()
-
+        
         _ = GIDConfiguration.init(clientID: "737448075691-v86u462dj0cepp37pukugf53cg7fbom2.apps.googleusercontent.com")
     }
     
@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBSettings.enableXMPPLogging()
         QBSettings.logLevel = .debug
         QBSettings.autoReconnectEnabled = true
-        
+
     }
     
     func setNavigationBar() {
@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigation.isTranslucent = false
     }
     
-    func setRootController() {
+     func setRootController() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
             self.rootController.start(window: window)
@@ -181,13 +181,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         }
         DispatchQueue.main.async {
             if ChatManager.instance.storage.dialog(withID: dialogID) != nil {
-                // self.rootViewController.dialogID = dialogID
+               // self.rootViewController.dialogID = dialogID
             } else {
                 ChatManager.instance.loadDialog(withID: dialogID, completion: { (loadedDialog: QBChatDialog?) -> Void in
                     guard loadedDialog != nil else {
                         return
                     }
-                    //self.rootViewController.dialogID = dialogID
+//self.rootViewController.dialogID = dialogID
                 })
             }
         }

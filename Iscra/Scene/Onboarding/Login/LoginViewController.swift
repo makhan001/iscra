@@ -12,6 +12,8 @@ import AuthenticationServices
 
 class LoginViewController: UIViewController {
     
+    
+    
     // MARK:-Outlets and variables
     @IBOutlet weak var btnLogin:UIButton!
     @IBOutlet weak var lblHeaderTitle:UILabel!
@@ -22,7 +24,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtEmail:UITextField!
     @IBOutlet weak var txtPassword:UITextField!
     @IBOutlet weak var viewNavigation:NavigationBarView!
-    
     weak var router: NextSceneDismisser?
     private let viewModel: LoginViewModel = LoginViewModel(provider: OnboardingServiceProvider())
     let signInConfig = GIDConfiguration.init(clientID: AppConstant.googleClientID)
@@ -52,16 +53,11 @@ extension LoginViewController  : navigationBarAction {
         [btnLogin, btnApple, btnGoogle, btnShowPassword, btnForgotPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-
-
-//        if TARGET_OS_SIMULATOR == 1 {
-//            viewModel.email = "user10@gmail.com"
-//            viewModel.password = "123456"
-//            txtEmail.text = viewModel.email
-//            txtPassword.text = viewModel.password
-//        }
-
-
+        if #available(iOS 13.0, *) {
+            btnApple.isHidden = false
+        } else {
+            btnApple.isHidden = true
+        }
     }
     
     func ActionType()  {
@@ -107,12 +103,10 @@ extension LoginViewController {
     private func loginGoogleAction() {
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
             guard error == nil else { return }
-            print(user?.authentication.accessToken)
-            print(user?.authentication.idToken)
-            print(user?.profile?.email)
-            print(user?.profile?.name)
-            print(user?.profile?.hasImage)
-            //          self.viewModel.onAction(action: .inputComplete(.socialLogin), for: .socialLogin)
+            self.viewModel.email = user?.profile?.email ?? ""
+            self.viewModel.username = user?.profile?.name ?? ""
+            self.viewModel.social_id = user?.userID ?? ""
+            self.viewModel.socialLogin(logintype: .google)
         }
     }
     
@@ -123,13 +117,11 @@ extension LoginViewController {
             request.requestedScopes = [.fullName, .email]
             let authorizationController = ASAuthorizationController(authorizationRequests: [request])
             authorizationController.delegate = self
-            //authorizationController.presentationContextProvider = self
             authorizationController.performRequests()
         } else {
             // Fallback on earlier versions
         }
     }
-    
     
     private func showPasswordAction() {
         if self.btnShowPassword.isSelected {
@@ -146,6 +138,7 @@ extension LoginViewController {
         self.navigationController?.pushViewController(forgot, animated: true)
         
     }
+    
     
 }
 
@@ -194,6 +187,11 @@ extension LoginViewController: OnboardingViewRepresentable {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.naviateUserAfterLogin(isVerified)
             }
+        case let .socialLogin(msg):
+            self.showToast(message: msg, seconds: 0.45)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.router?.push(scene: .landing)
+            }
         default:
             break
         }
@@ -205,14 +203,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
             // self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
-            print( appleCredentials.email ?? "")
-            print( appleCredentials.email ?? "")
-            print( appleCredentials.email ?? "")
-            print( appleCredentials.email ?? "")
+            self.viewModel.email = appleCredentials.email ?? ""
+            self.viewModel.username = (appleCredentials.fullName?.givenName) ?? ""
+            self.viewModel.social_id = appleCredentials.user
+            self.viewModel.socialLogin(logintype: .apple)
         }
     }
     @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         print(error.localizedDescription)
     }
+    
 }
+

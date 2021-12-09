@@ -11,7 +11,8 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
 
     weak var delegate: CoordinatorDimisser?
     let controller: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-
+    private var landing: LandingCoordinator!
+    
     override func start() {
         super.start()
         router.setRootModule(controller, hideBar: true)
@@ -34,6 +35,15 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
     private func startHabitCalender() {
         router.present(controller, animated: true)
     }
+    
+    private func startLanding() {
+        router.dismissModule(animated: false, completion: nil)
+        landing = LandingCoordinator(router: Router())
+        add(landing)
+        landing.delegate = self
+        landing.start()
+        self.router.present(landing, animated: true)
+    }
 }
 
 extension HabitCalenderCoordinator: NextSceneDismisser {
@@ -41,6 +51,7 @@ extension HabitCalenderCoordinator: NextSceneDismisser {
     func push(scene: Scenes) {
         switch scene {
         case .habitCalender: startHabitCalender()
+        case .landing: startLanding()
         default: break
         }
     }

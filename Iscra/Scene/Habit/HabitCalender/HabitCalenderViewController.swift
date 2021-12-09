@@ -39,7 +39,7 @@ class HabitCalenderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-         print("self.router is \(self.router)")
+       //  print("self.router is \(self.router)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

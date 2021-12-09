@@ -41,8 +41,8 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     private func setup() {
         viewModel.view = self
-        self.tableView.isHidden = true
-        self.viewFirstHabit.isHidden = false
+        self.tableView.isHidden = false
+        self.viewFirstHabit.isHidden = true
         self.tableView.didSelectedAtIndex = didSelectedAtIndex
         self.lblTitle.text = AppConstant.firstHabitTitle
         self.lblSubTitle.text = AppConstant.firstHabitSubTitle
@@ -74,6 +74,7 @@ extension HomeViewController: HabitViewRepresentable {
             self.showToast(message: msg)
         case let .isHabitDelete(true, msg):
             self.showToast(message: msg)
+            self.viewModel.habitList.removeAll()
             self.viewModel.fetchHabitList()
         case  .sucessMessage(_):
             self.fetchHabitList()
@@ -83,7 +84,7 @@ extension HomeViewController: HabitViewRepresentable {
     }
     
     private func fetchHabitList() {
-        // print("self.viewModel.habitList is \(self.viewModel.habitList.count)")
+         print("self.viewModel.habitList is \(self.viewModel.habitList.count)")
         if self.viewModel.habitList.count == 0 {
             self.viewFirstHabit.isHidden = false
             self.tableView.isHidden = true

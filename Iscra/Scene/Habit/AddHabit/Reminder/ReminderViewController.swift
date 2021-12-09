@@ -35,7 +35,6 @@ class ReminderViewController: UIViewController {
     @IBAction func TimePickerClick(_ sender: Any) {
         timemanager()
     }
-    
 }
 
 extension ReminderViewController {
@@ -76,7 +75,7 @@ extension ReminderViewController {
         let fullNameArr = dateString.components(separatedBy: " ")
         lblReminderTime.text = fullNameArr[0]
 //        self.viewModel.timer = dateString
-//        print("self.viewModel.timer is \(self.viewModel.timer)")
+//        // print("self.viewModel.timer is \(self.viewModel.timer)")
         self.reminderTime = dateString
         if dateString.contains("AM")
         {
@@ -151,7 +150,7 @@ extension ReminderViewController : InviteNavigation {
 // MARK: Callbacks
 extension ReminderViewController: HabitViewRepresentable {
     private func didSelectedAtIndex(_ index: String) {
-        print("strDays is \(index)")
+        // print("strDays is \(index)")
         viewModel.days = index
     }
     

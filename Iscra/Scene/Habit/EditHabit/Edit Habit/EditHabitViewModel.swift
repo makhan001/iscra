@@ -25,6 +25,21 @@ final class EditHabitViewModel {
         self.provider.delegate = self
     }
     
+    private func validateHabitInput() {
+        if Validation().textValidation(text: habitName, validationType: .habitName).0 {
+            view?.onAction(.requireFields(Validation().textValidation(text: habitName, validationType: .habitName).1))
+            return
+        }
+        
+        if self.days == "" {
+            view?.onAction(.requireFields(AppConstant.emptyDays))
+        }else{
+            HabitUtils.shared.days = self.days
+            print("Api call")
+            self.apiForUpdateHabit()
+        }
+    }
+    
     func deleteHabit(habitId: String) {
         self.provider.deleteHabit(param: HabitParams.DeleteHabit(id: habitId))
     }
@@ -60,6 +75,16 @@ extension EditHabitViewModel {
                 }
             }
         }
+    }
+}
+
+
+extension EditHabitViewModel: HabitInputViewDelegate {
+    func onAction(action: HabitAction, for screen: HabitScreenType) {
+            switch action {
+            case .inputComplete(screen): validateHabitInput()
+            default: break
+            }
     }
 }
 

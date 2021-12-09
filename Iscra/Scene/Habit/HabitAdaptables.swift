@@ -12,6 +12,7 @@ enum HabitScreenType: String {
     case setTheme
     case daysSelection
     case setGroupImage
+    case editHabit
 }
 
 enum HabitAction {

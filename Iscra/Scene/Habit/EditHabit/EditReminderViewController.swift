@@ -17,31 +17,13 @@ class EditReminderViewController: UIViewController {
     @IBOutlet weak var lblReminderTime: UILabel!
     @IBOutlet weak var pickerTime: UIDatePicker!
     @IBOutlet weak var btnSegment: UISegmentedControl!
-  //  var objHabitDetail: AllHabits?
     var reminderTime = ""
     var reminders:Bool = false
     var getReminderTime:((_ isReminderOn:Bool, _ reminderTime: String)   ->())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("self.reminderTime viewDidLoad is \(self.reminderTime)")
-      //  self.getReadableDate(timeStamp: Double((self.reminderTime)) ?? 0.0)
-        
-//        if self.reminderTime != "" {
-//            var dateString = ""
-//            let date = NSDate(timeIntervalSince1970: Double((self.reminderTime)) ?? 0.0 / 1000)
-//            let dayTimePeriodFormatter = DateFormatter()
-//            dayTimePeriodFormatter.dateFormat = "hh:mm a" //"dd MMM YY, hh:mm a, EEEE"
-//            dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
-//            dateString = dayTimePeriodFormatter.string(from: date as Date)
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "hh:mm a" // "yyyy-MM-dd"
-//            let selectedDate = dateFormatter.date(from: dateString ) ?? Date()
-//            self.pickerTime.setDate(selectedDate, animated: false)
-//
-//            print("selectedDate is \(selectedDate)")
-//        }
-        
+        // print("self.reminderTime viewDidLoad is \(self.reminderTime)")
         self.setup()
     }
     
@@ -62,7 +44,6 @@ extension EditReminderViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         self.viewBackground.addGestureRecognizer(tap)
         
-     //   self.switchReminder.setOn(self.objHabitDetail?.reminders ?? false, animated: true)
         self.switchReminder.setOn(self.reminders, animated: true)
 
         if self.switchReminder.isOn {
@@ -74,7 +55,6 @@ extension EditReminderViewController {
         self.setDefalutTime()
     }
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        //  self.viewTimePicker.isHidden = true
         self.getReminderTime!(self.reminders, String(self.reminderTime))
         self.dismiss(animated: true, completion: nil)
     }
@@ -82,14 +62,14 @@ extension EditReminderViewController {
     @objc func reminderSwitchValueChanged(_ sender : UISwitch!){
         if sender.isOn {
             self.viewTime.isHidden = false
-            self.reminders = true // deepak new
-            self.timemanager() // deepak new
+            self.reminders = true
+            self.timemanager()
         } else {
             self.viewTime.isHidden = true
             self.viewTimePicker.isHidden = true
             self.reminders = false
             self.reminderTime = ""
-            print("self.reminders reminderSwitchValueChanged is \(self.reminders)")
+            // print("self.reminders reminderSwitchValueChanged is \(self.reminders)")
         }
     }
     
@@ -101,8 +81,8 @@ extension EditReminderViewController {
         lblReminderTime.text = fullNameArr[0]
         self.reminderTime = dateString
         self.reminders = true
-        print("self.reminders timemanager is \(self.reminders)")
-        print("self.reminderTime is timemanager \(self.reminderTime)")
+        // print("self.reminders timemanager is \(self.reminders)")
+        // print("self.reminderTime is timemanager \(self.reminderTime)")
         if dateString.contains("AM") {
             self.btnSegment.selectedSegmentIndex = 0
         }else{
@@ -113,28 +93,51 @@ extension EditReminderViewController {
     func setDefalutTime() {
         var dateString = ""
         if self.reminderTime == "" {
-       // if self.objHabitDetail?.timer == "" {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "hh:mm a"
             dateString = dateFormatter.string(from: pickerTime.date)
         }else{
-            let date = NSDate(timeIntervalSince1970: Double((self.reminderTime)) ?? 0.0 / 1000)
-            let dayTimePeriodFormatter = DateFormatter()
-            dayTimePeriodFormatter.dateFormat = "hh:mm a" //"dd MMM YY, hh:mm a, EEEE"
-          //  dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
-            dateString = dayTimePeriodFormatter.string(from: date as Date)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "hh:mm a" // "yyyy-MM-dd"
-            let selectedDate = dateFormatter.date(from: dateString ) ?? Date()
-            self.pickerTime.setDate(selectedDate, animated: false)
+          //  // print("self.reminderTime setDefalutTime is \(self.reminderTime)")
+
+            if self.reminderTime.contains(":"){
+                // print("self.reminderTime setDefalutTime is actual time")
+                
+                let strDate : String = self.reminderTime
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "hh:mm a"
+                                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                                let date = dateFormatter.date(from: strDate)
+                                self.pickerTime.datePickerMode = .time
+                                self.pickerTime.setDate(date!, animated: false)
+                                // print("strDate is  \(strDate)")
+                                // print("date is  \(date)")
+                                dateString = strDate
+                // print("self.reminderTime setDefalutTime is actual time in dateString \(dateString)")
+            }else{
+                // print("self.reminderTime contains timestamp")
+                
+                        let date = NSDate(timeIntervalSince1970: Double(self.reminderTime) ?? 0.0 / 1000)
+                            let dayTimePeriodFormatter = DateFormatter()
+                            dayTimePeriodFormatter.dateFormat = "hh:mm a" // "dd MMM YY, hh:mm a, EEEE"
+                      //  dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
+                             dateString = dayTimePeriodFormatter.string(from: date as Date)
+   
+                // print("self.reminderTime contains timestamp in dateString \(dateString)")
+              //
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "hh:mm a"
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                let pickerDate = dateFormatter.date(from: dateString)
+                self.pickerTime.datePickerMode = .time
+                self.pickerTime.setDate(pickerDate!, animated: false)
+                // print("pickerDate is  \(pickerDate)")
+                //
+            }
             
-            
-//            self.getReadableDate(timeStamp: Double((self.reminderTime)) ?? 0.0)
-//            dateString = self.getReadableDate(timeStamp: Double((self.reminderTime)) ?? 0.0) ?? ""
         }
         let fullNameArr = dateString.components(separatedBy: " ")
         lblReminderTime.text = fullNameArr[0]
-       // if self.objHabitDetail?.reminders == true {
+        
             if self.reminders == true {
             self.reminderTime = dateString
             self.reminders = true
@@ -143,8 +146,6 @@ extension EditReminderViewController {
             self.reminders = false
         }
         
-        print("self.reminderTime is setDefalutTime \(self.reminderTime)")
-        print("self.reminders setDefalutTime is \(self.reminders)")
         if dateString.contains("AM"){
             self.btnSegment.selectedSegmentIndex = 0
         }else{
@@ -171,44 +172,7 @@ extension EditReminderViewController {
             self.view.layoutIfNeeded()
         })
     }
-    
-    /////////////////////
-    
-//    func getReadableDate(timeStamp: TimeInterval) -> String? {
-//        let date = Date(timeIntervalSince1970: timeStamp)
-//        let dateFormatter = DateFormatter()
-//
-//     //   if dateFallsInCurrentWeek(date: date) {
-//            if Calendar.current.isDateInToday(date) {
-//                dateFormatter.dateFormat = "h:mm a"
-//                print("dateFormatter.string(from: date) is \(dateFormatter.string(from: date))")
-//                self.pickerTime.setDate(date, animated: false)
-//                let fullNameArr = dateFormatter.string(from: date).components(separatedBy: " ")
-//                    lblReminderTime.text = fullNameArr[0]
-//
-//
-//                return dateFormatter.string(from: date)
-//            } else {
-//                dateFormatter.dateFormat = "h:mm a"
-//                print("dateFormatter.string(from: date) is \(dateFormatter.string(from: date))")
-//                self.pickerTime.setDate(date, animated: false)
-//                let fullNameArr = dateFormatter.string(from: date).components(separatedBy: " ")
-//                    lblReminderTime.text = fullNameArr[0]
-//                return dateFormatter.string(from: date)
-//            }
-//      //  }
-//
-////        let fullNameArr = dateString.components(separatedBy: " ")
-////        lblReminderTime.text = fullNameArr[0]
-//
-//    }
-//
-//    func dateFallsInCurrentWeek(date: Date) -> Bool {
-//        let currentWeek = Calendar.current.component(Calendar.Component.weekOfYear, from: Date())
-//        let datesWeek = Calendar.current.component(Calendar.Component.weekOfYear, from: date)
-//        return (currentWeek == datesWeek)
-//    }
-    ///////////////////
+ 
 }
 
 

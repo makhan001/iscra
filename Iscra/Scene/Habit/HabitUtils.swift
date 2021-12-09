@@ -23,4 +23,16 @@ class HabitUtils {
     var reminders: Bool = false ///
     var groupImage: UIImage?
     var habitType: HabitType = .good ///
+    
+    func removeAllHabitData() {
+         name = ""
+         colorTheme = ""
+         description = ""
+         icon = ""
+         days = ""
+         timer = ""
+         reminders = false
+         groupImage = nil
+         habitType = .good
+    }
 }

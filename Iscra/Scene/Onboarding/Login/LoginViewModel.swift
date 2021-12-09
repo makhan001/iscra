@@ -60,7 +60,7 @@ final class LoginViewModel {
                                       file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
                 self?.view?.onAction(.errorMessage(err ?? ERROR_MESSAGE))
-                print(err)
+               // print(err)
                 return
             } else {
                 if let response = resp as? SuccessResponseModel {

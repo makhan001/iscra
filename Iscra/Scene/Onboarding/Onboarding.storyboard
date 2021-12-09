@@ -617,13 +617,13 @@
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EZ-i5-6tx" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="142" width="374" height="56"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="56" id="cVg-OG-NCT"/>
                                                                 </constraints>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                                                <state key="normal" title="Login with Apple" image="google">
-                                                                    <color key="titleColor" name="GrayAccent"/>
+                                                                <state key="normal" title="Login with Apple" image="Apple">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -634,7 +634,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" name="GrayAccent"/>
+                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                         <real key="value" value="1"/>
@@ -3341,7 +3341,7 @@
             <size key="intrinsicContentSize" width="47" height="36"/>
         </designable>
         <designable name="1EZ-i5-6tx">
-            <size key="intrinsicContentSize" width="158" height="24"/>
+            <size key="intrinsicContentSize" width="164" height="30"/>
         </designable>
         <designable name="1HM-Uy-OsM">
             <size key="intrinsicContentSize" width="56" height="34"/>
@@ -3514,6 +3514,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="Apple" width="30" height="30"/>
         <image name="eyeHidden" width="24" height="24"/>
         <image name="eyeVisible" width="24" height="24"/>
         <image name="google" width="24" height="24"/>

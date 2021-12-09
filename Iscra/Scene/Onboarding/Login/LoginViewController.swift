@@ -104,15 +104,10 @@ extension LoginViewController {
     private func loginGoogleAction() {
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
             guard error == nil else { return }
-            print("accessToken --> \(user?.authentication.accessToken)")
-            print("idToken --> \(user?.authentication.idToken)")
-            print("email --> \(user?.profile?.email)")
-            print("name --> \(user?.profile?.name)")
-            print(user?.profile?.hasImage)
             self.viewModel.email = user?.profile?.email ?? ""
             self.viewModel.username = user?.profile?.name ?? ""
             self.viewModel.social_id = user?.userID ?? ""
-            self.viewModel.socialLogin()
+            self.viewModel.socialLogin(logintype: .google)
         }
     }
     
@@ -207,17 +202,15 @@ extension LoginViewController: OnboardingViewRepresentable {
     }
 }
 
-
-
-//extension LoginViewController: ASAuthorizationControllerDelegate {
-//  @available(iOS 13.0, *)
-//  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-//    if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
-//      //self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
-//    }
-//  }
-//  @available(iOS 13.0, *)
-//  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-//    print(error.localizedDescription)
-//  }
-//}
+extension LoginViewController: ASAuthorizationControllerDelegate {
+  @available(iOS 13.0, *)
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
+      //self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
+    }
+  }
+  @available(iOS 13.0, *)
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    print(error.localizedDescription)
+  }
+}

@@ -47,8 +47,8 @@ final class LoginViewModel {
     }
     
     //Mark:- Social Login Api-----------------------
-     func socialLogin(){
-        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: .google)
+    func socialLogin(logintype:SocialLoginType){
+        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: logintype)
         print("parameter---> \(parameters)")
         
         WebService().requestMultiPart(urlString: "/users/sociallogin",
@@ -59,8 +59,6 @@ final class LoginViewModel {
                                       fileArray: [],
                                       file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
-              //  self?.delegate?.completed(for: .socialLogin(<#T##text: String##String#>), with: resp, with: nil)
-                //self?.view?.onAction(.errorMessage(err?.responseData?.message ?? ERROR_MESSAGE))
                 self?.view?.onAction(.errorMessage(err ?? ERROR_MESSAGE))
                 print(err)
                 return

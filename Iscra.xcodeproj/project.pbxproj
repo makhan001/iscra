@@ -316,6 +316,7 @@
 		04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
 		5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
+		5F2AFB7527607F4800115228 /* IscraRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IscraRelease.entitlements; sourceTree = "<group>"; };
 		5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iscra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FF6CC90274E6A5A007ADC2F /* AddOccupantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOccupantsVC.swift; sourceTree = "<group>"; };
 		5FF6CC92274E6A5A007ADC2F /* DialogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogCell.xib; sourceTree = "<group>"; };
@@ -1515,6 +1516,7 @@
 		88E028322716F70600D90BB1 /* Iscra */ = {
 			isa = PBXGroup;
 			children = (
+				5F2AFB7527607F4800115228 /* IscraRelease.entitlements */,
 				8814B415274385E600A6DE01 /* Coordinators */,
 				88E028592716F73F00D90BB1 /* AppDelegate */,
 				8814B40C2743850200A6DE01 /* Adaptables */,
@@ -2395,9 +2397,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = FC2MYRZ954;
+				CODE_SIGN_ENTITLEMENTS = Iscra/IscraRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Iscra/Resources/Iscra_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2406,7 +2409,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scarlett.user;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Scarlett_User_Development;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

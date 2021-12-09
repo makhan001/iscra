@@ -58,7 +58,6 @@ extension HabitCalenderViewController {
         [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        self.viewModel.habitId = 18 //16 // deepak static
         self.viewModel.getHabitDetail()
         self.habitDetailSetup()
     }
@@ -127,7 +126,6 @@ extension HabitCalenderViewController {
     
     private func backAction() {
         self.router?.dismiss(controller: .habitCalender)
-       // self.navigationController?.popViewController(animated: true) // deepak
     }
     
     private func bottomSheetAction() {

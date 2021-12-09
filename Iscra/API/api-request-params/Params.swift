@@ -71,9 +71,9 @@ enum UserParams {
 }
 
 enum SocialLoginType:  String, Codable {
-    case google = "1"
-    case apple = "2"
-    case facebook = "3"
+    case google = "0"
+    case apple = "1"
+    case facebook = "2"
 }
 
 enum HabitParams {

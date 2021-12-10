@@ -48,6 +48,8 @@ class GroupHabitFriendsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        self.viewModel.getHabitDetail()
+        self.habitDetailSetup()
     }
 }
 
@@ -77,8 +79,8 @@ extension GroupHabitFriendsViewController {
         }
         self.btnSegment.setTitleTextAttributes(unselectedColor as [NSAttributedString.Key : Any], for: .normal)
         self.btnSegment.setTitleTextAttributes(selectedColor as [NSAttributedString.Key : Any], for: .selected)
-        self.viewModel.getHabitDetail()
-        self.habitDetailSetup()
+//        self.viewModel.getHabitDetail()
+//        self.habitDetailSetup()
     }
     
     private func calenderSetup() {

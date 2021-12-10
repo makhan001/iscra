@@ -31,6 +31,8 @@
 		04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F28274FB917009763D1 /* MyAccountViewModel.swift */; };
 		04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */; };
 		04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */; };
+		5F164E602763881E0059F8C2 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */; };
+		5F164E612763881F0059F8C2 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */; };
 		5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */; };
 		5FF6CD20274E6A5A007ADC2F /* AddOccupantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CC90274E6A5A007ADC2F /* AddOccupantsVC.swift */; };
 		5FF6CD21274E6A5A007ADC2F /* DialogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF6CC92274E6A5A007ADC2F /* DialogCell.xib */; };
@@ -187,8 +189,6 @@
 		88202D5F2719AAAA00F0EA2E /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */; };
 		8822D4E72731775500C68EE5 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822D4E62731775500C68EE5 /* VerificationViewController.swift */; };
 		8822D4EC2731777E00C68EE5 /* GetSubcriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822D4EB2731777E00C68EE5 /* GetSubcriptionViewController.swift */; };
-		88269DBB2744EE6A006A9F43 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88269DBA2744EE6A006A9F43 /* NavigationBarView.xib */; };
-		88269DBE2744EFC2006A9F43 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88269DBD2744EFC2006A9F43 /* NavigationBarView.swift */; };
 		8827C3C12750C125009D12C4 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827C3C02750C124009D12C4 /* CameraHandler.swift */; };
 		882F3E002721A50A00A409A6 /* LandingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */; };
 		882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */; };
@@ -317,6 +317,8 @@
 		04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
+		5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
+		5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		5F2AFB7527607F4800115228 /* IscraRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IscraRelease.entitlements; sourceTree = "<group>"; };
 		5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iscra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -477,8 +479,6 @@
 		88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		8822D4E62731775500C68EE5 /* VerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		8822D4EB2731777E00C68EE5 /* GetSubcriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSubcriptionViewController.swift; sourceTree = "<group>"; };
-		88269DBA2744EE6A006A9F43 /* NavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
-		88269DBD2744EFC2006A9F43 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		8827C3C02750C124009D12C4 /* CameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTabBarController.swift; sourceTree = "<group>"; };
 		882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHabitPopUpViewController.swift; sourceTree = "<group>"; };
@@ -631,6 +631,15 @@
 				5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5F164E5D2763881D0059F8C2 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */,
+				5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */,
+			);
+			path = NavigationBar;
 			sourceTree = "<group>";
 		};
 		5FF6CC8D274E6A5A007ADC2F /* Chat */ = {
@@ -1307,15 +1316,6 @@
 			path = "Get Subscription";
 			sourceTree = "<group>";
 		};
-		88269DAD2744E046006A9F43 /* NavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				88269DBA2744EE6A006A9F43 /* NavigationBarView.xib */,
-				88269DBD2744EFC2006A9F43 /* NavigationBarView.swift */,
-			);
-			path = NavigationBar;
-			sourceTree = "<group>";
-		};
 		8827C3BF2750C0DD009D12C4 /* CameraHandler */ = {
 			isa = PBXGroup;
 			children = (
@@ -1645,10 +1645,10 @@
 		88E028582716F73F00D90BB1 /* Shared Components */ = {
 			isa = PBXGroup;
 			children = (
+				5F164E5D2763881D0059F8C2 /* NavigationBar */,
 				0496E013275E41B3005C982A /* CircularProgressBar */,
 				5FF6CC8D274E6A5A007ADC2F /* Chat */,
 				8827C3BF2750C0DD009D12C4 /* CameraHandler */,
-				88269DAD2744E046006A9F43 /* NavigationBar */,
 				8835BCED273E8A7200261839 /* StringConstant */,
 				88E5805B2722E92A00D4CAFB /* CollectionViewLayout */,
 				88E0292E2717102A00D90BB1 /* Extentions */,
@@ -1923,6 +1923,7 @@
 				88CA2A58271EACCA003D590D /* SF-Pro-Display-Light.ttf in Resources */,
 				88B0F96027180A9100EF92B3 /* SourceSansPro-ExtraLightItalic.ttf in Resources */,
 				88CA2C88271EBD00003D590D /* Iscra_Info.plist in Resources */,
+				5F164E602763881E0059F8C2 /* NavigationBarView.xib in Resources */,
 				8800807E272934B4008E3260 /* WeekDaysCollectionViewCell.xib in Resources */,
 				5FF6CD6B274E6A5A007ADC2F /* ChatAttachmentOutgoingCell.xib in Resources */,
 				880E79FA273145D200FB277C /* HabitIcons.xcassets in Resources */,
@@ -1940,7 +1941,6 @@
 				5FF6CD4F274E6A5A007ADC2F /* InfoScreen.storyboard in Resources */,
 				887994D4273AB34E00904D1F /* RepeatDaysTableViewCell.xib in Resources */,
 				5FF6CD86274E6A5A007ADC2F /* Chat.storyboard in Resources */,
-				88269DBB2744EE6A006A9F43 /* NavigationBarView.xib in Resources */,
 				887994C7273AB2EE00904D1F /* CommunityFriendCell.xib in Resources */,
 				887994BD273AB2EE00904D1F /* CommunityMyGroupsCell.xib in Resources */,
 				88CA2A57271EACCA003D590D /* SF-Pro-Display-UltralightItalic.ttf in Resources */,
@@ -2053,7 +2053,6 @@
 				5FF6CD3D274E6A5A007ADC2F /* AttachmentDownloadManager.swift in Sources */,
 				887994BF273AB2EE00904D1F /* MatesCollectionView.swift in Sources */,
 				5FF6CD34274E6A5A007ADC2F /* CALayer+Blur.swift in Sources */,
-				88269DBE2744EFC2006A9F43 /* NavigationBarView.swift in Sources */,
 				5FF6CD3F274E6A5A007ADC2F /* ChatNotificationPopUpViewController.swift in Sources */,
 				04BE940C2750BC1A00503123 /* HabitProvider.swift in Sources */,
 				882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */,
@@ -2167,6 +2166,7 @@
 				04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */,
 				5FF6CD33274E6A5A007ADC2F /* String+Extention.swift in Sources */,
 				8814B419274385E600A6DE01 /* Scenes.swift in Sources */,
+				5F164E612763881F0059F8C2 /* NavigationBarView.swift in Sources */,
 				5FF6CD81274E6A5A007ADC2F /* ChatResources.swift in Sources */,
 				8814B4102743855A00A6DE01 /* AppAdaptables.swift in Sources */,
 				5FF6CD61274E6A5A007ADC2F /* ToolbarContentView.swift in Sources */,

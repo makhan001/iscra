@@ -44,6 +44,8 @@ class HabitCalenderViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.viewModel.getHabitDetail()
+        self.habitDetailSetup()
     }
 }
 
@@ -58,8 +60,8 @@ extension HabitCalenderViewController {
         [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        self.viewModel.getHabitDetail()
-        self.habitDetailSetup()
+//        self.viewModel.getHabitDetail()
+//        self.habitDetailSetup()
     }
     
     private func calenderSetup() {

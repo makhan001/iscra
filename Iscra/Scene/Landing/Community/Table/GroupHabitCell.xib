@@ -45,7 +45,8 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                         <integer key="value" value="24"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I created this group to build new habit to learn foreign language." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijt-en-AuU" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
@@ -121,7 +122,7 @@
     </objects>
     <designables>
         <designable name="BPg-kH-trY">
-            <size key="intrinsicContentSize" width="146" height="29"/>
+            <size key="intrinsicContentSize" width="150.5" height="29"/>
         </designable>
         <designable name="ijt-en-AuU">
             <size key="intrinsicContentSize" width="463" height="19.5"/>

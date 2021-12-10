@@ -63,7 +63,7 @@ extension HomeViewController {
         self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0  // viewModel.habitList[index].id ?? 0
       //  print("habit id is in HomeViewController  \(viewModel.habitList[index].id ?? 0)")
      //   print("self.router is HomeViewController  \(String(describing: self.router))")
-        if self.viewModel.habitList[index].habitType! == "group_habit" {
+        if self.viewModel.habitList[index].habitType == "group_habit" {
             self.router?.push(scene: .groupHabitFriends)
         }else{
             self.router?.push(scene: .habitCalender)

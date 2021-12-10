@@ -70,15 +70,27 @@ extension MyAccountPopupViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-     
+
     }
-    
+//    func openCameraPhoto() {
+//            CameraHandler.shared.showActionSheetPrivate(vc: self, isEditable: true, isAlreadyExist: false)
+//            CameraHandler.shared.camera(allowsEditing: true)
+//            CameraHandler.shared.imagePickedBlock = { (image) in
+//            /* get your image here */
+//                //self.imgUser.image = image
+//                self.delegate?.fetchedImage(img: image)
+//
+////                OnboadingUtils.shared.userImage = image
+////                self.manageButtonTitle()
+//            }
+//        }
     func openGallary()
     {
         let myPickerControllerGallery = UIImagePickerController()
         myPickerControllerGallery.delegate = self
         myPickerControllerGallery.sourceType = UIImagePickerController.SourceType.photoLibrary
         myPickerControllerGallery.allowsEditing = true
+        myPickerControllerGallery.setEditing(true, animated: true)
         
         self.present(myPickerControllerGallery, animated: true, completion: nil)
     }
@@ -86,9 +98,11 @@ extension MyAccountPopupViewController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.originalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+            
         }
         delegate?.fetchedImage(img: selectedImage)
         dismiss(animated: true, completion: nil)
         
     }
+    
 }

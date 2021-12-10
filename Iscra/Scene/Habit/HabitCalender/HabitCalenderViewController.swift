@@ -34,7 +34,6 @@ class HabitCalenderViewController: UIViewController {
     private var themeColor = UIColor(hex: "#7B86EB")
     weak var router: NextSceneDismisser?
     let viewModel: HabitCalenderViewModel = HabitCalenderViewModel(provider: HabitServiceProvider())
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,11 +141,12 @@ extension HabitCalenderViewController {
         editHabit.objHabitDetail = self.viewModel.objHabitDetail
         editHabit.router = self.router
         self.navigationController?.pushViewController(editHabit, animated: true)
-         
     }
     
     private func shareAction() {
        self.viewBottom.isHidden = true
+        self.showToast(message: "Under development", seconds: 0.5)
+        
 //        let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
 //        self.navigationController?.present(editReminder, animated: false, completion: nil)
 //
@@ -157,9 +157,6 @@ extension HabitCalenderViewController {
 //        inviteFriend.delegateInvite = self
 //        inviteFriend.router = self.router
 //        self.navigationController?.present(editReminder, animated: true, completion: nil)
-        
-        self.showToast(message: "Under development", seconds: 0.5)
-
     }
     
     private func deleteAction() {
@@ -213,6 +210,8 @@ extension HabitCalenderViewController: HabitViewRepresentable {
             self.strTitleName = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
             self.habitDetailSetup()
            // self.getDateFromTimeStamp(timeStamp: (self.viewModel.objHabitDetail?.timer)!)
+         //   self.viewModel.objHabitDetail?.habitMarks?[0].habitDay
+            
             break
         case let .isHabitDelete(true, msg):
             self.showToast(message: msg, seconds: 0.5)

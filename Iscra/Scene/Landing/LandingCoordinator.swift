@@ -19,7 +19,8 @@ final class LandingCoordinator: Coordinator<Scenes> {
     private var habitName: HabitNameCoordinator!
     private var habitCalender: HabitCalenderCoordinator!
     private var myAccount: MyAccountCoordinator!
-    
+    private var groupHabitCalender: GroupHabitCalenderCoordinator!
+
     override func start() {
         super.start()
         router.setRootModule(controller, hideBar: true)
@@ -91,6 +92,14 @@ final class LandingCoordinator: Coordinator<Scenes> {
         self.router.present(habitCalender, animated: true)
     }
     
+    private func startGroupHabitCalender() {
+        groupHabitCalender = GroupHabitCalenderCoordinator(router: Router())
+        add(groupHabitCalender)
+        groupHabitCalender.delegate = self
+        groupHabitCalender.start(habitId: controller.home.viewModel.habitId)
+        self.router.present(groupHabitCalender, animated: true)
+    }
+    
     private func startHabitTypeView() {
         self.router.present(selectHabitPopUp, animated: true)
     }
@@ -116,6 +125,7 @@ extension LandingCoordinator: NextSceneDismisser {
         case .walkthrough: startWalkthrough()
         case .habitCalender: startHabitCalender()
         case .selectHabitPopUp: startHabitTypeView()
+        case .groupHabitFriends: startGroupHabitCalender()
         default: break
         }
     }

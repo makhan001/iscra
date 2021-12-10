@@ -109,7 +109,7 @@ extension EditReminderViewController {
                                 let date = dateFormatter.date(from: strDate)
                                 self.pickerTime.datePickerMode = .time
                                 self.pickerTime.setDate(date!, animated: false)
-                                // print("strDate is  \(strDate)")
+                                print("strDate is  \(strDate)")
                                 // print("date is  \(date)")
                                 dateString = strDate
                 // print("self.reminderTime setDefalutTime is actual time in dateString \(dateString)")
@@ -122,7 +122,7 @@ extension EditReminderViewController {
                       //  dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
                              dateString = dayTimePeriodFormatter.string(from: date as Date)
    
-                // print("self.reminderTime contains timestamp in dateString \(dateString)")
+                 print("self.reminderTime contains timestamp in dateString \(dateString)")
               //
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "hh:mm a"

@@ -52,8 +52,8 @@ class CommunityMyGroupsCell: UICollectionViewCell {
     }
         
     func configure() {
-        self.lblHabitTitle.text = "GYM Workout"
-        self.lblHabitTitleMates.text = "GYM Workout"
+        self.lblHabitTitle.text = "GYM workout"
+        self.lblHabitTitleMates.text = "GYM workout"
         self.imgHabit.image = #imageLiteral(resourceName: "icon1")
         self.imgHabitMates.image = #imageLiteral(resourceName: "google")
         self.viewNomates.isHidden = true

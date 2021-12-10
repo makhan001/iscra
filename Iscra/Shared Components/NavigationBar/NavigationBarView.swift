@@ -22,6 +22,7 @@ class NavigationBarView: UIView {
   @IBOutlet var lblTitle: UILabel!
   @IBOutlet var btnBack: UIButton!
   @IBOutlet var btnRightBar: UIButton!
+  @IBOutlet var btnSave: UIButton!
   var delegateBarAction:navigationBarAction?
   var navType:navRightViewType = .other
   override init(frame: CGRect) {
@@ -35,7 +36,7 @@ class NavigationBarView: UIView {
   func commonInit() {
     Bundle.main.loadNibNamed(XIB_NAME, owner: self, options: nil)
     viewContent.fixInView(self)
-    [btnBack, btnRightBar].forEach {
+    [btnSave, btnBack, btnRightBar].forEach {
       $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
     }
     btnBack.showsTouchWhenHighlighted = false
@@ -48,8 +49,7 @@ class NavigationBarView: UIView {
       btnRightBar.isHidden = false
       btnRightBar.setImage(#imageLiteral(resourceName: "ic-checkmark"), for: .normal)
     case .editHabit:
-      btnRightBar.isHidden = false
-      btnRightBar.setTitle("Save", for: .normal)
+      btnSave.isHidden = false
        // btnRightBar.tintColor = .black
         //btnRightBar.setImage(#imageLiteral(resourceName: "ic-checkmark"), for: .normal)
      //   btnRightBar.titleLabel?.text = "Save"
@@ -64,6 +64,8 @@ extension NavigationBarView {
     case btnBack:
       self.backClick()
     case btnRightBar:
+      self.rightButtonClick()
+    case btnSave:
       self.rightButtonClick()
     default:
       break

@@ -46,7 +46,7 @@ extension EditHabitViewController {
         self.setHabitData()
         self.txtMyHabit.returnKeyType = .done
         self.viewNavigation.commonInit()
-        self.viewNavigation.lblTitle.text = ""
+        self.viewNavigation.lblTitle.text = "Edit habit"
         self.viewNavigation.delegateBarAction = self
         navigationController?.setNavigationBarHidden(true, animated: false)
         [btnDeleteHabit].forEach {

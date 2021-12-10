@@ -17,6 +17,8 @@ import PDFKit
 import Quickblox
 import SVProgressHUD
 import IQKeyboardManagerSwift
+import DeviceCheck
+
 
 
 var messageTimeDateFormatter: DateFormatter {
@@ -254,7 +256,24 @@ class ChatViewController: UIViewController, ChatContextMenu {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
-        self.toolbarBottomLayoutGuide.constant = 250
+//       self.toolbarBottomLayoutGuide.constant = 200
+//        switch UIDevice.Type.self {
+//        case .iPhone6s :
+//            self.toolbarBottomLayoutGuide.constant = 200
+//        default:
+//            self.toolbarBottomLayoutGuide.constant = 250
+//        }
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.bounds.size.height{
+            case 667,568:
+                print("iPhone 6,6s")
+                self.toolbarBottomLayoutGuide.constant = 200
+            default:
+                print("other models")
+                self.toolbarBottomLayoutGuide.constant = 250
+            }
+        }
+
     }
     
     func mainViewTappedSetup() {

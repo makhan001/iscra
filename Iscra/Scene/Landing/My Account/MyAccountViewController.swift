@@ -122,6 +122,12 @@ extension MyAccountViewController: clickManagerDelegate{
             self.rateUs()
         case .contactDeveloper:
              self.composerEmail()
+        case .termsAndCondition:
+             self.termsAndCondition()
+        case .privacyPolicy:
+             self.privacyPolicy()
+        case .aboutUs:
+             self.aboutUs()
         case .everyDay:
             print(performAction)
         case .reminder:
@@ -167,11 +173,34 @@ extension MyAccountViewController: clickManagerDelegate{
         let composeVC = MFMailComposeViewController()
            composeVC.mailComposeDelegate = self
             // Configure the fields of the interface.
-           composeVC.setToRecipients(["exampleEmail@email.com"])
+           composeVC.setToRecipients(["Iscra.app@gmail.com"])
            composeVC.setSubject("Message Subject")
            composeVC.setMessageBody("Message content.", isHTML: false)
           navigationController?.pushViewController(composeVC, animated: true)
     }
+    private func termsAndCondition(){
+        print("termsAndCondition")
+        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        vc.webPage = .termsAndConditions
+       navigationController?.pushViewController(vc, animated: true)
+    
+    }
+    private func privacyPolicy(){
+        print("privacyPolicy")
+        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        vc.webPage = .privacyPolicy
+       navigationController?.pushViewController(vc, animated: true)
+    }
+    private func aboutUs(){
+        print("aboutUs")
+        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        vc.webPage = .aboutUs
+       navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 //Mark:- Mail Composer Delegate
 extension MyAccountViewController: MFMailComposeViewControllerDelegate{

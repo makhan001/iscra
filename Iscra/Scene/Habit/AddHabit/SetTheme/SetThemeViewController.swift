@@ -106,6 +106,7 @@ extension SetThemeViewController {
                 reminder.router = self.router
                 reminder.selectedColorTheme = self.selectedColorTheme
                 self.navigationController?.pushViewController(reminder, animated: true)
+              //  self.router?.push(scene: .reminder) // deepak
             }
         }
     }
@@ -144,8 +145,7 @@ extension SetThemeViewController: HabitViewRepresentable {
 extension SetThemeViewController  : navigationBarAction {
     
     func ActionType()  {
-      //  router?.dismiss(controller: .addHabit)
-      //  self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true) // deepak
+      //  self.router?.dismiss(controller: .setTheme)
     }
 }

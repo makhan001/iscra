@@ -8,9 +8,7 @@
 
 import UIKit
 enum HabitType: String {
-    case good = "good"
-    case bad = "bad"
-    case group = "group"
+    case good, bad, group_habit
 }
 
 protocol SelectHabitPopUpDelegate: AnyObject {
@@ -74,6 +72,6 @@ extension SelectHabitPopUpViewController {
     }
     private func addGroupHabit() {
         self.dismiss(animated: true, completion: nil)
-        delegate?.addHabit(type: .group)
+        delegate?.addHabit(type: .group_habit)
     }
 }

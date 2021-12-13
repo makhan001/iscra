@@ -31,6 +31,8 @@
 		04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F28274FB917009763D1 /* MyAccountViewModel.swift */; };
 		04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */; };
 		04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */; };
+		04FD568727671F69008E7CB2 /* CommunityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD568627671F69008E7CB2 /* CommunityRequest.swift */; };
+		04FD568A276759E6008E7CB2 /* EditHabitCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD5689276759E6008E7CB2 /* EditHabitCoordinator.swift */; };
 		5F164E602763881E0059F8C2 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */; };
 		5F164E612763881F0059F8C2 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */; };
 		5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */; };
@@ -316,6 +318,8 @@
 		04D34F28274FB917009763D1 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
 		04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
+		04FD568627671F69008E7CB2 /* CommunityRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityRequest.swift; sourceTree = "<group>"; };
+		04FD5689276759E6008E7CB2 /* EditHabitCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitCoordinator.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
 		5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
 		5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
@@ -1161,6 +1165,7 @@
 			children = (
 				880D683C273AB89600B232CC /* CellView */,
 				880D683E273AB89600B232CC /* EditHabitViewController.swift */,
+				04FD5689276759E6008E7CB2 /* EditHabitCoordinator.swift */,
 				04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */,
 			);
 			path = "Edit Habit";
@@ -1271,6 +1276,7 @@
 				8814B4252743874100A6DE01 /* AuthRequests.swift */,
 				8814B4262743874100A6DE01 /* UserRequests.swift */,
 				04BE94082750B13200503123 /* HabitRequests.swift */,
+				04FD568627671F69008E7CB2 /* CommunityRequest.swift */,
 			);
 			path = "api-request";
 			sourceTree = "<group>";
@@ -2083,6 +2089,7 @@
 				5FF6CD5E274E6A5A007ADC2F /* AttachmentUploadBar.swift in Sources */,
 				882F3E162721AAC300A409A6 /* MyAccountTableViewCell.swift in Sources */,
 				8814B43D2743874100A6DE01 /* APIResponder.swift in Sources */,
+				04FD568727671F69008E7CB2 /* CommunityRequest.swift in Sources */,
 				5FF6CD53274E6A5A007ADC2F /* LoadingButton.swift in Sources */,
 				887994BA273AB2EE00904D1F /* MyCommunityCollectionView.swift in Sources */,
 				5FF6CD7F274E6A5A007ADC2F /* ChatActionsHandler.swift in Sources */,
@@ -2102,6 +2109,7 @@
 				887994D5273AB34E00904D1F /* RepeatDaysTableView.swift in Sources */,
 				880080732729282F008E3260 /* HabitNameViewController.swift in Sources */,
 				880D683F273AB89600B232CC /* EditHabitTableView.swift in Sources */,
+				04FD568A276759E6008E7CB2 /* EditHabitCoordinator.swift in Sources */,
 				887994D6273AB34E00904D1F /* EditReminderViewController.swift in Sources */,
 				5FF6CD6D274E6A5A007ADC2F /* ChatCell.swift in Sources */,
 				88202D592719923700F0EA2E /* WelcomeViewController.swift in Sources */,

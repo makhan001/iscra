@@ -45,7 +45,6 @@ final class UpdateProfileViewModel {
                                       fileArray: [],
                                       file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
-                
                 self?.delegate?.completed(for: .updateProfile, with: resp, with: nil)
                 return
             } else {
@@ -70,6 +69,7 @@ final class UpdateProfileViewModel {
 extension UpdateProfileViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
+            WebService().StopIndicator()
             if error != nil {
                 self.view?.onAction(.errorMessage(ERROR_MESSAGE))
             } else {

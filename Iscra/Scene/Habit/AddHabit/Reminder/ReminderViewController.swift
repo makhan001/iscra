@@ -167,12 +167,14 @@ extension ReminderViewController: HabitViewRepresentable {
                 inviteFriend.delegateInvite = self
                 inviteFriend.router = self.router
                 self.present(inviteFriend, animated: true, completion: nil)
+               // self.router?.push(scene: .inviteFriend) // deepak
             }
         case .navigateToGroupImage(true):
             let addGroupImage: AddGroupImageViewController = AddGroupImageViewController.from(from: .habit, with: .addGroupImage)
             addGroupImage.habitType = habitType
             addGroupImage.router = self.router
             self.navigationController?.pushViewController(addGroupImage, animated: true)
+          //  self.router?.push(scene: .addGroupImage) // deepak
             break
         default:
             break
@@ -184,9 +186,8 @@ extension ReminderViewController: HabitViewRepresentable {
 extension ReminderViewController  : navigationBarAction {
     
     func ActionType()  {
-      //  router?.dismiss(controller: .addHabit)
-       // self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
+      //  self.router?.dismiss(controller: .setTheme) // deepak
     }
 }
 

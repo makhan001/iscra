@@ -1,31 +1,28 @@
 //
-//  HabitCalenderCoordinator.swift
+//  EditHabitCoordinator.swift
 //  Iscra
 //
-//  Created by mac on 27/11/21.
+//  Created by mac on 13/12/21.
 //
 
 import Foundation
 
-final class HabitCalenderCoordinator: Coordinator<Scenes> {
+final class EditHabitCoordinator: Coordinator<Scenes> {
 
     weak var delegate: CoordinatorDimisser?
-    let controller: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
+    let controller: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
 
     private var landing: LandingCoordinator!
-    private var editHabit: EditHabitCoordinator!
-
+    
     override func start() {
         super.start()
         router.setRootModule(controller, hideBar: true)
         self.onStart()
     }
     
-    func start(habitId: Int) {
+    func start(objHabitDetail: HabitDetails) {
         super.start()
-        print("habitId is HabitCalenderCoordinator  \(habitId)")
-       controller.viewModel.habitId = habitId
-      //  controller.habitId = habitId
+        controller.objHabitDetail = objHabitDetail
         router.setRootModule(controller, hideBar: true)
         self.onStart()
     }
@@ -48,22 +45,14 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
         self.router.present(landing, animated: true)
     }
     
-    private func startEditHabit() {
-        editHabit = EditHabitCoordinator(router: Router())
-        add(editHabit)
-        editHabit.delegate = self
-        editHabit.start(objHabitDetail: controller.viewModel.objHabitDetail!)
-        self.router.present(editHabit, animated: true)
-    }
 }
 
-extension HabitCalenderCoordinator: NextSceneDismisser {
+extension EditHabitCoordinator: NextSceneDismisser {
 
     func push(scene: Scenes) {
         switch scene {
         case .habitCalender: startHabitCalender()
         case .landing: startLanding()
-        case .editHabit: startEditHabit()
         default: break
         }
     }
@@ -73,7 +62,7 @@ extension HabitCalenderCoordinator: NextSceneDismisser {
     }
 }
 
-extension HabitCalenderCoordinator: CoordinatorDimisser {
+extension EditHabitCoordinator: CoordinatorDimisser {
 
     func dismiss(coordinator: Coordinator<Scenes>) {
         remove(child: coordinator)

@@ -125,3 +125,6 @@ enum HabitParams {
     }
 }
 
+enum CommunityParams {
+    
+}

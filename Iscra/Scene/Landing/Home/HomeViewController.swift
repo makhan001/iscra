@@ -24,15 +24,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+      //  print("self.router is HomeViewController  \(String(describing: self.router))")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let first = (UserStore.userName ?? "").components(separatedBy: " ").first {
-            self.lblUserName.text = "Hi," + first.capitalized
-        }else{
-            self.lblUserName.text = "Hi," + (UserStore.userName ?? "").capitalized
-        }
+        self.lblUserName.text = "Hi," + (UserStore.userName ?? "").capitalized
         self.viewModel.fetchHabitList()
     }
 }
@@ -46,6 +43,8 @@ extension HomeViewController {
         self.tableView.didSelectedAtIndex = didSelectedAtIndex
         self.lblTitle.text = AppConstant.firstHabitTitle
         self.lblSubTitle.text = AppConstant.firstHabitSubTitle
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
+
        // self.tableView.delegate1 = self
         self.tableView.isHabitDelete = {
             selected , id in
@@ -54,6 +53,10 @@ extension HomeViewController {
                 self.showAlert(habitId: id)
             }
         }
+    }
+    @objc func refrershUI(){
+        print("refrershUI is called")
+        self.viewModel.fetchHabitList()
     }
 }
 

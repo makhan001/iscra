@@ -57,7 +57,6 @@ final class SignupViewModel {
                                       fileArray: [],
                                       file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
-                
                 self?.delegate?.completed(for: .register, with: resp, with: nil)
                 return
             } else {
@@ -133,11 +132,8 @@ final class SignupViewModel {
 extension SignupViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
+            WebService().StopIndicator()
             if error != nil {
-                //                guard let message = error?.responseData?.message else {
-                //                    self.view?.onAction(.errorMessage(ERROR_MESSAGE))
-                //                    return
-                //                }
                 self.view?.onAction(.errorMessage(ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.status == true {

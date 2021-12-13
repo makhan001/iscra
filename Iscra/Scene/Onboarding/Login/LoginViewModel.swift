@@ -42,7 +42,6 @@ final class LoginViewModel {
             view?.onAction(.requireFields(Validation().textValidation(text: password, validationType: .password).1))
             return
         }
-        
         self.provider.login(param: UserParams.Login(email: email, password: password, fcm_token: "fcmToken", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, device_udid: "" , device_type: "ios"))
     }
     
@@ -84,6 +83,7 @@ final class LoginViewModel {
 extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
+            WebService().StopIndicator()
             if error != nil {
                 //   self.view?.onAction(.errorMessage(ERROR_MESSAGE))
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))

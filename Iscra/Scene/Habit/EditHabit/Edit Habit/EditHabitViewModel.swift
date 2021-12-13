@@ -15,7 +15,7 @@ final class EditHabitViewModel {
     var colorTheme: String = ""
     var reminders: Bool = false
     var groupImage: UIImage?
-    var objHabitDetail: AllHabits?
+    var objHabitDetail: HabitDetails?
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?

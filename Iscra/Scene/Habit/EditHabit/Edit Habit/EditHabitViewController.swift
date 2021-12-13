@@ -19,8 +19,7 @@ class EditHabitViewController: UIViewController {
     var timer: String = ""
     var colorTheme: String = ""
     var reminders: Bool = false
-    var objHabitDetail: AllHabits?
-    //let viewModel = EditHabitViewModel()
+    var objHabitDetail: HabitDetails?
     let viewModel: EditHabitViewModel = EditHabitViewModel(provider: HabitServiceProvider())
     weak var router: NextSceneDismisser?
    // var updateHabit:((_ isReminderOn:Bool)   ->())?
@@ -28,7 +27,6 @@ class EditHabitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-       //  // print("self.router is \(self.router)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +44,7 @@ extension EditHabitViewController {
         self.setHabitData()
         self.txtMyHabit.returnKeyType = .done
         self.viewNavigation.commonInit()
-        self.viewNavigation.lblTitle.text = ""
+        self.viewNavigation.lblTitle.text = "Edit habit"
         self.viewNavigation.delegateBarAction = self
         navigationController?.setNavigationBarHidden(true, animated: false)
         [btnDeleteHabit].forEach {
@@ -57,7 +55,6 @@ extension EditHabitViewController {
     }
     
     private func setHabitData() {
-        // print("objHabitDetail? is \(String(describing: objHabitDetail))")
         self.colorTheme = self.objHabitDetail?.colorTheme ?? ""
         self.txtMyHabit.text = objHabitDetail?.name
         self.timer = objHabitDetail?.timer ?? ""
@@ -65,7 +62,6 @@ extension EditHabitViewController {
         self.weekdays = objHabitDetail?.days
         self.days = self.objHabitDetail?.days?.reduce("") {$0 + $1 + "," } ?? ""
         self.days = String(self.days.dropLast())
-        // print("strDays in getDays setHabitData is \(self.days)")
     }
 }
 
@@ -81,7 +77,6 @@ extension EditHabitViewController {
     }
     
     private func deleteHabitAction() {
-        // print("DeleteHabitAction")
         self.showAlert(habitId: String(self.objHabitDetail?.id ?? 0))
     }
 }
@@ -103,57 +98,27 @@ extension EditHabitViewController: clickManagerDelegate{
     private func everyDayAction() {
         self.txtMyHabit.resignFirstResponder()
         let repeatDaysPopUp: RepeatDaysPopUpViewController = RepeatDaysPopUpViewController.from(from: .landing, with: .repeatDaysPopUp)
-//        repeatDaysPopUp.days = self.objHabitDetail?.days
-//        repeatDaysPopUp.objHabitDetail = self.objHabitDetail
         repeatDaysPopUp.weekdays = self.weekdays
         repeatDaysPopUp.getRepeatDays = {
               repeatDays in
-            // print("RepeatDays on edit is \(repeatDays)")
             let letters = repeatDays.components(separatedBy: ",")
             self.weekdays = letters
             self.days = repeatDays
-            // print("letters array is \(letters)") // ["A", "B", "C"]
         }
         self.navigationController?.present(repeatDaysPopUp, animated: false, completion: nil)
-    }
-    
-    private func getDays() -> String {
-        
-      let temp = self.objHabitDetail?.days
-        
-        var strDays = ""
-//        for i in temp ?? [] {
-//
-//                if strDays == "" {
-//                    strDays =   i
-//                }else{
-//                    strDays =  strDays + "," + i
-//                }
-//        }
-        
-        strDays = temp?.reduce("") {$0 + $1 + "," } ?? ""
-        strDays = String(strDays.dropLast())
-        // print("strDays in getDays is \(strDays)")
-        return ""
     }
     
     private func reminderAction() {
         self.txtMyHabit.resignFirstResponder()
         let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
-       // editReminder.objHabitDetail = self.objHabitDetail
-        
         editReminder.reminderTime =  self.timer
         editReminder.reminders = self.reminders
-
-        
         editReminder.getReminderTime = {
             isReminderOn , reminderTime in
             if isReminderOn {
-                // print("updated time on edit when timer is on is \(reminderTime)  and remainder is \(isReminderOn)")
                 self.reminders = isReminderOn
                 self.timer = reminderTime
             }else{
-                // print("updated time on edit when timer is off is \(reminderTime)  and remainder is \(isReminderOn)")
                 self.reminders = isReminderOn
                 self.timer = reminderTime
             }
@@ -164,14 +129,11 @@ extension EditHabitViewController: clickManagerDelegate{
     private func changeColorThemeAction() {
         self.txtMyHabit.resignFirstResponder()
         let colorPopUp: ColorPopUpViewController = ColorPopUpViewController.from(from: .habit, with: .colorPopUp)
-       // colorPopUp.objHabitDetail = self.objHabitDetail
         colorPopUp.colorTheme = self.colorTheme
         colorPopUp.isFormEditHabit = true
         colorPopUp.getUpdetedColorHex = {
             updatedColorHex in
-            // print("updatedColorHex on edit is \(updatedColorHex)")
             self.colorTheme = updatedColorHex
-         //   colorPopUp.colorTheme = updatedColorHex
         }
         self.navigationController?.present(colorPopUp, animated: false, completion: nil)
     }
@@ -186,70 +148,30 @@ extension EditHabitViewController  : navigationBarAction {
     }
     
     func RightButtonAction() {
-        // print("Save")
-        
-     //   guard let txtName = self.txtMyHabit.text, let name = self.objHabitDetail?.name else { return }
-     //   self.viewModel.habitName =   !txtName.isEmpty ? txtName : name
         self.viewModel.habitName =   self.txtMyHabit.text ?? ""
         self.viewModel.colorTheme = self.colorTheme
         self.viewModel.reminders = self.reminders
-      //  self.viewModel.timer = self.timer
-        
-//        if self.days == "" {
-//            let stringArray = self.objHabitDetail?.days ?? [""]
-//            self.days = stringArray.joined(separator: ",")
-//        }
+
         self.viewModel.days = self.days
-        // print("self.viewModel.reminders is \(self.viewModel.reminders)")
-        // print("self.viewModel.timer is \(self.viewModel.timer)")
-        // print("self.viewModel.colorTheme is \(self.viewModel.colorTheme)")
-        
-        ///////////////////////////
         if self.reminders == true {
-//            let currentDate = Date().string(format: "yyyy-MM-dd")
-//            ////
-//            let date = Date(timeIntervalSince1970: Double(self.viewModel.timer) ?? 0.0)
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "h:mm a"
-//            // print("dateFormatter.string(from: date) is \(dateFormatter.string(from: date))")
-//            let convertedTime = dateFormatter.string(from: date)
-//            ////
-//            let yourDate = currentDate + "-" + convertedTime
-//            dateFormatter.dateFormat = "yyyy-MM-dd-hh:mm a"
-//             let dateString = dateFormatter.date(from: yourDate)
-//             let dateTimeStamp  = dateString!.timeIntervalSince1970
-//            // print("date is \(date)")
-//            // print("currentDate is \(currentDate)")
-//            // print("convertedTime is \(convertedTime)")
-//
-//            // print("self.viewModel.timer is \(self.viewModel.timer)")
-//            // print("yourDate is \(yourDate)")
-//            // print("dateTimeStamp is \(dateTimeStamp)")
-//
-//            self.viewModel.timer = String(dateTimeStamp)
-//            self.viewModel.reminders = true
-            
-            let currentDate = Date().string(format: "yyyy-MM-dd")
-            let yourDate = currentDate + "-" + self.timer
-             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd-hh:mm a"
-             let dateString = dateFormatter.date(from: yourDate)
-             let dateTimeStamp  = dateString!.timeIntervalSince1970
-            self.viewModel.timer = String(dateTimeStamp)
+            if self.timer.contains(":"){
+                let currentDate = Date().string(format: "yyyy-MM-dd")
+                let yourDate = currentDate + "-" + self.timer
+                 let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd-hh:mm a"
+                 let dateString = dateFormatter.date(from: yourDate)
+                 let dateTimeStamp  = dateString!.timeIntervalSince1970
+                self.viewModel.timer = String(dateTimeStamp)
+            }else{
+                self.viewModel.timer = self.timer
+            }
             self.viewModel.reminders = true
             
         }else{
             self.viewModel.timer = ""
             self.viewModel.reminders = false
         }
-        ///////////////////////////
-// need to do vaildation on edit habit
         self.viewModel.objHabitDetail = self.objHabitDetail
-      //  self.viewModel.apiForUpdateHabit()
-        
-        
-        // print("self.days is \(self.days)")
-        
         self.viewModel.onAction(action: .setGroupImage(.setGroupImage), for: .setGroupImage)
         viewModel.onAction(action: .inputComplete(.editHabit), for: .editHabit)
     }
@@ -313,7 +235,6 @@ extension EditHabitViewController {
         }
         deleteAction.setValue(UIColor.gray, forKey: "titleTextColor")
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction!) in
-            // print("Cancel button tapped");
         }
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
         alertController.addAction(deleteAction)

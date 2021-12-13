@@ -118,6 +118,17 @@
             <point key="canvasLocation" x="149.0625" y="-47.535211267605632"/>
         </view>
     </objects>
+    <designables>
+        <designable name="Aqc-wV-fyn">
+            <size key="intrinsicContentSize" width="48" height="48"/>
+        </designable>
+        <designable name="FWc-Af-ewh">
+            <size key="intrinsicContentSize" width="34" height="30"/>
+        </designable>
+        <designable name="aIT-Rf-uj9">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="back-asdasd" width="48" height="48"/>
         <namedColor name="GrayAccent">

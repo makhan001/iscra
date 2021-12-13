@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import Quickblox
 
 final class SignupViewModel {
     
@@ -69,6 +70,7 @@ final class SignupViewModel {
                         UserStore.save(userID: response.data?.register?.id)
                         UserStore.save(userImage: response.data?.register?.profileImage)
                         self?.verificationCode = response.data?.register?.verificationCode ?? ""
+                        self?.setChatUserSignupSetup()
                         self?.view?.onAction(.register)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
@@ -77,6 +79,20 @@ final class SignupViewModel {
             }
         }
     }
+    //Mark:- QuickBlox Chat SignUp--------
+    
+    func setChatUserSignupSetup() {
+        let user = QBUUser()
+        user.email = UserStore.userEmail//UserDetails.globalVariable.userEmail
+        user.login = UserStore.userEmail//UserDetails.globalVariable.userEmail
+        user.fullName = UserStore.userName
+        user.password = "jitu12345"//Message.shared.K_QuickBloxPassword
+        QBRequest.signUp(user, successBlock: { response, user in
+         print("UserSignUpInQuickBlox", user)
+        }, errorBlock: { (response) in
+          print("UserNOTSignUpInQuickBlox", response)
+        })
+      }
     //Mark:- Social Login Api-----------------------
     func socialLogin(logintype:SocialLoginType){
         let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: logintype)
@@ -102,6 +118,7 @@ final class SignupViewModel {
                         print("socialLoginApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)
+                        self?.setChatUserSignupSetup()
                         self?.view?.onAction(.socialLogin(response.message ?? ""))
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

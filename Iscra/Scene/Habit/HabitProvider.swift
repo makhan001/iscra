@@ -67,5 +67,28 @@ final class HabitServiceProvider: HabitServiceProvidable {
             self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
         }
     }
+    
+    func groupInvitations(param: HabitParams.GroupInvitations) {
+        task.groupInvitations(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+        }
+    }
+    
+    func markAsComplete(param: HabitParams.MarkAsComplete) {
+        task.markAsComplete(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+        }
+    }
+    
+   
+    
 }
 

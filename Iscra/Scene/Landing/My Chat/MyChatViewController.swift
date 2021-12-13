@@ -35,10 +35,10 @@ class MyChatViewController: UIViewController {
         //Spinner.show("")
       //  let userEmail = UserDefaults.standard.value(forKey: Message.shared.K_UserEmail) as? String ?? ""
         
-        let userEmail = "ameena@gmail.com"//jitu99@gmail.com"
-        let userPassword = "jitu12345"//"jitu12345"
+        let userEmail = UserStore.userEmail//"ameena@gmail.com"//jitu99@gmail.com"
+        let userPassword = "jitu12345"
         
-        QBRequest.logIn(withUserEmail: userEmail,
+        QBRequest.logIn(withUserEmail: UserStore.userEmail ?? "",
                 password: userPassword) { (response, user) in
           let current = Profile()
           do {

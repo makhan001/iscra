@@ -84,4 +84,5 @@ extension AddMyPictureViewController {
                 self.manageButtonTitle()
             }
         }
+   
 }

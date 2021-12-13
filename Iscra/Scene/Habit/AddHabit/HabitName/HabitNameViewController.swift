@@ -117,7 +117,6 @@ extension HabitNameViewController: UITextFieldDelegate {
         } else {
             return false
         }
-       
     }
 }
 
@@ -141,7 +140,7 @@ extension HabitNameViewController: UITextViewDelegate {
     func searchAutocompleteEntries(withSubstring substring: String) {
         if substring != "" {
             NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.reload), object: nil)
-            self.perform(#selector(self.reload), with: nil, afterDelay: 0.5)
+            self.perform(#selector(self.reload), with: nil, afterDelay: 0.2)
         }
     }
     

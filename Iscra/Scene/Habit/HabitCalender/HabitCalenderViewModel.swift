@@ -14,7 +14,7 @@ final class HabitCalenderViewModel {
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
-    var objHabitDetail: AllHabits?
+    var objHabitDetail: HabitDetails?
     
     init(provider: HabitServiceProvidable) {
         self.provider = provider
@@ -38,7 +38,7 @@ extension HabitCalenderViewModel: HabitServiceProvierDelegate {
             if error != nil {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
-                if let resp = response as? SuccessResponseModel, resp.code == 200 , let objGroupDetails = resp.data?.groupDetails{
+                if let resp = response as? SuccessResponseModel, resp.code == 200 , let objGroupDetails = resp.data?.habitDetails{
                     self.objHabitDetail = objGroupDetails
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))                    
                 }else if let resp = response as? SuccessResponseModel, resp.code == 200, let status = resp.status {

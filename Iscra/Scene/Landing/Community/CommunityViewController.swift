@@ -13,7 +13,7 @@ class CommunityViewController: UIViewController {
     
     @IBOutlet weak var collectionMyGroups: MyCommunityCollectionView!
     @IBOutlet weak var collectionNewGroupHabit: NewCommunityCollectionView!
-    
+    private let viewModel: InviteFriendViewModel = InviteFriendViewModel(provider: HabitServiceProvider())
     weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
@@ -71,6 +71,7 @@ extension CommunityViewController {
     
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
+      //  self.viewModel.callApiGroupInvitation()
     }
 }
 

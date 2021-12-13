@@ -91,6 +91,7 @@ enum StoryboardIdentifier:String {
     case inviteFriend
     case addGroupImage
     case editHabit
+    case webView
 
     case addMyPicture
     case editName

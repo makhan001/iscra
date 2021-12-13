@@ -66,6 +66,14 @@ final class UserTask {
         dispatcher.execute(requst: HabitRequests(type: .habitDetail, params: params), modeling: responseModel, completion: completion)
     }
     
+    func groupInvitations<T:Codable>(params: HabitParams.GroupInvitations, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .groupInvitations, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func markAsComplete<T:Codable>(params: HabitParams.MarkAsComplete, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .markAsComplete, params: params), modeling: responseModel, completion: completion)
+    }
+    
 //    func termsAndConditions(completion:@escaping APIResult<SuccessResponseModel> ) {
 //        dispatcher.execute(requst: AuthRequests(requestType: .terms), modeling: SuccessResponseModel.self, completion:   completion)
 //    }

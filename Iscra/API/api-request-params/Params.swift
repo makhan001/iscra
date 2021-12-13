@@ -66,7 +66,6 @@ enum UserParams {
     struct UpdateProfile: Codable {
        // let user_id: String?
         let username: String?
-        
     }
 }
 
@@ -114,4 +113,15 @@ enum HabitParams {
     
     struct AllHabitList: Codable {
     }
+    
+    struct GroupInvitations: Codable {
+        let habit_id: String?
+    }
+    
+    struct MarkAsComplete: Codable {
+        let habit_id: String?
+        let habit_day: String?
+        let is_completed: String?
+    }
 }
+

@@ -75,7 +75,7 @@ extension AddMyPictureViewController {
         }
     }
     func openCameraPhoto() {
-            CameraHandler.shared.showActionSheetPrivate(vc: self, isEditable: false, isAlreadyExist: false)
+            CameraHandler.shared.showActionSheetPrivate(vc: self, isEditable: true, isAlreadyExist: false)
             CameraHandler.shared.camera(allowsEditing: true)
             CameraHandler.shared.imagePickedBlock = { (image) in
             /* get your image here */

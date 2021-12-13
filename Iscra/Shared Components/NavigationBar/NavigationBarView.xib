@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="btnBack" destination="Aqc-wV-fyn" id="NnD-5u-U7u"/>
                 <outlet property="btnRightBar" destination="3Hx-dB-YiH" id="5Y9-Pq-fSI"/>
+                <outlet property="btnSave" destination="FWc-Af-ewh" id="luX-tD-eN6"/>
                 <outlet property="lblTitle" destination="aIT-Rf-uj9" id="gne-gm-jdJ"/>
                 <outlet property="viewContent" destination="iN0-l3-epB" id="lgk-TP-Sui"/>
             </connections>
@@ -49,7 +50,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIT-Rf-uj9" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                            <rect key="frame" x="60" y="22" width="299" height="26.5"/>
+                            <rect key="frame" x="60" y="25" width="299" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" name="GrayAccent"/>
                             <nil key="highlightedColor"/>
@@ -63,40 +64,36 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FoV-Um-Xgf">
                             <rect key="frame" x="409" y="35" width="0.0" height="0.0"/>
                             <subviews>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Hx-dB-YiH" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Hx-dB-YiH">
                                     <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="3Hx-dB-YiH" secondAttribute="height" multiplier="1:1" id="8LQ-Nv-Xvn"/>
                                         <constraint firstAttribute="width" constant="48" id="kpe-4x-ycS"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
                                     <state key="normal">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                            <color key="value" red="0.98823529409999999" green="0.97647058819999999" blue="0.86543246789999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                            <real key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                            <size key="value" width="0.0" height="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                            <real key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                            <integer key="value" value="20"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
                                 </button>
                             </subviews>
                         </stackView>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWc-Af-ewh" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
+                            <rect key="frame" x="375" y="20" width="34" height="30"/>
+                            <state key="normal" title="Save">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                    <integer key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="NO"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="FWc-Af-ewh" firstAttribute="centerY" secondItem="W4d-pO-3de" secondAttribute="centerY" id="8sH-qk-tgv"/>
                         <constraint firstAttribute="height" constant="70" id="N4z-xc-Kuc"/>
                         <constraint firstItem="aIT-Rf-uj9" firstAttribute="centerX" secondItem="W4d-pO-3de" secondAttribute="centerX" id="Ueo-zW-Nns"/>
                         <constraint firstItem="Aqc-wV-fyn" firstAttribute="centerY" secondItem="W4d-pO-3de" secondAttribute="centerY" id="WEt-qF-cl8"/>
@@ -104,6 +101,7 @@
                         <constraint firstItem="aIT-Rf-uj9" firstAttribute="leading" secondItem="Aqc-wV-fyn" secondAttribute="trailing" constant="5" id="g6H-g8-ZaS"/>
                         <constraint firstItem="Aqc-wV-fyn" firstAttribute="leading" secondItem="W4d-pO-3de" secondAttribute="leading" constant="10" id="hnU-Z5-8Zx"/>
                         <constraint firstAttribute="trailing" secondItem="FoV-Um-Xgf" secondAttribute="trailing" constant="10" id="kJ8-JF-KJy"/>
+                        <constraint firstAttribute="trailing" secondItem="FWc-Af-ewh" secondAttribute="trailing" constant="10" id="v8f-An-TDn"/>
                         <constraint firstItem="aIT-Rf-uj9" firstAttribute="centerY" secondItem="Aqc-wV-fyn" secondAttribute="centerY" id="yfR-XM-KIO"/>
                     </constraints>
                 </view>
@@ -120,17 +118,6 @@
             <point key="canvasLocation" x="149.0625" y="-47.535211267605632"/>
         </view>
     </objects>
-    <designables>
-        <designable name="3Hx-dB-YiH">
-            <size key="intrinsicContentSize" width="30" height="24"/>
-        </designable>
-        <designable name="Aqc-wV-fyn">
-            <size key="intrinsicContentSize" width="48" height="48"/>
-        </designable>
-        <designable name="aIT-Rf-uj9">
-            <size key="intrinsicContentSize" width="56" height="26.5"/>
-        </designable>
-    </designables>
     <resources>
         <image name="back-asdasd" width="48" height="48"/>
         <namedColor name="GrayAccent">

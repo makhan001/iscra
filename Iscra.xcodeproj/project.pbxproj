@@ -150,7 +150,6 @@
 		880D683F273AB89600B232CC /* EditHabitTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D683D273AB89600B232CC /* EditHabitTableView.swift */; };
 		880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D683E273AB89600B232CC /* EditHabitViewController.swift */; };
 		880E79FA273145D200FB277C /* HabitIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880E79F9273145D200FB277C /* HabitIcons.xcassets */; };
-		880E79FD2731503F00FB277C /* HabitIcons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 880E79FC2731503F00FB277C /* HabitIcons.plist */; };
 		880F3E302727DE04007CA895 /* ColorPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E2F2727DE04007CA895 /* ColorPopUpViewController.swift */; };
 		880F3E362727EC73007CA895 /* IconPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E352727EC73007CA895 /* IconPopupViewController.swift */; };
 		880F3E412727EFFE007CA895 /* IconHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E402727EFFE007CA895 /* IconHeader.swift */; };
@@ -195,12 +194,12 @@
 		882F3E162721AAC300A409A6 /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */; };
 		882F3E172721AAC300A409A6 /* MyAccountTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E132721AAC300A409A6 /* MyAccountTableView.swift */; };
 		882F3E182721AAC300A409A6 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E142721AAC300A409A6 /* MyAccountViewController.swift */; };
-		8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8835BCEE273E8A7200261839 /* StringConstant.swift */; };
 		883C52F12747914D00D129FC /* OnboadingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8841878927478DCB00C6EE39 /* OnboadingUtils.swift */; };
 		883C52F32747915800D129FC /* ForgotPsswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8841878327478D0F00C6EE39 /* ForgotPsswordViewController.swift */; };
 		884549F727186F72003FBBC8 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884549F627186F72003FBBC8 /* SignUpModel.swift */; };
 		884549FB271872EC003FBBC8 /* SignUpMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 884549FA271872EC003FBBC8 /* SignUpMock.json */; };
 		8845B731271EF539007A5069 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8845B730271EF539007A5069 /* Onboarding.storyboard */; };
+		884BB5E1276241160072E06D /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB5E0276241150072E06D /* AppConstant.swift */; };
 		885F7FB6273E2F7500B8D4EF /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F7FB5273E2F7500B8D4EF /* UserStore.swift */; };
 		88799489273A5ABD00904D1F /* IconsHabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88799488273A5ABD00904D1F /* IconsHabitModel.swift */; };
 		8879948F273A7C9A00904D1F /* HabitIconsMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 8879948E273A7C9A00904D1F /* HabitIconsMock.json */; };
@@ -439,7 +438,6 @@
 		880D683D273AB89600B232CC /* EditHabitTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitTableView.swift; sourceTree = "<group>"; };
 		880D683E273AB89600B232CC /* EditHabitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitViewController.swift; sourceTree = "<group>"; };
 		880E79F9273145D200FB277C /* HabitIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HabitIcons.xcassets; sourceTree = "<group>"; };
-		880E79FC2731503F00FB277C /* HabitIcons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HabitIcons.plist; sourceTree = "<group>"; };
 		880F3E2F2727DE04007CA895 /* ColorPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPopUpViewController.swift; sourceTree = "<group>"; };
 		880F3E352727EC73007CA895 /* IconPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPopupViewController.swift; sourceTree = "<group>"; };
 		880F3E402727EFFE007CA895 /* IconHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconHeader.swift; sourceTree = "<group>"; };
@@ -484,12 +482,12 @@
 		882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
 		882F3E132721AAC300A409A6 /* MyAccountTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableView.swift; sourceTree = "<group>"; };
 		882F3E142721AAC300A409A6 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
-		8835BCEE273E8A7200261839 /* StringConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstant.swift; sourceTree = "<group>"; };
 		8841878327478D0F00C6EE39 /* ForgotPsswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPsswordViewController.swift; sourceTree = "<group>"; };
 		8841878927478DCB00C6EE39 /* OnboadingUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboadingUtils.swift; sourceTree = "<group>"; };
 		884549F627186F72003FBBC8 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		884549FA271872EC003FBBC8 /* SignUpMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SignUpMock.json; sourceTree = "<group>"; };
 		8845B730271EF539007A5069 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		884BB5E0276241150072E06D /* AppConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		885F7FB5273E2F7500B8D4EF /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		88799488273A5ABD00904D1F /* IconsHabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsHabitModel.swift; sourceTree = "<group>"; };
 		8879948E273A7C9A00904D1F /* HabitIconsMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HabitIconsMock.json; sourceTree = "<group>"; };
@@ -1165,7 +1163,6 @@
 		880E79F8273145A700FB277C /* HabitIconResources */ = {
 			isa = PBXGroup;
 			children = (
-				880E79FC2731503F00FB277C /* HabitIcons.plist */,
 				880E79F9273145D200FB277C /* HabitIcons.xcassets */,
 			);
 			path = HabitIconResources;
@@ -1347,14 +1344,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		8835BCED273E8A7200261839 /* StringConstant */ = {
-			isa = PBXGroup;
-			children = (
-				8835BCEE273E8A7200261839 /* StringConstant.swift */,
-			);
-			path = StringConstant;
-			sourceTree = "<group>";
-		};
 		8841876C27478B2100C6EE39 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -1385,6 +1374,14 @@
 				88CA2A47271E9DE1003D590D /* LoginModel.swift */,
 			);
 			path = "Login Model";
+			sourceTree = "<group>";
+		};
+		884BB5DF276241150072E06D /* StringConstant */ = {
+			isa = PBXGroup;
+			children = (
+				884BB5E0276241150072E06D /* AppConstant.swift */,
+			);
+			path = StringConstant;
 			sourceTree = "<group>";
 		};
 		8879948B273A5B0800904D1F /* Habit Model */ = {
@@ -1642,11 +1639,11 @@
 		88E028582716F73F00D90BB1 /* Shared Components */ = {
 			isa = PBXGroup;
 			children = (
+				884BB5DF276241150072E06D /* StringConstant */,
 				0496E013275E41B3005C982A /* CircularProgressBar */,
 				5FF6CC8D274E6A5A007ADC2F /* Chat */,
 				8827C3BF2750C0DD009D12C4 /* CameraHandler */,
 				88269DAD2744E046006A9F43 /* NavigationBar */,
-				8835BCED273E8A7200261839 /* StringConstant */,
 				88E5805B2722E92A00D4CAFB /* CollectionViewLayout */,
 				88E0292E2717102A00D90BB1 /* Extentions */,
 				88E029792717178A00D90BB1 /* Custom Views */,
@@ -1912,7 +1909,6 @@
 				88E028922716FECF00D90BB1 /* Landing.storyboard in Resources */,
 				880F3E4A2727F03F007CA895 /* IconHeaderCollectionViewCell.xib in Resources */,
 				88B0F95A27180A9100EF92B3 /* SourceSansPro-Bold.ttf in Resources */,
-				880E79FD2731503F00FB277C /* HabitIcons.plist in Resources */,
 				5FF6CD60274E6A5A007ADC2F /* ToolbarContentView.xib in Resources */,
 				8845B731271EF539007A5069 /* Onboarding.storyboard in Resources */,
 				88B0F95E27180A9100EF92B3 /* SourceSansPro-BlackItalic.ttf in Resources */,
@@ -2045,6 +2041,7 @@
 				8814B4352743874100A6DE01 /* UserRequests.swift in Sources */,
 				887994C4273AB2EE00904D1F /* CommunityFriendTableView.swift in Sources */,
 				5FF6CD79274E6A5A007ADC2F /* CollectionViewFlowLayoutInvalidationContext.swift in Sources */,
+				884BB5E1276241160072E06D /* AppConstant.swift in Sources */,
 				5FF6CD78274E6A5A007ADC2F /* ChatCellLayoutAttributes.swift in Sources */,
 				5FF6CD85274E6A5A007ADC2F /* ParentVideoVC.swift in Sources */,
 				5FF6CD3D274E6A5A007ADC2F /* AttachmentDownloadManager.swift in Sources */,
@@ -2168,7 +2165,6 @@
 				8814B4102743855A00A6DE01 /* AppAdaptables.swift in Sources */,
 				5FF6CD61274E6A5A007ADC2F /* ToolbarContentView.swift in Sources */,
 				04BE94092750B13200503123 /* HabitRequests.swift in Sources */,
-				8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */,
 				88E029302717104C00D90BB1 /* Extensions.swift in Sources */,
 				88B0F9D7271824CF00EF92B3 /* IscraCustomView.swift in Sources */,
 				5FF6CD7B274E6A5A007ADC2F /* ChatCollectionViewDataSource.swift in Sources */,

@@ -16,6 +16,9 @@ enum clickManager {
     case shareWithFriends
     case rateUs
     case contactDeveloper
+    case termsAndCondition
+    case privacyPolicy
+    case aboutUs
     case everyDay
     case reminder
     case changeColorTheme
@@ -33,7 +36,11 @@ class MyAccountTableView: UITableView {
         MyAccount(titleImage: "ic-changePassword-image", titleName: "Change password", clickManager: .changePassword),
         MyAccount(titleImage: "ic-shareWithFriends-image", titleName: "Share with friends", clickManager: .shareWithFriends),
         MyAccount(titleImage: "ic-rateus-image", titleName: "Rate us", clickManager: .rateUs),
-        MyAccount(titleImage: "ic-connectDeveloper-image", titleName: "Contact developer", clickManager: .contactDeveloper)]
+        MyAccount(titleImage: "ic-connectDeveloper-image", titleName: "Contact developer", clickManager: .contactDeveloper),
+        MyAccount(titleImage: "ic-terms", titleName: "Terms and condition", clickManager: .termsAndCondition),
+        MyAccount(titleImage: "ic-privacy", titleName: "Privacy policy", clickManager: .privacyPolicy),
+        MyAccount(titleImage: "ic-aboutus", titleName: "About us", clickManager: .aboutUs)]
+    
     var delegateNavigate: clickManagerDelegate?
     override class func awakeFromNib() {
         super.awakeFromNib()

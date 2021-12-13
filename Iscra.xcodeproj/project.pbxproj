@@ -31,6 +31,8 @@
 		04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F28274FB917009763D1 /* MyAccountViewModel.swift */; };
 		04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */; };
 		04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */; };
+		5F03FD40276734840010E086 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F03FD3F276734840010E086 /* WebViewController.swift */; };
+		5F03FD5F276770BB0010E086 /* InviteFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F03FD5E276770BB0010E086 /* InviteFriendViewModel.swift */; };
 		5F164E602763881E0059F8C2 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */; };
 		5F164E612763881F0059F8C2 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */; };
 		5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */; };
@@ -317,6 +319,8 @@
 		04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
+		5F03FD3F276734840010E086 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		5F03FD5E276770BB0010E086 /* InviteFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendViewModel.swift; sourceTree = "<group>"; };
 		5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
 		5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
@@ -631,6 +635,14 @@
 				5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5F03FD3E2767344D0010E086 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				5F03FD3F276734840010E086 /* WebViewController.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		5F164E5D2763881D0059F8C2 /* NavigationBar */ = {
@@ -1344,7 +1356,6 @@
 			isa = PBXGroup;
 			children = (
 				882F3E132721AAC300A409A6 /* MyAccountTableView.swift */,
-				882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */,
 				882F3E112721AAC300A409A6 /* MyAccountTableViewCell.xib */,
 			);
 			path = View;
@@ -1405,6 +1416,7 @@
 			children = (
 				887994A8273AB2ED00904D1F /* Collection */,
 				887994B0273AB2ED00904D1F /* CommunityViewController.swift */,
+				5F03FD5E276770BB0010E086 /* InviteFriendViewModel.swift */,
 				887994B1273AB2ED00904D1F /* Table */,
 				887994B8273AB2ED00904D1F /* CommunitySearchViewController.swift */,
 				887994B9273AB2ED00904D1F /* CommunityDetailViewController.swift */,
@@ -1700,7 +1712,9 @@
 			children = (
 				882F3E142721AAC300A409A6 /* MyAccountViewController.swift */,
 				045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */,
+				882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */,
 				04D34F28274FB917009763D1 /* MyAccountViewModel.swift */,
+				5F03FD3E2767344D0010E086 /* WebView */,
 				5FFDDB6F27550ECF00051011 /* MyAccountPopUpView */,
 				882F3E102721AAC300A409A6 /* View */,
 			);
@@ -2189,6 +2203,7 @@
 				5FF6CD57274E6A5A007ADC2F /* ActionMenu.swift in Sources */,
 				5FF6CD37274E6A5A007ADC2F /* ReplaceSegue.swift in Sources */,
 				5FF6CD48274E6A5A007ADC2F /* CreateNewDialogViewController.swift in Sources */,
+				5F03FD5F276770BB0010E086 /* InviteFriendViewModel.swift in Sources */,
 				88C7C2FA2726D39800EAA8CA /* ColorCollectionViewCell.swift in Sources */,
 				5FF6CD2B274E6A5A007ADC2F /* UIImage+Extention.swift in Sources */,
 				8814B4132743858900A6DE01 /* Row.swift in Sources */,
@@ -2236,6 +2251,7 @@
 				5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */,
 				5FF6CD67274E6A5A007ADC2F /* TypingView.swift in Sources */,
 				5FF6CD40274E6A5A007ADC2F /* ChatNotificationTableViewCell.swift in Sources */,
+				5F03FD40276734840010E086 /* WebViewController.swift in Sources */,
 				8814B4382743874100A6DE01 /* APIError.swift in Sources */,
 				5FF6CD7A274E6A5A007ADC2F /* ChatCollectionViewDelegateFlowLayout.swift in Sources */,
 			);

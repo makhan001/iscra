@@ -33,6 +33,14 @@ class AppConstant: NSObject {
     static let otpMiddleTittle = "Enter the confirmation \ncode we sent to 'email'."
     static let loginHeaderTitle = "Log in into your \naccount"
     static let subscriptionTitle = "Thanks for using our app and making yourself and others better people. Unfortunately, for our development we need money. You can choose between two options: subscribe for one dollar per month or allow ads."
+    //WebView
+    static let termsAndConditionTitle = "Terms And Condition"
+    static let privacyPolicyTitle = "Privacy Policy"
+    static let aboutUsTitle = "About Us"
+    static let termsAndConditionURL = "https://www.iscra.app/terms-conditions"
+    static let privacyPolicyURL = "https://www.iscra.app/privacy-policy"
+    static let aboutUsURL = "https://www.iscra.app/about-us"
+    
     static let firstHabitTitle = "Are you ready to create \nyour first habit?"
     static let firstHabitSubTitle = "I am excited to help you to become \na better version of yourself. Let's \nstart our journey. Click plus button \nto create your first habit."
     static let goodHabitTitle = ", let’s define your habit"

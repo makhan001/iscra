@@ -82,7 +82,6 @@ struct HabitMark: Codable {
     }
 }
 
-
 //import Foundation
 //
 //enum HabitUnion {

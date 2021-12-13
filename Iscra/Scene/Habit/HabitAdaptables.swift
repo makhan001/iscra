@@ -20,8 +20,11 @@ enum HabitAction {
     case deleteHabit
     case habitDetail
     case habitList
-   // case habitList([AllHabits])
     case updateHabit
+    case groupInvitations
+    case markAsComplete
+
+   // case habitList([AllHabits])
     //case callApi(_ sucess: Bool)
     case isHabitDelete(_ isDelete: Bool, _ msg:String)
     case navigateToGroupImage(_ isNavigate: Bool)
@@ -48,6 +51,8 @@ protocol HabitServiceProvidable: AnyObject {
     func habitDetail(param: HabitParams.HabitDetail)
     func habitList(param: HabitParams.AllHabitList)
     func updateHabit(param: HabitParams.UpdateHabit)
+    func groupInvitations(param: HabitParams.GroupInvitations)
+    func markAsComplete(param: HabitParams.MarkAsComplete)
 }
 protocol HabitServiceProvierDelegate: AnyObject {
     func completed<T>(for action: HabitAction, with response: T?, with error: APIError?)

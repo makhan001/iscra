@@ -54,7 +54,6 @@ extension EditHabitViewModel {
         let description = self.objHabitDetail?.habitDescription ?? ""
         let parameters = HabitParams.UpdateHabit(id: habitId, days: self.days, icon: icon, name: self.habitName, timer: self.timer, reminders: self.reminders, habit_type: habitType.rawValue, color_theme: self.colorTheme, description: description)
         print("param is  \(parameters)")
-        
         WebService().requestMultiPart(urlString: "habits/edit",
                                       httpMethod: .put,
                                       parameters: parameters,
@@ -66,7 +65,6 @@ extension EditHabitViewModel {
                 return
             } else {
                 if let response = resp as? SuccessResponseModel  {
-                    
                     if response.status == true {
                         self?.view?.onAction(.sucessMessage(response.message ?? ""))
                     } else {
@@ -91,6 +89,7 @@ extension EditHabitViewModel: HabitInputViewDelegate {
 extension EditHabitViewModel: HabitServiceProvierDelegate {
     func completed<T>(for action: HabitAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
+            WebService().StopIndicator()
             if error != nil {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {

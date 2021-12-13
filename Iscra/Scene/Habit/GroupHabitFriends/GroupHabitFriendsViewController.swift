@@ -48,8 +48,6 @@ class GroupHabitFriendsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
-        self.viewModel.getHabitDetail()
-        self.habitDetailSetup()
     }
 }
 
@@ -74,13 +72,20 @@ extension GroupHabitFriendsViewController {
         [btnSegment ].forEach {
             $0?.addTarget(self, action: #selector(segmentPressed(_:)), for: .valueChanged)
         }
-        if #available(iOS 13.0, *) {
-            self.btnSegment.selectedSegmentTintColor = self.themeColor
-        }
+//        if #available(iOS 13.0, *) {
+//            self.btnSegment.selectedSegmentTintColor = self.themeColor
+//        }
         self.btnSegment.setTitleTextAttributes(unselectedColor as [NSAttributedString.Key : Any], for: .normal)
         self.btnSegment.setTitleTextAttributes(selectedColor as [NSAttributedString.Key : Any], for: .selected)
-//        self.viewModel.getHabitDetail()
-//        self.habitDetailSetup()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
+        self.viewModel.getHabitDetail()
+        self.habitDetailSetup()
+    }
+    
+    @objc func refrershUI(){
+        print("refrershUI is called")
+                self.viewModel.getHabitDetail()
+                self.habitDetailSetup()
     }
     
     private func calenderSetup() {
@@ -112,6 +117,9 @@ extension GroupHabitFriendsViewController {
         self.circularViewSetup()
         self.lblTitle.textColor = self.themeColor
         self.lblTitle.text = self.strTitleName.capitalized
+        if #available(iOS 13.0, *) {
+            self.btnSegment.selectedSegmentTintColor = self.themeColor
+        }
     }
     
     func circularViewSetup() {
@@ -178,10 +186,11 @@ extension GroupHabitFriendsViewController {
     
     private func editAction() {
         self.viewBottom.isHidden = true
-        let editHabit: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
-        editHabit.objHabitDetail = self.viewModel.objHabitDetail
-        editHabit.router = self.router
-        self.navigationController?.pushViewController(editHabit, animated: true)
+        self.router?.push(scene: .editHabit)
+//        let editHabit: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
+//        editHabit.objHabitDetail = self.viewModel.objHabitDetail
+//        editHabit.router = self.router
+//        self.navigationController?.pushViewController(editHabit, animated: true)
     }
     
     private func shareAction() {

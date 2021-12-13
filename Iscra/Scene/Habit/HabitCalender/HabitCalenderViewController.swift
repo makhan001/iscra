@@ -44,8 +44,6 @@ class HabitCalenderViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.viewModel.getHabitDetail()
-        self.habitDetailSetup()
     }
 }
 
@@ -60,8 +58,15 @@ extension HabitCalenderViewController {
         [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-//        self.viewModel.getHabitDetail()
-//        self.habitDetailSetup()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
+        self.viewModel.getHabitDetail()
+        self.habitDetailSetup()
+    }
+    
+    @objc func refrershUI(){
+        print("refrershUI is called")
+                self.viewModel.getHabitDetail()
+                self.habitDetailSetup()
     }
     
     private func calenderSetup() {
@@ -139,10 +144,11 @@ extension HabitCalenderViewController {
     
     private func editAction() {
         self.viewBottom.isHidden = true
-        let editHabit: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
-        editHabit.objHabitDetail = self.viewModel.objHabitDetail
-        editHabit.router = self.router
-        self.navigationController?.pushViewController(editHabit, animated: true)
+        self.router?.push(scene: .editHabit)
+//        let editHabit: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
+//        editHabit.objHabitDetail = self.viewModel.objHabitDetail
+//        editHabit.router = self.router
+//        self.navigationController?.pushViewController(editHabit, animated: true)
     }
     
     private func shareAction() {

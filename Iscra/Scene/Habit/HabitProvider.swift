@@ -13,7 +13,7 @@ final class HabitServiceProvider: HabitServiceProvidable {
     private let task = UserTask()
 
     func createHabit(param: HabitParams.CreateHabit) {
-
+        WebService().StartIndicator()
         task.createHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .createHabit, with: resp, with: err)
@@ -24,7 +24,6 @@ final class HabitServiceProvider: HabitServiceProvidable {
     }
     
     func deleteHabit(param: HabitParams.DeleteHabit) {
-       
         task.deleteHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .createHabit, with: resp, with: err)
@@ -36,7 +35,7 @@ final class HabitServiceProvider: HabitServiceProvidable {
     }
     
     func habitDetail(param: HabitParams.HabitDetail) {
-       
+        WebService().StartIndicator()
         task.habitDetail(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .createHabit, with: resp, with: err)
@@ -47,7 +46,7 @@ final class HabitServiceProvider: HabitServiceProvidable {
     }
     
     func habitList(param: HabitParams.AllHabitList) {
-        
+        WebService().StartIndicator()
         task.allHabitList(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .createHabit, with: resp, with: err)
@@ -58,7 +57,7 @@ final class HabitServiceProvider: HabitServiceProvidable {
     }
     
     func updateHabit(param: HabitParams.UpdateHabit) {
-       
+        WebService().StartIndicator()
         task.updateHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .createHabit, with: resp, with: err)
@@ -69,6 +68,7 @@ final class HabitServiceProvider: HabitServiceProvidable {
     }
     
     func groupInvitations(param: HabitParams.GroupInvitations) {
+        WebService().StartIndicator()
         task.groupInvitations(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .createHabit, with: resp, with: err)
@@ -79,6 +79,7 @@ final class HabitServiceProvider: HabitServiceProvidable {
     }
     
     func markAsComplete(param: HabitParams.MarkAsComplete) {
+        WebService().StartIndicator()
         task.markAsComplete(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .createHabit, with: resp, with: err)
@@ -87,8 +88,5 @@ final class HabitServiceProvider: HabitServiceProvidable {
             self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
         }
     }
-    
-   
-    
 }
 

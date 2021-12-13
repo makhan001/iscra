@@ -13,6 +13,7 @@ final class GroupHabitCalenderCoordinator: Coordinator<Scenes> {
     let controller: GroupHabitFriendsViewController = GroupHabitFriendsViewController.from(from: .landing, with: .groupHabitFriends)
 
     private var landing: LandingCoordinator!
+    private var editHabit: EditHabitCoordinator!
     private var habitCalender: HabitCalenderCoordinator!
 
     override func start() {
@@ -54,6 +55,14 @@ final class GroupHabitCalenderCoordinator: Coordinator<Scenes> {
         print("GroupHabitCalenderCoordinator controller.viewModel.habitId is \(controller.viewModel.habitId)")
         self.router.present(habitCalender, animated: true)
     }
+    
+    private func startEditHabit() {
+        editHabit = EditHabitCoordinator(router: Router())
+        add(editHabit)
+        editHabit.delegate = self
+        editHabit.start(objHabitDetail: controller.viewModel.objHabitDetail!)
+        self.router.present(editHabit, animated: true)
+    }
 }
 
 extension GroupHabitCalenderCoordinator: NextSceneDismisser {
@@ -63,6 +72,7 @@ extension GroupHabitCalenderCoordinator: NextSceneDismisser {
         case .landing: startLanding()
         case .groupHabitFriends: startGroupHabitCalender()
         case .habitCalender: startHabitCalender()
+        case .editHabit: startEditHabit()
         default: break
         }
     }

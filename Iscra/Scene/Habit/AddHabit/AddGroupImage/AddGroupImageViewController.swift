@@ -149,6 +149,7 @@ extension AddGroupImageViewController: HabitViewRepresentable {
                 inviteFriend.delegateInvite = self
                 inviteFriend.router = self.router
                 self.present(inviteFriend, animated: true, completion: nil)
+               // self.router?.push(scene: .inviteFriend) // deepak
             }
 //        case .callApi(true):
 //            self.viewModel.apiForCreateHabit()
@@ -163,8 +164,7 @@ extension AddGroupImageViewController: HabitViewRepresentable {
 extension AddGroupImageViewController  : navigationBarAction {
     
     func ActionType()  {
-       // router?.dismiss(controller: .addHabit)
-       // self.dismiss(animated: true, completion: nil)
+       // router?.dismiss(controller: .addGroupImage)// deepak
         self.navigationController?.popViewController(animated: true)
     }
 }

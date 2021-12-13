@@ -65,7 +65,7 @@ final class MyAccountViewModel {
 extension MyAccountViewModel: OnboardingServiceProvierDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
-            if error != nil {
+            if error != nil { 
                self.view?.onAction(.errorMessage(ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.status == true {

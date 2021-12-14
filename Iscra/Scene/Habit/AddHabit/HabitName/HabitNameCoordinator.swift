@@ -12,16 +12,15 @@ final class HabitNameCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
     let controller: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .habitName)
-    
-    let selectHabitPopUp: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
     let setTheme: SetThemeViewController = SetThemeViewController.from(from: .habit, with: .setTheme)
     let reminder: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
     let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
     let addGroupImage: AddGroupImageViewController = AddGroupImageViewController.from(from: .habit, with: .addGroupImage)
-    
-    private var myAccount: MyAccountCoordinator!
+    let selectHabitPopUp: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
+
     private var landing: LandingCoordinator!
-    
+    private var myAccount: MyAccountCoordinator!
+
     override func start() {
         super.start()
         router.setRootModule(controller, hideBar: true)

@@ -17,6 +17,9 @@
 		043CF4E127685F4D00526FBC /* InviteFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */; };
 		043CF4E827685FB000526FBC /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF4E427685FB000526FBC /* MyAccountTableViewCell.swift */; };
 		043CF5432768614C00526FBC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF5422768614C00526FBC /* WebViewController.swift */; };
+		043CF5462768A71300526FBC /* AddMyPictureCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF5452768A71300526FBC /* AddMyPictureCoordinator.swift */; };
+		043CF5492768AAC500526FBC /* WalkthroughCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF5482768AAC500526FBC /* WalkthroughCoordinator.swift */; };
+		043CF54C2768B3B300526FBC /* AddMemojiCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF54B2768B3B200526FBC /* AddMemojiCoordinator.swift */; };
 		0440B9312752050D0096DC2D /* HabitCalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */; };
 		0456AE972750CA4500DB3ED4 /* HabitProvider.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940B2750BC1A00503123 /* HabitProvider.swift */; };
 		0456AE982750CA4500DB3ED4 /* HabitAdaptables.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940E2750BC9A00503123 /* HabitAdaptables.swift */; };
@@ -308,6 +311,9 @@
 		043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendViewModel.swift; sourceTree = "<group>"; };
 		043CF4E427685FB000526FBC /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
 		043CF5422768614C00526FBC /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		043CF5452768A71300526FBC /* AddMyPictureCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyPictureCoordinator.swift; sourceTree = "<group>"; };
+		043CF5482768AAC500526FBC /* WalkthroughCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughCoordinator.swift; sourceTree = "<group>"; };
+		043CF54B2768B3B200526FBC /* AddMemojiCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemojiCoordinator.swift; sourceTree = "<group>"; };
 		0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderCoordinator.swift; sourceTree = "<group>"; };
 		0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountCoordinator.swift; sourceTree = "<group>"; };
@@ -1313,6 +1319,9 @@
 				88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */,
 				88B4A224271FF9C300488AA3 /* AddMyPictureViewController.swift */,
 				88B4A227271FFA8100488AA3 /* AddMemojiViewController.swift */,
+				043CF54B2768B3B200526FBC /* AddMemojiCoordinator.swift */,
+				043CF5452768A71300526FBC /* AddMyPictureCoordinator.swift */,
+				043CF5482768AAC500526FBC /* WalkthroughCoordinator.swift */,
 			);
 			path = Walkthrough;
 			sourceTree = "<group>";
@@ -2154,6 +2163,7 @@
 				880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */,
 				88B4A225271FF9C300488AA3 /* AddMyPictureViewController.swift in Sources */,
 				882F3E002721A50A00A409A6 /* LandingTabBarController.swift in Sources */,
+				043CF54C2768B3B300526FBC /* AddMemojiCoordinator.swift in Sources */,
 				0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */,
 				88E028F427170B7F00D90BB1 /* Utils.swift in Sources */,
 				88E5804F2722E70300D4CAFB /* HabitDaysCell.swift in Sources */,
@@ -2183,6 +2193,7 @@
 				880F3E69272816D9007CA895 /* InviteFriendViewController.swift in Sources */,
 				883C52F32747915800D129FC /* ForgotPsswordViewController.swift in Sources */,
 				887994D7273AB34E00904D1F /* RepeatDaysTableViewCell.swift in Sources */,
+				043CF5492768AAC500526FBC /* WalkthroughCoordinator.swift in Sources */,
 				043CF4E127685F4D00526FBC /* InviteFriendViewModel.swift in Sources */,
 				045791E22754AA67006E0410 /* HabitUtils.swift in Sources */,
 				5FF6CD4A274E6A5A007ADC2F /* UIViewController+InfoScreen.swift in Sources */,
@@ -2195,6 +2206,7 @@
 				8814B4102743855A00A6DE01 /* AppAdaptables.swift in Sources */,
 				5FF6CD61274E6A5A007ADC2F /* ToolbarContentView.swift in Sources */,
 				04BE94092750B13200503123 /* HabitRequests.swift in Sources */,
+				043CF5462768A71300526FBC /* AddMyPictureCoordinator.swift in Sources */,
 				8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */,
 				88E029302717104C00D90BB1 /* Extensions.swift in Sources */,
 				88B0F9D7271824CF00EF92B3 /* IscraCustomView.swift in Sources */,

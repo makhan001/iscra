@@ -10,12 +10,10 @@ import Foundation
 final class LoginCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
-    let controller: LoginViewController = LoginViewController.from(from: .onboarding, with: .login)
-    let verification: VerificationViewController = VerificationViewController.from(from: .onboarding, with: .verification)
-    
-    var welcome: Bool!
-//    var signup: SignupCoordinator!
     var landing: LandingCoordinator!
+    let controller: LoginViewController = LoginViewController.from(from: .onboarding, with: .login)
+    let forgot: ForgotPasswordViewController = ForgotPasswordViewController.from(from: .onboarding, with: .forgot)
+    let verification: VerificationViewController = VerificationViewController.from(from: .onboarding, with: .verification)
 
     override func start() {
         super.start()
@@ -34,15 +32,7 @@ final class LoginCoordinator: Coordinator<Scenes> {
     private func onStart() {
         controller.router = self
         verification.router = self
-    }
-    
-    private func startSignup() {
-//        let router = Router()
-//        signup = SignupCoordinator(router: router)
-//        add(signup)
-//        signup.delegate = self
-//        signup.start()
-//        self.router.present(signup, animated: true)
+        forgot.router = self
     }
     
     
@@ -58,18 +48,21 @@ final class LoginCoordinator: Coordinator<Scenes> {
         verification.delegate = controller
         router.present(verification, animated: true)
     }
+    
+    private func startForgotPassword() {
+        self.router.present(forgot, animated: true)
+    }
 }
 
 extension LoginCoordinator: NextSceneDismisser {
     
     func push(scene: Scenes) {
         switch scene {
-        case .signup: startSignup()
         case .landing: startLanding()
         case .verification: startVerification()
+        case .forgot: startForgotPassword()
         default: break
         }
-        
     }
     
     func dismiss(controller: Scenes) {

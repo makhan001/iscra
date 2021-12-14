@@ -11,14 +11,13 @@ import Foundation
 final class OnboardingCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
-    let controller: WelcomeViewController = WelcomeViewController.from(from: .onboarding, with: .welcome)
-    let walktrough: WalkthroughViewController = WalkthroughViewController.from(from: .onboarding, with: .walkthrough)
-    
     private var login: LoginCoordinator!
     private var signup: SignupCoordinator!
     private var landing: LandingCoordinator!
     private var onboarding: OnboardingCoordinator!
-        
+    private var walktrough: WalkthroughCoordinator!
+    let controller: WelcomeViewController = WelcomeViewController.from(from: .onboarding, with: .welcome)
+
     override func start() {
         super.start()
         router.setRootModule(controller, hideBar: true)
@@ -29,7 +28,6 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
         controller.router = self
         UserStore.save(token: nil)
     }
-
     
     private func startLogin() {
         let router = Router()
@@ -42,13 +40,12 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
     
     private func startWalkthrough() {
         let router = Router()
-        onboarding = OnboardingCoordinator(router: router)
-        add(onboarding)
-        onboarding.delegate = self
-        onboarding.start()
-        self.router.present(onboarding, animated: true)
+        walktrough = WalkthroughCoordinator(router: router)
+        add(walktrough)
+        walktrough.delegate = self
+        walktrough.start()
+        self.router.present(walktrough, animated: true)
     }
-    
     
     private func startLanding() {
         landing = LandingCoordinator(router: Router())
@@ -59,6 +56,7 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
     }
     
     private func startSignup() {
+        router.dismissModule(animated: false, completion: nil)
         signup = SignupCoordinator(router: Router())
         add(signup)
         signup.delegate = self
@@ -68,7 +66,6 @@ final class OnboardingCoordinator: Coordinator<Scenes> {
 }
 
 extension OnboardingCoordinator: NextSceneDismisser {
-    
     func push(scene: Scenes) {
         switch scene {
         case .login: startLogin()
@@ -85,7 +82,6 @@ extension OnboardingCoordinator: NextSceneDismisser {
 }
 
 extension OnboardingCoordinator: CoordinatorDimisser {
-
     func dismiss(coordinator: Coordinator<Scenes>) {
         remove(child: coordinator)
         router.dismissModule(animated: true, completion: nil)

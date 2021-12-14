@@ -88,7 +88,7 @@ extension CommunitySearchViewController {
     
     private func backAction() {
         print("backAction")
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     private func createGroupHabitAction() {

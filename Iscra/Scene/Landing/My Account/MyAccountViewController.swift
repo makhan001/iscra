@@ -32,7 +32,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.lblName.text = UserStore.userName?.capitalized
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+       navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
 
@@ -143,6 +143,7 @@ extension MyAccountViewController: clickManagerDelegate{
     private func ChangePasswordAction() {
        let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
        self.navigationController?.pushViewController(changePassword, animated: true)
+
        // self.router?.push(scene: .changePassword)
     }
     private func changeProfilePhoto(){

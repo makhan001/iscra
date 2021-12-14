@@ -20,6 +20,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     @IBOutlet weak var viewNavigation:NavigationBarView!
     
     var webPage: WebPage = .termsAndConditions
+    weak var router: NextSceneDismisser?
    
     override func viewDidLoad() {
         super.viewDidLoad()

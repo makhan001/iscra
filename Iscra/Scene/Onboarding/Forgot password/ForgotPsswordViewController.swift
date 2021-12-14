@@ -11,7 +11,8 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var textEmail:UITextField!
     @IBOutlet weak var viewNavigation: NavigationBarView!
     private let viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel(provider: OnboardingServiceProvider())
-    
+    weak var router: NextSceneDismisser?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         SetUps()
@@ -40,7 +41,7 @@ extension ForgotPasswordViewController {
 // MARK: NAvigation Delegates
 extension ForgotPasswordViewController : navigationBarAction {
     func ActionType() {
-        navigationController?.popViewController(animated: true)
+        self.router?.dismiss(controller: .forgot)
     }
 }
 
@@ -92,7 +93,7 @@ extension ForgotPasswordViewController: OnboardingViewRepresentable {
         case let .forgotPassword(msg):
             self.showToast(message: msg, seconds: 0.5)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.navigationController?.popViewController(animated: true)
+                self.router?.dismiss(controller: .forgot)
             }
         default:
             break

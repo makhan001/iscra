@@ -14,6 +14,7 @@ enum navRightViewType{
   case editName
   case other
   case editHabit
+  case habitCalender
 }
 
 class NavigationBarView: UIView {
@@ -53,6 +54,9 @@ class NavigationBarView: UIView {
        // btnRightBar.tintColor = .black
         //btnRightBar.setImage(#imageLiteral(resourceName: "ic-checkmark"), for: .normal)
      //   btnRightBar.titleLabel?.text = "Save"
+    case .habitCalender:
+      btnRightBar.isHidden = false
+      btnRightBar.setImage(#imageLiteral(resourceName: "ic-dots"), for: .normal)
     case .other:
       btnRightBar.isHidden = true
     }

@@ -28,6 +28,7 @@ class WalkthroughViewController: UIViewController {
             $0?.delegate = self
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
@@ -68,7 +69,8 @@ extension WalkthroughViewController  {
         print("currentIndex. \(currentIndex)")
         if self.currentIndex >= 1 {
             if self.currentIndex == 1 {
-                navigationController?.popViewController(animated: true)
+               // navigationController?.popViewController(animated: true)
+                self.router?.dismiss(controller: .walkthrough)
             }else{
                 self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) - 1
                 scrollview_Walkthrough.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width  , y: 0), animated: true)
@@ -84,7 +86,7 @@ extension WalkthroughViewController  {
         if self.currentIndex <= 2 {
             if currentIndex == 2 {
                 if OnboadingUtils.shared.username == "" {
-                    showToast(message: AppConstant.alert_emptynameMsg)
+                     showToast(message: AppConstant.alert_emptynameMsg)
                 } else {
                     self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1
                     scrollview_Walkthrough.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width, y: 0), animated: true)
@@ -96,20 +98,16 @@ extension WalkthroughViewController  {
         }
         
         if self.currentIndex == 3 {
-            router?.push(scene: .signup)
+            self.router?.push(scene: .signup)
         }
     }
     
     private func addMyPictureAction() {
-        let addMyPicture: AddMyPictureViewController = AddMyPictureViewController.from(from: .onboarding, with: .addMyPicture)
-        addMyPicture.router = self.router
-        self.navigationController?.pushViewController(addMyPicture, animated: true)
+        self.router?.push(scene: .addMyPicture)
 }
     
     private func howToAddMemojiAction() {
-      let learnHowToAddMemoji: AddMemojiViewController = AddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
-        learnHowToAddMemoji.router = self.router
-        self.navigationController?.pushViewController(learnHowToAddMemoji, animated: true)
+        self.router?.push(scene: .learnHowToAddMemoji)
 }
     
     func setButtonStatus(){
@@ -128,8 +126,7 @@ extension WalkthroughViewController  {
 
 // MARK:- UIScrollViewDelegate
 extension WalkthroughViewController : UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if currentIndex == 2 {
             if txtName.text == "" {
                 showToast(message: AppConstant.alert_emptynameMsg)

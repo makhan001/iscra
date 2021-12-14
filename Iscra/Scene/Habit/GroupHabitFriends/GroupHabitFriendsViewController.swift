@@ -11,26 +11,22 @@ import FSCalendar
 class GroupHabitFriendsViewController: UIViewController {
     
     // MARK: Outlets
-    @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var btnShare: UIButton!
-    @IBOutlet weak var btnEditHabit: UIButton!
-    @IBOutlet weak var btnBottomSheet: UIButton!
-    @IBOutlet weak var btnDeleteHabit: UIButton!
-    @IBOutlet weak var btnPreviousMonth: UIButton!
-    @IBOutlet weak var btnSegment: UISegmentedControl!
-    
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblDaysCount: UILabel!
-    @IBOutlet weak var lblLongestStreak: UILabel!
-    
     @IBOutlet weak var viewBottom: UIView!
-    @IBOutlet weak var viewCalender: FSCalendar!
+    @IBOutlet weak var btnShare: UIButton!
     @IBOutlet weak var viewProgress: UIView!
     @IBOutlet weak var viewEditHabit: UIView!
+    @IBOutlet weak var lblDaysCount: UILabel!
+    @IBOutlet weak var btnEditHabit: UIButton!
     @IBOutlet weak var viewDeleteHabit: UIView!
+    @IBOutlet weak var btnDeleteHabit: UIButton!
+    @IBOutlet weak var viewCalender: FSCalendar!
+    @IBOutlet weak var lblLongestStreak: UILabel!
+    @IBOutlet weak var btnPreviousMonth: UIButton!
+    @IBOutlet weak var btnSegment: UISegmentedControl!
     @IBOutlet weak var viewCircular: CircularProgressBar!
+    @IBOutlet weak var viewNavigation: NavigationBarView!
     @IBOutlet weak var tableFriends: GroupHabitFriendsTable!
-    
+
     private var eventsDateArray: [Date] = []
     private var themeColor = UIColor(hex: "#7B86EB")
     private let selectedColor = [NSAttributedString.Key.foregroundColor: UIColor(named: "WhiteAccent")]
@@ -57,24 +53,21 @@ extension GroupHabitFriendsViewController {
         self.viewModel.view = self
         self.calenderSetup()
         self.circularViewSetup()
+        self.setUpNavigationBar()
         self.viewBottom.isHidden = true
         self.viewProgress.isHidden = true
         self.tableFriends.isHidden = false
         self.tableFriends.configure(obj: 10)
-        self.lblTitle.textColor = self.themeColor
         self.lblLongestStreak.text = "Longest \nStreak"
         self.tableFriends.friendTableNavigationDelegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
-        [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
+        [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         [btnSegment ].forEach {
             $0?.addTarget(self, action: #selector(segmentPressed(_:)), for: .valueChanged)
         }
-//        if #available(iOS 13.0, *) {
-//            self.btnSegment.selectedSegmentTintColor = self.themeColor
-//        }
         self.btnSegment.setTitleTextAttributes(unselectedColor as [NSAttributedString.Key : Any], for: .normal)
         self.btnSegment.setTitleTextAttributes(selectedColor as [NSAttributedString.Key : Any], for: .selected)
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
@@ -83,7 +76,6 @@ extension GroupHabitFriendsViewController {
     }
     
     @objc func refrershUI(){
-        print("refrershUI is called")
                 self.viewModel.getHabitDetail()
                 self.habitDetailSetup()
     }
@@ -115,8 +107,8 @@ extension GroupHabitFriendsViewController {
     func habitDetailSetup() {
         self.calenderSetup()
         self.circularViewSetup()
-        self.lblTitle.textColor = self.themeColor
-        self.lblTitle.text = self.strTitleName.capitalized
+        self.viewNavigation.lblTitle.textColor = self.themeColor
+        self.viewNavigation.lblTitle.text = self.strTitleName.capitalized
         if #available(iOS 13.0, *) {
             self.btnSegment.selectedSegmentTintColor = self.themeColor
         }
@@ -147,10 +139,6 @@ extension GroupHabitFriendsViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
-        case btnBack:
-            self.backAction()
-        case btnBottomSheet:
-            self.bottomSheetAction()
         case btnEditHabit:
             self.editAction()
         case btnShare:
@@ -180,17 +168,9 @@ extension GroupHabitFriendsViewController {
         self.router?.dismiss(controller: .habitCalender)
     }
     
-    private func bottomSheetAction() {
-        self.viewBottom.isHidden = false
-    }
-    
     private func editAction() {
         self.viewBottom.isHidden = true
         self.router?.push(scene: .editHabit)
-//        let editHabit: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
-//        editHabit.objHabitDetail = self.viewModel.objHabitDetail
-//        editHabit.router = self.router
-//        self.navigationController?.pushViewController(editHabit, animated: true)
     }
     
     private func shareAction() {
@@ -303,5 +283,23 @@ extension GroupHabitFriendsViewController {
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
+    }
+}
+
+// MARK: navigationBar Action
+extension GroupHabitFriendsViewController:  navigationBarAction {
+    private func setUpNavigationBar() {
+        self.viewNavigation.navType = .habitCalender
+        self.viewNavigation.commonInit()
+        self.viewNavigation.delegateBarAction = self
+        self.viewNavigation.lblTitle.textColor = self.themeColor
+    }
+    
+    func ActionType() {
+        self.router?.dismiss(controller: .habitCalender)
+    }
+    
+    func RightButtonAction() {
+        self.viewBottom.isHidden = false
     }
 }

@@ -143,6 +143,7 @@ extension MyAccountViewController: clickManagerDelegate{
     private func ChangePasswordAction() {
        let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
        self.navigationController?.pushViewController(changePassword, animated: true)
+       // self.router?.push(scene: .changePassword)
     }
     private func changeProfilePhoto(){
         let storyboard = UIStoryboard(name: "Landing", bundle: nil)

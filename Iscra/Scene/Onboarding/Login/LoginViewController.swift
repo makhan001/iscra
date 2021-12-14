@@ -134,12 +134,8 @@ extension LoginViewController {
     }
     
     private func forgotPasswordAction() {
-        let forgot: ForgotPasswordViewController = ForgotPasswordViewController.from(from: .onboarding, with: .forgot)
-        self.navigationController?.pushViewController(forgot, animated: true)
-        
+        self.router?.push(scene: .forgot)
     }
-    
-    
 }
 
 // MARK:- UITextFieldDelegate

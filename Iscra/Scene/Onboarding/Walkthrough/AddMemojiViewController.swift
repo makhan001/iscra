@@ -74,14 +74,14 @@ extension AddMemojiViewController: navigationBarAction {
         fullString.append(image1String)
         lblFirstSubTitle.attributedText = fullString
     }
+    
     func ActionType()  {
-      //  router?.dismiss(controller: .addMyPicture)
-        self.navigationController?.popViewController(animated: true)
+        router?.dismiss(controller: .learnHowToAddMemoji)
     }
 }
+
 // MARK:- Button Action
 extension AddMemojiViewController {
-    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnAddPhoto:
@@ -92,15 +92,17 @@ extension AddMemojiViewController {
             break
         }
     }
+    
     private func addPhotoButtonAction() {
         openGallary()
         print("addPhotoButtonAction")
     }
+    
     private func cancelButtonAction() {
         print("cancelButtonAction")
     }
-    func openGallary()
-    {
+    
+    func openGallary() {
         let myPickerControllerGallery = UIImagePickerController()
         myPickerControllerGallery.delegate = self
         myPickerControllerGallery.sourceType = UIImagePickerController.SourceType.photoLibrary
@@ -108,6 +110,7 @@ extension AddMemojiViewController {
         
         self.present(myPickerControllerGallery, animated: true, completion: nil)
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
                if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {

@@ -112,7 +112,7 @@ extension SetThemeViewController {
     }
 }
 
-extension SetThemeViewController : selectedColordelegate ,selectedIcondelegate {
+extension SetThemeViewController: selectedColordelegate ,selectedIcondelegate {
     
     func selectedIcon(Icon: String) {
         ImgIcon.image = UIImage(named: Icon)

@@ -183,7 +183,7 @@ extension ReminderViewController: HabitViewRepresentable {
     
 }
 // MARK: navigationBarAction Callback
-extension ReminderViewController  : navigationBarAction {
+extension ReminderViewController: navigationBarAction {
     
     func ActionType()  {
         self.navigationController?.popViewController(animated: true)

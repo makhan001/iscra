@@ -41,6 +41,7 @@ extension HomeViewModel: HabitServiceProvierDelegate {
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200, let habitList = resp.data?.habits {
                     self.habitList = habitList
+                    self.habitList.sort(by: {$0.createdAt!.compare($1.createdAt!) == .orderedDescending })
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
                 } else if let resp = response as? SuccessResponseModel, resp.code == 200, let status = resp.status {
                    // self.view?.onAction(.isHabitDelete(true))

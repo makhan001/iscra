@@ -18,6 +18,7 @@ class NewCommunityCollectionView: UICollectionView , UICollectionViewDelegate , 
     
     override class func awakeFromNib() {
         super.awakeFromNib()
+        
     }
 
     func configure(obj: Int) {

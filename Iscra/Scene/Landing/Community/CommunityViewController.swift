@@ -10,15 +10,16 @@ class CommunityViewController: UIViewController {
 
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var btnInviteFriends: UIButton!
-    
     @IBOutlet weak var collectionMyGroups: MyCommunityCollectionView!
     @IBOutlet weak var collectionNewGroupHabit: NewCommunityCollectionView!
     private let viewModel: InviteFriendViewModel = InviteFriendViewModel(provider: HabitServiceProvider())
     weak var router: NextSceneDismisser?
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,12 +30,12 @@ class CommunityViewController: UIViewController {
             self.collectionMyGroups.reloadData()
         }
     }
+    
+ 
 }
-
 // MARK: Instance Methods
 extension CommunityViewController {
     private func setup() {
-       
        self.collectionMyGroups.configure(obj: 5)
        self.collectionNewGroupHabit.configure(obj: 15)
         self.collectionNewGroupHabit.delegate1 = self
@@ -65,7 +66,7 @@ extension CommunityViewController {
         
         let communitySearch: CommunitySearchViewController = CommunitySearchViewController.from(from: .landing, with: .communitySearch)
         communitySearch.delegate1 = self
-        self.navigationController?.present(communitySearch, animated: true, completion: nil)
+        self.navigationController?.present(communitySearch, animated: false, completion: nil)
         
     }
     
@@ -78,7 +79,6 @@ extension CommunityViewController {
 // MARK: - Navigation
 extension CommunityViewController: communityGroupHabitDetail{
     func navigate() {
-               
         let communityDetail: CommunityDetailViewController = CommunityDetailViewController.from(from: .landing, with: .communityDetail)
         self.navigationController?.pushViewController(communityDetail, animated: true)
     }

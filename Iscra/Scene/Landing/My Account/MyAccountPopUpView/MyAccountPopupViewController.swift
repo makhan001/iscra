@@ -21,6 +21,7 @@ class MyAccountPopupViewController: UIViewController, UIImagePickerControllerDel
         super.viewDidLoad()
         Setup()
     }
+    
 }
 
 extension MyAccountPopupViewController {

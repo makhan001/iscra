@@ -12,6 +12,7 @@ final class MyAccountCoordinator: Coordinator<Scenes> {
     weak var delegate: CoordinatorDimisser?
     let controller: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
     let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
+    let webView: WebViewController = WebViewController.from(from: .landing, with: .webView)
     
     private var landing: LandingCoordinator!
     
@@ -24,6 +25,7 @@ final class MyAccountCoordinator: Coordinator<Scenes> {
     private func onStart() {
         controller.router = self
         changePassword.router = self
+        webView.router = self
     }
     
 //    private func startVerification() {
@@ -31,7 +33,7 @@ final class MyAccountCoordinator: Coordinator<Scenes> {
 //    }
     
     private func startChangePassword() {
-        
+        router.present(changePassword, animated: true)
     }
     
     private func startLanding() {
@@ -42,6 +44,7 @@ final class MyAccountCoordinator: Coordinator<Scenes> {
         //landing.start(imageUrl: controller.viewModel.socialLoginImageURL)
         self.router.present(landing, animated: true)
     }
+   
 }
 
 extension MyAccountCoordinator: NextSceneDismisser {
@@ -56,7 +59,7 @@ extension MyAccountCoordinator: NextSceneDismisser {
     
     func dismiss(controller: Scenes) {
         switch  controller {
-        case .verification:
+        case .myAccount:
             router.dismissModule(animated: false) {
                 self.startLanding()
             }

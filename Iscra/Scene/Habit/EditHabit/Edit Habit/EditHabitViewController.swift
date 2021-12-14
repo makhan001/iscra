@@ -22,7 +22,6 @@ class EditHabitViewController: UIViewController {
     var objHabitDetail: HabitDetails?
     let viewModel: EditHabitViewModel = EditHabitViewModel(provider: HabitServiceProvider())
     weak var router: NextSceneDismisser?
-   // var updateHabit:((_ isReminderOn:Bool)   ->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +31,7 @@ class EditHabitViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        print("objHabitDetail is \(objHabitDetail)")
     }
 }
 
@@ -142,9 +142,8 @@ extension EditHabitViewController: clickManagerDelegate{
 extension EditHabitViewController  : navigationBarAction {
     
     func ActionType()  {
-      //  router?.dismiss(controller: .addHabit)
-       // self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+        router?.dismiss(controller: .editHabit)
+       // self.navigationController?.popViewController(animated: true)
     }
     
     func RightButtonAction() {
@@ -211,8 +210,9 @@ extension EditHabitViewController: HabitViewRepresentable {
         case let .sucessMessage(msg):
             self.showToast(message: msg, seconds: 0.5)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-               // self.updateHabit!.(true)
-                self.navigationController?.popViewController(animated: true)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "editHabit"), object: nil)
+              //  self.navigationController?.popViewController(animated: true)
+                self.router?.dismiss(controller: .editHabit)
             }
         case let .isHabitDelete(true, msg):
             self.showToast(message: msg)

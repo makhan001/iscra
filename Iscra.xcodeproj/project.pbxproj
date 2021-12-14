@@ -14,6 +14,9 @@
 		04295A2B2758BC60001BF65E /* FetchHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04295A2A2758BC60001BF65E /* FetchHabit.swift */; };
 		04397097274B762700898C91 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04397096274B762700898C91 /* VerificationViewModel.swift */; };
 		043B82B4276345500076CCBE /* GroupHabitCalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B82B3276345500076CCBE /* GroupHabitCalenderCoordinator.swift */; };
+		043CF4E127685F4D00526FBC /* InviteFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */; };
+		043CF4E827685FB000526FBC /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF4E427685FB000526FBC /* MyAccountTableViewCell.swift */; };
+		043CF5432768614C00526FBC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF5422768614C00526FBC /* WebViewController.swift */; };
 		0440B9312752050D0096DC2D /* HabitCalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */; };
 		0456AE972750CA4500DB3ED4 /* HabitProvider.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940B2750BC1A00503123 /* HabitProvider.swift */; };
 		0456AE982750CA4500DB3ED4 /* HabitAdaptables.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940E2750BC9A00503123 /* HabitAdaptables.swift */; };
@@ -31,8 +34,8 @@
 		04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F28274FB917009763D1 /* MyAccountViewModel.swift */; };
 		04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */; };
 		04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */; };
-		5F03FD40276734840010E086 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F03FD3F276734840010E086 /* WebViewController.swift */; };
-		5F03FD5F276770BB0010E086 /* InviteFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F03FD5E276770BB0010E086 /* InviteFriendViewModel.swift */; };
+		04FD568727671F69008E7CB2 /* CommunityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD568627671F69008E7CB2 /* CommunityRequest.swift */; };
+		04FD568A276759E6008E7CB2 /* EditHabitCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD5689276759E6008E7CB2 /* EditHabitCoordinator.swift */; };
 		5F164E602763881E0059F8C2 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */; };
 		5F164E612763881F0059F8C2 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */; };
 		5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */; };
@@ -195,7 +198,6 @@
 		882F3E002721A50A00A409A6 /* LandingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */; };
 		882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */; };
 		882F3E152721AAC300A409A6 /* MyAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882F3E112721AAC300A409A6 /* MyAccountTableViewCell.xib */; };
-		882F3E162721AAC300A409A6 /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */; };
 		882F3E172721AAC300A409A6 /* MyAccountTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E132721AAC300A409A6 /* MyAccountTableView.swift */; };
 		882F3E182721AAC300A409A6 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E142721AAC300A409A6 /* MyAccountViewController.swift */; };
 		8835BCEF273E8A7200261839 /* StringConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8835BCEE273E8A7200261839 /* StringConstant.swift */; };
@@ -303,6 +305,9 @@
 		04295A2A2758BC60001BF65E /* FetchHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHabit.swift; sourceTree = "<group>"; };
 		04397096274B762700898C91 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
 		043B82B3276345500076CCBE /* GroupHabitCalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHabitCalenderCoordinator.swift; sourceTree = "<group>"; };
+		043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendViewModel.swift; sourceTree = "<group>"; };
+		043CF4E427685FB000526FBC /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
+		043CF5422768614C00526FBC /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderCoordinator.swift; sourceTree = "<group>"; };
 		0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountCoordinator.swift; sourceTree = "<group>"; };
@@ -318,9 +323,9 @@
 		04D34F28274FB917009763D1 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
 		04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
+		04FD568627671F69008E7CB2 /* CommunityRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityRequest.swift; sourceTree = "<group>"; };
+		04FD5689276759E6008E7CB2 /* EditHabitCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitCoordinator.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
-		5F03FD3F276734840010E086 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		5F03FD5E276770BB0010E086 /* InviteFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendViewModel.swift; sourceTree = "<group>"; };
 		5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
 		5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
@@ -487,7 +492,6 @@
 		882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTabBarController.swift; sourceTree = "<group>"; };
 		882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHabitPopUpViewController.swift; sourceTree = "<group>"; };
 		882F3E112721AAC300A409A6 /* MyAccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAccountTableViewCell.xib; sourceTree = "<group>"; };
-		882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
 		882F3E132721AAC300A409A6 /* MyAccountTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableView.swift; sourceTree = "<group>"; };
 		882F3E142721AAC300A409A6 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		8835BCEE273E8A7200261839 /* StringConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstant.swift; sourceTree = "<group>"; };
@@ -621,6 +625,14 @@
 			path = Table;
 			sourceTree = "<group>";
 		};
+		043CF5412768612B00526FBC /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				043CF5422768614C00526FBC /* WebViewController.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		0496E013275E41B3005C982A /* CircularProgressBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -635,14 +647,6 @@
 				5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5F03FD3E2767344D0010E086 /* WebView */ = {
-			isa = PBXGroup;
-			children = (
-				5F03FD3F276734840010E086 /* WebViewController.swift */,
-			);
-			path = WebView;
 			sourceTree = "<group>";
 		};
 		5F164E5D2763881D0059F8C2 /* NavigationBar */ = {
@@ -1173,6 +1177,7 @@
 			children = (
 				880D683C273AB89600B232CC /* CellView */,
 				880D683E273AB89600B232CC /* EditHabitViewController.swift */,
+				04FD5689276759E6008E7CB2 /* EditHabitCoordinator.swift */,
 				04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */,
 			);
 			path = "Edit Habit";
@@ -1283,6 +1288,7 @@
 				8814B4252743874100A6DE01 /* AuthRequests.swift */,
 				8814B4262743874100A6DE01 /* UserRequests.swift */,
 				04BE94082750B13200503123 /* HabitRequests.swift */,
+				04FD568627671F69008E7CB2 /* CommunityRequest.swift */,
 			);
 			path = "api-request";
 			sourceTree = "<group>";
@@ -1414,9 +1420,9 @@
 		887994A7273AB2ED00904D1F /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */,
 				887994A8273AB2ED00904D1F /* Collection */,
 				887994B0273AB2ED00904D1F /* CommunityViewController.swift */,
-				5F03FD5E276770BB0010E086 /* InviteFriendViewModel.swift */,
 				887994B1273AB2ED00904D1F /* Table */,
 				887994B8273AB2ED00904D1F /* CommunitySearchViewController.swift */,
 				887994B9273AB2ED00904D1F /* CommunityDetailViewController.swift */,
@@ -1710,11 +1716,11 @@
 		88E028812716FE3400D90BB1 /* My Account */ = {
 			isa = PBXGroup;
 			children = (
+				043CF5412768612B00526FBC /* WebView */,
+				043CF4E427685FB000526FBC /* MyAccountTableViewCell.swift */,
 				882F3E142721AAC300A409A6 /* MyAccountViewController.swift */,
 				045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */,
-				882F3E122721AAC300A409A6 /* MyAccountTableViewCell.swift */,
 				04D34F28274FB917009763D1 /* MyAccountViewModel.swift */,
-				5F03FD3E2767344D0010E086 /* WebView */,
 				5FFDDB6F27550ECF00051011 /* MyAccountPopUpView */,
 				882F3E102721AAC300A409A6 /* View */,
 			);
@@ -2059,6 +2065,7 @@
 				5FF6CD76274E6A5A007ADC2F /* ChatAttachmentIncomingCell.swift in Sources */,
 				885F7FB6273E2F7500B8D4EF /* UserStore.swift in Sources */,
 				5FF6CD65274E6A5A007ADC2F /* TitleView.swift in Sources */,
+				043CF5432768614C00526FBC /* WebViewController.swift in Sources */,
 				8814B4352743874100A6DE01 /* UserRequests.swift in Sources */,
 				887994C4273AB2EE00904D1F /* CommunityFriendTableView.swift in Sources */,
 				5FF6CD79274E6A5A007ADC2F /* CollectionViewFlowLayoutInvalidationContext.swift in Sources */,
@@ -2095,8 +2102,8 @@
 				5FF6CD31274E6A5A007ADC2F /* PHAsset+Extention.swift in Sources */,
 				88E028FA27170D0600D90BB1 /* APIConstants.swift in Sources */,
 				5FF6CD5E274E6A5A007ADC2F /* AttachmentUploadBar.swift in Sources */,
-				882F3E162721AAC300A409A6 /* MyAccountTableViewCell.swift in Sources */,
 				8814B43D2743874100A6DE01 /* APIResponder.swift in Sources */,
+				04FD568727671F69008E7CB2 /* CommunityRequest.swift in Sources */,
 				5FF6CD53274E6A5A007ADC2F /* LoadingButton.swift in Sources */,
 				887994BA273AB2EE00904D1F /* MyCommunityCollectionView.swift in Sources */,
 				5FF6CD7F274E6A5A007ADC2F /* ChatActionsHandler.swift in Sources */,
@@ -2116,6 +2123,7 @@
 				887994D5273AB34E00904D1F /* RepeatDaysTableView.swift in Sources */,
 				880080732729282F008E3260 /* HabitNameViewController.swift in Sources */,
 				880D683F273AB89600B232CC /* EditHabitTableView.swift in Sources */,
+				04FD568A276759E6008E7CB2 /* EditHabitCoordinator.swift in Sources */,
 				887994D6273AB34E00904D1F /* EditReminderViewController.swift in Sources */,
 				5FF6CD6D274E6A5A007ADC2F /* ChatCell.swift in Sources */,
 				88202D592719923700F0EA2E /* WelcomeViewController.swift in Sources */,
@@ -2152,6 +2160,7 @@
 				88E028F327170B7F00D90BB1 /* BaseExtensions.swift in Sources */,
 				5FF6CD54274E6A5A007ADC2F /* SplashScreenVC.swift in Sources */,
 				5FF6CD22274E6A5A007ADC2F /* DialogsSelectionVC.swift in Sources */,
+				043CF4E827685FB000526FBC /* MyAccountTableViewCell.swift in Sources */,
 				8814B43B2743874100A6DE01 /* Webservice.swift in Sources */,
 				5FF6CD4B274E6A5A007ADC2F /* InfoTableViewCell.swift in Sources */,
 				04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */,
@@ -2174,6 +2183,7 @@
 				880F3E69272816D9007CA895 /* InviteFriendViewController.swift in Sources */,
 				883C52F32747915800D129FC /* ForgotPsswordViewController.swift in Sources */,
 				887994D7273AB34E00904D1F /* RepeatDaysTableViewCell.swift in Sources */,
+				043CF4E127685F4D00526FBC /* InviteFriendViewModel.swift in Sources */,
 				045791E22754AA67006E0410 /* HabitUtils.swift in Sources */,
 				5FF6CD4A274E6A5A007ADC2F /* UIViewController+InfoScreen.swift in Sources */,
 				8827C3C12750C125009D12C4 /* CameraHandler.swift in Sources */,
@@ -2203,7 +2213,6 @@
 				5FF6CD57274E6A5A007ADC2F /* ActionMenu.swift in Sources */,
 				5FF6CD37274E6A5A007ADC2F /* ReplaceSegue.swift in Sources */,
 				5FF6CD48274E6A5A007ADC2F /* CreateNewDialogViewController.swift in Sources */,
-				5F03FD5F276770BB0010E086 /* InviteFriendViewModel.swift in Sources */,
 				88C7C2FA2726D39800EAA8CA /* ColorCollectionViewCell.swift in Sources */,
 				5FF6CD2B274E6A5A007ADC2F /* UIImage+Extention.swift in Sources */,
 				8814B4132743858900A6DE01 /* Row.swift in Sources */,
@@ -2251,7 +2260,6 @@
 				5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */,
 				5FF6CD67274E6A5A007ADC2F /* TypingView.swift in Sources */,
 				5FF6CD40274E6A5A007ADC2F /* ChatNotificationTableViewCell.swift in Sources */,
-				5F03FD40276734840010E086 /* WebViewController.swift in Sources */,
 				8814B4382743874100A6DE01 /* APIError.swift in Sources */,
 				5FF6CD7A274E6A5A007ADC2F /* ChatCollectionViewDelegateFlowLayout.swift in Sources */,
 			);

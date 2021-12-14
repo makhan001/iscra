@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 
-class Utils
-{
+class Utils {
     static func fetchDataFromLocalJson(name : String)-> NSDictionary? {
         if let path = Bundle.main.path(forResource: name, ofType: "json") {
             do {

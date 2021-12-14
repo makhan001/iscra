@@ -408,7 +408,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USER NAME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbM-Nj-7Cb" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="119.00000000000001" width="337" height="21.666666666666671"/>
+                                                <rect key="frame" x="10" y="119" width="337" height="20"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                 <color key="textColor" name="SecondryAccent"/>
                                                 <nil key="highlightedColor"/>
@@ -421,7 +421,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2se-TB-CcR" customClass="MyAccountTableView" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="160.66666666666666" width="341" height="315.33333333333337"/>
+                                                <rect key="frame" x="8" y="159" width="341" height="317"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzI-dq-UI8">
@@ -636,7 +636,7 @@
                                                                         <rect key="frame" x="0.0" y="20" width="366" height="148"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It’s seems there is no group like this" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmr-in-0yx" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                        <rect key="frame" x="8" y="187" width="350" height="21.666666666666657"/>
+                                                                        <rect key="frame" x="8" y="187" width="350" height="20"/>
                                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                         <color key="textColor" name="SecondryAccent"/>
                                                                         <nil key="highlightedColor"/>
@@ -648,7 +648,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can create your own group and share it with others people. Let’s do it!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0by-x4-gCN" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                        <rect key="frame" x="8" y="232.66666666666669" width="350" height="40.666666666666686"/>
+                                                                        <rect key="frame" x="8" y="231" width="350" height="40.666666666666686"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -660,7 +660,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebr-vC-DYH" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="297.33333333333331" width="366" height="56"/>
+                                                                        <rect key="frame" x="0.0" y="295.66666666666669" width="366" height="56"/>
                                                                         <color key="backgroundColor" name="PrimaryAccent"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="56" id="pd7-9a-Men"/>
@@ -1405,7 +1405,7 @@
                                                 <rect key="frame" x="20" y="63" width="374" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFM-me-oSL" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="-10.666666666666686" width="42" height="21.666666666666668"/>
+                                                        <rect key="frame" x="16" y="-10" width="43" height="20"/>
                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                         <color key="textColor" name="BlackAccent"/>
                                                         <nil key="highlightedColor"/>
@@ -2626,7 +2626,7 @@
             <size key="intrinsicContentSize" width="36.333333333333336" height="20.333333333333332"/>
         </designable>
         <designable name="BbM-Nj-7Cb">
-            <size key="intrinsicContentSize" width="83.666666666666671" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="98.666666666666671" height="20"/>
         </designable>
         <designable name="Bca-du-TSg"/>
         <designable name="Bu1-Ni-SVh"/>
@@ -2634,7 +2634,7 @@
             <size key="intrinsicContentSize" width="103" height="18"/>
         </designable>
         <designable name="KFM-me-oSL">
-            <size key="intrinsicContentSize" width="42" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="43" height="20"/>
         </designable>
         <designable name="KfA-pr-rwT">
             <size key="intrinsicContentSize" width="102" height="20.333333333333332"/>
@@ -2643,7 +2643,7 @@
             <size key="intrinsicContentSize" width="108" height="30"/>
         </designable>
         <designable name="SUV-aL-C8u">
-            <size key="intrinsicContentSize" width="163" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="173" height="20"/>
         </designable>
         <designable name="StM-NQ-0pH">
             <size key="intrinsicContentSize" width="91.666666666666671" height="20.333333333333332"/>
@@ -2659,7 +2659,7 @@
             <size key="intrinsicContentSize" width="35.666666666666664" height="20.333333333333332"/>
         </designable>
         <designable name="bmr-in-0yx">
-            <size key="intrinsicContentSize" width="251" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="271.66666666666669" height="20"/>
         </designable>
         <designable name="cHv-nH-VDo">
             <size key="intrinsicContentSize" width="53.666666666666664" height="20.333333333333332"/>

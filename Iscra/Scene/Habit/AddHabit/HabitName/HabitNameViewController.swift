@@ -41,7 +41,7 @@ extension HabitNameViewController {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         
-        if viewModel.habitType == .group {
+        if viewModel.habitType == .group_habit {
             self.viewDescription.isHidden = false
             self.txtFieldTitle.returnKeyType = .next
             self.lblUserName.text = AppConstant.groupHabitTitle
@@ -79,8 +79,8 @@ extension HabitNameViewController {
             if isNavigate{
                 let setTheme: SetThemeViewController = SetThemeViewController.from(from: .habit, with: .setTheme)
                 setTheme.router = self.router
-               // setTheme.habitType = self.viewModel.habitType
                        self.navigationController?.pushViewController(setTheme, animated: true)
+              //  self.router?.push(scene: .setTheme) // deepak
             }
         }
     }
@@ -90,7 +90,7 @@ extension HabitNameViewController {
 extension HabitNameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if self.viewModel.habitType == .group {
+        if self.viewModel.habitType == .group_habit {
             if textField == self.txtFieldTitle {
                 self.txtViewDescription.becomeFirstResponder()
             } else {
@@ -164,6 +164,7 @@ extension HabitNameViewController: HabitViewRepresentable {
 // MARK: navigationBarAction Callback
 extension HabitNameViewController  : navigationBarAction {
     func ActionType() {
+        HabitUtils.shared.removeAllHabitData()
         router?.dismiss(controller: .addHabit)
     }
 }

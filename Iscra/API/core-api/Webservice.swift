@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SVProgressHUD
 //import SwiftyJSON
 
 class WebService {
@@ -22,6 +23,7 @@ class WebService {
 //            completion(nil, NetworkErrorMessage)
 //            return
 //        }
+        WebService().StartIndicator()
         
         let jsonData = try! JSONEncoder().encode(parameters)
         let jsonString = String(data: jsonData, encoding: .utf8)
@@ -46,6 +48,7 @@ class WebService {
         headers: headers).response { encodingResult in
             switch encodingResult.result {
             case .success(let result):
+                WebService().StopIndicator()
                 if let data = result {
                     do {
                         let genericModel = try JSONDecoder().decode(decodingType, from: data)
@@ -61,6 +64,7 @@ class WebService {
                 }
                 
             case .failure(let error):
+                WebService().StopIndicator()
                 print("upload err: \(error.localizedDescription)")
                 completion(nil, error.localizedDescription)
             }
@@ -164,5 +168,15 @@ class WebService {
                 }
             }
         }
+    }
+    
+    func StartIndicator(){
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        SVProgressHUD.show()
+    }
+    
+    func StopIndicator(){
+        UIApplication.shared.endIgnoringInteractionEvents()
+        SVProgressHUD.dismiss()
     }
 }

@@ -29,6 +29,11 @@ final class HabitCalenderViewModel {
     func deleteHabit(habitId: String) {
         self.provider.deleteHabit(param: HabitParams.DeleteHabit(id: habitId))
     }
+    
+    func apiMarkAsComplete() {
+        let timestamp = String(format: "%.0f", NSDate().timeIntervalSince1970)
+        self.provider.markAsComplete(param: HabitParams.MarkAsComplete(habit_id: String(self.habitId), habit_day: String(timestamp) , is_completed: "true"))
+    }
 }
 
 extension HabitCalenderViewModel: HabitServiceProvierDelegate {
@@ -42,6 +47,9 @@ extension HabitCalenderViewModel: HabitServiceProvierDelegate {
                 if let resp = response as? SuccessResponseModel, resp.code == 200 , let objGroupDetails = resp.data?.habitDetails{
                     self.objHabitDetail = objGroupDetails
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))                    
+                }else if let resp = response as? SuccessResponseModel, resp.code == 200 , let _ = resp.data?.habitMark{
+                    self.getHabitDetail()
+                    self.view?.onAction(.sucessMessage(resp.message ?? ""))
                 }else if let resp = response as? SuccessResponseModel, resp.code == 200, let status = resp.status {
                      if status == true {
                          print("data is nil")

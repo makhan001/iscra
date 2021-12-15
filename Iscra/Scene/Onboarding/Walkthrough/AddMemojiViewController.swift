@@ -21,7 +21,8 @@ class AddMemojiViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var viewNavigation:NavigationBarView!
     weak var router: NextSceneDismisser?
     private var imagePicker = UIImagePickerController()
-
+    var isFromMyAccount:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -76,7 +77,11 @@ extension AddMemojiViewController: navigationBarAction {
     }
     
     func ActionType()  {
+       if  self.isFromMyAccount == true {
+            self.navigationController?.popViewController(animated: true)
+        }else{
         router?.dismiss(controller: .learnHowToAddMemoji)
+        }
     }
 }
 

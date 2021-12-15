@@ -26,7 +26,6 @@ class SetThemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        print("self.router is \(self.router)")
     }
 }
 
@@ -84,6 +83,7 @@ extension SetThemeViewController {
         self.present(colorPopUp, animated: true, completion: nil)
 
     }
+    
     private func showIcons() {
         let iconPopup: IconPopupViewController = IconPopupViewController.from(from: .habit, with: .iconPopup)
         iconPopup.themeColor = selectedColorTheme
@@ -94,6 +94,7 @@ extension SetThemeViewController {
         self.present(iconPopup, animated: true, completion: nil)
 
     }
+    
     private func nextClick() {
         self.viewModel.icon = self.selectedIcons
         self.viewModel.colorTheme = self.selectedColorTheme.colorHex //"#7B86EB"
@@ -101,12 +102,7 @@ extension SetThemeViewController {
         viewModel.didNavigateToSetTheme = {
             isNavigate in
             if isNavigate{
-                let reminder: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
-                reminder.habitType = self.habitType
-                reminder.router = self.router
-                reminder.selectedColorTheme = self.selectedColorTheme
-                self.navigationController?.pushViewController(reminder, animated: true)
-              //  self.router?.push(scene: .reminder) // deepak
+               self.router?.push(scene: .reminder)
             }
         }
     }
@@ -145,7 +141,6 @@ extension SetThemeViewController: HabitViewRepresentable {
 extension SetThemeViewController  : navigationBarAction {
     
     func ActionType()  {
-        self.navigationController?.popViewController(animated: true) // deepak
-      //  self.router?.dismiss(controller: .setTheme)
+        self.router?.dismiss(controller: .setTheme)
     }
 }

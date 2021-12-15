@@ -25,7 +25,6 @@ class HabitNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        print("self.router is \(self.router)")
     }
 }
 
@@ -77,10 +76,7 @@ extension HabitNameViewController {
         viewModel.didNavigateToSetTheme = {
             isNavigate in
             if isNavigate{
-                let setTheme: SetThemeViewController = SetThemeViewController.from(from: .habit, with: .setTheme)
-                setTheme.router = self.router
-                       self.navigationController?.pushViewController(setTheme, animated: true)
-              //  self.router?.push(scene: .setTheme) // deepak
+               self.router?.push(scene: .setTheme) 
             }
         }
     }

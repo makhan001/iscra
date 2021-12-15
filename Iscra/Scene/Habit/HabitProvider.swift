@@ -79,7 +79,7 @@ final class HabitServiceProvider: HabitServiceProvidable {
     }
     
     func markAsComplete(param: HabitParams.MarkAsComplete) {
-        WebService().StartIndicator()
+       // WebService().StartIndicator()
         task.markAsComplete(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .createHabit, with: resp, with: err)

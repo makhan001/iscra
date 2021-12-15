@@ -24,12 +24,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-      //  print("self.router is HomeViewController  \(String(describing: self.router))")
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("self. router on HomeViewController is \(String(describing: self.router))")
         super.viewWillAppear(animated)
-        self.lblUserName.text = "Hi," + (UserStore.userName ?? "").capitalized
+        self.lblUserName.text = "Hi,  " + (UserStore.userName ?? "").capitalized
         self.viewModel.fetchHabitList()
     }
 }

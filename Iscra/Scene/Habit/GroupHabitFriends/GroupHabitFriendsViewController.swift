@@ -155,8 +155,6 @@ extension GroupHabitFriendsViewController {
     private func progressAction() {
         self.viewProgress.isHidden = false
         self.tableFriends.isHidden = true
-//        self.viewModel.getHabitDetail()
-//        self.habitDetailSetup()
     }
     
     private func friendsAction() {
@@ -175,7 +173,8 @@ extension GroupHabitFriendsViewController {
     
     private func shareAction() {
         self.viewBottom.isHidden = true
-         self.showToast(message: "Under development", seconds: 0.5)
+      //   self.showToast(message: "Under development", seconds: 0.5)
+        self.viewModel.apiMarkAsComplete()
     }
     
     private func deleteAction() {

@@ -16,7 +16,8 @@ class CommunityDetailViewController: UIViewController {
 
     var vibrantLabel = UILabel()
     var headerImageView: UIView?
-    
+    weak var router: NextSceneDismisser?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -93,7 +94,8 @@ extension CommunityDetailViewController {
     }
     
     private func backAction() {
-        self.navigationController?.popViewController(animated: true)
+       // self.navigationController?.popViewController(animated: true)
+        self.router?.dismiss(controller: .communityDetail)  // deepu
     }
     
 }

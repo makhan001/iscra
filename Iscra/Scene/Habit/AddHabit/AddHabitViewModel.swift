@@ -118,7 +118,6 @@ extension AddHabitViewModel {
         let obj = HabitUtils.shared
         let parameters = HabitParams.CreateHabit(days: obj.days, icon: obj.icon, name: obj.name, timer: obj.timer, reminders: obj.reminders, habit_type: obj.habitType.rawValue , color_theme: obj.colorTheme , description: obj.description)
         print("param is  \(parameters)")
-
         WebService().requestMultiPart(urlString: "habits/add_habit",
                                       httpMethod: .post,
                                       parameters: parameters,

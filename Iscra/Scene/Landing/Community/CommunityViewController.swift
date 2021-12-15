@@ -15,7 +15,6 @@ class CommunityViewController: UIViewController {
     private let viewModel: InviteFriendViewModel = InviteFriendViewModel(provider: HabitServiceProvider())
     weak var router: NextSceneDismisser?
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -24,15 +23,14 @@ class CommunityViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("self. router on CommunityViewController is \(String(describing: self.router))")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3))
-        {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)){
             self.collectionMyGroups.reloadData()
         }
     }
-    
- 
 }
+
 // MARK: Instance Methods
 extension CommunityViewController {
     private func setup() {
@@ -45,9 +43,9 @@ extension CommunityViewController {
         
     }
 }
+
 // MARK:- Button Action
 extension CommunityViewController {
-    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnSearch:
@@ -60,14 +58,10 @@ extension CommunityViewController {
     }
     
     private func searcheAction() {
-//        let vc = storyboard?.instantiateViewController(withIdentifier: "CommunitySearchViewController") as! CommunitySearchViewController
-//        vc.delegate1 = self
-//        self.navigationController?.present(vc, animated: true, completion: nil)
-        
         let communitySearch: CommunitySearchViewController = CommunitySearchViewController.from(from: .landing, with: .communitySearch)
         communitySearch.delegate1 = self
         self.navigationController?.present(communitySearch, animated: false, completion: nil)
-        
+       // self.router?.push(scene: .communitySearch) // deepak
     }
     
     private func inviteFriendsAction() {
@@ -79,7 +73,8 @@ extension CommunityViewController {
 // MARK: - Navigation
 extension CommunityViewController: communityGroupHabitDetail{
     func navigate() {
-        let communityDetail: CommunityDetailViewController = CommunityDetailViewController.from(from: .landing, with: .communityDetail)
-        self.navigationController?.pushViewController(communityDetail, animated: true)
+//        let communityDetail: CommunityDetailViewController = CommunityDetailViewController.from(from: .landing, with: .communityDetail)
+//        self.navigationController?.pushViewController(communityDetail, animated: true)
+       self.router?.push(scene: .communityDetail) // deepu
     }
 }

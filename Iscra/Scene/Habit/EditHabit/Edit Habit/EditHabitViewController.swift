@@ -31,7 +31,7 @@ class EditHabitViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
-        print("objHabitDetail is \(objHabitDetail)")
+       // print("objHabitDetail is \(objHabitDetail)")
     }
 }
 

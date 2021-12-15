@@ -26,6 +26,11 @@
 		0456AE9B2750D1E300DB3ED4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */; };
 		045791DF27549EAA006E0410 /* MyAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */; };
 		045791E22754AA67006E0410 /* HabitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045791E12754AA67006E0410 /* HabitUtils.swift */; };
+		045BF9CA2769C117008B1C8A /* CommunitySearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BF9C92769C117008B1C8A /* CommunitySearchCoordinator.swift */; };
+		045BF9CD2769CA5D008B1C8A /* SetThemeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BF9CC2769CA5D008B1C8A /* SetThemeCoordinator.swift */; };
+		045BF9D02769CC8C008B1C8A /* ReminderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BF9CF2769CC8C008B1C8A /* ReminderCoordinator.swift */; };
+		045BF9D32769CDD9008B1C8A /* AddGroupImageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BF9D22769CDD9008B1C8A /* AddGroupImageCoordinator.swift */; };
+		046F92C12769D9C100190D9A /* InviteFriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */; };
 		04810DBE275F7B5000DEC36F /* EditHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */; };
 		0496E011275E0253005C982A /* HabitCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E010275E0253005C982A /* HabitCalenderViewModel.swift */; };
 		0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */; };
@@ -318,6 +323,11 @@
 		0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountCoordinator.swift; sourceTree = "<group>"; };
 		045791E12754AA67006E0410 /* HabitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitUtils.swift; sourceTree = "<group>"; };
+		045BF9C92769C117008B1C8A /* CommunitySearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchCoordinator.swift; sourceTree = "<group>"; };
+		045BF9CC2769CA5D008B1C8A /* SetThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetThemeCoordinator.swift; sourceTree = "<group>"; };
+		045BF9CF2769CC8C008B1C8A /* ReminderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCoordinator.swift; sourceTree = "<group>"; };
+		045BF9D22769CDD9008B1C8A /* AddGroupImageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupImageCoordinator.swift; sourceTree = "<group>"; };
+		046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendCoordinator.swift; sourceTree = "<group>"; };
 		04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitViewModel.swift; sourceTree = "<group>"; };
 		0496E010275E0253005C982A /* HabitCalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderViewModel.swift; sourceTree = "<group>"; };
 		0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCircularProgressBar.swift; sourceTree = "<group>"; };
@@ -1147,6 +1157,7 @@
 			isa = PBXGroup;
 			children = (
 				8800806B2729255E008E3260 /* ReminderViewController.swift */,
+				045BF9CF2769CC8C008B1C8A /* ReminderCoordinator.swift */,
 				880080762729343B008E3260 /* View */,
 			);
 			path = Reminder;
@@ -1156,6 +1167,7 @@
 			isa = PBXGroup;
 			children = (
 				88E580752722F5F300D4CAFB /* SetThemeViewController.swift */,
+				045BF9CC2769CA5D008B1C8A /* SetThemeCoordinator.swift */,
 			);
 			path = SetTheme;
 			sourceTree = "<group>";
@@ -1174,6 +1186,7 @@
 			isa = PBXGroup;
 			children = (
 				88021C66273CF688004A58F5 /* AddGroupImageViewController.swift */,
+				045BF9D22769CDD9008B1C8A /* AddGroupImageCoordinator.swift */,
 			);
 			path = AddGroupImage;
 			sourceTree = "<group>";
@@ -1241,6 +1254,7 @@
 			isa = PBXGroup;
 			children = (
 				880F3E68272816D9007CA895 /* InviteFriendViewController.swift */,
+				046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */,
 			);
 			path = InviteFriends;
 			sourceTree = "<group>";
@@ -1432,6 +1446,7 @@
 				043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */,
 				887994A8273AB2ED00904D1F /* Collection */,
 				887994B0273AB2ED00904D1F /* CommunityViewController.swift */,
+				045BF9C92769C117008B1C8A /* CommunitySearchCoordinator.swift */,
 				887994B1273AB2ED00904D1F /* Table */,
 				887994B8273AB2ED00904D1F /* CommunitySearchViewController.swift */,
 				887994B9273AB2ED00904D1F /* CommunityDetailViewController.swift */,
@@ -2068,6 +2083,7 @@
 				5FF6CD3A274E6A5A007ADC2F /* CacheManager.swift in Sources */,
 				5FF6CD7C274E6A5A007ADC2F /* ChatCollectionViewFlowLayout.swift in Sources */,
 				5FF6CD28274E6A5A007ADC2F /* Double+Extention.swift in Sources */,
+				045BF9CD2769CA5D008B1C8A /* SetThemeCoordinator.swift in Sources */,
 				5FFDDB3A2755054600051011 /* MyAccountPopupViewController.swift in Sources */,
 				5FF6CD62274E6A5A007ADC2F /* InputToolbar.swift in Sources */,
 				5FF6CD47274E6A5A007ADC2F /* UserTableViewCell.swift in Sources */,
@@ -2081,6 +2097,7 @@
 				5FF6CD78274E6A5A007ADC2F /* ChatCellLayoutAttributes.swift in Sources */,
 				5FF6CD85274E6A5A007ADC2F /* ParentVideoVC.swift in Sources */,
 				5FF6CD3D274E6A5A007ADC2F /* AttachmentDownloadManager.swift in Sources */,
+				045BF9CA2769C117008B1C8A /* CommunitySearchCoordinator.swift in Sources */,
 				887994BF273AB2EE00904D1F /* MatesCollectionView.swift in Sources */,
 				5FF6CD34274E6A5A007ADC2F /* CALayer+Blur.swift in Sources */,
 				5FF6CD3F274E6A5A007ADC2F /* ChatNotificationPopUpViewController.swift in Sources */,
@@ -2144,6 +2161,7 @@
 				5FF6CD3B274E6A5A007ADC2F /* AttachmentDownloadOperation.swift in Sources */,
 				045791DF27549EAA006E0410 /* MyAccountCoordinator.swift in Sources */,
 				04A79DDE27575A8D009ADC89 /* HabitModel.swift in Sources */,
+				045BF9D32769CDD9008B1C8A /* AddGroupImageCoordinator.swift in Sources */,
 				5FF6CD66274E6A5A007ADC2F /* ChatPrivateTitleView.swift in Sources */,
 				5FF6CD5C274E6A5A007ADC2F /* SelectAssetCell.swift in Sources */,
 				8814B43C2743874100A6DE01 /* Base.swift in Sources */,
@@ -2273,7 +2291,9 @@
 				5FF6CD67274E6A5A007ADC2F /* TypingView.swift in Sources */,
 				5FF6CD40274E6A5A007ADC2F /* ChatNotificationTableViewCell.swift in Sources */,
 				8814B4382743874100A6DE01 /* APIError.swift in Sources */,
+				045BF9D02769CC8C008B1C8A /* ReminderCoordinator.swift in Sources */,
 				5FF6CD7A274E6A5A007ADC2F /* ChatCollectionViewDelegateFlowLayout.swift in Sources */,
+				046F92C12769D9C100190D9A /* InviteFriendCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

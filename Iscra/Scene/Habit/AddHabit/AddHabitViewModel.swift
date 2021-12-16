@@ -25,7 +25,7 @@ final class AddHabitViewModel {
     weak var view: HabitViewRepresentable?
     
     private func validateHabitInput() {
-        if habitType == .group{
+        if habitType == .group_habit{
             if Validation().textValidation(text: habitName, validationType: .habitName).0 {
                 view?.onAction(.requireFields(Validation().textValidation(text: habitName, validationType: .habitName).1))
                 return
@@ -54,7 +54,7 @@ final class AddHabitViewModel {
     }
     
     private func validateDaysSelection() {
-        if HabitUtils.shared.habitType != .group {
+        if HabitUtils.shared.habitType != .group_habit {
             if self.days == "" {
                 view?.onAction(.requireFields(AppConstant.emptyDays))
             }else{
@@ -74,7 +74,7 @@ final class AddHabitViewModel {
     }
     
     private func validateGroupImageSelection() {
-        if HabitUtils.shared.habitType == .group {
+        if HabitUtils.shared.habitType == .group_habit {
                // if (HabitUtils.shared.groupImage == nil){
             if (self.groupImage == nil){
                 view?.onAction(.requireFields(AppConstant.emptyGroupImage))
@@ -92,7 +92,7 @@ final class AddHabitViewModel {
 
 extension AddHabitViewModel: HabitInputViewDelegate {
     func onAction(action: HabitAction, for screen: HabitScreenType) {
-        if HabitUtils.shared.habitType == .group {
+        if HabitUtils.shared.habitType == .group_habit {
             switch action {
             case .inputComplete(screen): validateHabitInput()
             case .setTheme(screen): validateSetTheme()
@@ -118,7 +118,6 @@ extension AddHabitViewModel {
         let obj = HabitUtils.shared
         let parameters = HabitParams.CreateHabit(days: obj.days, icon: obj.icon, name: obj.name, timer: obj.timer, reminders: obj.reminders, habit_type: obj.habitType.rawValue , color_theme: obj.colorTheme , description: obj.description)
         print("param is  \(parameters)")
-
         WebService().requestMultiPart(urlString: "habits/add_habit",
                                       httpMethod: .post,
                                       parameters: parameters,
@@ -132,7 +131,6 @@ extension AddHabitViewModel {
                 return
             } else {
                 if let response = resp as? SuccessResponseModel  {
-
                     if response.status == true {
                       //  print("response.data?.habit?.id is \(response.data?.habit?.id)")
                       //  self?.view?.onAction(.createHabit)

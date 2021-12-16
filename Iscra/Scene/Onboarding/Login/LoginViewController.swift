@@ -12,6 +12,8 @@ import AuthenticationServices
 
 class LoginViewController: UIViewController {
     
+    
+    
     // MARK:-Outlets and variables
     @IBOutlet weak var btnLogin:UIButton!
     @IBOutlet weak var lblHeaderTitle:UILabel!
@@ -51,14 +53,11 @@ extension LoginViewController  : navigationBarAction {
         [btnLogin, btnApple, btnGoogle, btnShowPassword, btnForgotPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        
-        //        if TARGET_OS_SIMULATOR == 1 {
-        //            viewModel.email = "user10@gmail.com"
-        //            viewModel.password = "123456"
-        //            txtEmail.text = viewModel.email
-        //            txtPassword.text = viewModel.password
-        //        }
-        
+        if #available(iOS 13.0, *) {
+            btnApple.isHidden = false
+        } else {
+            btnApple.isHidden = true
+        }
     }
     
     func ActionType()  {
@@ -104,15 +103,10 @@ extension LoginViewController {
     private func loginGoogleAction() {
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
             guard error == nil else { return }
-            print("accessToken --> \(user?.authentication.accessToken)")
-            print("idToken --> \(user?.authentication.idToken)")
-            print("email --> \(user?.profile?.email)")
-            print("name --> \(user?.profile?.name)")
-            print(user?.profile?.hasImage)
             self.viewModel.email = user?.profile?.email ?? ""
             self.viewModel.username = user?.profile?.name ?? ""
             self.viewModel.social_id = user?.userID ?? ""
-            self.viewModel.socialLogin()
+            self.viewModel.socialLogin(logintype: .google)
         }
     }
     
@@ -122,8 +116,7 @@ extension LoginViewController {
             let request = appleIDProvider.createRequest()
             request.requestedScopes = [.fullName, .email]
             let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-            //          authorizationController.delegate = self
-            //          authorizationController.presentationContextProvider = self
+            authorizationController.delegate = self
             authorizationController.performRequests()
         } else {
             // Fallback on earlier versions
@@ -141,14 +134,8 @@ extension LoginViewController {
     }
     
     private func forgotPasswordAction() {
-        //        let VC = storyboard?.instantiateViewController(withIdentifier: "forgot") as! ForgotPasswordViewController
-        //        navigationController?.pushViewController(VC, animated: true)
-        
-        let forgot: ForgotPasswordViewController = ForgotPasswordViewController.from(from: .onboarding, with: .forgot)
-        self.navigationController?.pushViewController(forgot, animated: true)
-        
+        self.router?.push(scene: .forgot)
     }
-    
 }
 
 // MARK:- UITextFieldDelegate
@@ -207,16 +194,21 @@ extension LoginViewController: OnboardingViewRepresentable {
     }
 }
 
+extension LoginViewController: ASAuthorizationControllerDelegate {
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
+            // self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
+            self.viewModel.email = appleCredentials.email ?? ""
+            self.viewModel.username = (appleCredentials.fullName?.givenName) ?? ""
+            self.viewModel.social_id = appleCredentials.user
+            self.viewModel.socialLogin(logintype: .apple)
+        }
+    }
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print(error.localizedDescription)
+    }
+    
+}
 
-//extension LoginViewController: ASAuthorizationControllerDelegate {
-//  @available(iOS 13.0, *)
-//  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-//    if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
-//      self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
-//    }
-//  }
-//  @available(iOS 13.0, *)
-//  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-//    print(error.localizedDescription)
-//  }
-//}

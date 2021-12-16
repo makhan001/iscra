@@ -61,6 +61,16 @@ class HabitCell: UITableViewCell {
         self.imgHabitMates.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
         self.viewNomates.isHidden = false
         self.viewMates.isHidden = true
+//        print("obj.colorTheme \(String(describing: obj.colorTheme))")
+//        print("obj.id \(String(describing: obj.id))")
+//        print("obj.name \(String(describing: obj.name))")
+//        print("obj.reminders \(String(describing: obj.reminders))")
+//        print("obj.timer \(String(describing: obj.timer))")
+//        print("obj.days \(String(describing: obj.days))")
+//        print("obj.habitDescription \(String(describing: obj.habitDescription))")
+//        print("obj.habitType \(String(describing: obj.habitType))")
+//        print("obj.groupImage \(String(describing: obj.groupImage))")
+//        print("obj.userID \(String(describing: obj.userID))")
     }
 }
 

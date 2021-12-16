@@ -30,18 +30,17 @@ class ReminderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        print("self.router is \(self.router)")
-
     }
+    
     @IBAction func TimePickerClick(_ sender: Any) {
         timemanager()
     }
-    
 }
 
 extension ReminderViewController {
     func setup()  {
-        viewModel.view = self
+        self.viewModel.view = self
+        self.habitType = self.viewModel.habitType
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.delegateBarAction = self
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -77,7 +76,7 @@ extension ReminderViewController {
         let fullNameArr = dateString.components(separatedBy: " ")
         lblReminderTime.text = fullNameArr[0]
 //        self.viewModel.timer = dateString
-//        print("self.viewModel.timer is \(self.viewModel.timer)")
+//        // print("self.viewModel.timer is \(self.viewModel.timer)")
         self.reminderTime = dateString
         if dateString.contains("AM")
         {
@@ -129,55 +128,13 @@ extension ReminderViewController {
             self.viewModel.timer = ""
         }
         viewModel.onAction(action: .setDaySelection(.daysSelection), for: .daysSelection)
-
-        //        if habitType == .group{
-        ////            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        ////            let vc = storyboard.instantiateViewController(withIdentifier: "AddGroupImageViewController") as! AddGroupImageViewController
-        ////            vc.habitType = habitType
-        ////           navigationController?.pushViewController(vc, animated: true)
-        //
-        //            let addGroupImage: AddGroupImageViewController = AddGroupImageViewController.from(from: .habit, with: .addGroupImage)
-        //            addGroupImage.habitType = habitType
-        //            self.navigationController?.pushViewController(addGroupImage, animated: true)
-        //
-        //        }else {
-        ////            let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-        ////            let vc = storyboard.instantiateViewController(withIdentifier: "InviteFriendViewController") as! InviteFriendViewController
-        ////            vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        ////            vc.habitType = habitType
-        ////            vc.delegateInvite = self
-        ////            self.present(vc, animated: true, completion: nil)
-        //
-        //            let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
-        //            inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        //            inviteFriend.habitType = habitType
-        //            inviteFriend.delegateInvite = self
-        //            self.present(inviteFriend, animated: true, completion: nil)
-        //        }
-    }
-}
-
-extension ReminderViewController : InviteNavigation {
-    func navigate(inviteType: inviteType) {
-        if inviteType == .mayBeLatter{
-            guard let viewControllers = navigationController?.viewControllers else { return }
-            for vc in viewControllers {
-                if vc is LandingTabBarController {
-                    navigationController?.popToViewController(vc, animated: true)
-                    return
-                }
-            }
-        }
-        else{
-            
-        }
     }
 }
 
 // MARK: Callbacks
 extension ReminderViewController: HabitViewRepresentable {
     private func didSelectedAtIndex(_ index: String) {
-        print("strDays is \(index)")
+        // print("strDays is \(index)")
         viewModel.days = index
     }
     
@@ -188,18 +145,10 @@ extension ReminderViewController: HabitViewRepresentable {
         case let .sucessMessage(msg):
             self.showToast(message: msg, seconds: 0.5)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
-                inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-                inviteFriend.habitType = self.habitType
-                inviteFriend.delegateInvite = self
-                inviteFriend.router = self.router
-                self.present(inviteFriend, animated: true, completion: nil)
+                self.router?.push(scene: .inviteFriend) 
             }
         case .navigateToGroupImage(true):
-            let addGroupImage: AddGroupImageViewController = AddGroupImageViewController.from(from: .habit, with: .addGroupImage)
-            addGroupImage.habitType = habitType
-            addGroupImage.router = self.router
-            self.navigationController?.pushViewController(addGroupImage, animated: true)
+            self.router?.push(scene: .addGroupImage)
             break
         default:
             break
@@ -208,12 +157,10 @@ extension ReminderViewController: HabitViewRepresentable {
     
 }
 // MARK: navigationBarAction Callback
-extension ReminderViewController  : navigationBarAction {
+extension ReminderViewController: navigationBarAction {
     
     func ActionType()  {
-      //  router?.dismiss(controller: .addHabit)
-       // self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+        self.router?.dismiss(controller: .setTheme)
     }
 }
 

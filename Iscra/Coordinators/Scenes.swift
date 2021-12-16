@@ -9,20 +9,6 @@
 import Foundation
 
 enum Scenes:String {
-//    case welcome
-//    case login
-//    case signup
-//    case forgot
-//    case walkthrough
-//    case verification
-//    case landing
-//    case home
-//    case myAccount
-//    case habitCalender
-//    case changePassword
-//    case community
-//    case myChat
-    
     case welcome
     case login
     case signup
@@ -58,7 +44,6 @@ enum Scenes:String {
     case habitCalender
     case groupHabitFriends
 //    case RepeatDaysPopUp
-    
 }
 
 enum Storyboard:String {
@@ -91,6 +76,7 @@ enum StoryboardIdentifier:String {
     case inviteFriend
     case addGroupImage
     case editHabit
+    case webView
 
     case addMyPicture
     case editName

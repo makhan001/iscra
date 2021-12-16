@@ -66,14 +66,13 @@ enum UserParams {
     struct UpdateProfile: Codable {
        // let user_id: String?
         let username: String?
-        
     }
 }
 
 enum SocialLoginType:  String, Codable {
-    case google = "1"
-    case apple = "2"
-    case facebook = "3"
+    case google = "0"
+    case apple = "1"
+    case facebook = "2"
 }
 
 enum HabitParams {
@@ -97,7 +96,7 @@ enum HabitParams {
         let icon: String?
         let name: String?
         let timer: String?
-        let reminders: String?
+        let reminders: Bool?
         let habit_type: String?
         let color_theme: String?
         let description: String?
@@ -114,4 +113,18 @@ enum HabitParams {
     
     struct AllHabitList: Codable {
     }
+    
+    struct GroupInvitations: Codable {
+        let habit_id: String?
+    }
+    
+    struct MarkAsComplete: Codable {
+        let habit_id: String?
+        let habit_day: String?
+        let is_completed: String?
+    }
+}
+
+enum CommunityParams {
+    
 }

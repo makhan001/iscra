@@ -12,11 +12,9 @@ final class HabitNameCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
     let controller: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .habitName)
-    
     let selectHabitPopUp: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
-    
-    private var myAccount: MyAccountCoordinator!
-    private var landing: LandingCoordinator!
+
+    private var setTheme: SetThemeCoordinator!
 
     override func start() {
         super.start()
@@ -35,31 +33,20 @@ final class HabitNameCoordinator: Coordinator<Scenes> {
         controller.router = self
         selectHabitPopUp.router = self
     }
-    
-    private func startLanding() {
-        router.dismissModule(animated: false, completion: nil)
-        landing = LandingCoordinator(router: Router())
-        add(landing)
-        landing.delegate = self
-        landing.start()
-        self.router.present(landing, animated: false)
-    }
-    
-    private func startHabitName() {
-//        habitName = HabitNameCoordinator(router: Router())
-//        add(habitName)
-//        habitName.delegate = self
-//        habitName.start()
-//        self.router.present(habitName, animated: true)
+        
+    private func startSetTheme() {
+        setTheme = SetThemeCoordinator(router: Router())
+        add(setTheme)
+        setTheme.delegate = self
+        setTheme.start()
+        self.router.present(setTheme, animated: true)
     }
 }
 
 extension HabitNameCoordinator: NextSceneDismisser {
-    
     func push(scene: Scenes) {
         switch scene {
-        case .selectHabitPopUp: startHabitName()
-        case .landing: startLanding()
+        case .setTheme: startSetTheme()
         default: break
         }
     }
@@ -70,7 +57,6 @@ extension HabitNameCoordinator: NextSceneDismisser {
 }
 
 extension HabitNameCoordinator: CoordinatorDimisser {
-    
     func dismiss(coordinator: Coordinator<Scenes>) {
         remove(child: coordinator)
         router.dismissModule(animated: true, completion: nil)

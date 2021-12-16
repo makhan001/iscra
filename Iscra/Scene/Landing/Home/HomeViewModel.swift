@@ -35,11 +35,14 @@ extension HomeViewModel: HabitServiceProvierDelegate {
 
     func completed<T>(for action: HabitAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
+            WebService().StopIndicator()
             if error != nil {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200, let habitList = resp.data?.habits {
                     self.habitList = habitList
+                  //  self.habitList.sort(by: {$0.createdAt!.compare($1.createdAt!) == .orderedDescending })
+                  //  self.habitList.sort(by: {$0.
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
                 } else if let resp = response as? SuccessResponseModel, resp.code == 200, let status = resp.status {
                    // self.view?.onAction(.isHabitDelete(true))

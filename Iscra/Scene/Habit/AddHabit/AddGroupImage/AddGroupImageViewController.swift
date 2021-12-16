@@ -14,14 +14,12 @@ class AddGroupImageViewController: UIViewController {
     @IBOutlet weak var imgGroup: UIImageView!
     @IBOutlet weak var btnImagePicker: UIButton!
     @IBOutlet weak var viewNavigation:NavigationBarView!
-    var habitType : HabitType = .good
     private let viewModel = AddHabitViewModel()
     weak var router: NextSceneDismisser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         SetUp()
-        print("self.router is \(self.router)")
     }
 }
 
@@ -53,30 +51,11 @@ extension AddGroupImageViewController {
     }
     
     private func nextClick() {
-//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "InviteFriendViewController") as! InviteFriendViewController
-//        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-//        vc.habitType = habitType
-//        vc.delegateInvite = self
-//        self.present(vc, animated: true, completion: nil)
-        
-//        let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
-//        inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-//        inviteFriend.habitType = habitType
-//        inviteFriend.delegateInvite = self
-//        self.present(inviteFriend, animated: true, completion: nil)
         self.viewModel.onAction(action: .setGroupImage(.setGroupImage), for: .setGroupImage)
     }
     
     private func skipClick() {
-        
         self.viewModel.apiForCreateHabit()
-        
-//        let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
-//        inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-//        inviteFriend.habitType = habitType
-//        inviteFriend.delegateInvite = self
-//        self.present(inviteFriend, animated: true, completion: nil)
     }
     
     private func imageClick() {
@@ -122,24 +101,7 @@ extension AddGroupImageViewController {
     }
 }
 
-extension AddGroupImageViewController : InviteNavigation {
-    func navigate(inviteType: inviteType) {
-        if inviteType == .mayBeLatter{
-            guard let viewControllers = navigationController?.viewControllers else { return }
-            for vc in viewControllers {
-                if vc is LandingTabBarController {
-                    navigationController?.popToViewController(vc, animated: true)
-                    return
-                }
-            }
-        }else{
-            
-        }
-    }
-}
-
 extension AddGroupImageViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let tempImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         imgGroup.image = tempImage
@@ -155,7 +117,6 @@ extension AddGroupImageViewController: UINavigationControllerDelegate, UIImagePi
 
 // MARK: Callbacks
 extension AddGroupImageViewController: HabitViewRepresentable {
-   
     func onAction(_ action: HabitAction) {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
@@ -163,28 +124,17 @@ extension AddGroupImageViewController: HabitViewRepresentable {
         case let .sucessMessage(msg):
             self.showToast(message: msg, seconds: 0.5)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
-                inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-                inviteFriend.habitType = self.habitType
-                inviteFriend.delegateInvite = self
-                inviteFriend.router = self.router
-                self.present(inviteFriend, animated: true, completion: nil)
+               self.router?.push(scene: .inviteFriend)
             }
-//        case .callApi(true):
-//            self.viewModel.apiForCreateHabit()
-//            break
         default:
             break
         }
     }
-    
 }
+
 // MARK: navigationBarAction Callback
-extension AddGroupImageViewController  : navigationBarAction {
-    
-    func ActionType()  {
-       // router?.dismiss(controller: .addHabit)
-       // self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+extension AddGroupImageViewController: navigationBarAction {
+    func ActionType() {
+        router?.dismiss(controller: .addGroupImage)
     }
 }

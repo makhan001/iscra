@@ -39,7 +39,7 @@ class MyCommunityCollectionView: UICollectionView , UICollectionViewDelegate , U
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width:  (collectionView.bounds.size.width - 20) , height: 161)
+        return CGSize(width:  (collectionView.bounds.size.width - 10 ) , height: 161)
 
     }
    

@@ -13,13 +13,17 @@ enum navRightViewType{
   case myProfie
   case editName
   case other
+  case editHabit
+  case habitCalender
 }
+
 class NavigationBarView: UIView {
   let XIB_NAME = "NavigationBarView"
   @IBOutlet var viewContent: UIView!
   @IBOutlet var lblTitle: UILabel!
   @IBOutlet var btnBack: UIButton!
   @IBOutlet var btnRightBar: UIButton!
+  @IBOutlet var btnSave: UIButton!
   var delegateBarAction:navigationBarAction?
   var navType:navRightViewType = .other
   override init(frame: CGRect) {
@@ -33,19 +37,26 @@ class NavigationBarView: UIView {
   func commonInit() {
     Bundle.main.loadNibNamed(XIB_NAME, owner: self, options: nil)
     viewContent.fixInView(self)
-    [btnBack, btnRightBar].forEach {
+    [btnSave, btnBack, btnRightBar].forEach {
       $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
     }
     btnBack.showsTouchWhenHighlighted = false
     switch navType {
     case .myProfie:
       btnRightBar.setImage(#imageLiteral(resourceName: "ic-edit-image"), for: .normal)
-        
       btnRightBar.isHidden = false
         btnBack.isHidden = true
     case .editName:
       btnRightBar.isHidden = false
       btnRightBar.setImage(#imageLiteral(resourceName: "ic-checkmark"), for: .normal)
+    case .editHabit:
+      btnSave.isHidden = false
+       // btnRightBar.tintColor = .black
+        //btnRightBar.setImage(#imageLiteral(resourceName: "ic-checkmark"), for: .normal)
+     //   btnRightBar.titleLabel?.text = "Save"
+    case .habitCalender:
+      btnRightBar.isHidden = false
+      btnRightBar.setImage(#imageLiteral(resourceName: "ic-dots"), for: .normal)
     case .other:
       btnRightBar.isHidden = true
     }
@@ -57,6 +68,8 @@ extension NavigationBarView {
     case btnBack:
       self.backClick()
     case btnRightBar:
+      self.rightButtonClick()
+    case btnSave:
       self.rightButtonClick()
     default:
       break

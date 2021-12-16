@@ -17,19 +17,27 @@ struct DataClass: Codable {
     var register: Register?
     var loginData: LoginData?
     var forgotPassword: String?
+    var url: String?
     var verificationCode: Int?
     var user: User?
     var habit: Habit?
     var habits: [AllHabits]?
-    var groupDetails: AllHabits?
+  //  var groupDetails: AllHabits?
+    
+    var habitDetails: HabitDetails?
+    var habitMark: HabitMark?
 
+   // let habits: [[HabitUnion]]?
     enum CodingKeys: String, CodingKey {
-        case register, user, habit, habits //, groupdetails
+        case register, user, habit, habits, url//, groupdetails
         case loginData = "login_data"
         case forgotPassword = "forgot_password"
         case verificationCode = "verification_code"
        // case habitDetail = "groupdetails"
-        case groupDetails = "groupdetails"
+      //  case groupDetails = "groupdetails"
+     //   case groupDetails = "habit_details"
+        case  habitDetails = "habit_details"
+        case habitMark = "habit_mark"
     }
 }
 
@@ -125,3 +133,5 @@ struct User: Codable {
         case isApple = "is_apple"
     }
 }
+
+

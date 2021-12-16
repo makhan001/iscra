@@ -10,9 +10,6 @@ enum inviteType {
     case inviteFriend
     case mayBeLatter
 }
-protocol InviteNavigation: AnyObject {
-    func navigate(inviteType:inviteType)
-}
 
 class InviteFriendViewController: UIViewController {
     
@@ -23,13 +20,11 @@ class InviteFriendViewController: UIViewController {
     @IBOutlet weak var btnMaybeLetter: UIButton!
     
     var habitType: HabitType = .good
-    weak var delegateInvite : InviteNavigation?
     weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        print("self.router is \(self.router)")
     }
 }
 
@@ -37,33 +32,33 @@ class InviteFriendViewController: UIViewController {
 extension InviteFriendViewController {
     
     private func setup() {
+        self.habitType = HabitUtils.shared.habitType
         setUpView(habitType:habitType)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        if habitType == .group{
+        if habitType == .group_habit{
             btnMaybeLetter.setTitle("Share public", for: .normal)
         }
         [btnInviteFriends, btnMaybeLetter].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }
-    
+
     func setUpView(habitType: HabitType) {
         switch habitType {
         case .good:
             imgIcon.image = UIImage(named: "goodhabitfriends")
-            lblHeaderTitle.text = "Together is \nmore fun"
-            lblMiddleText.text = "Do you know it’s much easier to build a new habits when your friend can support you. Invite your friends, build good habits together and have fun!"
-            
+            lblHeaderTitle.text = AppConstant.inviteFriendsGoodTitle
+            lblMiddleText.text = AppConstant.inviteFriendsGoodSubTitle
         case .bad:
             imgIcon.image = UIImage(named: "badHabitfriends")
-            lblHeaderTitle.text = "Together we \nare stronger"
-            lblMiddleText.text = "It’s much easier to get rid of bad habits together! Support each other to become better people."
-            
-        case .group:
+            lblHeaderTitle.text = AppConstant.inviteFriendsBadTitle
+            lblMiddleText.text = AppConstant.inviteFriendsBadSubTitle
+        case .group_habit:
             imgIcon.image = UIImage(named: "groupHabitFriends")
-            lblHeaderTitle.text = "Let’s invite \nyour friends"
-            lblMiddleText.text = "Invite your friends, build good habits together and have fun (if your friends are already with Iscra, they can find your habit in search and join you). You can make your group public and find new friends!"
+            lblHeaderTitle.text = AppConstant.inviteFriendsGroupTitle
+            lblMiddleText.text = AppConstant.inviteFriendsGroupSubTitle
         }
+        HabitUtils.shared.removeAllHabitData()
     }
 }
 
@@ -95,7 +90,6 @@ extension InviteFriendViewController  {
         }else{
             print("MaybeLetterAction")
         }
-      ///  self.router?.dismiss(controller: .addHabit)
         self.router?.push(scene: .landing)
     }
 }

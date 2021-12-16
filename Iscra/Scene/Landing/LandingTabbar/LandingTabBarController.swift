@@ -151,6 +151,9 @@ extension LandingTabBarController : UITabBarControllerDelegate {
             }
         case 1:
             print("Comunity")
+            if viewController.isKind(of: CommunityViewController.self) {
+                (viewController as! CommunityViewController).router = router
+            }
         case 2:
             print("chatVc")
         case 3:
@@ -168,10 +171,6 @@ extension LandingTabBarController : UITabBarControllerDelegate {
 extension LandingTabBarController: SelectHabitPopUpDelegate{
     func addHabit(type: HabitType) {
         router?.push(scene: .selectHabitPopUp)
-        
-        //        let addHabit: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .addHabit)
-        //        addHabit.habitType = habitType
-        //        navigationController?.pushViewController(addHabit, animated: true)
     }
 }
 

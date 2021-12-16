@@ -87,6 +87,7 @@ class DialogsViewController: UITableViewController {
     private var dialogs: [QBChatDialog] = []
     private var cancel = false
     
+    
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,12 +97,14 @@ class DialogsViewController: UITableViewController {
         setupNavigationBar()
         setupNavigationTitle()
        
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        reloadContent()
+       reloadContent()
+      
         QBChat.instance.addDelegate(self)
         chatManager.delegate = self
          
@@ -171,7 +174,7 @@ class DialogsViewController: UITableViewController {
         navigationItem.leftBarButtonItems = []
         let leftMyChatBarButtonItem = UIBarButtonItem(title: "My chats", style: .done, target: self, action: #selector(logoutUser))
         leftMyChatBarButtonItem.setTitleTextAttributes([
-                                                        NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 32.0)!,
+                                                        NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 28.0)!,
                                                         NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1)],
             for: .normal)
         self.navigationItem.leftBarButtonItem  = leftMyChatBarButtonItem
@@ -267,6 +270,7 @@ class DialogsViewController: UITableViewController {
         QBChat.instance.disconnect(completionBlock: { error in
             if let error = error {
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
+               
                 return
             }
             self.logOut()
@@ -452,9 +456,15 @@ class DialogsViewController: UITableViewController {
           print("Chat list not empty")
         }
         else {
-            print("chat is EMPTY")
+//            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+//                       label.center = CGPoint(x: 160, y: 285)
+//                       label.textAlignment = .center
+//                       label.text = "I'm a test label"
+//                      self.view.addSubview(label)
+         print("chat is EMPTY")
         }
-        tableView.reloadData()
+      tableView.reloadData()
+       
     }
     
     fileprivate func setupDate(_ dateSent: Date) -> String {
@@ -522,22 +532,28 @@ extension DialogsViewController: QBChatDelegate {
 // MARK: - ChatManagerDelegate
 extension DialogsViewController: ChatManagerDelegate {
     func chatManager(_ chatManager: ChatManager, didUpdateChatDialog chatDialog: QBChatDialog) {
-        reloadContent()
+       reloadContent()
+
         SVProgressHUD.dismiss()
     }
     
     func chatManager(_ chatManager: ChatManager, didFailUpdateStorage message: String) {
+      
         SVProgressHUD.showError(withStatus: message)
     }
     
     func chatManager(_ chatManager: ChatManager, didUpdateStorage message: String) {
         reloadContent()
+       
+        
+        
         SVProgressHUD.dismiss()
         QBChat.instance.addDelegate(self)
     }
     
     func chatManagerWillUpdateStorage(_ chatManager: ChatManager) {
         if navigationController?.topViewController == self {
+            
             SVProgressHUD.show()
         }
     }

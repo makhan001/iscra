@@ -13,12 +13,15 @@ final class LandingCoordinator: Coordinator<Scenes> {
     weak var delegate: CoordinatorDimisser?
     let controller: LandingTabBarController = LandingTabBarController.from(from: .landing, with: .landing)
     let selectHabitPopUp: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
+    let communityDetail: CommunityDetailViewController = CommunityDetailViewController.from(from: .landing, with: .communityDetail)
 
     private var login: LoginCoordinator!
     private var welcome: OnboardingCoordinator!
     private var habitName: HabitNameCoordinator!
+    private var communitySearch: CommunitySearchCoordinator!
     private var habitCalender: HabitCalenderCoordinator!
     private var myAccount: MyAccountCoordinator!
+    private var groupHabitCalender: GroupHabitCalenderCoordinator!
     
     override func start() {
         super.start()
@@ -30,6 +33,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         controller.router = self
         selectHabitPopUp.router = self
         selectHabitPopUp.delegate = self
+        communityDetail.router = self
     }
     
     private func startLogin() {
@@ -67,6 +71,14 @@ final class LandingCoordinator: Coordinator<Scenes> {
         self.router.present(myAccount, animated: true)
     }
     
+    private func startCommunitySearch() {
+        communitySearch = CommunitySearchCoordinator(router: Router())
+        add(communitySearch)
+        communitySearch.delegate = self
+        communitySearch.start()
+        self.router.present(communitySearch, animated: true)
+    }
+    
     private func startLanding() {
         //        landing = LandingCoordinator(router: Router())
         //        add(landing)
@@ -91,6 +103,14 @@ final class LandingCoordinator: Coordinator<Scenes> {
         self.router.present(habitCalender, animated: true)
     }
     
+    private func startGroupHabitCalender() {
+        groupHabitCalender = GroupHabitCalenderCoordinator(router: Router())
+        add(groupHabitCalender)
+        groupHabitCalender.delegate = self
+        groupHabitCalender.start(habitId: controller.home.viewModel.habitId)
+        self.router.present(groupHabitCalender, animated: true)
+    }
+    
     private func startHabitTypeView() {
         self.router.present(selectHabitPopUp, animated: true)
     }
@@ -102,25 +122,34 @@ final class LandingCoordinator: Coordinator<Scenes> {
         habitName.start(type: type)
         self.router.present(habitName, animated: true)
     }
+    
+    private func startCommunityDetail() {
+        router.present(communityDetail, animated: true)
+    }
 }
 
 extension LandingCoordinator: NextSceneDismisser {
     
     func push(scene: Scenes) {
         switch scene {
-        case .home: startHome()
+       // case .home: startHome()
         case .login: startLogin()
         case .welcome: startWelcome()
-        case .landing: startLanding()
+       // case .landing: startLanding()
+      //  case .communitySearch: startCommunitySearch()
+        case .communityDetail: startCommunityDetail()
         case .myAccount: startMyAccount()
         case .walkthrough: startWalkthrough()
         case .habitCalender: startHabitCalender()
         case .selectHabitPopUp: startHabitTypeView()
+        case .groupHabitFriends: startGroupHabitCalender()
         default: break
         }
     }
     
-    func dismiss(controller: Scenes) { }
+    func dismiss(controller: Scenes) {
+        router.dismissModule(animated: true, completion: nil)
+    }
 }
 
 extension LandingCoordinator: CoordinatorDimisser {

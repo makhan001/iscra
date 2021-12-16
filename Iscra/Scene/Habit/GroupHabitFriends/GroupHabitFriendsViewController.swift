@@ -9,31 +9,32 @@ import UIKit
 import FSCalendar
 
 class GroupHabitFriendsViewController: UIViewController {
+    
     // MARK: Outlets
-    @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var btnShare: UIButton!
-    @IBOutlet weak var btnEditHabit: UIButton!
-    @IBOutlet weak var btnBottomSheet: UIButton!
-    @IBOutlet weak var btnDeleteHabit: UIButton!
-    @IBOutlet weak var btnPreviousMonth: UIButton!
-    @IBOutlet weak var btnSegment: UISegmentedControl!
-    
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblDaysCount: UILabel!
-    @IBOutlet weak var lblLongestStreak: UILabel!
-    
     @IBOutlet weak var viewBottom: UIView!
-    @IBOutlet weak var viewCalender: FSCalendar!
+    @IBOutlet weak var btnShare: UIButton!
     @IBOutlet weak var viewProgress: UIView!
     @IBOutlet weak var viewEditHabit: UIView!
+    @IBOutlet weak var lblDaysCount: UILabel!
+    @IBOutlet weak var btnEditHabit: UIButton!
     @IBOutlet weak var viewDeleteHabit: UIView!
+    @IBOutlet weak var btnDeleteHabit: UIButton!
+    @IBOutlet weak var viewCalender: FSCalendar!
+    @IBOutlet weak var lblLongestStreak: UILabel!
+    @IBOutlet weak var btnPreviousMonth: UIButton!
+    @IBOutlet weak var btnSegment: UISegmentedControl!
     @IBOutlet weak var viewCircular: CircularProgressBar!
+    @IBOutlet weak var viewNavigation: NavigationBarView!
     @IBOutlet weak var tableFriends: GroupHabitFriendsTable!
-    
+
     private var eventsDateArray: [Date] = []
     private var themeColor = UIColor(hex: "#7B86EB")
     private let selectedColor = [NSAttributedString.Key.foregroundColor: UIColor(named: "WhiteAccent")]
     private let unselectedColor = [NSAttributedString.Key.foregroundColor: UIColor(named: "BlackAccent")]
+
+    var strTitleName = ""
+    weak var router: NextSceneDismisser?
+    let viewModel: HabitCalenderViewModel = HabitCalenderViewModel(provider: HabitServiceProvider())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,28 +50,34 @@ class GroupHabitFriendsViewController: UIViewController {
 // MARK: Instance Methods
 extension GroupHabitFriendsViewController {
     private func setup() {
+        self.viewModel.view = self
         self.calenderSetup()
         self.circularViewSetup()
+        self.setUpNavigationBar()
         self.viewBottom.isHidden = true
         self.viewProgress.isHidden = true
         self.tableFriends.isHidden = false
         self.tableFriends.configure(obj: 10)
-        self.lblTitle.textColor = self.themeColor
         self.lblLongestStreak.text = "Longest \nStreak"
         self.tableFriends.friendTableNavigationDelegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
-        [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
+        [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         [btnSegment ].forEach {
             $0?.addTarget(self, action: #selector(segmentPressed(_:)), for: .valueChanged)
         }
-        if #available(iOS 13.0, *) {
-            self.btnSegment.selectedSegmentTintColor = self.themeColor
-        }
         self.btnSegment.setTitleTextAttributes(unselectedColor as [NSAttributedString.Key : Any], for: .normal)
         self.btnSegment.setTitleTextAttributes(selectedColor as [NSAttributedString.Key : Any], for: .selected)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
+        self.viewModel.getHabitDetail()
+        self.habitDetailSetup()
+    }
+    
+    @objc func refrershUI(){
+                self.viewModel.getHabitDetail()
+                self.habitDetailSetup()
     }
     
     private func calenderSetup() {
@@ -95,6 +102,16 @@ extension GroupHabitFriendsViewController {
             dateObjects.append(dateObject!)
         }
         self.eventsDateArray = dateObjects
+    }
+    
+    func habitDetailSetup() {
+        self.calenderSetup()
+        self.circularViewSetup()
+        self.viewNavigation.lblTitle.textColor = self.themeColor
+        self.viewNavigation.lblTitle.text = self.strTitleName.capitalized
+        if #available(iOS 13.0, *) {
+            self.btnSegment.selectedSegmentTintColor = self.themeColor
+        }
     }
     
     func circularViewSetup() {
@@ -122,10 +139,6 @@ extension GroupHabitFriendsViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
-        case btnBack:
-            self.backAction()
-        case btnBottomSheet:
-            self.bottomSheetAction()
         case btnEditHabit:
             self.editAction()
         case btnShare:
@@ -150,37 +163,23 @@ extension GroupHabitFriendsViewController {
     }
     
     private func backAction() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    private func bottomSheetAction() {
-        self.viewBottom.isHidden = false
+        self.router?.dismiss(controller: .habitCalender)
     }
     
     private func editAction() {
         self.viewBottom.isHidden = true
-        
-        let editHabit: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
-        self.navigationController?.pushViewController(editHabit, animated: true)
-        
-//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "EditHabitViewController") as! EditHabitViewController
-//        self.navigationController?.pushViewController(vc, animated: true)
+        self.router?.push(scene: .editHabit)
     }
     
     private func shareAction() {
         self.viewBottom.isHidden = true
-//        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "EditReminderViewController") as! EditReminderViewController
-//        self.navigationController?.present(vc, animated: false, completion: nil)
-        
-        let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
-        self.navigationController?.present(editReminder, animated: false, completion: nil)
+      //   self.showToast(message: "Under development", seconds: 0.5)
+        self.viewModel.apiMarkAsComplete()
     }
     
     private func deleteAction() {
         self.viewBottom.isHidden = true
-        self.showAlert()
+        self.showAlert(habitId: String(self.viewModel.habitId))
     }
     
     private func previousMonthAction() {
@@ -232,8 +231,74 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
 
 extension GroupHabitFriendsViewController: FriendTableNavigation{
     func didNavigateToCalender() {
-        let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-        habitCalender.strTitleName = "Me"
-        self.navigationController?.pushViewController(habitCalender, animated: true)
+//        let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
+//        habitCalender.strTitleName = "Me"
+//        habitCalender.router = self.router
+//        print("self.router is \(self.router)")
+//        self.navigationController?.pushViewController(habitCalender, animated: true)
+//
+        self.showToast(message: "Under development", seconds: 0.5)
+      //  self.router?.push(scene: .habitCalender)
+    }
+}
+
+// MARK: API Callback
+extension GroupHabitFriendsViewController: HabitViewRepresentable {
+    func onAction(_ action: HabitAction) {
+        switch action {
+        case  let .errorMessage(msg):
+            self.showToast(message: msg)
+        case .sucessMessage(_):
+           // self.showToast(message: msg)
+            self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
+            self.strTitleName = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
+            self.habitDetailSetup()
+           // self.getDateFromTimeStamp(timeStamp: (self.viewModel.objHabitDetail?.timer)!)
+         //   self.viewModel.objHabitDetail?.habitMarks?[0].habitDay
+            
+            break
+        case let .isHabitDelete(true, msg):
+            self.showToast(message: msg, seconds: 0.5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.router?.push(scene: .landing)
+            }
+        default:
+            break
+        }
+    }
+}
+// MARK: showAlert for delete habit
+extension GroupHabitFriendsViewController {
+    func showAlert(habitId: String) {
+        let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
+            self.viewModel.deleteHabit(habitId: habitId)
+        }
+        deleteAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
+    }
+}
+
+// MARK: navigationBar Action
+extension GroupHabitFriendsViewController:  navigationBarAction {
+    private func setUpNavigationBar() {
+        self.viewNavigation.navType = .habitCalender
+        self.viewNavigation.commonInit()
+        self.viewNavigation.delegateBarAction = self
+        self.viewNavigation.lblTitle.textColor = self.themeColor
+    }
+    
+    func ActionType() {
+        self.router?.dismiss(controller: .habitCalender)
+    }
+    
+    func RightButtonAction() {
+        self.viewBottom.isHidden = false
     }
 }

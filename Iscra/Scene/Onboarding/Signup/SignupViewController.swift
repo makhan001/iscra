@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleSignIn
+import AuthenticationServices
 
 
 class SignupViewController: UIViewController {
@@ -22,6 +24,7 @@ class SignupViewController: UIViewController {
     
     weak var router: NextSceneDismisser?
     private let viewModel: SignupViewModel = SignupViewModel(provider: OnboardingServiceProvider())
+    let signInConfig = GIDConfiguration.init(clientID: AppConstant.googleClientID)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,11 @@ extension SignupViewController {
         }
         [btnRegister, btnGoogle, btnApple, btnShowPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        }
+        if #available(iOS 13.0, *) {
+            btnApple.isHidden = false
+        } else {
+            btnApple.isHidden = true
         }
     }
 }
@@ -61,11 +69,26 @@ extension SignupViewController {
     }
     
     private func registerGoogleAction() {
-        print("googleLogin")
+        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+            guard error == nil else { return }
+            self.viewModel.email = user?.profile?.email ?? ""
+            self.viewModel.username = user?.profile?.name ?? ""
+            self.viewModel.social_id = user?.userID ?? ""
+            self.viewModel.socialLogin(logintype: .google)
+        }
     }
     
     private func registerAppleAction() {
-        print("Applelogin")
+        if #available(iOS 13.0, *) {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+            authorizationController.delegate = self
+            authorizationController.performRequests()
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     private func showPasswordAction() {
@@ -76,10 +99,6 @@ extension SignupViewController {
             self.btnShowPassword.isSelected = true
             self.txtPassword.isSecureTextEntry = false
         }
-    }
-    
-    private func forgotPasswordAction() {
-        print("forgotPasswordAction")
     }
     
     private func registerAction() {
@@ -130,8 +149,30 @@ extension SignupViewController: OnboardingViewRepresentable {
             self.showToast(message: msg)
         case .register:
             router?.push(scene: .verification)
+        case let .socialLogin(msg):
+            self.showToast(message: msg, seconds: 0.45)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.router?.push(scene: .landing)
+            }
         default:
             break
         }
     }
+}
+
+extension SignupViewController: ASAuthorizationControllerDelegate {
+  @available(iOS 13.0, *)
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
+      //self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
+        self.viewModel.email = appleCredentials.email ?? ""
+        self.viewModel.username = (appleCredentials.fullName?.givenName) ?? ""
+        self.viewModel.social_id = appleCredentials.user
+        self.viewModel.socialLogin(logintype: .apple)
+    }
+  }
+  @available(iOS 13.0, *)
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    print(error.localizedDescription)
+  }
 }

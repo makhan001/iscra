@@ -20,7 +20,8 @@ class CommunitySearchViewController: UIViewController {
     @IBOutlet weak var tableFriends: CommunityFriendTableView!
 
     weak var delegate1 : communityGroupHabitDetail?
-    
+    weak var router: NextSceneDismisser?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -88,7 +89,8 @@ extension CommunitySearchViewController {
     
     private func backAction() {
         print("backAction")
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
+       // self.router?.dismiss(controller: .communitySearch) // deepak
     }
     
     private func createGroupHabitAction() {

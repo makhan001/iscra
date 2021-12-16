@@ -51,6 +51,7 @@ extension ChangePasswordViewController: navigationBarAction {
     func ActionType()  {
         //router?.dismiss(controller: .login)
         self.navigationController?.popViewController(animated: true)
+       // router?.dismiss(controller: .myAccount)
     }
     
 }

@@ -40,7 +40,8 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
@@ -72,7 +73,7 @@
     </objects>
     <designables>
         <designable name="Gwj-uh-kqW">
-            <size key="intrinsicContentSize" width="188.5" height="24"/>
+            <size key="intrinsicContentSize" width="193.5" height="24"/>
         </designable>
     </designables>
     <resources>

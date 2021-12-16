@@ -33,11 +33,27 @@ class AppConstant: NSObject {
     static let otpMiddleTittle = "Enter the confirmation \ncode we sent to 'email'."
     static let loginHeaderTitle = "Log in into your \naccount"
     static let subscriptionTitle = "Thanks for using our app and making yourself and others better people. Unfortunately, for our development we need money. You can choose between two options: subscribe for one dollar per month or allow ads."
+    //WebView
+    static let termsAndConditionTitle = "Terms And Condition"
+    static let privacyPolicyTitle = "Privacy Policy"
+    static let aboutUsTitle = "About Us"
+    static let termsAndConditionURL = "https://www.iscra.app/terms-conditions"
+    static let privacyPolicyURL = "https://www.iscra.app/privacy-policy"
+    static let aboutUsURL = "https://www.iscra.app/about-us"
+    
     static let firstHabitTitle = "Are you ready to create \nyour first habit?"
     static let firstHabitSubTitle = "I am excited to help you to become \na better version of yourself. Let's \nstart our journey. Click plus button \nto create your first habit."
     static let goodHabitTitle = ", let’s define your habit"
     static let badHabitTitle = "! I will help you to get rid of bad habit"
     static let groupHabitTitle = "Let’s become better together"
+    
+    static let inviteFriendsGoodTitle = "Together is \nmore fun"
+    static let inviteFriendsGoodSubTitle = "Do you know it’s much easier to build a new habits when your friend can support you. Invite your friends, build good habits together and have fun!"
+    static let inviteFriendsBadTitle = "Together we \nare stronger"
+    static let inviteFriendsBadSubTitle = "It’s much easier to get rid of bad habits together! Support each other to become better people."
+    
+    static let inviteFriendsGroupTitle = "Let’s invite \nyour friends"
+    static let inviteFriendsGroupSubTitle = "Invite your friends, build good habits together and have fun (if your friends are already with Iscra, they can find your habit in search and join you). You can make your group public and find new friends!"
 
     // MARK:Validation Alert messages
     static let emptyEmail = "Email is required"

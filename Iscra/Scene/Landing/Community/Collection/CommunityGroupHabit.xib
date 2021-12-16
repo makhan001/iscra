@@ -105,7 +105,7 @@
                 <outlet property="lblHabitSubtitle" destination="qGi-sp-s7a" id="wV3-nX-vhG"/>
                 <outlet property="lblHabitTitle" destination="cGp-ll-1Vn" id="bdV-vt-H9V"/>
             </connections>
-            <point key="canvasLocation" x="-288" y="33"/>
+            <point key="canvasLocation" x="-289.13043478260875" y="32.477678571428569"/>
         </collectionViewCell>
     </objects>
     <designables>

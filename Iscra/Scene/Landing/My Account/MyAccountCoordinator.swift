@@ -26,12 +26,8 @@ final class MyAccountCoordinator: Coordinator<Scenes> {
         changePassword.router = self
     }
     
-//    private func startVerification() {
-//        router.present(changePassword, animated: true)
-//    }
-    
     private func startChangePassword() {
-        
+        // TODO: startChangePassword
     }
     
     private func startLanding() {
@@ -55,14 +51,7 @@ extension MyAccountCoordinator: NextSceneDismisser {
     }
     
     func dismiss(controller: Scenes) {
-        switch  controller {
-        case .verification:
-            router.dismissModule(animated: false) {
-                self.startLanding()
-            }
-        default:
-            delegate?.dismiss(coordinator: self)
-        }
+        router.dismissModule(animated: true, completion: nil)
     }
 }
 

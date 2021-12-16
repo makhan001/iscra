@@ -58,6 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.setNavigationBar()
         self.setRootController()
         self.setupQuickBlox()
+        
+        _ = GIDConfiguration.init(clientID: "737448075691-v86u462dj0cepp37pukugf53cg7fbom2.apps.googleusercontent.com")
     }
     
     private func setupQuickBlox() {

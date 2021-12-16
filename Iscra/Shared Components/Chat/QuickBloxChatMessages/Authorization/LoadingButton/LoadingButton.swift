@@ -39,7 +39,7 @@ class LoadingButton: UIButton {
     override var isEnabled: Bool{
         didSet {
             if isEnabled == true {
-                shapeLayer.fillColor = LoadingButtonColorConstant.blueColor.cgColor
+                shapeLayer.fillColor = LoadingButtonColorConstant.greenColor.cgColor
                 addShadowToButton(cornerRadius: 4)
             } else {
                 shapeLayer.fillColor = LoadingButtonColorConstant.grayColor.cgColor

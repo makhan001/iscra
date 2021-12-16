@@ -26,7 +26,6 @@ class SetThemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        print("self.router is \(self.router)")
     }
 }
 
@@ -78,27 +77,14 @@ extension SetThemeViewController {
     }
     
     private func showColor() {
-//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-//        let pvc = storyboard.instantiateViewController(withIdentifier: "ColorPopUpViewController") as! ColorPopUpViewController
-//        pvc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-//        pvc.delegateColor = self
-//        self.present(pvc, animated: true, completion: nil)
-        
         let colorPopUp: ColorPopUpViewController = ColorPopUpViewController.from(from: .habit, with: .colorPopUp)
         colorPopUp.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         colorPopUp.delegateColor = self
         self.present(colorPopUp, animated: true, completion: nil)
 
     }
+    
     private func showIcons() {
-//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-//        let pvc = storyboard.instantiateViewController(withIdentifier: "IconPopupViewController") as! IconPopupViewController
-//        pvc.themeColor = selectedColorTheme
-//        pvc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-//        pvc.iconResorces = iconResorces
-//        pvc.delegateIcon = self
-//        self.present(pvc, animated: true, completion: nil)
-        
         let iconPopup: IconPopupViewController = IconPopupViewController.from(from: .habit, with: .iconPopup)
         iconPopup.themeColor = selectedColorTheme
         iconPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -108,33 +94,21 @@ extension SetThemeViewController {
         self.present(iconPopup, animated: true, completion: nil)
 
     }
+    
     private func nextClick() {
-//        let storyboard = UIStoryboard(name: "Habit", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "ReminderViewController") as! ReminderViewController
-//        vc.habitType = habitType
-//        navigationController?.pushViewController(vc, animated: true)
-        
-//        let reminder: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
-//        reminder.habitType = habitType
-//        self.navigationController?.pushViewController(reminder, animated: true)
-        
         self.viewModel.icon = self.selectedIcons
         self.viewModel.colorTheme = self.selectedColorTheme.colorHex //"#7B86EB"
         viewModel.onAction(action: .setTheme(.setTheme), for: .setTheme)
         viewModel.didNavigateToSetTheme = {
             isNavigate in
             if isNavigate{
-                let reminder: ReminderViewController = ReminderViewController.from(from: .habit, with: .reminder)
-                reminder.habitType = self.habitType
-                reminder.router = self.router
-                reminder.selectedColorTheme = self.selectedColorTheme
-                self.navigationController?.pushViewController(reminder, animated: true)
+               self.router?.push(scene: .reminder)
             }
         }
     }
 }
 
-extension SetThemeViewController : selectedColordelegate ,selectedIcondelegate {
+extension SetThemeViewController: selectedColordelegate ,selectedIcondelegate {
     
     func selectedIcon(Icon: String) {
         ImgIcon.image = UIImage(named: Icon)
@@ -167,8 +141,6 @@ extension SetThemeViewController: HabitViewRepresentable {
 extension SetThemeViewController  : navigationBarAction {
     
     func ActionType()  {
-      //  router?.dismiss(controller: .addHabit)
-      //  self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+        self.router?.dismiss(controller: .setTheme)
     }
 }

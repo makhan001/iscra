@@ -50,7 +50,6 @@ final class ChangePasswordViewModel {
         }else if password == newPassword {
             view?.onAction(.requireFields(AppConstant.invalidCurrentPasswordMatch))
         }else{
-        
         self.provider.changePassword(param: UserParams.ChangePassword(current_password: password, new_password: newPassword))
         }
     }
@@ -59,6 +58,7 @@ final class ChangePasswordViewModel {
 extension ChangePasswordViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {
+            WebService().StopIndicator()
             if error != nil {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {

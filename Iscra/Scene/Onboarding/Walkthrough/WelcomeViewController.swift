@@ -12,7 +12,6 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var btnLogin:UIButton!
     @IBOutlet weak var btnStart:UIButton!
     @IBOutlet weak var lblHeaderTitle:UILabel!
-    
     weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
@@ -24,7 +23,6 @@ class WelcomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
     }
-    
 }
 
 // MARK:- Instance Methods
@@ -53,14 +51,11 @@ extension WelcomeViewController {
     }
     
     private func startAction() {
-//        router?.(scene: .walkthrough)
-        let walkthrough: WalkthroughViewController = WalkthroughViewController.from(from: .onboarding, with: .walkthrough)
-        walkthrough.router = router
-        self.navigationController?.pushViewController(walkthrough, animated: true)
+        self.router?.push(scene: .walkthrough)
     }
     
     private func loginAction() {
-        router?.push(scene: .login)
+        self.router?.push(scene: .login)
     }
 }
 

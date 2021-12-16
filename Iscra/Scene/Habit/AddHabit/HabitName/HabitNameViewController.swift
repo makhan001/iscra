@@ -25,9 +25,7 @@ class HabitNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        print("self.router is \(self.router)")
     }
-    
 }
 
 extension HabitNameViewController {
@@ -42,7 +40,7 @@ extension HabitNameViewController {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         
-        if viewModel.habitType == .group {
+        if viewModel.habitType == .group_habit {
             self.viewDescription.isHidden = false
             self.txtFieldTitle.returnKeyType = .next
             self.lblUserName.text = AppConstant.groupHabitTitle
@@ -78,20 +76,17 @@ extension HabitNameViewController {
         viewModel.didNavigateToSetTheme = {
             isNavigate in
             if isNavigate{
-                let setTheme: SetThemeViewController = SetThemeViewController.from(from: .habit, with: .setTheme)
-                setTheme.router = self.router
-               // setTheme.habitType = self.viewModel.habitType
-                       self.navigationController?.pushViewController(setTheme, animated: true)
+               self.router?.push(scene: .setTheme) 
             }
         }
     }
 }
 
-// MARK:- Textfiled Delegate
+// MARK:- UITextField Delegate
 extension HabitNameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if self.viewModel.habitType == .group {
+        if self.viewModel.habitType == .group_habit {
             if textField == self.txtFieldTitle {
                 self.txtViewDescription.becomeFirstResponder()
             } else {
@@ -118,7 +113,6 @@ extension HabitNameViewController: UITextFieldDelegate {
         } else {
             return false
         }
-       
     }
 }
 
@@ -142,7 +136,7 @@ extension HabitNameViewController: UITextViewDelegate {
     func searchAutocompleteEntries(withSubstring substring: String) {
         if substring != "" {
             NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.reload), object: nil)
-            self.perform(#selector(self.reload), with: nil, afterDelay: 0.5)
+            self.perform(#selector(self.reload), with: nil, afterDelay: 0.2)
         }
     }
     
@@ -157,22 +151,16 @@ extension HabitNameViewController: HabitViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-//        case let .login(msg, isVerified):
-//            self.showToast(message: msg, seconds: 0.5)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                self.naviateUserAfterLogin(isVerified)
-//            }
         default:
             break
         }
     }
-    
 }
 
 // MARK: navigationBarAction Callback
 extension HabitNameViewController  : navigationBarAction {
-    
-    func ActionType()  {
+    func ActionType() {
+        HabitUtils.shared.removeAllHabitData()
         router?.dismiss(controller: .addHabit)
     }
 }

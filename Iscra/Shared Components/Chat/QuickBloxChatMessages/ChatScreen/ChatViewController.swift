@@ -1017,6 +1017,8 @@ class ChatViewController: UIViewController, ChatContextMenu {
         if let pickerController = pickerController, sourceType == .camera {
             switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized:
+                //showAllAssets()
+                //Camera access
                 show(pickerController)
             case .notDetermined:
                 AVCaptureDevice.requestAccess(for: .video) { (granted) in

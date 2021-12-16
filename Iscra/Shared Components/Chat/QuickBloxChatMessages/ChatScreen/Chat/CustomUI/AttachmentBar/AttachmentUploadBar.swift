@@ -125,7 +125,7 @@ class AttachmentUploadBar: UIView {
                 if attachmentType == .Camera {
                     newImage = newImage.fixOrientation()
                 }
-                
+                //camera use photo button click
                 let largestSide = newImage.size.width > newImage.size.height ? newImage.size.width : newImage.size.height
                 let scaleCoeficient = largestSide/560.0
                 let newSize = CGSize(width: newImage.size.width/scaleCoeficient, height: newImage.size.height/scaleCoeficient)

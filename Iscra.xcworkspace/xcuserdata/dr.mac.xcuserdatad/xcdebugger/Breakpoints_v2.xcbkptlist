@@ -269,10 +269,10 @@
             filePath = "Iscra/Scene/Onboarding/Login/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -287,8 +287,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "300"
             endingLineNumber = "300"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "unregisterSubscription(forUniqueDeviceIdentifier:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -303,8 +303,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "297"
             endingLineNumber = "297"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "unregisterSubscription(forUniqueDeviceIdentifier:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -319,8 +319,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "284"
             endingLineNumber = "284"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "logOut()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -335,8 +335,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "272"
             endingLineNumber = "272"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "disconnectUser()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -351,8 +351,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "239"
             endingLineNumber = "239"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "didTapLogoutSetup()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -367,8 +367,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "224"
             endingLineNumber = "224"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "didTapNewChat(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -383,8 +383,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "220"
             endingLineNumber = "220"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "didTapInfo(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -399,40 +399,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "323"
             endingLineNumber = "323"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1EAB8D1E-445B-41C7-8542-2DA07C5A1667"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/DialogsScreen/DialogsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8EE19E8E-4E1B-4AC9-B2F2-6EFBB8A5FDCD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/DialogsScreen/DialogsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "464"
-            endingLineNumber = "464"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -447,24 +415,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "518"
             endingLineNumber = "518"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C08293B9-4600-493A-A003-A42581C6BDB8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/DialogsScreen/DialogsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "557"
-            endingLineNumber = "557"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "chatServiceChatDidFail(withStreamError:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -479,8 +431,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "542"
             endingLineNumber = "542"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "chatManager(_:didFailUpdateStorage:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -512,38 +464,6 @@
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "prepareForReuse()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "16AA984D-211E-4EAB-BAB9-29D186A3B786"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/DialogsScreen/DialogCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "setSelected(_:animated:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A17338E1-071F-4EA4-A020-4B9EA4851BC2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/DialogsScreen/DialogCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "setHighlighted(_:animated:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -593,54 +513,6 @@
             endingLineNumber = "105"
             landmarkName = "updateStorage()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "48BC11C3-48AC-430F-9C4C-1ABF24EF6E61"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/ChatManager/ChatManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "721"
-            endingLineNumber = "721"
-            landmarkName = "updateAllDialogs(withPageLimit:extendedRequest:iterationBlock:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "48BC11C3-48AC-430F-9C4C-1ABF24EF6E61 - c5adfd8d90c49c66"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.QBResponse, Swift.Array&lt;__C.QBChatDialog&gt;, Swift.Set&lt;__C.NSNumber&gt;, __C.QBResponsePage) -&gt; () in closure #1 (__C.QBResponsePage) -&gt; () in Iscra.ChatManager.(updateAllDialogs in _F75BD74A70115AD6896351D2AE7CC1E8)(withPageLimit: Swift.Int, extendedRequest: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, iterationBlock: Swift.Optional&lt;(Swift.Optional&lt;__C.QBResponse&gt;, Swift.Optional&lt;Swift.Array&lt;__C.QBChatDialog&gt;&gt;, Swift.Optional&lt;Swift.Set&lt;__C.NSNumber&gt;&gt;, Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()&gt;, completion: (Swift.Optional&lt;__C.QBResponse&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Iscra"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Shared%20Components/Chat/QuickBloxChatMessages/ChatManager/ChatManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "721"
-                  endingLineNumber = "721"
-                  offsetFromSymbolStart = "2808">
-               </Location>
-               <Location
-                  uuid = "48BC11C3-48AC-430F-9C4C-1ABF24EF6E61 - 176bb28039db9a7b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;__C.QBResponse&gt;) -&gt; () in closure #1 (__C.QBResponse, Swift.Array&lt;__C.QBChatDialog&gt;, Swift.Set&lt;__C.NSNumber&gt;, __C.QBResponsePage) -&gt; () in closure #1 (__C.QBResponsePage) -&gt; () in Iscra.ChatManager.(updateAllDialogs in _F75BD74A70115AD6896351D2AE7CC1E8)(withPageLimit: Swift.Int, extendedRequest: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, iterationBlock: Swift.Optional&lt;(Swift.Optional&lt;__C.QBResponse&gt;, Swift.Optional&lt;Swift.Array&lt;__C.QBChatDialog&gt;&gt;, Swift.Optional&lt;Swift.Set&lt;__C.NSNumber&gt;&gt;, Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()&gt;, completion: (Swift.Optional&lt;__C.QBResponse&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Iscra"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Shared%20Components/Chat/QuickBloxChatMessages/ChatManager/ChatManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "722"
-                  endingLineNumber = "722"
-                  offsetFromSymbolStart = "95">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -822,22 +694,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "676245FF-70C6-486C-9C81-05EE90F21846"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/ChatScreen/ChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "991"
-            endingLineNumber = "991"
-            landmarkName = "showPickerController(_:sourceType:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "0CA6D141-BA35-497C-87A5-CE0727ECF70B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -893,8 +749,8 @@
             filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/ChatScreen/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1020"
-            endingLineNumber = "1020"
+            startingLineNumber = "1022"
+            endingLineNumber = "1022"
             landmarkName = "showPickerController(_:sourceType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -903,22 +759,6 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "7E5F6BFF-5E8E-44CE-B212-ADBD772D10D3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/ChatScreen/ChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1025"
-            endingLineNumber = "1025"
-            landmarkName = "showPickerController(_:sourceType:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6482FB61-18A9-4A70-8DE8-F473C5FD62F0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -934,6 +774,22 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "6482FB61-18A9-4A70-8DE8-F473C5FD62F0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/ChatScreen/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1029"
+            endingLineNumber = "1029"
+            landmarkName = "showPickerController(_:sourceType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             uuid = "409F779F-DD06-4161-B12E-735C06D54B8E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -941,8 +797,8 @@
             filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/ChatScreen/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1032"
-            endingLineNumber = "1032"
+            startingLineNumber = "1034"
+            endingLineNumber = "1034"
             landmarkName = "showPickerController(_:sourceType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1110,107 +966,238 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "18B5647B-FED2-4765-ADA5-C9B10545266F"
+            uuid = "F3B9C42B-905F-4EC2-9C16-BF04D4DB62AC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
+            filePath = "Iscra/Scene/Onboarding/Login/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "CustomTabBar"
-            landmarkType = "3">
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "loginGoogleAction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "93296500-4FF2-4738-B6DD-2564B331509F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Onboarding/Login/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "socialLogin(logintype:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17496CFD-308D-453D-BD17-1C5D49E5BCD9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Onboarding/Login/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "socialLogin(logintype:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6396CB15-2FC8-41A5-A0D0-C395B4008970"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Onboarding/Login/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "socialLogin(logintype:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8C173DAA-398E-4BEA-B759-9940A192710F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Onboarding/Login/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "socialLogin(logintype:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A41DB24-EEA2-44D7-8857-A994E5DFA9F9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/API/core-api/Webservice.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "requestMultiPart(urlString:httpMethod:parameters:decodingType:imageArray:fileArray:file:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC4F15EA-2227-42D4-9B0C-064FEB087AF2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Onboarding/Login/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "socialLogin(logintype:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB4F2BA1-0ABB-4C04-BFB0-51AB7186C69B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Onboarding/Login/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "socialLogin(logintype:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF0DA97D-55DA-4255-A58A-BBD73C8486A9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/API/core-api/Webservice.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "requestMultiPart(urlString:httpMethod:parameters:decodingType:imageArray:fileArray:file:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB2C8C40-36F7-4F83-9310-CDC4F2978D9C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/API/core-api/Webservice.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "requestMultiPart(urlString:httpMethod:parameters:decodingType:imageArray:fileArray:file:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3C95BB82-BBD6-4607-93D6-9113F5FDA4D8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/API/core-api/Webservice.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "requestMultiPart(urlString:httpMethod:parameters:decodingType:imageArray:fileArray:file:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1FCA71A4-9AE0-45D7-8B13-FE49A212F8A7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/Alamofire/Source/ResponseSerialization.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "response(queue:completionHandler:)"
+            landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "18B5647B-FED2-4765-ADA5-C9B10545266F - 806edb5e534c5c4d"
+                  uuid = "1FCA71A4-9AE0-45D7-8B13-FE49A212F8A7 - 9a4e20e8cd200030"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Iscra.CustomTabBar.height.getter : CoreGraphics.CGFloat"
-                  moduleName = "Iscra"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in Alamofire.DataRequest.response(queue: __C.OS_dispatch_queue, completionHandler: (Alamofire.DataResponse&lt;Swift.Optional&lt;Foundation.Data&gt;, Alamofire.AFError&gt;) -&gt; ()) -&gt; Self"
+                  moduleName = "Alamofire"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
+                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Pods/Alamofire/Source/ResponseSerialization.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "175"
-                  endingLineNumber = "175"
-                  offsetFromSymbolStart = "113">
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "964">
                </Location>
                <Location
-                  uuid = "18B5647B-FED2-4765-ADA5-C9B10545266F - 370b16180b852c41"
+                  uuid = "1FCA71A4-9AE0-45D7-8B13-FE49A212F8A7 - 8f8e8f743c169b02"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Iscra.CustomTabBar.height.setter : CoreGraphics.CGFloat"
-                  moduleName = "Iscra"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in closure #1 () -&gt; () in Alamofire.DataRequest.response(queue: __C.OS_dispatch_queue, completionHandler: (Alamofire.DataResponse&lt;Swift.Optional&lt;Foundation.Data&gt;, Alamofire.AFError&gt;) -&gt; ()) -&gt; Self"
+                  moduleName = "Alamofire"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
+                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Pods/Alamofire/Source/ResponseSerialization.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "175"
-                  endingLineNumber = "175"
-                  offsetFromSymbolStart = "126">
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "459">
                </Location>
                <Location
-                  uuid = "18B5647B-FED2-4765-ADA5-C9B10545266F - e19373aca8606ea1"
+                  uuid = "1FCA71A4-9AE0-45D7-8B13-FE49A212F8A7 - dcb92efab1221106"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Iscra.CustomTabBar.height.modify : CoreGraphics.CGFloat"
-                  moduleName = "Iscra"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in closure #1 () -&gt; () in closure #1 () -&gt; () in Alamofire.DataRequest.response(queue: __C.OS_dispatch_queue, completionHandler: (Alamofire.DataResponse&lt;Swift.Optional&lt;Foundation.Data&gt;, Alamofire.AFError&gt;) -&gt; ()) -&gt; Self"
+                  moduleName = "Alamofire"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
+                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Pods/Alamofire/Source/ResponseSerialization.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "18">
-               </Location>
-               <Location
-                  uuid = "18B5647B-FED2-4765-ADA5-C9B10545266F - c4897e31b7a70441"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Iscra.CustomTabBar.height.modify : CoreGraphics.CGFloat with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "Iscra"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "175"
-                  endingLineNumber = "175"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  uuid = "18B5647B-FED2-4765-ADA5-C9B10545266F - af4b4c28ebef37bd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Iscra.CustomTabBar.init(frame: __C.CGRect) -&gt; Iscra.CustomTabBar"
-                  moduleName = "Iscra"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "175"
-                  endingLineNumber = "175"
-                  offsetFromSymbolStart = "113">
-               </Location>
-               <Location
-                  uuid = "18B5647B-FED2-4765-ADA5-C9B10545266F - c40e9de4c229aad1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Iscra.CustomTabBar.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Iscra.CustomTabBar&gt;"
-                  moduleName = "Iscra"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "175"
-                  endingLineNumber = "175"
-                  offsetFromSymbolStart = "102">
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "41">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1218,16 +1205,159 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "98B6E1A6-3228-420D-B18C-41576E3D33AD"
+            uuid = "8188F6B0-0655-4B48-9CF0-AA6B698A469C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/ChatManager/ChatManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "720"
+            endingLineNumber = "720"
+            landmarkName = "updateAllDialogs(withPageLimit:extendedRequest:iterationBlock:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8188F6B0-0655-4B48-9CF0-AA6B698A469C - c5adfd8d90c49c39"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.QBResponse, Swift.Array&lt;__C.QBChatDialog&gt;, Swift.Set&lt;__C.NSNumber&gt;, __C.QBResponsePage) -&gt; () in closure #1 (__C.QBResponsePage) -&gt; () in Iscra.ChatManager.(updateAllDialogs in _F75BD74A70115AD6896351D2AE7CC1E8)(withPageLimit: Swift.Int, extendedRequest: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, iterationBlock: Swift.Optional&lt;(Swift.Optional&lt;__C.QBResponse&gt;, Swift.Optional&lt;Swift.Array&lt;__C.QBChatDialog&gt;&gt;, Swift.Optional&lt;Swift.Set&lt;__C.NSNumber&gt;&gt;, Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()&gt;, completion: (Swift.Optional&lt;__C.QBResponse&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Iscra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Shared%20Components/Chat/QuickBloxChatMessages/ChatManager/ChatManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "720"
+                  endingLineNumber = "720"
+                  offsetFromSymbolStart = "2509">
+               </Location>
+               <Location
+                  uuid = "8188F6B0-0655-4B48-9CF0-AA6B698A469C - e31af209cb36f97a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.NSNumber) -&gt; Swift.String in closure #1 (__C.QBResponse, Swift.Array&lt;__C.QBChatDialog&gt;, Swift.Set&lt;__C.NSNumber&gt;, __C.QBResponsePage) -&gt; () in closure #1 (__C.QBResponsePage) -&gt; () in Iscra.ChatManager.(updateAllDialogs in _F75BD74A70115AD6896351D2AE7CC1E8)(withPageLimit: Swift.Int, extendedRequest: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, iterationBlock: Swift.Optional&lt;(Swift.Optional&lt;__C.QBResponse&gt;, Swift.Optional&lt;Swift.Array&lt;__C.QBChatDialog&gt;&gt;, Swift.Optional&lt;Swift.Set&lt;__C.NSNumber&gt;&gt;, Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()&gt;, completion: (Swift.Optional&lt;__C.QBResponse&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Iscra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Shared%20Components/Chat/QuickBloxChatMessages/ChatManager/ChatManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "720"
+                  endingLineNumber = "720"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "073C5DFB-9A1D-4CE2-91BB-48AC2D0AD474"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "sizeThatFits(_:)"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "LandingTabBarController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "073C5DFB-9A1D-4CE2-91BB-48AC2D0AD474 - 74bec4c810a7477a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Iscra.LandingTabBarController.kBarHeight.getter : CoreGraphics.CGFloat"
+                  moduleName = "Iscra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "30">
+               </Location>
+               <Location
+                  uuid = "073C5DFB-9A1D-4CE2-91BB-48AC2D0AD474 - 629281ecfcfb42e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Iscra.LandingTabBarController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Iscra.LandingTabBarController"
+                  moduleName = "Iscra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "443">
+               </Location>
+               <Location
+                  uuid = "073C5DFB-9A1D-4CE2-91BB-48AC2D0AD474 - c0b3b58e91b5133d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Iscra.LandingTabBarController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Iscra.LandingTabBarController&gt;"
+                  moduleName = "Iscra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dr.mac/Documents/GitHub/iscra/Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "384">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2657759A-3F30-49D9-969C-D2652B7C42CE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "viewWillLayoutSubviews()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F5CF989E-5EBC-4FFC-8635-9EFD64D4102C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "setupItems()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4808458F-A090-49C5-A1B6-1AD5A213381D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "setTabbar()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

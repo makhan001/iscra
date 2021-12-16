@@ -39,7 +39,7 @@ class MyChatViewController: UIViewController {
       //  let userEmail = UserDefaults.standard.value(forKey: Message.shared.K_UserEmail) as? String ?? ""
         
         let userEmail = UserStore.userEmail//"ameena@gmail.com"//jitu99@gmail.com"
-        let userPassword = "jitu12345"
+        let userPassword = "12345678"
         
         QBRequest.logIn(withUserEmail: UserStore.userEmail ?? "",
                 password: userPassword) { (response, user) in
@@ -62,7 +62,7 @@ class MyChatViewController: UIViewController {
     //Mark:- Connect to chat
     private func connectToChat(user: QBUUser) {
         //infoText = LoginStatusConstant.intoChat
-        let userPassword = "jitu12345"//"jitu12345"
+        let userPassword = "12345678"//"jitu12345"
        
         if QBChat.instance.isConnected == true {
           //did Login action

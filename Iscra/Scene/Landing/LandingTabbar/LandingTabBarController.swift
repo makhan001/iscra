@@ -10,7 +10,7 @@ import UIKit
 class LandingTabBarController: UITabBarController {
     
     var toggle:Bool = false
-    let kBarHeight: CGFloat = 100
+    let kBarHeight: CGFloat = 80
     weak var router: NextSceneDismisser?
     
     var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
@@ -31,7 +31,8 @@ class LandingTabBarController: UITabBarController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         var tabFrame = self.tabBar.frame
-        tabFrame.size.height = kBarHeight
+      tabFrame.size.height = kBarHeight
+       
         tabFrame.origin.y = self.view.frame.size.height - kBarHeight
         self.tabBar.frame = tabFrame
     }

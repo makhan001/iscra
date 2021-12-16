@@ -23,6 +23,8 @@ class HabitCalenderViewController: UIViewController {
     @IBOutlet weak var btnPreviousMonth: UIButton!
     @IBOutlet weak var viewCircular: CircularProgressBar!
     @IBOutlet weak var viewNavigation: NavigationBarView!
+    @IBOutlet weak var viewMarkasComplete: UIView!
+    @IBOutlet weak var btnMarkasComplete: UIButton!
 
     var strTitleName = ""
     private var eventsDateArray: [Date] = []
@@ -48,9 +50,10 @@ extension HabitCalenderViewController {
         self.viewBottom.isHidden = true
         self.setUpNavigationBar()
         self.lblLongestStreak.text = "Longest \nStreak"
+        self.viewMarkasComplete.isHidden = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
-        [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
+        [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth,btnMarkasComplete].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
@@ -98,6 +101,18 @@ extension HabitCalenderViewController {
         self.viewCircular.lineWidth = 20
         self.viewCircular.ringColor =  self.themeColor!
     }
+    
+    func checkCurrentDay(days: [String]) {
+        var dayName: String = ""
+        dayName =  dayName.getDateFromTimeStamp(timeStamp : String(format: "%.0f", NSDate().timeIntervalSince1970), isDayName: true).lowercased()
+        for i in days {
+            if i.contains(dayName){
+                self.viewMarkasComplete.isHidden = false
+            }else{
+                self.viewMarkasComplete.isHidden = true
+            }
+        }
+    }
 }
 
 // MARK:- Button Action
@@ -116,6 +131,8 @@ extension HabitCalenderViewController {
             self.deleteAction()
         case btnPreviousMonth:
             self.previousMonthAction()
+        case btnMarkasComplete:
+            self.markAsCompleteAction()
         default:
             break
         }
@@ -137,10 +154,14 @@ extension HabitCalenderViewController {
         self.router?.push(scene: .editHabit)
     }
     
+    private func markAsCompleteAction() {
+       self.viewBottom.isHidden = true
+        self.viewModel.apiMarkAsComplete()
+    }
+    
     private func shareAction() {
        self.viewBottom.isHidden = true
-       // self.showToast(message: "Under development", seconds: 0.5)
-        self.viewModel.apiMarkAsComplete()
+       self.showToast(message: "Under development", seconds: 0.5)
         
 //        let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
 //        self.navigationController?.present(editReminder, animated: false, completion: nil)
@@ -203,6 +224,7 @@ extension HabitCalenderViewController: HabitViewRepresentable {
            // self.showToast(message: msg)
             self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
             self.strTitleName = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
+            self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)
             self.habitDetailSetup()
            // self.getDateFromTimeStamp(timeStamp: (self.viewModel.objHabitDetail?.timer)!)
          //   self.viewModel.objHabitDetail?.habitMarks?[0].habitDay
@@ -217,16 +239,6 @@ extension HabitCalenderViewController: HabitViewRepresentable {
             break
         }
     }
-    
-//    func getDateFromTimeStamp(timeStamp : String) -> String {
-//        let date = NSDate(timeIntervalSince1970: Double(timeStamp) ?? 0.0 / 1000)
-//            let dayTimePeriodFormatter = DateFormatter()
-//            dayTimePeriodFormatter.dateFormat = "dd MMM YY, hh:mm a, EEEE"
-//        dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
-//            let dateString = dayTimePeriodFormatter.string(from: date as Date)
-//        print("dateString is \(dateString)")
-//            return dateString
-//        }
 }
 
 // MARK: showAlert for delete habit

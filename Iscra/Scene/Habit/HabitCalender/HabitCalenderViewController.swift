@@ -139,7 +139,8 @@ extension HabitCalenderViewController {
     
     private func shareAction() {
        self.viewBottom.isHidden = true
-        self.showToast(message: "Under development", seconds: 0.5)
+       // self.showToast(message: "Under development", seconds: 0.5)
+        self.viewModel.apiMarkAsComplete()
         
 //        let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
 //        self.navigationController?.present(editReminder, animated: false, completion: nil)

@@ -151,6 +151,9 @@ extension LandingTabBarController : UITabBarControllerDelegate {
             }
         case 1:
             print("Comunity")
+            if viewController.isKind(of: CommunityViewController.self) {
+                (viewController as! CommunityViewController).router = router
+            }
         case 2:
             print("chatVc")
         case 3:

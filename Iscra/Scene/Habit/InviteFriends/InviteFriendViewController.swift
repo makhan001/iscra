@@ -10,9 +10,6 @@ enum inviteType {
     case inviteFriend
     case mayBeLatter
 }
-protocol InviteNavigation: AnyObject {
-    func navigate(inviteType:inviteType)
-}
 
 class InviteFriendViewController: UIViewController {
     
@@ -23,7 +20,6 @@ class InviteFriendViewController: UIViewController {
     @IBOutlet weak var btnMaybeLetter: UIButton!
     
     var habitType: HabitType = .good
-    weak var delegateInvite : InviteNavigation?
     weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
@@ -37,7 +33,6 @@ extension InviteFriendViewController {
     
     private func setup() {
         self.habitType = HabitUtils.shared.habitType
-        
         setUpView(habitType:habitType)
         navigationController?.setNavigationBarHidden(true, animated: false)
         if habitType == .group_habit{
@@ -95,7 +90,6 @@ extension InviteFriendViewController  {
         }else{
             print("MaybeLetterAction")
         }
-      ///  self.router?.dismiss(controller: .addHabit)
         self.router?.push(scene: .landing)
     }
 }

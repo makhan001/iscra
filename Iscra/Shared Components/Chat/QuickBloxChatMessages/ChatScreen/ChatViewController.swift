@@ -224,6 +224,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         QBChat.instance.addDelegate(self)
         setupViewMessages()
         dataSource.delegate = self
@@ -529,6 +530,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         registerCells()
         collectionView.transform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: -1.0, tx: 0.0, ty: 0.0)
         setupInputToolbar()
+       
     }
     
     private func registerCells() {
@@ -703,7 +705,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         if let readIDs = message.readIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
            readIDs.isEmpty == false {
             if #available(iOS 13.0, *) {
-                return #imageLiteral(resourceName: "delivered").withTintColor(#colorLiteral(red: 0.2216441333, green: 0.4713830948, blue: 0.9869660735, alpha: 1))
+                return #imageLiteral(resourceName: "delivered").withTintColor(#colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1))
             } else {
                 // Fallback on earlier versions
             }

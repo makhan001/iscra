@@ -32,6 +32,7 @@ class CreateNewDialogViewController: UIViewController {
     @IBOutlet weak var chatSegment: UISegmentedControl!
     private var titleView = TitleView()
     
+    
     //MARK: - Properties
     private var users : [QBUUser] = []
     private var downloadedUsers : [QBUUser] = []
@@ -358,7 +359,8 @@ extension CreateNewDialogViewController {
           print("Chat list not empty")
         }
         else {
-            print("chat is EMPTY")
+            
+           print("chat is EMPTY")
         }
         tblUserChatListView.reloadData()
     }

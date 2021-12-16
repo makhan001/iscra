@@ -372,11 +372,11 @@
                         <viewControllerLayoutGuide type="bottom" id="UVZ-av-zum"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ehY-ph-mhQ">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="igV-BD-PJG">
-                                <rect key="frame" x="0.0" y="0.0" width="966" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="646" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="xjP-Ge-F0T"/>
                                 </constraints>
@@ -387,7 +387,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gnw-BZ-eQP">
-                                <rect key="frame" x="0.0" y="44" width="1024" height="1322"/>
+                                <rect key="frame" x="0.0" y="44" width="704" height="951.5"/>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.96470588235294119" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="U1v-Zg-9Kv" id="2bs-5g-bCg"/>
@@ -395,7 +395,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUf-Oh-X9a">
-                                <rect key="frame" x="968" y="0.0" width="56" height="44"/>
+                                <rect key="frame" x="648" y="0.0" width="56" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="0fQ-aT-Dns"/>
@@ -545,7 +545,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="g2V-iR-VLB"/>
+        <segue reference="Sv5-SU-Yum"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" width="12" height="10"/>

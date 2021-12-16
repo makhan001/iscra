@@ -23,7 +23,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.39692170766-8vkfqscsq4ommlmsnrdmeld8knjne2ec</string>
+				<string>com.googleusercontent.apps.537497635240-eiednf7mbhf7iv3s41f7c62okqak54mc</string>
 			</array>
 		</dict>
 	</array>
@@ -86,8 +86,6 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

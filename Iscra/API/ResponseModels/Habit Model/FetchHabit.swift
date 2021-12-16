@@ -17,6 +17,7 @@ struct AllHabits: Codable {
     let habitDescription: String?
     let groupImage,timer: String?
     let createdAt, updatedAt: Int?
+    let habitMarks: [HabitMark]?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -29,6 +30,7 @@ struct AllHabits: Codable {
         case userID = "user_id"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case habitMarks = "habit_marks"
     }
 }
 
@@ -64,9 +66,9 @@ struct HabitDetails: Codable {
 // MARK: - HabitMark
 struct HabitMark: Codable {
     let id, habitID: Int?
-    let habitDay: String?
+    let habitDay: Int?//String?
     let isCompleted: Bool?
-    let createdAt, updatedAt: String?
+    let createdAt, updatedAt: Int? // String?
     let userID: Int?
 
     enum CodingKeys: String, CodingKey {

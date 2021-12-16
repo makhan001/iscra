@@ -34,6 +34,7 @@ class  HabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         }
         let objHabitList = self.habitList[indexPath.row]
         cell.configure(obj: objHabitList)
+        cell.collectiondays.reloadData()
         return cell
     }
     

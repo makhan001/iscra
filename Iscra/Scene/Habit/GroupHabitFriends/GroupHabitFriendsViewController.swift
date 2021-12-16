@@ -26,6 +26,8 @@ class GroupHabitFriendsViewController: UIViewController {
     @IBOutlet weak var viewCircular: CircularProgressBar!
     @IBOutlet weak var viewNavigation: NavigationBarView!
     @IBOutlet weak var tableFriends: GroupHabitFriendsTable!
+    @IBOutlet weak var viewMarkasComplete: UIView!
+    @IBOutlet weak var btnMarkasComplete: UIButton!
 
     private var eventsDateArray: [Date] = []
     private var themeColor = UIColor(hex: "#7B86EB")
@@ -45,6 +47,8 @@ class GroupHabitFriendsViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
     }
+    
+ 
 }
 
 // MARK: Instance Methods
@@ -57,12 +61,13 @@ extension GroupHabitFriendsViewController {
         self.viewBottom.isHidden = true
         self.viewProgress.isHidden = true
         self.tableFriends.isHidden = false
+        self.viewMarkasComplete.isHidden = true
         self.tableFriends.configure(obj: 10)
         self.lblLongestStreak.text = "Longest \nStreak"
         self.tableFriends.friendTableNavigationDelegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
-        [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
+        [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth,btnMarkasComplete].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         [btnSegment ].forEach {
@@ -118,6 +123,18 @@ extension GroupHabitFriendsViewController {
         self.viewCircular.lineWidth = 20
         self.viewCircular.ringColor =  self.themeColor!
     }
+    
+    func checkCurrentDay(days: [String]) {
+        var dayName: String = ""
+        dayName =  dayName.getDateFromTimeStamp(timeStamp : String(format: "%.0f", NSDate().timeIntervalSince1970), isDayName: true).lowercased()
+        for i in days {
+            if i.contains(dayName){
+                self.viewMarkasComplete.isHidden = false
+            }else{
+                self.viewMarkasComplete.isHidden = true
+            }
+        }
+    }
 }
 
 // MARK:- Button Action
@@ -147,6 +164,8 @@ extension GroupHabitFriendsViewController {
             self.deleteAction()
         case btnPreviousMonth:
             self.previousMonthAction()
+        case btnMarkasComplete:
+            self.markAsCompleteAction()
         default:
             break
         }
@@ -171,10 +190,14 @@ extension GroupHabitFriendsViewController {
         self.router?.push(scene: .editHabit)
     }
     
+    private func markAsCompleteAction() {
+       self.viewBottom.isHidden = true
+        self.viewModel.apiMarkAsComplete()
+    }
+    
     private func shareAction() {
         self.viewBottom.isHidden = true
-      //   self.showToast(message: "Under development", seconds: 0.5)
-        self.viewModel.apiMarkAsComplete()
+         self.showToast(message: "Under development", seconds: 0.5)
     }
     
     private func deleteAction() {
@@ -252,6 +275,7 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
            // self.showToast(message: msg)
             self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
             self.strTitleName = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
+            self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)
             self.habitDetailSetup()
            // self.getDateFromTimeStamp(timeStamp: (self.viewModel.objHabitDetail?.timer)!)
          //   self.viewModel.objHabitDetail?.habitMarks?[0].habitDay

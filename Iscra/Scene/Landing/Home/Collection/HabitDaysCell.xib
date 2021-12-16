@@ -52,6 +52,33 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1v-EZ-5Bh" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
+                                <rect key="frame" x="13" y="86" width="24" height="24"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-Blanktick" translatesAutoresizingMaskIntoConstraints="NO" id="lpq-Hb-Uce">
                                 <rect key="frame" x="13" y="86" width="24" height="24"/>
                                 <constraints>
@@ -67,13 +94,17 @@
                         <constraints>
                             <constraint firstItem="Y9c-g6-pAd" firstAttribute="top" secondItem="an9-gJ-2Hd" secondAttribute="top" constant="20" id="4YF-fQ-40r"/>
                             <constraint firstAttribute="trailing" secondItem="LkU-HZ-pef" secondAttribute="trailing" id="AVi-Ht-3wB"/>
+                            <constraint firstItem="i1v-EZ-5Bh" firstAttribute="leading" secondItem="lpq-Hb-Uce" secondAttribute="leading" id="CJP-E2-Wu7"/>
                             <constraint firstItem="lpq-Hb-Uce" firstAttribute="centerX" secondItem="an9-gJ-2Hd" secondAttribute="centerX" id="Q39-Wj-XRr"/>
                             <constraint firstItem="Y9c-g6-pAd" firstAttribute="leading" secondItem="an9-gJ-2Hd" secondAttribute="leading" id="S5j-OU-WKB"/>
                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="lpq-Hb-Uce" secondAttribute="bottom" constant="29" id="Wwe-hl-HbF"/>
+                            <constraint firstItem="i1v-EZ-5Bh" firstAttribute="trailing" secondItem="lpq-Hb-Uce" secondAttribute="trailing" id="aN5-zB-eU7"/>
                             <constraint firstItem="LkU-HZ-pef" firstAttribute="top" secondItem="Y9c-g6-pAd" secondAttribute="bottom" constant="10" id="beX-Ur-Du5"/>
+                            <constraint firstItem="i1v-EZ-5Bh" firstAttribute="bottom" secondItem="lpq-Hb-Uce" secondAttribute="bottom" id="g08-tj-b77"/>
                             <constraint firstItem="LkU-HZ-pef" firstAttribute="leading" secondItem="an9-gJ-2Hd" secondAttribute="leading" id="gSy-XG-6fe"/>
                             <constraint firstItem="lpq-Hb-Uce" firstAttribute="top" secondItem="LkU-HZ-pef" secondAttribute="bottom" constant="10" id="iDv-LY-iyn"/>
                             <constraint firstAttribute="bottom" secondItem="LCg-jQ-whx" secondAttribute="bottom" id="j16-W8-OcG"/>
+                            <constraint firstItem="i1v-EZ-5Bh" firstAttribute="top" secondItem="lpq-Hb-Uce" secondAttribute="top" id="kOi-0Y-T5P"/>
                             <constraint firstItem="LCg-jQ-whx" firstAttribute="top" secondItem="LkU-HZ-pef" secondAttribute="bottom" constant="5" id="qlJ-BH-30d"/>
                             <constraint firstItem="LCg-jQ-whx" firstAttribute="leading" secondItem="an9-gJ-2Hd" secondAttribute="leading" id="vQF-Tz-ZYP"/>
                             <constraint firstAttribute="trailing" secondItem="Y9c-g6-pAd" secondAttribute="trailing" id="wf0-24-1JU"/>

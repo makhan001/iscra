@@ -1775,7 +1775,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y9c-4c-Emf" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="495" width="414" height="256"/>
+                                        <rect key="frame" x="0.0" y="433" width="414" height="318"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6I-kK-y7l" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="179" y="24" width="56" height="8"/>
@@ -1791,7 +1791,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="10k-pv-QWh">
-                                                <rect key="frame" x="24" y="62" width="390" height="154"/>
+                                                <rect key="frame" x="24" y="62" width="390" height="216"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDf-32-1KG">
                                                         <rect key="frame" x="0.0" y="0.0" width="390" height="30"/>
@@ -1883,8 +1883,53 @@
                                                             <constraint firstItem="j8L-Ww-aHo" firstAttribute="centerY" secondItem="B3b-Fs-y5S" secondAttribute="centerY" id="wWN-Ct-bgz"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxC-4x-gVm">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXm-w7-1be">
                                                         <rect key="frame" x="0.0" y="124" width="390" height="30"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-shareWithFriends-image" translatesAutoresizingMaskIntoConstraints="NO" id="KGN-OS-eYz">
+                                                                <rect key="frame" x="0.0" y="3" width="24" height="24"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="24" id="bJM-XQ-fTh"/>
+                                                                    <constraint firstAttribute="height" constant="24" id="dZw-Up-P8b"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark as complete" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQq-2s-ZHZ" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                                                <rect key="frame" x="40" y="3" width="159.66666666666666" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" name="BlackAccent"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                                        <integer key="value" value="20"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBlack" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSMedium" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSExtraLight" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSLight" value="NO"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0D-ta-8xx">
+                                                                <rect key="frame" x="0.0" y="0.0" width="390" height="30"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="yQq-2s-ZHZ" firstAttribute="leading" secondItem="KGN-OS-eYz" secondAttribute="trailing" constant="16" id="4iF-RT-Zs3"/>
+                                                            <constraint firstItem="u0D-ta-8xx" firstAttribute="leading" secondItem="gXm-w7-1be" secondAttribute="leading" id="Fob-Me-Baf"/>
+                                                            <constraint firstAttribute="height" constant="30" id="HbU-r5-Dd7"/>
+                                                            <constraint firstAttribute="bottom" secondItem="u0D-ta-8xx" secondAttribute="bottom" id="Olz-BA-vpS"/>
+                                                            <constraint firstItem="yQq-2s-ZHZ" firstAttribute="centerY" secondItem="gXm-w7-1be" secondAttribute="centerY" id="e7s-JK-khh"/>
+                                                            <constraint firstItem="KGN-OS-eYz" firstAttribute="centerY" secondItem="gXm-w7-1be" secondAttribute="centerY" id="gal-hU-hVU"/>
+                                                            <constraint firstItem="u0D-ta-8xx" firstAttribute="top" secondItem="gXm-w7-1be" secondAttribute="top" id="uYW-y0-IvL"/>
+                                                            <constraint firstAttribute="trailing" secondItem="u0D-ta-8xx" secondAttribute="trailing" id="vt4-O5-pwc"/>
+                                                            <constraint firstItem="KGN-OS-eYz" firstAttribute="leading" secondItem="gXm-w7-1be" secondAttribute="leading" id="wNy-Uh-JIE"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxC-4x-gVm">
+                                                        <rect key="frame" x="0.0" y="186" width="390" height="30"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-deleteHabit" translatesAutoresizingMaskIntoConstraints="NO" id="dfe-e8-2wt">
                                                                 <rect key="frame" x="0.0" y="3" width="24" height="24"/>
@@ -1930,7 +1975,7 @@
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="154" id="KUM-Ny-RTg"/>
+                                                    <constraint firstAttribute="height" constant="216" id="KUM-Ny-RTg"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
@@ -1987,6 +2032,7 @@
                     <connections>
                         <outlet property="btnDeleteHabit" destination="tcf-dQ-PM0" id="wq5-VT-drn"/>
                         <outlet property="btnEditHabit" destination="WDE-JS-PU5" id="gbv-Re-alh"/>
+                        <outlet property="btnMarkasComplete" destination="u0D-ta-8xx" id="d7Q-Ly-hOK"/>
                         <outlet property="btnPreviousMonth" destination="Jvf-Ed-hwR" id="dJC-AH-gQM"/>
                         <outlet property="btnShare" destination="AjM-8U-imW" id="cnV-z1-d9z"/>
                         <outlet property="lblDaysCount" destination="jP4-ek-HrX" id="EUa-MB-ubg"/>
@@ -1996,6 +2042,7 @@
                         <outlet property="viewCircular" destination="B6E-or-5Vl" id="s2X-Mx-AT1"/>
                         <outlet property="viewDeleteHabit" destination="vxC-4x-gVm" id="ro6-cw-51p"/>
                         <outlet property="viewEditHabit" destination="wDf-32-1KG" id="GYt-oe-s66"/>
+                        <outlet property="viewMarkasComplete" destination="gXm-w7-1be" id="6Zn-Cq-TL0"/>
                         <outlet property="viewNavigation" destination="z7w-v0-HRu" id="pPE-7V-Uks"/>
                     </connections>
                 </viewController>
@@ -2181,7 +2228,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J06-rL-Qc9" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="485" width="414" height="266"/>
+                                        <rect key="frame" x="0.0" y="423" width="414" height="328"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RwK-YV-u69" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="179" y="24" width="56" height="8"/>
@@ -2197,7 +2244,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="6B1-xY-Q1o">
-                                                <rect key="frame" x="24" y="62" width="390" height="154"/>
+                                                <rect key="frame" x="24" y="62" width="390" height="216"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6C-FC-iKg">
                                                         <rect key="frame" x="0.0" y="0.0" width="390" height="30"/>
@@ -2289,8 +2336,53 @@
                                                             <constraint firstAttribute="trailing" secondItem="asF-xq-HfX" secondAttribute="trailing" id="tsV-N8-BTR"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FQ-bs-Gd3">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rxi-7k-ObN">
                                                         <rect key="frame" x="0.0" y="124" width="390" height="30"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-shareWithFriends-image" translatesAutoresizingMaskIntoConstraints="NO" id="IX3-ll-3kH">
+                                                                <rect key="frame" x="0.0" y="3" width="24" height="24"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="24" id="BjJ-uA-DRb"/>
+                                                                    <constraint firstAttribute="width" constant="24" id="PVx-Sj-nOe"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark as complete" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFY-rC-uN6" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                                                <rect key="frame" x="40" y="3" width="159.66666666666666" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" name="BlackAccent"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                                        <integer key="value" value="20"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBlack" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSMedium" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSExtraLight" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSLight" value="NO"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abw-4T-IO6">
+                                                                <rect key="frame" x="0.0" y="0.0" width="390" height="30"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="abw-4T-IO6" firstAttribute="leading" secondItem="rxi-7k-ObN" secondAttribute="leading" id="514-pM-XBJ"/>
+                                                            <constraint firstAttribute="bottom" secondItem="abw-4T-IO6" secondAttribute="bottom" id="5d7-eW-dbw"/>
+                                                            <constraint firstItem="IX3-ll-3kH" firstAttribute="leading" secondItem="rxi-7k-ObN" secondAttribute="leading" id="G2X-JW-Y5F"/>
+                                                            <constraint firstItem="hFY-rC-uN6" firstAttribute="leading" secondItem="IX3-ll-3kH" secondAttribute="trailing" constant="16" id="LaC-8w-A4L"/>
+                                                            <constraint firstItem="abw-4T-IO6" firstAttribute="top" secondItem="rxi-7k-ObN" secondAttribute="top" id="Vnd-o8-z7O"/>
+                                                            <constraint firstItem="hFY-rC-uN6" firstAttribute="centerY" secondItem="rxi-7k-ObN" secondAttribute="centerY" id="lP1-gj-qSn"/>
+                                                            <constraint firstAttribute="height" constant="30" id="otw-G3-Hi2"/>
+                                                            <constraint firstItem="IX3-ll-3kH" firstAttribute="centerY" secondItem="rxi-7k-ObN" secondAttribute="centerY" id="pj1-pd-cIb"/>
+                                                            <constraint firstAttribute="trailing" secondItem="abw-4T-IO6" secondAttribute="trailing" id="sUx-cW-IJb"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FQ-bs-Gd3">
+                                                        <rect key="frame" x="0.0" y="186" width="390" height="30"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-deleteHabit" translatesAutoresizingMaskIntoConstraints="NO" id="4bd-Yp-tKC">
                                                                 <rect key="frame" x="0.0" y="3" width="24" height="24"/>
@@ -2390,6 +2482,7 @@
                     <connections>
                         <outlet property="btnDeleteHabit" destination="ToE-CT-VJv" id="Ir2-GH-tAi"/>
                         <outlet property="btnEditHabit" destination="Zfp-4c-SD8" id="NcD-XG-ZfC"/>
+                        <outlet property="btnMarkasComplete" destination="abw-4T-IO6" id="TYk-ca-9xv"/>
                         <outlet property="btnPreviousMonth" destination="pPN-i5-nKM" id="9Pe-dh-yuA"/>
                         <outlet property="btnSegment" destination="DKE-2f-WnT" id="NT8-uS-239"/>
                         <outlet property="btnShare" destination="asF-xq-HfX" id="mGA-Fx-5af"/>
@@ -2401,6 +2494,7 @@
                         <outlet property="viewCircular" destination="AXq-B0-zfR" id="OaF-8T-inB"/>
                         <outlet property="viewDeleteHabit" destination="1FQ-bs-Gd3" id="t7g-AY-q2k"/>
                         <outlet property="viewEditHabit" destination="E6C-FC-iKg" id="HwQ-j7-1s8"/>
+                        <outlet property="viewMarkasComplete" destination="rxi-7k-ObN" id="ADE-kR-MgE"/>
                         <outlet property="viewNavigation" destination="xLc-oc-TGe" id="BPs-VV-W0I"/>
                         <outlet property="viewProgress" destination="qCA-F9-tiO" id="bHH-1N-hEn"/>
                     </connections>
@@ -2579,6 +2673,9 @@
         <designable name="ebr-vC-DYH">
             <size key="intrinsicContentSize" width="159" height="18"/>
         </designable>
+        <designable name="hFY-rC-uN6">
+            <size key="intrinsicContentSize" width="159.66666666666666" height="24"/>
+        </designable>
         <designable name="ixA-tU-dML">
             <size key="intrinsicContentSize" width="91.666666666666671" height="20.333333333333332"/>
         </designable>
@@ -2616,6 +2713,9 @@
         </designable>
         <designable name="yMw-Kn-tux">
             <size key="intrinsicContentSize" width="157.33333333333334" height="20.333333333333332"/>
+        </designable>
+        <designable name="yQq-2s-ZHZ">
+            <size key="intrinsicContentSize" width="159.66666666666666" height="24"/>
         </designable>
     </designables>
     <resources>

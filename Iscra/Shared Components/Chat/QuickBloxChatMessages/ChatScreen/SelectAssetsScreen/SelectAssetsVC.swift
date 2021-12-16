@@ -41,8 +41,10 @@ class SelectAssetsVC: UIViewController {
     }
     
     private func fetchAssets() {
+        SVProgressHUD.show()
         let fetchOptions = PHFetchOptions()
         fetchOptions.includeAssetSourceTypes = [.typeUserLibrary]
+       
         fetchOptions.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
         allPhotos = nil
         collectionView.reloadData()

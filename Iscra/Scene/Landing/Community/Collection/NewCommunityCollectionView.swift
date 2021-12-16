@@ -50,7 +50,7 @@ class NewCommunityCollectionView: UICollectionView , UICollectionViewDelegate , 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        // return CGSize(width: 289, height: 229)
-        return CGSize(width: collectionView.frame.width - 50, height: collectionView.frame.height)
+        return CGSize(width: collectionView.frame.width - 10, height: collectionView.frame.height)
     }
     
 }

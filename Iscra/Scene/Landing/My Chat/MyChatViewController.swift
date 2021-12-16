@@ -7,11 +7,13 @@
 
 import UIKit
 import Quickblox
+import SVProgressHUD
 
 class MyChatViewController: UIViewController {
 
     weak var router: NextSceneDismisser?
     
+    @IBOutlet var lblNo: UILabel!
     private var inputedLogin: String?
     private var inputedUsername: String?
 
@@ -23,7 +25,8 @@ class MyChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        SVProgressHUD.show()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         print("OpenChatUI")
@@ -63,7 +66,8 @@ class MyChatViewController: UIViewController {
        
         if QBChat.instance.isConnected == true {
           //did Login action
-          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .nanoseconds(Int(0.01))) {
+           // DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             //AppDelegate.shared.rootViewController.goToDialogsScreen()
             self.goToDialogsScreen()
             self.inputedUsername = nil
@@ -85,7 +89,7 @@ class MyChatViewController: UIViewController {
               }
             } else {
               //did Login action
-              DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+              DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .nanoseconds(Int(0.01))) {
                 // AppDelegate.shared.rootViewController.goToDialogsScreen()
                 self.goToDialogsScreen()
                 self.inputedUsername = nil
@@ -113,6 +117,13 @@ class MyChatViewController: UIViewController {
           changeCurrentViewController(dialogsScreen)
           handlePush()
          // newHandleVC()
+        }
+        else{
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+                       label.center = CGPoint(x: 160, y: 285)
+                       label.textAlignment = .center
+                       label.text = "I'm a test label"
+                      self.view.addSubview(label)
         }
       }
     private func changeCurrentViewController(_ newCurrentViewController: UIViewController) {

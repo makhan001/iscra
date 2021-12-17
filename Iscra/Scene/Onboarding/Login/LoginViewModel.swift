@@ -70,6 +70,7 @@ final class LoginViewModel {
                         print("socialLoginApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)
+                        print("Image----->\(response.data?.user?.profileImage)")
                         self?.view?.onAction(.socialLogin(response.message ?? ""))
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

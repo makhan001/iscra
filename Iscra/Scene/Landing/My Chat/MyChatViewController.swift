@@ -7,11 +7,13 @@
 
 import UIKit
 import Quickblox
+import SVProgressHUD
 
 class MyChatViewController: UIViewController {
 
     weak var router: NextSceneDismisser?
     
+    @IBOutlet var lblNo: UILabel!
     private var inputedLogin: String?
     private var inputedUsername: String?
 
@@ -23,7 +25,8 @@ class MyChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        SVProgressHUD.show()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         print("OpenChatUI")
@@ -36,7 +39,7 @@ class MyChatViewController: UIViewController {
       //  let userEmail = UserDefaults.standard.value(forKey: Message.shared.K_UserEmail) as? String ?? ""
         
         let userEmail = UserStore.userEmail//"ameena@gmail.com"//jitu99@gmail.com"
-        let userPassword = "jitu12345"
+        let userPassword = "12345678"
         
         QBRequest.logIn(withUserEmail: UserStore.userEmail ?? "",
                 password: userPassword) { (response, user) in
@@ -59,11 +62,12 @@ class MyChatViewController: UIViewController {
     //Mark:- Connect to chat
     private func connectToChat(user: QBUUser) {
         //infoText = LoginStatusConstant.intoChat
-        let userPassword = "jitu12345"//"jitu12345"
+        let userPassword = "12345678"//"jitu12345"
        
         if QBChat.instance.isConnected == true {
           //did Login action
-          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .nanoseconds(Int(0.01))) {
+           // DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             //AppDelegate.shared.rootViewController.goToDialogsScreen()
             self.goToDialogsScreen()
             self.inputedUsername = nil
@@ -85,7 +89,7 @@ class MyChatViewController: UIViewController {
               }
             } else {
               //did Login action
-              DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+              DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .nanoseconds(Int(0.01))) {
                 // AppDelegate.shared.rootViewController.goToDialogsScreen()
                 self.goToDialogsScreen()
                 self.inputedUsername = nil
@@ -113,6 +117,13 @@ class MyChatViewController: UIViewController {
           changeCurrentViewController(dialogsScreen)
           handlePush()
          // newHandleVC()
+        }
+        else{
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+                       label.center = CGPoint(x: 160, y: 285)
+                       label.textAlignment = .center
+                       label.text = "I'm a test label"
+                      self.view.addSubview(label)
         }
       }
     private func changeCurrentViewController(_ newCurrentViewController: UIViewController) {

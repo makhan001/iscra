@@ -19,17 +19,16 @@ class HomeViewController: UIViewController {
     
     weak var router: NextSceneDismisser?
     let viewModel: HomeViewModel = HomeViewModel(provider: HabitServiceProvider())
-    //  private var viewModel = AddHabitViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-      //  print("self.router is HomeViewController  \(String(describing: self.router))")
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("self. router on HomeViewController is \(String(describing: self.router))")
         super.viewWillAppear(animated)
-        self.lblUserName.text = "Hi," + (UserStore.userName ?? "").capitalized
+        self.lblUserName.text = "Hi, " + (UserStore.userName ?? "").capitalized
         self.viewModel.fetchHabitList()
     }
 }
@@ -53,6 +52,7 @@ extension HomeViewController {
                 self.showAlert(habitId: id)
             }
         }
+        self.setPullToRefresh()
     }
     @objc func refrershUI(){
         print("refrershUI is called")
@@ -93,7 +93,7 @@ extension HomeViewController: HabitViewRepresentable {
     }
     
     private func fetchHabitList() {
-         print("self.viewModel.habitList is \(self.viewModel.habitList.count)")
+       //  print("self.viewModel.habitList is \(self.viewModel.habitList.count)")
         if self.viewModel.habitList.count == 0 {
             self.viewFirstHabit.isHidden = false
             self.tableView.isHidden = true
@@ -101,6 +101,7 @@ extension HomeViewController: HabitViewRepresentable {
             self.viewFirstHabit.isHidden = true
             self.tableView.isHidden = false
             self.tableView.configure(habits: self.viewModel.habitList)
+            self.tableView.reloadData()
         }
     }
 }
@@ -120,5 +121,23 @@ extension HomeViewController {
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
+    }
+}
+
+//MARK: - Pull to refresh list
+extension HomeViewController{
+    func setPullToRefresh(){
+        self.viewModel.pullToRefreshCtrl = UIRefreshControl()
+        self.viewModel.pullToRefreshCtrl.addTarget(self, action: #selector(self.pullToRefreshClick(sender:)), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            self.tableView.refreshControl =  self.viewModel.pullToRefreshCtrl
+        } else {
+            self.tableView.addSubview( self.viewModel.pullToRefreshCtrl)
+        }
+    }
+    
+    @objc func pullToRefreshClick(sender:UIRefreshControl) {
+        self.viewModel.isRefreshing = true
+        self.viewModel.fetchHabitList()
     }
 }

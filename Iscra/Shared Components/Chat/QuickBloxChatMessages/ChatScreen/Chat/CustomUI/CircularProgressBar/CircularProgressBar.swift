@@ -19,7 +19,7 @@ class CircularProgressBarChat: UIView {
 
         let circularPath = UIBezierPath(arcCenter: .zero, radius: 25, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         shapeLayer.path = circularPath.cgPath
-        let appColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        let appColor = #colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1)
         shapeLayer.strokeColor = appColor.cgColor
         shapeLayer.lineWidth = 6
         shapeLayer.fillColor = UIColor.clear.cgColor

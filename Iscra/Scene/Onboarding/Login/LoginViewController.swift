@@ -9,6 +9,7 @@
 import UIKit
 import GoogleSignIn
 import AuthenticationServices
+import SDWebImage
 
 class LoginViewController: UIViewController {
     
@@ -25,6 +26,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtPassword:UITextField!
     @IBOutlet weak var viewNavigation:NavigationBarView!
     weak var router: NextSceneDismisser?
+    var profileImage: UIImage = UIImage()
     private let viewModel: LoginViewModel = LoginViewModel(provider: OnboardingServiceProvider())
     let signInConfig = GIDConfiguration.init(clientID: AppConstant.googleClientID)
     
@@ -105,6 +107,16 @@ extension LoginViewController {
             guard error == nil else { return }
             self.viewModel.email = user?.profile?.email ?? ""
             self.viewModel.username = user?.profile?.name ?? ""
+            print("image--->\(user?.profile?.imageURL(withDimension: 2))")
+        //Profile Image Code
+//            let url = user?.profile?.imageURL(withDimension: 320)
+//            let data = try? Data(contentsOf: url!)
+//
+//            if let imageData = data {
+//                let image = UIImage(data: imageData)
+//                self.viewModel.selectedImage = image ?? UIImage()
+//            }
+            
             self.viewModel.social_id = user?.userID ?? ""
             self.viewModel.socialLogin(logintype: .google)
         }
@@ -134,12 +146,8 @@ extension LoginViewController {
     }
     
     private func forgotPasswordAction() {
-        let forgot: ForgotPasswordViewController = ForgotPasswordViewController.from(from: .onboarding, with: .forgot)
-        self.navigationController?.pushViewController(forgot, animated: true)
-        
+        self.router?.push(scene: .forgot)
     }
-    
-    
 }
 
 // MARK:- UITextFieldDelegate

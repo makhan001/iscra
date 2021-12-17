@@ -29,6 +29,7 @@ class SelectHabitPopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        print("self. router on SelectHabitPopUpViewController is \(String(describing: self.router))")
     }
 }
 

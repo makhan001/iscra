@@ -18,7 +18,6 @@ class AddMyPictureViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setup()
-    
   }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -39,9 +38,9 @@ extension AddMyPictureViewController: navigationBarAction {
     }
     self.manageButtonTitle()
   }
+    
     func ActionType()  {
-      //  router?.dismiss(controller: .addMyPicture)
-        self.navigationController?.popViewController(animated: true)
+        router?.dismiss(controller: .addMyPicture)
     }
 }
 // MARK:- Button Action
@@ -56,17 +55,17 @@ extension AddMyPictureViewController {
       break
     }
   }
+    
   private func addPhotoButtonAction() {
     print("addPhotoButtonAction")
     openCameraPhoto()
   }
+    
   private func nextButtonAction() {
-   // navigationController?.popViewController(animated: true)
-    let signUp: SignupViewController = SignupViewController.from(from: .onboarding, with: .signup)
-    signUp.router = self.router
-    self.navigationController?.pushViewController(signUp, animated: true)
+    self.router?.push(scene: .signup)
   }
-    func manageButtonTitle(){
+    
+    func manageButtonTitle() {
        if (OnboadingUtils.shared.userImage == nil){
            btnNext.setTitle("Skip", for: .normal)
         }
@@ -74,6 +73,7 @@ extension AddMyPictureViewController {
             btnNext.setTitle("Next", for: .normal)
         }
     }
+    
     func openCameraPhoto() {
             CameraHandler.shared.showActionSheetPrivate(vc: self, isEditable: true, isAlreadyExist: false)
             CameraHandler.shared.camera(allowsEditing: true)

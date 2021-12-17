@@ -101,6 +101,7 @@ class ChatManager: NSObject {
                                 message = self.errorMessage(response: response) ?? ""
                             }
                             if message.isEmpty {
+                             
                                 self.delegate?.chatManager(self, didUpdateStorage: "SA_STR_COMPLETED".localized)
                             } else {
                                 self.delegate?.chatManager(self, didFailUpdateStorage: message)
@@ -719,6 +720,7 @@ class ChatManager: NSObject {
                                     let usersIDs = usersForUpdate.map({ $0.stringValue })
                                     self.loadUsers(usersIDs) { (response) in
                                         if let error = response?.error?.error {
+                                            
                                             debugPrint("[ChatManager] loadUsers error: \(error.localizedDescription)")
                                         }
                                     }

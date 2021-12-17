@@ -1,19 +1,17 @@
 //
-//  MyAccountCoordinator.swift
+//  InviteFriendCoordinator.swift
 //  Iscra
 //
-//  Created by mac on 29/11/21.
+//  Created by mac on 15/12/21.
 //
 
 import Foundation
 
-final class MyAccountCoordinator: Coordinator<Scenes> {
-    
+final class InviteFriendCoordinator: Coordinator<Scenes> {
+
     weak var delegate: CoordinatorDimisser?
-    let controller: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
-    let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
-    
     private var landing: LandingCoordinator!
+    let controller: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
     
     override func start() {
         super.start()
@@ -23,11 +21,6 @@ final class MyAccountCoordinator: Coordinator<Scenes> {
     
     private func onStart() {
         controller.router = self
-        changePassword.router = self
-    }
-    
-    private func startChangePassword() {
-        // TODO: startChangePassword
     }
     
     private func startLanding() {
@@ -35,31 +28,28 @@ final class MyAccountCoordinator: Coordinator<Scenes> {
         add(landing)
         landing.delegate = self
         landing.start()
-        //landing.start(imageUrl: controller.viewModel.socialLoginImageURL)
         self.router.present(landing, animated: true)
     }
 }
 
-extension MyAccountCoordinator: NextSceneDismisser {
-    
+extension InviteFriendCoordinator: NextSceneDismisser {
+
     func push(scene: Scenes) {
         switch scene {
         case .landing: startLanding()
-        case .changePassword: startChangePassword()
         default: break
         }
     }
-    
+
     func dismiss(controller: Scenes) {
         router.dismissModule(animated: true, completion: nil)
     }
 }
 
-extension MyAccountCoordinator: CoordinatorDimisser {
-    
+extension InviteFriendCoordinator: CoordinatorDimisser {
+
     func dismiss(coordinator: Coordinator<Scenes>) {
         remove(child: coordinator)
         router.dismissModule(animated: true, completion: nil)
     }
 }
-

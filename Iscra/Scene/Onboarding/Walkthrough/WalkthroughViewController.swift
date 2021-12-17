@@ -11,39 +11,49 @@ class WalkthroughViewController: UIViewController {
     
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnNext: UIButton!
-    @IBOutlet weak var lblHeaderTitle:UILabel!
     @IBOutlet weak var btnAddMyPicture: UIButton!
-    @IBOutlet weak var txtName:UITextField!
     @IBOutlet weak var btnHowToAddMemoji: UIButton!
-    @IBOutlet weak var scrollview_Walkthrough: UIScrollView!
+    
+    @IBOutlet weak var txtName:UITextField!
+    @IBOutlet weak var lblHeaderTitle:UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var currentIndex: Int = 1
     weak var router: NextSceneDismisser?
-    var currentIndex = 1
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-        scrollview_Walkthrough.isPagingEnabled = true
-        scrollview_Walkthrough.showsHorizontalScrollIndicator = false
-        [txtName].forEach {
-            $0?.delegate = self
-        }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
-       }
+    }
 }
 
 // MARK:- Instance Methods
 extension WalkthroughViewController {
     private func setup() {
         lblHeaderTitle.text = AppConstant.onbordingName //"How do your \nfriends call you?"
-        self.scrollview_Walkthrough.delegate = self
+        self.scrollView.delegate = self
         self.setButtonStatus()
         [btnBack, btnNext, btnAddMyPicture, btnHowToAddMemoji].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         txtName.delegate = self
+    }
+    
+    private func setScrollView() {
+        self.scrollView.isPagingEnabled = true
+        self.scrollView.showsHorizontalScrollIndicator = false
+        if #available(iOS 11, *) {
+            self.scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
     }
 }
 
@@ -68,10 +78,11 @@ extension WalkthroughViewController  {
         print("currentIndex. \(currentIndex)")
         if self.currentIndex >= 1 {
             if self.currentIndex == 1 {
-                navigationController?.popViewController(animated: true)
+                // navigationController?.popViewController(animated: true)
+                self.router?.dismiss(controller: .walkthrough)
             }else{
-                self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) - 1
-                scrollview_Walkthrough.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width  , y: 0), animated: true)
+                self.currentIndex = Int(scrollView.contentOffset.x/self.view.frame.size.width) - 1
+                scrollView.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width  , y: 0), animated: true)
             }
         }
         else{
@@ -86,31 +97,27 @@ extension WalkthroughViewController  {
                 if OnboadingUtils.shared.username == "" {
                     showToast(message: AppConstant.alert_emptynameMsg)
                 } else {
-                    self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1
-                    scrollview_Walkthrough.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width, y: 0), animated: true)
+                    self.currentIndex = Int(scrollView.contentOffset.x/self.view.frame.size.width) + 1
+                    scrollView.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width, y: 0), animated: true)
                 }
             } else {
-                self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1
-                scrollview_Walkthrough.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width, y: 0), animated: true)
+                self.currentIndex = Int(scrollView.contentOffset.x/self.view.frame.size.width) + 1
+                scrollView.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width, y: 0), animated: true)
             }
         }
         
         if self.currentIndex == 3 {
-            router?.push(scene: .signup)
+            self.router?.push(scene: .signup)
         }
     }
     
     private func addMyPictureAction() {
-        let addMyPicture: AddMyPictureViewController = AddMyPictureViewController.from(from: .onboarding, with: .addMyPicture)
-        addMyPicture.router = self.router
-        self.navigationController?.pushViewController(addMyPicture, animated: true)
-}
+        self.router?.push(scene: .addMyPicture)
+    }
     
     private func howToAddMemojiAction() {
-      let learnHowToAddMemoji: AddMemojiViewController = AddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
-        learnHowToAddMemoji.router = self.router
-        self.navigationController?.pushViewController(learnHowToAddMemoji, animated: true)
-}
+        self.router?.push(scene: .learnHowToAddMemoji)
+    }
     
     func setButtonStatus(){
         if self.currentIndex == 3 {
@@ -118,29 +125,28 @@ extension WalkthroughViewController  {
         }
         else if
             self.currentIndex == 2 {
-                btnNext.setTitle("Next", for: .normal)
-            }
+            btnNext.setTitle("Next", for: .normal)
+        }
         else if self.currentIndex == 1 {
             btnNext.setTitle("Next", for: .normal)
         }
-}
+    }
 }
 
-// MARK:- UIScrollViewDelegate
+// MARK:- ScrollView Delegate
 extension WalkthroughViewController : UIScrollViewDelegate {
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if currentIndex == 2 {
             if txtName.text == "" {
                 showToast(message: AppConstant.alert_emptynameMsg)
             }
             else{
-                self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1
+                self.currentIndex = Int(scrollView.contentOffset.x/self.view.frame.size.width) + 1
                 self.setButtonStatus()
             }
         }
         else{
-            self.currentIndex = Int(scrollview_Walkthrough.contentOffset.x/self.view.frame.size.width) + 1
+            self.currentIndex = Int(scrollView.contentOffset.x/self.view.frame.size.width) + 1
             self.setButtonStatus()
         }
     }

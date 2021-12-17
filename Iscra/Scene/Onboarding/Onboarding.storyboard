@@ -1288,7 +1288,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Y5Q-h7-sq1">
-                                                        <rect key="frame" x="20" y="383.66666666666669" width="374" height="127"/>
+                                                        <rect key="frame" x="20" y="383.66666666666669" width="374" height="56"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCV-CF-Obw" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
@@ -1309,8 +1309,8 @@
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bK9-SY-6ov" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="70.999999999999943" width="374" height="56"/>
+                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bK9-SY-6ov" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="56" id="AXJ-1j-gTi"/>
@@ -3257,6 +3257,7 @@
                                         <constraints>
                                             <constraint firstItem="JKI-Y9-Ndf" firstAttribute="width" secondItem="mmg-2j-LDA" secondAttribute="width" multiplier="3" id="GAm-3M-7qM"/>
                                             <constraint firstAttribute="bottom" secondItem="JKI-Y9-Ndf" secondAttribute="bottom" id="HyZ-QS-b61"/>
+                                            <constraint firstItem="JKI-Y9-Ndf" firstAttribute="height" secondItem="mmg-2j-LDA" secondAttribute="height" multiplier="1.01351" id="cBm-vk-16b"/>
                                             <constraint firstAttribute="trailing" secondItem="JKI-Y9-Ndf" secondAttribute="trailing" id="evP-nE-Wge"/>
                                             <constraint firstItem="JKI-Y9-Ndf" firstAttribute="width" secondItem="mmg-2j-LDA" secondAttribute="width" multiplier="3" id="f1R-fB-CA1"/>
                                             <constraint firstItem="JKI-Y9-Ndf" firstAttribute="leading" secondItem="mmg-2j-LDA" secondAttribute="leading" id="p6s-1I-QH3"/>
@@ -3328,7 +3329,7 @@
                         <outlet property="btnHowToAddMemoji" destination="Eax-Hm-aug" id="fLc-mM-fNr"/>
                         <outlet property="btnNext" destination="gge-BJ-qyN" id="Fyc-kI-OGQ"/>
                         <outlet property="lblHeaderTitle" destination="gGt-2t-IIk" id="2AS-J8-NVN"/>
-                        <outlet property="scrollview_Walkthrough" destination="mmg-2j-LDA" id="s56-oJ-iqX"/>
+                        <outlet property="scrollView" destination="mmg-2j-LDA" id="5df-4a-E2d"/>
                         <outlet property="txtName" destination="MxC-5D-bdk" id="Qoj-h7-TL6"/>
                     </connections>
                 </viewController>

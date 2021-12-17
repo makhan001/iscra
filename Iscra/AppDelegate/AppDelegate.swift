@@ -14,10 +14,10 @@ import IQKeyboardManagerSwift
 
 
 struct CredentialsConstant {
-    static let applicationID:UInt = 94500
-    static let authKey = "UA5G7ZR4-z-hRM9"
-    static let authSecret = "cT-CPm-3TBU8-42"
-    static let accountKey = "qamiD7ximJfGsNrs-FyX"
+    static let applicationID:UInt = 94837
+    static let authKey = "u23O6e2xksURPzD"
+    static let authSecret = "yNWuKMAOBVzxxp8"
+    static let accountKey = "HzaDQCQWWVkatEE9qjV-"
 }
 
 @available(iOS 13.0, *)

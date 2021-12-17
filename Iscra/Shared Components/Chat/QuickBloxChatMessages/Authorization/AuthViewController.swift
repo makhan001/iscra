@@ -290,7 +290,7 @@ class AuthViewController: UITableViewController {
         infoText = LoginStatusConstant.intoChat
         if QBChat.instance.isConnected == true {
             //did Login action
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .nanoseconds(Int(0.1))) {
               //  AppDelegate.shared.rootViewController.goToDialogsScreen()
                 self.inputedUsername = nil
                 self.inputedLogin = nil
@@ -311,7 +311,7 @@ class AuthViewController: UITableViewController {
                                             }
                                         } else {
                                             //did Login action
-                                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+                                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .nanoseconds(Int(0.1))) {
                                                 if #available(iOS 13.0, *) {
                                                   //  AppDelegate.shared.rootViewController.goToDialogsScreen()
                                                 } else {

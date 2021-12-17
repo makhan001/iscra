@@ -39,7 +39,8 @@ class ReminderViewController: UIViewController {
 
 extension ReminderViewController {
     func setup()  {
-        viewModel.view = self
+        self.viewModel.view = self
+        self.habitType = self.viewModel.habitType
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.delegateBarAction = self
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -130,23 +131,6 @@ extension ReminderViewController {
     }
 }
 
-extension ReminderViewController : InviteNavigation {
-    func navigate(inviteType: inviteType) {
-        if inviteType == .mayBeLatter{
-            guard let viewControllers = navigationController?.viewControllers else { return }
-            for vc in viewControllers {
-                if vc is LandingTabBarController {
-                    navigationController?.popToViewController(vc, animated: true)
-                    return
-                }
-            }
-        }
-        else{
-            
-        }
-    }
-}
-
 // MARK: Callbacks
 extension ReminderViewController: HabitViewRepresentable {
     private func didSelectedAtIndex(_ index: String) {
@@ -161,20 +145,10 @@ extension ReminderViewController: HabitViewRepresentable {
         case let .sucessMessage(msg):
             self.showToast(message: msg, seconds: 0.5)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                let inviteFriend: InviteFriendViewController = InviteFriendViewController.from(from: .habit, with: .inviteFriend)
-                inviteFriend.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-                inviteFriend.habitType = self.habitType
-                inviteFriend.delegateInvite = self
-                inviteFriend.router = self.router
-                self.present(inviteFriend, animated: true, completion: nil)
-               // self.router?.push(scene: .inviteFriend) // deepak
+                self.router?.push(scene: .inviteFriend) 
             }
         case .navigateToGroupImage(true):
-            let addGroupImage: AddGroupImageViewController = AddGroupImageViewController.from(from: .habit, with: .addGroupImage)
-            addGroupImage.habitType = habitType
-            addGroupImage.router = self.router
-            self.navigationController?.pushViewController(addGroupImage, animated: true)
-          //  self.router?.push(scene: .addGroupImage) // deepak
+            self.router?.push(scene: .addGroupImage)
             break
         default:
             break
@@ -183,11 +157,10 @@ extension ReminderViewController: HabitViewRepresentable {
     
 }
 // MARK: navigationBarAction Callback
-extension ReminderViewController  : navigationBarAction {
+extension ReminderViewController: navigationBarAction {
     
     func ActionType()  {
-        self.navigationController?.popViewController(animated: true)
-      //  self.router?.dismiss(controller: .setTheme) // deepak
+        self.router?.dismiss(controller: .setTheme)
     }
 }
 

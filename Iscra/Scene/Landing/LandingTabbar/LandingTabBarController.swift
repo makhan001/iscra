@@ -10,7 +10,7 @@ import UIKit
 class LandingTabBarController: UITabBarController {
     
     var toggle:Bool = false
-    let kBarHeight: CGFloat = 100
+    let kBarHeight: CGFloat = 80
     weak var router: NextSceneDismisser?
     
     var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
@@ -31,7 +31,8 @@ class LandingTabBarController: UITabBarController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         var tabFrame = self.tabBar.frame
-        tabFrame.size.height = kBarHeight
+      tabFrame.size.height = kBarHeight
+       
         tabFrame.origin.y = self.view.frame.size.height - kBarHeight
         self.tabBar.frame = tabFrame
     }
@@ -151,6 +152,9 @@ extension LandingTabBarController : UITabBarControllerDelegate {
             }
         case 1:
             print("Comunity")
+            if viewController.isKind(of: CommunityViewController.self) {
+                (viewController as! CommunityViewController).router = router
+            }
         case 2:
             print("chatVc")
         case 3:
@@ -168,10 +172,6 @@ extension LandingTabBarController : UITabBarControllerDelegate {
 extension LandingTabBarController: SelectHabitPopUpDelegate{
     func addHabit(type: HabitType) {
         router?.push(scene: .selectHabitPopUp)
-        
-        //        let addHabit: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .addHabit)
-        //        addHabit.habitType = habitType
-        //        navigationController?.pushViewController(addHabit, animated: true)
     }
 }
 

@@ -11,24 +11,21 @@ import FSCalendar
 class HabitCalenderViewController: UIViewController {
     
     // MARK: Outlets
-    @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var btnShare: UIButton!
-    @IBOutlet weak var btnEditHabit: UIButton!
-    @IBOutlet weak var btnBottomSheet: UIButton!
-    @IBOutlet weak var btnDeleteHabit: UIButton!
-    @IBOutlet weak var btnPreviousMonth: UIButton!
-    
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblDaysCount: UILabel!
-    @IBOutlet weak var lblLongestStreak: UILabel!
-    
     @IBOutlet weak var viewBottom: UIView!
-    @IBOutlet weak var viewCalender: FSCalendar!
+    @IBOutlet weak var btnShare: UIButton!
+    @IBOutlet weak var lblDaysCount: UILabel!
     @IBOutlet weak var viewEditHabit: UIView!
+    @IBOutlet weak var btnEditHabit: UIButton!
     @IBOutlet weak var viewDeleteHabit: UIView!
+    @IBOutlet weak var viewCalender: FSCalendar!
+    @IBOutlet weak var btnDeleteHabit: UIButton!
+    @IBOutlet weak var lblLongestStreak: UILabel!
+    @IBOutlet weak var btnPreviousMonth: UIButton!
     @IBOutlet weak var viewCircular: CircularProgressBar!
-    
-  //  var objHabitDetail: AllHabits?
+    @IBOutlet weak var viewNavigation: NavigationBarView!
+    @IBOutlet weak var viewMarkasComplete: UIView!
+    @IBOutlet weak var btnMarkasComplete: UIButton!
+
     var strTitleName = ""
     private var eventsDateArray: [Date] = []
     private var themeColor = UIColor(hex: "#7B86EB")
@@ -38,7 +35,6 @@ class HabitCalenderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-       //  print("self.router is \(self.router)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,10 +48,12 @@ extension HabitCalenderViewController {
     private func setup() {
         self.viewModel.view = self
         self.viewBottom.isHidden = true
+        self.setUpNavigationBar()
         self.lblLongestStreak.text = "Longest \nStreak"
+        self.viewMarkasComplete.isHidden = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
-        [btnBack,btnBottomSheet,btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth].forEach {
+        [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth,btnMarkasComplete].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
@@ -64,7 +62,6 @@ extension HabitCalenderViewController {
     }
     
     @objc func refrershUI(){
-        print("refrershUI is called")
                 self.viewModel.getHabitDetail()
                 self.habitDetailSetup()
     }
@@ -96,13 +93,25 @@ extension HabitCalenderViewController {
     func habitDetailSetup() {
         self.calenderSetup()
         self.circularViewSetup()
-        self.lblTitle.textColor = self.themeColor
-        self.lblTitle.text = self.strTitleName.capitalized
+        self.viewNavigation.lblTitle.textColor = self.themeColor
+        self.viewNavigation.lblTitle.text = self.strTitleName.capitalized
     }
     
     func circularViewSetup() {
         self.viewCircular.lineWidth = 20
         self.viewCircular.ringColor =  self.themeColor!
+    }
+    
+    func checkCurrentDay(days: [String]) {
+        var dayName: String = ""
+        dayName =  dayName.getDateFromTimeStamp(timeStamp : String(format: "%.0f", NSDate().timeIntervalSince1970), isDayName: true).lowercased()
+        for i in days {
+            if i.contains(dayName){
+                self.viewMarkasComplete.isHidden = false
+            }else{
+                self.viewMarkasComplete.isHidden = true
+            }
+        }
     }
 }
 
@@ -114,10 +123,6 @@ extension HabitCalenderViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
-        case btnBack:
-            self.backAction()
-        case btnBottomSheet:
-            self.bottomSheetAction()
         case btnEditHabit:
             self.editAction()
         case btnShare:
@@ -126,6 +131,8 @@ extension HabitCalenderViewController {
             self.deleteAction()
         case btnPreviousMonth:
             self.previousMonthAction()
+        case btnMarkasComplete:
+            self.markAsCompleteAction()
         default:
             break
         }
@@ -145,15 +152,16 @@ extension HabitCalenderViewController {
     private func editAction() {
         self.viewBottom.isHidden = true
         self.router?.push(scene: .editHabit)
-//        let editHabit: EditHabitViewController = EditHabitViewController.from(from: .habit, with: .editHabit)
-//        editHabit.objHabitDetail = self.viewModel.objHabitDetail
-//        editHabit.router = self.router
-//        self.navigationController?.pushViewController(editHabit, animated: true)
+    }
+    
+    private func markAsCompleteAction() {
+       self.viewBottom.isHidden = true
+        self.viewModel.apiMarkAsComplete()
     }
     
     private func shareAction() {
        self.viewBottom.isHidden = true
-        self.showToast(message: "Under development", seconds: 0.5)
+       self.showToast(message: "Under development", seconds: 0.5)
         
 //        let editReminder: EditReminderViewController = EditReminderViewController.from(from: .landing, with: .editReminder)
 //        self.navigationController?.present(editReminder, animated: false, completion: nil)
@@ -216,6 +224,7 @@ extension HabitCalenderViewController: HabitViewRepresentable {
            // self.showToast(message: msg)
             self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
             self.strTitleName = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
+            self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)
             self.habitDetailSetup()
            // self.getDateFromTimeStamp(timeStamp: (self.viewModel.objHabitDetail?.timer)!)
          //   self.viewModel.objHabitDetail?.habitMarks?[0].habitDay
@@ -230,18 +239,7 @@ extension HabitCalenderViewController: HabitViewRepresentable {
             break
         }
     }
-    
-//    func getDateFromTimeStamp(timeStamp : String) -> String {
-//        let date = NSDate(timeIntervalSince1970: Double(timeStamp) ?? 0.0 / 1000)
-//            let dayTimePeriodFormatter = DateFormatter()
-//            dayTimePeriodFormatter.dateFormat = "dd MMM YY, hh:mm a, EEEE"
-//        dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
-//            let dateString = dayTimePeriodFormatter.string(from: date as Date)
-//        print("dateString is \(dateString)")
-//            return dateString
-//        }
 }
-
 
 // MARK: showAlert for delete habit
 extension HabitCalenderViewController {
@@ -258,5 +256,22 @@ extension HabitCalenderViewController {
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
+    }
+}
+
+// MARK: navigationBar Action
+extension HabitCalenderViewController:  navigationBarAction {
+    private func setUpNavigationBar() {
+        self.viewNavigation.navType = .habitCalender
+        self.viewNavigation.commonInit()
+        self.viewNavigation.delegateBarAction = self
+    }
+    
+    func ActionType() {
+        self.router?.dismiss(controller: .habitCalender)
+    }
+    
+    func RightButtonAction() {
+        self.viewBottom.isHidden = false
     }
 }

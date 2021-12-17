@@ -50,6 +50,7 @@ extension HabitCalenderViewController {
         self.viewBottom.isHidden = true
         self.setUpNavigationBar()
         self.lblLongestStreak.text = "Longest \nStreak"
+        self.lblDaysCount.text = "0"
         self.viewMarkasComplete.isHidden = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
@@ -108,8 +109,6 @@ extension HabitCalenderViewController {
         for i in days {
             if i.contains(dayName){
                 self.viewMarkasComplete.isHidden = false
-            }else{
-                self.viewMarkasComplete.isHidden = true
             }
         }
     }

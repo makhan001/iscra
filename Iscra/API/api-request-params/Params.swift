@@ -126,5 +126,16 @@ enum HabitParams {
 }
 
 enum CommunityParams {
+    struct JoinHabit: Codable {
+        let habit_id: String?
+    }
     
+    struct FetchCommunity: Codable {
+    }
+    
+    struct AllGroupHabit: Codable {
+    }
+    
+    struct Friends: Codable {
+    }
 }

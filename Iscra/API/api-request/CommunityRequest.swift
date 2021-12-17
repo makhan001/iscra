@@ -9,23 +9,17 @@ import Foundation
 
 struct CommunityRequest: RequestRepresentable {
         
-    var createHabit: HabitParams.CreateHabit?
-    var updateHabit: HabitParams.UpdateHabit?
-    var deleteHabit: HabitParams.DeleteHabit?
-    var habitDetail: HabitParams.HabitDetail?
-    var allHabitList: HabitParams.AllHabitList?
-    var groupInvitations: HabitParams.GroupInvitations?
-    var markAsComplete: HabitParams.MarkAsComplete?
+    var joinHabit: CommunityParams.JoinHabit?
+    var fetchCommunity: CommunityParams.FetchCommunity?
+    var allGroupHabit: CommunityParams.AllGroupHabit?
+    var friends: CommunityParams.Friends?
 
     let requestType: RequestType
     enum RequestType {
-        case createHabit
-        case updateHabit
-        case deleteHabit
-        case habitDetail
-        case allHabitList
-        case groupInvitations
-        case markAsComplete
+        case joinHabit
+        case fetchCommunity
+        case allGroupHabit
+        case friends
     }
     
     init(requestType: RequestType) {
@@ -35,74 +29,54 @@ struct CommunityRequest: RequestRepresentable {
     init(type: RequestType, params:Codable) {
         self.requestType = type
         switch params {
-        case is HabitParams.CreateHabit:
-            self.createHabit = params as? HabitParams.CreateHabit
-        case is HabitParams.UpdateHabit:
-            self.updateHabit = params as? HabitParams.UpdateHabit
-        case is HabitParams.DeleteHabit:
-            self.deleteHabit = params as? HabitParams.DeleteHabit
-        case is HabitParams.HabitDetail:
-            self.habitDetail = params as? HabitParams.HabitDetail
-        case is HabitParams.AllHabitList:
-            self.allHabitList = params as? HabitParams.AllHabitList
-        case is HabitParams.GroupInvitations:
-            self.groupInvitations = params as? HabitParams.GroupInvitations
-        case is HabitParams.MarkAsComplete:
-            self.markAsComplete = params as? HabitParams.MarkAsComplete
+        case is CommunityParams.JoinHabit:
+            self.joinHabit = params as? CommunityParams.JoinHabit
+        case is CommunityParams.FetchCommunity:
+            self.fetchCommunity = params as? CommunityParams.FetchCommunity
+        case is CommunityParams.AllGroupHabit:
+            self.allGroupHabit = params as? CommunityParams.AllGroupHabit
+        case is CommunityParams.Friends:
+            self.friends = params as? CommunityParams.Friends
         default:break
         }
     }
-    
+
     var method: HTTPSMethod {
         switch self.requestType {
-        case .allHabitList:
+        case .fetchCommunity , .allGroupHabit , .friends:
             return .get
-        case .updateHabit:
-            return .put
-        case .deleteHabit:
-            return .delete
         default:
             return .post
         }
     }
-    
+        
     var endpoint: String {
         switch self.requestType {
-        case .createHabit:
-            return "habits/add_habit"
-        case .allHabitList:
-            return "habits/fetch_habit"
-        case .updateHabit:
-            return "habits/edit"
-        case .deleteHabit:
-            return "habits/delete"
-        case .habitDetail:
-            return "habits/habit_details"
-        case .groupInvitations:
-            return "groupinvitations/invited"
-        case .markAsComplete:
-            return "habitmarks/mark_as_complete"
+        case .joinHabit:
+            return "joinhabits/join_habit"
+        case .fetchCommunity:
+            return "joinhabits/fetch_community"
+        case .allGroupHabit:
+            return "joinhabits​/all_group_habit"
+        case .friends:
+            return "joinhabits/friends"
         }
     }
     
     var parameters: Parameters {
         switch self.requestType {
-        case .createHabit:
-            return .body(data: encodeBody(data: createHabit))
-        case .allHabitList:
+        case .joinHabit:
+            return .body(data: encodeBody(data: joinHabit))
+        case .fetchCommunity:
             return .none
-        case .updateHabit:
-            return .body(data: encodeBody(data: updateHabit))
-        case .deleteHabit:
-            return .body(data: encodeBody(data: deleteHabit))
-        case .habitDetail:
-            return .body(data: encodeBody(data: habitDetail))
-        case .groupInvitations:
-            return .body(data: encodeBody(data: groupInvitations))
-        case .markAsComplete:
-            return .body(data: encodeBody(data: markAsComplete))
+        case .allGroupHabit:
+            return .none
+        case .friends:
+            return .none
         default:
             return .none
         }
     }
 }
+
+

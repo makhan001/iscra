@@ -968,6 +968,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         let show: (UIImagePickerController) -> Void = { [weak self] (pickerController) in
             DispatchQueue.main.async {
                 pickerController.sourceType = sourceType
+                print("ChatViewController showPickerController")
                 self?.present(pickerController, animated: true, completion: nil)
             }
         }
@@ -991,7 +992,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 self.present(selectAssetsVC, animated: false)
             }
         }
-        
+        //camera access
         let accessDenied: (_ withSourceType: UIImagePickerController.SourceType) -> Void = { [weak self] (sourceType) in
             let typeName = sourceType == .camera ? "Camera" : "Photos"
             let title = "\(typeName) Access Disabled"
@@ -1068,6 +1069,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         collectionBottomConstraint.constant = collectionBottomConstant
         isUploading = true
         inputToolbar.toggleSendButtonEnabled(isUploaded: isUploading)
+        print("ChatViewController showAttachmentBar")
     }
     
     private func hideAttacnmentBar() {
@@ -1080,6 +1082,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.view.layoutIfNeeded()
         })
+        print("ChatViewController hideAttacnmentBar")
     }
     
     private func createAttachmentMessage(with attachment: QBChatAttachment) -> QBChatMessage {
@@ -1092,6 +1095,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         message.dateSent = Date()
         message.customParameters["save_to_history"] = true
         message.attachments = [attachment]
+        print("ChatViewController createAttachmentMessage")
         return message
     }
     
@@ -1100,19 +1104,23 @@ class ChatViewController: UIViewController, ChatContextMenu {
             showAlertView(LoginConstant.checkInternet, message: LoginConstant.checkInternetMessage)
             inputToolbar.toggleSendButtonEnabled(isUploaded: self.isUploading)
             SVProgressHUD.dismiss()
+            print("ChatViewController notConnection")
             return
         }
         if let attacmentMessage = attachmentMessage {
             send(withAttachmentMessage: attacmentMessage)
+            print("ChatViewController attachmentMessage")
         }
         if let messageText = currentlyComposedMessageText(), messageText.isEmpty == false {
             send(withMessageText: messageText)
+            print("ChatViewController messageText")
         }
     }
     
     private func send(withAttachmentMessage attachmentMessage: QBChatMessage) {
         hideAttacnmentBar()
         sendMessage(message: attachmentMessage)
+        print("ChatViewController sendMessage")
     }
     
     private func send(withMessageText text: String) {
@@ -1125,6 +1133,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         message.dateSent = Date()
         message.customParameters["save_to_history"] = true
         sendMessage(message: message)
+        print("ChatViewController send")
     }
     
     private func sendMessage(message: QBChatMessage) {
@@ -1137,6 +1146,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
             self?.dataSource.addMessage(message)
             self?.finishSendingMessage(animated: true)
             self?.sendPushNotificationSetup(pushMessage: message, PushDialog: self!.dialog)
+            print("ChatViewController sendPushNotificationSetup")
         }
     }
     func sendPushNotificationSetup(pushMessage: QBChatMessage, PushDialog: QBChatDialog) {
@@ -1402,6 +1412,7 @@ extension ChatViewController: InputToolbarDelegate {
             #else
             alertController.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
                 self.showPickerController(self.pickerController, sourceType:.camera)
+                print("camera handler showpickercontroller")
             }))
             #endif
             
@@ -2030,17 +2041,21 @@ extension ChatViewController: QBChatDelegate {
 //MARK: - AttachmentBarDelegate
 extension ChatViewController: AttachmentBarDelegate {
     func attachmentBarFailedUpLoadImage(_ attachmentBar: AttachmentUploadBar) {
+        
         cancelUploadFile()
+        print("ChatViewController cancelUploadFile")
     }
     
     func attachmentBar(_ attachmentBar: AttachmentUploadBar, didUpLoadAttachment attachment: QBChatAttachment) {
         attachmentMessage = createAttachmentMessage(with: attachment)
         inputToolbar.toggleSendButtonEnabled(isUploaded: isUploading)
+        print("ChatViewController createAttachmentMessage ")
     }
     
     func attachmentBar(_ attachmentBar: AttachmentUploadBar, didTapCancelButton: UIButton) {
         attachmentMessage = nil
         hideAttacnmentBar()
+        print("ChatViewController hideAttacnmentBar")
     }
 }
 

@@ -13,7 +13,6 @@ enum HabitScreenType: String {
     case daysSelection
     case setGroupImage
     case editHabit
-    
 }
 
 enum HabitAction {

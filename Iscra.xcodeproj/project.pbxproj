@@ -31,6 +31,8 @@
 		045BF9D02769CC8C008B1C8A /* ReminderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BF9CF2769CC8C008B1C8A /* ReminderCoordinator.swift */; };
 		045BF9D32769CDD9008B1C8A /* AddGroupImageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BF9D22769CDD9008B1C8A /* AddGroupImageCoordinator.swift */; };
 		046F92C12769D9C100190D9A /* InviteFriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */; };
+		047E3EE5276C7AD700C8C8A1 /* CommunityAdaptables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E3EE4276C7AD600C8C8A1 /* CommunityAdaptables.swift */; };
+		047E3EE8276C7AEE00C8C8A1 /* CommunityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */; };
 		04810DBE275F7B5000DEC36F /* EditHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */; };
 		0496E011275E0253005C982A /* HabitCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E010275E0253005C982A /* HabitCalenderViewModel.swift */; };
 		0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */; };
@@ -328,6 +330,8 @@
 		045BF9CF2769CC8C008B1C8A /* ReminderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCoordinator.swift; sourceTree = "<group>"; };
 		045BF9D22769CDD9008B1C8A /* AddGroupImageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupImageCoordinator.swift; sourceTree = "<group>"; };
 		046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendCoordinator.swift; sourceTree = "<group>"; };
+		047E3EE4276C7AD600C8C8A1 /* CommunityAdaptables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityAdaptables.swift; sourceTree = "<group>"; };
+		047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProvider.swift; sourceTree = "<group>"; };
 		04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitViewModel.swift; sourceTree = "<group>"; };
 		0496E010275E0253005C982A /* HabitCalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderViewModel.swift; sourceTree = "<group>"; };
 		0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCircularProgressBar.swift; sourceTree = "<group>"; };
@@ -1450,6 +1454,8 @@
 				887994B1273AB2ED00904D1F /* Table */,
 				887994B8273AB2ED00904D1F /* CommunitySearchViewController.swift */,
 				887994B9273AB2ED00904D1F /* CommunityDetailViewController.swift */,
+				047E3EE4276C7AD600C8C8A1 /* CommunityAdaptables.swift */,
+				047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -2116,6 +2122,7 @@
 				5FF6CD6C274E6A5A007ADC2F /* ChatAttachmentOutgoingCell.swift in Sources */,
 				0456AE9B2750D1E300DB3ED4 /* HomeViewModel.swift in Sources */,
 				5FF6CD7D274E6A5A007ADC2F /* ChatContextMenu.swift in Sources */,
+				047E3EE8276C7AEE00C8C8A1 /* CommunityProvider.swift in Sources */,
 				5FF6CD2A274E6A5A007ADC2F /* UIViewController+Extention.swift in Sources */,
 				5FF6CD41274E6A5A007ADC2F /* ChatNotificationTableView.swift in Sources */,
 				88B0FABF2718594100EF92B3 /* IscraCustomTextField.swift in Sources */,
@@ -2266,6 +2273,7 @@
 				88E580512722E70300D4CAFB /* MatesCollectionCell.swift in Sources */,
 				8814B4302743874100A6DE01 /* UserTask.swift in Sources */,
 				5FF6CD6E274E6A5A007ADC2F /* ChatNotificationCell.swift in Sources */,
+				047E3EE5276C7AD700C8C8A1 /* CommunityAdaptables.swift in Sources */,
 				5FF6CD36274E6A5A007ADC2F /* ImageView+Extention.swift in Sources */,
 				5FF6CD5B274E6A5A007ADC2F /* SelectAssetsVC.swift in Sources */,
 				880F3E5127280C6B007CA895 /* IconCollectionViewCell.swift in Sources */,

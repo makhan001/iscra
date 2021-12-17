@@ -64,6 +64,7 @@ extension GroupHabitFriendsViewController {
         self.viewMarkasComplete.isHidden = true
         self.tableFriends.configure(obj: 10)
         self.lblLongestStreak.text = "Longest \nStreak"
+        self.lblDaysCount.text = "0"
         self.tableFriends.friendTableNavigationDelegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
@@ -130,8 +131,6 @@ extension GroupHabitFriendsViewController {
         for i in days {
             if i.contains(dayName){
                 self.viewMarkasComplete.isHidden = false
-            }else{
-                self.viewMarkasComplete.isHidden = true
             }
         }
     }

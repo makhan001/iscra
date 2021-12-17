@@ -22,9 +22,9 @@ class CommunityMyGroupsCell: UICollectionViewCell {
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
     
  // let arr = ["1"]
-  //  let arr = ["1","1"]
+    let arr = ["1","1"]
  //  let arr = ["1","1","1"]
-   let arr = ["1","1","1","1","1","1"]
+ //  let arr = ["1","1","1","1","1","1"]
     
     override func awakeFromNib() {
         super.awakeFromNib()

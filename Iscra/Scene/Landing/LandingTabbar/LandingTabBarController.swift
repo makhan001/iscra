@@ -10,7 +10,7 @@ import UIKit
 class LandingTabBarController: UITabBarController {
     
     var toggle:Bool = false
-    let kBarHeight: CGFloat = 80
+    let kBarHeight: CGFloat = 60
     weak var router: NextSceneDismisser?
     
     var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
@@ -53,12 +53,13 @@ extension LandingTabBarController {
     
     private func setTabbar() {
         self.delegate = self
-        self.tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.tabBar.layer.shadowRadius = 5
+        self.tabBar.layer.shadowOffset = CGSize(width: 0, height: 20)
+        self.tabBar.layer.shadowRadius = 10
         self.tabBar.layer.shadowColor = UIColor.black.cgColor
         self.tabBar.layer.shadowOpacity = 0.3
-        self.tabBar.isTranslucent = false
+        self.tabBar.isTranslucent = true
         self.tabBar.clipsToBounds = true
+        self.tabBar.barTintColor = .white
         self.tabBar.tintColor = .black
         self.tabBar.unselectedItemTintColor = UIColor(named: "GrayAccent")
         self.tabBar.itemPositioning = .automatic

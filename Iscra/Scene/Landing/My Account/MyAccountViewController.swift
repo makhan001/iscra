@@ -186,7 +186,7 @@ extension MyAccountViewController: clickManagerDelegate{
            composeVC.setToRecipients(["Iscra.app@gmail.com"])
            composeVC.setSubject("Message Subject")
            composeVC.setMessageBody("Message content.", isHTML: false)
-          navigationController?.pushViewController(composeVC, animated: true)
+        self.present(composeVC, animated: true, completion: nil)
     }
     
     private func termsAndCondition(){

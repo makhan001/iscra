@@ -31,7 +31,6 @@ final class HabitServiceProvider: HabitServiceProvidable {
             }
             self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
         }
-        
     }
     
     func habitDetail(param: HabitParams.HabitDetail) {

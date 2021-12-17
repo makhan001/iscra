@@ -22,8 +22,8 @@ class HabitDaysCell: UICollectionViewCell {
     
     func configureHabitDays(obj: HabitMark ,colorTheme: String ) {
         let str: String = ""
-        self.lblDates.text = str.getDateFromTimeStamp(timeStamp : String(obj.createdAt!), isDayName: false)
-        self.lblDays.text = str.getDateFromTimeStamp(timeStamp : String(obj.createdAt!) , isDayName: true)
+        self.lblDates.text = str.getDateFromTimeStamp(timeStamp : String(obj.habitDay!), isDayName: false)
+        self.lblDays.text = str.getDateFromTimeStamp(timeStamp : String(obj.habitDay!) , isDayName: true)
         if obj.isCompleted == true{
             self.imgActive.image = #imageLiteral(resourceName: "ic-bluetick")
             self.imgActive.tintColor =  UIColor(hex: colorTheme)

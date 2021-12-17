@@ -65,12 +65,14 @@ class AttachmentUploadBar: UIView {
                                                 self.progressBar.isHidden = true
                                                 self.cancelButton.isHidden = false
                                                 self.delegate?.attachmentBar(self, didUpLoadAttachment: attachment)
+                                                print(" Attachment Bar uploadFile")
                                                 
                             }, statusBlock: { [weak self] (request : QBRequest?, status : QBRequestStatus?) -> Void in
                                 if let status = status {
                                     DispatchQueue.main.async {
                                         let progress = CGFloat(status.percentOfCompletion)
                                         self?.updateLoadingProgress(progress)
+                                        print("Attachment------>Attachment Bar updateLoadingProgress")
                                     }
                                 }
                         }) { [weak self] (response : QBResponse) -> Void in
@@ -78,6 +80,7 @@ class AttachmentUploadBar: UIView {
                                 return
                             }
                             self.delegate?.attachmentBarFailedUpLoadImage(self)
+                            print("Attchment-------->Attachment Bar attachmentBarFailedUpLoadImage")
                         }
                     })
                     
@@ -115,15 +118,17 @@ class AttachmentUploadBar: UIView {
                 }
                 
             } else {
-                
+                //camera use photo button click
                 var name = "Test.png"
                 if let fileName = asset.phAsset.value(forKey: "filename") as? String{
                     name = fileName
+                    print("Attachment Upload bar")
                 }
                 
                 var newImage = asset.image
                 if attachmentType == .Camera {
                     newImage = newImage.fixOrientation()
+                    print("Attachment upload bar")
                 }
                 //camera use photo button click
                 let largestSide = newImage.size.width > newImage.size.height ? newImage.size.width : newImage.size.height
@@ -137,7 +142,7 @@ class AttachmentUploadBar: UIView {
                 let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
                 
                 UIGraphicsEndImageContext()
-                
+               print("Attachment upload bar UIGraphicsEndImageContext")
                 // Sending attachment.
                 DispatchQueue.main.async(execute: {
                     guard let imageData = resizedImage?.pngData() else {
@@ -154,7 +159,7 @@ class AttachmentUploadBar: UIView {
                                             attachment.name = uploadedBlob.name
                                             attachment.type = "image"
                                             attachment["size"] = "\(uploadedBlob.size)"
-                                            
+                                            print("Attachment bar Tupload File")
                                             self.progressBar.isHidden = true
                                             self.cancelButton.isHidden = false
                                             self.delegate?.attachmentBar(self, didUpLoadAttachment: attachment)
@@ -164,12 +169,14 @@ class AttachmentUploadBar: UIView {
                                 DispatchQueue.main.async {
                                     let progress = CGFloat(Float(status.percentOfCompletion))
                                     self?.updateLoadingProgress(progress)
+                                    print(" Attachment Bar updateLoadingProgress")
                                 }
                             }
                     }) { [weak self] (response : QBResponse) -> Void in
                         guard let self = self else {
                             return
                         }
+                        print("FAILED ====")
                         self.delegate?.attachmentBarFailedUpLoadImage(self)
                     }
                 })
@@ -180,8 +187,10 @@ class AttachmentUploadBar: UIView {
     func updateLoadingProgress(_ progress: CGFloat) {
         if progressBar.isHidden == true {
             progressBar.isHidden = false
+            print("Attachment----------->Attachment Upload Bar updateLoadingProgress")
         }
         progressBar.setProgress(to: progress)
+        print("Attachment----------->Attachment Upload Bar updateLoadingProgress")
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {

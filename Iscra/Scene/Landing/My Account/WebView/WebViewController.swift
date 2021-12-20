@@ -21,17 +21,21 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     var webPage: WebPage = .termsAndConditions
     weak var router: NextSceneDismisser?
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.setUp()
-        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setUp()
+    }
 }
 
 extension WebViewController {
     private func setUp(){
-     self.viewNavigation.delegateBarAction = self
-      switch webPage {
+        self.viewNavigation.delegateBarAction = self
+        switch webPage {
         case .termsAndConditions:
             self.viewNavigation.lblTitle.text = AppConstant.termsAndConditionTitle
             self.loadUrl(urlString: AppConstant.termsAndConditionURL)
@@ -41,13 +45,12 @@ extension WebViewController {
         case .aboutUs:
             self.viewNavigation.lblTitle.text = AppConstant.aboutUsTitle
             self.loadUrl(urlString: AppConstant.aboutUsURL)
-            }
+        }
     }
     
-
     private func loadUrl(urlString: String){
         let myURL = URL(string: urlString)
-             let myRequest = URLRequest(url: myURL!)
+        let myRequest = URLRequest(url: myURL!)
         viewWeb.load(myRequest)
     }
 }
@@ -55,7 +58,6 @@ extension WebViewController {
 // NavigationBar delegates
 extension WebViewController : navigationBarAction {
     func ActionType()  {
-       // router?.dismiss(controller: .login)
-        self.navigationController?.popViewController(animated: true)
+        self.router?.dismiss(controller: .webViewController)
     }
 }

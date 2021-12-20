@@ -26,8 +26,8 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("self. router on HomeViewController is \(String(describing: self.router))")
         super.viewWillAppear(animated)
+        print("self. router on HomeViewController is \(String(describing: self.router))")
         self.lblUserName.text = "Hi, " + (UserStore.userName ?? "").capitalized
         self.viewModel.fetchHabitList()
     }

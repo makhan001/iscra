@@ -14,6 +14,7 @@ final class MyAccountViewModel {
     var password: String = ""
     var username: String = ""
     var selectedImage: UIImage = UIImage()
+    var webPage: WebPage = .termsAndConditions
     let provider: OnboardingServiceProvidable
     weak var view: OnboardingViewRepresentable?
     var delegate: OnboardingServiceProvierDelegate?

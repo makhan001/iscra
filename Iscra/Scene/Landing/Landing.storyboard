@@ -332,7 +332,7 @@
         <!--Web View Controller-->
         <scene sceneID="5sj-je-if4">
             <objects>
-                <viewController storyboardIdentifier="WebViewController" id="UEm-P7-3l4" customClass="WebViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="webViewController" id="UEm-P7-3l4" customClass="WebViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OL1-rn-r8x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2505,7 +2505,7 @@
         <!--My Account Popup View Controller-->
         <scene sceneID="z5g-Yq-Jnx">
             <objects>
-                <viewController storyboardIdentifier="MyAccountPopupViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sfu-wg-6br" customClass="MyAccountPopupViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="myAccountPopup" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sfu-wg-6br" customClass="MyAccountPopupViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vxF-bh-62S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

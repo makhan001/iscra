@@ -26,6 +26,8 @@ struct DataClass: Codable {
     
     var habitDetails: HabitDetails?
     var habitMark: HabitMark?
+   //// let groupHabits: [GroupHabit]?
+
 
    // let habits: [[HabitUnion]]?
     enum CodingKeys: String, CodingKey {
@@ -38,6 +40,7 @@ struct DataClass: Codable {
      //   case groupDetails = "habit_details"
         case  habitDetails = "habit_details"
         case habitMark = "habit_mark"
+      ////  case groupHabits = "group_habits"
     }
 }
 

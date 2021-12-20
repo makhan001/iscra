@@ -12,13 +12,19 @@ class CommunityViewController: UIViewController {
     @IBOutlet weak var btnInviteFriends: UIButton!
     @IBOutlet weak var collectionMyGroups: MyCommunityCollectionView!
     @IBOutlet weak var collectionNewGroupHabit: NewCommunityCollectionView!
-    private let viewModel: InviteFriendViewModel = InviteFriendViewModel(provider: HabitServiceProvider())
+    private let inviteFriendViewModel: InviteFriendViewModel = InviteFriendViewModel(provider: HabitServiceProvider())
+    private let viewModel: CommunityViewModel = CommunityViewModel(provider:  CommunityServiceProvider())
+
     weak var router: NextSceneDismisser?
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.fetchCommunityList()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,6 +40,8 @@ class CommunityViewController: UIViewController {
 // MARK: Instance Methods
 extension CommunityViewController {
     private func setup() {
+        viewModel.view = self
+        inviteFriendViewModel.view = self
        self.collectionMyGroups.configure(obj: 5)
        self.collectionNewGroupHabit.configure(obj: 15)
         self.collectionNewGroupHabit.delegate1 = self
@@ -66,7 +74,7 @@ extension CommunityViewController {
     
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
-      //  self.viewModel.callApiGroupInvitation()
+      // self.inviteFriendViewModel.callApiGroupInvitation()
     }
 }
 
@@ -77,4 +85,15 @@ extension CommunityViewController: communityGroupHabitDetail{
 //        self.navigationController?.pushViewController(communityDetail, animated: true)
        self.router?.push(scene: .communityDetail) // deepu
     }
+}
+
+// MARK: - Api call backs
+extension CommunityViewController: CommunityViewRepresentable, HabitViewRepresentable {
+    func onAction(_ action: CommunityAction) {
+       
+    }
+    
+    func onAction(_ action: HabitAction) {
+       
+    }    
 }

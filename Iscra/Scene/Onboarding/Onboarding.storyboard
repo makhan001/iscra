@@ -3270,7 +3270,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0w-FE-8H9" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="145" height="30"/>
                                                 <state key="normal" title="Back">
-                                                    <color key="titleColor" name="BlackAccent"/>
+                                                    <color key="titleColor" name="GrayAccent"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
@@ -3330,6 +3330,7 @@
                         <outlet property="btnNext" destination="gge-BJ-qyN" id="Fyc-kI-OGQ"/>
                         <outlet property="lblHeaderTitle" destination="gGt-2t-IIk" id="2AS-J8-NVN"/>
                         <outlet property="scrollView" destination="mmg-2j-LDA" id="5df-4a-E2d"/>
+                        <outlet property="textNameView" destination="dxe-CA-BNO" id="OM6-Qz-MUd"/>
                         <outlet property="txtName" destination="MxC-5D-bdk" id="Qoj-h7-TL6"/>
                     </connections>
                 </viewController>

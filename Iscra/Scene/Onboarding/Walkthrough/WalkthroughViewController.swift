@@ -8,25 +8,22 @@
 import UIKit
 
 class WalkthroughViewController: UIViewController {
-    
+    // MARK:-Outlets and variables
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnNext: UIButton!
-    @IBOutlet weak var btnAddMyPicture: UIButton!
-    @IBOutlet weak var btnHowToAddMemoji: UIButton!
-    
     @IBOutlet weak var txtName:UITextField!
     @IBOutlet weak var lblHeaderTitle:UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    
+    @IBOutlet weak var btnAddMyPicture: UIButton!
+    @IBOutlet weak var btnHowToAddMemoji: UIButton!
+    @IBOutlet weak var textNameView: IscraCustomView!
     var currentIndex: Int = 1
     weak var router: NextSceneDismisser?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
@@ -44,7 +41,7 @@ extension WalkthroughViewController {
         }
         txtName.delegate = self
     }
-    
+    //Mark:- Set Scrollview
     private func setScrollView() {
         self.scrollView.isPagingEnabled = true
         self.scrollView.showsHorizontalScrollIndicator = false
@@ -73,7 +70,6 @@ extension WalkthroughViewController  {
             break
         }
     }
-    
     private func backButtonAction() {
         print("currentIndex. \(currentIndex)")
         if self.currentIndex >= 1 {
@@ -90,12 +86,12 @@ extension WalkthroughViewController  {
         }
         
     }
-    
     private func nextButtonAction() {
         if self.currentIndex <= 2 {
             if currentIndex == 2 {
                 if OnboadingUtils.shared.username == "" {
                     showToast(message: AppConstant.alert_emptynameMsg)
+                    
                 } else {
                     self.currentIndex = Int(scrollView.contentOffset.x/self.view.frame.size.width) + 1
                     scrollView.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width, y: 0), animated: true)
@@ -155,18 +151,42 @@ extension WalkthroughViewController : UIScrollViewDelegate {
 // MARK:- UITextFieldDelegate
 extension WalkthroughViewController : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
+//        let allowedCharacter = CharacterSet.letters
+//            let allowedCharacter1 = CharacterSet.whitespaces
+//            let characterSet = CharacterSet(charactersIn: string)
+//            return allowedCharacter.isSuperset(of: characterSet) || allowedCharacter1.isSuperset(of: characterSet)
+       
         if newLength <= 30 {
-            if textField == txtName {
-                if let text = txtName.text, let textRange = Range(range, in: text) {
-                    let updatedText = text.replacingCharacters(in: textRange, with: string)
-                    OnboadingUtils.shared.username = updatedText
+           
+        if textField == txtName {
+           
+          if txtName.text!.count > 0  {
+            textNameView.layer.borderColor = UIColor(red: 0.758, green: 0.639, blue: 0.158, alpha: 1).cgColor
+                textNameView.layer.borderWidth = 1
+           
                 }
+            if newLength == 0{
+                    textNameView.layer.borderColor = UIColor.clear.cgColor
+                    textNameView.layer.borderWidth = 1
+                }
+              if let text = txtName.text, let textRange = Range(range, in: text) {
+                let updatedText = text.replacingCharacters(in: textRange, with: string)
+                OnboadingUtils.shared.username = updatedText
+                }
+            let allowedCharacter = CharacterSet.letters
+                let allowedCharacter1 = CharacterSet.whitespaces
+                let characterSet = CharacterSet(charactersIn: string)
+                return allowedCharacter.isSuperset(of: characterSet) || allowedCharacter1.isSuperset(of: characterSet)
             }
-            return true
-        } else {
+           return true
+           
+        }
+        
+        else {
+        
             return false
         }
     }
-    
 }

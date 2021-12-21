@@ -15,6 +15,7 @@ class LandingTabBarController: UITabBarController {
     
     var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
     var myChat: MyChatViewController = MyChatViewController.from(from: .landing, with: .myChat)
+    var dialogs: DialogsViewController = DialogsViewController.from(from: .dialogs, with: .dialogs)
     var addHabit: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
     var community: CommunityViewController = CommunityViewController.from(from: .landing, with: .community)
     var myAccount: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
@@ -79,9 +80,14 @@ extension LandingTabBarController {
         let addHabit = UITabBarItem()
         addHabit.tag = 3
         
-        let myChat = UITabBarItem()
-        myChat.image = UIImage(named: "tab4")
-        myChat.tag = 4
+//        let myChat = UITabBarItem()
+//        myChat.image = UIImage(named: "tab4")
+//        myChat.tag = 4
+        
+        let dialogs = UITabBarItem()
+        dialogs.image = UIImage(named: "tab4")
+        dialogs.tag = 4
+
         
         let myAccount = UITabBarItem()
         myAccount.image = UIImage(named: "tab5")
@@ -96,13 +102,13 @@ extension LandingTabBarController {
         self.addHabit.tabBarItem = addHabit
         self.addHabit.router = router
         
-        self.myChat.tabBarItem = myChat
-        self.myChat.router = router
+        self.dialogs.tabBarItem = dialogs
+        self.dialogs.router = router
         
         self.myAccount.tabBarItem = myAccount
         self.myAccount.router = router
         
-        self.viewControllers = [self.home, self.community, self.addHabit, self.myChat, self.myAccount]
+        self.viewControllers = [self.home, self.community, self.addHabit, self.dialogs, self.myAccount]
         self.setViewControllers(self.viewControllers, animated: true)
     }
 }

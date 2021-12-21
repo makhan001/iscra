@@ -46,6 +46,7 @@ enum Scenes:String {
     case webViewController
     case UpdateProfile
     case myAccountPopup
+    case dialogs
 //    case RepeatDaysPopUp
 }
 
@@ -57,6 +58,7 @@ enum Storyboard:String {
     case profile = "Profile"
     case common = "Common"
     case habit = "Habit"
+    case dialogs = "Dialogs"
 }
 
 enum StoryboardIdentifier:String {
@@ -98,5 +100,6 @@ enum StoryboardIdentifier:String {
     case webViewController
     case UpdateProfile
     case myAccountPopup
+    case dialogs
 //    case RepeatDaysPopUp
 }

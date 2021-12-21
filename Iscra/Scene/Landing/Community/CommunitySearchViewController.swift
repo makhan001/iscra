@@ -21,7 +21,7 @@ class CommunitySearchViewController: UIViewController {
 
     weak var delegate1 : communityGroupHabitDetail?
     weak var router: NextSceneDismisser?
-
+    private let viewModel: CommunitySearchViewModel = CommunitySearchViewModel(provider:  CommunityServiceProvider())
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -103,6 +103,10 @@ extension CommunitySearchViewController {
         self.viewNoGroups.isHidden = true
         self.tableGroupHabit.isHidden = false
         self.tableFriends.isHidden = true
+        print("self.viewModel.habitList is search \(self.viewModel.myGroupList.count)")
+        //self.tableGroupHabit.configure(obj: self.viewModel.myGroupList)
+        //self.tableGroupHabit.configure(obj: self.viewModel.myGroupList)
+        //self.tableGroupHabit.reloadData()
     }
     
     private func friendsAction() {

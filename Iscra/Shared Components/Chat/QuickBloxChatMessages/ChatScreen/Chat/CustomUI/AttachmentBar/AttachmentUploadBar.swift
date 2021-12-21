@@ -9,7 +9,7 @@
 import UIKit
 import Quickblox
 
-protocol AttachmentBarDelegate: class {
+protocol AttachmentBarDelegate: AnyObject {
     func attachmentBarFailedUpLoadImage(_ attachmentBar: AttachmentUploadBar);
     func attachmentBar(_ attachmentBar: AttachmentUploadBar, didUpLoadAttachment  attachment: QBChatAttachment)
     func attachmentBar(_ attachmentBar: AttachmentUploadBar, didTapCancelButton: UIButton)
@@ -159,7 +159,7 @@ class AttachmentUploadBar: UIView {
                                             attachment.name = uploadedBlob.name
                                             attachment.type = "image"
                                             attachment["size"] = "\(uploadedBlob.size)"
-                                            print("Attachment bar Tupload File")
+                                            print("Log: Attachment bar Tupload File")
                                             self.progressBar.isHidden = true
                                             self.cancelButton.isHidden = false
                                             self.delegate?.attachmentBar(self, didUpLoadAttachment: attachment)

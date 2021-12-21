@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var btnSend:UIButton!
     @IBOutlet weak var textEmail:UITextField!
@@ -28,7 +29,6 @@ extension ForgotPasswordViewController {
         viewModel.view = self
         viewNavigation.lblTitle.text = "Forgot Password"
         viewNavigation.delegateBarAction = self
-        
         [textEmail].forEach{
             $0?.delegate = self
         }
@@ -47,7 +47,6 @@ extension ForgotPasswordViewController : navigationBarAction {
 
 // MARK:- Button Action
 extension ForgotPasswordViewController {
-    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnSend:
@@ -56,7 +55,6 @@ extension ForgotPasswordViewController {
             break
         }
     }
-    
     private func resendAction() {
         print("resendAction")
         self.textEmail.resignFirstResponder()

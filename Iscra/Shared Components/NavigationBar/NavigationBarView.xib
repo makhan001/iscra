@@ -50,7 +50,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIT-Rf-uj9" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                            <rect key="frame" x="60" y="25" width="299" height="20.5"/>
+                            <rect key="frame" x="60" y="22" width="299" height="26.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" name="GrayAccent"/>
                             <nil key="highlightedColor"/>
@@ -78,7 +78,7 @@
                             </subviews>
                         </stackView>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWc-Af-ewh" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                            <rect key="frame" x="375" y="20" width="34" height="30"/>
+                            <rect key="frame" x="363" y="17" width="46" height="36"/>
                             <state key="normal" title="Save">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -123,10 +123,10 @@
             <size key="intrinsicContentSize" width="48" height="48"/>
         </designable>
         <designable name="FWc-Af-ewh">
-            <size key="intrinsicContentSize" width="34" height="30"/>
+            <size key="intrinsicContentSize" width="46" height="36"/>
         </designable>
         <designable name="aIT-Rf-uj9">
-            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="56" height="26.5"/>
         </designable>
     </designables>
     <resources>

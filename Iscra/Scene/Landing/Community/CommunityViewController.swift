@@ -42,13 +42,11 @@ extension CommunityViewController {
     private func setup() {
         viewModel.view = self
         inviteFriendViewModel.view = self
-       self.collectionMyGroups.configure(obj: 5)
        self.collectionNewGroupHabit.configure(obj: 15)
         self.collectionNewGroupHabit.delegate1 = self
         [btnSearch, btnInviteFriends].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        
     }
 }
 
@@ -90,10 +88,24 @@ extension CommunityViewController: communityGroupHabitDetail{
 // MARK: - Api call backs
 extension CommunityViewController: CommunityViewRepresentable, HabitViewRepresentable {
     func onAction(_ action: CommunityAction) {
-       
+        switch action {
+        case  let .errorMessage(msg):
+            self.showToast(message: msg)
+        case  .sucessMessage(_):
+            self.fetchMyGroupList()
+        default:
+            break
+        }
     }
     
     func onAction(_ action: HabitAction) {
        
-    }    
+    }
+    
+    private func fetchMyGroupList() {
+        print("self.viewModel.habitList is \(self.viewModel.myGroupList.count)")
+        self.collectionMyGroups.configure(myGroups: self.viewModel.myGroupList)
+        self.collectionMyGroups.reloadData()
+    }
 }
+

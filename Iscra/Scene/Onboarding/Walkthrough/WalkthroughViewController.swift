@@ -151,42 +151,33 @@ extension WalkthroughViewController : UIScrollViewDelegate {
 // MARK:- UITextFieldDelegate
 extension WalkthroughViewController : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
-//        let allowedCharacter = CharacterSet.letters
-//            let allowedCharacter1 = CharacterSet.whitespaces
-//            let characterSet = CharacterSet(charactersIn: string)
-//            return allowedCharacter.isSuperset(of: characterSet) || allowedCharacter1.isSuperset(of: characterSet)
-       
         if newLength <= 30 {
-           
         if textField == txtName {
-           
+        if (string == " ") {
+            return false
+            }
           if txtName.text!.count > 0  {
             textNameView.layer.borderColor = UIColor(red: 0.758, green: 0.639, blue: 0.158, alpha: 1).cgColor
-                textNameView.layer.borderWidth = 1
-           
-                }
-            if newLength == 0{
-                    textNameView.layer.borderColor = UIColor.clear.cgColor
-                    textNameView.layer.borderWidth = 1
-                }
-              if let text = txtName.text, let textRange = Range(range, in: text) {
-                let updatedText = text.replacingCharacters(in: textRange, with: string)
-                OnboadingUtils.shared.username = updatedText
-                }
+            textNameView.layer.borderWidth = 1
+           }
+           if newLength == 0{
+              textNameView.layer.borderColor = UIColor.clear.cgColor
+              textNameView.layer.borderWidth = 1
+            }
+            if let text = txtName.text, let textRange = Range(range, in: text) {
+               let updatedText = text.replacingCharacters(in: textRange, with: string)
+               OnboadingUtils.shared.username = updatedText
+            }
             let allowedCharacter = CharacterSet.letters
-                let allowedCharacter1 = CharacterSet.whitespaces
-                let characterSet = CharacterSet(charactersIn: string)
-                return allowedCharacter.isSuperset(of: characterSet) || allowedCharacter1.isSuperset(of: characterSet)
+            let allowedCharacter1 = CharacterSet.whitespaces
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacter.isSuperset(of: characterSet) || allowedCharacter1.isSuperset(of: characterSet)
             }
            return true
-           
         }
-        
         else {
-        
-            return false
+             return false
         }
     }
 }

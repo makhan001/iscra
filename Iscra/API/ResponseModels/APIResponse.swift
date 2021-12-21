@@ -26,7 +26,7 @@ struct DataClass: Codable {
     
     var habitDetails: HabitDetails?
     var habitMark: HabitMark?
-   //// let groupHabits: [GroupHabit]?
+   let groupHabits: [GroupHabit]?
 
 
    // let habits: [[HabitUnion]]?
@@ -40,7 +40,7 @@ struct DataClass: Codable {
      //   case groupDetails = "habit_details"
         case  habitDetails = "habit_details"
         case habitMark = "habit_mark"
-      ////  case groupHabits = "group_habits"
+       case groupHabits = "group_habits"
     }
 }
 

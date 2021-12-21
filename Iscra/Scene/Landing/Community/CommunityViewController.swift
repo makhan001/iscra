@@ -9,7 +9,9 @@ import UIKit
 class CommunityViewController: UIViewController {
 
     @IBOutlet weak var btnSearch: UIButton!
+    @IBOutlet weak var lblNoGroupsFound: UILabel!
     @IBOutlet weak var btnInviteFriends: UIButton!
+    @IBOutlet weak var lblNoInvitationFound: UILabel!
     @IBOutlet weak var collectionMyGroups: MyCommunityCollectionView!
     @IBOutlet weak var collectionNewGroupHabit: NewCommunityCollectionView!
     private let inviteFriendViewModel: InviteFriendViewModel = InviteFriendViewModel(provider: HabitServiceProvider())
@@ -41,6 +43,8 @@ class CommunityViewController: UIViewController {
 extension CommunityViewController {
     private func setup() {
         viewModel.view = self
+        self.lblNoGroupsFound.isHidden = true
+        self.lblNoInvitationFound.isHidden = true
         inviteFriendViewModel.view = self
        self.collectionNewGroupHabit.configure(obj: 15)
         self.collectionNewGroupHabit.delegate1 = self
@@ -103,8 +107,8 @@ extension CommunityViewController: CommunityViewRepresentable, HabitViewRepresen
     }
     
     private func fetchMyGroupList() {
-        print("self.viewModel.habitList is \(self.viewModel.myGroupList.count)")
-        self.collectionMyGroups.configure(myGroups: self.viewModel.myGroupList)
+        print("self.viewModel.arrMyGroupList is \(self.viewModel.arrMyGroupList.count)")
+        self.collectionMyGroups.configure(myGroups: self.viewModel.arrMyGroupList)
         self.collectionMyGroups.reloadData()
     }
 }

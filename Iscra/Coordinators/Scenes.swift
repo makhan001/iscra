@@ -43,6 +43,9 @@ enum Scenes:String {
     case editReminder
     case habitCalender
     case groupHabitFriends
+    case webViewController
+    case UpdateProfile
+    case myAccountPopup
 //    case RepeatDaysPopUp
 }
 
@@ -92,5 +95,8 @@ enum StoryboardIdentifier:String {
     case editReminder
     case habitCalender
     case groupHabitFriends
+    case webViewController
+    case UpdateProfile
+    case myAccountPopup
 //    case RepeatDaysPopUp
 }

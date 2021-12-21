@@ -12,6 +12,8 @@
 		0402C4B2273D4A200073DFB8 /* GroupHabitFriendsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */; };
 		0402C4B3273D4A200073DFB8 /* GroupFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */; };
 		04295A2B2758BC60001BF65E /* FetchHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04295A2A2758BC60001BF65E /* FetchHabit.swift */; };
+		042CC9DE2770980A002C23EC /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CC9DD2770980A002C23EC /* CommunityViewModel.swift */; };
+		042CC9E227709BFB002C23EC /* FetchCommunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CC9E127709BFB002C23EC /* FetchCommunity.swift */; };
 		04397097274B762700898C91 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04397096274B762700898C91 /* VerificationViewModel.swift */; };
 		043B82B4276345500076CCBE /* GroupHabitCalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B82B3276345500076CCBE /* GroupHabitCalenderCoordinator.swift */; };
 		043CF4E127685F4D00526FBC /* InviteFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */; };
@@ -313,6 +315,8 @@
 		0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupHabitFriendsTable.swift; sourceTree = "<group>"; };
 		0402C4B0273D4A200073DFB8 /* GroupFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupFriendsCell.swift; sourceTree = "<group>"; };
 		04295A2A2758BC60001BF65E /* FetchHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHabit.swift; sourceTree = "<group>"; };
+		042CC9DD2770980A002C23EC /* CommunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
+		042CC9E127709BFB002C23EC /* FetchCommunity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCommunity.swift; sourceTree = "<group>"; };
 		04397096274B762700898C91 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
 		043B82B3276345500076CCBE /* GroupHabitCalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHabitCalenderCoordinator.swift; sourceTree = "<group>"; };
 		043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendViewModel.swift; sourceTree = "<group>"; };
@@ -643,6 +647,14 @@
 				0402C4AF273D4A200073DFB8 /* GroupHabitFriendsTable.swift */,
 			);
 			path = Table;
+			sourceTree = "<group>";
+		};
+		042CC9E027709BD4002C23EC /* Community Model */ = {
+			isa = PBXGroup;
+			children = (
+				042CC9E127709BFB002C23EC /* FetchCommunity.swift */,
+			);
+			path = "Community Model";
 			sourceTree = "<group>";
 		};
 		043CF5412768612B00526FBC /* WebView */ = {
@@ -1450,6 +1462,7 @@
 				043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */,
 				887994A8273AB2ED00904D1F /* Collection */,
 				887994B0273AB2ED00904D1F /* CommunityViewController.swift */,
+				042CC9DD2770980A002C23EC /* CommunityViewModel.swift */,
 				045BF9C92769C117008B1C8A /* CommunitySearchCoordinator.swift */,
 				887994B1273AB2ED00904D1F /* Table */,
 				887994B8273AB2ED00904D1F /* CommunitySearchViewController.swift */,
@@ -1631,6 +1644,7 @@
 		88E028502716F73F00D90BB1 /* ResponseModels */ = {
 			isa = PBXGroup;
 			children = (
+				042CC9E027709BD4002C23EC /* Community Model */,
 				8814B4462743950500A6DE01 /* APIResponse.swift */,
 				8814B4492743965400A6DE01 /* JSONNullResponse.swift */,
 				8879948B273A5B0800904D1F /* Habit Model */,
@@ -2086,6 +2100,7 @@
 				0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */,
 				880F3E362727EC73007CA895 /* IconPopupViewController.swift in Sources */,
 				8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */,
+				042CC9E227709BFB002C23EC /* FetchCommunity.swift in Sources */,
 				5FF6CD3A274E6A5A007ADC2F /* CacheManager.swift in Sources */,
 				5FF6CD7C274E6A5A007ADC2F /* ChatCollectionViewFlowLayout.swift in Sources */,
 				5FF6CD28274E6A5A007ADC2F /* Double+Extention.swift in Sources */,
@@ -2258,6 +2273,7 @@
 				5FF6CD64274E6A5A007ADC2F /* HeaderCollectionReusableView.swift in Sources */,
 				04C99D4A2759FEF5002D5B7F /* ForgotPasswordViewModel.swift in Sources */,
 				5FF6CD29274E6A5A007ADC2F /* URL+Extention.swift in Sources */,
+				042CC9DE2770980A002C23EC /* CommunityViewModel.swift in Sources */,
 				0496E011275E0253005C982A /* HabitCalenderViewModel.swift in Sources */,
 				5FF6CD5A274E6A5A007ADC2F /* ChatDataSource.swift in Sources */,
 				5FF6CD2C274E6A5A007ADC2F /* UIView+Extention.swift in Sources */,

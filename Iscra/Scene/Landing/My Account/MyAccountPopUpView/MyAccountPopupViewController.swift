@@ -14,7 +14,8 @@ class MyAccountPopupViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var viewBackground: UIView!
     @IBOutlet weak var btnCamera: UIButton!
     @IBOutlet weak var btnGallery: UIButton!
-    
+    weak var router: NextSceneDismisser?
+
     var delegate:ImagePickerDelegate? = nil
     private var imagePicker = UIImagePickerController()
     override func viewDidLoad() {
@@ -34,6 +35,7 @@ extension MyAccountPopupViewController {
     }
     @objc func handleTaps(_ sender: UITapGestureRecognizer? = nil) {
         self.dismiss(animated: true, completion: nil)
+      //  self.router?.dismiss(controller: .myAccountPopup)
     }
 }
 // MARK:- Button Action
@@ -103,7 +105,7 @@ extension MyAccountPopupViewController {
         }
         delegate?.fetchedImage(img: selectedImage)
         dismiss(animated: true, completion: nil)
-        
+       // self.router?.dismiss(controller: .myAccountPopup)
     }
     
 }

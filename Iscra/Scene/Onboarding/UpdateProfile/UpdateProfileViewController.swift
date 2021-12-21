@@ -42,7 +42,7 @@ extension UpdateProfileViewController:  navigationBarAction{
         }
     }
     func ActionType() {
-      self.navigationController?.popViewController(animated: true)
+        self.router?.dismiss(controller: .UpdateProfile)
 }
     func RightButtonAction() {
         viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)

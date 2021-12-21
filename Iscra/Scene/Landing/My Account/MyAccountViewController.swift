@@ -22,9 +22,9 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
 
     weak var router: NextSceneDismisser?
     private var imagePicker = UIImagePickerController()
-    private let viewModel: MyAccountViewModel = MyAccountViewModel(provider: OnboardingServiceProvider())
+    let viewModel: MyAccountViewModel = MyAccountViewModel(provider: OnboardingServiceProvider())
     var delegateBarAction:navigationBarAction?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -62,9 +62,7 @@ extension MyAccountViewController {
 extension MyAccountViewController: navigationBarAction {
     func ActionType() {}
     func RightButtonAction() {
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "UpdateProfileViewController") as! UpdateProfileViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.router?.push(scene: .UpdateProfile)
     }
 }
 
@@ -139,24 +137,22 @@ extension MyAccountViewController: clickManagerDelegate{
     }
     
     private func AddMemojiAction() {
-        let learnHowToAddMemoji: AddMemojiViewController = AddMemojiViewController.from(from: .onboarding, with: .learnHowToAddMemoji)
-        learnHowToAddMemoji.isFromMyAccount = true
-        self.navigationController?.pushViewController(learnHowToAddMemoji, animated: true)
+        self.router?.push(scene: .learnHowToAddMemoji)
     }
     
     private func ChangePasswordAction() {
-       let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
-       self.navigationController?.pushViewController(changePassword, animated: true)
-
-       // self.router?.push(scene: .changePassword)
+//       let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
+//       self.navigationController?.pushViewController(changePassword, animated: true)
+//
+        self.router?.push(scene: .changePassword)
     }
     
     private func changeProfilePhoto(){
         let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MyAccountPopupViewController") as! MyAccountPopupViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "myAccountPopup") as! MyAccountPopupViewController
         vc.delegate = self
         self.navigationController?.present(vc, animated: false, completion: nil)
-
+       // self.router?.push(scene: .myAccountPopup)
     }
     
     private func showActivityViewController(url:URL,  text: String,  image: UIImage) {
@@ -191,27 +187,26 @@ extension MyAccountViewController: clickManagerDelegate{
     
     private func termsAndCondition(){
         print("termsAndCondition")
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        vc.webPage = .termsAndConditions
-       navigationController?.pushViewController(vc, animated: true)
-    
+        self.viewModel.webPage = .termsAndConditions
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+        self.router?.push(scene: .webViewController)
+        }
     }
     
     private func privacyPolicy(){
         print("privacyPolicy")
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        vc.webPage = .privacyPolicy
-       navigationController?.pushViewController(vc, animated: true)
+        self.viewModel.webPage = .privacyPolicy
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+       self.router?.push(scene: .webViewController)
+        }
     }
     
     private func aboutUs(){
         print("aboutUs")
-        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        vc.webPage = .aboutUs
-       navigationController?.pushViewController(vc, animated: true)
+        self.viewModel.webPage = .aboutUs
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+        self.router?.push(scene: .webViewController)
+        }
     }
 }
 

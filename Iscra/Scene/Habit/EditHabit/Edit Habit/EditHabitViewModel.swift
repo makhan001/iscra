@@ -26,6 +26,7 @@ final class EditHabitViewModel {
     }
     
     private func validateHabitInput() {
+        self.habitName  = self.habitName.trimmingCharacters(in: .whitespacesAndNewlines)
         if Validation().textValidation(text: habitName, validationType: .habitName).0 {
             view?.onAction(.requireFields(Validation().textValidation(text: habitName, validationType: .habitName).1))
             return

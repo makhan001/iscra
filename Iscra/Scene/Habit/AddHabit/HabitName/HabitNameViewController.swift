@@ -32,6 +32,8 @@ extension HabitNameViewController {
     func setup() {
         
         self.viewModel.view = self
+        self.viewNavigation.navType = .addHabit
+        self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.delegateBarAction = self
         self.lblUserName.text = "Alright \(UserStore.userName!), let’s \ndefine your habit"
@@ -108,6 +110,10 @@ extension HabitNameViewController: UITextFieldDelegate {
                     let updatedText = text.replacingCharacters(in: textRange, with: string)
                     viewModel.habitName = updatedText
                 }
+                let allowedCharacter = CharacterSet.letters
+                let allowedCharacter1 = CharacterSet.whitespaces
+                let characterSet = CharacterSet(charactersIn: string)
+                return allowedCharacter.isSuperset(of: characterSet) || allowedCharacter1.isSuperset(of: characterSet)
             }
             return true
         } else {
@@ -162,5 +168,10 @@ extension HabitNameViewController  : navigationBarAction {
     func ActionType() {
         HabitUtils.shared.removeAllHabitData()
         router?.dismiss(controller: .addHabit)
+    }
+    
+    func RightButtonAction() {
+        HabitUtils.shared.removeAllHabitData()
+        self.router?.push(scene: .landing)
     }
 }

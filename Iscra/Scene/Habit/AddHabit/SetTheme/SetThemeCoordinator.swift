@@ -10,6 +10,7 @@ import Foundation
 final class SetThemeCoordinator: Coordinator<Scenes> {
 
     weak var delegate: CoordinatorDimisser?
+    private var landing: LandingCoordinator!
     private var reminder: ReminderCoordinator!
     let controller: SetThemeViewController = SetThemeViewController.from(from: .habit, with: .setTheme)
     
@@ -30,6 +31,14 @@ final class SetThemeCoordinator: Coordinator<Scenes> {
         reminder.start(selectedColorTheme: controller.selectedColorTheme)
         self.router.present(reminder, animated: true)
     }
+    
+    private func startLanding() {
+        landing = LandingCoordinator(router: Router())
+        add(landing)
+        landing.delegate = self
+        landing.start()
+        self.router.present(landing, animated: true)
+    }
 }
 
 extension SetThemeCoordinator: NextSceneDismisser {
@@ -37,6 +46,7 @@ extension SetThemeCoordinator: NextSceneDismisser {
     func push(scene: Scenes) {
         switch scene {
         case .reminder: startReminder()
+        case .landing: startLanding()
         default: break
         }
     }

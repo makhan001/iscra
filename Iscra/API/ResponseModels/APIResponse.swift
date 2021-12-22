@@ -27,11 +27,11 @@ struct DataClass: Codable {
     var habitDetails: HabitDetails?
     var habitMark: HabitMark?
    let groupHabits: [GroupHabit]?
-
+    let invitaions: [Invitaion]?
 
    // let habits: [[HabitUnion]]?
     enum CodingKeys: String, CodingKey {
-        case register, user, habit, habits, url//, groupdetails
+        case register, user, habit, habits, url, invitaions//, groupdetails
         case loginData = "login_data"
         case forgotPassword = "forgot_password"
         case verificationCode = "verification_code"

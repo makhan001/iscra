@@ -63,7 +63,9 @@ struct InviteHabits: Codable {
     let reminders: Bool?
     let inviteHabitsDescription: String?
     let userID: Int?
-    let timer, createdAt, updatedAt: String?
+   // let timer, createdAt, updatedAt: String?
+    let timer: String?
+    let createdAt, updatedAt: Int?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -72,6 +74,32 @@ struct InviteHabits: Codable {
         case colorTheme = "color_theme"
         case icon, reminders
         case inviteHabitsDescription = "description"
+        case userID = "user_id"
+        case timer
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}
+
+// MARK: - Invitaion
+struct Invitaion: Codable {
+    let id: Int?
+    let habitType: String?
+    let days: [String]?
+    let name, colorTheme, icon: String?
+    let reminders: Bool?
+    let invitaionDescription: String?
+    let userID: Int?
+   // let timer, createdAt, updatedAt: String?
+    let timer: String?
+    let createdAt, updatedAt: Int?
+    enum CodingKeys: String, CodingKey {
+        case id
+        case habitType = "habit_type"
+        case days, name
+        case colorTheme = "color_theme"
+        case icon, reminders
+        case invitaionDescription = "description"
         case userID = "user_id"
         case timer
         case createdAt = "created_at"

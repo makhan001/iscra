@@ -15,6 +15,7 @@ enum navRightViewType{
   case other
   case editHabit
   case habitCalender
+  case addHabit
 }
 
 class NavigationBarView: UIView {
@@ -57,6 +58,9 @@ class NavigationBarView: UIView {
     case .habitCalender:
       btnRightBar.isHidden = false
       btnRightBar.setImage(#imageLiteral(resourceName: "ic-dots"), for: .normal)
+    case .addHabit:
+      btnRightBar.isHidden = false
+      btnRightBar.setImage(#imageLiteral(resourceName: "close"), for: .normal)
     case .other:
       btnRightBar.isHidden = true
     }

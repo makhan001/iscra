@@ -18,7 +18,11 @@ class CommunityGroupHabit: UICollectionViewCell {
         super.awakeFromNib()
         
     }
-        
-    func configure() {
+ 
+    func configure(obj: Invitaion) {
+        self.lblHabitTitle.text = obj.name?.capitalized
+        self.lblHabitSubtitle.text = obj.invitaionDescription
+        self.imgHabit.image = #imageLiteral(resourceName: "ic-Rectangle")
     }
+    
 }

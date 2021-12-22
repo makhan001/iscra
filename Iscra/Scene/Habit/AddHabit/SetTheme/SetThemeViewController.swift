@@ -32,6 +32,8 @@ class SetThemeViewController: UIViewController {
 extension SetThemeViewController {
     func setup() {
         viewModel.view = self
+        self.viewNavigation.navType = .addHabit
+        self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.delegateBarAction = self
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -139,8 +141,12 @@ extension SetThemeViewController: HabitViewRepresentable {
 
 // MARK: navigationBarAction Callback
 extension SetThemeViewController  : navigationBarAction {
-    
     func ActionType()  {
         self.router?.dismiss(controller: .setTheme)
+    }
+    
+    func RightButtonAction() {
+        HabitUtils.shared.removeAllHabitData()
+        self.router?.push(scene: .landing)
     }
 }

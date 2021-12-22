@@ -40,6 +40,7 @@ extension WalkthroughViewController {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         txtName.delegate = self
+        self.setScrollView()
     }
     //Mark:- Set Scrollview
     private func setScrollView() {

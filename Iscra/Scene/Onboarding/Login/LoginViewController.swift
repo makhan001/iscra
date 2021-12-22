@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import SDWebImage
 import GoogleSignIn
 import AuthenticationServices
-import SDWebImage
 
 class LoginViewController: UIViewController {
     
@@ -40,6 +40,10 @@ class LoginViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         self.viewNavigation.lblTitle.text =  "Login"
         self.viewNavigation.delegateBarAction = self
+        viewModel.email = "userios2@gmail.com"
+        viewModel.password = "12345678"
+        txtEmail.text = viewModel.email
+        txtPassword.text = viewModel.password
     }
 }
 
@@ -97,8 +101,7 @@ extension LoginViewController {
     
     private func loginAction() {
         print("loginAction")
-        self.txtEmail.resignFirstResponder()
-        self.txtPassword.resignFirstResponder()
+        self.view.endEditing(true)
         viewModel.onAction(action: .inputComplete(.login), for: .login)
     }
     

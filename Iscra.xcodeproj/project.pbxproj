@@ -160,6 +160,8 @@
 		861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D22743E02300727D1E /* LoginCoordinator.swift */; };
 		862E5AFB27565B5A00225894 /* HabitNameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */; };
 		8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A8392747D41100773C57 /* LandingCoordinator.swift */; };
+		86AA1A032773176E00014539 /* CommunitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AA1A022773176E00014539 /* CommunitySearchViewModel.swift */; };
+		86AA1A052773194900014539 /* QBChatLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AA1A042773194900014539 /* QBChatLogin.swift */; };
 		8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800806B2729255E008E3260 /* ReminderViewController.swift */; };
 		880080732729282F008E3260 /* HabitNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080722729282F008E3260 /* HabitNameViewController.swift */; };
 		880080782729346D008E3260 /* WeekCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080772729346D008E3260 /* WeekCollection.swift */; };
@@ -466,6 +468,8 @@
 		861CF1D22743E02300727D1E /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameCoordinator.swift; sourceTree = "<group>"; };
 		8669A8392747D41100773C57 /* LandingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingCoordinator.swift; sourceTree = "<group>"; };
+		86AA1A022773176E00014539 /* CommunitySearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunitySearchViewModel.swift; sourceTree = "<group>"; };
+		86AA1A042773194900014539 /* QBChatLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QBChatLogin.swift; sourceTree = "<group>"; };
 		8800806B2729255E008E3260 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		880080722729282F008E3260 /* HabitNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameViewController.swift; sourceTree = "<group>"; };
 		880080772729346D008E3260 /* WeekCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollection.swift; sourceTree = "<group>"; };
@@ -1459,6 +1463,7 @@
 		887994A7273AB2ED00904D1F /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				86AA1A022773176E00014539 /* CommunitySearchViewModel.swift */,
 				043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */,
 				887994A8273AB2ED00904D1F /* Collection */,
 				887994B0273AB2ED00904D1F /* CommunityViewController.swift */,
@@ -1611,6 +1616,7 @@
 				88202D54271968B900F0EA2E /* InputValidation.swift */,
 				88E028EF27170B7F00D90BB1 /* Utils.swift */,
 				88E028EB2717053B00D90BB1 /* Font Family */,
+				86AA1A042773194900014539 /* QBChatLogin.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -2217,8 +2223,10 @@
 				880080782729346D008E3260 /* WeekCollection.swift in Sources */,
 				5FF6CD72274E6A5A007ADC2F /* ChatAttachmentCell.swift in Sources */,
 				8814B4092743844D00A6DE01 /* OnboardingAdaptables.swift in Sources */,
+				86AA1A032773176E00014539 /* CommunitySearchViewModel.swift in Sources */,
 				882F3E182721AAC300A409A6 /* MyAccountViewController.swift in Sources */,
 				882F3E172721AAC300A409A6 /* MyAccountTableView.swift in Sources */,
+				86AA1A052773194900014539 /* QBChatLogin.swift in Sources */,
 				5FF6CD83274E6A5A007ADC2F /* PDFViewController.swift in Sources */,
 				04295A2B2758BC60001BF65E /* FetchHabit.swift in Sources */,
 				5FF6CD68274E6A5A007ADC2F /* CircularProgressBar.swift in Sources */,

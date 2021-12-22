@@ -20,7 +20,7 @@ public enum Environment {
         case .staging:
             return "http://3.21.113.243/api/v1/"
         case .production:
-            return "http://3.21.113.243/api/v1/"
+            return "http://3.129.244.6/api/v1/"
         }
     }
     case staging

@@ -28,12 +28,13 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+       
     }
     override func viewWillAppear(_ animated: Bool) {
         print("self. router on MyAccountViewController is \(String(describing: self.router))")
         super.viewWillAppear(animated)
         self.lblName.text = UserStore.userName?.capitalized
-       navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
 

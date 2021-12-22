@@ -14,10 +14,6 @@ final class CommunitySearchViewModel {
     let provider: CommunityServiceProvidable
     weak var view: CommunityViewRepresentable?
     var delegate: CommunityServiceProvierDelegate?
-    
-//    var pullToRefreshCtrl:UIRefreshControl!
-//    var isRefreshing = false
-    
     init(provider: CommunityServiceProvidable) {
         self.provider = provider
         self.provider.delegate = self

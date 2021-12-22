@@ -10,6 +10,7 @@ import Foundation
 final class AddGroupImageCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
+    private var landing: LandingCoordinator!
     private var inviteFriend: InviteFriendCoordinator!
     let controller: AddGroupImageViewController = AddGroupImageViewController.from(from: .habit, with: .addGroupImage)
 
@@ -34,14 +35,23 @@ final class AddGroupImageCoordinator: Coordinator<Scenes> {
         inviteFriend.start()
         self.router.present(inviteFriend, animated: true)
     }
+    
+    private func startLanding() {
+        landing = LandingCoordinator(router: Router())
+        add(landing)
+        landing.delegate = self
+        landing.start()
+        self.router.present(landing, animated: true)
+    }
 }
 
 extension AddGroupImageCoordinator: NextSceneDismisser {
     
     func push(scene: Scenes) {
         switch scene {
-        case .habitCalender: startHabitCalender()
+        case .landing: startLanding()
         case.inviteFriend: startInviteFriend()
+        case .habitCalender: startHabitCalender()
         default: break
         }
     }

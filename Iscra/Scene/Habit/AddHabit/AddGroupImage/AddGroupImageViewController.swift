@@ -26,6 +26,8 @@ class AddGroupImageViewController: UIViewController {
 extension AddGroupImageViewController {
     func SetUp() {
         viewModel.view = self
+        self.viewNavigation.navType = .addHabit
+        self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.delegateBarAction = self
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -136,5 +138,10 @@ extension AddGroupImageViewController: HabitViewRepresentable {
 extension AddGroupImageViewController: navigationBarAction {
     func ActionType() {
         router?.dismiss(controller: .addGroupImage)
+    }
+    
+    func RightButtonAction() {
+        HabitUtils.shared.removeAllHabitData()
+        self.router?.push(scene: .landing)
     }
 }

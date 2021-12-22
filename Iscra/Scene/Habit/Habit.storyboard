@@ -51,7 +51,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEj-uZ-CQ3" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
                                 <rect key="frame" x="20" y="219" width="335" height="77"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="My Habit" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hFT-gq-AVD" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="My habit" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hFT-gq-AVD" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="10" y="0.0" width="315" height="77"/>
                                         <color key="tintColor" name="PrimaryAccent"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1094,7 +1094,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zv5-GK-GoY" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="20" y="69" width="335" height="54"/>
-                                        <state key="normal" title="Maybe letter">
+                                        <state key="normal" title="Maybe latter">
                                             <color key="titleColor" name="GrayAccent"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>

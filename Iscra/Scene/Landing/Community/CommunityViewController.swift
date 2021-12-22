@@ -32,10 +32,9 @@ class CommunityViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("self. router on CommunityViewController is \(String(describing: self.router))")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)){
-            self.collectionMyGroups.reloadData()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)){
+//            self.collectionMyGroups.reloadData()
+//        }
     }
 }
 
@@ -46,7 +45,7 @@ extension CommunityViewController {
         self.lblNoGroupsFound.isHidden = true
         self.lblNoInvitationFound.isHidden = true
         inviteFriendViewModel.view = self
-       self.collectionNewGroupHabit.configure(obj: 15)
+   //    self.collectionNewGroupHabit.configure(obj: 15)
         self.collectionNewGroupHabit.delegate1 = self
         [btnSearch, btnInviteFriends].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -96,7 +95,7 @@ extension CommunityViewController: CommunityViewRepresentable, HabitViewRepresen
         case  let .errorMessage(msg):
             self.showToast(message: msg)
         case  .sucessMessage(_):
-            self.fetchMyGroupList()
+            self.fetchCommunityData()
         default:
             break
         }
@@ -106,10 +105,29 @@ extension CommunityViewController: CommunityViewRepresentable, HabitViewRepresen
        
     }
     
-    private func fetchMyGroupList() {
+    private func fetchCommunityData() {
         print("self.viewModel.arrMyGroupList is \(self.viewModel.arrMyGroupList.count)")
-        self.collectionMyGroups.configure(myGroups: self.viewModel.arrMyGroupList)
-        self.collectionMyGroups.reloadData()
+        print("self.viewModel.arrInvitaions is \(self.viewModel.arrInvitaions.count)")
+        if self.viewModel.arrMyGroupList.isEmpty == true {
+            self.collectionMyGroups.isHidden = true
+            self.lblNoGroupsFound.isHidden = false
+        }else{
+            self.collectionMyGroups.isHidden = false
+            self.lblNoGroupsFound.isHidden = true
+            self.collectionMyGroups.configure(myGroups: self.viewModel.arrMyGroupList)
+            self.collectionMyGroups.reloadData()
+        }
+        
+        if self.viewModel.arrInvitaions.isEmpty == true {
+            self.collectionNewGroupHabit.isHidden = true
+            self.lblNoInvitationFound.isHidden = false
+        }else{
+            self.collectionNewGroupHabit.isHidden = false
+            self.lblNoInvitationFound.isHidden = true
+            self.collectionNewGroupHabit.configure(myInvitaion: self.viewModel.arrInvitaions)
+            self.collectionNewGroupHabit.reloadData()
+        }
+        
     }
 }
 

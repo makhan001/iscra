@@ -10,7 +10,6 @@ import UIKit
 class MyCommunityCollectionView: UICollectionView , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     var myGroupList = [GroupHabit]()
-
     override class func awakeFromNib() {
         super.awakeFromNib()
     }

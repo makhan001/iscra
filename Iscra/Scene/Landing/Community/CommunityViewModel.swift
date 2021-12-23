@@ -12,11 +12,12 @@ final class CommunityViewModel {
     
     var arrMyGroupList = [GroupHabit]()
     var arrInvitaions = [Invitaion]()
-    
+    var habit_id: String = ""
+
     let provider: CommunityServiceProvidable
     weak var view: CommunityViewRepresentable?
     var delegate: CommunityServiceProvierDelegate?
-    
+
     init(provider: CommunityServiceProvidable) {
         self.provider = provider
         self.provider.delegate = self
@@ -25,6 +26,10 @@ final class CommunityViewModel {
     func fetchCommunityList() {
         self.provider.fetchCommunity(param: CommunityParams.FetchCommunity())
     }
+    
+    func callApiGroupInvitation() {
+       // self.provider.groupInvitations(param: CommunityParams.GroupInvitations(habit_id: self.habit_id, user_ids: ["1"]))
+   }
 }
 
 extension CommunityViewModel: CommunityServiceProvierDelegate{
@@ -32,6 +37,7 @@ extension CommunityViewModel: CommunityServiceProvierDelegate{
         DispatchQueue.main.async {
             WebService().StopIndicator()
             if error != nil {
+                WebService().StopIndicator()
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200, let groupList = resp.data?.groupHabits, let invitaionsList = resp.data?.invitaions{
@@ -40,13 +46,12 @@ extension CommunityViewModel: CommunityServiceProvierDelegate{
                     self.arrMyGroupList = groupList
                     self.arrMyGroupList.sort { Int($0.createdAt!) > Int($1.createdAt!) }
                     print("self.groupList is \(self.arrMyGroupList.count)")
-                    self.view?.onAction(.sucessMessage(resp.message ?? ""))
                     
                     self.arrInvitaions = invitaionsList
                      self.arrInvitaions.sort { Int($0.createdAt!) > Int($1.createdAt!) }
                     print("self.arrInvitaions is \(self.arrInvitaions.count)")
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
-                }else {
+                } else {
                     self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }
             }

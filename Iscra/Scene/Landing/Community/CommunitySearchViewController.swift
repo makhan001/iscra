@@ -18,12 +18,18 @@ class CommunitySearchViewController: UIViewController {
     @IBOutlet weak var btnSegment: UISegmentedControl!
     @IBOutlet weak var tableGroupHabit: GroupHabitTableView!
     @IBOutlet weak var tableFriends: CommunityFriendTableView!
+    
+    var arrGroupList = [GroupHabit]()
+    var arrFriend = [Friend]()
 
-    weak var delegate1 : communityGroupHabitDetail?
+  //  weak var delegate1 : communityGroupHabitDetail?
+    weak var delegate: SelectHabitPopUpDelegate?
+
     weak var router: NextSceneDismisser?
-  //  private let viewModel: CommunitySearchViewModel = CommunitySearchViewModel(provider:  CommunityServiceProvider())
+    private let viewModel: CommunitySearchViewModel = CommunitySearchViewModel(provider:  CommunityServiceProvider())
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("self.router is \(String(describing: self.router))")
         self.setup()
     }
 }
@@ -31,40 +37,31 @@ class CommunitySearchViewController: UIViewController {
 // MARK: Instance Methods
 extension CommunitySearchViewController {
     private func setup() {
+        self.viewModel.view = self
         [btnBack, btnCreateGroupHabit ].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         [btnSegment ].forEach {
             $0?.addTarget(self, action: #selector(segmentPressed(_:)), for: .valueChanged)
         }
-        
-        self.tableGroupHabit.configure(obj: 10)
-        self.tableFriends.configure(obj: 10)
-      //  self.tableGroupHabit.delegate1 = self
-        
-//        self.viewNoGroups.isHidden = false
-//        self.tableGroupHabit.isHidden = true
-//        self.tableFriends.isHidden = true
-//        self.viewNoGroups.isHidden = false
-                
-        self.viewGroupsHabit.isHidden = false
-        self.viewNoGroups.isHidden = true
-        self.tableGroupHabit.isHidden = false
+        //self.txtSearch.delegate = self
         self.tableFriends.isHidden = true
-        
+        self.viewNoGroups.isHidden = false
+        self.tableGroupHabit.isHidden = true
+        self.fetchAllGroupHabit()
         self.tableGroupHabit.navigateToDetail = { [self]
             selected in
            if selected{
             self.dismiss(animated: false, completion: nil)
-            self.delegate1?.navigate()
+         //   self.delegate1?.navigate()
            }
        }
         
     }
 }
+
 // MARK:- Button Action
 extension CommunitySearchViewController {
-    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnBack:
@@ -90,29 +87,76 @@ extension CommunitySearchViewController {
     private func backAction() {
         print("backAction")
         self.dismiss(animated: false, completion: nil)
-       // self.router?.dismiss(controller: .communitySearch) // deepak
     }
     
     private func createGroupHabitAction() {
         print("createGroupHabitAction")
+        
+        self.showToast(message: "Under development", seconds: 0.5)
+
+        
+//        self.dismiss(animated: false, completion: nil)
+//        self.router?.push(scene: .addHabit)
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2)) { [self] in
+//            delegate?.addHabit(type: .group_habit)
+//
+//        }
+        
+       // self.router?.push(scene: .addHabit)
     }
     
     private func GroupHabitAction() {
         print("GroupHabitAction")
-        self.viewGroupsHabit.isHidden = false
-        self.viewNoGroups.isHidden = true
-        self.tableGroupHabit.isHidden = false
-        self.tableFriends.isHidden = true
-    //    print("self.viewModel.habitList is search \(self.viewModel.myGroupList.count)")
-        //self.tableGroupHabit.configure(obj: self.viewModel.myGroupList)
-        //self.tableGroupHabit.configure(obj: self.viewModel.myGroupList)
-        //self.tableGroupHabit.reloadData()
+        self.fetchAllGroupHabit()
     }
     
     private func friendsAction() {
         print("friendsAction")
-        self.viewGroupsHabit.isHidden = true
-        self.tableFriends.isHidden = false
+        self.viewModel.callApiFriendList()
     }
-
+    
+    private func fetchAllGroupHabit() {
+        self.viewModel.callApiAllGroupHabit()
+    }
 }
+
+// MARK: - Api call backs
+extension CommunitySearchViewController: CommunityViewRepresentable {
+    func onAction(_ action: CommunityAction) {
+        switch action {
+        case  let .errorMessage(msg):
+            self.showToast(message: msg)
+        case  .sucessMessage(_):
+            self.fetchApiResponse()
+        default:
+            break
+        }
+    }
+    
+    private func fetchApiResponse() {
+        WebService().StopIndicator()
+        print("self.viewModel.arrGroupList is \(self.viewModel.arrGroupList.count)")
+        print("self.viewModel.arrFriend is \(self.viewModel.arrFriend.count)")
+             //  self.viewModel.arrGroupList.removeAll()
+        if self.viewModel.arrGroupList.isEmpty != true {
+                                self.viewNoGroups.isHidden = true
+                                self.tableGroupHabit.isHidden = false
+                                self.viewGroupsHabit.isHidden = false
+            self.tableFriends.isHidden = true
+                                self.tableGroupHabit.configure(arrGroupList: self.viewModel.arrGroupList)
+        }else if self.viewModel.arrFriend.isEmpty != true {
+                        self.viewGroupsHabit.isHidden = true
+                        self.tableFriends.isHidden = false
+            self.viewNoGroups.isHidden = true
+
+                        self.tableFriends.configure(arrFriend: self.viewModel.arrFriend)
+        }else{
+            self.tableGroupHabit.isHidden = true
+            self.viewGroupsHabit.isHidden = false
+            self.tableFriends.isHidden = true
+            self.viewNoGroups.isHidden = false
+        }
+    }
+}
+
+

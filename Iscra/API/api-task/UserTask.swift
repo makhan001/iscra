@@ -65,17 +65,21 @@ final class UserTask {
     func habitDetail<T:Codable>(params: HabitParams.HabitDetail, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: HabitRequests(type: .habitDetail, params: params), modeling: responseModel, completion: completion)
     }
+        
+    func markAsComplete<T:Codable>(params: HabitParams.MarkAsComplete, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .markAsComplete, params: params), modeling: responseModel, completion: completion)
+    }
     
     func groupInvitations<T:Codable>(params: HabitParams.GroupInvitations, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: HabitRequests(type: .groupInvitations, params: params), modeling: responseModel, completion: completion)
     }
     
-    func markAsComplete<T:Codable>(params: HabitParams.MarkAsComplete, responseModel: T.Type, completion: @escaping APIResult<T>) {
-        dispatcher.execute(requst: HabitRequests(type: .markAsComplete, params: params), modeling: responseModel, completion: completion)
+    func showHabit<T:Codable>(params: HabitParams.ShowHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .showHabit, params: params), modeling: responseModel, completion: completion)
     }
     
-    func joinHabit<T:Codable>(params: CommunityParams.JoinHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
-        dispatcher.execute(requst: CommunityRequest(type: .joinHabit, params: params), modeling: responseModel, completion: completion)
+    func joinHabit<T:Codable>(params: HabitParams.JoinHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .joinHabit, params: params), modeling: responseModel, completion: completion)
     }
     
     func fetchCommunity<T:Codable>(params: CommunityParams.FetchCommunity, responseModel: T.Type, completion: @escaping APIResult<T>) {

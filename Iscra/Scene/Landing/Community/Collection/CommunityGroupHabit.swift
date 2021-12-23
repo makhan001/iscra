@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 class CommunityGroupHabit: UICollectionViewCell {
     
     // MARK: - Outlets
@@ -22,7 +22,16 @@ class CommunityGroupHabit: UICollectionViewCell {
     func configure(obj: Invitaion) {
         self.lblHabitTitle.text = obj.name?.capitalized
         self.lblHabitSubtitle.text = obj.invitaionDescription
-        self.imgHabit.image = #imageLiteral(resourceName: "ic-Rectangle")
+      //  self.imgHabit.image = #imageLiteral(resourceName: "ic-Rectangle")
+       // self.imgHabit.imgHabit.sd_setImageWithURL(url, placeholderImage:UIImage(imageNamed:"ic-Rectangle"))
+
+        let profilePic = obj.groupImage
+        if profilePic != nil && profilePic != "<null>"  {
+            let url = URL(string: profilePic!)
+            self.imgHabit.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic-Rectangle"))
+        }else{
+            self.imgHabit.image = #imageLiteral(resourceName: "ic-Rectangle")
+        }
+        
     }
-    
 }

@@ -23,8 +23,8 @@ class CommunityFriendCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure() {
-        self.lblFriendname.text = "Amira"
+    func configure(objFriend: Friend) {
+        self.lblFriendname.text = objFriend.username?.capitalized
         self.imgFriend.image = #imageLiteral(resourceName: "ic_user3")
     }
     

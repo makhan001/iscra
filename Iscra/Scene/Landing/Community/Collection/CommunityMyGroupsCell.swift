@@ -36,6 +36,8 @@ class CommunityMyGroupsCell: UICollectionViewCell {
         self.collectiondays.dataSource = self
         self.collectiondays.delegate = self
         self.collectiondays.reloadData()
+        print(" reload on CommunityMyGroupsCell awakeFromNib ")
+
     }
     
     override func updateConstraints() {

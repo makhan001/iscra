@@ -39,7 +39,7 @@ struct CommunityRequest: RequestRepresentable {
 
     var method: HTTPSMethod {
         switch self.requestType {
-        case .fetchCommunity , .allGroupHabit , .friends:
+        case .fetchCommunity :
             return .get
         default:
             return .post
@@ -62,9 +62,9 @@ struct CommunityRequest: RequestRepresentable {
         case .fetchCommunity:
             return .none
         case .allGroupHabit:
-            return .none
+            return  .body(data: encodeBody(data: allGroupHabit))
         case .friends:
-            return .none
+            return  .body(data: encodeBody(data: friends))
         default:
             return .none
         }

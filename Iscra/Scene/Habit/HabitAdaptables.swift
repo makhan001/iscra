@@ -38,6 +38,7 @@ enum HabitAction {
     case editingDidChange(_ field:String, _ value:String)
     case errorMessage(_ text:String)
     case sucessMessage(_ text:String)
+    case joinHabitMessage(_ text:String)
 }
 protocol HabitViewRepresentable: AnyObject {
     func onAction(_ action:  HabitAction)

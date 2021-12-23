@@ -142,10 +142,10 @@ enum CommunityParams {
     }
     
     struct AllGroupHabit: Codable {
-      //  let name: String?
+        let search: String?
     }
     
     struct Friends: Codable {
-//let name: String?
+     let search: String?
     }
 }

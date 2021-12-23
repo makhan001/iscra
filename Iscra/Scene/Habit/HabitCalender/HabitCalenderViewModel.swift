@@ -23,7 +23,8 @@ final class HabitCalenderViewModel {
     
      func getHabitDetail() {
         print("self.habitId is in HabitCalenderViewModel \(String(habitId))")
-        self.provider.habitDetail(param: HabitParams.HabitDetail(id: String(self.habitId)))
+       // self.provider.habitDetail(param: HabitParams.HabitDetail(id: String(self.habitId)))
+        self.provider.habitDetail(param: HabitParams.HabitDetail(id: String(self.habitId), user_id: "", habit_month: ""))
     }
     
     func deleteHabit(habitId: String) {

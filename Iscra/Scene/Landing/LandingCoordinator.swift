@@ -19,7 +19,8 @@ final class LandingCoordinator: Coordinator<Scenes> {
     let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
     let UpdateProfile: UpdateProfileViewController = UpdateProfileViewController.from(from: .onboarding, with: .UpdateProfile)
     let myAccountPopup: MyAccountPopupViewController = MyAccountPopupViewController.from(from: .landing, with: .myAccountPopup)
-    
+   // let habitNameVC: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .habitName)
+
     private var login: LoginCoordinator!
     private var welcome: OnboardingCoordinator!
     private var habitName: HabitNameCoordinator!
@@ -45,6 +46,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         changePassword.router = self
         UpdateProfile.router = self
         myAccountPopup.router = self
+       // habitNameVC.router = self
     }
     
     private func startLogin() {
@@ -143,6 +145,9 @@ final class LandingCoordinator: Coordinator<Scenes> {
     }
     
     private func startCommunityDetail() {
+//        communityDetail.viewModel.habitId = 5
+//        communityDetail.viewModel.userId = 50
+        communityDetail.objInvitaion = controller.community.objInvitaion
         router.present(communityDetail, animated: true)
     }
     
@@ -163,6 +168,10 @@ final class LandingCoordinator: Coordinator<Scenes> {
     private func startMyAccountPopup() {
         router.present(myAccountPopup, animated: true)
     }
+    
+//    private func starthabitNameVC() {
+//        router.present(habitNameVC, animated: true)
+//    }
 }
 
 extension LandingCoordinator: NextSceneDismisser {
@@ -185,6 +194,7 @@ extension LandingCoordinator: NextSceneDismisser {
         case.UpdateProfile: startUpdateProfile()
         case.changePassword: startChangePassword()
         case.myAccountPopup: startMyAccountPopup()
+       // case.habitName: starthabitNameVC()
         default: break
         }
     }

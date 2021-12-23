@@ -96,13 +96,13 @@ extension HomeViewController: HabitViewRepresentable {
             self.viewModel.habitList.removeAll()
             self.viewModel.fetchHabitList()
         case  .sucessMessage(_):
-            self.fetchHabitList()
+            self.fetchHabitListResponse()
         default:
             break
         }
     }
     
-    private func fetchHabitList() {
+    private func fetchHabitListResponse() {
        //  print("self.viewModel.habitList is \(self.viewModel.habitList.count)")
         if self.viewModel.habitList.count == 0 {
             self.viewFirstHabit.isHidden = false

@@ -1274,6 +1274,7 @@
                     </view>
                     <connections>
                         <outlet property="btnBack" destination="VaA-rE-VoE" id="RSe-ml-bRG"/>
+                        <outlet property="btnJoin" destination="Ekq-fs-15y" id="Lbg-4L-L6a"/>
                         <outlet property="collectionMates" destination="U07-Em-VhM" id="bi0-1c-RSl"/>
                         <outlet property="tableView" destination="chT-wG-NOh" id="OiL-eB-YJx"/>
                     </connections>

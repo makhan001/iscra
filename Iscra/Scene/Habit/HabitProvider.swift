@@ -66,16 +66,6 @@ final class HabitServiceProvider: HabitServiceProvidable {
         }
     }
     
-    func groupInvitations(param: HabitParams.GroupInvitations) {
-        WebService().StartIndicator()
-        task.groupInvitations(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
-            if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
-                return
-            }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
-        }
-    }
     
     func markAsComplete(param: HabitParams.MarkAsComplete) {
        // WebService().StartIndicator()
@@ -87,5 +77,38 @@ final class HabitServiceProvider: HabitServiceProvidable {
             self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
         }
     }
+    
+    func groupInvitations(param: HabitParams.GroupInvitations) {
+        WebService().StartIndicator()
+        task.groupInvitations(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .groupInvitations, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .groupInvitations, with: resp, with: nil)
+        }
+    }
+    
+    func showHabit(param: HabitParams.ShowHabit) {
+        WebService().StartIndicator()
+        task.showHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .showHabit, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .showHabit, with: resp, with: nil)
+        }
+    }
+    
+    func joinHabit(param: HabitParams.JoinHabit) {
+        task.joinHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .joinHabit, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .joinHabit, with: resp, with: nil)
+        }
+    }
+    
 }
 

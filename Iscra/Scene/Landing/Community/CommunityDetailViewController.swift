@@ -11,15 +11,22 @@ import ParallaxHeader
 class CommunityDetailViewController: UIViewController {
     
     @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var btnJoin: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionMates: MatesCollectionView!
 
     var vibrantLabel = UILabel()
     var headerImageView: UIView?
+    var objInvitaion: Invitaion?
+
+
     weak var router: NextSceneDismisser?
+    let viewModel: CommunityDetailViewModel = CommunityDetailViewModel(provider: HabitServiceProvider())
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("self.router is \(String(describing: self.router))")
+
         self.setup()
     }
 }
@@ -27,12 +34,16 @@ class CommunityDetailViewController: UIViewController {
 // MARK: Instance Methods
 extension CommunityDetailViewController {
     private func setup() {
+        self.viewModel.view = self
         self.setupParallaxHeader()
         self.addTitleLabel()
         self.collectionMates.configure(obj: 3)
-        [btnBack].forEach {
+        [btnBack,btnJoin].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+        self.viewModel.habitId = self.objInvitaion?.id ?? 0
+        self.viewModel.userId = UserStore.userID ?? ""
+        self.viewModel.fetchHabitDetail()
     }
     
     private func addTitleLabel() {
@@ -88,9 +99,16 @@ extension CommunityDetailViewController {
         switch  sender {
         case btnBack:
             self.backAction()
+        case btnJoin:
+            self.joinAction()
         default:
             break
         }
+    }
+    
+    private func joinAction() {
+        print("self.viewModel.habitId. \(self.viewModel.habitId)")
+        print("self.viewModel.userId. \(self.viewModel.userId)")
     }
     
     private func backAction() {
@@ -100,3 +118,16 @@ extension CommunityDetailViewController {
     
 }
 
+extension CommunityDetailViewController: HabitViewRepresentable{
+    func onAction(_ action: HabitAction) {
+        switch action {
+        case  let .errorMessage(msg):
+            self.showToast(message: msg)
+        case .sucessMessage(_):
+            print("load data")
+            break
+        default:
+            break
+        }
+    }
+}

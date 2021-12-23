@@ -69,6 +69,10 @@ extension HomeViewController {
 // MARK: Callbacks
 extension HomeViewController {
     private func didSelectedAtIndex(_ index: Int) {
+        
+        self.showToast(message: "Under development", seconds: 0.5)
+
+        /*
         self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0  // viewModel.habitList[index].id ?? 0
       //  print("habit id is in HomeViewController  \(viewModel.habitList[index].id ?? 0)")
      //   print("self.router is HomeViewController  \(String(describing: self.router))")
@@ -77,7 +81,7 @@ extension HomeViewController {
         }else{
             self.router?.push(scene: .habitCalender)
         }
-        
+        */
     }
 }
 
@@ -108,6 +112,9 @@ extension HomeViewController: HabitViewRepresentable {
             self.tableView.isHidden = false
             self.tableView.configure(habits: self.viewModel.habitList)
             self.tableView.reloadData()
+//            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)){
+//                self.tableView.reloadData()
+//            }
         }
     }
 }

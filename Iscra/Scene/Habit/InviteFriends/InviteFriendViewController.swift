@@ -84,11 +84,13 @@ extension InviteFriendViewController  {
     }
     
     private func MaybeLetterAction() {
+        print(" self.router is \( self.router)")
+        
         //        delegateInvite?.navigate(inviteType: .mayBeLatter)
         if self.btnMaybeLetter.currentTitle == "Share public" {
             print("Share public")
         }else{
-            print("MaybeLetterAction")
+            print("MaybeLatterAction")
         }
         self.router?.push(scene: .landing)
     }

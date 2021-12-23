@@ -41,6 +41,8 @@ extension ReminderViewController {
     func setup()  {
         self.viewModel.view = self
         self.habitType = self.viewModel.habitType
+        self.viewNavigation.navType = .addHabit
+        self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.delegateBarAction = self
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -158,9 +160,13 @@ extension ReminderViewController: HabitViewRepresentable {
 }
 // MARK: navigationBarAction Callback
 extension ReminderViewController: navigationBarAction {
-    
     func ActionType()  {
         self.router?.dismiss(controller: .setTheme)
+    }
+    
+    func RightButtonAction() {
+        HabitUtils.shared.removeAllHabitData()
+        self.router?.push(scene: .landing)
     }
 }
 

@@ -183,6 +183,25 @@ extension LoginViewController: VerificationViewControllerDelegate {
     }
 }
 
+// MARK: Apple Login
+extension LoginViewController: ASAuthorizationControllerDelegate {
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
+            // self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
+            self.viewModel.email = appleCredentials.email ?? ""
+            self.viewModel.username = (appleCredentials.fullName?.givenName) ?? ""
+            self.viewModel.social_id = appleCredentials.user
+            self.viewModel.socialLogin(logintype: .apple)
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print(error.localizedDescription)
+    }
+}
+
 // MARK: API Callback
 extension LoginViewController: OnboardingViewRepresentable {
     func onAction(_ action: OnboardingAction) {
@@ -204,22 +223,3 @@ extension LoginViewController: OnboardingViewRepresentable {
         }
     }
 }
-
-extension LoginViewController: ASAuthorizationControllerDelegate {
-    @available(iOS 13.0, *)
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
-            // self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
-            self.viewModel.email = appleCredentials.email ?? ""
-            self.viewModel.username = (appleCredentials.fullName?.givenName) ?? ""
-            self.viewModel.social_id = appleCredentials.user
-            self.viewModel.socialLogin(logintype: .apple)
-        }
-    }
-    @available(iOS 13.0, *)
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print(error.localizedDescription)
-    }
-    
-}
-

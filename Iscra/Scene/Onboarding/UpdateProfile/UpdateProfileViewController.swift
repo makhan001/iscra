@@ -15,18 +15,20 @@ class UpdateProfileViewController: UIViewController {
     @IBOutlet weak var viewNavigation: NavigationBarView!
     
     weak var router: NextSceneDismisser?
+    var didUpdateName:(() -> Void)?
     var delegateBarAction:navigationBarAction?
     private let viewModel: UpdateProfileViewModel = UpdateProfileViewModel(provider: OnboardingServiceProvider())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       setUp()
+        setUp()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
+
 // MARK: Instance Methods
 extension UpdateProfileViewController:  navigationBarAction{
     private func setUp() {
@@ -41,9 +43,14 @@ extension UpdateProfileViewController:  navigationBarAction{
             $0?.delegate = self
         }
     }
+}
+
+// MARK: Navigation Bar Delegate
+extension UpdateProfileViewController {
     func ActionType() {
         self.router?.dismiss(controller: .UpdateProfile)
-}
+    }
+    
     func RightButtonAction() {
         viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
     }
@@ -57,7 +64,7 @@ extension UpdateProfileViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-       let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
+        let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
         if newLength <= 30 {
             if textField == txtName {
                 if let text = txtName.text, let textRange = Range(range, in: text) {
@@ -69,7 +76,7 @@ extension UpdateProfileViewController: UITextFieldDelegate {
         } else {
             return false
         }
-       
+        
     }
 }
 // MARK: API Callback
@@ -79,8 +86,10 @@ extension UpdateProfileViewController: OnboardingViewRepresentable {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
         case .updateProfile:
-            navigationController?.popViewController(animated: true)
-       default:
+            self.didUpdateName?()
+            self.router?.dismiss(controller: .UpdateProfile)
+//            navigationController?.popViewController(animated: true)
+        default:
             break
         }
     }

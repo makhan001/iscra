@@ -30,10 +30,9 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
         self.setup()
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("self. router on MyAccountViewController is \(String(describing: self.router))")
         super.viewWillAppear(animated)
         self.lblName.text = UserStore.userName?.capitalized
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.imageProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
     }
 }
 
@@ -55,11 +54,16 @@ extension MyAccountViewController {
             return
         }
     }
+    
+    func didUpdateName() {
+        self.lblName.text = UserStore.userName?.capitalized
+    }
 }
 
-// MARK: Navigation Methods
+// MARK: Navigation Delegates
 extension MyAccountViewController: navigationBarAction {
     func ActionType() {}
+    
     func RightButtonAction() {
         self.router?.push(scene: .UpdateProfile)
     }
@@ -220,6 +224,7 @@ extension MyAccountViewController: MFMailComposeViewControllerDelegate{
 extension MyAccountViewController: ImagePickerDelegate{
     func fetchedImage(img: UIImage) {
         imageProfile.image = img
+        viewModel.selectedImage = img
         viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
         self.dismiss(animated: true, completion: nil)
     }
@@ -231,6 +236,8 @@ extension MyAccountViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
+        case .updateProfile:
+            self.imageProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
         case .logout:
             self.router?.push(scene: .welcome)
         default:

@@ -49,16 +49,29 @@ class WebService {
             switch encodingResult.result {
             case .success(let result):
                 WebService().StopIndicator()
+                
+                
+                
                 if let data = result {
+                    
+                    do {
+                        // make sure this JSON is in the format we expect
+                        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                            print("json response is : \(json)")
+                        }
+                    } catch let error as NSError {
+                        print("Failed to load: \(error.localizedDescription)")
+                    }
+                    
+                    
                     do {
                         let genericModel = try JSONDecoder().decode(decodingType, from: data)
                         print("response ---> \(genericModel)")
                         completion(genericModel, nil)
                     } catch let err {
+                        print("error localizedDescription ---> \(err.localizedDescription)")
                         completion(nil, err.localizedDescription)
-                        print("err.localizedDescription ---> \(err.localizedDescription)")
                     }
-
                 } else {
                     completion(nil, encodingResult.error?.localizedDescription)
                 }

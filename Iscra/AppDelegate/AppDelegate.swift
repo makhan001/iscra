@@ -105,24 +105,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func registerForRemoteNotifications() {
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.sound, .alert, .badge], completionHandler: { granted, error in
-            if let error = error {
-                debugPrint("[DialogsViewController] registerForRemoteNotifications error: \(error.localizedDescription)")
-                return
-            }
-            center.getNotificationSettings(completionHandler: { settings in
-                if settings.authorizationStatus != .authorized {
-                    return
-                }
-                DispatchQueue.main.async(execute: {
-                    UIApplication.shared.registerForRemoteNotifications()
-                })
-            })
-        })
-    }
-    
     // MARK: UISceneSession Lifecycle
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -217,10 +199,44 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         }
         completionHandler()
     }
+    
+    private func registerForRemoteNotifications() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.sound, .alert, .badge], completionHandler: { granted, error in
+            if let error = error {
+                debugPrint("registerForRemoteNotifications error: \(error.localizedDescription)")
+                return
+            }
+            center.getNotificationSettings(completionHandler: { settings in
+                if settings.authorizationStatus != .authorized {
+                    return
+                }
+                DispatchQueue.main.async(execute: {
+                    UIApplication.shared.registerForRemoteNotifications()
+                })
+            })
+        })
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        print("Devcie token for apns ==== \(token)")
+//        Messaging.messaging().apnsToken = deviceToken
+        UserStore.save(apnsToken: token)
+        
+//        Messaging.messaging().token { token, error in
+//            if let error = error {
+//                print("Error fetching FCM registration token: \(error)")
+//            } else if let token = token {
+//                print("FCM registration token: \(token)")
+//                UserStore.save(fcmtoken: token)
+//            }
+//        }
+    }
 }
+
 extension UIApplication {
     static var appVersion: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
 }
-

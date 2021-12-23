@@ -30,7 +30,7 @@ final class ChangePasswordViewModel {
     }
     
     private func validateUserInput() {
-   
+        
         if Validation().textValidation(text: password, validationType: .currentPassword).0 {
             view?.onAction(.requireFields(Validation().textValidation(text: password, validationType: .currentPassword).1))
             return
@@ -47,10 +47,10 @@ final class ChangePasswordViewModel {
         
         if newPassword != confirmPassword {
             view?.onAction(.requireFields(AppConstant.invalidConfirmPasswordMatch))
-        }else if password == newPassword {
+        } else if password == newPassword {
             view?.onAction(.requireFields(AppConstant.invalidCurrentPasswordMatch))
-        }else{
-        self.provider.changePassword(param: UserParams.ChangePassword(current_password: password, new_password: newPassword))
+        } else {
+            self.provider.changePassword(param: UserParams.ChangePassword(current_password: password, new_password: newPassword))
         }
     }
 }

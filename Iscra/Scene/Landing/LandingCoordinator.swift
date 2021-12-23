@@ -17,7 +17,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
     let webViewController: WebViewController = WebViewController.from(from: .landing, with: .webViewController)
     let myAccountViewController: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
     let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
-    let UpdateProfile: UpdateProfileViewController = UpdateProfileViewController.from(from: .onboarding, with: .UpdateProfile)
+    let updateProfile: UpdateProfileViewController = UpdateProfileViewController.from(from: .onboarding, with: .UpdateProfile)
     let myAccountPopup: MyAccountPopupViewController = MyAccountPopupViewController.from(from: .landing, with: .myAccountPopup)
    // let habitNameVC: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .habitName)
 
@@ -44,7 +44,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         webViewController.router = self
         myAccountViewController.router = self
         changePassword.router = self
-        UpdateProfile.router = self
+        updateProfile.router = self
         myAccountPopup.router = self
        // habitNameVC.router = self
     }
@@ -152,7 +152,8 @@ final class LandingCoordinator: Coordinator<Scenes> {
     }
     
     private func startUpdateProfile() {
-        router.present(UpdateProfile, animated: true)
+        updateProfile.didUpdateName = controller.myAccount.didUpdateName
+        router.present(updateProfile, animated: true)
     }
     
     private func startChangePassword() {
@@ -201,6 +202,12 @@ extension LandingCoordinator: NextSceneDismisser {
     
     func dismiss(controller: Scenes) {
         router.dismissModule(animated: true, completion: nil)
+//        switch controller {
+//        case .updateProfile:
+//            router.dismissModule(animated: true, completion: nil)
+//        default:
+//            router.dismissModule(animated: true, completion: nil)
+//        }        
     }
 }
 

@@ -43,7 +43,7 @@ extension HomeViewController {
         self.lblSubTitle.text = AppConstant.firstHabitSubTitle
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
         if UserStore.chatLogin != true {
-            QBChatLogin.shared.setChatLoginSetup()
+//            QBChatLogin.shared.setChatLoginSetup()
         }
     }
     

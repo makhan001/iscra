@@ -14,10 +14,10 @@ class CommunityViewController: UIViewController {
     @IBOutlet weak var lblNoInvitationFound: UILabel!
     @IBOutlet weak var collectionMyGroups: MyCommunityCollectionView!
     @IBOutlet weak var collectionNewGroupHabit: NewCommunityCollectionView!
-    private let inviteFriendViewModel: InviteFriendViewModel = InviteFriendViewModel(provider: HabitServiceProvider())
     private let viewModel: CommunityViewModel = CommunityViewModel(provider:  CommunityServiceProvider())
 
     weak var router: NextSceneDismisser?
+    var objInvitaion: Invitaion?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,11 +41,9 @@ class CommunityViewController: UIViewController {
 // MARK: Instance Methods
 extension CommunityViewController {
     private func setup() {
-        viewModel.view = self
+        self.viewModel.view = self
         self.lblNoGroupsFound.isHidden = true
         self.lblNoInvitationFound.isHidden = true
-        inviteFriendViewModel.view = self
-   //    self.collectionNewGroupHabit.configure(obj: 15)
         self.collectionNewGroupHabit.delegate1 = self
         [btnSearch, btnInviteFriends].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -58,7 +56,7 @@ extension CommunityViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnSearch:
-            self.searcheAction()
+            self.searchAction()
         case btnInviteFriends:
             self.inviteFriendsAction()
         default:
@@ -66,46 +64,43 @@ extension CommunityViewController {
         }
     }
     
-    private func searcheAction() {
+    private func searchAction() {
         let communitySearch: CommunitySearchViewController = CommunitySearchViewController.from(from: .landing, with: .communitySearch)
-        communitySearch.delegate1 = self
+     //   communitySearch.delegate1 = self
+        communitySearch.router = self.router
         self.navigationController?.present(communitySearch, animated: false, completion: nil)
-       // self.router?.push(scene: .communitySearch) // deepak
     }
     
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
-      // self.inviteFriendViewModel.callApiGroupInvitation()
+        self.showToast(message: "Under development", seconds: 0.5)
+
+       self.viewModel.callApiGroupInvitation()
     }
 }
 
-// MARK: - Navigation
-extension CommunityViewController: communityGroupHabitDetail{
-    func navigate() {
-//        let communityDetail: CommunityDetailViewController = CommunityDetailViewController.from(from: .landing, with: .communityDetail)
-//        self.navigationController?.pushViewController(communityDetail, animated: true)
-       self.router?.push(scene: .communityDetail) // deepu
+ //MARK: - Navigation
+extension CommunityViewController: communityInvitationDetail{
+    func navigate(obj: Invitaion) {
+        self.objInvitaion = obj
+        self.router?.push(scene: .communityDetail)
     }
 }
 
 // MARK: - Api call backs
-extension CommunityViewController: CommunityViewRepresentable, HabitViewRepresentable {
+extension CommunityViewController: CommunityViewRepresentable {
     func onAction(_ action: CommunityAction) {
         switch action {
         case  let .errorMessage(msg):
             self.showToast(message: msg)
         case  .sucessMessage(_):
-            self.fetchCommunityData()
+            self.fetchCommunityResponse()
         default:
             break
         }
     }
     
-    func onAction(_ action: HabitAction) {
-       
-    }
-    
-    private func fetchCommunityData() {
+    private func fetchCommunityResponse() {
         print("self.viewModel.arrMyGroupList is \(self.viewModel.arrMyGroupList.count)")
         print("self.viewModel.arrInvitaions is \(self.viewModel.arrInvitaions.count)")
         if self.viewModel.arrMyGroupList.isEmpty == true {
@@ -127,7 +122,5 @@ extension CommunityViewController: CommunityViewRepresentable, HabitViewRepresen
             self.collectionNewGroupHabit.configure(myInvitaion: self.viewModel.arrInvitaions)
             self.collectionNewGroupHabit.reloadData()
         }
-        
     }
 }
-

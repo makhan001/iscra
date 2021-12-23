@@ -14,8 +14,10 @@ struct HabitRequests: RequestRepresentable {
     var deleteHabit: HabitParams.DeleteHabit?
     var habitDetail: HabitParams.HabitDetail?
     var allHabitList: HabitParams.AllHabitList?
-    var groupInvitations: HabitParams.GroupInvitations?
     var markAsComplete: HabitParams.MarkAsComplete?
+    var groupInvitations: HabitParams.GroupInvitations?
+    var showHabit: HabitParams.ShowHabit?
+    var joinHabit: HabitParams.JoinHabit?
 
     let requestType: RequestType
     enum RequestType {
@@ -24,8 +26,10 @@ struct HabitRequests: RequestRepresentable {
         case deleteHabit
         case habitDetail
         case allHabitList
-        case groupInvitations
         case markAsComplete
+        case groupInvitations
+        case showHabit
+        case joinHabit
     }
     
     init(requestType: RequestType) {
@@ -45,10 +49,15 @@ struct HabitRequests: RequestRepresentable {
             self.habitDetail = params as? HabitParams.HabitDetail
         case is HabitParams.AllHabitList:
             self.allHabitList = params as? HabitParams.AllHabitList
-        case is HabitParams.GroupInvitations:
-            self.groupInvitations = params as? HabitParams.GroupInvitations
         case is HabitParams.MarkAsComplete:
             self.markAsComplete = params as? HabitParams.MarkAsComplete
+        case is HabitParams.GroupInvitations:
+            self.groupInvitations = params as? HabitParams.GroupInvitations
+        case is HabitParams.ShowHabit:
+            self.showHabit = params as? HabitParams.ShowHabit
+        case is HabitParams.JoinHabit:
+            self.joinHabit = params as? HabitParams.JoinHabit
+
         default:break
         }
     }
@@ -68,6 +77,8 @@ struct HabitRequests: RequestRepresentable {
     
     var endpoint: String {
         switch self.requestType {
+        case .joinHabit:
+            return "joinhabits/join_habit"
         case .createHabit:
             return "habits/add_habit"
         case .allHabitList:
@@ -82,6 +93,8 @@ struct HabitRequests: RequestRepresentable {
             return "groupinvitations/invited"
         case .markAsComplete:
             return "habitmarks/mark_as_complete"
+        case .showHabit:
+            return "habits/show_habit"
         }
     }
     
@@ -101,6 +114,10 @@ struct HabitRequests: RequestRepresentable {
             return .body(data: encodeBody(data: groupInvitations))
         case .markAsComplete:
             return .body(data: encodeBody(data: markAsComplete))
+        case .showHabit:
+            return .body(data: encodeBody(data: showHabit))
+        case .joinHabit:
+            return .body(data: encodeBody(data: joinHabit))
         default:
             return .none
         }

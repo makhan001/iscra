@@ -109,6 +109,8 @@ enum HabitParams {
     
     struct HabitDetail: Codable {
         let id: String?
+        let user_id: String?
+        let habit_month: String?
     }
     
     struct AllHabitList: Codable {
@@ -116,6 +118,7 @@ enum HabitParams {
     
     struct GroupInvitations: Codable {
         let habit_id: String?
+        let user_ids: [String]?
     }
     
     struct MarkAsComplete: Codable {
@@ -123,19 +126,26 @@ enum HabitParams {
         let habit_day: String?
         let is_completed: String?
     }
-}
-
-enum CommunityParams {
+    
+    struct ShowHabit: Codable {
+        let habit_id: String?
+        let user_id: String?
+    }
+    
     struct JoinHabit: Codable {
         let habit_id: String?
     }
-    
+}
+
+enum CommunityParams {
     struct FetchCommunity: Codable {
     }
     
     struct AllGroupHabit: Codable {
+      //  let name: String?
     }
     
     struct Friends: Codable {
+//let name: String?
     }
 }

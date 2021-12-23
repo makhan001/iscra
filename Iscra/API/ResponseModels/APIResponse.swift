@@ -27,8 +27,9 @@ struct DataClass: Codable {
     let groupHabits: [GroupHabit]?
     let invitaions: [Invitaion]?
     let friends: [Friend]?
+    let joinHabit: JoinHabit?
     let allGroupHabits: [AllGroupHabit]?// [GroupHabit]?
-    
+    let showHabitDetails: ShowHabitDetail?
     enum CodingKeys: String, CodingKey {
         case register, user, habit, habits, url, invitaions, friends //, groupdetails
         case loginData = "login_data"
@@ -38,6 +39,8 @@ struct DataClass: Codable {
         case habitMark = "habit_mark"
         case groupHabits = "group_habits"
         case allGroupHabits = "all_group_habits"
+        case showHabitDetails = "show_habit_details"
+        case joinHabit = "join_habit"
     }
 }
 
@@ -157,5 +160,3 @@ struct User: Codable {
         case isApple = "is_apple"
     }
 }
-
-

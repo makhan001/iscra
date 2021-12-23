@@ -106,6 +106,7 @@ struct Friend: Codable {
     let socialID: String?
     let isGoogle, isApple: Bool?
     let createdAt, updatedAt: Int?
+    let profileImage: String?
 
     enum CodingKeys: String, CodingKey {
         case id, email
@@ -125,6 +126,7 @@ struct Friend: Codable {
         case socialID = "social_id"
         case isGoogle = "is_google"
         case isApple = "is_apple"
+        case profileImage = "profile_image"
     }
 }
 

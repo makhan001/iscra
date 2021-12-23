@@ -9,24 +9,22 @@ import UIKit
 
 class MatesCollectionView: UICollectionView , UICollectionViewDelegate , UICollectionViewDataSource, CustomCollectionViewLayoutDelegate{
     
-    var count: Int = 0
+    var arrMemberList = [Member]()
     override class func awakeFromNib() {
         super.awakeFromNib()
-        
-        
     }
     
-    func configure(obj: Int) {
+    func configure(arrMember: [Member]?) {
         self.register(UINib(nibName: "MatesCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MatesCollectionCell")
         self.delegate = self
         self.dataSource = self
-        self.count = obj
+        self.arrMemberList = arrMember!
         reloadData()
     }
     
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return count
+        return self.arrMemberList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

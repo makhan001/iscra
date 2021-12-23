@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         self.viewNavigation.lblTitle.text =  "Login"
         self.viewNavigation.delegateBarAction = self
-        viewModel.email = "userios2@gmail.com"
+        viewModel.email = "mak4@gmail.com"
         viewModel.password = "12345678"
         txtEmail.text = viewModel.email
         txtPassword.text = viewModel.password
@@ -100,7 +100,6 @@ extension LoginViewController {
     }
     
     private func loginAction() {
-        print("loginAction")
         self.view.endEditing(true)
         viewModel.onAction(action: .inputComplete(.login), for: .login)
     }
@@ -108,19 +107,16 @@ extension LoginViewController {
     private func loginGoogleAction() {
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
             guard error == nil else { return }
-            self.viewModel.email = user?.profile?.email ?? ""
-            self.viewModel.username = user?.profile?.name ?? ""
-            print("image--->\(user?.profile?.imageURL(withDimension: 2))")
-        //Profile Image Code
-//            let url = user?.profile?.imageURL(withDimension: 320)
-//            let data = try? Data(contentsOf: url!)
-//
-//            if let imageData = data {
-//                let image = UIImage(data: imageData)
-//                self.viewModel.selectedImage = image ?? UIImage()
-//            }
-            
-            self.viewModel.social_id = user?.userID ?? ""
+            guard let user = user else { return }
+            self.viewModel.email = user.profile?.email ?? ""
+            self.viewModel.username = user.profile?.name ?? ""
+            self.viewModel.social_id = user.userID ?? ""
+            if ((user.profile?.hasImage) != nil) {
+                guard let url = user.profile?.imageURL(withDimension: 200) else {
+                    return
+                }
+                self.viewModel.socialLoginImageURL = url
+            }
             self.viewModel.socialLogin(logintype: .google)
         }
     }

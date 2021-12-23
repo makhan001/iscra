@@ -15,6 +15,7 @@ final class LoginViewModel {
     var password: String = ""
     var username: String = ""
     var social_id: String = ""
+    var socialLoginImageURL: URL?
     var selectedImage: UIImage = UIImage()
     var delegate: OnboardingServiceProvierDelegate?
     
@@ -47,9 +48,16 @@ final class LoginViewModel {
     }
     
     //Mark:- Social Login Api-----------------------
-    func socialLogin(logintype:SocialLoginType){
+    func socialLogin(logintype:SocialLoginType) {
         let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: SocialLoginType(rawValue: logintype.rawValue))
         print("parameter---> \(parameters)")
+        
+        if let url = socialLoginImageURL {
+            if let data = try? Data(contentsOf: url) {
+                self.selectedImage = UIImage(data: data) ?? UIImage()
+//                UserStore.save(userImage: url.absoluteString)
+            }
+        }
         
         WebService().requestMultiPart(urlString: "/users/sociallogin",
                                       httpMethod: .post,
@@ -71,8 +79,7 @@ final class LoginViewModel {
                         print("socialLoginApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)
-                        QBChatLogin.shared.setChatLoginSetup()
-                        print("Image----->\(response.data?.user?.profileImage)")
+                        QBChatLogin.shared.setChatLoginSetup(email: self?.email ?? "", password: self?.password ?? "")
                         self?.view?.onAction(.socialLogin(response.message ?? ""))
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
@@ -154,7 +161,7 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                     UserStore.save(userName: resp.data?.loginData?.username)
                     UserStore.save(userID: resp.data?.loginData?.id)
                     UserStore.save(userImage: resp.data?.loginData?.profileImage)
-                    QBChatLogin.shared.setChatLoginSetup()
+                    QBChatLogin.shared.setChatLoginSetup(email: self.email, password: self.password)
                     if resp.data?.loginData?.isVerified == true {
                         self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
                     }else{

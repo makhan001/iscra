@@ -5,9 +5,9 @@
 //  Created by Lokesh Patil on 17/11/21.
 //
 import UIKit
-@objc protocol navigationBarAction:class {
-  func ActionType()
-  @objc optional func RightButtonAction()
+@objc protocol navigationBarAction: AnyObject {
+  func ActionType() // func navigationBarActionType()
+  @objc optional func RightButtonAction() // navigationBarRightButtonAction()
 }
 enum navRightViewType{
   case myProfie

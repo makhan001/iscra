@@ -13,34 +13,33 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     
     // MARK:-Outlets and variables
     @IBOutlet weak var btnLogout: UIButton!
-   // @IBOutlet weak var lblUserName:UILabel!
-    @IBOutlet weak var imgProfile: UIImageView!
+    // @IBOutlet weak var lblUserName:UILabel!
+    @IBOutlet weak var imageProfile: UIImageView! //
     @IBOutlet weak var lblName: IscraCustomLabel!
     @IBOutlet weak var btnGetSubscription: UIButton!
     @IBOutlet weak var tableView: MyAccountTableView!
     @IBOutlet weak var viewNavigation: NavigationBarView!
-
+    
     weak var router: NextSceneDismisser?
     private var imagePicker = UIImagePickerController()
     let viewModel: MyAccountViewModel = MyAccountViewModel(provider: OnboardingServiceProvider())
     var delegateBarAction:navigationBarAction?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        self.setup()
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("self. router on MyAccountViewController is \(String(describing: self.router))")
         super.viewWillAppear(animated)
         self.lblName.text = UserStore.userName?.capitalized
-       navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.imageProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
     }
 }
 
 // MARK: Instance Methods
 extension MyAccountViewController {
     private func setup() {
-        viewModel.view = self
+        self.viewModel.view = self
         [btnGetSubscription,btnLogout].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -51,16 +50,20 @@ extension MyAccountViewController {
         self.viewNavigation.lblTitle.text =  "My profile"
         self.viewNavigation.delegateBarAction = self
         if !MFMailComposeViewController.canSendMail() {
-                print("Mail services are not available")
-                return
-            }
-      }
+            print("Mail services are not available")
+            return
+        }
+    }
     
+    func didUpdateName() {
+        self.lblName.text = UserStore.userName?.capitalized
+    }
 }
 
-// MARK: Navigation Methods
+// MARK: Navigation Delegates
 extension MyAccountViewController: navigationBarAction {
     func ActionType() {}
+    
     func RightButtonAction() {
         self.router?.push(scene: .UpdateProfile)
     }
@@ -116,21 +119,21 @@ extension MyAccountViewController: clickManagerDelegate{
         case .changePassword:
             self.ChangePasswordAction()
         case .shareWithFriends:
-          self.showActivityViewController(url: URL(string: "https://www.apple.com")!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
+            self.showActivityViewController(url: URL(string: "https://www.apple.com")!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
         case .rateUs:
             self.rateUs()
         case .contactDeveloper:
-             self.composerEmail()
+            self.composerEmail()
         case .termsAndCondition:
-             self.termsAndCondition()
+            self.termsAndCondition()
         case .privacyPolicy:
-             self.privacyPolicy()
+            self.privacyPolicy()
         case .aboutUs:
-             self.aboutUs()
+            self.aboutUs()
         case .everyDay:
             print(performAction)
         case .reminder:
-           print(performAction)
+            print(performAction)
         case .changeColorTheme:
             print(performAction)
         }
@@ -141,30 +144,29 @@ extension MyAccountViewController: clickManagerDelegate{
     }
     
     private func ChangePasswordAction() {
-//       let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
-//       self.navigationController?.pushViewController(changePassword, animated: true)
-//
+        //       let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
+        //       self.navigationController?.pushViewController(changePassword, animated: true)
+        //
         self.router?.push(scene: .changePassword)
     }
     
-    private func changeProfilePhoto(){
+    private func changeProfilePhoto() {
         let storyboard = UIStoryboard(name: "Landing", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "myAccountPopup") as! MyAccountPopupViewController
         vc.delegate = self
         self.navigationController?.present(vc, animated: false, completion: nil)
-       // self.router?.push(scene: .myAccountPopup)
     }
     
     private func showActivityViewController(url:URL,  text: String,  image: UIImage) {
         let items = [url, text, image] as [Any]
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(ac, animated: true)
-      }
+    }
     
     private func rateUs(){
         if let url = URL(string: "https://itunes.apple.com/in/app/facebook/id284882215?mt=8"),
-        //if let url = URL(string: "https://www.google.co.in/"),
-            UIApplication.shared.canOpenURL(url){
+           //if let url = URL(string: "https://www.google.co.in/"),
+           UIApplication.shared.canOpenURL(url){
             UIApplication.shared.open(url, options: [:]) { (opened) in
                 if(opened){
                     print("App Store Opened")
@@ -177,11 +179,11 @@ extension MyAccountViewController: clickManagerDelegate{
     
     private func composerEmail(){
         let composeVC = MFMailComposeViewController()
-           composeVC.mailComposeDelegate = self
-            // Configure the fields of the interface.
-           composeVC.setToRecipients(["Iscra.app@gmail.com"])
-           composeVC.setSubject("Message Subject")
-           composeVC.setMessageBody("Message content.", isHTML: false)
+        composeVC.mailComposeDelegate = self
+        // Configure the fields of the interface.
+        composeVC.setToRecipients(["Iscra.app@gmail.com"])
+        composeVC.setSubject("Message Subject")
+        composeVC.setMessageBody("Message content.", isHTML: false)
         self.present(composeVC, animated: true, completion: nil)
     }
     
@@ -189,7 +191,7 @@ extension MyAccountViewController: clickManagerDelegate{
         print("termsAndCondition")
         self.viewModel.webPage = .termsAndConditions
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-        self.router?.push(scene: .webViewController)
+            self.router?.push(scene: .webViewController)
         }
     }
     
@@ -197,7 +199,7 @@ extension MyAccountViewController: clickManagerDelegate{
         print("privacyPolicy")
         self.viewModel.webPage = .privacyPolicy
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-       self.router?.push(scene: .webViewController)
+            self.router?.push(scene: .webViewController)
         }
     }
     
@@ -205,7 +207,7 @@ extension MyAccountViewController: clickManagerDelegate{
         print("aboutUs")
         self.viewModel.webPage = .aboutUs
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-        self.router?.push(scene: .webViewController)
+            self.router?.push(scene: .webViewController)
         }
     }
 }
@@ -214,14 +216,15 @@ extension MyAccountViewController: clickManagerDelegate{
 extension MyAccountViewController: MFMailComposeViewControllerDelegate{
     func mailComposeController(_ controller: MFMailComposeViewController,
                                didFinishWith result: MFMailComposeResult, error: Error?) {
-       controller.dismiss(animated: true, completion: nil)
-       }
+        controller.dismiss(animated: true, completion: nil)
+    }
 }
 
 //Mark:- Image picker Delegate
 extension MyAccountViewController: ImagePickerDelegate{
     func fetchedImage(img: UIImage) {
-        imgProfile.image = img
+        imageProfile.image = img
+        viewModel.selectedImage = img
         viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
         self.dismiss(animated: true, completion: nil)
     }
@@ -233,6 +236,8 @@ extension MyAccountViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
+        case .updateProfile:
+            self.imageProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
         case .logout:
             self.router?.push(scene: .welcome)
         default:

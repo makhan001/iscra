@@ -203,3 +203,35 @@ extension String {
         }
     }
 }
+
+extension UIImageView {
+    func setImageFromURL(_ url:String, with defaultImage:UIImage?) {
+        if url.contains("no_image") {
+            self.image = defaultImage
+            self.contentMode = .scaleAspectFit
+            return
+        }
+        
+        let imageLink = url
+        guard let urlImage = imageLink.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            if defaultImage != nil {
+                self.image = defaultImage
+                self.contentMode = .scaleAspectFit
+            } else {
+                self.image = nil
+            }
+            return
+        }
+        
+        let imageURL = URL.init(string: urlImage)
+        self.sd_setImage(with: imageURL) { (image, error, _, _) in
+            if error != nil {
+                self.image = defaultImage
+                self.contentMode = .scaleAspectFit
+            } else {
+                self.image = image
+                self.contentMode = .scaleAspectFill
+            }
+        }
+    }
+}

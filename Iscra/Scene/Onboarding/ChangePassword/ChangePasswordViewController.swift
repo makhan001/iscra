@@ -26,14 +26,14 @@ class ChangePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.navigationItem.title = AppConstant.nav_shangpassword
+        // self.navigationItem.title = AppConstant.nav_shangpassword
         setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-       // print("self.router is \(self.router)")
+        // print("self.router is \(self.router)")
         self.viewNavigation.lblTitle.text =  "Change password"
         self.viewNavigation.delegateBarAction = self
     }
@@ -172,7 +172,7 @@ extension UIAlertController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.center
         let attributeString = NSMutableAttributedString(string: title, attributes: [
-                                                            NSAttributedString.Key.paragraphStyle: paragraphStyle])//1
+            NSAttributedString.Key.paragraphStyle: paragraphStyle])//1
         if let titleFont = font {
             attributeString.addAttributes([NSAttributedString.Key.font : titleFont],//2
                                           range: NSMakeRange(0, title.utf8.count))
@@ -192,7 +192,7 @@ extension UIAlertController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.left
         let attributedString = NSMutableAttributedString(string: title, attributes: [
-                                                            NSAttributedString.Key.paragraphStyle: paragraphStyle])
+            NSAttributedString.Key.paragraphStyle: paragraphStyle])
         if let titleFont = font {
             attributedString.addAttributes([NSAttributedString.Key.font : titleFont], range: NSMakeRange(0, title.utf8.count))
         }
@@ -202,34 +202,20 @@ extension UIAlertController {
         self.setValue(attributedString, forKey: "attributedMessage")
     }
 }
+
 // MARK: API Callback
 extension ChangePasswordViewController: OnboardingViewRepresentable {
     func onAction(_ action: OnboardingAction) {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
+            WebService().StopIndicator()
         case let .changePassword(msg):
             self.showToast(message: msg)
-            self.txtFieldNewPassword.text = ""
-            self.txtFieldConfirmPassword.text = ""
-            self.txtFieldCurrentPassword.text = ""
-
-            
-//            let passwordChangeConfirmation: PasswordChangeConfirmationViewController = PasswordChangeConfirmationViewController.from(from: .onboarding, with: .passwordChangeConfirmation)
-//                        navigationController?.present(passwordChangeConfirmation, animated: true, completion: {
-//                            passwordChangeConfirmation.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
-//                        })
-            
-            
-//            let VC = storyboard?.instantiateViewController(withIdentifier: "PasswordChangeConfirmationViewController") as! PasswordChangeConfirmationViewController
-//            navigationController?.present(VC, animated: true, completion: {
-//                VC.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
-//            })
-//            let seconds = 3.0
-//            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-//                self.dismiss(animated: true, completion: nil)
-//            }
-//
+            self.showToast(message: msg, seconds: 0.5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                self.router?.dismiss(controller: .changePassword)
+            }
             break
         default:
             break

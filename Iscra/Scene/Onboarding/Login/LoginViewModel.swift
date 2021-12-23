@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Quickblox
 import Foundation
 
 final class LoginViewModel {
@@ -14,6 +15,7 @@ final class LoginViewModel {
     var password: String = ""
     var username: String = ""
     var social_id: String = ""
+    var socialLoginImageURL: URL?
     var selectedImage: UIImage = UIImage()
     var delegate: OnboardingServiceProvierDelegate?
     
@@ -46,17 +48,24 @@ final class LoginViewModel {
     }
     
     //Mark:- Social Login Api-----------------------
-    func socialLogin(logintype:SocialLoginType){
-        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: SocialLoginType(rawValue: logintype.rawValue))
+    func socialLogin(logintype:SocialLoginType) {
+        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: UIDevice.current.identifierForVendor?.uuidString ?? "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: SocialLoginType(rawValue: logintype.rawValue))
         print("parameter---> \(parameters)")
+        
+        if let url = socialLoginImageURL {
+            if let data = try? Data(contentsOf: url) {
+                self.selectedImage = UIImage(data: data) ?? UIImage()
+//                UserStore.save(userImage: url.absoluteString)
+            }
+        }
         
         WebService().requestMultiPart(urlString: "/users/sociallogin",
                                       httpMethod: .post,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
-                                      imageArray: [["profile_image": selectedImage ?? UIImage()]],
+                                      imageArray: [["profile_image": selectedImage]],
                                       fileArray: [],
-                                      file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
+                                      file: ["profile_image": selectedImage ]) { [weak self](resp, err) in
             if err != nil {
                 self?.view?.onAction(.errorMessage(err ?? ERROR_MESSAGE))
                 // print(err)
@@ -65,12 +74,12 @@ final class LoginViewModel {
                 if let response = resp as? SuccessResponseModel {
                     if response.status == true {
                         UserStore.save(token: response.data?.user?.authenticationToken)
-                        UserStore.save(userName: response.data?.user?.email)
+                        UserStore.save(userEmail: response.data?.user?.email)
                         UserStore.save(userName: response.data?.user?.username?.capitalized)
                         print("socialLoginApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)
-                        print("Image----->\(response.data?.user?.profileImage)")
+//                        QBChatLogin.shared.setChatLoginSetup(email: self?.email ?? "", password: self?.password ?? "")
                         self?.view?.onAction(.socialLogin(response.message ?? ""))
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
@@ -79,6 +88,62 @@ final class LoginViewModel {
             }
         }
     }
+    
+//    //Mark:- Login Chat
+//    func setChatLoginSetup() {
+//        let userPassword = "12345678"
+//
+//        QBRequest.logIn(withUserEmail: UserStore.userEmail ?? "",
+//                        password: userPassword) { (response, user) in
+//            let current = Profile()
+//            do {
+//                let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
+//                let userDefaults = UserDefaults.standard
+//                userDefaults.set(data, forKey: UserProfileConstant.curentProfile)
+//            } catch {
+//                debugPrint("[Profile] Couldn't write file to UserDefaults")
+//            }
+//            print(current.fullName)
+//            print("LoginChatSuccess",user)
+//            self.connectToChat(user: user)
+//
+//        } errorBlock: { (response) in
+//            print("LoginChatNotSuccess",response)
+//        }
+//    }
+//
+//    //Mark:- Connect to chat
+//    private func connectToChat(user: QBUUser) {
+//        //infoText = LoginStatusConstant.intoChat
+//        let userPassword = "12345678"//"jitu12345"
+//
+//        if QBChat.instance.isConnected == true {
+//            //did Login action
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .nanoseconds(Int(0.01))) {
+//
+//            }
+//        } else {
+//            QBChat.instance.connect(withUserID: user.id,
+//                                    password: userPassword,
+//                                    completion: { [weak self] error in
+//                guard let _ = self else { return }
+//                if let error = error {
+//                    if error._code == QBResponseStatusCode.unAuthorized.rawValue {
+//                        // Clean profile
+//                        Profile.clearProfile()
+//                        print(error.localizedDescription)
+//                    } else {
+//                        print("Successfully login on QB")
+//                    }
+//                } else {
+//                    //did Login action
+//                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .nanoseconds(Int(0.01))) {
+//                        print("QB others actions")
+//                    }
+//                }
+//            })
+//        }
+//    }
 }
 
 extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
@@ -96,6 +161,7 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                     UserStore.save(userName: resp.data?.loginData?.username)
                     UserStore.save(userID: resp.data?.loginData?.id)
                     UserStore.save(userImage: resp.data?.loginData?.profileImage)
+//                    QBChatLogin.shared.setChatLoginSetup(email: self.email, password: self.password)
                     if resp.data?.loginData?.isVerified == true {
                         self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
                     }else{

@@ -48,6 +48,14 @@ extension CommunityViewController {
         [btnSearch, btnInviteFriends].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "joinHabit"), object: nil)
+    }
+    
+    @objc func refrershUI(){
+        print("refrershUI is called")
+        self.viewModel.arrInvitaions.removeAll()
+        self.viewModel.arrMyGroupList.removeAll()
+        self.viewModel.fetchCommunityList()
     }
 }
 
@@ -67,15 +75,14 @@ extension CommunityViewController {
     private func searchAction() {
         let communitySearch: CommunitySearchViewController = CommunitySearchViewController.from(from: .landing, with: .communitySearch)
      //   communitySearch.delegate1 = self
-        communitySearch.router = self.router
+        communitySearch.router = self.router 
         self.navigationController?.present(communitySearch, animated: false, completion: nil)
     }
     
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
         self.showToast(message: "Under development", seconds: 0.5)
-
-       self.viewModel.callApiGroupInvitation()
+     //  self.viewModel.callApiGroupInvitation()
     }
 }
 

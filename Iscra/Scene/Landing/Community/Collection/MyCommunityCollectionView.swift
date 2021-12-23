@@ -20,6 +20,7 @@ class MyCommunityCollectionView: UICollectionView , UICollectionViewDelegate , U
         self.dataSource = self
         self.myGroupList = myGroups
         reloadData()
+        print(" reload on MyCommunityCollectionView configure crashed")
     }
     
     // MARK: UICollectionViewDataSource
@@ -31,7 +32,7 @@ class MyCommunityCollectionView: UICollectionView , UICollectionViewDelegate , U
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommunityMyGroupsCell", for: indexPath) as? CommunityMyGroupsCell else { return UICollectionViewCell() }
         let objMyGroupList = self.myGroupList[indexPath.row]
         cell.configure(obj: objMyGroupList)
-      //  cell.collectiondays.reloadData()
+        //cell.collectiondays.reloadData()
             return cell
     }
     

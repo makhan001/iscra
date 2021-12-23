@@ -31,6 +31,7 @@ class NewCommunityCollectionView: UICollectionView , UICollectionViewDelegate , 
         self.dataSource = self
         self.arrInvitaions = myInvitaion
         reloadData()
+        print(" reload on NewCommunityCollectionView configure crashed")
     }
     
     // MARK: UICollectionViewDataSource

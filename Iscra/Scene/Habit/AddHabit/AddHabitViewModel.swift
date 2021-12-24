@@ -29,7 +29,7 @@ final class AddHabitViewModel {
         self.habitName  = self.habitName.trimmingCharacters(in: .whitespacesAndNewlines)
         self.description  = self.description.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if habitType == .group_habit{
+        if habitType == .group{
             if Validation().textValidation(text: habitName, validationType: .habitName).0 {
                 view?.onAction(.requireFields(Validation().textValidation(text: habitName, validationType: .habitName).1))
                 return
@@ -58,7 +58,7 @@ final class AddHabitViewModel {
     }
     
     private func validateDaysSelection() {
-        if HabitUtils.shared.habitType != .group_habit {
+        if HabitUtils.shared.habitType != .group {
             if self.days == "" {
                 view?.onAction(.requireFields(AppConstant.emptyDays))
             }else{
@@ -78,7 +78,7 @@ final class AddHabitViewModel {
     }
     
     private func validateGroupImageSelection() {
-        if HabitUtils.shared.habitType == .group_habit {
+        if HabitUtils.shared.habitType == .group {
                // if (HabitUtils.shared.groupImage == nil){
             if (self.groupImage == nil){
                 view?.onAction(.requireFields(AppConstant.emptyGroupImage))
@@ -96,7 +96,7 @@ final class AddHabitViewModel {
 
 extension AddHabitViewModel: HabitInputViewDelegate {
     func onAction(action: HabitAction, for screen: HabitScreenType) {
-        if HabitUtils.shared.habitType == .group_habit {
+        if HabitUtils.shared.habitType == .group {
             switch action {
             case .inputComplete(screen): validateHabitInput()
             case .setTheme(screen): validateSetTheme()

@@ -79,7 +79,7 @@ final class LoginViewModel {
                         print("socialLoginApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)
-//                        QBChatLogin.shared.setChatLoginSetup(email: self?.email ?? "", password: self?.password ?? "")
+                        QBChatLogin.shared.setChatLoginSetup(email: self?.email ?? "", password: self?.password ?? "")
                         self?.view?.onAction(.socialLogin(response.message ?? ""))
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

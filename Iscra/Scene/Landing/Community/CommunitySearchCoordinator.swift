@@ -42,7 +42,7 @@ final class CommunitySearchCoordinator: Coordinator<Scenes> {
         habitName = HabitNameCoordinator(router: Router())
         add(habitName)
         habitName.delegate = self
-        habitName.start(type: .group_habit)
+        habitName.start(type: .group)
         self.router.present(habitName, animated: true)
     }
 }

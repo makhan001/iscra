@@ -16,14 +16,11 @@ class CommunityGroupHabit: UICollectionViewCell {
         
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
  
     func configure(obj: Invitaion) {
         self.lblHabitTitle.text = obj.name?.capitalized
         self.lblHabitSubtitle.text = obj.invitaionDescription
-      //  self.imgHabit.image = #imageLiteral(resourceName: "ic-Rectangle")
-       // self.imgHabit.imgHabit.sd_setImageWithURL(url, placeholderImage:UIImage(imageNamed:"ic-Rectangle"))
 
         let profilePic = obj.groupImage
         if profilePic != nil && profilePic != "<null>"  {
@@ -32,6 +29,5 @@ class CommunityGroupHabit: UICollectionViewCell {
         }else{
             self.imgHabit.image = #imageLiteral(resourceName: "ic-Rectangle")
         }
-        
     }
 }

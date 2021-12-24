@@ -23,7 +23,7 @@ class CommunityFriendCell: UITableViewCell {
     }
     
     func configure(objFriend: Friend) {
-        self.lblFriendname.text = objFriend.username?.capitalized
+        self.lblFriendname.text = objFriend.username?.lowercased()
         let profilePic = objFriend.profileImage
             if profilePic != nil && profilePic != "<null>" {
               let url = URL(string: profilePic!)

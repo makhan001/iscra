@@ -53,9 +53,9 @@ extension CommunityViewController {
     
     @objc func refrershUI(){
         print("refrershUI is called")
-        self.viewModel.arrInvitaions.removeAll()
-        self.viewModel.arrMyGroupList.removeAll()
-        self.viewModel.fetchCommunityList()
+//        self.viewModel.arrInvitaions.removeAll()
+//        self.viewModel.arrMyGroupList.removeAll()
+//        self.viewModel.fetchCommunityList()
     }
 }
 

@@ -35,7 +35,7 @@ extension InviteFriendViewController {
         self.habitType = HabitUtils.shared.habitType
         setUpView(habitType:habitType)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        if habitType == .group_habit{
+        if habitType == .group{
             btnMaybeLetter.setTitle("Share public", for: .normal)
         }
         [btnInviteFriends, btnMaybeLetter].forEach {
@@ -53,7 +53,7 @@ extension InviteFriendViewController {
             imgIcon.image = UIImage(named: "badHabitfriends")
             lblHeaderTitle.text = AppConstant.inviteFriendsBadTitle
             lblMiddleText.text = AppConstant.inviteFriendsBadSubTitle
-        case .group_habit:
+        case .group:
             imgIcon.image = UIImage(named: "groupHabitFriends")
             lblHeaderTitle.text = AppConstant.inviteFriendsGroupTitle
             lblMiddleText.text = AppConstant.inviteFriendsGroupSubTitle

@@ -22,6 +22,7 @@ class SetThemeViewController: UIViewController {
     var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
     private let viewModel = AddHabitViewModel()
     weak var router: NextSceneDismisser?
+    weak var alertDelegate: AlertControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,29 +30,29 @@ class SetThemeViewController: UIViewController {
     }
 }
 
+// MARK:- Instance Methods
 extension SetThemeViewController {
-    func setup() {
-        viewModel.view = self
+    private func setup() {
+        self.viewModel.view = self
         self.viewNavigation.navType = .addHabit
         self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.delegateBarAction = self
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        self.viewModel.didNavigateToSetTheme = self.didNavigateToSetTheme
         [btnColor, btnIcon, btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        
-//        if let URL = Bundle.main.url(forResource: "HabitIcons", withExtension: "plist") {
-//            if let HabitIconsPlist =  NSArray(contentsOf: URL) as? [[String:Any]] {
-//              //  print("HabitIconsPlist\(HabitIconsPlist)")
-//                iconResorces = HabitIconsPlist
-//            }
-//        }
-//        let IconsData = Utils.fetchDataFromLocalJson(name: "HabitIconsMock") as! [String : Any]
         let IconsDatas = Utils.readLocalFile(forName: "HabitIconsMock")
         parse(jsonData: IconsDatas ?? Data())
         print(IconsDatas!)
     }
+    
+    private func didNavigateToSetTheme(isNavigate: Bool) {
+        if isNavigate{
+            self.router?.push(scene: .reminder)
+        }
+    }
+    
     private func parse(jsonData: Data) {
         do {
             let decodedData = try JSONDecoder().decode(IconsHabitModel.self,from: jsonData)
@@ -60,6 +61,23 @@ extension SetThemeViewController {
         } catch {
             print("decode error")
         }
+    }
+    
+    private func showHabitCancelAlert() {
+        let alertController = UIAlertController(title: "Warning!!", message: "Do you really want exit from adding habit?", preferredStyle: .alert)
+        let logoutaction = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction!) in
+            HabitUtils.shared.removeAllHabitData()
+            self.router?.push(scene: .landing)
+        }
+        logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        alertController.addAction(logoutaction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
     }
 }
 // MARK:- Button Action
@@ -100,13 +118,7 @@ extension SetThemeViewController {
     private func nextClick() {
         self.viewModel.icon = self.selectedIcons
         self.viewModel.colorTheme = self.selectedColorTheme.colorHex //"#7B86EB"
-        viewModel.onAction(action: .setTheme(.setTheme), for: .setTheme)
-        viewModel.didNavigateToSetTheme = {
-            isNavigate in
-            if isNavigate{
-               self.router?.push(scene: .reminder)
-            }
-        }
+        self.viewModel.onAction(action: .setTheme(.setTheme), for: .setTheme)
     }
 }
 
@@ -126,6 +138,21 @@ extension SetThemeViewController: selectedColordelegate ,selectedIcondelegate {
     }
 }
 
+
+
+// MARK: NavigationBarView Callback
+extension SetThemeViewController  : navigationBarAction {
+    func navigationBackAction()  {
+        self.router?.dismiss(controller: .setTheme)
+    }
+    
+    func navigationRightButtonAction() {
+        self.showHabitCancelAlert()
+    }
+}
+
+
+
 // MARK: API Callback
 extension SetThemeViewController: HabitViewRepresentable {
     func onAction(_ action: HabitAction) {
@@ -137,16 +164,4 @@ extension SetThemeViewController: HabitViewRepresentable {
         }
     }
     
-}
-
-// MARK: navigationBarAction Callback
-extension SetThemeViewController  : navigationBarAction {
-    func navigationBackAction()  {
-        self.router?.dismiss(controller: .setTheme)
-    }
-    
-    func navigationRightButtonAction() {
-        HabitUtils.shared.removeAllHabitData()
-        self.router?.push(scene: .landing)
-    }
 }

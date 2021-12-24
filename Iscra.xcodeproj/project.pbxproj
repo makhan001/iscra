@@ -162,6 +162,7 @@
 		861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D22743E02300727D1E /* LoginCoordinator.swift */; };
 		862E5AFB27565B5A00225894 /* HabitNameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */; };
 		8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A8392747D41100773C57 /* LandingCoordinator.swift */; };
+		86CF862C2775CE1900FB19BC /* QBChatLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF862B2775CE1900FB19BC /* QBChatLogin.swift */; };
 		8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800806B2729255E008E3260 /* ReminderViewController.swift */; };
 		880080732729282F008E3260 /* HabitNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080722729282F008E3260 /* HabitNameViewController.swift */; };
 		880080782729346D008E3260 /* WeekCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080772729346D008E3260 /* WeekCollection.swift */; };
@@ -470,6 +471,7 @@
 		861CF1D22743E02300727D1E /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameCoordinator.swift; sourceTree = "<group>"; };
 		8669A8392747D41100773C57 /* LandingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingCoordinator.swift; sourceTree = "<group>"; };
+		86CF862B2775CE1900FB19BC /* QBChatLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QBChatLogin.swift; sourceTree = "<group>"; };
 		8800806B2729255E008E3260 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		880080722729282F008E3260 /* HabitNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameViewController.swift; sourceTree = "<group>"; };
 		880080772729346D008E3260 /* WeekCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollection.swift; sourceTree = "<group>"; };
@@ -1614,6 +1616,7 @@
 		88E0284D2716F73F00D90BB1 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				86CF862B2775CE1900FB19BC /* QBChatLogin.swift */,
 				88202D54271968B900F0EA2E /* InputValidation.swift */,
 				88E028EF27170B7F00D90BB1 /* Utils.swift */,
 				88E028EB2717053B00D90BB1 /* Font Family */,
@@ -2152,6 +2155,7 @@
 				8822D4E72731775500C68EE5 /* VerificationViewController.swift in Sources */,
 				0402C4B2273D4A200073DFB8 /* GroupHabitFriendsTable.swift in Sources */,
 				5FF6CD3C274E6A5A007ADC2F /* AsyncOperation.swift in Sources */,
+				86CF862C2775CE1900FB19BC /* QBChatLogin.swift in Sources */,
 				5FF6CDA0274E6AA0007ADC2F /* MyChatViewController.swift in Sources */,
 				8814B443274393EB00A6DE01 /* OnboardingProvider.swift in Sources */,
 				5FF6CD31274E6A5A007ADC2F /* PHAsset+Extention.swift in Sources */,

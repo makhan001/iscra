@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
 // MARK: Instance Methods
 extension HomeViewController {
     private func setup() {
-        viewModel.view = self
+        self.viewModel.view = self
         self.setTableView()
         self.viewFirstHabit.isHidden = true
         self.lblTitle.text = AppConstant.firstHabitTitle

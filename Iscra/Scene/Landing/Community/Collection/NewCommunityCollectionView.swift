@@ -7,18 +7,15 @@
 
 import UIKit
 
-protocol communityInvitationDetail: class {
+protocol CommunityInvitationDetailDelegate: AnyObject {
     func navigate(obj: Invitaion)
 }
-//protocol communityGroupHabitDetail: class {
-//    func navigate()
-//}
 
 class NewCommunityCollectionView: UICollectionView , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
     
     var arrInvitaions = [Invitaion]()
     
-    weak var delegate1 : communityInvitationDetail?
+    weak var communityDelegate : CommunityInvitationDetailDelegate?
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -46,7 +43,7 @@ class NewCommunityCollectionView: UICollectionView , UICollectionViewDelegate , 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let objInvitaion = self.arrInvitaions[indexPath.row]
-        delegate1?.navigate(obj: objInvitaion)
+        communityDelegate?.navigate(obj: objInvitaion)
         print("navigate")
     }
     

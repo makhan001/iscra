@@ -72,6 +72,14 @@ extension UIFont {
     }
 }
 
+extension UIView {
+    func makeCircular() {
+        self.layer.cornerRadius = self.frame.size.width / 2
+        self.clipsToBounds = true
+
+    }
+}
+
 
 extension UIViewController {
     
@@ -227,7 +235,7 @@ extension String {
 
 extension UIImageView {
     func setImageFromURL(_ url:String, with defaultImage:UIImage?) {
-        if url.contains("no_image") {
+        if url.contains("null") {
             self.image = defaultImage
             self.contentMode = .scaleAspectFit
             return
@@ -262,5 +270,70 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         return formatter.string(from: self)
+    }
+}
+
+extension UITableView {
+    private struct AssociatedObjectKey {
+        static var registeredCells = "registeredCells"
+    }
+    
+    private var registeredCells: Set<String> {
+        get {
+            if objc_getAssociatedObject(self, &AssociatedObjectKey.registeredCells) as? Set<String> == nil {
+                self.registeredCells = Set<String>()
+            }
+            return objc_getAssociatedObject(self, &AssociatedObjectKey.registeredCells) as! Set<String>
+        }
+        
+        set(newValue) {
+            objc_setAssociatedObject(self, &AssociatedObjectKey.registeredCells, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    func reloadSection(section:Int, animation: UITableView.RowAnimation = .none) {
+        self.reloadSections(IndexSet(integer: section), with: animation)
+    }
+    
+    func registerReusable<T: UITableViewCell>(_: T.Type) where T: Reusable {
+        let bundle = Bundle(for: T.self)
+        
+        if bundle.path(forResource: T.reuseIndentifier, ofType: "nib") != nil {
+            let nib = UINib(nibName: T.reuseIndentifier, bundle: bundle)
+            register(nib, forCellReuseIdentifier: T.reuseIndentifier)
+        } else {
+            register(T.self, forCellReuseIdentifier: T.reuseIndentifier)
+        }
+    }
+    
+    func dequeueReusable<T: UITableViewCell>(_ indexPath: IndexPath) -> T where T: Reusable {
+        if registeredCells.contains(T.reuseIndentifier) == false {
+            registeredCells.insert(T.reuseIndentifier)
+            registerReusable(T.self)
+        }
+        
+        guard let reuseCell = self.dequeueReusableCell(withIdentifier: T.reuseIndentifier, for: indexPath) as? T else { fatalError("Unable to dequeue cell with identifier \(T.reuseIndentifier)") }
+        return reuseCell
+    }
+    
+    func registerReusable<T: UITableViewCell>(_: T.Type) where T: ReusableReminder {
+        let bundle = Bundle(for: T.self)
+        
+        if bundle.path(forResource: T.reuseIndentifier, ofType: "nib") != nil {
+            let nib = UINib(nibName: T.reuseIndentifier, bundle: bundle)
+            register(nib, forCellReuseIdentifier: T.reuseIndentifier)
+        } else {
+            register(T.self, forCellReuseIdentifier: T.reuseIndentifier)
+        }
+    }
+    
+    func dequeueReusable<T: UITableViewCell>(_ indexPath: IndexPath) -> T where T: ReusableReminder {
+        if registeredCells.contains(T.reuseIndentifier) == false {
+            registeredCells.insert(T.reuseIndentifier)
+            registerReusable(T.self)
+        }
+        
+        guard let reuseCell = self.dequeueReusableCell(withIdentifier: T.reuseIndentifier, for: indexPath) as? T else { fatalError("Unable to dequeue cell with identifier \(T.reuseIndentifier)") }
+        return reuseCell
     }
 }

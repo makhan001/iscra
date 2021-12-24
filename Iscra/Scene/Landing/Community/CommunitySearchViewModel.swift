@@ -48,18 +48,15 @@ extension CommunitySearchViewModel: CommunityServiceProvierDelegate {
                 if let resp = response as? SuccessResponseModel, resp.code == 200, let allGroupList = resp.data?.allGroupHabits{
                     self.arrFriend.removeAll()
                     self.arrGroupList = allGroupList
-                    //   self.arrGroupList.sort { Int($0.createdAt!) > Int($1.createdAt!) }
                     self.arrFriend.sort { String($0.createdAt!) > String($1.createdAt!) }
                     print("self.arrGroupList is \(self.arrGroupList.count)")
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
-                    
                 } else if let resp = response as? SuccessResponseModel, resp.code == 200, let friendsList = resp.data?.friends{
                     self.arrGroupList.removeAll()
                     self.arrFriend = friendsList
-                    self.arrFriend.sort { String($0.createdAt!) > String($1.createdAt!) }
+                    self.arrFriend.sort { $0.username ?? "" < $1.username ?? "" }
                     print("self.arrFriend is \(self.arrFriend.count)")
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
-                    
                 } else {
                     self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

@@ -7,7 +7,7 @@
 import UIKit
 
 class CommunityViewController: UIViewController {
-
+    
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var lblNoGroupsFound: UILabel!
     @IBOutlet weak var btnInviteFriends: UIButton!
@@ -15,7 +15,7 @@ class CommunityViewController: UIViewController {
     @IBOutlet weak var collectionMyGroups: MyCommunityCollectionView!
     @IBOutlet weak var collectionNewGroupHabit: NewCommunityCollectionView!
     private let viewModel: CommunityViewModel = CommunityViewModel(provider:  CommunityServiceProvider())
-
+    
     weak var router: NextSceneDismisser?
     var objInvitaion: Invitaion?
     
@@ -36,7 +36,7 @@ extension CommunityViewController {
         self.viewModel.view = self
         self.lblNoGroupsFound.isHidden = true
         self.lblNoInvitationFound.isHidden = true
-        self.collectionNewGroupHabit.delegate1 = self
+        self.collectionNewGroupHabit.communityDelegate = self
         [btnSearch, btnInviteFriends].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -45,9 +45,6 @@ extension CommunityViewController {
     
     @objc func refrershUI(){
         print("refrershUI is called")
-//        self.viewModel.arrInvitaions.removeAll()
-//        self.viewModel.arrMyGroupList.removeAll()
-//        self.viewModel.fetchCommunityList()
     }
 }
 
@@ -71,12 +68,11 @@ extension CommunityViewController {
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
         self.showToast(message: "Under development", seconds: 0.5)
-     //  self.viewModel.callApiGroupInvitation()
     }
 }
 
- //MARK: - Navigation
-extension CommunityViewController: communityInvitationDetail{
+//MARK: - Navigation
+extension CommunityViewController: CommunityInvitationDetailDelegate{
     func navigate(obj: Invitaion) {
         self.objInvitaion = obj
         self.router?.push(scene: .communityDetail)
@@ -90,24 +86,24 @@ extension CommunityViewController: CommunityViewRepresentable {
         case  let .errorMessage(msg):
             self.showToast(message: msg)
         case  .sucessMessage(_):
-            self.fetchCommunityResponse()
+            self.reload()
         default:
             break
         }
     }
     
-    private func fetchCommunityResponse() {
+    private func reload() {
         print("self.viewModel.arrMyGroupList is \(self.viewModel.arrMyGroupList.count)")
         print("self.viewModel.arrInvitaions is \(self.viewModel.arrInvitaions.count)")
-      //  self.viewModel.arrMyGroupList.removeAll()
+        //  self.viewModel.arrMyGroupList.removeAll()
         if self.viewModel.arrMyGroupList.isEmpty != true {
             self.collectionMyGroups.isHidden = false
             self.lblNoGroupsFound.isHidden = true
             self.collectionMyGroups.configure(myGroups: self.viewModel.arrMyGroupList)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-                       self.collectionMyGroups.reloadData()
-                    }
-        }else{
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+                self.collectionMyGroups.reloadData()
+            }
+        } else {
             self.collectionMyGroups.isHidden = true
             self.lblNoGroupsFound.isHidden = false
         }
@@ -117,9 +113,9 @@ extension CommunityViewController: CommunityViewRepresentable {
             self.lblNoInvitationFound.isHidden = true
             self.collectionNewGroupHabit.configure(myInvitaion: self.viewModel.arrInvitaions)
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-            self.collectionNewGroupHabit.reloadData()
+                self.collectionNewGroupHabit.reloadData()
             }
-        }else{
+        } else {
             self.collectionNewGroupHabit.isHidden = true
             self.lblNoInvitationFound.isHidden = false
         }

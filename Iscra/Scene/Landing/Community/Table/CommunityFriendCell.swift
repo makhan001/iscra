@@ -7,29 +7,23 @@
 
 import UIKit
 
-class CommunityFriendCell: UITableViewCell {
+class CommunityFriendCell: UITableViewCell, Reusable {
     
-    @IBOutlet weak var imgFriend: UIImageView!
+    @IBOutlet weak var imageFriend: UIImageView! //
     @IBOutlet weak var lblFriendname: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.imgFriend.layer.cornerRadius = imgFriend.frame.size.width / 2
-        self.imgFriend.clipsToBounds = true
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        self.imageFriend.makeCircular()
     }
     
-    func configure(objFriend: Friend) {
+    func configure<T>(with content: T) {
+        guard let objFriend = content as? Friend else { return }
         self.lblFriendname.text = objFriend.username?.lowercased()
-        let profilePic = objFriend.profileImage
-            if profilePic != nil && profilePic != "<null>" {
-              let url = URL(string: profilePic!)
-                self.imgFriend.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic_user3"))
-            }else{
-                self.imgFriend.image = #imageLiteral(resourceName: "ic_user3")
-            }
+        self.imageFriend.setImageFromURL(objFriend.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
     }
 }

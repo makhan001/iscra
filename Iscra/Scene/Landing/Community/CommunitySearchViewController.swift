@@ -14,12 +14,13 @@ class CommunitySearchViewController: UIViewController {
     @IBOutlet weak var viewNoGroups: UIView!
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var viewGroupsHabit: UIView!
+    @IBOutlet weak var lblNoFriendFound: UILabel!
     @IBOutlet weak var btnCreateGroupHabit: UIButton!
     @IBOutlet weak var btnSegment: UISegmentedControl!
     @IBOutlet weak var tableGroupHabit: GroupHabitTableView!
     @IBOutlet weak var tableFriends: CommunityFriendTableView!
-    @IBOutlet weak var lblNoFriendFound: UILabel!
-
+    
+    
     var arrGroupList = [GroupHabit]()
     var arrFriend = [Friend]()
     var isSearching:Bool = false
@@ -28,8 +29,6 @@ class CommunitySearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("self.router is \(String(describing: self.router))")
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "searchAllGroup"), object: nil)
         self.setup()
     }
 }
@@ -38,6 +37,20 @@ class CommunitySearchViewController: UIViewController {
 extension CommunitySearchViewController {
     private func setup() {
         self.viewModel.view = self
+        self.configureTable()
+        self.configureControls()
+        self.fetchAllGroupHabit()
+        self.addObserver()
+    }
+    
+    private func configureTable() {
+        self.tableFriends.configure(viewModel: viewModel)
+        self.tableFriends.isHidden = true
+        self.tableGroupHabit.isHidden = true
+        self.tableGroupHabit.didSelectTableAtIndex = self.didSelectTableAtIndex
+    }
+    
+    private func configureControls() {
         [btnBack, btnCreateGroupHabit ].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -45,22 +58,20 @@ extension CommunitySearchViewController {
             $0?.addTarget(self, action: #selector(segmentPressed(_:)), for: .valueChanged)
         }
         self.txtSearch.delegate = self
-        self.tableFriends.isHidden = true
         self.viewNoGroups.isHidden = true //false
-        self.tableGroupHabit.isHidden = true
         self.lblNoFriendFound.isHidden = true
-        self.fetchAllGroupHabit()
-        self.tableGroupHabit.navigateToDetail = { [self]
-            selected in
-            if selected{
-                self.showToast(message: "Under development", seconds: 0.5)
-//                self.dismiss(animated: false, completion: nil)
-//                self.router?.push(scene: .groupHabitFriends)
-            }
-        }
     }
     
-    @objc func refrershUI(){
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "searchAllGroup"), object: nil)
+    }
+    
+    private func didSelectTableAtIndex(index: Int) {
+        //        viewModel.arrGroupList[index].id
+        self.showToast(message: "Under development", seconds: 0.5)
+    }
+    
+    @objc func refrershUI() {
         print("refrershUI is called")
         self.setup()
     }
@@ -91,7 +102,6 @@ extension CommunitySearchViewController {
     }
     
     private func backAction() {
-      //  self.dismiss(animated: false, completion: nil)
         self.router?.dismiss(controller: .communitySearch)
     }
     
@@ -127,18 +137,16 @@ extension CommunitySearchViewController: CommunityViewRepresentable {
         case  let .errorMessage(msg):
             self.showToast(message: msg)
         case  .sucessMessage(_):
-            self.fetchApiResponse()
+            self.reloadTable()
         default:
             break
         }
     }
     
-    private func fetchApiResponse() {
+    private func reloadTable() {
         WebService().StopIndicator()
         print("self.viewModel.arrGroupList is \(self.viewModel.arrGroupList.count)")
         print("self.viewModel.arrFriend is \(self.viewModel.arrFriend.count)")
-       //   self.viewModel.arrGroupList.removeAll()
-       // self.viewModel.arrFriend.removeAll()
         if self.viewModel.arrGroupList.isEmpty != true {
             self.viewNoGroups.isHidden = true
             self.tableGroupHabit.isHidden = false
@@ -146,20 +154,20 @@ extension CommunitySearchViewController: CommunityViewRepresentable {
             self.tableFriends.isHidden = true
             self.lblNoFriendFound.isHidden = true
             self.tableGroupHabit.configure(arrGroupList: self.viewModel.arrGroupList)
-        }else if self.viewModel.arrFriend.isEmpty != true {
+        } else if self.viewModel.arrFriend.isEmpty != true {
             self.viewGroupsHabit.isHidden = true
             self.tableFriends.isHidden = false
             self.viewNoGroups.isHidden = true
             self.lblNoFriendFound.isHidden = true
-            self.tableFriends.configure(arrFriend: self.viewModel.arrFriend)
-        }else{
+            self.tableFriends.reloadData()
+        } else {
             if self.btnSegment.selectedSegmentIndex == 1 {
                 self.tableGroupHabit.isHidden = true
                 self.viewGroupsHabit.isHidden = true
                 self.tableFriends.isHidden = true
                 self.viewNoGroups.isHidden = true
                 self.lblNoFriendFound.isHidden = false
-            }else{
+            } else {
                 self.tableGroupHabit.isHidden = true
                 self.viewGroupsHabit.isHidden = false
                 self.tableFriends.isHidden = true
@@ -219,10 +227,10 @@ extension CommunitySearchViewController : UITextFieldDelegate {
     }
     
     func removeSearching() {
-    self.txtSearch.text = ""
-    self.viewModel.strSearchText = ""
-    self.viewModel.isSearching = false
-}
+        self.txtSearch.text = ""
+        self.viewModel.strSearchText = ""
+        self.viewModel.isSearching = false
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true

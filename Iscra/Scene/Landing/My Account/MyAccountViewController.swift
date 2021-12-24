@@ -13,26 +13,25 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     
     // MARK:-Outlets and variables
     @IBOutlet weak var btnLogout: UIButton!
-    // @IBOutlet weak var lblUserName:UILabel!
-    @IBOutlet weak var imageProfile: UIImageView! //
+    @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var lblName: IscraCustomLabel!
     @IBOutlet weak var btnGetSubscription: UIButton!
     @IBOutlet weak var tableView: MyAccountTableView!
     @IBOutlet weak var viewNavigation: NavigationBarView!
     
     weak var router: NextSceneDismisser?
+    var delegateBarAction:navigationBarAction?
     private var imagePicker = UIImagePickerController()
     let viewModel: MyAccountViewModel = MyAccountViewModel(provider: OnboardingServiceProvider())
-    var delegateBarAction:navigationBarAction?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.lblName.text = UserStore.userName?.capitalized
-        self.imageProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
+        self.retriveUserDetails()
     }
 }
 
@@ -55,6 +54,11 @@ extension MyAccountViewController {
         }
     }
     
+    private func retriveUserDetails() {
+        self.lblName.text = UserStore.userName?.capitalized
+        self.imageProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
+    }
+    
     func didUpdateName() {
         self.lblName.text = UserStore.userName?.capitalized
     }
@@ -62,10 +66,10 @@ extension MyAccountViewController {
 
 // MARK: Navigation Delegates
 extension MyAccountViewController: navigationBarAction {
-    func ActionType() {}
+    func navigationBackAction() {}
     
-    func RightButtonAction() {
-        self.router?.push(scene: .UpdateProfile)
+    func navigationRightButtonAction() {
+        self.router?.push(scene: .updateProfile)
     }
 }
 
@@ -74,20 +78,20 @@ extension MyAccountViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnGetSubscription:
-            self.GetSubscriptionAction()
+            self.getSubscriptionAction()
         case btnLogout:
-            self.LogoutAction()
+            self.logoutAction()
         default:
             break
         }
     }
     
-    private func GetSubscriptionAction() {
+    private func getSubscriptionAction() {
         let getSubcription: GetSubcriptionViewController = GetSubcriptionViewController.from(from: .onboarding, with: .getSubcription)
         self.navigationController?.pushViewController(getSubcription, animated: true)
     }
     
-    private func LogoutAction() {
+    private func logoutAction() {
         logOutAction()
     }
     
@@ -115,9 +119,9 @@ extension MyAccountViewController: clickManagerDelegate{
         case .changeProfilePhoto:
             self.changeProfilePhoto()
         case .addYourOwnMemoji:
-            self.AddMemojiAction()
+            self.addMemojiAction()
         case .changePassword:
-            self.ChangePasswordAction()
+            self.changePasswordAction()
         case .shareWithFriends:
             self.showActivityViewController(url: URL(string: "https://www.apple.com")!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
         case .rateUs:
@@ -139,14 +143,11 @@ extension MyAccountViewController: clickManagerDelegate{
         }
     }
     
-    private func AddMemojiAction() {
+    private func addMemojiAction() {
         self.router?.push(scene: .learnHowToAddMemoji)
     }
     
-    private func ChangePasswordAction() {
-        //       let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
-        //       self.navigationController?.pushViewController(changePassword, animated: true)
-        //
+    private func changePasswordAction() {
         self.router?.push(scene: .changePassword)
     }
     

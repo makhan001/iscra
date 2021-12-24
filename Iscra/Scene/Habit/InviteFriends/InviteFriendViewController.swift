@@ -67,26 +67,23 @@ extension InviteFriendViewController  {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnInviteFriends:
-            self.InviteFriendsAction()
+            self.inviteFriendsAction()
         case btnMaybeLetter:
-            self.MaybeLetterAction()
+            self.maybeLetterAction()
         default:
             break
         }
     }
     
-    private func InviteFriendsAction() {
-        print("InviteFriendsAction")
+    private func inviteFriendsAction() {
+        print("inviteFriendsAction")
         self.showToast(message: "Under development", seconds: 0.5)
 
         // delegateInvite?.navigate(inviteType: .inviteFriend)
         //self.router?.dismiss(controller: .addHabit)
     }
     
-    private func MaybeLetterAction() {
-        print(" self.router is \( self.router)")
-        
-        //        delegateInvite?.navigate(inviteType: .mayBeLatter)
+    private func maybeLetterAction() {
         if self.btnMaybeLetter.currentTitle == "Share public" {
             print("Share public")
         }else{

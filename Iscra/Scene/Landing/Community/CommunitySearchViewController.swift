@@ -77,7 +77,7 @@ extension CommunitySearchViewController {
     @objc func segmentPressed(_ sender: UISegmentedControl) {
         switch btnSegment.selectedSegmentIndex {
         case 0:
-            GroupHabitAction()
+            groupHabitAction()
         case 1:
             friendsAction()
         default:
@@ -106,8 +106,8 @@ extension CommunitySearchViewController {
         // self.router?.push(scene: .addHabit)
     }
     
-    private func GroupHabitAction() {
-        print("GroupHabitAction")
+    private func groupHabitAction() {
+        print("groupHabitAction")
         self.fetchAllGroupHabit()
     }
     

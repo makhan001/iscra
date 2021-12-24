@@ -40,7 +40,7 @@ extension ForgotPasswordViewController {
 
 // MARK: NAvigation Delegates
 extension ForgotPasswordViewController : navigationBarAction {
-    func ActionType() {
+    func navigationBackAction() {
         self.router?.dismiss(controller: .forgot)
     }
 }

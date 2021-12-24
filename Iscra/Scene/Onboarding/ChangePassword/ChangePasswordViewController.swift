@@ -48,7 +48,7 @@ extension ChangePasswordViewController: navigationBarAction {
         }
         
     }
-    func ActionType()  {
+    func navigationBackAction()  {
         self.router?.dismiss(controller: .webViewController)
     }
     

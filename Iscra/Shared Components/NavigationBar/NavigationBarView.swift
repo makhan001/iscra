@@ -6,8 +6,8 @@
 //
 import UIKit
 @objc protocol navigationBarAction: AnyObject {
-  func ActionType() // func navigationBarActionType()
-  @objc optional func RightButtonAction() // navigationBarRightButtonAction()
+  func navigationBackAction()
+  @objc optional func navigationRightButtonAction()
 }
 enum navRightViewType{
   case myProfie
@@ -80,10 +80,10 @@ extension NavigationBarView {
     }
   }
   private func backClick() {
-    delegateBarAction?.ActionType()
+    delegateBarAction?.navigationBackAction()
   }
   private func rightButtonClick() {
-    delegateBarAction?.RightButtonAction?()
+    delegateBarAction?.navigationRightButtonAction?()
   }
 }
 extension UIView

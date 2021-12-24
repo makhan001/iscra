@@ -165,12 +165,12 @@ extension HabitNameViewController: HabitViewRepresentable {
 
 // MARK: navigationBarAction Callback
 extension HabitNameViewController  : navigationBarAction {
-    func ActionType() {
+    func navigationBackAction() {
         HabitUtils.shared.removeAllHabitData()
         router?.dismiss(controller: .addHabit)
     }
     
-    func RightButtonAction() {
+    func navigationRightButtonAction() {
         HabitUtils.shared.removeAllHabitData()
         self.router?.push(scene: .landing)
     }

@@ -118,7 +118,7 @@ extension AddMemojiViewController: UIImagePickerControllerDelegate, UINavigation
 
 // MARK:- Navigation Bar Delegate
 extension AddMemojiViewController {
-    func ActionType()  {
+    func navigationBackAction()  {
         router?.dismiss(controller: .learnHowToAddMemoji)
     }
 }

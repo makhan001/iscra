@@ -266,11 +266,11 @@ extension HabitCalenderViewController:  navigationBarAction {
         self.viewNavigation.delegateBarAction = self
     }
     
-    func ActionType() {
+    func navigationBackAction() {
         self.router?.dismiss(controller: .habitCalender)
     }
     
-    func RightButtonAction() {
+    func navigationRightButtonAction() {
         self.viewBottom.isHidden = false
     }
 }

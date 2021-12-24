@@ -39,7 +39,7 @@ extension AddMyPictureViewController: navigationBarAction {
     self.manageButtonTitle()
   }
     
-    func ActionType()  {
+    func navigationBackAction()  {
         router?.dismiss(controller: .addMyPicture)
     }
 }

@@ -141,12 +141,12 @@ extension EditHabitViewController: clickManagerDelegate{
 // MARK: navigationBarAction Callback
 extension EditHabitViewController  : navigationBarAction {
     
-    func ActionType()  {
+    func navigationBackAction()  {
         router?.dismiss(controller: .editHabit)
        // self.navigationController?.popViewController(animated: true)
     }
     
-    func RightButtonAction() {
+    func navigationRightButtonAction() {
         self.viewModel.habitName =   self.txtMyHabit.text ?? ""
         self.viewModel.colorTheme = self.colorTheme
         self.viewModel.reminders = self.reminders

@@ -47,11 +47,11 @@ extension UpdateProfileViewController:  navigationBarAction{
 
 // MARK: Navigation Bar Delegate
 extension UpdateProfileViewController {
-    func ActionType() {
-        self.router?.dismiss(controller: .UpdateProfile)
+    func navigationBackAction() {
+        self.router?.dismiss(controller: .updateProfile)
     }
     
-    func RightButtonAction() {
+    func navigationRightButtonAction() {
         viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
     }
 }
@@ -87,7 +87,7 @@ extension UpdateProfileViewController: OnboardingViewRepresentable {
             self.showToast(message: msg)
         case .updateProfile:
             self.didUpdateName?()
-            self.router?.dismiss(controller: .UpdateProfile)
+            self.router?.dismiss(controller: .updateProfile)
 //            navigationController?.popViewController(animated: true)
         default:
             break

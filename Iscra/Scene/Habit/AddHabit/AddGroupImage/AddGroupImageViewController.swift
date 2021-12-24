@@ -136,11 +136,11 @@ extension AddGroupImageViewController: HabitViewRepresentable {
 
 // MARK: navigationBarAction Callback
 extension AddGroupImageViewController: navigationBarAction {
-    func ActionType() {
+    func navigationBackAction() {
         router?.dismiss(controller: .addGroupImage)
     }
     
-    func RightButtonAction() {
+    func navigationRightButtonAction() {
         HabitUtils.shared.removeAllHabitData()
         self.router?.push(scene: .landing)
     }

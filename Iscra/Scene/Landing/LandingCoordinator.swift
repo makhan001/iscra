@@ -17,10 +17,10 @@ final class LandingCoordinator: Coordinator<Scenes> {
     let webViewController: WebViewController = WebViewController.from(from: .landing, with: .webViewController)
     let myAccountViewController: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
     let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
-    let updateProfile: UpdateProfileViewController = UpdateProfileViewController.from(from: .onboarding, with: .UpdateProfile)
+    let updateProfile: UpdateProfileViewController = UpdateProfileViewController.from(from: .onboarding, with: .updateProfile)
     let myAccountPopup: MyAccountPopupViewController = MyAccountPopupViewController.from(from: .landing, with: .myAccountPopup)
-   // let habitNameVC: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .habitName)
-
+    // let habitNameVC: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .habitName)
+    
     private var login: LoginCoordinator!
     private var welcome: OnboardingCoordinator!
     private var habitName: HabitNameCoordinator!
@@ -46,7 +46,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         changePassword.router = self
         updateProfile.router = self
         myAccountPopup.router = self
-       // habitNameVC.router = self
+        // habitNameVC.router = self
     }
     
     private func startLogin() {
@@ -145,8 +145,8 @@ final class LandingCoordinator: Coordinator<Scenes> {
     }
     
     private func startCommunityDetail() {
-//        communityDetail.viewModel.habitId = 5
-//        communityDetail.viewModel.userId = 50
+        //        communityDetail.viewModel.habitId = 5
+        //        communityDetail.viewModel.userId = 50
         communityDetail.objInvitaion = controller.community.objInvitaion
         router.present(communityDetail, animated: true)
     }
@@ -170,44 +170,43 @@ final class LandingCoordinator: Coordinator<Scenes> {
         router.present(myAccountPopup, animated: true)
     }
     
-//    private func starthabitNameVC() {
-//        router.present(habitNameVC, animated: true)
-//    }
+    //    private func starthabitNameVC() {
+    //        router.present(habitNameVC, animated: true)
+    //    }
 }
 
 extension LandingCoordinator: NextSceneDismisser {
     
     func push(scene: Scenes) {
         switch scene {
-       // case .home: startHome()
+            // case .home: startHome()
         case .login: startLogin()
         case .welcome: startWelcome()
-       // case .landing: startLanding()
-      //  case .communitySearch: startCommunitySearch()
-        case .communityDetail: startCommunityDetail()
+            // case .landing: startLanding()
+            //  case .communitySearch: startCommunitySearch()
         case .myAccount: startMyAccount()
         case .walkthrough: startWalkthrough()
         case .habitCalender: startHabitCalender()
+        case .updateProfile: startUpdateProfile()
+        case .changePassword: startChangePassword()
+        case .myAccountPopup: startMyAccountPopup()
+        case .learnHowToAddMemoji: startAddMemoji()
         case .selectHabitPopUp: startHabitTypeView()
-        case .groupHabitFriends: startGroupHabitCalender()
+        case .communityDetail: startCommunityDetail()
         case .webViewController: startWebViewController()
-        case.learnHowToAddMemoji: startAddMemoji()
-        case.UpdateProfile: startUpdateProfile()
-        case.changePassword: startChangePassword()
-        case.myAccountPopup: startMyAccountPopup()
-       // case.habitName: starthabitNameVC()
+        case .groupHabitFriends: startGroupHabitCalender()
         default: break
         }
     }
     
     func dismiss(controller: Scenes) {
         router.dismissModule(animated: true, completion: nil)
-//        switch controller {
-//        case .updateProfile:
-//            router.dismissModule(animated: true, completion: nil)
-//        default:
-//            router.dismissModule(animated: true, completion: nil)
-//        }        
+        //        switch controller {
+        //        case .updateProfile:
+        //            router.dismissModule(animated: true, completion: nil)
+        //        default:
+        //            router.dismissModule(animated: true, completion: nil)
+        //        }
     }
 }
 

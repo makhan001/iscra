@@ -66,7 +66,7 @@ extension LoginViewController  : navigationBarAction {
         }
     }
     
-    func ActionType()  {
+    func navigationBackAction()  {
         router?.dismiss(controller: .login)
     }
     

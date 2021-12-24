@@ -23,13 +23,13 @@ class CommunitySearchViewController: UIViewController {
     var arrGroupList = [GroupHabit]()
     var arrFriend = [Friend]()
     var isSearching:Bool = false
-
-    weak var delegate: SelectHabitPopUpDelegate?
     weak var router: NextSceneDismisser?
     private let viewModel: CommunitySearchViewModel = CommunitySearchViewModel(provider:  CommunityServiceProvider())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("self.router is \(String(describing: self.router))")
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "searchAllGroup"), object: nil)
         self.setup()
     }
 }
@@ -46,7 +46,7 @@ extension CommunitySearchViewController {
         }
         self.txtSearch.delegate = self
         self.tableFriends.isHidden = true
-        self.viewNoGroups.isHidden = false
+        self.viewNoGroups.isHidden = true //false
         self.tableGroupHabit.isHidden = true
         self.lblNoFriendFound.isHidden = true
         self.fetchAllGroupHabit()
@@ -58,6 +58,11 @@ extension CommunitySearchViewController {
 //                self.router?.push(scene: .groupHabitFriends)
             }
         }
+    }
+    
+    @objc func refrershUI(){
+        print("refrershUI is called")
+        self.setup()
     }
 }
 
@@ -86,39 +91,31 @@ extension CommunitySearchViewController {
     }
     
     private func backAction() {
-        print("backAction")
-        self.dismiss(animated: false, completion: nil)
+      //  self.dismiss(animated: false, completion: nil)
+        self.router?.dismiss(controller: .communitySearch)
     }
     
     private func createGroupHabitAction() {
-        print("createGroupHabitAction")
-        
-        self.showToast(message: "Under development", seconds: 0.5)
-        
-        
-        //        self.dismiss(animated: false, completion: nil)
-        //        self.router?.push(scene: .addHabit)
-        //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2)) { [self] in
-        //            delegate?.addHabit(type: .group_habit)
-        //
-        //        }
-        
-        // self.router?.push(scene: .addHabit)
+        self.removeSearching()
+        self.router?.push(scene: .habitName)
     }
     
     private func groupHabitAction() {
-        print("groupHabitAction")
+        self.removeSearching()
         self.fetchAllGroupHabit()
     }
     
     private func friendsAction() {
-        print("friendsAction")
-        print("btnSegment.selectedSegmentIndex friendsAction is  \(btnSegment.selectedSegmentIndex)")
+        self.removeSearching()
+        self.tableGroupHabit.isHidden = true
+        self.viewGroupsHabit.isHidden = true
+        self.tableFriends.isHidden = true
+        self.viewNoGroups.isHidden = true
+        self.lblNoFriendFound.isHidden = true //false
         self.viewModel.callApiFriendList()
     }
     
     private func fetchAllGroupHabit() {
-        print("btnSegment.selectedSegmentIndex GroupHabitAction is  \(btnSegment.selectedSegmentIndex)")
         self.viewModel.callApiAllGroupHabit()
     }
 }
@@ -140,7 +137,7 @@ extension CommunitySearchViewController: CommunityViewRepresentable {
         WebService().StopIndicator()
         print("self.viewModel.arrGroupList is \(self.viewModel.arrGroupList.count)")
         print("self.viewModel.arrFriend is \(self.viewModel.arrFriend.count)")
-        //  self.viewModel.arrGroupList.removeAll()
+       //   self.viewModel.arrGroupList.removeAll()
        // self.viewModel.arrFriend.removeAll()
         if self.viewModel.arrGroupList.isEmpty != true {
             self.viewNoGroups.isHidden = true
@@ -174,7 +171,7 @@ extension CommunitySearchViewController: CommunityViewRepresentable {
 }
 
 //MARK: - searching operation
-extension CommunitySearchViewController : UITextFieldDelegate{
+extension CommunitySearchViewController : UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
@@ -221,8 +218,13 @@ extension CommunitySearchViewController : UITextFieldDelegate{
         }
     }
     
+    func removeSearching() {
+    self.txtSearch.text = ""
+    self.viewModel.strSearchText = ""
+    self.viewModel.isSearching = false
+}
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
-    
 }

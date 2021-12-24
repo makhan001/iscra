@@ -20,7 +20,6 @@ class MyCommunityCollectionView: UICollectionView , UICollectionViewDelegate , U
         self.dataSource = self
         self.myGroupList = myGroups
         reloadData()
-        print(" reload on MyCommunityCollectionView configure crashed")
     }
     
     // MARK: UICollectionViewDataSource
@@ -32,11 +31,14 @@ class MyCommunityCollectionView: UICollectionView , UICollectionViewDelegate , U
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommunityMyGroupsCell", for: indexPath) as? CommunityMyGroupsCell else { return UICollectionViewCell() }
         let objMyGroupList = self.myGroupList[indexPath.row]
         cell.configure(obj: objMyGroupList)
-        //cell.collectiondays.reloadData()
             return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width:  (collectionView.bounds.size.width - 10 ) , height: 161)
+                if !self.myGroupList.isEmpty {
+                    return CGSize(width:  (collectionView.bounds.size.width - 10 ) , height: 161)
+                }else{
+                     return CGSize(width: 386.0, height: 161.0)
+                }
     }
 }

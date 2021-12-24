@@ -10,11 +10,11 @@ import Foundation
 final class CommunitySearchCoordinator: Coordinator<Scenes> {
 
     weak var delegate: CoordinatorDimisser?
-    let controller: CommunitySearchViewController = CommunitySearchViewController.from(from: .landing, with: .community)
-
-    private var landing: LandingCoordinator!
-    private var editHabit: EditHabitCoordinator!
+    let controller: CommunitySearchViewController = CommunitySearchViewController.from(from: .landing, with: .communitySearch)
     
+    private var landing: LandingCoordinator!
+    private var habitName: HabitNameCoordinator!
+
     override func start() {
         super.start()
         router.setRootModule(controller, hideBar: true)
@@ -37,14 +37,23 @@ final class CommunitySearchCoordinator: Coordinator<Scenes> {
         landing.start()
         self.router.present(landing, animated: true)
     }
+    
+    private func startHabitName() {
+        habitName = HabitNameCoordinator(router: Router())
+        add(habitName)
+        habitName.delegate = self
+        habitName.start(type: .group_habit)
+        self.router.present(habitName, animated: true)
+    }
 }
 
 extension CommunitySearchCoordinator: NextSceneDismisser {
 
     func push(scene: Scenes) {
         switch scene {
-        case .habitCalender: startHabitCalender()
         case .landing: startLanding()
+        case .habitCalender: startHabitCalender()
+        case .habitName: startHabitName()
         default: break
         }
     }
@@ -61,3 +70,4 @@ extension CommunitySearchCoordinator: CoordinatorDimisser {
         router.dismissModule(animated: true, completion: nil)
     }
 }
+

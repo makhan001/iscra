@@ -8,32 +8,34 @@
 import UIKit
 
 class CommunityFriendTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
-    var count: Int = 0
-    var arrFriend = [Friend]()
+
+    var viewModel: CommunitySearchViewModel!
 
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure(arrFriend: [Friend]) {
-        self.register(UINib(nibName: "CommunityFriendCell", bundle: nil), forCellReuseIdentifier: "CommunityFriendCell")
-        self.delegate = self
-        self.dataSource = self
-        self.arrFriend = arrFriend
-        reloadData()
+    func configure(viewModel: CommunitySearchViewModel) {
+        self.viewModel = viewModel
+        self.setup()
+    }
+    
+    private func setup() {
+        dataSource = self
+        delegate = self
+        estimatedRowHeight = 70.0
+        rowHeight = UITableView.automaticDimension
+        tableFooterView = UIView(frame: .zero)
+        separatorStyle = .none
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrFriend.count
+        return viewModel.arrFriend.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommunityFriendCell") as? CommunityFriendCell else {
-            return UITableViewCell()
-        }
-        let objFriend = self.arrFriend[indexPath.row]
-        cell.configure(objFriend: objFriend)
+        let cell = self.dequeueReusable(indexPath) as CommunityFriendCell
+        cell.configure(with: viewModel.arrFriend[indexPath.row])
         return cell
     }
-    
 }

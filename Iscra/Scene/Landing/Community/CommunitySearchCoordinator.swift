@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreImage
 
 final class CommunitySearchCoordinator: Coordinator<Scenes> {
 
@@ -59,7 +60,7 @@ extension CommunitySearchCoordinator: NextSceneDismisser {
     }
 
     func dismiss(controller: Scenes) {
-        router.dismissModule(animated: true, completion: nil)
+        router.dismissModule(animated: false, completion: nil)
     }
 }
 

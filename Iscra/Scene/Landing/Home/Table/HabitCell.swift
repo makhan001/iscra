@@ -21,8 +21,9 @@ class HabitCell: UITableViewCell {
     @IBOutlet weak var collectiondays: UICollectionView!
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
     var arrHabitMarks: [HabitMark]?
+    var arrGroupMembers: [GroupMember]?
+
     var colorTheme: String = ""
-    // var arrHabitMarks = ["1","1","1"]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -60,14 +61,22 @@ class HabitCell: UITableViewCell {
     func configure(obj: AllHabits) {
         self.colorTheme = obj.colorTheme ?? "#ff7B86EB"
         self.arrHabitMarks = obj.habitMarks
-        self.lblHabitTitle.text =  obj.name?.capitalized
-        self.lblHabitTitleMates.text = obj.name?.capitalized
-        self.imgHabit.image = UIImage(named: obj.icon ?? "sport1")
-        self.imgHabitMates.image = UIImage(named: obj.icon ?? "sport1")
-        self.imgHabit.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
-        self.imgHabitMates.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
-        self.viewNomates.isHidden = false
-        self.viewMates.isHidden = true
+        self.arrGroupMembers = obj.groupMembers
+
+        if obj.habitType != "group_habit" {
+            self.viewNomates.isHidden = false
+            self.viewMates.isHidden = true
+            self.lblHabitTitle.text =  obj.name?.capitalized
+            self.imgHabit.image = UIImage(named: obj.icon ?? "sport1")
+            self.imgHabit.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
+        } else {
+            self.viewNomates.isHidden = true
+            self.viewMates.isHidden = false
+            self.lblHabitTitleMates.text = obj.name?.capitalized
+            self.imgHabitMates.image = UIImage(named: obj.icon ?? "sport1")
+            self.imgHabitMates.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
+
+        }
     }
 }
 
@@ -78,7 +87,7 @@ extension HabitCell: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
         if collectionView == self.collectiondays{
             return  self.arrHabitMarks?.count ?? 0
         }else {
-            return 3
+            return arrGroupMembers?.count ?? 0
         }
     }
     
@@ -94,7 +103,16 @@ extension HabitCell: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
             guard let cell = self.collectionMates.dequeueReusableCell(withReuseIdentifier: "MatesCollectionCell", for: indexPath) as? MatesCollectionCell else {
                 return UICollectionViewCell()
             }
-            cell.configure()
+            
+            guard let objGroupMembers = self.arrGroupMembers?[indexPath.row] else {  return UICollectionViewCell()  }
+            cell.configureGroupMembers(obj: objGroupMembers)
+           // return cell
+
+            
+//            if self.arrGroupMembers?.count ?? 0 > 0 {
+//                let objGroupMembers = self.arrGroupMembers?[indexPath.row]
+//                cell.configureGroupMembers(obj: objGroupMembers!)
+//            }
             return cell
         }
     }

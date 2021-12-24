@@ -7,30 +7,46 @@
 
 import Foundation
 
-// MARK: - DataClass
+// MARK: - Habit
 struct AllHabits: Codable {
-    let id,userID: Int?
+    let id: Int?
     let habitType: String?
     let days: [String]?
-    let name, colorTheme, icon: String?
+    let name: String?
+    let colorTheme: String?
+    let icon: String?
     let reminders: Bool?
     let habitDescription: String?
-    let groupImage,timer: String?
+    let userID: Int?
+    let timer: String?
     let createdAt, updatedAt: Int?
+    let groupImage: String?
     let habitMarks: [HabitMark]?
+    let groupMembers: [GroupMember]?
 
     enum CodingKeys: String, CodingKey {
         case id
         case habitType = "habit_type"
-        case days, name, timer
+        case days, name
         case colorTheme = "color_theme"
         case icon, reminders
         case habitDescription = "description"
-        case groupImage = "group_image"
         case userID = "user_id"
+        case timer
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case groupImage = "group_image"
         case habitMarks = "habit_marks"
+        case groupMembers = "group_members"
+    }
+}
+
+// MARK: - GroupMember
+struct GroupMember: Codable {
+    let profileImage: String?
+
+    enum CodingKeys: String, CodingKey {
+        case profileImage = "profile_image"
     }
 }
 
@@ -42,7 +58,7 @@ struct HabitDetails: Codable {
     let name, colorTheme, icon: String?
     let reminders: Bool?
     let habitDescription: String?
-    let groupImage: JSONNull?
+    let groupImage: String?
     let userID, createdAt, updatedAt: Int?
     let timer: String?
     let habitMarks: [HabitMark]?
@@ -81,8 +97,6 @@ struct HabitMark: Codable {
         case userID = "user_id"
     }
 }
-
-/////////////////
 
 // MARK: - ShowHabitDetail
 struct ShowHabitDetail: Codable {

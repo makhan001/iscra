@@ -14,7 +14,7 @@ class LandingTabBarController: UITabBarController {
     weak var router: NextSceneDismisser?
     
     var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
-    var myChat: MyChatViewController = MyChatViewController.from(from: .landing, with: .myChat)
+    //var myChat: MyChatViewController = MyChatViewController.from(from: .landing, with: .myChat)
     var dialogs: DialogsViewController = DialogsViewController.from(from: .dialogs, with: .dialogs)
     var addHabit: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
     var community: CommunityViewController = CommunityViewController.from(from: .landing, with: .community)

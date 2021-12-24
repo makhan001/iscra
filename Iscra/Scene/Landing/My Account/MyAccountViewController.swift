@@ -93,22 +93,18 @@ extension MyAccountViewController {
     }
     
     private func logoutAction() {
-        logOutAction()
-    }
-    
-    private func logOutAction()  {
         let alertController = UIAlertController(title: "Logout", message: "Are you sure? logout from Iscra.", preferredStyle: .alert)
-        let Logoutaction = UIAlertAction(title: "Logout", style: .default) { (action:UIAlertAction!) in
+        let logoutaction = UIAlertAction(title: "Logout", style: .default) { (action:UIAlertAction!) in
             print("Delete button tapped");
             self.viewModel.logout()
         }
-        Logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
+        logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
             print("Cancel button tapped");
         }
         cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
-        alertController.addAction(Logoutaction)
+        alertController.addAction(logoutaction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
     }

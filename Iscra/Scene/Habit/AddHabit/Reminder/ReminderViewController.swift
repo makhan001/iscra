@@ -23,40 +23,39 @@ class ReminderViewController: UIViewController {
     
     var reminderTime = ""
     var habitType : HabitType = .good
+    weak var router: NextSceneDismisser?
     private let viewModel = AddHabitViewModel()
     var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
-    weak var router: NextSceneDismisser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-    }
-    
-    @IBAction func TimePickerClick(_ sender: Any) {
-        timemanager()
+        self.setup()
     }
 }
 
 extension ReminderViewController {
-    func setup()  {
+    private func setup()  {
         self.viewModel.view = self
+        self.setNavigationView()
         self.habitType = self.viewModel.habitType
-        self.viewNavigation.navType = .addHabit
-        self.viewNavigation.commonInit()
-        self.viewNavigation.lblTitle.text = ""
-        self.viewNavigation.delegateBarAction = self
-        navigationController?.setNavigationBarHidden(true, animated: false)
         self.weekCollection.didSelectedDayAtIndex = didSelectedAtIndex
-        navigationController?.navigationBar.isHidden = false
-        switchReminder.addTarget(self, action:#selector(self.reminderSwitchValueChanged(_:)), for: .valueChanged)
-        weekCollection.configure(selectedColor: selectedColorTheme)
+        self.switchReminder.addTarget(self, action:#selector(self.reminderSwitchValueChanged(_:)), for: .valueChanged)
+        self.weekCollection.configure(selectedColor: selectedColorTheme)
         [btnTime, btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        viewBackground.addGestureRecognizer(tap)
-        timemanager()
+        self.viewBackground.addGestureRecognizer(tap)
+        self.timeManager()
     }
+    
+    private func setNavigationView() {
+        self.viewNavigation.navType = .addHabit
+        self.viewNavigation.commonInit()
+        self.viewNavigation.lblTitle.text = ""
+        self.viewNavigation.delegateBarAction = self
+    }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         self.viewTimePicker.isHidden = true
     }
@@ -71,7 +70,7 @@ extension ReminderViewController {
         }
     }
     
-    func timemanager(){
+    func timeManager(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
         let dateString = dateFormatter.string(from: pickerTime.date)
@@ -89,11 +88,26 @@ extension ReminderViewController {
         }
     }
     
-    
+    private func showHabitCancelAlert() {
+        let alertController = UIAlertController(title: "Warning!!", message: "Do you really want exit from adding habit?", preferredStyle: .alert)
+        let logoutaction = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction!) in
+            HabitUtils.shared.removeAllHabitData()
+            self.router?.push(scene: .landing)
+        }
+        logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        alertController.addAction(logoutaction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
+    }
 }
+
 // MARK:- Button Action
 extension ReminderViewController {
-    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnTime:
@@ -105,6 +119,10 @@ extension ReminderViewController {
         }
     }
     
+    @IBAction func timePickerClick(_ sender: Any) {
+        self.timeManager()
+    }
+    
     private func timeClick() {
         UIView.animate(withDuration: 3.0, animations: {
             self.viewTimePicker.isHidden = false
@@ -113,7 +131,6 @@ extension ReminderViewController {
     }
     
     private func nextClick() {
-        
         let currentDate = Date().string(format: "yyyy-MM-dd")
         let yourDate = currentDate + "-" + self.reminderTime
          let dateFormatter = DateFormatter()
@@ -125,7 +142,7 @@ extension ReminderViewController {
             HabitUtils.shared.timer = String(dateTimeStamp)
             self.viewModel.timer = String(dateTimeStamp)
             HabitUtils.shared.reminders = true
-        }else{
+        } else {
             HabitUtils.shared.timer = ""
             self.viewModel.timer = ""
         }
@@ -133,10 +150,20 @@ extension ReminderViewController {
     }
 }
 
-// MARK: Callbacks
+// MARK: NavigationBarView Delegate
+extension ReminderViewController: navigationBarAction {
+    func navigationBackAction()  {
+        self.router?.dismiss(controller: .setTheme)
+    }
+    
+    func navigationRightButtonAction() {
+        self.showHabitCancelAlert()
+    }
+}
+
+// MARK: API Callbacks
 extension ReminderViewController: HabitViewRepresentable {
     private func didSelectedAtIndex(_ index: String) {
-        // print("strDays is \(index)")
         viewModel.days = index
     }
     
@@ -147,7 +174,7 @@ extension ReminderViewController: HabitViewRepresentable {
         case let .sucessMessage(msg):
             self.showToast(message: msg, seconds: 0.5)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.router?.push(scene: .inviteFriend) 
+                self.router?.push(scene: .inviteFriend)
             }
         case .navigateToGroupImage(true):
             self.router?.push(scene: .addGroupImage)
@@ -155,25 +182,5 @@ extension ReminderViewController: HabitViewRepresentable {
         default:
             break
         }
-    }
-    
-}
-// MARK: navigationBarAction Callback
-extension ReminderViewController: navigationBarAction {
-    func navigationBackAction()  {
-        self.router?.dismiss(controller: .setTheme)
-    }
-    
-    func navigationRightButtonAction() {
-        HabitUtils.shared.removeAllHabitData()
-        self.router?.push(scene: .landing)
-    }
-}
-
-extension Date {
-    func string(format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: self)
     }
 }

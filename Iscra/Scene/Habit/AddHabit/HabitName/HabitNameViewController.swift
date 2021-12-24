@@ -29,29 +29,31 @@ class HabitNameViewController: UIViewController {
 }
 
 extension HabitNameViewController {
-    func setup() {
-        
+    private func setup() {
         self.viewModel.view = self
-        self.viewNavigation.navType = .addHabit
+        self.viewAccordingToHabitType()
         self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text = ""
+        self.viewNavigation.navType = .addHabit
         self.viewNavigation.delegateBarAction = self
         self.lblUserName.text = "Alright \(UserStore.userName!), let’s \ndefine your habit"
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        viewModel.didNavigateToSetTheme = self.didNavigateToSetTheme
         [btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        
-        if viewModel.habitType == .group_habit {
+    }
+    
+    private func viewAccordingToHabitType() {
+        if viewModel.habitType == .group {
             self.viewDescription.isHidden = false
             self.txtFieldTitle.returnKeyType = .next
             self.lblUserName.text = AppConstant.groupHabitTitle
             self.imageEmoji.image = #imageLiteral(resourceName: "group")
-        }else{
+        } else {
             if viewModel.habitType == .good {
                 self.lblUserName.text = "Alright \(UserStore.userName!)" + AppConstant.goodHabitTitle
                 self.imageEmoji.image = #imageLiteral(resourceName: "good")
-            }else{
+            } else {
                 self.lblUserName.text = "Hi \(UserStore.userName!)" + AppConstant.badHabitTitle
                 self.imageEmoji.image = #imageLiteral(resourceName: "bad")
             }
@@ -66,20 +68,20 @@ extension HabitNameViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnNext:
-            self.NextClick()
+            self.nextClick()
         default:
             break
         }
     }
     
-    private func NextClick() {
+    private func nextClick() {
         HabitUtils.shared.habitType = self.viewModel.habitType
         viewModel.onAction(action: .inputComplete(.createHabit), for: .createHabit)
-        viewModel.didNavigateToSetTheme = {
-            isNavigate in
-            if isNavigate{
-               self.router?.push(scene: .setTheme) 
-            }
+    }
+    
+    private func didNavigateToSetTheme(isNavigate: Bool) {
+        if isNavigate{
+           self.router?.push(scene: .setTheme)
         }
     }
 }
@@ -88,7 +90,7 @@ extension HabitNameViewController {
 extension HabitNameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if self.viewModel.habitType == .group_habit {
+        if self.viewModel.habitType == .group {
             if textField == self.txtFieldTitle {
                 self.txtViewDescription.becomeFirstResponder()
             } else {
@@ -163,15 +165,16 @@ extension HabitNameViewController: HabitViewRepresentable {
     }
 }
 
-// MARK: navigationBarAction Callback
+// MARK: NavigationBarView Gelegate
 extension HabitNameViewController  : navigationBarAction {
     func navigationBackAction() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "searchAllGroup"), object: nil)
         HabitUtils.shared.removeAllHabitData()
         router?.dismiss(controller: .addHabit)
     }
     
     func navigationRightButtonAction() {
         HabitUtils.shared.removeAllHabitData()
-        self.router?.push(scene: .landing)
+        router?.dismiss(controller: .addHabit)
     }
 }

@@ -23,6 +23,10 @@ extension UIColor {
     }
 }
 
+protocol AlertControllerDelegate: AnyObject {
+    func didPerformAction()
+}
+
 enum CustomFontSize : CGFloat {
     case vvvsmall = 8
     /// size 10
@@ -69,7 +73,7 @@ extension UIFont {
 }
 
 
-extension UIViewController{
+extension UIViewController {
     
     func showToast(message : String, seconds: Double = 1.0){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -88,8 +92,25 @@ extension UIViewController{
         }
         return controller
     }
+    
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func addHabitCancelAlert(title:String, message:String, preferredStyle:UIAlertController.Style, actionTitle:String) {
+        weak var delegate: AlertControllerDelegate?
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+        let action = UIAlertAction(title: actionTitle, style: .default) { (action:UIAlertAction!) in
+            delegate?.didPerformAction()
+        }
+        action.setValue(UIColor.red, forKey: "titleTextColor")
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        alertController.addAction(action)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
     }
 }
 
@@ -233,5 +254,13 @@ extension UIImageView {
                 self.contentMode = .scaleAspectFill
             }
         }
+    }
+}
+
+extension Date {
+    func string(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
     }
 }

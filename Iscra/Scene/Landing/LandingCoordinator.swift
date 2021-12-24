@@ -89,7 +89,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         add(communitySearch)
         communitySearch.delegate = self
         communitySearch.start()
-        self.router.present(communitySearch, animated: true)
+        self.router.present(communitySearch, animated: false)
     }
     
     private func startAddMemoji() {
@@ -183,7 +183,7 @@ extension LandingCoordinator: NextSceneDismisser {
         case .login: startLogin()
         case .welcome: startWelcome()
             // case .landing: startLanding()
-            //  case .communitySearch: startCommunitySearch()
+        case .communitySearch: startCommunitySearch()
         case .myAccount: startMyAccount()
         case .walkthrough: startWalkthrough()
         case .habitCalender: startHabitCalender()

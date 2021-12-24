@@ -16,11 +16,9 @@ protocol communityInvitationDetail: class {
 
 class NewCommunityCollectionView: UICollectionView , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
     
-    var count: Int = 0
     var arrInvitaions = [Invitaion]()
     
     weak var delegate1 : communityInvitationDetail?
-   // weak var delegate1 : communityGroupHabitDetail?
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -30,12 +28,9 @@ class NewCommunityCollectionView: UICollectionView , UICollectionViewDelegate , 
         self.delegate = self
         self.dataSource = self
         self.arrInvitaions = myInvitaion
-        reloadData()
-        print(" reload on NewCommunityCollectionView configure crashed")
     }
     
     // MARK: UICollectionViewDataSource
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrInvitaions.count
     }
@@ -52,12 +47,14 @@ class NewCommunityCollectionView: UICollectionView , UICollectionViewDelegate , 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let objInvitaion = self.arrInvitaions[indexPath.row]
         delegate1?.navigate(obj: objInvitaion)
-       // delegate1?.navigate()
         print("navigate")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // return CGSize(width: 289, height: 229)
-        return CGSize(width: collectionView.frame.width - 10, height: collectionView.frame.height)
+        if !self.arrInvitaions.isEmpty {
+            return CGSize(width: collectionView.frame.width - 10, height: collectionView.frame.height)
+        }else{
+             return CGSize(width: 289, height: 229)
+        }
     }
 }

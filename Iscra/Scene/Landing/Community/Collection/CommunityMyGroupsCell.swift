@@ -36,13 +36,10 @@ class CommunityMyGroupsCell: UICollectionViewCell {
         self.collectiondays.dataSource = self
         self.collectiondays.delegate = self
         self.collectiondays.reloadData()
-        print(" reload on CommunityMyGroupsCell awakeFromNib ")
-
     }
     
     override func updateConstraints() {
         super.updateConstraints()
-       // print("self.arrHabitMarks?.count is \(self.arrHabitMarks?.count)")
         if self.arrHabitMarks?.count == nil {
             constraintWidth.constant =  0
         }else{
@@ -72,9 +69,9 @@ class CommunityMyGroupsCell: UICollectionViewCell {
 extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout , CustomCollectionViewLayoutDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.collectiondays{
+        if collectionView == self.collectiondays {
                    return  self.arrHabitMarks?.count ?? 0
-               }else {
+               } else {
                    return 3
                }
     }
@@ -106,11 +103,16 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 if collectionView == self.collectiondays{
-                    if self.arrHabitMarks!.count <= 3 {
-                        return CGSize(width: Int(self.collectiondays.bounds.width) / self.arrHabitMarks!.count - 10, height: 125)
+                    if !(self.arrHabitMarks?.isEmpty ?? false) {
+                        if self.arrHabitMarks!.count <= 3 {
+                            return CGSize(width: Int(self.collectiondays.bounds.width) / self.arrHabitMarks!.count - 10, height: 125)
+                        }else{
+                            return CGSize(width: self.collectiondays.bounds.width/3.5, height: 125)
+                        }
                     }else{
-                        return CGSize(width: self.collectiondays.bounds.width/3.5, height: 125)
+                        return CGSize(width: 45.0, height: 125.0)
                     }
+                  
                 }else {
                     return CGSize(width: 35, height: 35)
                 }

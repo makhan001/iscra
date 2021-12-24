@@ -13,7 +13,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     
     // MARK:-Outlets and variables
     @IBOutlet weak var btnLogout: UIButton!
-    @IBOutlet weak var imageProfile: UIImageView!
+    @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblName: IscraCustomLabel!
     @IBOutlet weak var btnGetSubscription: UIButton!
     @IBOutlet weak var tableView: MyAccountTableView!
@@ -56,7 +56,8 @@ extension MyAccountViewController {
     
     private func retriveUserDetails() {
         self.lblName.text = UserStore.userName?.capitalized
-        self.imageProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
+       // self.imageProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
+        self.imgProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
     }
     
     func didUpdateName() {
@@ -224,7 +225,7 @@ extension MyAccountViewController: MFMailComposeViewControllerDelegate{
 //Mark:- Image picker Delegate
 extension MyAccountViewController: ImagePickerDelegate{
     func fetchedImage(img: UIImage) {
-        imageProfile.image = img
+        imgProfile.image = img
         viewModel.selectedImage = img
         viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
         self.dismiss(animated: true, completion: nil)
@@ -238,7 +239,7 @@ extension MyAccountViewController: OnboardingViewRepresentable {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
         case .updateProfile:
-            self.imageProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
+            self.imgProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
         case .logout:
             self.router?.push(scene: .welcome)
         default:

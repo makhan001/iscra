@@ -111,9 +111,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "246"
-            endingLineNumber = "246"
-            landmarkName = "setChatLoginSetup()"
-            landmarkType = "7">
+            endingLineNumber = "246">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -127,9 +125,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "setChatLoginSetup()"
-            landmarkType = "7">
+            endingLineNumber = "250">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -143,9 +139,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "361"
-            endingLineNumber = "361"
-            landmarkName = "handlePush()"
-            landmarkType = "7">
+            endingLineNumber = "361">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -159,9 +153,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "279"
-            endingLineNumber = "279"
-            landmarkName = "connectToChat(user:)"
-            landmarkType = "7">
+            endingLineNumber = "279">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -176,7 +168,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
             endingLineNumber = "55"
-            landmarkName = "viewWillAppear(_:)"
+            landmarkName = "setup()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -192,7 +184,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
             endingLineNumber = "47"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -207,9 +199,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "352"
-            endingLineNumber = "352"
-            landmarkName = "changeCurrentViewController(_:)"
-            landmarkType = "7">
+            endingLineNumber = "352">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -223,9 +213,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "changeCurrentViewController(_:)"
-            landmarkType = "7">
+            endingLineNumber = "356">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

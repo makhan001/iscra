@@ -135,8 +135,7 @@ class DialogsViewController: UITableViewController {
             updateConnectionStatus?(status)
         }
         updateConnectionStatus?(Reachability.instance.networkConnectionStatus())
-        
-        self.registerForRemoteNotifications()
+//        self.registerForRemoteNotifications()
     }
     
     private func setNavigationBar() {

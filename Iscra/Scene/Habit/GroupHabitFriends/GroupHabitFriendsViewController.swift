@@ -317,11 +317,11 @@ extension GroupHabitFriendsViewController:  navigationBarAction {
         self.viewNavigation.lblTitle.textColor = self.themeColor
     }
     
-    func ActionType() {
+    func navigationBackAction() {
         self.router?.dismiss(controller: .habitCalender)
     }
     
-    func RightButtonAction() {
+    func navigationRightButtonAction() {
         self.viewBottom.isHidden = false
     }
 }

@@ -160,11 +160,11 @@ extension ReminderViewController: HabitViewRepresentable {
 }
 // MARK: navigationBarAction Callback
 extension ReminderViewController: navigationBarAction {
-    func ActionType()  {
+    func navigationBackAction()  {
         self.router?.dismiss(controller: .setTheme)
     }
     
-    func RightButtonAction() {
+    func navigationRightButtonAction() {
         HabitUtils.shared.removeAllHabitData()
         self.router?.push(scene: .landing)
     }

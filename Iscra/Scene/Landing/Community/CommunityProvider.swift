@@ -10,16 +10,6 @@ import Foundation
 final class CommunityServiceProvider: CommunityServiceProvidable {
     private let task = UserTask()
     var delegate: CommunityServiceProvierDelegate?
-
-    func joinHabit(param: CommunityParams.JoinHabit) {
-        task.joinHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
-            if err != nil {
-                self?.delegate?.completed(for: .joinHabit, with: resp, with: err)
-                return
-            }
-            self?.delegate?.completed(for: .joinHabit, with: resp, with: nil)
-        }
-    }
     
     func fetchCommunity(param: CommunityParams.FetchCommunity) {
         WebService().StartIndicator()
@@ -33,6 +23,7 @@ final class CommunityServiceProvider: CommunityServiceProvidable {
         }
     
     func allGroupHabit(param: CommunityParams.AllGroupHabit) {
+        WebService().StartIndicator()
         task.allGroupHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .allGroupHabit, with: resp, with: err)
@@ -43,6 +34,7 @@ final class CommunityServiceProvider: CommunityServiceProvidable {
     }
     
     func friends(param: CommunityParams.Friends) {
+        WebService().StartIndicator()
         task.friends(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .friends, with: resp, with: err)
@@ -51,5 +43,6 @@ final class CommunityServiceProvider: CommunityServiceProvidable {
             self?.delegate?.completed(for: .friends, with: resp, with: nil)
         }
     }
+    
 }
 

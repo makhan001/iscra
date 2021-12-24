@@ -16,7 +16,6 @@
 		042CC9E227709BFB002C23EC /* FetchCommunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CC9E127709BFB002C23EC /* FetchCommunity.swift */; };
 		04397097274B762700898C91 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04397096274B762700898C91 /* VerificationViewModel.swift */; };
 		043B82B4276345500076CCBE /* GroupHabitCalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B82B3276345500076CCBE /* GroupHabitCalenderCoordinator.swift */; };
-		043CF4E127685F4D00526FBC /* InviteFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */; };
 		043CF4E827685FB000526FBC /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF4E427685FB000526FBC /* MyAccountTableViewCell.swift */; };
 		043CF5432768614C00526FBC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF5422768614C00526FBC /* WebViewController.swift */; };
 		043CF5462768A71300526FBC /* AddMyPictureCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF5452768A71300526FBC /* AddMyPictureCoordinator.swift */; };
@@ -35,6 +34,7 @@
 		046F92C12769D9C100190D9A /* InviteFriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */; };
 		047E3EE5276C7AD700C8C8A1 /* CommunityAdaptables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E3EE4276C7AD600C8C8A1 /* CommunityAdaptables.swift */; };
 		047E3EE8276C7AEE00C8C8A1 /* CommunityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */; };
+		047FFD8A27733336009503CB /* CommunitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FFD8927733336009503CB /* CommunitySearchViewModel.swift */; };
 		04810DBE275F7B5000DEC36F /* EditHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */; };
 		0496E011275E0253005C982A /* HabitCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E010275E0253005C982A /* HabitCalenderViewModel.swift */; };
 		0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */; };
@@ -46,6 +46,7 @@
 		04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F28274FB917009763D1 /* MyAccountViewModel.swift */; };
 		04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */; };
 		04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */; };
+		04F0CB30277458C0002873DB /* CommunityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0CB2F277458C0002873DB /* CommunityDetailViewModel.swift */; };
 		04FD568727671F69008E7CB2 /* CommunityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD568627671F69008E7CB2 /* CommunityRequest.swift */; };
 		04FD568A276759E6008E7CB2 /* EditHabitCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD5689276759E6008E7CB2 /* EditHabitCoordinator.swift */; };
 		5F164E602763881E0059F8C2 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */; };
@@ -320,7 +321,6 @@
 		042CC9E127709BFB002C23EC /* FetchCommunity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCommunity.swift; sourceTree = "<group>"; };
 		04397096274B762700898C91 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
 		043B82B3276345500076CCBE /* GroupHabitCalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHabitCalenderCoordinator.swift; sourceTree = "<group>"; };
-		043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendViewModel.swift; sourceTree = "<group>"; };
 		043CF4E427685FB000526FBC /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
 		043CF5422768614C00526FBC /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		043CF5452768A71300526FBC /* AddMyPictureCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyPictureCoordinator.swift; sourceTree = "<group>"; };
@@ -337,6 +337,7 @@
 		046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendCoordinator.swift; sourceTree = "<group>"; };
 		047E3EE4276C7AD600C8C8A1 /* CommunityAdaptables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityAdaptables.swift; sourceTree = "<group>"; };
 		047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProvider.swift; sourceTree = "<group>"; };
+		047FFD8927733336009503CB /* CommunitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchViewModel.swift; sourceTree = "<group>"; };
 		04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitViewModel.swift; sourceTree = "<group>"; };
 		0496E010275E0253005C982A /* HabitCalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderViewModel.swift; sourceTree = "<group>"; };
 		0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCircularProgressBar.swift; sourceTree = "<group>"; };
@@ -348,6 +349,7 @@
 		04D34F28274FB917009763D1 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
 		04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
+		04F0CB2F277458C0002873DB /* CommunityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailViewModel.swift; sourceTree = "<group>"; };
 		04FD568627671F69008E7CB2 /* CommunityRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityRequest.swift; sourceTree = "<group>"; };
 		04FD5689276759E6008E7CB2 /* EditHabitCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitCoordinator.swift; sourceTree = "<group>"; };
 		595BC80C9446392D703B52E5 /* Pods-Iscra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iscra.release.xcconfig"; path = "Target Support Files/Pods-Iscra/Pods-Iscra.release.xcconfig"; sourceTree = "<group>"; };
@@ -1461,15 +1463,16 @@
 		887994A7273AB2ED00904D1F /* Community */ = {
 			isa = PBXGroup;
 			children = (
-				043CF4E027685F4D00526FBC /* InviteFriendViewModel.swift */,
 				887994A8273AB2ED00904D1F /* Collection */,
 				887994B0273AB2ED00904D1F /* CommunityViewController.swift */,
 				042CC9DD2770980A002C23EC /* CommunityViewModel.swift */,
 				045BF9C92769C117008B1C8A /* CommunitySearchCoordinator.swift */,
+				047FFD8927733336009503CB /* CommunitySearchViewModel.swift */,
 				887994B1273AB2ED00904D1F /* Table */,
 				887994B8273AB2ED00904D1F /* CommunitySearchViewController.swift */,
 				5F191EF1277209DC00836126 /* CommunitySearchViewModel.swift */,
 				887994B9273AB2ED00904D1F /* CommunityDetailViewController.swift */,
+				04F0CB2F277458C0002873DB /* CommunityDetailViewModel.swift */,
 				047E3EE4276C7AD600C8C8A1 /* CommunityAdaptables.swift */,
 				047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */,
 			);
@@ -2112,6 +2115,7 @@
 				5FF6CD62274E6A5A007ADC2F /* InputToolbar.swift in Sources */,
 				5FF6CD47274E6A5A007ADC2F /* UserTableViewCell.swift in Sources */,
 				5FF6CD76274E6A5A007ADC2F /* ChatAttachmentIncomingCell.swift in Sources */,
+				04F0CB30277458C0002873DB /* CommunityDetailViewModel.swift in Sources */,
 				885F7FB6273E2F7500B8D4EF /* UserStore.swift in Sources */,
 				5FF6CD65274E6A5A007ADC2F /* TitleView.swift in Sources */,
 				043CF5432768614C00526FBC /* WebViewController.swift in Sources */,
@@ -2217,6 +2221,7 @@
 				8814B43B2743874100A6DE01 /* Webservice.swift in Sources */,
 				5FF6CD4B274E6A5A007ADC2F /* InfoTableViewCell.swift in Sources */,
 				04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */,
+				047FFD8A27733336009503CB /* CommunitySearchViewModel.swift in Sources */,
 				880080782729346D008E3260 /* WeekCollection.swift in Sources */,
 				5FF6CD72274E6A5A007ADC2F /* ChatAttachmentCell.swift in Sources */,
 				8814B4092743844D00A6DE01 /* OnboardingAdaptables.swift in Sources */,
@@ -2238,7 +2243,6 @@
 				883C52F32747915800D129FC /* ForgotPsswordViewController.swift in Sources */,
 				887994D7273AB34E00904D1F /* RepeatDaysTableViewCell.swift in Sources */,
 				043CF5492768AAC500526FBC /* WalkthroughCoordinator.swift in Sources */,
-				043CF4E127685F4D00526FBC /* InviteFriendViewModel.swift in Sources */,
 				045791E22754AA67006E0410 /* HabitUtils.swift in Sources */,
 				5FF6CD4A274E6A5A007ADC2F /* UIViewController+InfoScreen.swift in Sources */,
 				8827C3C12750C125009D12C4 /* CameraHandler.swift in Sources */,

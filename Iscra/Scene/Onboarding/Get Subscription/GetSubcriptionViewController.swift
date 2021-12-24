@@ -41,7 +41,7 @@ extension GetSubcriptionViewController : navigationBarAction {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }
-    func ActionType()  {
+    func navigationBackAction()  {
        // router?.dismiss(controller: .login)
         self.navigationController?.popViewController(animated: true)
     }
@@ -52,17 +52,17 @@ extension GetSubcriptionViewController  {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnGetSubcription:
-            self.GetSubscriptionAction()
+            self.getSubscriptionAction()
         case btnAllowAds:
-            self.AllowAdsAction()
+            self.allowAdsAction()
         default:
             break
         }
     }
-    private func GetSubscriptionAction() {
-       print("GetSubscriptionAction")
+    private func getSubscriptionAction() {
+       print("getSubscriptionAction")
     }
-    private func AllowAdsAction() {
-       print("AllowAdsAction")
+    private func allowAdsAction() {
+       print("allowAdsAction")
     }
 }

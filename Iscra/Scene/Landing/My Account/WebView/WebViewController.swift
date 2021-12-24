@@ -57,7 +57,7 @@ extension WebViewController {
 
 // NavigationBar delegates
 extension WebViewController : navigationBarAction {
-    func ActionType()  {
+    func navigationBackAction()  {
         self.router?.dismiss(controller: .webViewController)
     }
 }

@@ -57,7 +57,6 @@ class Validation {
             
         case .name:
             return( text == "" ? true :
-                      // isTextContainspecialCharacters(string: text) == true ? true : false,
                        Validation().isValidname(name: text) == false ? true : false,
                     text == "" ? AppConstant.emptyName : AppConstant.invalidName)
             
@@ -67,7 +66,6 @@ class Validation {
                     text == "" ? AppConstant.emptyDescription : AppConstant.invalidDescription)
             
         case .habitName:
-            
             return( text == "" ? true :
                         text.count > 30 ? true : false,
                     text == "" ? AppConstant.emptyHabitName : AppConstant.invalidHabitName)
@@ -89,7 +87,7 @@ class Validation {
     }
     func isValidname(name:String) -> Bool {
         let nameRegEx = NSPredicate(format: "SELF MATCHES %@",
-                                     "^[A-Z]+[a-zA-Z]*$")
+                                     "^[a-zA-Z]*$")
         return nameRegEx.evaluate(with: name)
     }
     

@@ -23,7 +23,8 @@ enum HabitAction {
     case updateHabit
     case groupInvitations
     case markAsComplete
-
+    case showHabit
+    case joinHabit
    // case habitList([AllHabits])
     //case callApi(_ sucess: Bool)
     case isHabitDelete(_ isDelete: Bool, _ msg:String)
@@ -37,6 +38,7 @@ enum HabitAction {
     case editingDidChange(_ field:String, _ value:String)
     case errorMessage(_ text:String)
     case sucessMessage(_ text:String)
+    case joinHabitMessage(_ text:String)
 }
 protocol HabitViewRepresentable: AnyObject {
     func onAction(_ action:  HabitAction)
@@ -51,8 +53,9 @@ protocol HabitServiceProvidable: AnyObject {
     func habitDetail(param: HabitParams.HabitDetail)
     func habitList(param: HabitParams.AllHabitList)
     func updateHabit(param: HabitParams.UpdateHabit)
-    func groupInvitations(param: HabitParams.GroupInvitations)
     func markAsComplete(param: HabitParams.MarkAsComplete)
+    func showHabit(param: HabitParams.ShowHabit)
+    func joinHabit(param: HabitParams.JoinHabit)
 }
 protocol HabitServiceProvierDelegate: AnyObject {
     func completed<T>(for action: HabitAction, with response: T?, with error: APIError?)

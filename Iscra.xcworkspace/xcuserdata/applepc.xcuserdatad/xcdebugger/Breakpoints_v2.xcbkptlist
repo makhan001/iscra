@@ -7,29 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9C368277-CC5B-44F6-BDE2-82C637CD17BD"
+            uuid = "F1B9CBF5-ED39-4F3A-8CC9-4B756BC39098"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Iscra/Scene/Landing/LandingTabbar/LandingTabBarController.swift"
+            filePath = "Iscra/Scene/Onboarding/Login/LoginViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "addHabit(type:)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "socialLogin(logintype:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
-         <BreakpointContent
-            uuid = "A2D581AA-9F2A-4E53-8C69-D80F10597631"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            breakpointStackSelectionBehavior = "1"
-            scope = "1"
-            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -39,7 +39,7 @@ protocol CommunityViewRepresentable: AnyObject {
 
 protocol CommunityServiceProvidable: AnyObject {
     var  delegate: CommunityServiceProvierDelegate? { get set }
-    func joinHabit(param: CommunityParams.JoinHabit)
+   // func joinHabit(param: CommunityParams.JoinHabit)
     func fetchCommunity(param: CommunityParams.FetchCommunity)
     func allGroupHabit(param: CommunityParams.AllGroupHabit)
     func friends(param: CommunityParams.Friends)

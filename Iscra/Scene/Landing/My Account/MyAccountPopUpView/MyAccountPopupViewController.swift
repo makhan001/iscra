@@ -43,38 +43,36 @@ extension MyAccountPopupViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnCamera:
-            self.CameraAction()
+            self.cameraAction()
         case btnGallery:
-            self.GalleryAction()
+            self.galleryAction()
         default:
             break
         }
     }
-    private func CameraAction() {
+    
+    private func cameraAction() {
         self.openCamera()
     }
     
-    private func GalleryAction() {
+    private func galleryAction() {
         self.openGallary()
     }
-    func openCamera()
-    {
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
-        {
+    
+    func openCamera() {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self;
             imagePickerController.sourceType = UIImagePickerController.SourceType.camera
             imagePickerController.allowsEditing = true
             self.present(imagePickerController, animated: true, completion: nil)
-        }
-        else
-        {
+        } else {
             let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-
     }
+    
 //    func openCameraPhoto() {
 //            CameraHandler.shared.showActionSheetPrivate(vc: self, isEditable: true, isAlreadyExist: false)
 //            CameraHandler.shared.camera(allowsEditing: true)

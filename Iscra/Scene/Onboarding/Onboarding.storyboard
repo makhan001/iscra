@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1400,7 +1400,7 @@
         <!--Update Profile View Controller-->
         <scene sceneID="l1h-ZO-ZuD">
             <objects>
-                <viewController storyboardIdentifier="UpdateProfile" id="rb6-zJ-drJ" customClass="UpdateProfileViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="updateProfile" id="rb6-zJ-drJ" customClass="UpdateProfileViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ABF-Qr-rhg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1918,7 +1918,7 @@
                             <constraint firstItem="vx9-Kf-vnx" firstAttribute="top" secondItem="YuC-aH-VxA" secondAttribute="bottom" constant="5" id="Llc-h5-l4x"/>
                             <constraint firstItem="alP-Sd-TY1" firstAttribute="trailing" secondItem="YuC-aH-VxA" secondAttribute="trailing" id="PjP-Em-CoS"/>
                             <constraint firstItem="vx9-Kf-vnx" firstAttribute="trailing" secondItem="alP-Sd-TY1" secondAttribute="trailing" id="ZOY-dX-dY9"/>
-                            <constraint firstAttribute="bottom" secondItem="vx9-Kf-vnx" secondAttribute="bottom" id="g4V-fv-pOJ"/>
+                            <constraint firstItem="alP-Sd-TY1" firstAttribute="bottom" secondItem="vx9-Kf-vnx" secondAttribute="bottom" id="g4V-fv-pOJ"/>
                             <constraint firstItem="wjp-ch-Es4" firstAttribute="leading" secondItem="alP-Sd-TY1" secondAttribute="leading" id="vpN-AH-qbv"/>
                             <constraint firstItem="vx9-Kf-vnx" firstAttribute="leading" secondItem="alP-Sd-TY1" secondAttribute="leading" id="zTZ-1m-TgD"/>
                         </constraints>
@@ -3032,7 +3032,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                                         <integer key="value" value="32"/>
                                                                     </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBlack" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cFL-xL-aOM">
@@ -3051,7 +3051,7 @@
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                                                         <integer key="value" value="20"/>
                                                                                     </userDefinedRuntimeAttribute>
-                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSMedium" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </textField>
                                                                         </subviews>
@@ -3124,7 +3124,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                                         <integer key="value" value="32"/>
                                                                     </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBlack" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTI-f8-Rwc" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
@@ -3159,10 +3159,11 @@
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                                                         <integer key="value" value="18"/>
                                                                                     </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                                         <real key="value" value="24"/>
                                                                                     </userDefinedRuntimeAttribute>
-                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSMedium" value="YES"/>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </button>
                                                                         </subviews>
@@ -3189,6 +3190,8 @@
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                                                         <integer key="value" value="18"/>
                                                                                     </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                                         <real key="value" value="24"/>
                                                                                     </userDefinedRuntimeAttribute>
@@ -3198,7 +3201,6 @@
                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                                         <color key="value" name="GrayAccent"/>
                                                                                     </userDefinedRuntimeAttribute>
-                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSMedium" value="YES"/>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </button>
                                                                         </subviews>
@@ -3272,7 +3274,7 @@
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                                        <integer key="value" value="24"/>
+                                                        <integer key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
@@ -3284,7 +3286,7 @@
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                                        <integer key="value" value="24"/>
+                                                        <integer key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSBold" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
@@ -3334,7 +3336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A3G-ek-6dw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3721" y="-665"/>
+            <point key="canvasLocation" x="3708" y="-675"/>
         </scene>
     </scenes>
     <designables>
@@ -3351,7 +3353,7 @@
             <size key="intrinsicContentSize" width="67" height="34"/>
         </designable>
         <designable name="2ls-IB-Blx">
-            <size key="intrinsicContentSize" width="209" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="209.33333333333334" height="21.666666666666668"/>
         </designable>
         <designable name="3xM-69-dgw">
             <size key="intrinsicContentSize" width="66" height="30"/>
@@ -3373,7 +3375,7 @@
             <size key="intrinsicContentSize" width="58.666666666666664" height="24"/>
         </designable>
         <designable name="B9a-dm-i6h">
-            <size key="intrinsicContentSize" width="539.33333333333337" height="38.333333333333336"/>
+            <size key="intrinsicContentSize" width="539" height="38.333333333333336"/>
         </designable>
         <designable name="Bft-tY-T2W">
             <size key="intrinsicContentSize" width="567.66666666666663" height="57.333333333333336"/>
@@ -3385,7 +3387,7 @@
             <size key="intrinsicContentSize" width="168" height="24"/>
         </designable>
         <designable name="Eax-Hm-aug">
-            <size key="intrinsicContentSize" width="207" height="34"/>
+            <size key="intrinsicContentSize" width="202" height="34"/>
         </designable>
         <designable name="FAj-WO-zbi">
             <size key="intrinsicContentSize" width="84" height="34"/>
@@ -3394,7 +3396,7 @@
             <size key="intrinsicContentSize" width="191" height="24"/>
         </designable>
         <designable name="Lf5-2i-KVi">
-            <size key="intrinsicContentSize" width="804" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="804.33333333333337" height="21.666666666666668"/>
         </designable>
         <designable name="MJs-dO-gf3"/>
         <designable name="N04-yo-qRO"/>
@@ -3427,7 +3429,7 @@
             <size key="intrinsicContentSize" width="82.333333333333329" height="26.333333333333332"/>
         </designable>
         <designable name="Uhw-aA-CSh">
-            <size key="intrinsicContentSize" width="804" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="804.33333333333337" height="21.666666666666668"/>
         </designable>
         <designable name="UwO-VI-JaW"/>
         <designable name="WMm-Js-G1K"/>
@@ -3435,7 +3437,7 @@
             <size key="intrinsicContentSize" width="14" height="28.666666666666668"/>
         </designable>
         <designable name="Xhj-tO-UvY">
-            <size key="intrinsicContentSize" width="582.33333333333337" height="38.333333333333336"/>
+            <size key="intrinsicContentSize" width="539" height="38.333333333333336"/>
         </designable>
         <designable name="YTY-Xr-Eih"/>
         <designable name="Ysp-xF-SZL">
@@ -3458,10 +3460,10 @@
             <size key="intrinsicContentSize" width="567.66666666666663" height="57.333333333333336"/>
         </designable>
         <designable name="e0w-FE-8H9">
-            <size key="intrinsicContentSize" width="56" height="41"/>
+            <size key="intrinsicContentSize" width="47" height="36"/>
         </designable>
         <designable name="e3A-n1-3wl">
-            <size key="intrinsicContentSize" width="125" height="34"/>
+            <size key="intrinsicContentSize" width="122" height="34"/>
         </designable>
         <designable name="e98-ns-aTA">
             <size key="intrinsicContentSize" width="105" height="34"/>
@@ -3474,7 +3476,7 @@
         </designable>
         <designable name="gGt-2t-IIk"/>
         <designable name="gge-BJ-qyN">
-            <size key="intrinsicContentSize" width="53" height="41"/>
+            <size key="intrinsicContentSize" width="45" height="36"/>
         </designable>
         <designable name="gwU-ld-hQV">
             <size key="intrinsicContentSize" width="227.33333333333334" height="24"/>

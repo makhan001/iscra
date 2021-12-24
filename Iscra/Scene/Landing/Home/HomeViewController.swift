@@ -37,14 +37,19 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     private func setup() {
         viewModel.view = self
-        self.tableView.isHidden = false
+        self.setTableView()
         self.viewFirstHabit.isHidden = true
-        self.tableView.didSelectedAtIndex = didSelectedAtIndex
         self.lblTitle.text = AppConstant.firstHabitTitle
         self.lblSubTitle.text = AppConstant.firstHabitSubTitle
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
-
-       // self.tableView.delegate1 = self
+        if UserStore.chatLogin != true {
+//            QBChatLogin.shared.setChatLoginSetup()
+        }
+    }
+    
+    private func setTableView() {
+        self.tableView.isHidden = false
+        self.tableView.didSelectedAtIndex = didSelectedAtIndex
         self.tableView.isHabitDelete = {
             selected , id in
             if selected {
@@ -54,7 +59,8 @@ extension HomeViewController {
         }
         self.setPullToRefresh()
     }
-    @objc func refrershUI(){
+    
+    @objc func refrershUI() {
         print("refrershUI is called")
         self.viewModel.fetchHabitList()
     }
@@ -90,13 +96,13 @@ extension HomeViewController: HabitViewRepresentable {
             self.viewModel.habitList.removeAll()
             self.viewModel.fetchHabitList()
         case  .sucessMessage(_):
-            self.fetchHabitList()
+            self.fetchHabitListResponse()
         default:
             break
         }
     }
     
-    private func fetchHabitList() {
+    private func fetchHabitListResponse() {
        //  print("self.viewModel.habitList is \(self.viewModel.habitList.count)")
         if self.viewModel.habitList.count == 0 {
             self.viewFirstHabit.isHidden = false

@@ -14,18 +14,22 @@ class CommunityFriendCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.imgFriend.layer.cornerRadius = imgFriend.frame.size.width / 2
+        self.imgFriend.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-    func configure() {
-        self.lblFriendname.text = "Amira"
-        self.imgFriend.image = #imageLiteral(resourceName: "ic_user3")
+    func configure(objFriend: Friend) {
+        self.lblFriendname.text = objFriend.username?.capitalized
+        let profilePic = objFriend.profileImage
+            if profilePic != nil && profilePic != "<null>" {
+              let url = URL(string: profilePic!)
+                self.imgFriend.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic_user3"))
+            }else{
+                self.imgFriend.image = #imageLiteral(resourceName: "ic_user3")
+            }
     }
-    
 }

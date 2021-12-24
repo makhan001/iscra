@@ -38,9 +38,9 @@ final class MyAccountViewModel {
                                       httpMethod: .put,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
-                                      imageArray: [["profile_image": selectedImage ?? UIImage()]],
+                                      imageArray: [["profile_image": selectedImage]],
                                       fileArray: [],
-                                      file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
+                                      file: ["profile_image": selectedImage]){ [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .updateProfile, with: resp, with: nil)
                 return
@@ -52,7 +52,6 @@ final class MyAccountViewModel {
                         print("updateProfileApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)
-                      
                         self?.view?.onAction(.updateProfile)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

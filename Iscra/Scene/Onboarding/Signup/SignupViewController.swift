@@ -48,6 +48,11 @@ extension SignupViewController {
         } else {
             btnApple.isHidden = true
         }
+        
+        viewModel.email = "mak6@gmail.com"
+        viewModel.password = "12345678"
+        txtEmail.text = viewModel.email
+        txtPassword.text = viewModel.password
     }
 }
 
@@ -71,9 +76,16 @@ extension SignupViewController {
     private func registerGoogleAction() {
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
             guard error == nil else { return }
-            self.viewModel.email = user?.profile?.email ?? ""
-            self.viewModel.username = user?.profile?.name ?? ""
-            self.viewModel.social_id = user?.userID ?? ""
+            guard let user = user else { return }
+            self.viewModel.email = user.profile?.email ?? ""
+            self.viewModel.username = user.profile?.name ?? ""
+            self.viewModel.social_id = user.userID ?? ""
+            if ((user.profile?.hasImage) != nil) {
+                guard let url = user.profile?.imageURL(withDimension: 200) else {
+                    return
+                }
+                self.viewModel.socialLoginImageURL = url
+            }
             self.viewModel.socialLogin(logintype: .google)
         }
     }

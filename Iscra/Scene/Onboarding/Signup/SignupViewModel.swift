@@ -15,6 +15,7 @@ final class SignupViewModel {
     var password: String = ""
     var social_id: String = ""
     var verificationCode: String = ""
+    var socialLoginImageURL: URL?
     var username: String = OnboadingUtils.shared.username // singeleton class
     var selectedImage: UIImage! = OnboadingUtils.shared.userImage // singleton class
     var delegate: OnboardingServiceProvierDelegate?
@@ -94,8 +95,13 @@ final class SignupViewModel {
       }
     //Mark:- Social Login Api-----------------------
     func socialLogin(logintype:SocialLoginType){
-        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: logintype)
+        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: UIDevice.current.identifierForVendor?.uuidString ?? "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: logintype)
         print("parameter---> \(parameters)")
+        if let url = socialLoginImageURL {
+            if let data = try? Data(contentsOf: url) {
+                self.selectedImage = UIImage(data: data) ?? UIImage()
+            }
+        }
         
         WebService().requestMultiPart(urlString: "/users/sociallogin",
                                       httpMethod: .post,

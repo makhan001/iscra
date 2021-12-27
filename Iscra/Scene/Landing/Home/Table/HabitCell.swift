@@ -22,12 +22,11 @@ class HabitCell: UITableViewCell {
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
     var arrHabitMarks: [HabitMark]?
     var arrGroupMembers: [GroupMember]?
-
+    
     var colorTheme: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.collectionMates.register(UINib(nibName: "MatesCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MatesCollectionCell")
         self.collectionMates.backgroundColor = UIColor.clear.withAlphaComponent(0)
         self.collectionMates.dataSource = self
@@ -62,7 +61,7 @@ class HabitCell: UITableViewCell {
         self.colorTheme = obj.colorTheme ?? "#ff7B86EB"
         self.arrHabitMarks = obj.habitMarks
         self.arrGroupMembers = obj.groupMembers
-
+        
         if obj.habitType != "group_habit" {
             self.viewNomates.isHidden = false
             self.viewMates.isHidden = true
@@ -75,7 +74,7 @@ class HabitCell: UITableViewCell {
             self.lblHabitTitleMates.text = obj.name?.capitalized
             self.imgHabitMates.image = UIImage(named: obj.icon ?? "sport1")
             self.imgHabitMates.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
-
+            
         }
     }
 }
@@ -106,13 +105,6 @@ extension HabitCell: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
             
             guard let objGroupMembers = self.arrGroupMembers?[indexPath.row] else {  return UICollectionViewCell()  }
             cell.configureGroupMembers(obj: objGroupMembers)
-           // return cell
-
-            
-//            if self.arrGroupMembers?.count ?? 0 > 0 {
-//                let objGroupMembers = self.arrGroupMembers?[indexPath.row]
-//                cell.configureGroupMembers(obj: objGroupMembers!)
-//            }
             return cell
         }
     }

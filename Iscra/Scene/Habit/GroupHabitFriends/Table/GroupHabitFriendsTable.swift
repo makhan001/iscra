@@ -18,7 +18,7 @@ class  GroupHabitFriendsTable: UITableView, UITableViewDataSource, UITableViewDe
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+        
     func configure(obj: Int) {
         self.register(UINib(nibName: "GroupFriendsCell", bundle: nil), forCellReuseIdentifier: "GroupFriendsCell")
         self.delegate = self

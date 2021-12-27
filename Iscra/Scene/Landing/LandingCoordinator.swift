@@ -120,7 +120,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         habitCalender = HabitCalenderCoordinator(router: Router())
         add(habitCalender)
         habitCalender.delegate = self
-        habitCalender.start(habitId: controller.home.viewModel.habitId)
+        habitCalender.start(habitId: controller.home.viewModel.habitId, userId: habitCalender.controller.viewModel.userId)
         self.router.present(habitCalender, animated: true)
     }
     

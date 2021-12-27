@@ -19,7 +19,7 @@ class EditHabitViewController: UIViewController {
     var timer: String = ""
     var colorTheme: String = ""
     var reminders: Bool = false
-    var objHabitDetail: HabitDetails?
+    var objHabitDetail: ShowHabitDetail? // HabitDetails?
     let viewModel: EditHabitViewModel = EditHabitViewModel(provider: HabitServiceProvider())
     weak var router: NextSceneDismisser?
     
@@ -138,9 +138,9 @@ extension EditHabitViewController: clickManagerDelegate{
         self.navigationController?.present(colorPopUp, animated: false, completion: nil)
     }
 }
-// MARK: navigationBarAction Callback
-extension EditHabitViewController  : navigationBarAction {
-    
+
+// MARK: NavigationBar ViewDelegate Callback
+extension EditHabitViewController: NavigationBarViewDelegate {
     func navigationBackAction()  {
         router?.dismiss(controller: .editHabit)
        // self.navigationController?.popViewController(animated: true)

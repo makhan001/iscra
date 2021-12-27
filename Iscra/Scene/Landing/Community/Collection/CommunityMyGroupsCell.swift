@@ -21,10 +21,10 @@ class CommunityMyGroupsCell: UICollectionViewCell {
     @IBOutlet weak var collectiondays: UICollectionView!
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
     
-    let arr = ["1","1"]
     var arrHabitMarks: [HabitMark]?
     var colorTheme: String = ""
-    
+    var arrGroupMembers: [GroupMember]?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionMates.register(UINib(nibName: "MatesCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MatesCollectionCell")
@@ -54,14 +54,20 @@ class CommunityMyGroupsCell: UICollectionViewCell {
     func configure(obj: GroupHabit) {
         self.colorTheme = obj.colorTheme ?? "#ff7B86EB"
         self.arrHabitMarks = obj.habitMarks
-        self.lblHabitTitle.text = obj.name?.capitalized
-        self.lblHabitTitleMates.text = obj.name?.capitalized
-        self.imgHabit.image =  UIImage(named: obj.icon ?? "sport1")
-        self.imgHabitMates.image =  UIImage(named: obj.icon ?? "sport1")
-        self.imgHabit.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
-        self.imgHabitMates.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
-        self.viewNomates.isHidden = false
-        self.viewMates.isHidden = true
+        self.arrGroupMembers = obj.groupMembers
+        if obj.habitType != "group_habit" {
+            self.viewNomates.isHidden = false
+            self.viewMates.isHidden = true
+            self.lblHabitTitle.text =  obj.name?.capitalized
+            self.imgHabit.image = UIImage(named: obj.icon ?? "sport1")
+            self.imgHabit.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
+        } else {
+            self.viewNomates.isHidden = true
+            self.viewMates.isHidden = false
+            self.lblHabitTitleMates.text = obj.name?.capitalized
+            self.imgHabitMates.image = UIImage(named: obj.icon ?? "sport1")
+            self.imgHabitMates.tintColor = UIColor(hex: obj.colorTheme ?? "#ff7B86EB")
+        }
     }
 }
 
@@ -72,7 +78,7 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
         if collectionView == self.collectiondays {
                    return  self.arrHabitMarks?.count ?? 0
                } else {
-                   return 3
+                   return arrGroupMembers?.count ?? 0
                }
     }
 
@@ -88,7 +94,8 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
             guard let cell = self.collectionMates.dequeueReusableCell(withReuseIdentifier: "MatesCollectionCell", for: indexPath) as? MatesCollectionCell else {
                 return UICollectionViewCell()
             }
-            cell.configure()
+            guard let objGroupMembers = self.arrGroupMembers?[indexPath.row] else {  return UICollectionViewCell()  }
+            cell.configureGroupMembers(obj: objGroupMembers)
             return cell
         }
     }

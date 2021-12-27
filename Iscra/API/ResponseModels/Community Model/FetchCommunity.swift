@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/*
 // MARK: - GroupHabit
 struct GroupHabit: Codable {
     let id: Int?
@@ -36,6 +36,44 @@ struct GroupHabit: Codable {
         case inviteHabits = "invite_habits"
     }
 }
+*/
+///*
+ 
+ // MARK: - GroupHabit
+ struct GroupHabit: Codable {
+     let id: Int?
+     let habitType: String?
+     let days: [String]?
+     let name: String?
+     let colorTheme: String?
+     let icon: String?
+     let reminders: Bool?
+     let groupHabitDescription: String?
+     let userID: Int?
+     let timer: String?
+     let createdAt, updatedAt: Int?
+     let groupImage: String?
+     let habitMarks: [HabitMark]?
+     let groupMembers: [GroupMember]?
+
+     enum CodingKeys: String, CodingKey {
+         case id
+         case habitType = "habit_type"
+         case days, name
+         case colorTheme = "color_theme"
+         case icon, reminders
+         case groupHabitDescription = "description"
+         case userID = "user_id"
+         case timer
+         case createdAt = "created_at"
+         case updatedAt = "updated_at"
+         case groupImage = "group_image"
+         case habitMarks = "habit_marks"
+         case groupMembers = "group_members"
+     }
+ }
+ 
+// */
 
 // MARK: - InviteHabits
 struct InviteHabits: Codable {
@@ -49,6 +87,7 @@ struct InviteHabits: Codable {
    // let timer, createdAt, updatedAt: String?
     let timer: String?
     let createdAt, updatedAt: Int?
+    let groupImage: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -61,6 +100,7 @@ struct InviteHabits: Codable {
         case timer
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case groupImage = "group_image"
     }
 }
 
@@ -161,3 +201,12 @@ struct AllGroupHabit: Codable {
         case groupImage = "group_image"
     }
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+

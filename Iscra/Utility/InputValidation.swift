@@ -22,9 +22,7 @@ enum InputValidation:String {
 class Validation {
     
     func textValidation(text:String,validationType:InputValidation) -> (Bool,String) {
-        
-        switch validationType {
-        
+        switch validationType {        
         case .email:
             return(
                 text == "" ? true :
@@ -87,7 +85,7 @@ class Validation {
     }
     func isValidname(name:String) -> Bool {
         let nameRegEx = NSPredicate(format: "SELF MATCHES %@",
-                                     "^[a-zA-Z]*$")
+                                     "^[a-zA-Z]-_")
         return nameRegEx.evaluate(with: name)
     }
     

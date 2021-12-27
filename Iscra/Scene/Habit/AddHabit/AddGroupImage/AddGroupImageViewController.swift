@@ -134,8 +134,8 @@ extension AddGroupImageViewController: HabitViewRepresentable {
     }
 }
 
-// MARK: navigationBarAction Callback
-extension AddGroupImageViewController: navigationBarAction {
+// MARK: NavigationBarViewDelegate Callback
+extension AddGroupImageViewController: NavigationBarViewDelegate {
     func navigationBackAction() {
         router?.dismiss(controller: .addGroupImage)
     }

@@ -18,6 +18,7 @@ enum Scenes:String {
     case home
     case myAccount
     case changePassword
+    case confirmPassword
     case verification
     case habitName
     case addHabit
@@ -70,6 +71,7 @@ enum StoryboardIdentifier:String {
     case home
     case myAccount
     case changePassword
+    case confirmPassword
     case verification
     case habitName
     case addHabit

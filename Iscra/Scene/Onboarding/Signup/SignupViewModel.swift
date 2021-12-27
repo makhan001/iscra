@@ -19,7 +19,7 @@ final class SignupViewModel {
     var username: String = OnboadingUtils.shared.username // singeleton class
     var selectedImage: UIImage! = OnboadingUtils.shared.userImage // singleton class
     var delegate: OnboardingServiceProvierDelegate?
-
+    
     weak var view: OnboardingViewRepresentable?
     let provider: OnboardingServiceProvidable
     
@@ -37,7 +37,6 @@ final class SignupViewModel {
     }
     
     private func validateUserInput() {
-        
         if Validation().textValidation(text: email, validationType: .email).0 {
             view?.onAction(.requireFields(Validation().textValidation(text: email, validationType: .email).1))
             return
@@ -70,7 +69,7 @@ final class SignupViewModel {
                         UserStore.save(userID: response.data?.register?.id)
                         UserStore.save(userImage: response.data?.register?.profileImage)
                         self?.verificationCode = response.data?.register?.verificationCode ?? ""
-                        self?.setChatUserSignupSetup()
+                        QBChatLogin.shared.registerQBUser()
                         self?.view?.onAction(.register)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
@@ -79,21 +78,19 @@ final class SignupViewModel {
             }
         }
     }
-    //Mark:- QuickBlox Chat SignUp--------
     
-    func setChatUserSignupSetup() {
-        let user = QBUUser()
-        user.email = UserStore.userEmail//UserDetails.globalVariable.userEmail
-        user.login = UserStore.userEmail//UserDetails.globalVariable.userEmail
-        user.fullName = UserStore.userName
-        user.password = "jitu12345"//Message.shared.K_QuickBloxPassword
-        QBRequest.signUp(user, successBlock: { response, user in
-         print("UserSignUpInQuickBlox", user)
-        }, errorBlock: { (response) in
-          print("UserNOTSignUpInQuickBlox", response)
-        })
-      }
-    //Mark:- Social Login Api-----------------------
+    private func registerSuccess(_ response: SuccessResponseModel) {
+        UserStore.save(isVerify: true)
+        UserStore.save(userID: response.data?.user?.id)
+        UserStore.save(userName: response.data?.user?.email)
+        UserStore.save(userImage: response.data?.user?.profileImage)
+        UserStore.save(token: response.data?.user?.authenticationToken)
+        UserStore.save(userName: response.data?.user?.username?.capitalized)
+        QBChatLogin.shared.registerQBUser()
+        self.view?.onAction(.socialLogin(response.message ?? ""))
+    }
+    
+    //Mark:- Social Login API
     func socialLogin(logintype:SocialLoginType){
         let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: UIDevice.current.identifierForVendor?.uuidString ?? "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: logintype)
         print("parameter---> \(parameters)")
@@ -112,19 +109,11 @@ final class SignupViewModel {
                                       file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
                 self?.view?.onAction(.errorMessage(err ?? ERROR_MESSAGE))
-               // print(err)
                 return
             } else {
                 if let response = resp as? SuccessResponseModel {
                     if response.status == true {
-                        UserStore.save(token: response.data?.user?.authenticationToken)
-                        UserStore.save(userName: response.data?.user?.email)
-                        UserStore.save(userName: response.data?.user?.username?.capitalized)
-                        print("socialLoginApi Success---> \(response)")
-                        UserStore.save(userID: response.data?.user?.id)
-                        UserStore.save(userImage: response.data?.user?.profileImage)
-                        self?.setChatUserSignupSetup()
-                        self?.view?.onAction(.socialLogin(response.message ?? ""))
+                        self?.registerSuccess(response)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
                     }
@@ -132,7 +121,6 @@ final class SignupViewModel {
             }
         }
     }
-
 }
 
 extension SignupViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {

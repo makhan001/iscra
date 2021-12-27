@@ -31,11 +31,12 @@ final class UpdateProfileViewModel {
     }
     
     private func validateUserInput() {
-        
-        if Validation().textValidation(text: username, validationType: .name).0 {
-            view?.onAction(.requireFields(Validation().textValidation(text: username, validationType: .name).1))
+        guard let name = UserStore.userName else { return }
+        if name.trim().lowercased() == username.trim().lowercased() {
+            self.view?.onAction(.errorMessage("Please update username"))
             return
         }
+        
         let parameters =  UserParams.UpdateProfile(username: username)
         WebService().requestMultiPart(urlString: "/users/update",
                                       httpMethod: .put,

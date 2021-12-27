@@ -141,7 +141,7 @@ extension SetThemeViewController: selectedColordelegate ,selectedIcondelegate {
 
 
 // MARK: NavigationBarView Callback
-extension SetThemeViewController  : navigationBarAction {
+extension SetThemeViewController  : NavigationBarViewDelegate {
     func navigationBackAction()  {
         self.router?.dismiss(controller: .setTheme)
     }

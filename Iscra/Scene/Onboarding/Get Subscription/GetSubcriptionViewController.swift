@@ -30,7 +30,7 @@ class GetSubcriptionViewController: UIViewController {
     
 }
 // MARK:- Instance Methods
-extension GetSubcriptionViewController : navigationBarAction {
+extension GetSubcriptionViewController : NavigationBarViewDelegate {
     
     private func setup() {
 //        navigationController?.setNavigationBarHidden(false, animated: false)

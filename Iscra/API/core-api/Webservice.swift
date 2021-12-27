@@ -49,11 +49,7 @@ class WebService {
             switch encodingResult.result {
             case .success(let result):
                 WebService().StopIndicator()
-                
-                
-                
                 if let data = result {
-                    
                     do {
                         // make sure this JSON is in the format we expect
                         if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {

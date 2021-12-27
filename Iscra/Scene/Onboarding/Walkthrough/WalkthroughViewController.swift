@@ -16,17 +16,13 @@ class WalkthroughViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var btnAddMyPicture: UIButton!
     @IBOutlet weak var btnHowToAddMemoji: UIButton!
-    @IBOutlet weak var textNameView: IscraCustomView!
+    @IBOutlet weak var textNameView: IscraCustomView! // viewName
     var currentIndex: Int = 1
     weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        super.viewWillAppear(animated)
     }
 }
 
@@ -42,7 +38,7 @@ extension WalkthroughViewController {
         txtName.delegate = self
         self.setScrollView()
     }
-    //Mark:- Set Scrollview
+    
     private func setScrollView() {
         self.scrollView.isPagingEnabled = true
         self.scrollView.showsHorizontalScrollIndicator = false
@@ -52,6 +48,20 @@ extension WalkthroughViewController {
             self.automaticallyAdjustsScrollViewInsets = false
         }
         
+    }
+    
+    private func setNameTextField(newLength: Int, string:String, range: NSRange) {
+        if newLength != 0 {
+            self.textNameView.layer.borderColor = UIColor(red: 0.758, green: 0.639, blue: 0.158, alpha: 1).cgColor
+            self.textNameView.layer.borderWidth = 1
+        } else {
+            self.textNameView.layer.borderColor = UIColor.clear.cgColor
+            self.textNameView.layer.borderWidth = 1
+        }
+        if let text = txtName.text, let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string)
+            OnboadingUtils.shared.username = updatedText
+        }
     }
 }
 
@@ -152,32 +162,18 @@ extension WalkthroughViewController : UIScrollViewDelegate {
 // MARK:- UITextFieldDelegate
 extension WalkthroughViewController : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
         if newLength <= 30 {
-            if textField == txtName {
-                if (string == " ") {
-                    return false
-                }
-                if txtName.text!.count >= 0  {
-                    textNameView.layer.borderColor = UIColor(red: 0.758, green: 0.639, blue: 0.158, alpha: 1).cgColor
-                    textNameView.layer.borderWidth = 1
-                }
-                if newLength == 0{
-                    textNameView.layer.borderColor = UIColor.clear.cgColor
-                    textNameView.layer.borderWidth = 1
-                }
-                if let text = txtName.text, let textRange = Range(range, in: text) {
-                    let updatedText = text.replacingCharacters(in: textRange, with: string)
-                    OnboadingUtils.shared.username = updatedText
-                }
-                let allowedCharacter = CharacterSet.letters
-                let allowedCharacter1 = CharacterSet.whitespaces
-                let characterSet = CharacterSet(charactersIn: string)
-                return allowedCharacter.isSuperset(of: characterSet) || allowedCharacter1.isSuperset(of: characterSet)
+            if string.rangeOfCharacter(from: .decimalDigits) != nil
+                || string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {
+                return false
             }
-            return true
-        }
-        else {
+            let characterSet = NSCharacterSet(charactersIn: AppConstant.USERNAME_ACCEPTABLE_CHARACTERS).inverted
+            let filtered = string.components(separatedBy: characterSet).joined(separator: "")
+            self.setNameTextField(newLength: newLength, string: string, range:range)
+            return (string == filtered)
+        } else {
             return false
         }
     }

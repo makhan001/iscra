@@ -9,9 +9,9 @@ import UIKit
 import WebKit
 
 enum WebPage {
-    case termsAndConditions
-    case privacyPolicy
     case aboutUs
+    case privacyPolicy
+    case termsAndConditions
 }
 
 class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
@@ -28,12 +28,12 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setUp()
+        self.setup()
     }
 }
 
 extension WebViewController {
-    private func setUp(){
+    private func setup(){
         self.viewNavigation.delegateBarAction = self
         switch webPage {
         case .termsAndConditions:
@@ -49,14 +49,15 @@ extension WebViewController {
     }
     
     private func loadUrl(urlString: String){
-        let myURL = URL(string: urlString)
-        let myRequest = URLRequest(url: myURL!)
-        viewWeb.load(myRequest)
+        guard let url = URL(string: urlString) else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.cachePolicy = .returnCacheDataElseLoad
+        self.viewWeb.load(urlRequest)
     }
 }
 
-// NavigationBar delegates
-extension WebViewController : navigationBarAction {
+// MARK:-  NavigationBar Delegate
+extension WebViewController: NavigationBarViewDelegate {
     func navigationBackAction()  {
         self.router?.dismiss(controller: .webViewController)
     }

@@ -28,7 +28,7 @@ class AddMyPictureViewController: UIViewController {
 }
 
 // MARK: Instance Methods
-extension AddMyPictureViewController: navigationBarAction {
+extension AddMyPictureViewController: NavigationBarViewDelegate {
     
     
   private func setup() {

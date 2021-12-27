@@ -20,7 +20,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var viewNavigation: NavigationBarView!
     
     weak var router: NextSceneDismisser?
-    var delegateBarAction:navigationBarAction?
+    var delegateBarAction:NavigationBarViewDelegate?
     private var imagePicker = UIImagePickerController()
     let viewModel: MyAccountViewModel = MyAccountViewModel(provider: OnboardingServiceProvider())
     
@@ -66,7 +66,7 @@ extension MyAccountViewController {
 }
 
 // MARK: Navigation Delegates
-extension MyAccountViewController: navigationBarAction {
+extension MyAccountViewController: NavigationBarViewDelegate {
     func navigationBackAction() {}
     
     func navigationRightButtonAction() {
@@ -126,11 +126,11 @@ extension MyAccountViewController: clickManagerDelegate{
         case .contactDeveloper:
             self.composerEmail()
         case .termsAndCondition:
-            self.termsAndCondition()
+            self.navigaetToWebView(.termsAndConditions)
         case .privacyPolicy:
-            self.privacyPolicy()
+            self.navigaetToWebView(.privacyPolicy)
         case .aboutUs:
-            self.aboutUs()
+            self.navigaetToWebView(.aboutUs)
         case .everyDay:
             print(performAction)
         case .reminder:
@@ -185,28 +185,9 @@ extension MyAccountViewController: clickManagerDelegate{
         self.present(composeVC, animated: true, completion: nil)
     }
     
-    private func termsAndCondition(){
-        print("termsAndCondition")
-        self.viewModel.webPage = .termsAndConditions
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-            self.router?.push(scene: .webViewController)
-        }
-    }
-    
-    private func privacyPolicy(){
-        print("privacyPolicy")
-        self.viewModel.webPage = .privacyPolicy
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-            self.router?.push(scene: .webViewController)
-        }
-    }
-    
-    private func aboutUs(){
-        print("aboutUs")
-        self.viewModel.webPage = .aboutUs
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-            self.router?.push(scene: .webViewController)
-        }
+    private func navigaetToWebView(_ viewType: WebPage) {
+        self.viewModel.webPage = viewType
+        self.router?.push(scene: .webViewController)
     }
 }
 
@@ -218,7 +199,7 @@ extension MyAccountViewController: MFMailComposeViewControllerDelegate{
     }
 }
 
-//Mark:- Image picker Delegate
+//Mark:- Image Picker Delegate
 extension MyAccountViewController: ImagePickerDelegate{
     func fetchedImage(img: UIImage) {
         imgProfile.image = img

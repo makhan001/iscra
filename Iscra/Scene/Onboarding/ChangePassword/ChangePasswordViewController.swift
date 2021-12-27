@@ -6,61 +6,67 @@
 //
 
 import UIKit
+import Alamofire
 
 
 class ChangePasswordViewController: UIViewController {
-    // MARK:-Outlets and variables
-    @IBOutlet weak var txtFieldConfirmPassword: UITextField!
-    @IBOutlet weak var txtFieldCurrentPassword: UITextField!
-    @IBOutlet weak var txtFieldNewPassword: UITextField!
-    @IBOutlet weak var btnShowCurrentPassword: UIButton!
-    @IBOutlet weak var btnShowConfirmPassword: UIButton!
-    @IBOutlet weak var btnShowNewPassword: UIButton!
+    
+    @IBOutlet weak var customView: UIView!
+    @IBOutlet var changePasswordView: UIView!
+    
     @IBOutlet weak var btnChangePassword: UIButton!
     @IBOutlet weak var btnForgotPassword: UIButton!
-    @IBOutlet var changePasswordView: UIView!
-    @IBOutlet weak var customView: UIView!
-    private let viewModel: ChangePasswordViewModel = ChangePasswordViewModel(provider: OnboardingServiceProvider())
+    @IBOutlet weak var btnShowNewPassword: UIButton!
+    @IBOutlet weak var btnShowCurrentPassword: UIButton!
+    @IBOutlet weak var btnShowConfirmPassword: UIButton!
+    
+    @IBOutlet weak var txtFieldNewPassword: UITextField! // txtNewPassword // txtNew
+    @IBOutlet weak var txtFieldCurrentPassword: UITextField! // txtCurrentPassword // txtCurrent
+    @IBOutlet weak var txtFieldConfirmPassword: UITextField! // txtConfirmPassword // txtConfirm
+    
     @IBOutlet weak var viewNavigation:NavigationBarView!
+    
     weak var router: NextSceneDismisser?
+    private let viewModel: ChangePasswordViewModel = ChangePasswordViewModel(provider: OnboardingServiceProvider())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.navigationItem.title = AppConstant.nav_shangpassword
-        setup()
+        self.setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        // print("self.router is \(self.router)")
-        self.viewNavigation.lblTitle.text =  "Change password"
-        self.viewNavigation.delegateBarAction = self
     }
 }
 
 // MARK: Instance Methods
-extension ChangePasswordViewController: navigationBarAction {
+extension ChangePasswordViewController {
     private func setup() {
-        viewModel.view = self
+        self.viewModel.view = self
+        self.viewNavigation.delegateBarAction = self
+        self.viewNavigation.lblTitle.text =  "Change password"
         [btnChangePassword,btnForgotPassword,btnShowCurrentPassword,btnShowNewPassword,btnShowConfirmPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        
     }
+}
+
+// MARK: NavigationBarView Delegate
+extension ChangePasswordViewController: NavigationBarViewDelegate {
     func navigationBackAction()  {
         self.router?.dismiss(controller: .webViewController)
     }
-    
 }
+
 // MARK:-TextField Delegate Methods
 extension ChangePasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == self.txtFieldCurrentPassword{
+        if textField == self.txtFieldCurrentPassword {
             self.txtFieldNewPassword.becomeFirstResponder()
-        }else if textField == self.txtFieldNewPassword{
+        } else if textField == self.txtFieldNewPassword {
             self.txtFieldConfirmPassword.becomeFirstResponder()
-        }else{
+        } else {
             self.txtFieldConfirmPassword.resignFirstResponder()
         }
         return false
@@ -102,11 +108,10 @@ extension ChangePasswordViewController {
             self.showConfirmPasswordAction()
         default:
             break
-            
         }
     }
-    @objc func alertControllerBackTapped()
-    {
+    
+    @objc func alertControllerBackTapped() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -119,7 +124,6 @@ extension ChangePasswordViewController {
     }
     
     private func forgotPasswordAction() {
-        
         let alert = UIAlertController(title: "We send you a new \npassword in your email", message: "\nWe send your new password to \nyour email. If you cannot find it in \nyour inbox check your spam folder.", preferredStyle: .alert)
         alert.setTitlet(font: UIFont(name: "SourceSansPro-Bold", size: 20), color: UIColor.black)
         alert.setForgotMessage(font: UIFont(name: "SourceSansPro-Regular", size: 16), color: UIColor.black)
@@ -164,45 +168,6 @@ extension ChangePasswordViewController {
     }
 }
 
-// MARK:- AlertView
-extension UIAlertController {
-    //Set title font and message color
-    func setTitlet(font: UIFont?, color: UIColor?) {
-        guard let title = self.title else { return }
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.center
-        let attributeString = NSMutableAttributedString(string: title, attributes: [
-            NSAttributedString.Key.paragraphStyle: paragraphStyle])//1
-        if let titleFont = font {
-            attributeString.addAttributes([NSAttributedString.Key.font : titleFont],//2
-                                          range: NSMakeRange(0, title.utf8.count))
-        }
-        if let titleColor = color {
-            attributeString.addAttributes([NSAttributedString.Key.foregroundColor : titleColor],//3
-                                          range: NSMakeRange(0, title.utf8.count))
-        }
-        self.setValue(attributeString, forKey: "attributedTitle")
-    }
-    
-    //Set message font and message color
-    func setForgotMessage(font: UIFont?, color: UIColor?) {
-        guard let title = self.message else {
-            return
-        }
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.left
-        let attributedString = NSMutableAttributedString(string: title, attributes: [
-            NSAttributedString.Key.paragraphStyle: paragraphStyle])
-        if let titleFont = font {
-            attributedString.addAttributes([NSAttributedString.Key.font : titleFont], range: NSMakeRange(0, title.utf8.count))
-        }
-        if let titleColor = color {
-            attributedString.addAttributes([NSAttributedString.Key.foregroundColor : titleColor], range: NSMakeRange(0, title.utf8.count))
-        }
-        self.setValue(attributedString, forKey: "attributedMessage")
-    }
-}
-
 // MARK: API Callback
 extension ChangePasswordViewController: OnboardingViewRepresentable {
     func onAction(_ action: OnboardingAction) {
@@ -211,9 +176,8 @@ extension ChangePasswordViewController: OnboardingViewRepresentable {
             self.showToast(message: msg)
             WebService().StopIndicator()
         case let .changePassword(msg):
-            self.showToast(message: msg)
-            self.showToast(message: msg, seconds: 0.5)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            self.showToast(message: msg, seconds: 0.7)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.71) {
                 self.router?.dismiss(controller: .changePassword)
             }
             break

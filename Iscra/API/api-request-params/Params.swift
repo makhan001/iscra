@@ -108,9 +108,9 @@ enum HabitParams {
     }
     
     struct HabitDetail: Codable {
-        let id: String?
-        let user_id: String?
-        let habit_month: String?
+        let habit_id: Int?
+        let user_id: Int?
+        let habit_month: Int?
     }
     
     struct AllHabitList: Codable {

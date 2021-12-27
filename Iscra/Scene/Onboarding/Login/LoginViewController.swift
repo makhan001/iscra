@@ -13,37 +13,24 @@ import AuthenticationServices
 
 class LoginViewController: UIViewController {
     
-    
-    
-    // MARK:-Outlets and variables
     @IBOutlet weak var btnLogin:UIButton!
-    @IBOutlet weak var lblHeaderTitle:UILabel!
-    @IBOutlet weak var btnShowPassword:UIButton!
-    @IBOutlet weak var btnForgotPassword:UIButton!
     @IBOutlet weak var btnApple:UIButton!
     @IBOutlet weak var btnGoogle:UIButton!
+    @IBOutlet weak var btnShowPassword:UIButton!
+    @IBOutlet weak var btnForgotPassword:UIButton!
+    
     @IBOutlet weak var txtEmail:UITextField!
     @IBOutlet weak var txtPassword:UITextField!
+    
+    @IBOutlet weak var lblHeaderTitle:UILabel!
     @IBOutlet weak var viewNavigation:NavigationBarView!
+    
     weak var router: NextSceneDismisser?
-    var profileImage: UIImage = UIImage()
     private let viewModel: LoginViewModel = LoginViewModel(provider: OnboardingServiceProvider())
-    let signInConfig = GIDConfiguration.init(clientID: AppConstant.googleClientID)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.viewNavigation.lblTitle.text =  "Login"
-        self.viewNavigation.delegateBarAction = self
-        viewModel.email = "mak4@gmail.com"
-        viewModel.password = "12345678"
-        txtEmail.text = viewModel.email
-        txtPassword.text = viewModel.password
     }
 }
 
@@ -52,8 +39,14 @@ extension LoginViewController: NavigationBarViewDelegate {
     private func setup() {
         self.navigationController?.view.backgroundColor = UIColor.white
         lblHeaderTitle.text = AppConstant.loginHeaderTitle
-        viewModel.view = self
-        [txtEmail, txtPassword].forEach{
+        self.viewModel.view = self
+        self.viewNavigation.lblTitle.text =  "Login"
+        self.viewNavigation.delegateBarAction = self
+        self.setViewControls()
+    }
+    
+    private func setViewControls() {
+        [txtEmail, txtPassword].forEach {
             $0?.delegate = self
         }
         [btnLogin, btnApple, btnGoogle, btnShowPassword, btnForgotPassword].forEach {
@@ -81,7 +74,6 @@ extension LoginViewController: NavigationBarViewDelegate {
 
 // MARK:- Button Action
 extension LoginViewController {
-    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnLogin:
@@ -105,7 +97,7 @@ extension LoginViewController {
     }
     
     private func loginGoogleAction() {
-        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+        GIDSignIn.sharedInstance.signIn(with: viewModel.gidConfiguration, presenting: self) { user, error in
             guard error == nil else { return }
             guard let user = user else { return }
             self.viewModel.email = user.profile?.email ?? ""
@@ -184,7 +176,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
-            // self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
             self.viewModel.email = appleCredentials.email ?? ""
             self.viewModel.username = (appleCredentials.fullName?.givenName) ?? ""
             self.viewModel.social_id = appleCredentials.user

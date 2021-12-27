@@ -49,7 +49,7 @@ final class SignupViewModel {
         
         let parameters =  UserParams.Signup(email: email, username: username, password: password, fcm_token: "fcmToken", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, device_udid: "", device_type: "ios")
         
-        WebService().requestMultiPart(urlString: "/users/registration",
+        WebService().requestMultiPart(urlString: APIConstants.userRegister,
                                       httpMethod: .post,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
@@ -100,7 +100,7 @@ final class SignupViewModel {
             }
         }
         
-        WebService().requestMultiPart(urlString: "/users/sociallogin",
+        WebService().requestMultiPart(urlString: APIConstants.socialLogin,
                                       httpMethod: .post,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,

@@ -21,10 +21,11 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
         self.onStart()
     }
     
-    func start(habitId: Int) {
+    func start(habitId: Int , userId: String) {
         super.start()
         print("habitId is HabitCalenderCoordinator  \(habitId)")
-       controller.viewModel.habitId = habitId
+        controller.viewModel.habitId = habitId
+        controller.viewModel.userId = userId
       //  controller.habitId = habitId
         router.setRootModule(controller, hideBar: true)
         self.onStart()
@@ -52,7 +53,7 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
         editHabit = EditHabitCoordinator(router: Router())
         add(editHabit)
         editHabit.delegate = self
-        editHabit.start(objHabitDetail: controller.viewModel.objHabitDetail!)
+        editHabit.start(objHabitDetail: controller.viewModel.objShowHabitDetail!)
         self.router.present(editHabit, animated: true)
     }
 }

@@ -11,20 +11,27 @@ import Foundation
 final class HabitCalenderViewModel {
     
     var habitId: Int = 0
+    var userId: String = ""
+    var habitMonth: String = ""
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
     var objHabitDetail: HabitDetails?
-    
+    var objShowHabitDetail: ShowHabitDetail?
+
     init(provider: HabitServiceProvidable) {
         self.provider = provider
         self.provider.delegate = self
     }
     
-     func getHabitDetail() {
-        print("self.habitId is in HabitCalenderViewModel \(String(habitId))")
-       // self.provider.habitDetail(param: HabitParams.HabitDetail(id: String(self.habitId)))
-        self.provider.habitDetail(param: HabitParams.HabitDetail(id: String(self.habitId), user_id: "", habit_month: ""))
+     func getMonthlyHabitDetail() {
+        print("self.habitId is in HabitCalenderViewModel \(String(habitId)) and self.userId is \(self.userId) and self.userId is \(self.habitMonth) ")
+        self.provider.habitDetail(param: HabitParams.HabitDetail(id: String(self.habitId), user_id: self.userId, habit_month: self.habitMonth))
+    }
+    
+    func fetchHabitDetail() {
+        print("self.habitId is in HabitCalenderViewModel \(String(habitId)) and self.userId is \(self.userId) ")
+       self.provider.showHabit(param: HabitParams.ShowHabit(habit_id: String(self.habitId), user_id: self.userId))
     }
     
     func deleteHabit(habitId: String) {
@@ -45,13 +52,16 @@ extension HabitCalenderViewModel: HabitServiceProvierDelegate {
             if error != nil {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
-                if let resp = response as? SuccessResponseModel, resp.code == 200 , let objGroupDetails = resp.data?.habitDetails{
+                if let resp = response as? SuccessResponseModel, resp.code == 200 , let objHabitDetail = resp.data?.showHabitDetails {
+                    self.objShowHabitDetail = objHabitDetail
+                    self.view?.onAction(.sucessMessage(resp.message ?? ""))
+                } else if let resp = response as? SuccessResponseModel, resp.code == 200 , let objGroupDetails = resp.data?.habitDetails{
                     self.objHabitDetail = objGroupDetails
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))                    
-                }else if let resp = response as? SuccessResponseModel, resp.code == 200 , let _ = resp.data?.habitMark{
-                    self.getHabitDetail()
+                } else if let resp = response as? SuccessResponseModel, resp.code == 200 , let _ = resp.data?.habitMark{
+                    self.getMonthlyHabitDetail()
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
-                }else if let resp = response as? SuccessResponseModel, resp.code == 200, let status = resp.status {
+                } else if let resp = response as? SuccessResponseModel, resp.code == 200, let status = resp.status {
                      if status == true {
                          print("data is nil")
                          self.view?.onAction(.isHabitDelete(true, resp.message ?? ""))

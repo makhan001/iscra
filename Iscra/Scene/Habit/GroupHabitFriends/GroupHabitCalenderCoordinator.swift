@@ -51,7 +51,7 @@ final class GroupHabitCalenderCoordinator: Coordinator<Scenes> {
         habitCalender = HabitCalenderCoordinator(router: Router())
         add(habitCalender)
         habitCalender.delegate = self
-        habitCalender.start(habitId: controller.viewModel.habitId)
+        habitCalender.start(habitId: controller.viewModel.habitId, userId: habitCalender.controller.viewModel.userId)
         print("GroupHabitCalenderCoordinator controller.viewModel.habitId is \(controller.viewModel.habitId)")
         self.router.present(habitCalender, animated: true)
     }
@@ -60,7 +60,7 @@ final class GroupHabitCalenderCoordinator: Coordinator<Scenes> {
         editHabit = EditHabitCoordinator(router: Router())
         add(editHabit)
         editHabit.delegate = self
-        editHabit.start(objHabitDetail: controller.viewModel.objHabitDetail!)
+        editHabit.start(objHabitDetail: controller.viewModel.objShowHabitDetail!)
         self.router.present(editHabit, animated: true)
     }
 }

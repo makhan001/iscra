@@ -6,10 +6,10 @@
 //
 
 import UIKit
-protocol clickManagerDelegate{
+protocol clickManagerDelegate { // ClickManagerManager
     func tableViewCellNavigation(performAction: clickManager)
 }
-enum clickManager {
+enum clickManager { // ClickManager
     case changeProfilePhoto
     case addYourOwnMemoji
     case changePassword

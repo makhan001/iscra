@@ -36,7 +36,7 @@ class AddMemojiViewController: UIViewController {
 }
 
 // MARK: Instance Methods
-extension AddMemojiViewController: navigationBarAction {
+extension AddMemojiViewController: NavigationBarViewDelegate {
     private func setup() {
         self.setHeaderLabel()
         [btnAddPhoto, btnCancel].forEach {

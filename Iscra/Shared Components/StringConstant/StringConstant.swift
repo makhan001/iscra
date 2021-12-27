@@ -22,6 +22,12 @@ class AppConstant: NSObject {
     static let alert_emptynameMsg = "Please enter your name"
     
     
+    // Chat Password
+    static let defaultQBUserPassword = "Iscra@123"
+    
+    static let USERNAME_ACCEPTABLE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_-"
+    
+    
     //Onboarding --
     static let welComeDiscription  = "We help people to become the best version of themself and connect with others people"
     static let onbordingName  = "How do your \nfriends call you?"

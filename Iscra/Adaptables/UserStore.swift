@@ -23,12 +23,15 @@ struct UserStore {
     static let fcmtoken_key = "fcmtoken"
     static let apns_token_key = "apns_token"
     static let socialLoginKey = "social_login_Id"
+    
     static var isVerify: Bool? {
         return UserDefaults.standard.bool(forKey: is_verify_key)
     }
+    
     static var token: String? {
         return UserDefaults.standard.string(forKey: token_key)
     }
+    
     static var emp: String? {
         return UserDefaults.standard.string(forKey: empkey)
     }

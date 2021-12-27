@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
 }
 
 // MARK: Instance Methods
-extension LoginViewController  : navigationBarAction {
+extension LoginViewController: NavigationBarViewDelegate {
     private func setup() {
         self.navigationController?.view.backgroundColor = UIColor.white
         lblHeaderTitle.text = AppConstant.loginHeaderTitle
@@ -152,25 +152,21 @@ extension LoginViewController {
 // MARK:- UITextFieldDelegate
 extension LoginViewController:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == self.txtEmail{
+        if textField == self.txtEmail {
             self.txtPassword.becomeFirstResponder()
-        }else{
+        } else {
             self.txtPassword.resignFirstResponder()
         }
         return false
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil { return false }
+        guard let text = txtEmail.text, let textRange = Range(range, in: text) else { return false }
         if textField == txtEmail {
-            if let text = txtEmail.text, let textRange = Range(range, in: text) {
-                let updatedText = text.replacingCharacters(in: textRange, with: string)
-                viewModel.email = updatedText
-            }
-        } else if textField == txtPassword {
-            if let text = txtPassword.text, let textRange = Range(range, in: text) {
-                let updatedText = text.replacingCharacters(in: textRange, with: string)
-                viewModel.password = updatedText
-            }
+            viewModel.email = text.replacingCharacters(in: textRange, with: string)
+        } else {
+            viewModel.password = text.replacingCharacters(in: textRange, with: string)
         }
         return true
     }

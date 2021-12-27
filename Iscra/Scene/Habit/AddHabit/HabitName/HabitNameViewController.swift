@@ -166,7 +166,7 @@ extension HabitNameViewController: HabitViewRepresentable {
 }
 
 // MARK: NavigationBarView Gelegate
-extension HabitNameViewController  : navigationBarAction {
+extension HabitNameViewController  : NavigationBarViewDelegate {
     func navigationBackAction() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "searchAllGroup"), object: nil)
         HabitUtils.shared.removeAllHabitData()

@@ -5,7 +5,7 @@
 //  Created by Lokesh Patil on 17/11/21.
 //
 import UIKit
-@objc protocol navigationBarAction: AnyObject {
+@objc protocol NavigationBarViewDelegate: AnyObject {
     func navigationBackAction()
     @objc optional func navigationRightButtonAction()
 }
@@ -25,7 +25,7 @@ class NavigationBarView: UIView {
     @IBOutlet var btnBack: UIButton!
     @IBOutlet var btnRightBar: UIButton!
     @IBOutlet var btnSave: UIButton!
-    var delegateBarAction:navigationBarAction?
+    var delegateBarAction:NavigationBarViewDelegate?
     var navType:navRightViewType = .other
     override init(frame: CGRect) {
         super.init(frame: frame)

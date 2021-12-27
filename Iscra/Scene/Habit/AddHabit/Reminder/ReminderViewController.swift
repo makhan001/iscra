@@ -151,7 +151,7 @@ extension ReminderViewController {
 }
 
 // MARK: NavigationBarView Delegate
-extension ReminderViewController: navigationBarAction {
+extension ReminderViewController: NavigationBarViewDelegate {
     func navigationBackAction()  {
         self.router?.dismiss(controller: .setTheme)
     }

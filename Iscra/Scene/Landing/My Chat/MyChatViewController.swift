@@ -30,11 +30,11 @@
 //    }
 //    override func viewWillAppear(_ animated: Bool) {
 //        print("OpenChatUI")
-//        self.setChatLoginSetup()
+//        self.loginQBUser()
 //        self.tabBarController?.tabBar.isHidden = false
 //    }
 //    //Mark:- Login Chat
-//    func setChatLoginSetup() {
+//    func loginQBUser() {
 //        //Spinner.show("")
 //        //  let userEmail = UserDefaults.standard.value(forKey: Message.shared.K_UserEmail) as? String ?? ""
 //        

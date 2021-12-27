@@ -49,7 +49,7 @@ extension SignupViewController {
             btnApple.isHidden = true
         }
         
-        viewModel.email = "mak6@gmail.com"
+        viewModel.email = "mak1@gmail.com"
         viewModel.password = "12345678"
         txtEmail.text = viewModel.email
         txtPassword.text = viewModel.password
@@ -153,6 +153,25 @@ extension SignupViewController: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: Apple Login
+@available(iOS 13.0, *)
+extension SignupViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
+            //self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
+            self.viewModel.email = appleCredentials.email ?? ""
+            self.viewModel.username = (appleCredentials.fullName?.givenName) ?? ""
+            self.viewModel.social_id = appleCredentials.user
+            self.viewModel.socialLogin(logintype: .apple)
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print(error.localizedDescription)
+    }
+}
+
 // MARK: API Callback
 extension SignupViewController: OnboardingViewRepresentable {
     func onAction(_ action: OnboardingAction) {
@@ -170,21 +189,4 @@ extension SignupViewController: OnboardingViewRepresentable {
             break
         }
     }
-}
-
-extension SignupViewController: ASAuthorizationControllerDelegate {
-  @available(iOS 13.0, *)
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-    if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
-      //self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
-        self.viewModel.email = appleCredentials.email ?? ""
-        self.viewModel.username = (appleCredentials.fullName?.givenName) ?? ""
-        self.viewModel.social_id = appleCredentials.user
-        self.viewModel.socialLogin(logintype: .apple)
-    }
-  }
-  @available(iOS 13.0, *)
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-    print(error.localizedDescription)
-  }
 }

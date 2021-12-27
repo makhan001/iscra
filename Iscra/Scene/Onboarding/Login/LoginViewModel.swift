@@ -8,6 +8,7 @@
 import UIKit
 import Quickblox
 import Foundation
+import GoogleSignIn
 
 final class LoginViewModel {
     
@@ -18,6 +19,7 @@ final class LoginViewModel {
     var socialLoginImageURL: URL?
     var selectedImage: UIImage = UIImage()
     var delegate: OnboardingServiceProvierDelegate?
+    let gidConfiguration = GIDConfiguration.init(clientID: AppConstant.googleClientID)
     
     weak var view: OnboardingViewRepresentable?
     let provider: OnboardingServiceProvidable
@@ -58,18 +60,16 @@ final class LoginViewModel {
         self.view?.onAction(.socialLogin(response.message ?? ""))
     }
     
-    //Mark:- Social Login Api-----------------------
     func socialLogin(logintype:SocialLoginType) {
         let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: UIDevice.current.identifierForVendor?.uuidString ?? "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: SocialLoginType(rawValue: logintype.rawValue))
-        print("parameter---> \(parameters)")
-        
+
         if let url = socialLoginImageURL {
             if let data = try? Data(contentsOf: url) {
                 self.selectedImage = UIImage(data: data) ?? UIImage()
             }
         }
         
-        WebService().requestMultiPart(urlString: "/users/sociallogin",
+        WebService().requestMultiPart(urlString: APIConstants.socialLogin,
                                       httpMethod: .post,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
@@ -97,7 +97,6 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
         DispatchQueue.main.async {
             WebService().StopIndicator()
             if error != nil {
-                //   self.view?.onAction(.errorMessage(ERROR_MESSAGE))
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200 {
@@ -110,12 +109,11 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                     QBChatLogin.shared.loginQBUser(email: self.email)
                     if resp.data?.loginData?.isVerified == true {
                         self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
-                    }else{
+                    } else {
                         let code =  resp.data?.loginData?.verificationCode
                         let msg = (resp.message! + " code is " + code!)
                         self.view?.onAction(.login(msg, resp.data?.loginData?.isVerified ?? false))
                     }
-                    //  self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

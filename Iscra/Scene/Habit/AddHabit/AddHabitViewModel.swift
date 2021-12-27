@@ -118,11 +118,9 @@ extension AddHabitViewModel: HabitInputViewDelegate {
 // MARK: Api Call
 extension AddHabitViewModel {
     func apiForCreateHabit() {
-        
         let obj = HabitUtils.shared
         let parameters = HabitParams.CreateHabit(days: obj.days, icon: obj.icon, name: obj.name, timer: obj.timer, reminders: obj.reminders, habit_type: obj.habitType.rawValue , color_theme: obj.colorTheme , description: obj.description)
-        print("param is  \(parameters)")
-        WebService().requestMultiPart(urlString: "habits/add_habit",
+        WebService().requestMultiPart(urlString: APIConstants.updateProfile,
                                       httpMethod: .post,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
@@ -130,14 +128,10 @@ extension AddHabitViewModel {
                                       fileArray: [],
                                       file: ["group_image": self.groupImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
-                //  self?.delegate?.completed(for: .register, with: resp, with: nil)
-               // print("error is \(err)")
                 return
             } else {
                 if let response = resp as? SuccessResponseModel  {
                     if response.status == true {
-                      //  print("response.data?.habit?.id is \(response.data?.habit?.id)")
-                      //  self?.view?.onAction(.createHabit)
                         self?.view?.onAction(.sucessMessage(response.message ?? ""))
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

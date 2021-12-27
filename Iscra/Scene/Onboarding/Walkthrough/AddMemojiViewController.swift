@@ -7,15 +7,17 @@
 
 
 import UIKit
+
 class AddMemojiViewController: UIViewController {
+
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var btnAddPhoto: UIButton!
     
     @IBOutlet weak var lblHeaderTitle: UILabel!
     @IBOutlet weak var lblThirdSubTitle: UILabel!
     @IBOutlet weak var lblFirstSubTitle: UILabel!
     @IBOutlet weak var lblSecondSubTitle: UILabel!
-    
-    @IBOutlet weak var btnCancel: UIButton!
-    @IBOutlet weak var btnAddPhoto: UIButton!
+
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var viewNavigation:NavigationBarView!
     
@@ -24,14 +26,7 @@ class AddMemojiViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        super.viewWillAppear(animated)
-        self.viewNavigation.lblTitle.text =  "Memoji"
-        self.viewNavigation.delegateBarAction = self
+        self.setup()
     }
 }
 
@@ -39,18 +34,24 @@ class AddMemojiViewController: UIViewController {
 extension AddMemojiViewController: NavigationBarViewDelegate {
     private func setup() {
         self.setHeaderLabel()
+        self.setNavigationBar()
+        self.addNoteIconToText()
+        self.addTapGestureForNotes()
         [btnAddPhoto, btnCancel].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        self.addNoteIconToText()
-        self.addTapGestureForNotes()
+    }
+    
+    private func setNavigationBar() {
+        self.viewNavigation.lblTitle.text =  "Memoji"
+        self.viewNavigation.delegateBarAction = self
     }
     
     private func setHeaderLabel() {
         self.navigationItem.title = AppConstant.nav_memoji
-        lblHeaderTitle.text = AppConstant.nav_memoji
-        lblSecondSubTitle.text = AppConstant.Sub2Title
-        lblThirdSubTitle.text = AppConstant.Sub3Title
+        self.lblHeaderTitle.text = AppConstant.nav_memoji
+        self.lblSecondSubTitle.text = AppConstant.Sub2Title
+        self.lblThirdSubTitle.text = AppConstant.Sub3Title
     }
     
     private func addNoteIconToText() {
@@ -64,8 +65,8 @@ extension AddMemojiViewController: NavigationBarViewDelegate {
     
     private func addTapGestureForNotes() {
         let labelTapGesture = UITapGestureRecognizer(target:self,action:#selector(self.openNotes))
-        lblFirstSubTitle.isUserInteractionEnabled = true
-        lblFirstSubTitle.addGestureRecognizer(labelTapGesture)
+        self.lblFirstSubTitle.isUserInteractionEnabled = true
+        self.lblFirstSubTitle.addGestureRecognizer(labelTapGesture)
     }
     
     @objc func openNotes() {
@@ -119,6 +120,6 @@ extension AddMemojiViewController: UIImagePickerControllerDelegate, UINavigation
 // MARK:- Navigation Bar Delegate
 extension AddMemojiViewController {
     func navigationBackAction()  {
-        router?.dismiss(controller: .learnHowToAddMemoji)
+        self.router?.dismiss(controller: .learnHowToAddMemoji)
     }
 }

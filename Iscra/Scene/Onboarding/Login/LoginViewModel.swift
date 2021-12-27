@@ -60,11 +60,9 @@ final class LoginViewModel {
         self.view?.onAction(.socialLogin(response.message ?? ""))
     }
     
-    //Mark:- Social Login Api-----------------------
     func socialLogin(logintype:SocialLoginType) {
         let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: UIDevice.current.identifierForVendor?.uuidString ?? "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: SocialLoginType(rawValue: logintype.rawValue))
-        print("parameter---> \(parameters)")
-        
+
         if let url = socialLoginImageURL {
             if let data = try? Data(contentsOf: url) {
                 self.selectedImage = UIImage(data: data) ?? UIImage()

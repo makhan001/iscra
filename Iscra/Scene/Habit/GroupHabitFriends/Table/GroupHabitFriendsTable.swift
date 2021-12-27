@@ -12,18 +12,19 @@ protocol FriendTableNavigation: class {
 
 class  GroupHabitFriendsTable: UITableView, UITableViewDataSource, UITableViewDelegate {
     // MARK: Varibles
-    private var count: Int = 0
+    private var count: Int = 10
     weak var friendTableNavigationDelegate: FriendTableNavigation?
     
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
-        
+    
     func configure(obj: Int) {
         self.register(UINib(nibName: "GroupFriendsCell", bundle: nil), forCellReuseIdentifier: "GroupFriendsCell")
         self.delegate = self
         self.dataSource = self
         self.count = obj
+        self.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

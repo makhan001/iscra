@@ -65,7 +65,7 @@ extension GroupHabitFriendsViewController {
         self.habitDetailSetup()
     }
     
-    private func configureTable() {
+      private func configureTable() {
      //   self.tableFriends.configure(viewModel: viewModel)
         self.tableFriends.isHidden = false
         self.tableFriends.configure(obj: 10)
@@ -275,7 +275,8 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         print("self.viewCalender.currentPage timeIntervalSince1970 is \(self.viewCalender.currentPage.timeIntervalSince1970)")
-        self.viewModel.habitMonth =  String(format: "%.0f", self.viewCalender.currentPage.timeIntervalSince1970)
+        self.viewModel.habitMonth =  String(format: "%.0f", self.viewCalender.currentPage.timeIntervalSinceNow)
+       // self.viewModel.habitMonth =  String(format: "%.0f", self.viewCalender.currentPage.timeIntervalSince1970)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.viewModel.getMonthlyHabitDetail()
         }
@@ -316,8 +317,12 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
             self.habitDetailSetup()
             // self.getDateFromTimeStamp(timeStamp: (self.viewModel.objShowHabitDetail?.timer)!)
             //   self.viewModel.objShowHabitDetail?.habitMarks?[0].habitDay
-            
             print("members count is \(self.viewModel.objShowHabitDetail?.members?.count)")
+           // self.tableFriends.configure(obj: self.viewModel.objShowHabitDetail?.members!.count ?? 0)
+           // self.tableFriends.configure(obj: 10)
+//            DispatchQueue.main.async {
+//              self.configureTable()
+//            }
             
             break
         case let .isHabitDelete(true, msg):

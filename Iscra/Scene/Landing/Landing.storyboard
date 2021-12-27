@@ -1763,7 +1763,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fK-PZ-Axx" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="87.666666666666671" y="105" width="35.666666666666671" height="25"/>
+                                                <rect key="frame" x="84.333333333333329" y="105" width="42.666666666666671" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Aco-mb-Yl9"/>
                                                 </constraints>
@@ -1882,7 +1882,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit habit" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fI-2I-oZO" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="40.000000000000007" y="5" width="71.666666666666686" height="20.333333333333332"/>
+                                                                <rect key="frame" x="40" y="3" width="85" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="BlackAccent"/>
                                                                 <nil key="highlightedColor"/>
@@ -1927,7 +1927,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share with friends" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8L-Ww-aHo" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="40" y="5" width="137.33333333333334" height="20.333333333333332"/>
+                                                                <rect key="frame" x="40" y="3" width="162.66666666666666" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="BlackAccent"/>
                                                                 <nil key="highlightedColor"/>
@@ -1973,7 +1973,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark as complete" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQq-2s-ZHZ" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="40" y="5" width="135.66666666666666" height="20.333333333333332"/>
+                                                                <rect key="frame" x="40" y="3" width="159.66666666666666" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="BlackAccent"/>
                                                                 <nil key="highlightedColor"/>
@@ -2018,7 +2018,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete habit" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixA-tU-dML" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="40.000000000000007" y="5" width="91.666666666666686" height="20.333333333333332"/>
+                                                                <rect key="frame" x="39.999999999999993" y="3" width="108.33333333333331" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2205,7 +2205,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwd-cH-9eF" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="71.666666666666671" y="86" width="35.666666666666671" height="25"/>
+                                                                <rect key="frame" x="68.333333333333329" y="86" width="42.666666666666671" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="25" id="Z4a-sS-0bS"/>
                                                                 </constraints>
@@ -2346,7 +2346,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit habit" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQV-uB-q3E" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="40.000000000000007" y="5" width="71.666666666666686" height="20.333333333333332"/>
+                                                                <rect key="frame" x="40" y="3" width="85" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="BlackAccent"/>
                                                                 <nil key="highlightedColor"/>
@@ -2391,7 +2391,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share with friends" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ws-oY-bTL" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="40" y="5" width="137.33333333333334" height="20.333333333333332"/>
+                                                                <rect key="frame" x="40" y="3" width="162.66666666666666" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="BlackAccent"/>
                                                                 <nil key="highlightedColor"/>
@@ -2437,7 +2437,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark as complete" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFY-rC-uN6" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="40" y="5" width="135.66666666666666" height="20.333333333333332"/>
+                                                                <rect key="frame" x="40" y="3" width="159.66666666666666" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="BlackAccent"/>
                                                                 <nil key="highlightedColor"/>
@@ -2482,7 +2482,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete habit" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iJ-AM-8Ng" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="40.000000000000007" y="5" width="91.666666666666686" height="20.333333333333332"/>
+                                                                <rect key="frame" x="39.999999999999993" y="3" width="108.33333333333331" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2702,19 +2702,19 @@
             <size key="intrinsicContentSize" width="592.33333333333337" height="21.666666666666668"/>
         </designable>
         <designable name="0fI-2I-oZO">
-            <size key="intrinsicContentSize" width="71.666666666666671" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="85" height="24"/>
         </designable>
         <designable name="0n9-Fl-eKP">
             <size key="intrinsicContentSize" width="211" height="28.666666666666668"/>
         </designable>
         <designable name="1iJ-AM-8Ng">
-            <size key="intrinsicContentSize" width="91.666666666666671" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="108.33333333333333" height="24"/>
         </designable>
         <designable name="4fK-PZ-Axx">
-            <size key="intrinsicContentSize" width="35.666666666666664" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="42.666666666666664" height="24"/>
         </designable>
         <designable name="7Ws-oY-bTL">
-            <size key="intrinsicContentSize" width="137.33333333333334" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="162.66666666666666" height="24"/>
         </designable>
         <designable name="9rj-vD-jDM">
             <size key="intrinsicContentSize" width="72.666666666666671" height="36"/>
@@ -2750,7 +2750,7 @@
         </designable>
         <designable name="WxE-cT-KuF"/>
         <designable name="Zwd-cH-9eF">
-            <size key="intrinsicContentSize" width="35.666666666666664" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="42.666666666666664" height="24"/>
         </designable>
         <designable name="bmr-in-0yx">
             <size key="intrinsicContentSize" width="569.33333333333337" height="38.333333333333336"/>
@@ -2771,16 +2771,16 @@
             <size key="intrinsicContentSize" width="184" height="22"/>
         </designable>
         <designable name="hFY-rC-uN6">
-            <size key="intrinsicContentSize" width="135.66666666666666" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="159.66666666666666" height="24"/>
         </designable>
         <designable name="ixA-tU-dML">
-            <size key="intrinsicContentSize" width="91.666666666666671" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="108.33333333333333" height="24"/>
         </designable>
         <designable name="j8L-Ww-aHo">
-            <size key="intrinsicContentSize" width="137.33333333333334" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="162.66666666666666" height="24"/>
         </designable>
         <designable name="jP4-ek-HrX">
-            <size key="intrinsicContentSize" width="25.333333333333332" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="53" height="38.333333333333336"/>
         </designable>
         <designable name="jda-y7-1cp"/>
         <designable name="leD-m2-AYT">
@@ -2803,10 +2803,10 @@
         </designable>
         <designable name="w6F-yO-cCD"/>
         <designable name="w6Q-oo-kiY">
-            <size key="intrinsicContentSize" width="25.333333333333332" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="53" height="38.333333333333336"/>
         </designable>
         <designable name="wQV-uB-q3E">
-            <size key="intrinsicContentSize" width="71.666666666666671" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="85" height="24"/>
         </designable>
         <designable name="wR6-IH-mQ6">
             <size key="intrinsicContentSize" width="311.33333333333331" height="38.333333333333336"/>
@@ -2815,7 +2815,7 @@
             <size key="intrinsicContentSize" width="304.66666666666669" height="38.333333333333336"/>
         </designable>
         <designable name="yQq-2s-ZHZ">
-            <size key="intrinsicContentSize" width="135.66666666666666" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="159.66666666666666" height="24"/>
         </designable>
     </designables>
     <resources>

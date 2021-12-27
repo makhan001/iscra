@@ -26,7 +26,7 @@ final class HabitCalenderViewModel {
     
      func getMonthlyHabitDetail() {
         print("self.habitId is in HabitCalenderViewModel \(String(habitId)) and self.userId is \(self.userId) and self.userId is \(self.habitMonth) ")
-        self.provider.habitDetail(param: HabitParams.HabitDetail(id: String(self.habitId), user_id: self.userId, habit_month: self.habitMonth))
+        self.provider.habitDetail(param: HabitParams.HabitDetail(habit_id: self.habitId, user_id: Int(self.userId), habit_month: Int(self.habitMonth)))
     }
     
     func fetchHabitDetail() {

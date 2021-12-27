@@ -34,7 +34,7 @@ final class MyAccountViewModel {
     }
     private func validateUserInput() {
         let parameters =  UserParams.UpdateProfile(username: UserStore.userName)
-        WebService().requestMultiPart(urlString: "/users/update",
+        WebService().requestMultiPart(urlString: APIConstants.updateProfile,
                                       httpMethod: .put,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,

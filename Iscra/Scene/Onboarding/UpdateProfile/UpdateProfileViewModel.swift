@@ -38,7 +38,7 @@ final class UpdateProfileViewModel {
         }
         
         let parameters =  UserParams.UpdateProfile(username: username)
-        WebService().requestMultiPart(urlString: "/users/update",
+        WebService().requestMultiPart(urlString: APIConstants.updateProfile,
                                       httpMethod: .put,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,

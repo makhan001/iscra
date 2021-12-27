@@ -12,16 +12,12 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var btnLogin:UIButton!
     @IBOutlet weak var btnStart:UIButton!
     @IBOutlet weak var lblHeaderTitle:UILabel!
+    
     weak var router: NextSceneDismisser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        super.viewWillAppear(animated)
     }
 }
 
@@ -38,7 +34,6 @@ extension WelcomeViewController {
 
 // MARK:- Button Action
 extension WelcomeViewController {
-    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnStart:

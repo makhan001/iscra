@@ -8,15 +8,18 @@
 import UIKit
 
 class WalkthroughViewController: UIViewController {
-    // MARK:-Outlets and variables
+    
+    
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnNext: UIButton!
+    @IBOutlet weak var btnAddMyPicture: UIButton!
+    @IBOutlet weak var btnHowToAddMemoji: UIButton!
+    
     @IBOutlet weak var txtName:UITextField!
     @IBOutlet weak var lblHeaderTitle:UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var btnAddMyPicture: UIButton!
-    @IBOutlet weak var btnHowToAddMemoji: UIButton!
     @IBOutlet weak var textNameView: IscraCustomView! // viewName
+    
     var currentIndex: Int = 1
     weak var router: NextSceneDismisser?
     
@@ -29,7 +32,7 @@ class WalkthroughViewController: UIViewController {
 // MARK:- Instance Methods
 extension WalkthroughViewController {
     private func setup() {
-        lblHeaderTitle.text = AppConstant.onbordingName //"How do your \nfriends call you?"
+        self.lblHeaderTitle.text = AppConstant.onbordingName //"How do your \nfriends call you?"
         self.scrollView.delegate = self
         self.setButtonStatus()
         [btnBack, btnNext, btnAddMyPicture, btnHowToAddMemoji].forEach {
@@ -47,7 +50,6 @@ extension WalkthroughViewController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-        
     }
     
     private func setNameTextField(newLength: Int, string:String, range: NSRange) {
@@ -81,28 +83,25 @@ extension WalkthroughViewController  {
             break
         }
     }
+    
     private func backButtonAction() {
-        print("currentIndex. \(currentIndex)")
         if self.currentIndex >= 1 {
             if self.currentIndex == 1 {
-                // navigationController?.popViewController(animated: true)
                 self.router?.dismiss(controller: .walkthrough)
-            }else{
+            } else {
                 self.currentIndex = Int(scrollView.contentOffset.x/self.view.frame.size.width) - 1
                 scrollView.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width  , y: 0), animated: true)
             }
-        }
-        else{
+        } else {
             navigationController?.popViewController(animated: true)
         }
-        
     }
+    
     private func nextButtonAction() {
         if self.currentIndex <= 2 {
-            if currentIndex == 2 {
+            if self.currentIndex == 2 {
                 if OnboadingUtils.shared.username == "" {
                     showToast(message: AppConstant.alert_emptynameMsg)
-                    
                 } else {
                     self.currentIndex = Int(scrollView.contentOffset.x/self.view.frame.size.width) + 1
                     scrollView.setContentOffset(CGPoint(x: CGFloat(self.currentIndex) * self.view.frame.size.width, y: 0), animated: true)
@@ -126,16 +125,13 @@ extension WalkthroughViewController  {
         self.router?.push(scene: .learnHowToAddMemoji)
     }
     
-    func setButtonStatus(){
+    private func setButtonStatus() {
         if self.currentIndex == 3 {
-            btnNext.setTitle("Skip", for: .normal)
-        }
-        else if
-            self.currentIndex == 2 {
-            btnNext.setTitle("Next", for: .normal)
-        }
-        else if self.currentIndex == 1 {
-            btnNext.setTitle("Next", for: .normal)
+            self.btnNext.setTitle("Skip", for: .normal)
+        } else if   self.currentIndex == 2 {
+            self.btnNext.setTitle("Next", for: .normal)
+        } else if self.currentIndex == 1 {
+            self.btnNext.setTitle("Next", for: .normal)
         }
     }
 }
@@ -146,27 +142,23 @@ extension WalkthroughViewController : UIScrollViewDelegate {
         if currentIndex == 2 {
             if txtName.text == "" {
                 showToast(message: AppConstant.alert_emptynameMsg)
-            }
-            else{
+            } else {
                 self.currentIndex = Int(scrollView.contentOffset.x/self.view.frame.size.width) + 1
                 self.setButtonStatus()
             }
-        }
-        else{
+        } else {
             self.currentIndex = Int(scrollView.contentOffset.x/self.view.frame.size.width) + 1
             self.setButtonStatus()
         }
     }
 }
 
-// MARK:- UITextFieldDelegate
+// MARK:- TextField Delegate
 extension WalkthroughViewController : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
         if newLength <= 30 {
-            if string.rangeOfCharacter(from: .decimalDigits) != nil
-                || string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {
+            if string.rangeOfCharacter(from: .decimalDigits) != nil || string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {
                 return false
             }
             let characterSet = NSCharacterSet(charactersIn: AppConstant.USERNAME_ACCEPTABLE_CHARACTERS).inverted

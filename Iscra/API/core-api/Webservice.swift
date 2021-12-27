@@ -18,17 +18,12 @@ class WebService {
     var headers: HTTPHeaders!
     
     func requestMultiPart<T: Decodable, U: Encodable>(urlString: String, httpMethod : HTTPMethod, parameters: U, decodingType: T.Type, imageArray: [[String : Any]], fileArray:[[String:Any]], file: [String:Any]? = nil, completion: @escaping JSONTaskCompletionHandler ) {
-        
-//        if Connectivity.isConnectedToInternet() != true {
-//            completion(nil, NetworkErrorMessage)
-//            return
-//        }
+
         WebService().StartIndicator()
-        
         let jsonData = try! JSONEncoder().encode(parameters)
         let jsonString = String(data: jsonData, encoding: .utf8)
+        print("parameter---> \(parameters)")
         print("jsonString: \(String(describing: jsonString))")
-        
         let s = "\(APIEnvironment.host)\(urlString)"
         print("Requesting url == \(s)")
         let scaped = s.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -51,7 +46,6 @@ class WebService {
                 WebService().StopIndicator()
                 if let data = result {
                     do {
-                        // make sure this JSON is in the format we expect
                         if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                             print("json response is : \(json)")
                         }
@@ -95,15 +89,6 @@ class WebService {
         let header: HTTPHeaders = [
             "Authentication-Token": UserStore.token ?? "",
             "Content-Type": "application/json; charset=UTF-8",
-//            "device_type" : "ios",
-//            "device_id" : "12345",
-//            "current_time_zone" : "IST",
-//            "language" :"en",
-//            "Content-Type": "application/json",
-//            "version" : "1.0.0",
-//            "current_country": "India",
-//            "lat": "22.12541",
-//            "lng": "22.12541"
         ]
         return header
     }

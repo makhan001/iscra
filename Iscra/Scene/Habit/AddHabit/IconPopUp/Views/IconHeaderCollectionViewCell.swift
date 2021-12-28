@@ -23,8 +23,7 @@ class IconHeaderCollectionViewCell: UICollectionViewCell {
         if SelecedIndex == index{
             viewBottomBar.isHidden = false
             lblTitle.textColor = UIColor(named: "BlackAccent")
-        }
-        else {
+        } else {
             viewBottomBar.isHidden = true
             lblTitle.textColor = UIColor(named: "GrayAccent")
         }

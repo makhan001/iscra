@@ -8,7 +8,7 @@
 import UIKit
 
 class GetSubcriptionViewController: UIViewController {
-
+    
     @IBOutlet weak var friends_image: UIImageView!
     @IBOutlet weak var lblHeaderTitle: UILabel!
     @IBOutlet weak var lblMiddleText: UILabel!
@@ -18,7 +18,7 @@ class GetSubcriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      setup()
+        self.setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +33,7 @@ class GetSubcriptionViewController: UIViewController {
 extension GetSubcriptionViewController : NavigationBarViewDelegate {
     
     private func setup() {
-//        navigationController?.setNavigationBarHidden(false, animated: false)
+        //        navigationController?.setNavigationBarHidden(false, animated: false)
         friends_image.image = UIImage(named: "ic-getSubscription")
         lblHeaderTitle.text = "Dear \(UserStore.userName ?? ""), we need your support"
         lblMiddleText.text = AppConstant.subscriptionTitle
@@ -42,7 +42,7 @@ extension GetSubcriptionViewController : NavigationBarViewDelegate {
         }
     }
     func navigationBackAction()  {
-       // router?.dismiss(controller: .login)
+        // router?.dismiss(controller: .login)
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -60,9 +60,9 @@ extension GetSubcriptionViewController  {
         }
     }
     private func getSubscriptionAction() {
-       print("getSubscriptionAction")
+        print("getSubscriptionAction")
     }
     private func allowAdsAction() {
-       print("allowAdsAction")
+        print("allowAdsAction")
     }
 }

@@ -23,7 +23,6 @@ class ReminderViewController: UIViewController {
     @IBOutlet weak var btnSegment: UISegmentedControl!
     @IBOutlet weak var viewNavigation:NavigationBarView!
     
-    var reminderTime = ""
     var habitType : HabitType = .good
     weak var router: NextSceneDismisser?
     private let viewModel = AddHabitViewModel()
@@ -80,12 +79,10 @@ extension ReminderViewController {
         lblReminderTime.text = fullNameArr[0]
 //        self.viewModel.timer = dateString
 //        // print("self.viewModel.timer is \(self.viewModel.timer)")
-        self.reminderTime = dateString
-        if dateString.contains("AM")
-        {
+        self.viewModel.reminderTime = dateString
+        if dateString.contains("AM") {
             btnSegment.selectedSegmentIndex = 0
-        }
-        else{
+        } else {
             btnSegment.selectedSegmentIndex = 1
         }
     }
@@ -134,7 +131,7 @@ extension ReminderViewController {
     
     private func nextClick() {
         let currentDate = Date().string(format: "yyyy-MM-dd")
-        let yourDate = currentDate + "-" + self.reminderTime
+        let yourDate = currentDate + "-" + self.viewModel.reminderTime
          let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd-hh:mm a"
          let dateString = dateFormatter.date(from: yourDate)

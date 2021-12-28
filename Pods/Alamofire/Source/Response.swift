@@ -434,8 +434,7 @@ private enum DebugDescription {
 
         guard
             data.count <= maximumLength,
-            printableTypes.compactMap({ headers["Content-Type"]?.contains($0) }).contains(true)
-        else { return "[Body]: \(data.count) bytes" }
+            printableTypes.compactMap({ headers["Content-Type"]?.contains($0) }).contains(true)else { return "[Body]: \(data.count) bytes" }
 
         return """
         [Body]:

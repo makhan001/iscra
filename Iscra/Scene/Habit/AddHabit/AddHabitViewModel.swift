@@ -17,6 +17,7 @@ final class AddHabitViewModel {
     var timer: String = ""
     var colorTheme: String = ""
     var description: String = ""
+    var reminderTime: String = ""
     var reminders: Bool = false
     var habitType : HabitType = .good
     var groupImage: UIImage?

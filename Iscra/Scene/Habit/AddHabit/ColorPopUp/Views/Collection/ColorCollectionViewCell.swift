@@ -20,7 +20,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
         if color.isSelected == true {
             colorView.layer.borderWidth = 4
             colorView.layer.borderColor = #colorLiteral(red: 0.7450980392, green: 0.7647058824, blue: 0.9568627451, alpha: 1)
-        }else {
+        } else {
             colorView.layer.borderWidth = 0
             colorView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         }

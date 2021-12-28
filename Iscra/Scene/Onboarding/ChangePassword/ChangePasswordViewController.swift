@@ -33,11 +33,6 @@ class ChangePasswordViewController: UIViewController {
         super.viewDidLoad()
         self.setup()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
 }
 
 // MARK: Instance Methods
@@ -46,7 +41,7 @@ extension ChangePasswordViewController {
         self.viewModel.view = self
         self.viewNavigation.delegateBarAction = self
         self.viewNavigation.lblTitle.text =  "Change password"
-        [btnChangePassword,btnForgotPassword,btnShowCurrentPassword,btnShowNewPassword,btnShowConfirmPassword].forEach {
+        [btnChangePassword, btnForgotPassword, btnShowCurrentPassword, btnShowNewPassword, btnShowConfirmPassword].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }

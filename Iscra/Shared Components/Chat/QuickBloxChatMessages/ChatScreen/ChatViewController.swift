@@ -1159,8 +1159,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
             } errorBlock: { (error) in
                 print("NoTSuceee",error.description)
             }
-        }
-        else {
+        } else {
             //for group chat
             QBRequest.sendPush(withText: pushMessage.text ?? "", toUsers: "\(PushDialog.occupantIDs)") {
                 (response, event) in

@@ -103,7 +103,7 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, getSizeAtIndexPath indexPath: IndexPath) -> CGSize {
         if collectionView == self.collectiondays{
             return CGSize(width: 50, height: 125)
-        }else {
+        } else {
             return CGSize(width: 35, height: 35)
         }
     }
@@ -120,7 +120,7 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
                         return CGSize(width: 45.0, height: 125.0)
                     }
                   
-                }else {
+                } else {
                     return CGSize(width: 35, height: 35)
                 }
     }

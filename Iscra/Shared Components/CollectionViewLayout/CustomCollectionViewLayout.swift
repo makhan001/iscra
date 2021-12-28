@@ -22,7 +22,7 @@ class CustomCollectionViewLayout : UICollectionViewLayout{
     
     // 2. contentWidth
     private var contentWidth : CGFloat{
-        guard let collectionView = collectionView else{
+        guard let collectionView = collectionView else {
             return 0
         }
         return collectionView.bounds.width - (collectionView.contentInset.left + collectionView.contentInset.right)
@@ -44,7 +44,7 @@ class CustomCollectionViewLayout : UICollectionViewLayout{
     override func prepare() {
         // We don't need to call super
         
-        guard let collectionView = collectionView else{
+        guard let collectionView = collectionView else {
             return
         }
         

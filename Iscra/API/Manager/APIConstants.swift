@@ -22,8 +22,8 @@ struct APIConstants {
         static let rapidapiKey = "820ecb3f09msh531d2e35d11a683p127cb1jsne032d4ad6138"
     }
     
-    static let addHabit =  "habits/edit"
-    static let editHabit =  "habits/add_habit"
+    static let editHabit =  "habits/edit"
+    static let addHabit =  "habits/add_habit"
     static let updateProfile =  "users/update"
     static let socialLogin = "users/sociallogin"
     static let userRegister =  "users/registration"

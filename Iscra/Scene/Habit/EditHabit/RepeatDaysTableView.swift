@@ -16,7 +16,7 @@ class  RepeatDaysTableView: UITableView, UITableViewDataSource, UITableViewDeleg
                     WeekDays(id: 3, shortDayname: "W", dayname: "wednesday", isSelected: false),
                     WeekDays(id: 4, shortDayname: "T", dayname: "thursday", isSelected: false),
                     WeekDays(id: 5, shortDayname: "F", dayname: "friday", isSelected: false),
-                    WeekDays(id: 6, shortDayname: "S", dayname: "suturday", isSelected: false)]
+                    WeekDays(id: 6, shortDayname: "S", dayname: "saturday", isSelected: false)]
     
     override class func awakeFromNib() {
         super.awakeFromNib()

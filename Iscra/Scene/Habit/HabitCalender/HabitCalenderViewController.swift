@@ -77,6 +77,7 @@ extension HabitCalenderViewController {
     
     @objc func reloadView() {
         self.viewModel.fetchHabitDetail()
+        self.getMonthlyHabitDetail()
         self.reloadCaledar()
     }
     
@@ -237,8 +238,13 @@ extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate
 //    }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        print("self.viewCalender.currentPage timeIntervalSince1970 is \(self.viewCalender.currentPage.timeIntervalSince1970)")
-        self.viewModel.habitMonth =  String(format: "%.0f", self.viewCalender.currentPage.timeIntervalSince1970)
+        self.getMonthlyHabitDetail()
+    }
+    
+    func getMonthlyHabitDetail() {
+        let timestamp = self.viewCalender.currentPage.addDays(days: 10)
+        print("timestamp is \(timestamp)")
+        self.viewModel.habitMonth =  String(format: "%.0f", timestamp)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.viewModel.getMonthlyHabitDetail()
         }
@@ -253,22 +259,18 @@ extension HabitCalenderViewController: HabitViewRepresentable {
             self.showToast(message: msg)
         case .sucessMessage(_):
             // self.showToast(message: msg)
-            self.themeColor = UIColor(hex: (self.viewModel.objShowHabitDetail?.colorTheme) ?? "#7B86EB")
-            self.strTitleName = (self.viewModel.objShowHabitDetail?.name) ?? "Learn English".capitalized
-            self.checkCurrentDay(days: (self.viewModel.objShowHabitDetail?.days)!)
+            self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
+            self.strTitleName = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
+            self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)
             
-            if UserStore.userID == String(self.viewModel.objShowHabitDetail?.userID ?? 0) {
+            if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
                 self.viewEditHabit.isHidden = false
                 self.viewDeleteHabit.isHidden = false
             } else {
                 self.viewEditHabit.isHidden = true
                 self.viewDeleteHabit.isHidden = true
             }
-            
             self.reloadCaledar()
-            // self.getDateFromTimeStamp(timeStamp: (self.viewModel.objHabitDetail?.timer)!)
-            //   self.viewModel.objHabitDetail?.habitMarks?[0].habitDay
-            
             break
         case let .isHabitDelete(true, msg):
             self.showToast(message: msg, seconds: 0.5)

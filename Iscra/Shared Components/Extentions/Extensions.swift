@@ -267,6 +267,17 @@ extension Date {
         formatter.dateFormat = format
         return formatter.string(from: self)
     }
+    
+    func addDays(days:Int) -> TimeInterval {
+        var dayComponent = DateComponents()
+        dayComponent.day = days
+        let theCalendar = Calendar.current
+        if let nextDate = theCalendar.date(byAdding: dayComponent, to: self) {
+          return nextDate.timeIntervalSince1970
+        } else {
+          return self.timeIntervalSince1970
+        }
+      }
 }
 
 extension UITableView {

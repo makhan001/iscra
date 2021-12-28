@@ -303,10 +303,10 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
             self.showToast(message: msg)
         case .sucessMessage(_):
             // self.showToast(message: msg)
-            self.themeColor = UIColor(hex: (self.viewModel.objShowHabitDetail?.colorTheme) ?? "#7B86EB")
-            self.strTitleName = (self.viewModel.objShowHabitDetail?.name) ?? "Learn English".capitalized
-            self.checkCurrentDay(days: (self.viewModel.objShowHabitDetail?.days)!)
-            if UserStore.userID == String(self.viewModel.objShowHabitDetail?.userID ?? 0) {
+            self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
+            self.strTitleName = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
+            self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)
+            if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
                 self.viewEditHabit.isHidden = false
                 self.viewDeleteHabit.isHidden = false
             } else {
@@ -314,10 +314,8 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
                 self.viewDeleteHabit.isHidden = true
             }
             self.habitDetailSetup()
-            // self.getDateFromTimeStamp(timeStamp: (self.viewModel.objShowHabitDetail?.timer)!)
-            //   self.viewModel.objShowHabitDetail?.habitMarks?[0].habitDay
-            print("members count is \(self.viewModel.objShowHabitDetail?.members?.count)")
-           // self.tableFriends.configure(obj: self.viewModel.objShowHabitDetail?.members!.count ?? 0)
+            print("members count is \(self.viewModel.objHabitDetail?.members?.count)")
+           // self.tableFriends.configure(obj: self.viewModel.objHabitDetail?.members!.count ?? 0)
            // self.tableFriends.configure(obj: 10)
 //            DispatchQueue.main.async {
 //              self.configureTable()

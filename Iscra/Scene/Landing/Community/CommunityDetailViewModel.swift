@@ -12,7 +12,7 @@ final class CommunityDetailViewModel {
     
     var habitId: Int = 0
     var userId: String = ""
-    var objShowHabitDetail: ShowHabitDetail?
+    var objShowHabitDetail: HabitDetails?
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
@@ -25,7 +25,7 @@ final class CommunityDetailViewModel {
     }
     
      func fetchHabitDetail() {
-        self.provider.showHabit(param: HabitParams.ShowHabit(habit_id: String(self.habitId), user_id: self.userId))
+       // self.provider.showHabit(param: HabitParams.ShowHabit(habit_id: String(self.habitId), user_id: self.userId)) // change api name updated is habitDetail
      }
     
     func joinHabit() {
@@ -41,7 +41,7 @@ extension CommunityDetailViewModel: HabitServiceProvierDelegate {
             if error != nil {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
-                if let resp = response as? SuccessResponseModel, resp.code == 200, let objHabitDetail = resp.data?.showHabitDetails {
+                if let resp = response as? SuccessResponseModel, resp.code == 200, let objHabitDetail = resp.data?.habitDetails {
                     self.objShowHabitDetail = objHabitDetail
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
                     

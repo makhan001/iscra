@@ -89,17 +89,6 @@ final class HabitServiceProvider: HabitServiceProvidable {
         }
     }
     
-    func showHabit(param: HabitParams.ShowHabit) {
-//        WebService().StartIndicator()
-        task.showHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
-            if err != nil {
-                self?.delegate?.completed(for: .showHabit, with: resp, with: err)
-                return
-            }
-            self?.delegate?.completed(for: .showHabit, with: resp, with: nil)
-        }
-    }
-    
     func joinHabit(param: HabitParams.JoinHabit) {
         task.joinHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
@@ -110,5 +99,34 @@ final class HabitServiceProvider: HabitServiceProvidable {
         }
     }
     
+    func habitCalender(param: HabitParams.HabitCalender) {
+        task.habitCalender(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .habitCalender, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .habitCalender, with: resp, with: nil)
+        }
+    }
+        
+    func groupHabitMembers(param: HabitParams.GroupHabitMembers) {
+        task.groupHabitMembers(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .groupHabitMembers, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .groupHabitMembers, with: resp, with: nil)
+        }
+    }
+    
+    func groupHabitDetails(param: HabitParams.GroupHabitDetails) {
+        task.groupHabitDetails(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .groupHabitDetails, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .groupHabitDetails, with: resp, with: nil)
+        }
+    }
 }
 

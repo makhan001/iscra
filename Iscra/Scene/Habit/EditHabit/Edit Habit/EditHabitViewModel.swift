@@ -15,7 +15,7 @@ final class EditHabitViewModel {
     var colorTheme: String = ""
     var reminders: Bool = false
     var groupImage: UIImage?
-    var objHabitDetail: ShowHabitDetail? // HabitDetails?
+    var objHabitDetail: HabitDetails? 
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
@@ -52,10 +52,10 @@ extension EditHabitViewModel {
         let habitId = String(self.objHabitDetail?.id ?? 0)
         let icon = self.objHabitDetail?.icon ?? ""
         let habitType = HabitType(rawValue: (self.objHabitDetail?.habitType)!) ?? .good
-        let description = self.objHabitDetail?.showHabitDetailDescription ?? ""
+        let description = self.objHabitDetail?.habitDetailsDescription ?? ""
         let parameters = HabitParams.UpdateHabit(id: habitId, days: self.days, icon: icon, name: self.habitName, timer: self.timer, reminders: self.reminders, habit_type: habitType.rawValue, color_theme: self.colorTheme, description: description)
         print("param is  \(parameters)")
-        WebService().requestMultiPart(urlString: "habits/edit",
+        WebService().requestMultiPart(urlString: APIConstants.editHabit,
                                       httpMethod: .put,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,

@@ -23,6 +23,8 @@ final class AddHabitViewModel {
     var groupImage: UIImage?
     var didNavigateToSetTheme:((_ :Bool)   ->())?
     
+    var selectedColorTheme =  HabitThemeColor(id: "1", colorHex: "#ff7B86EB", isSelected: true)
+    var weakDays = WeakDaysArray
     weak var view: HabitViewRepresentable?
     
     private func validateHabitInput() {
@@ -47,7 +49,6 @@ final class AddHabitViewModel {
             }
         }
         HabitUtils.shared.name = self.habitName
-      //  HabitUtils.shared.habitType = self.habitType
         HabitUtils.shared.description = self.description
         self.didNavigateToSetTheme?(true)
     }
@@ -58,44 +59,48 @@ final class AddHabitViewModel {
         self.didNavigateToSetTheme?(true)
     }
     
+    private func setDaysAfterSelection() {
+        self.days = (weakDays.filter { $0.isSelected }.map{ $0.dayname}.sorted(by: { (WeekDayNumbers[$0] ?? 7) < (WeekDayNumbers[$1] ?? 7) })).joined(separator: ",")
+        HabitUtils.shared.days = self.days
+    }
+    
     private func validateDaysSelection() {
         if HabitUtils.shared.habitType != .group {
-            if self.days == "" {
+            if weakDays.filter({ $0.isSelected }).isEmpty {
                 view?.onAction(.requireFields(AppConstant.emptyDays))
             } else {
-                HabitUtils.shared.days = self.days
-                print("Api call")
-                self.apiForCreateHabit()
+                self.setDaysAfterSelection()
+                self.addHabit()
             }
         } else {
-            if self.days == "" {
+            if weakDays.filter({ $0.isSelected }).isEmpty {
                 view?.onAction(.requireFields(AppConstant.emptyDays))
             } else {
-                HabitUtils.shared.days = self.days
-                view?.onAction(.navigateToGroupImage(true))
-                print("navigateToGroupImage")
+                self.setDaysAfterSelection()
+                self.view?.onAction(.navigateToGroupImage(true))
             }
         }
     }
     
     private func validateGroupImageSelection() {
         if HabitUtils.shared.habitType == .group {
-               // if (HabitUtils.shared.groupImage == nil){
+            // if (HabitUtils.shared.groupImage == nil){
             if (self.groupImage == nil){
                 view?.onAction(.requireFields(AppConstant.emptyGroupImage))
-                    print("image unavailable")
-                } else {
-                    print("image available")
-                    self.apiForCreateHabit()
-            HabitUtils.shared.groupImage = self.groupImage
-                }
+                print("image unavailable")
+            } else {
+                print("image available")
+                self.addHabit()
+                HabitUtils.shared.groupImage = self.groupImage
+            }
         } else {
             view?.onAction(.createHabit)
         }
     }
     
     func sortWeekDays(days: String) {
-        self.days = ((days.components(separatedBy: ",").sorted(by: { $0 < $1})).map{String($0)}).joined(separator: ",")
+        self.days = (days.components(separatedBy: ",").sorted(by: { (WeekDayNumbers[$0] ?? 7) < (WeekDayNumbers[$1] ?? 7) })).joined(separator: ",")
+        print(self.days)
     }
 }
 
@@ -122,10 +127,11 @@ extension AddHabitViewModel: HabitInputViewDelegate {
 
 // MARK: Api Call
 extension AddHabitViewModel {
-    func apiForCreateHabit() {
+    func addHabit() {
         let obj = HabitUtils.shared
         let parameters = HabitParams.CreateHabit(days: obj.days, icon: obj.icon, name: obj.name, timer: obj.timer, reminders: obj.reminders, habit_type: obj.habitType.rawValue , color_theme: obj.colorTheme , description: obj.description)
-        WebService().requestMultiPart(urlString: APIConstants.updateProfile,
+        
+        WebService().requestMultiPart(urlString: APIConstants.addHabit,
                                       httpMethod: .post,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,

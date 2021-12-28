@@ -56,7 +56,8 @@ final class LoginViewModel {
         UserStore.save(userImage: response.data?.user?.profileImage)
         UserStore.save(token: response.data?.user?.authenticationToken)
         UserStore.save(userName: response.data?.user?.username?.capitalized)
-        QBChatLogin.shared.loginQBUser(email: self.email)
+        //QBChatLogin.shared.loginQBUser(email: self.email)
+        QBChatLogin.shared.loginQBUser(fullName: self.username, login: self.password)
         self.view?.onAction(.socialLogin(response.message ?? ""))
     }
     
@@ -106,7 +107,8 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                     UserStore.save(userName: resp.data?.loginData?.username)
                     UserStore.save(userID: resp.data?.loginData?.id)
                     UserStore.save(userImage: resp.data?.loginData?.profileImage)
-                    QBChatLogin.shared.loginQBUser(email: self.email)
+                   // QBChatLogin.shared.loginQBUser(email: self.email)
+                    QBChatLogin.shared.loginQBUser(fullName: self.username, login: self.password)
                     if resp.data?.loginData?.isVerified == true {
                         self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
                     } else {

@@ -94,11 +94,10 @@ class DialogsViewController: UITableViewController {
         super.viewDidLoad()
         // Spinner.hide()
         //Hide Tab Bar
-        setNavigationBar()
+       // setNavigationBar()
         tableView.register(UINib(nibName: DialogCellConstant.reuseIdentifier, bundle: nil), forCellReuseIdentifier: DialogCellConstant.reuseIdentifier)
         setupNavigationBar()
         setupNavigationTitle()
-       
         
     }
     
@@ -141,11 +140,11 @@ class DialogsViewController: UITableViewController {
     private func setNavigationBar() {
         if let navigation = self.navigationController {
             navigation.isNavigationBarHidden = false
-            navigation.navigationBar.barTintColor = .white
+            navigation.navigationBar.barTintColor = .red
             navigation.navigationBar.barStyle = .black
             navigation.navigationBar.shadowImage = UIImage()
-            navigation.navigationBar.isTranslucent = false
-            navigation.navigationBar.tintColor = .white
+            navigation.navigationBar.isTranslucent = true
+            navigation.navigationBar.tintColor = .red
             //group title change text color
             navigation.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 0.616, green: 0.584, blue: 0.486, alpha: 1)]
         }
@@ -185,8 +184,10 @@ class DialogsViewController: UITableViewController {
     }
     
     private func setupNavigationBar() {
+        if let navigation = self.navigationController {
         navigationItem.rightBarButtonItems = []
         navigationItem.leftBarButtonItems = []
+        navigation.isNavigationBarHidden = false
         let leftMyChatBarButtonItem = UIBarButtonItem(title: "My chats", style: .done, target: self, action: #selector(logoutUser))
         leftMyChatBarButtonItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 28.0)!,
@@ -199,6 +200,7 @@ class DialogsViewController: UITableViewController {
                                               action: #selector(didTapNewChat(_:)))
         navigationItem.rightBarButtonItem = usersButtonItem
         usersButtonItem.tintColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        }
         // addInfoButton()
     }
     @objc func logoutUser() {

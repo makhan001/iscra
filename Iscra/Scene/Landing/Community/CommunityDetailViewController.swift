@@ -133,7 +133,7 @@ extension CommunityDetailViewController: HabitViewRepresentable{
             print("habit is join on VC")
             self.router?.dismiss(controller: .community)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "joinHabit"), object: nil)
+                NotificationCenter.default.post(name: .JoinHabit, object: nil)
                 self.router?.push(scene: .landing)
             }
             break

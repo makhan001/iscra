@@ -27,8 +27,6 @@ final class SignupViewModel {
     
     init(provider: OnboardingServiceProvidable) {
         self.provider = provider
-        self.provider.delegate = self
-        self.delegate = self
     }
     
     func onAction(action: OnboardingAction, for screen: OnboardingScreenType) {
@@ -37,7 +35,7 @@ final class SignupViewModel {
         default: break
         }
     }
-    
+
     private func validateUserInput() {
         if Validation().textValidation(text: email, validationType: .email).0 {
             view?.onAction(.requireFields(Validation().textValidation(text: email, validationType: .email).1))
@@ -77,11 +75,11 @@ final class SignupViewModel {
     
     private func registerSuccess(_ response: SuccessResponseModel) {
         UserStore.save(isVerify: true)
-        UserStore.save(userID: response.data?.user?.id)
-        UserStore.save(userEmail: response.data?.user?.email)
-        UserStore.save(userImage: response.data?.user?.profileImage)
-        UserStore.save(token: response.data?.user?.authenticationToken)
-        UserStore.save(userName: response.data?.user?.username?.capitalized)
+        UserStore.save(userID: response.data?.register?.id)
+        UserStore.save(userEmail: response.data?.register?.email)
+        UserStore.save(userImage: response.data?.register?.profileImage)
+        UserStore.save(token: response.data?.register?.authenticationToken)
+        UserStore.save(userName: response.data?.register?.username.capitalized)
         QBChatLogin.shared.registerQBUser()
     }
     
@@ -116,8 +114,3 @@ final class SignupViewModel {
         }
     }
 }
-
-extension SignupViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
-    func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) { }
-}
-

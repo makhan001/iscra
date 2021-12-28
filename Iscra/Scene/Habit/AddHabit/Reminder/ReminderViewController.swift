@@ -23,10 +23,9 @@ class ReminderViewController: UIViewController {
     @IBOutlet weak var btnSegment: UISegmentedControl!
     @IBOutlet weak var viewNavigation:NavigationBarView!
     
-    var habitType : HabitType = .good
+//    var habitType : HabitType = .good
     weak var router: NextSceneDismisser?
-    private let viewModel = AddHabitViewModel()
-    var selectedColorTheme =  HabitThemeColor(id: "1", colorHex: "#ff7B86EB", isSelected: true)
+    let viewModel = AddHabitViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,16 +37,17 @@ extension ReminderViewController {
     private func setup()  {
         self.viewModel.view = self
         self.setNavigationView()
-        self.habitType = self.viewModel.habitType
-        self.weekCollection.selectedHabitDays = selectedHabitDays
+        self.addTapGeture()
+        self.timePickerValueOnUpdate()
+        self.setViewControls()
+        self.weekCollection.confirgure(viewModel: viewModel)
+    }
+    
+    private func setViewControls() {
         self.switchReminder.addTarget(self, action:#selector(self.reminderSwitchValueChanged(_:)), for: .valueChanged)
-        self.weekCollection.configure(selectedColor: selectedColorTheme)
         [btnTime, btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        self.viewBackground.addGestureRecognizer(tap)
-        self.timeManager()
     }
     
     private func setNavigationView() {
@@ -55,6 +55,11 @@ extension ReminderViewController {
         self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.delegateBarAction = self
+    }
+    
+    private func addTapGeture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        self.viewBackground.addGestureRecognizer(tap)
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
@@ -71,14 +76,12 @@ extension ReminderViewController {
         }
     }
     
-    func timeManager() {
+    private func timePickerValueOnUpdate() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
         let dateString = dateFormatter.string(from: pickerTime.date)
         let fullNameArr = dateString.components(separatedBy: " ")
         lblReminderTime.text = fullNameArr[0]
-//        self.viewModel.timer = dateString
-//        // print("self.viewModel.timer is \(self.viewModel.timer)")
         self.viewModel.reminderTime = dateString
         if dateString.contains("AM") {
             btnSegment.selectedSegmentIndex = 0
@@ -119,7 +122,7 @@ extension ReminderViewController {
     }
     
     @IBAction func timePickerClick(_ sender: Any) {
-        self.timeManager()
+        self.timePickerValueOnUpdate()
     }
     
     private func timeClick() {

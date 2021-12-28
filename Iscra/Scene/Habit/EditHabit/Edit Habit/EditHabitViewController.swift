@@ -210,7 +210,7 @@ extension EditHabitViewController: HabitViewRepresentable {
         case let .sucessMessage(msg):
             self.showToast(message: msg, seconds: 0.5)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "editHabit"), object: nil)
+                NotificationCenter.default.post(name: .EditHabit, object: nil)
               //  self.navigationController?.popViewController(animated: true)
                 self.router?.dismiss(controller: .editHabit)
             }

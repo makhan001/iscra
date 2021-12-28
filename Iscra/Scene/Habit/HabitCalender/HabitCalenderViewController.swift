@@ -67,7 +67,7 @@ extension HabitCalenderViewController {
     }
     
     private func addObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadView) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadView) , name: .EditHabit, object: nil)
     }
     
     private func addGestureOnBottomView() {

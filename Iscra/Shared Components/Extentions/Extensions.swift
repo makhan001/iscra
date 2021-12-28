@@ -386,3 +386,9 @@ extension UIAlertController {
         self.setValue(attributedString, forKey: "attributedMessage")
     }
 }
+
+extension Notification.Name {
+    static let EditHabit = Notification.Name("EditHabit")
+    static let JoinHabit = Notification.Name("JoinHabit")
+    static let SearchAllGroup = Notification.Name("SearchAllGroup")
+}

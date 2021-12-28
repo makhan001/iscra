@@ -60,7 +60,7 @@ extension GroupHabitFriendsViewController {
         self.configureTable()
         self.configureControls()
         self.viewModel.userId = UserStore.userID ?? ""
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .EditHabit, object: nil)
         self.viewModel.fetchHabitDetail()
         self.habitDetailSetup()
     }

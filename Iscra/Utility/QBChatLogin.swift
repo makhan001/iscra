@@ -9,6 +9,7 @@ import Foundation
 
 class QBChatLogin {
     static let shared = QBChatLogin()
+    
     func registerQBUser() {
         let user = QBUUser()
         user.email = UserStore.userEmail

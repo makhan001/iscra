@@ -40,7 +40,7 @@ extension CommunityViewController {
         [btnSearch, btnInviteFriends].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "joinHabit"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .JoinHabit, object: nil)
     }
     
     @objc func refrershUI() {

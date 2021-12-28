@@ -62,16 +62,14 @@ extension CommunitySearchViewController {
     }
     
     private func addObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "searchAllGroup"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .SearchAllGroup, object: nil)
     }
     
     private func didSelectTableAtIndex(index: Int) {
-        //        viewModel.arrGroupList[index].id
         self.showToast(message: "Under development", seconds: 0.5)
     }
     
     @objc func refrershUI() {
-        print("refrershUI is called")
         self.setup()
     }
 }

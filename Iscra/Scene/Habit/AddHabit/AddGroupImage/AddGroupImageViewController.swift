@@ -57,7 +57,7 @@ extension AddGroupImageViewController {
     }
     
     private func skipClick() {
-        self.viewModel.apiForCreateHabit()
+        self.viewModel.addHabit()
     }
     
     private func imageClick() {
@@ -101,6 +101,23 @@ extension AddGroupImageViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    private func showHabitCancelAlert() {
+        let alertController = UIAlertController(title: "Warning!!", message: "Do you really want exit from adding habit?", preferredStyle: .alert)
+        let logoutaction = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction!) in
+            HabitUtils.shared.removeAllHabitData()
+            self.router?.push(scene: .landing)
+        }
+        logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        alertController.addAction(logoutaction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
+    }
 }
 
 extension AddGroupImageViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -108,12 +125,11 @@ extension AddGroupImageViewController: UINavigationControllerDelegate, UIImagePi
         let tempImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         imgGroup.image = tempImage
         self.viewModel.groupImage = tempImage
-        //HabitUtils.shared.groupImage = tempImage
         self.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -141,7 +157,6 @@ extension AddGroupImageViewController: NavigationBarViewDelegate {
     }
     
     func navigationRightButtonAction() {
-        HabitUtils.shared.removeAllHabitData()
-        self.router?.push(scene: .landing)
+        self.showHabitCancelAlert()
     }
 }

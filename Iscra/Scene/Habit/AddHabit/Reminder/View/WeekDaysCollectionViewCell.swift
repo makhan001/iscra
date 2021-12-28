@@ -18,7 +18,7 @@ class WeekDaysCollectionViewCell: UICollectionViewCell {
     func configure(day:WeekDays, selectedColor:HabitThemeColor){
         lblTitle.text = day.shortDayname
         view.layer.borderColor = UIColor(hex: selectedColor.colorHex)?.cgColor
-        if day.isSelected == false{
+        if day.isSelected == false { 
             lblTitle.textColor = .black
             view.backgroundColor = .white
         } else {

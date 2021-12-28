@@ -35,7 +35,7 @@ extension InviteFriendViewController {
         self.habitType = HabitUtils.shared.habitType
         setUpView(habitType:habitType)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        if habitType == .group{
+        if habitType == .group {
             btnMaybeLetter.setTitle("Share public", for: .normal)
         }
         [btnInviteFriends, btnMaybeLetter].forEach {
@@ -86,7 +86,7 @@ extension InviteFriendViewController  {
     private func maybeLetterAction() {
         if self.btnMaybeLetter.currentTitle == "Share public" {
             print("Share public")
-        }else{
+        } else {
             print("MaybeLatterAction")
         }
         self.router?.push(scene: .landing)

@@ -26,7 +26,7 @@ class GroupFriendsCell: UITableViewCell {
         super.updateConstraints()
         if self.arr.count <= 3 {
             constraintWidth.constant =  CGFloat((self.arr.count * 60))
-        }else{
+        } else {
             constraintWidth.constant =  CGFloat((self.arr.count * 50))
         }
     }

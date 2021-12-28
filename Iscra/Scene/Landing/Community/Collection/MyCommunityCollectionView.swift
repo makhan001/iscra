@@ -37,7 +37,7 @@ class MyCommunityCollectionView: UICollectionView , UICollectionViewDelegate , U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 if !self.myGroupList.isEmpty {
                     return CGSize(width:  (collectionView.bounds.size.width - 10 ) , height: 161)
-                }else{
+                } else {
                      return CGSize(width: 386.0, height: 161.0)
                 }
     }

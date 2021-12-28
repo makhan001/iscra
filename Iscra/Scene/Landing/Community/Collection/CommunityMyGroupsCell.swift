@@ -42,10 +42,10 @@ class CommunityMyGroupsCell: UICollectionViewCell {
         super.updateConstraints()
         if self.arrHabitMarks?.count == nil {
             constraintWidth.constant =  0
-        }else{
+        } else {
         if  self.arrHabitMarks!.count <= 3 {
             constraintWidth.constant =  CGFloat(( self.arrHabitMarks!.count * 45))
-        }else{
+        } else {
             constraintWidth.constant =  150
         }
         }
@@ -90,7 +90,7 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
             guard let objHabitMarks = self.arrHabitMarks?[indexPath.row] else {  return UICollectionViewCell()  }
             cell.configureHabitDays(obj: objHabitMarks, colorTheme:  self.colorTheme )
             return cell
-        }else{
+        } else {
             guard let cell = self.collectionMates.dequeueReusableCell(withReuseIdentifier: "MatesCollectionCell", for: indexPath) as? MatesCollectionCell else {
                 return UICollectionViewCell()
             }
@@ -113,10 +113,10 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
                     if !(self.arrHabitMarks?.isEmpty ?? false) {
                         if self.arrHabitMarks!.count <= 3 {
                             return CGSize(width: Int(self.collectiondays.bounds.width) / self.arrHabitMarks!.count - 10, height: 125)
-                        }else{
+                        } else {
                             return CGSize(width: self.collectiondays.bounds.width/3.5, height: 125)
                         }
-                    }else{
+                    } else {
                         return CGSize(width: 45.0, height: 125.0)
                     }
                   

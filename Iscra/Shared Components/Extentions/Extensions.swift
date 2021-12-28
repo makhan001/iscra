@@ -5,8 +5,10 @@
 //  Created by Lokesh Patil on 13/10/21.
 //
 
-import Foundation
 import  UIKit
+import Foundation
+import SVProgressHUD
+
 
 extension UIColor {
     static let primaryAccent: UIColor = UIColor(named: "PrimaryAccent")!
@@ -120,6 +122,18 @@ extension UIViewController {
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
     }
+    
+    func startAnimation() {
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
+    }
+    
+    func stopAnimation() {
+        DispatchQueue.main.async {
+            SVProgressHUD.dismiss()
+        }
+    }
 }
 
 extension UITabBar {
@@ -209,7 +223,7 @@ extension String {
       //  print("dateString is \(fullNameArr[0]) and \(fullNameArr[1])")
         if isDayName == true {
             return  fullNameArr[1]
-        }else{
+        } else {
             return fullNameArr[0]
         }
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CommunityFriendTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
+class CommunityFriendTableView: UITableView {
 
     var viewModel: CommunitySearchViewModel!
 
@@ -28,7 +28,9 @@ class CommunityFriendTableView: UITableView, UITableViewDataSource, UITableViewD
         tableFooterView = UIView(frame: .zero)
         separatorStyle = .none
     }
-    
+}
+
+extension CommunityFriendTableView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.arrFriend.count
     }

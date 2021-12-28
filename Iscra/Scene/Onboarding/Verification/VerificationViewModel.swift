@@ -28,7 +28,7 @@ final class VerificationViewModel {
         if (!self.strText1.isEmpty && self.strText1 != "") && (!self.strText2.isEmpty && self.strText2 != "" ) && (!self.strText3.isEmpty && self.strText3 != "") && (!self.strText4.isEmpty && self.strText4 != "") {
             self.isResendVerification = false
             self.provider.verification(param: UserParams.Verification(verification_code: strText1 + strText2 + strText3 + strText4))
-        }else{
+        } else {
             view?.onAction(.requireFields("Please enter all charaters for verification"))
         }
     }

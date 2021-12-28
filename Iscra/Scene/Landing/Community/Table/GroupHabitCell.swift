@@ -30,13 +30,13 @@ class GroupHabitCell: UITableViewCell {
             self.imgHabit.isHidden = false
             let url = URL(string: profilePic!)
             self.imgHabit.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic-Rectangle"))
-        }else{
+        } else {
             self.imgHabit.isHidden = true
         }
         
 //        if indexPath.row == 1 || indexPath.row == 3 {
 //        cell.imgHabit.isHidden = true
-//        }else{
+//        } else {
 //            cell.imgHabit.isHidden = false
 //        }
     }

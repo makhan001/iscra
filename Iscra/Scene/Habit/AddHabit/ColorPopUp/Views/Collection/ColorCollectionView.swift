@@ -5,29 +5,24 @@
 //  Created by Lokesh Patil on 25/10/21.
 //
 
-import Foundation
 import UIKit
-protocol selectedColordelegate:class {
-    func selectedColorIndex(color:ColorStruct)
-}
+import Foundation
 
-struct ColorStruct{
-    var id : String
-    var colorHex: String
-    var isSelect: Bool
+protocol HabitThemeColorDelegate:class { // HabitThemeColorDelegate
+    func selectedHabitTheme(color:HabitThemeColor) // selectedHabitTheme
 }
 
 class ColorCollection: UICollectionView {
-    var colorItem = [ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true),
-                     ColorStruct(id: "2", colorHex: "#ff9F7BEB", isSelect: false),
-                     ColorStruct(id: "3", colorHex: "#ffEB7BAA", isSelect: false),
-                     ColorStruct(id: "4", colorHex: "#ffEB7B7B", isSelect: false),
-                     ColorStruct(id: "5", colorHex: "#ffDDB140", isSelect: false),
-                     ColorStruct(id: "6", colorHex: "#ff59C196", isSelect: false),
-                     ColorStruct(id: "7", colorHex: "#ff62ACF0", isSelect: false),
-                     ColorStruct(id: "8", colorHex: "#ffC69466", isSelect: false)]
+    var colorItem = [HabitThemeColor(id: "1", colorHex: "#ff7B86EB", isSelected: true),
+                     HabitThemeColor(id: "2", colorHex: "#ff9F7BEB", isSelected: false),
+                     HabitThemeColor(id: "3", colorHex: "#ffEB7BAA", isSelected: false),
+                     HabitThemeColor(id: "4", colorHex: "#ffEB7B7B", isSelected: false),
+                     HabitThemeColor(id: "5", colorHex: "#ffDDB140", isSelected: false),
+                     HabitThemeColor(id: "6", colorHex: "#ff59C196", isSelected: false),
+                     HabitThemeColor(id: "7", colorHex: "#ff62ACF0", isSelected: false),
+                     HabitThemeColor(id: "8", colorHex: "#ffC69466", isSelected: false)]
 
-    var delegateColor:selectedColordelegate?
+    var delegateColor:HabitThemeColorDelegate?
 
     func configure() {
         self.register(UINib(nibName: "ColorCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ColorCollectionViewCell")
@@ -59,19 +54,19 @@ extension ColorCollection:  UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         for index in 0..<colorItem.count{
             if indexPath.row == index{
-                if colorItem[index].isSelect == true{
-                    colorItem[index].isSelect = false
+                if colorItem[index].isSelected == true{
+                    colorItem[index].isSelected = false
                 } else{
-                    colorItem[index].isSelect = true
+                    colorItem[index].isSelected = true
                 }
             }else {
-                colorItem[index].isSelect = false
+                colorItem[index].isSelected = false
             }
         }
         collectionView.reloadData()
-        let filtered = colorItem.filter { $0.isSelect == true }
+        let filtered = colorItem.filter { $0.isSelected == true }
         if filtered.count > 0 {
-            delegateColor?.selectedColorIndex(color: filtered[0])
+            delegateColor?.selectedHabitTheme(color: filtered[0])
         }
     }
 }

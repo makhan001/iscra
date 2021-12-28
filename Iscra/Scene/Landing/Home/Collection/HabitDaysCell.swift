@@ -27,7 +27,7 @@ class HabitDaysCell: UICollectionViewCell {
         if obj.isCompleted == true{
             self.imgActive.image = #imageLiteral(resourceName: "ic-bluetick")
             self.imgActive.tintColor =  UIColor(hex: colorTheme)
-        }else{
+        } else {
             self.imgActive.image = #imageLiteral(resourceName: "ic-Blanktick")
         }
     }

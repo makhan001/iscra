@@ -111,11 +111,11 @@ extension CameraHandler: UIImagePickerControllerDelegate, UINavigationController
 
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.imagePickedBlock?(image)
-        }else{
+        } else {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 let reSizeImg = self.resizeImage(image: image, targetSize: CGSize.init(width: 600, height: 600))
                 self.imagePickedBlock?(reSizeImg)
-            }else{
+            } else {
                 print("Something went wrong")
             }
         }
@@ -164,13 +164,13 @@ extension CameraHandler: UIImagePickerControllerDelegate, UINavigationController
             cropperViewController.image = pickedImage
             
             picker.pushViewController(cropperViewController, animated: true)
-        }else{
+        } else {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 let cropperViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "cropperViewController") as! CropperViewController
                 cropperViewController.image = image
                 
                 picker.pushViewController(cropperViewController, animated: true)
-            }else{
+            } else {
                 print("Something went wrong")
             }
         }

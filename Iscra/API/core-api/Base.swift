@@ -16,12 +16,11 @@ public enum Environment {
     var host: String {
         switch self {
         case .dev:
-            return "http://3.21.113.243/api/v1/"
+            return "http://18.116.115.175/api/v1/"
         case .staging:
-            return "http://3.21.113.243/api/v1/"
+            return "http://18.116.115.175/api/v1/"
         case .production:
-          //  return "http://3.21.113.243/api/v1/"
-            return "http://3.129.244.6/api/v1/"
+            return "http://18.116.115.175/api/v1/"
         }
     }
     case staging
@@ -65,8 +64,8 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
     var session: URLSession {
         let config = URLSessionConfiguration.default
         config.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-        let s = URLSession(configuration: config)
-        return s
+        let session = URLSession(configuration: config)
+        return session
     }
     
     func execute<T:Decodable>(requst: RequestRepresentable, modeling _: T.Type, completion:@escaping APIResult<T>) {
@@ -233,14 +232,7 @@ final class SessionDispatcher: NSObject, URLSessionDelegate {
         if UserStore.token != nil {
             headers["Authentication-Token"] = UserStore.token ?? ""
         }
-//        headers["device_type"] = "ios"
-//        headers["device_id"] = UIDevice.current.identifierForVendor?.uuidString
-//        headers["current_time_zone"] = "IST"
-//        headers["language"] = "en"
         headers["Content-Type"] = "application/json"
-//        headers["current_country"] = "India"
-//        headers["lat"] = "22.7177"
-//        headers["lng"] = "75.8545"
     }
     
     private func params(in request: RequestRepresentable, for urlRequest: inout URLRequest) {

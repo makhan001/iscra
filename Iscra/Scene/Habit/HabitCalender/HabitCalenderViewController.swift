@@ -49,25 +49,35 @@ extension HabitCalenderViewController {
     private func setup() {
         self.viewModel.view = self
         self.viewBottom.isHidden = true
-        self.setUpNavigationBar()
-        self.lblLongestStreak.text = "Longest \nStreak"
+        self.setViewControls()
         self.viewModel.userId = UserStore.userID ?? ""
+        self.reloadView()
+        self.addObserver()
+    }
+    
+    private func setViewControls() {
         self.lblDaysCount.text = "0"
+        self.lblLongestStreak.text = "Longest \nStreak"
         self.viewMarkasComplete.isHidden = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        viewBottom.addGestureRecognizer(tap)
         [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth,btnMarkasComplete,btnNextMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
-        //   self.viewModel.getMonthlyHabitDetail() // deepak commented
-        self.viewModel.fetchHabitDetail()
-        self.habitDetailSetup()
+        self.setUpNavigationBar()
+        self.addGestureOnBottomView()
     }
     
-    @objc func refrershUI(){
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadView) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
+    }
+    
+    private func addGestureOnBottomView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        self.viewBottom.addGestureRecognizer(tap)
+    }
+    
+    @objc func reloadView() {
         self.viewModel.fetchHabitDetail()
-        self.habitDetailSetup()
+        self.reloadCaledar()
     }
     
     private func calenderSetup() {
@@ -94,7 +104,7 @@ extension HabitCalenderViewController {
         self.eventsDateArray = dateObjects
     }
     
-    func habitDetailSetup() {
+    func reloadCaledar() {
         self.calenderSetup()
         self.circularViewSetup()
         self.viewNavigation.lblTitle.textColor = self.themeColor
@@ -218,6 +228,14 @@ extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate
     //        return Date()
     //    }
     
+//    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+//        print("self.viewCalender.currentPage timeIntervalSince1970 is \(self.viewCalender.currentPage.timeIntervalSince1970)")
+//        self.viewModel.habitMonth =  String(format: "%.0f", self.viewCalender.currentPage.timeIntervalSince1970)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            self.viewModel.getMonthlyHabitDetail()
+//        }
+//    }
+    
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         print("self.viewCalender.currentPage timeIntervalSince1970 is \(self.viewCalender.currentPage.timeIntervalSince1970)")
         self.viewModel.habitMonth =  String(format: "%.0f", self.viewCalender.currentPage.timeIntervalSince1970)
@@ -247,7 +265,7 @@ extension HabitCalenderViewController: HabitViewRepresentable {
                 self.viewDeleteHabit.isHidden = true
             }
             
-            self.habitDetailSetup()
+            self.reloadCaledar()
             // self.getDateFromTimeStamp(timeStamp: (self.viewModel.objHabitDetail?.timer)!)
             //   self.viewModel.objHabitDetail?.habitMarks?[0].habitDay
             

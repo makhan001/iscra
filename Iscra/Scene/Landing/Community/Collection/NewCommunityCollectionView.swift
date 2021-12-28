@@ -50,7 +50,7 @@ class NewCommunityCollectionView: UICollectionView , UICollectionViewDelegate , 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if !self.arrInvitaions.isEmpty {
             return CGSize(width: collectionView.frame.width - 10, height: collectionView.frame.height)
-        }else{
+        } else {
              return CGSize(width: 289, height: 229)
         }
     }

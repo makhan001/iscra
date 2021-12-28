@@ -66,7 +66,7 @@ extension CommunityDetailViewController {
             if profilePic != "" && profilePic != "<null>" {
               let url = URL(string: profilePic)
                 imageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic-Rectangle"))
-            }else{
+            } else {
                 imageView.image = UIImage(named: "ic-Rectangle")
             }
         

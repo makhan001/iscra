@@ -14,10 +14,11 @@ class WeekDaysCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    func configure(day:weekStruct, selectedColor:ColorStruct){
+    
+    func configure(day:WeekDays, selectedColor:HabitThemeColor){
         lblTitle.text = day.shortDayname
         view.layer.borderColor = UIColor(hex: selectedColor.colorHex)?.cgColor
-        if day.isSelect == false{
+        if day.isSelected == false{
             lblTitle.textColor = .black
             view.backgroundColor = .white
         }

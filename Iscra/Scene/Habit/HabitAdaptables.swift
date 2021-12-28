@@ -15,6 +15,19 @@ enum HabitScreenType: String {
     case editHabit
 }
 
+struct WeekDays {
+    var id : Int
+    var shortDayname: String
+    var dayname: String
+    var isSelected: Bool
+}
+
+struct HabitThemeColor {
+    var id : String
+    var colorHex: String
+    var isSelected: Bool
+}
+
 enum HabitAction {
     case createHabit
     case deleteHabit

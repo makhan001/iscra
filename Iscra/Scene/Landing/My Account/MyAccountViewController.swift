@@ -161,7 +161,7 @@ extension MyAccountViewController: clickManagerDelegate{
         present(ac, animated: true)
     }
     
-    private func rateUs(){
+    private func rateUs() {
         if let url = URL(string: "https://itunes.apple.com/in/app/facebook/id284882215?mt=8"),
            //if let url = URL(string: "https://www.google.co.in/"),
            UIApplication.shared.canOpenURL(url){
@@ -175,7 +175,7 @@ extension MyAccountViewController: clickManagerDelegate{
         }
     }
     
-    private func composerEmail(){
+    private func composerEmail() {
         let composeVC = MFMailComposeViewController()
         composeVC.mailComposeDelegate = self
         // Configure the fields of the interface.

@@ -44,10 +44,10 @@ class HabitCell: UITableViewCell {
         //   print("self.arrHabitMarks?.count is \(self.arrHabitMarks?.count)")
         if self.arrHabitMarks?.count == nil {
             constraintWidth.constant =  0
-        }else{
+        } else {
             if  self.arrHabitMarks!.count <= 3 {
                 constraintWidth.constant =  CGFloat(( self.arrHabitMarks!.count * 60))
-            }else{
+            } else {
                 constraintWidth.constant =  CGFloat(( self.arrHabitMarks!.count * 50))
             }
         }
@@ -98,7 +98,7 @@ extension HabitCell: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
             guard let objHabitMarks = self.arrHabitMarks?[indexPath.row] else {  return UICollectionViewCell()  }
             cell.configureHabitDays(obj: objHabitMarks, colorTheme:  self.colorTheme )
             return cell
-        }else{
+        } else {
             guard let cell = self.collectionMates.dequeueReusableCell(withReuseIdentifier: "MatesCollectionCell", for: indexPath) as? MatesCollectionCell else {
                 return UICollectionViewCell()
             }
@@ -115,7 +115,7 @@ extension HabitCell: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
                 let count = self.arrHabitMarks!.count
                 let width1 = Int(self.collectiondays.bounds.width) /  count
                 return CGSize(width: width1  , height: 125)
-            }else{
+            } else {
                 return CGSize(width: self.collectiondays.bounds.width/3.5, height: 125)
             }
         }else {

@@ -90,7 +90,7 @@ extension GroupHabitFriendsViewController {
         self.btnSegment.setTitleTextAttributes(selectedColor as [NSAttributedString.Key : Any], for: .selected)
     }
     
-    @objc func refrershUI(){
+    @objc func refrershUI() {
         self.viewModel.fetchHabitDetail()
         self.habitDetailSetup()
     }
@@ -275,8 +275,7 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         print("self.viewCalender.currentPage timeIntervalSince1970 is \(self.viewCalender.currentPage.timeIntervalSince1970)")
-        self.viewModel.habitMonth =  String(format: "%.0f", self.viewCalender.currentPage.timeIntervalSinceNow)
-       // self.viewModel.habitMonth =  String(format: "%.0f", self.viewCalender.currentPage.timeIntervalSince1970)
+        self.viewModel.habitMonth =  String(format: "%.0f", self.viewCalender.currentPage.timeIntervalSince1970)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.viewModel.getMonthlyHabitDetail()
         }

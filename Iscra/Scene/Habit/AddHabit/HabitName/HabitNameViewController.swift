@@ -96,7 +96,7 @@ extension HabitNameViewController: UITextFieldDelegate {
             } else {
                 self.txtViewDescription.resignFirstResponder()
             }
-        }else{
+        } else {
             if textField == self.txtFieldTitle {
                 self.txtFieldTitle.resignFirstResponder()
             }

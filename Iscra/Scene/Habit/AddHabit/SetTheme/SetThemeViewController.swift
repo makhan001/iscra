@@ -19,7 +19,7 @@ class SetThemeViewController: UIViewController {
     private var selectedIcons = "sport1"
     var habitType: HabitType = .good
     var iconResorces = IconsHabitModel()
-    var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
+    var selectedColorTheme =  HabitThemeColor(id: "1", colorHex: "#ff7B86EB", isSelected: true)
     private let viewModel = AddHabitViewModel()
     weak var router: NextSceneDismisser?
     weak var alertDelegate: AlertControllerDelegate?
@@ -122,7 +122,7 @@ extension SetThemeViewController {
     }
 }
 
-extension SetThemeViewController: selectedColordelegate ,selectedIcondelegate {
+extension SetThemeViewController: HabitThemeColorDelegate ,selectedIcondelegate {
     
     func selectedIcon(Icon: String) {
         ImgIcon.image = UIImage(named: Icon)
@@ -130,7 +130,7 @@ extension SetThemeViewController: selectedColordelegate ,selectedIcondelegate {
        // self.viewModel.icon = Icon
     }
     
-    func selectedColorIndex(color: ColorStruct) {
+    func selectedHabitTheme(color: HabitThemeColor) {
         selectedColorTheme = color
         ViewColor.backgroundColor = UIColor(hex: color.colorHex)
         ImgIcon.tintColor = UIColor(hex: color.colorHex)

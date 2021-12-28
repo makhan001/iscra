@@ -9,7 +9,6 @@ import UIKit
 
 class CommunitySearchViewController: UIViewController {
     
-    // MARK:-Outlets and variables
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var viewNoGroups: UIView!
     @IBOutlet weak var txtSearch: UITextField!
@@ -190,14 +189,14 @@ extension CommunitySearchViewController : UITextFieldDelegate {
             self.viewModel.strSearchText = ""
             if self.btnSegment.selectedSegmentIndex == 1 {
                 self.viewModel.arrFriend.removeAll()
-            }else{
+            } else {
                 self.viewModel.arrGroupList.removeAll()
             }
             
             self.viewModel.isSearching = true
             self.perform(#selector(self.reload), with: nil, afterDelay: 0.5)
             
-        }else{
+        } else {
             var substring: String = textField.text!
             substring = (substring as NSString).replacingCharacters(in: range, with: string)
             substring = substring.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -220,7 +219,7 @@ extension CommunitySearchViewController : UITextFieldDelegate {
         if self.btnSegment.selectedSegmentIndex == 1 {
             self.viewModel.arrFriend.removeAll()
             self.viewModel.callApiFriendList()
-        }else{
+        } else {
             self.viewModel.arrGroupList.removeAll()
             self.viewModel.callApiAllGroupHabit()
         }

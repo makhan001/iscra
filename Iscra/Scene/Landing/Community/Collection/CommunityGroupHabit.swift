@@ -26,7 +26,7 @@ class CommunityGroupHabit: UICollectionViewCell {
         if profilePic != nil && profilePic != "<null>"  {
             let url = URL(string: profilePic!)
             self.imgHabit.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic-Rectangle"))
-        }else{
+        } else {
             self.imgHabit.image = #imageLiteral(resourceName: "ic-Rectangle")
         }
     }

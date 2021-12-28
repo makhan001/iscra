@@ -201,7 +201,7 @@ class DialogsViewController: UITableViewController {
         usersButtonItem.tintColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         // addInfoButton()
     }
-    @objc func logoutUser(){
+    @objc func logoutUser() {
         print("clicked")
     }
     

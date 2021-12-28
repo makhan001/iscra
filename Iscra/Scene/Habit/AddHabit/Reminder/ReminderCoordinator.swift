@@ -22,7 +22,7 @@ final class ReminderCoordinator: Coordinator<Scenes> {
         self.onStart()
     }
     
-    func start(selectedColorTheme: ColorStruct) {
+    func start(selectedColorTheme: HabitThemeColor) {
         super.start()
         controller.selectedColorTheme = selectedColorTheme
         router.setRootModule(controller, hideBar: true)

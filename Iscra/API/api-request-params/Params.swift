@@ -19,7 +19,6 @@ enum UserParams {
         let device_model: String?
         let device_udid: String?
         let device_type: String?
-    //  let profile_image: String?
     }
     
     struct Login: Codable {
@@ -64,7 +63,6 @@ enum UserParams {
     }
     
     struct UpdateProfile: Codable {
-       // let user_id: String?
         let username: String?
     }
 }
@@ -76,7 +74,7 @@ enum SocialLoginType:  String, Codable {
 }
 
 enum HabitParams {
-
+    
     struct CreateHabit: Codable {
         let days: String?
         let icon: String?
@@ -84,10 +82,8 @@ enum HabitParams {
         let timer: String?
         let reminders: Bool?
         let habit_type: String?
-      //  let habit_type: habitType = String?
         let color_theme: String?
         let description: String?
-       // let group_image: String?
     }
     
     struct UpdateHabit: Codable {
@@ -100,17 +96,29 @@ enum HabitParams {
         let habit_type: String?
         let color_theme: String?
         let description: String?
-      //  let group_image: String?
     }
     
     struct DeleteHabit: Codable {
         let id: String?
     }
     
-    struct HabitDetail: Codable {
+    struct HabitCalender: Codable {
         let habit_id: Int?
         let user_id: Int?
         let habit_month: Int?
+    }
+    
+    struct GroupHabitDetails: Codable {
+        let habit_id: Int?
+    }
+    
+    struct GroupHabitMembers: Codable {
+        let habit_id: Int?
+    }
+    
+    struct HabitDetail: Codable {
+        let habit_id: Int?
+        let user_id: Int?
     }
     
     struct AllHabitList: Codable {
@@ -126,18 +134,14 @@ enum HabitParams {
         let habit_day: String?
         let is_completed: String?
     }
-    
-    struct ShowHabit: Codable {
-        let habit_id: String?
-        let user_id: String?
-    }
-    
+        
     struct JoinHabit: Codable {
         let habit_id: String?
     }
 }
 
 enum CommunityParams {
+    
     struct FetchCommunity: Codable {
     }
     
@@ -146,6 +150,6 @@ enum CommunityParams {
     }
     
     struct Friends: Codable {
-     let search: String?
+        let search: String?
     }
 }

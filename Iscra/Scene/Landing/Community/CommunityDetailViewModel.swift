@@ -25,7 +25,7 @@ final class CommunityDetailViewModel {
     }
     
      func fetchHabitDetail() {
-        self.provider.showHabit(param: HabitParams.ShowHabit(habit_id: String(self.habitId), user_id: self.userId))
+       // self.provider.showHabit(param: HabitParams.ShowHabit(habit_id: String(self.habitId), user_id: self.userId)) // change api name updated is habitDetail
      }
     
     func joinHabit() {

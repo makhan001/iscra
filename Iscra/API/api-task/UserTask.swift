@@ -74,12 +74,20 @@ final class UserTask {
         dispatcher.execute(requst: HabitRequests(type: .groupInvitations, params: params), modeling: responseModel, completion: completion)
     }
     
-    func showHabit<T:Codable>(params: HabitParams.ShowHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
-        dispatcher.execute(requst: HabitRequests(type: .showHabit, params: params), modeling: responseModel, completion: completion)
+    func habitCalender<T:Codable>(params: HabitParams.HabitCalender, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .habitCalender, params: params), modeling: responseModel, completion: completion)
     }
     
     func joinHabit<T:Codable>(params: HabitParams.JoinHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: HabitRequests(type: .joinHabit, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func groupHabitMembers<T:Codable>(params: HabitParams.GroupHabitMembers, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .groupHabitMembers, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func groupHabitDetails<T:Codable>(params: HabitParams.GroupHabitDetails, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .groupHabitDetails, params: params), modeling: responseModel, completion: completion)
     }
     
     func fetchCommunity<T:Codable>(params: CommunityParams.FetchCommunity, responseModel: T.Type, completion: @escaping APIResult<T>) {

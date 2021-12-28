@@ -21,7 +21,7 @@ class CommunityDetailViewController: UIViewController {
     var vibrantLabel = UILabel()
     var headerImageView: UIView?
     var objInvitaion: Invitaion?
-    var objShowHabitDetail: ShowHabitDetail?
+    var objShowHabitDetail: HabitDetails?
 
     weak var router: NextSceneDismisser?
     let viewModel: CommunityDetailViewModel = CommunityDetailViewModel(provider: HabitServiceProvider())
@@ -114,8 +114,7 @@ extension CommunityDetailViewController {
     }
     
     private func backAction() {
-       // self.navigationController?.popViewController(animated: true)
-        self.router?.dismiss(controller: .communityDetail)  // deepu
+        self.router?.dismiss(controller: .communityDetail)
     }
 }
 
@@ -145,7 +144,7 @@ extension CommunityDetailViewController: HabitViewRepresentable{
     func reloadUI() {
         self.objShowHabitDetail = self.viewModel.objShowHabitDetail
         self.lblGroupName.text = self.objShowHabitDetail?.name
-        self.lbldiscription.text = self.objShowHabitDetail?.showHabitDetailDescription
+        self.lbldiscription.text = self.objShowHabitDetail?.habitDetailsDescription
         self.lblMembersCount.text = "(" + String(self.objShowHabitDetail?.members?.count ?? 0) + ")"
         self.setupParallaxHeader(groupImage: self.objShowHabitDetail?.groupImage ?? "ic-Rectangle")
         self.addTitleLabel()

@@ -60,7 +60,9 @@ final class GroupHabitCalenderCoordinator: Coordinator<Scenes> {
         editHabit = EditHabitCoordinator(router: Router())
         add(editHabit)
         editHabit.delegate = self
-        editHabit.start(objHabitDetail: controller.viewModel.objShowHabitDetail!)
+        if let objHabitDetail = controller.viewModel.objHabitDetail {
+            editHabit.start(objHabitDetail: objHabitDetail)
+        }
         self.router.present(editHabit, animated: true)
     }
 }

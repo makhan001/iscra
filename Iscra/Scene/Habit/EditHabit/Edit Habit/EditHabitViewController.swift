@@ -19,7 +19,7 @@ class EditHabitViewController: UIViewController {
     var timer: String = ""
     var colorTheme: String = ""
     var reminders: Bool = false
-    var objHabitDetail: ShowHabitDetail? // HabitDetails?
+    var objHabitDetail: HabitDetails? 
     let viewModel: EditHabitViewModel = EditHabitViewModel(provider: HabitServiceProvider())
     weak var router: NextSceneDismisser?
     

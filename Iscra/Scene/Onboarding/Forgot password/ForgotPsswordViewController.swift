@@ -8,37 +8,34 @@
 import UIKit
 
 class ForgotPasswordViewController: UIViewController {
+    
     @IBOutlet weak var btnSend:UIButton!
     @IBOutlet weak var textEmail:UITextField!
     @IBOutlet weak var viewNavigation: NavigationBarView!
-    private let viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel(provider: OnboardingServiceProvider())
+    
     weak var router: NextSceneDismisser?
-
+    private let viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel(provider: OnboardingServiceProvider())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        SetUps()
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        self.setup()
     }
 }
 
-// MARK:  Initial Congfigrations
+// MARK:  Instance Methods
 extension ForgotPasswordViewController {
-    func SetUps() {
-        viewModel.view = self
-        viewNavigation.lblTitle.text = "Forgot Password"
-        viewNavigation.delegateBarAction = self
-        [textEmail].forEach{
-            $0?.delegate = self
-        }
-        [btnSend].forEach {
+    private func setup() {
+        self.viewModel.view = self
+        self.viewNavigation.lblTitle.text = "Forgot Password"
+        self.viewNavigation.delegateBarAction = self
+        self.textEmail.delegate = self
+        [self.btnSend].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }
 }
 
-// MARK: NAvigation Delegates
+// MARK: NAvigation Bar View Delegates
 extension ForgotPasswordViewController : NavigationBarViewDelegate {
     func navigationBackAction() {
         self.router?.dismiss(controller: .forgot)
@@ -56,27 +53,23 @@ extension ForgotPasswordViewController {
         }
     }
     private func resendAction() {
-        print("resendAction")
-        self.textEmail.resignFirstResponder()
-        viewModel.onAction(action: .inputComplete(.forgotPassword), for: .forgotPassword)
+        self.dismissKeyboard()
+        self.viewModel.onAction(action: .inputComplete(.forgotPassword), for: .forgotPassword)
     }
 }
 
 // MARK:- UITextFieldDelegate
 extension ForgotPasswordViewController:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == self.textEmail{
+        if textField == self.textEmail {
             self.textEmail.resignFirstResponder()
         }
         return false
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == textEmail {
-            if let text = textEmail.text, let textRange = Range(range, in: text) {
-                let updatedText = text.replacingCharacters(in: textRange, with: string)
-                viewModel.email = updatedText
-            }
+        if let text = textEmail.text, let textRange = Range(range, in: text) {
+            viewModel.email = text.replacingCharacters(in: textRange, with: string)
         }
         return true
     }

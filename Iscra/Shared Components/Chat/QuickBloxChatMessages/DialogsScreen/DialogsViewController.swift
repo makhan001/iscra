@@ -469,8 +469,7 @@ class DialogsViewController: UITableViewController {
         dialogs = chatManager.storage.dialogsSortByUpdatedAt()
         if dialogs.count > 0 {
             print("Chat list not empty")
-        }
-        else {
+        } else {
             //            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
             //                       label.center = CGPoint(x: 160, y: 285)
             //                       label.textAlignment = .center

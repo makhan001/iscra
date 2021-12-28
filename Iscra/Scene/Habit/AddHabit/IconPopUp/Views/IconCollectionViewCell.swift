@@ -18,8 +18,7 @@ class IconCollectionViewCell: UICollectionViewCell {
         if iconArr.value! == 1 {
             view.backgroundColor = UIColor(hex: theme)
             img.tintColor = .white
-        }
-        else {
+        } else {
             view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             img.tintColor = .black
         }

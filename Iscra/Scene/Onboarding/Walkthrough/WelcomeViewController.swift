@@ -23,7 +23,6 @@ class WelcomeViewController: UIViewController {
 
 // MARK:- Instance Methods
 extension WelcomeViewController {
-    
     private func setup() {
         lblHeaderTitle.text = AppConstant.welComeDiscription
         [btnLogin, btnStart].forEach {

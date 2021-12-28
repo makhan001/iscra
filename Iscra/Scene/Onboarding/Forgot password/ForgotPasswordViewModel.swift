@@ -11,10 +11,11 @@ import Foundation
 final class ForgotPasswordViewModel {
     
     var email: String = ""
-    weak var view: OnboardingViewRepresentable?
+    
     let provider: OnboardingServiceProvidable
+    weak var view: OnboardingViewRepresentable?
     var delegate: OnboardingServiceProvierDelegate?
-
+    
     init(provider: OnboardingServiceProvidable) {
         self.provider = provider
         self.provider.delegate = self

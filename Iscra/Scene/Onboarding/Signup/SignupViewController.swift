@@ -9,7 +9,6 @@ import UIKit
 import GoogleSignIn
 import AuthenticationServices
 
-
 class SignupViewController: UIViewController {
     
     @IBOutlet weak var btnApple:UIButton!

@@ -255,8 +255,7 @@ class CreateNewDialogViewController: UIViewController {
     @IBAction func cancelSearchButtonTapped(_ sender: UIButton) {
         if isFriendsTab == true {
             setupUsers(downloadedUsers)
-        }
-        else {
+        } else {
             self.dialogs = chatManager.storage.dialogsSortByUpdatedAt()
             self.tblUserChatListView.reloadData()
         }
@@ -357,8 +356,7 @@ extension CreateNewDialogViewController {
         dialogs = chatManager.storage.dialogsSortByUpdatedAt()
         if dialogs.count > 0 {
           print("Chat list not empty")
-        }
-        else {
+        } else {
             
            print("chat is EMPTY")
         }
@@ -405,8 +403,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
                 tableView.removeEmptyView()
             }
             return users.count;
-        }
-        else {
+        } else {
             print("Dialogs count \(dialogs.count)")
             return dialogs.count
         }
@@ -415,8 +412,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
     -> CGFloat {
         if tableView == self.tblUserChatListView {
             return 80.0
-        }
-        else {
+        } else {
             return UITableView.automaticDimension
         }
     }
@@ -443,8 +439,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
                 }
             }
             return cell
-        }
-        else {
+        } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DialogCellConstant.reuseIdentifier,
                                                            for: indexPath) as? DialogCell else {
                 return UITableViewCell()
@@ -500,8 +495,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             selectedUsers.insert(user)
             checkCreateChatButtonState()
             setupNavigationTitle()
-        }
-        else {
+        } else {
             tblUserChatListView.deselectRow(at: indexPath, animated: true)
             let dialog = dialogs[indexPath.row]
             if let dialogID = dialog.id {
@@ -548,8 +542,7 @@ extension CreateNewDialogViewController: UISearchBarDelegate {
                 cancel = false
                 setupUsers(downloadedUsers)
             }
-        }
-        else {
+        } else {
             if searchText.count > 0 {
                 self.dialogsFilterArray = chatManager.storage.dialogsSortByUpdatedAt()
                 var filteredUsers: [QBChatDialog] = []

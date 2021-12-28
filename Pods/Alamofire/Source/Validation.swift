@@ -108,8 +108,7 @@ extension Request {
         where S.Iterator.Element == String {
         guard
             let responseContentType = response.mimeType,
-            let responseMIMEType = MIMEType(responseContentType)
-        else {
+            let responseMIMEType = MIMEType(responseContentType)else {
             for contentType in acceptableContentTypes {
                 if let mimeType = MIMEType(contentType), mimeType.isWildcard {
                     return .success(())

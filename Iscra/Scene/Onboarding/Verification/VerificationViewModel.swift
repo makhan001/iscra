@@ -14,6 +14,7 @@ final class VerificationViewModel {
     var strText2: String = ""
     var strText3: String = ""
     var strText4: String = ""
+    var timerRemainingSeconds:Int = 0
     var isResendVerification: Bool = false
     weak var view: OnboardingViewRepresentable?
     let provider: OnboardingServiceProvidable

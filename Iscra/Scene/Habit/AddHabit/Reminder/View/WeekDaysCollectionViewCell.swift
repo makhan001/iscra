@@ -21,8 +21,7 @@ class WeekDaysCollectionViewCell: UICollectionViewCell {
         if day.isSelected == false{
             lblTitle.textColor = .black
             view.backgroundColor = .white
-        }
-        else{
+        } else {
             lblTitle.textColor = .white
             view.backgroundColor = UIColor(hex: selectedColor.colorHex)
         }

@@ -85,7 +85,7 @@ extension HabitCell: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectiondays{
             return  self.arrHabitMarks?.count ?? 0
-        }else {
+        } else {
             return arrGroupMembers?.count ?? 0
         }
     }
@@ -118,7 +118,7 @@ extension HabitCell: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
             } else {
                 return CGSize(width: self.collectiondays.bounds.width/3.5, height: 125)
             }
-        }else {
+        } else {
             return CGSize(width: 35, height: 35)
         }
     }
@@ -126,7 +126,7 @@ extension HabitCell: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
     func collectionView(_ collectionView: UICollectionView, getSizeAtIndexPath indexPath: IndexPath) -> CGSize {
         if collectionView == self.collectiondays{
             return CGSize(width: 50, height: 125)
-        }else {
+        } else {
             return CGSize(width: 35, height: 35)
         }
     }

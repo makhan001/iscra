@@ -9,7 +9,6 @@ import UIKit
 
 class WalkthroughViewController: UIViewController {
     
-    
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var btnAddMyPicture: UIButton!

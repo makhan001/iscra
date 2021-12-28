@@ -56,10 +56,10 @@ extension ColorCollection:  UICollectionViewDelegate, UICollectionViewDataSource
             if indexPath.row == index{
                 if colorItem[index].isSelected == true{
                     colorItem[index].isSelected = false
-                } else{
+                } else {
                     colorItem[index].isSelected = true
                 }
-            }else {
+            } else {
                 colorItem[index].isSelected = false
             }
         }

@@ -44,8 +44,7 @@ class  RepeatDaysTableView: UITableView, UITableViewDataSource, UITableViewDeleg
         var temp = weakDays
         if temp[indexPath.row].isSelected == true {
             temp[indexPath.row].isSelected = false
-        }
-        else{
+        } else {
             temp[indexPath.row].isSelected = true
         }
         weakDays = temp

@@ -23,7 +23,7 @@ class CacheManager {
         return cachesDirectoryUrl
     }()
     
-    func clearCache(){
+    func clearCache() {
         let cacheURL =  fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first!
         do {
             // Get the directory contents urls (including subfolders urls)

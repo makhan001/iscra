@@ -85,7 +85,7 @@ extension EditReminderViewController {
         // print("self.reminderTime is timemanager \(self.reminderTime)")
         if dateString.contains("AM") {
             self.btnSegment.selectedSegmentIndex = 0
-        }else{
+        } else {
             self.btnSegment.selectedSegmentIndex = 1
         }
     }
@@ -96,7 +96,7 @@ extension EditReminderViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "hh:mm a"
             dateString = dateFormatter.string(from: pickerTime.date)
-        }else{
+        } else {
           //  // print("self.reminderTime setDefalutTime is \(self.reminderTime)")
 
             if self.reminderTime.contains(":"){
@@ -113,7 +113,7 @@ extension EditReminderViewController {
                                 // print("date is  \(date)")
                                 dateString = strDate
                 // print("self.reminderTime setDefalutTime is actual time in dateString \(dateString)")
-            }else{
+            } else {
                 // print("self.reminderTime contains timestamp")
                 
                         let date = NSDate(timeIntervalSince1970: Double(self.reminderTime) ?? 0.0 / 1000)
@@ -141,14 +141,14 @@ extension EditReminderViewController {
             if self.reminders == true {
             self.reminderTime = dateString
             self.reminders = true
-        }else{
+        } else {
             self.reminderTime = ""
             self.reminders = false
         }
         
         if dateString.contains("AM"){
             self.btnSegment.selectedSegmentIndex = 0
-        }else{
+        } else {
             self.btnSegment.selectedSegmentIndex = 1
         }
     }

@@ -43,7 +43,7 @@ extension CommunityViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "joinHabit"), object: nil)
     }
     
-    @objc func refrershUI(){
+    @objc func refrershUI() {
         print("refrershUI is called")
     }
 }

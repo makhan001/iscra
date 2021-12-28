@@ -10,13 +10,13 @@ import UIKit
 class  RepeatDaysTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     var didSelectedDayAtIndex: ((String) -> Void)?
-    var weakDays = [weekStruct(id: 7, shortDayname: "S", dayname: "sunday", isSelect: false),
-                    weekStruct(id: 1, shortDayname: "M", dayname: "monday", isSelect: false),
-                    weekStruct(id: 2, shortDayname: "T", dayname: "tuesday", isSelect: false),
-                    weekStruct(id: 3, shortDayname: "W", dayname: "wednesday", isSelect: false),
-                    weekStruct(id: 4, shortDayname: "T", dayname: "thursday", isSelect: false),
-                    weekStruct(id: 5, shortDayname: "F", dayname: "friday", isSelect: false),
-                    weekStruct(id: 6, shortDayname: "S", dayname: "suturday", isSelect: false)]
+    var weakDays = [WeekDays(id: 7, shortDayname: "S", dayname: "sunday", isSelected: false),
+                    WeekDays(id: 1, shortDayname: "M", dayname: "monday", isSelected: false),
+                    WeekDays(id: 2, shortDayname: "T", dayname: "tuesday", isSelected: false),
+                    WeekDays(id: 3, shortDayname: "W", dayname: "wednesday", isSelected: false),
+                    WeekDays(id: 4, shortDayname: "T", dayname: "thursday", isSelected: false),
+                    WeekDays(id: 5, shortDayname: "F", dayname: "friday", isSelected: false),
+                    WeekDays(id: 6, shortDayname: "S", dayname: "suturday", isSelected: false)]
     
     override class func awakeFromNib() {
         super.awakeFromNib()
@@ -42,22 +42,22 @@ class  RepeatDaysTableView: UITableView, UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var temp = weakDays
-        if temp[indexPath.row].isSelect == true {
-            temp[indexPath.row].isSelect = false
+        if temp[indexPath.row].isSelected == true {
+            temp[indexPath.row].isSelected = false
         }
         else{
-            temp[indexPath.row].isSelect = true
+            temp[indexPath.row].isSelected = true
         }
         weakDays = temp
         var strDays = ""
         for i in temp {
-            if i.isSelect == true {
+            if i.isSelected == true {
                // strDays =  i.dayname + "," + strDays
               ///  strDays =  strDays + "," + i.dayname
                 
                 if strDays == "" {
                     strDays =   i.dayname
-                }else{
+                } else {
                     strDays =  strDays + "," + i.dayname
                 }
             }

@@ -191,12 +191,12 @@ class CreateNewDialogViewController: UIViewController {
             break
         }
     }
-    private func chatAction(){
+    private func chatAction() {
         self.isFriendsTab = false
         chatView.isHidden = false
         tblChatListView.isHidden = true
     }
-    private func friendsAction(){
+    private func friendsAction() {
         self.isFriendsTab = true
         chatView.isHidden = true
         tblChatListView.isHidden = false

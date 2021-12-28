@@ -9,13 +9,15 @@ import UIKit
 
 class ReminderViewController: UIViewController {
     
-    @IBOutlet var viewTime:UIView!
     @IBOutlet var btnTime:UIButton!
     @IBOutlet var btnNext:UIButton!
+    
+    @IBOutlet var viewTime:UIView!
     @IBOutlet var viewTimePicker:UIView!
     @IBOutlet var viewBackground:UIView!
+    
     @IBOutlet var switchReminder:UISwitch!
-    @IBOutlet var weekCollection:WeekCollection!
+    @IBOutlet var weekCollection:WeekCollection! // colletionView
     @IBOutlet weak var lblReminderTime: UILabel!
     @IBOutlet weak var pickerTime: UIDatePicker!
     @IBOutlet weak var btnSegment: UISegmentedControl!
@@ -25,7 +27,7 @@ class ReminderViewController: UIViewController {
     var habitType : HabitType = .good
     weak var router: NextSceneDismisser?
     private let viewModel = AddHabitViewModel()
-    var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
+    var selectedColorTheme =  HabitThemeColor(id: "1", colorHex: "#ff7B86EB", isSelected: true)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,7 @@ extension ReminderViewController {
         self.viewModel.view = self
         self.setNavigationView()
         self.habitType = self.viewModel.habitType
-        self.weekCollection.didSelectedDayAtIndex = didSelectedAtIndex
+        self.weekCollection.selectedHabitDays = selectedHabitDays
         self.switchReminder.addTarget(self, action:#selector(self.reminderSwitchValueChanged(_:)), for: .valueChanged)
         self.weekCollection.configure(selectedColor: selectedColorTheme)
         [btnTime, btnNext].forEach {
@@ -70,7 +72,7 @@ extension ReminderViewController {
         }
     }
     
-    func timeManager(){
+    func timeManager() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
         let dateString = dateFormatter.string(from: pickerTime.date)
@@ -163,8 +165,8 @@ extension ReminderViewController: NavigationBarViewDelegate {
 
 // MARK: API Callbacks
 extension ReminderViewController: HabitViewRepresentable {
-    private func didSelectedAtIndex(_ index: String) {
-        viewModel.days = index
+    private func selectedHabitDays(_ days: String) {
+        self.viewModel.sortWeekDays(days: days)
     }
     
     func onAction(_ action: HabitAction) {

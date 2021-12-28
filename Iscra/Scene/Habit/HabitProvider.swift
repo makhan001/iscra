@@ -90,7 +90,7 @@ final class HabitServiceProvider: HabitServiceProvidable {
     }
     
     func showHabit(param: HabitParams.ShowHabit) {
-        WebService().StartIndicator()
+//        WebService().StartIndicator()
         task.showHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .showHabit, with: resp, with: err)

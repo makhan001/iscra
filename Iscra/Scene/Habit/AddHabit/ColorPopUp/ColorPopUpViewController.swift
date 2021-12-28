@@ -14,9 +14,9 @@ class ColorPopUpViewController: UIViewController {
 
     var isFormEditHabit: Bool = false
     var colorTheme: String = "#ff7B86EB"
-    var delegateColor:selectedColordelegate?
+    var delegateColor:HabitThemeColorDelegate?
     var getUpdetedColorHex:((_ updetedColorHex: String)  ->())?
-    var selectedColor:ColorStruct = ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
+    var selectedColor:HabitThemeColor = HabitThemeColor(id: "1", colorHex: "#ff7B86EB", isSelected: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,19 +32,19 @@ class ColorPopUpViewController: UIViewController {
     }
   
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        delegateColor?.selectedColorIndex(color: selectedColor)
+        delegateColor?.selectedHabitTheme(color: selectedColor)
         self.updatedColorHex(colorHex: selectedColor.colorHex)
         self.dismiss(animated: true, completion: nil)
     }
     
     func collectionViewConfigure() {
         if self.isFormEditHabit == true {
-                var updatedArray:[ColorStruct] = []
+                var updatedArray:[HabitThemeColor] = []
                 for i in self.colorCollection.colorItem {
                     if  i.colorHex == self.colorTheme {
-                    updatedArray.append(ColorStruct(id: i.id, colorHex: i.colorHex, isSelect: true))
-                }else{
-                    updatedArray.append(ColorStruct(id: i.id, colorHex: i.colorHex, isSelect: false))
+                    updatedArray.append(HabitThemeColor(id: i.id, colorHex: i.colorHex, isSelected: true))
+                } else {
+                    updatedArray.append(HabitThemeColor(id: i.id, colorHex: i.colorHex, isSelected: false))
                 }
             }
                 self.colorCollection.colorItem = updatedArray
@@ -55,11 +55,11 @@ class ColorPopUpViewController: UIViewController {
     }
 }
 
-extension ColorPopUpViewController: selectedColordelegate {
-    func selectedColorIndex(color: ColorStruct) {
+extension ColorPopUpViewController: HabitThemeColorDelegate {
+    func selectedHabitTheme(color: HabitThemeColor) {
         print("color.colorHex is \(color.colorHex)")
         self.updatedColorHex(colorHex: color.colorHex)
-        delegateColor?.selectedColorIndex(color: color)
+        delegateColor?.selectedHabitTheme(color: color)
         selectedColor = color
     }
     

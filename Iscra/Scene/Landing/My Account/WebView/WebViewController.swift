@@ -33,7 +33,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
 }
 
 extension WebViewController {
-    private func setup(){
+    private func setup() {
         self.viewNavigation.delegateBarAction = self
         switch webPage {
         case .termsAndConditions:

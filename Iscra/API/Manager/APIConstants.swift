@@ -24,8 +24,8 @@ struct APIConstants {
     
     static let addHabit =  "habits/edit"
     static let editHabit =  "habits/add_habit"
-    static let updateProfile =  "/users/update"
-    static let socialLogin = "/users/sociallogin"
-    static let userRegister =  "/users/registration"
+    static let updateProfile =  "users/update"
+    static let socialLogin = "users/sociallogin"
+    static let userRegister =  "users/registration"
 }
 

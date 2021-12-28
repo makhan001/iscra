@@ -34,7 +34,7 @@ final class EditHabitViewModel {
         
         if self.days == "" {
             view?.onAction(.requireFields(AppConstant.emptyDays))
-        }else{
+        } else {
             HabitUtils.shared.days = self.days
             print("Api call")
             self.apiForUpdateHabit()

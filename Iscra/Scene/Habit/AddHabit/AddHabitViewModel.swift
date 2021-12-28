@@ -29,7 +29,7 @@ final class AddHabitViewModel {
         self.habitName  = self.habitName.trimmingCharacters(in: .whitespacesAndNewlines)
         self.description  = self.description.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if habitType == .group{
+        if habitType == .group {
             if Validation().textValidation(text: habitName, validationType: .habitName).0 {
                 view?.onAction(.requireFields(Validation().textValidation(text: habitName, validationType: .habitName).1))
                 return
@@ -39,7 +39,7 @@ final class AddHabitViewModel {
                 view?.onAction(.requireFields(Validation().textValidation(text: description, validationType: .description).1))
                 return
             }
-        }else{
+        } else {
             if Validation().textValidation(text: habitName, validationType: .habitName).0 {
                 view?.onAction(.requireFields(Validation().textValidation(text: habitName, validationType: .habitName).1))
                 return
@@ -61,15 +61,15 @@ final class AddHabitViewModel {
         if HabitUtils.shared.habitType != .group {
             if self.days == "" {
                 view?.onAction(.requireFields(AppConstant.emptyDays))
-            }else{
+            } else {
                 HabitUtils.shared.days = self.days
                 print("Api call")
                 self.apiForCreateHabit()
             }
-        }else{
+        } else {
             if self.days == "" {
                 view?.onAction(.requireFields(AppConstant.emptyDays))
-            }else{
+            } else {
                 HabitUtils.shared.days = self.days
                 view?.onAction(.navigateToGroupImage(true))
                 print("navigateToGroupImage")
@@ -83,14 +83,18 @@ final class AddHabitViewModel {
             if (self.groupImage == nil){
                 view?.onAction(.requireFields(AppConstant.emptyGroupImage))
                     print("image unavailable")
-                }else{
+                } else {
                     print("image available")
                     self.apiForCreateHabit()
             HabitUtils.shared.groupImage = self.groupImage
                 }
-        }else{
+        } else {
             view?.onAction(.createHabit)
         }
+    }
+    
+    func sortWeekDays(days: String) {
+        self.days = ((days.components(separatedBy: ",").sorted(by: { $0 < $1})).map{String($0)}).joined(separator: ",")
     }
 }
 
@@ -104,7 +108,7 @@ extension AddHabitViewModel: HabitInputViewDelegate {
             case .setGroupImage(screen): validateGroupImageSelection()
             default: break
             }
-        }else{
+        } else {
             switch action {
             case .inputComplete(screen): validateHabitInput()
             case .setTheme(screen): validateSetTheme()

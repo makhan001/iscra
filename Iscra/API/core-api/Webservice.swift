@@ -96,7 +96,7 @@ class WebService {
     func request(urlStr: String, parameters:[String: AnyObject], httpMethod : HTTPMethod, completion: @escaping JSONTaskCompletionHandlers) {
         
         guard let url = URL(string: urlStr) else { return }
-        AF.session.configuration.timeoutIntervalForRequest = 60
+        AF.session.configuration.timeoutIntervalForRequest = 5
         var request = URLRequest.init(url: url)
         let requestData = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
         request.httpMethod = httpMethod.rawValue
@@ -164,12 +164,12 @@ class WebService {
         }
     }
     
-    func StartIndicator(){
+    func StartIndicator() {
         UIApplication.shared.beginIgnoringInteractionEvents()
         SVProgressHUD.show()
     }
     
-    func StopIndicator(){
+    func StopIndicator() {
         UIApplication.shared.endIgnoringInteractionEvents()
         SVProgressHUD.dismiss()
     }

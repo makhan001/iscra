@@ -62,12 +62,12 @@ extension VerificationViewController {
         self.startTimer()
     }
     
-    private func customTextFieldFont(){
+    private func customTextFieldFont() {
         otpTextFieldFirst.becomeFirstResponder()
     }
     
     // MARK:- SetTimer for resend password
-    private func startTimer(){
+    private func startTimer() {
         self.btnResendCode.isHidden = true
         self.lblTimer.isHidden = false
         self.secondsRemaining = 30

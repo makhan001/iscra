@@ -118,7 +118,7 @@ extension EditHabitViewController: clickManagerDelegate{
             if isReminderOn {
                 self.reminders = isReminderOn
                 self.timer = reminderTime
-            }else{
+            } else {
                 self.reminders = isReminderOn
                 self.timer = reminderTime
             }
@@ -161,12 +161,12 @@ extension EditHabitViewController: NavigationBarViewDelegate {
                  let dateString = dateFormatter.date(from: yourDate)
                  let dateTimeStamp  = dateString!.timeIntervalSince1970
                 self.viewModel.timer = String(dateTimeStamp)
-            }else{
+            } else {
                 self.viewModel.timer = self.timer
             }
             self.viewModel.reminders = true
             
-        }else{
+        } else {
             self.viewModel.timer = ""
             self.viewModel.reminders = false
         }

@@ -37,7 +37,7 @@ class  HabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
 //        
 //        if objHabitList.habitMarks?.count == nil {
 //            print("self.arrHabitMarks?.count is  0")
-//        }else{
+//        } else {
 //            print("self.arrHabitMarks?.count is not 0")
 //        }
         

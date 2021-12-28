@@ -78,7 +78,7 @@ extension HomeViewController {
      //   print("self.router is HomeViewController  \(String(describing: self.router))")
         if self.viewModel.habitList[index].habitType == "group_habit" {
             self.router?.push(scene: .groupHabitFriends)
-        }else{
+        } else {
             self.router?.push(scene: .habitCalender)
         }
        // */
@@ -107,7 +107,7 @@ extension HomeViewController: HabitViewRepresentable {
         if self.viewModel.habitList.count == 0 {
             self.viewFirstHabit.isHidden = false
             self.tableView.isHidden = true
-        }else{
+        } else {
             self.viewFirstHabit.isHidden = true
             self.tableView.isHidden = false
             self.tableView.configure(habits: self.viewModel.habitList)
@@ -139,7 +139,7 @@ extension HomeViewController {
 
 //MARK: - Pull to refresh list
 extension HomeViewController{
-    func setPullToRefresh(){
+    func setPullToRefresh() {
         self.viewModel.pullToRefreshCtrl = UIRefreshControl()
         self.viewModel.pullToRefreshCtrl.addTarget(self, action: #selector(self.pullToRefreshClick(sender:)), for: .valueChanged)
         if #available(iOS 10.0, *) {

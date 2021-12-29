@@ -13,7 +13,7 @@ class QBChatLogin {
     
         var dialogID: String? {
             didSet {
-                handlePush()
+               // handlePush()
             }
         }
     func registerQBUser() {
@@ -69,20 +69,22 @@ class QBChatLogin {
 //            print("LoginChatNotSuccess",response)
 //        }
         
-        QBRequest.logIn(withUserLogin: login,
-                        password: password,
+        QBRequest.logIn(withUserLogin: UserStore.userEmail ?? "",
+                        password: AppConstant.defaultQBUserPassword,
                         successBlock: { [weak self] response, user in
                             guard let self = self else {
                                 return
                             }
                             
-                            user.password = password
+                            user.password = AppConstant.defaultQBUserPassword
                             Profile.synchronize(user)
                             
                             if user.fullName != fullName {
+                                print(user.fullName)
                                // self.updateFullName(fullName: fullName, login: login)
                             } else {
                                 self.connectToChat(user: user, userPassword: AppConstant.defaultQBUserPassword)
+                                print("user===>\(user)")
                             }
                             print("LoginChatSuccess",response)
                             
@@ -94,7 +96,7 @@ class QBChatLogin {
                    // self?.defaultConfiguration()
                     print("LoginChatNotSuccess",response)
                 }
-                print("LoginChatNotSuccess",response)
+               
         })
         
     }

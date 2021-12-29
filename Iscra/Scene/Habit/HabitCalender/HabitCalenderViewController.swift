@@ -99,13 +99,7 @@ extension HabitCalenderViewController {
         self.circularViewSetup()
         self.viewNavigation.lblTitle.textColor = self.themeColor
         self.viewNavigation.lblTitle.text = self.strTitleName.capitalized
-
-        
         self.eventsDateArray = viewModel.arrHabitCalender?.compactMap { $0.date } ?? [Date()]
-        
-        
-        
-        
     }
     
     func circularViewSetup() {
@@ -220,19 +214,7 @@ extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date()
     }
-    //
-    //    func minimumDate(for calendar: FSCalendar) -> Date {
-    //        return Date()
-    //    }
-    
-//    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-//        print("self.viewCalender.currentPage timeIntervalSince1970 is \(self.viewCalender.currentPage.timeIntervalSince1970)")
-//        self.viewModel.habitMonth =  String(format: "%.0f", self.viewCalender.currentPage.timeIntervalSince1970)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//            self.viewModel.getMonthlyHabitDetail()
-//        }
-//    }
-    
+  
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.getMonthlyHabitDetail()
     }
@@ -326,5 +308,3 @@ extension HabitCalender {
         return convertedDate
     }
 }
-
-

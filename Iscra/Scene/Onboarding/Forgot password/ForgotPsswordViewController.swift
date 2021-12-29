@@ -68,7 +68,7 @@ extension ForgotPasswordViewController:UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = textEmail.text, let textRange = Range(range, in: text) {
+        if let text = textField.text, let textRange = Range(range, in: text) {
             viewModel.email = text.replacingCharacters(in: textRange, with: string)
         }
         return true

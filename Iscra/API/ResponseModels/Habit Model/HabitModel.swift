@@ -33,3 +33,41 @@ struct Habit: Codable {
         case groupImage = "group_image"
     }
 }
+
+// MARK: - GroupHabitDetails
+struct GroupHabitDetails: Codable {
+    let id: Int?
+    let name, groupHabitDetailsDescription: String?
+    let image: String?
+    let memberCount: Int?
+    let usersProfileImageURL: [UsersProfileImageURL]?
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case groupHabitDetailsDescription = "description"
+        case image
+        case memberCount = "member_count"
+        case usersProfileImageURL = "users_profile_image_url"
+    }
+}
+
+// MARK: - UsersProfileImageURL
+struct UsersProfileImageURL: Codable {
+    let profileImage: String?
+
+    enum CodingKeys: String, CodingKey {
+        case profileImage = "profile_image"
+    }
+}
+
+// MARK: - GroupHabitMember
+struct GroupHabitMember: Codable {
+    let id: Int?
+    let username: String?
+    let profileImage: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id, username
+        case profileImage = "profile_image"
+    }
+}

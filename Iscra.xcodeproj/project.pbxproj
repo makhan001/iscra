@@ -22,6 +22,8 @@
 		043CF5492768AAC500526FBC /* WalkthroughCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF5482768AAC500526FBC /* WalkthroughCoordinator.swift */; };
 		043CF54C2768B3B300526FBC /* AddMemojiCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF54B2768B3B200526FBC /* AddMemojiCoordinator.swift */; };
 		0440B9312752050D0096DC2D /* HabitCalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */; };
+		04456E6F277C506800C6E0FE /* CommunityDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04456E6E277C506800C6E0FE /* CommunityDetailCoordinator.swift */; };
+		04456E72277C54AB00C6E0FE /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04456E71277C54AB00C6E0FE /* GroupMembersViewController.swift */; };
 		0456AE972750CA4500DB3ED4 /* HabitProvider.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940B2750BC1A00503123 /* HabitProvider.swift */; };
 		0456AE982750CA4500DB3ED4 /* HabitAdaptables.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940E2750BC9A00503123 /* HabitAdaptables.swift */; };
 		0456AE9B2750D1E300DB3ED4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */; };
@@ -328,6 +330,8 @@
 		043CF5482768AAC500526FBC /* WalkthroughCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughCoordinator.swift; sourceTree = "<group>"; };
 		043CF54B2768B3B200526FBC /* AddMemojiCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemojiCoordinator.swift; sourceTree = "<group>"; };
 		0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderCoordinator.swift; sourceTree = "<group>"; };
+		04456E6E277C506800C6E0FE /* CommunityDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailCoordinator.swift; sourceTree = "<group>"; };
+		04456E71277C54AB00C6E0FE /* GroupMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersViewController.swift; sourceTree = "<group>"; };
 		0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountCoordinator.swift; sourceTree = "<group>"; };
 		045791E12754AA67006E0410 /* HabitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitUtils.swift; sourceTree = "<group>"; };
@@ -1472,9 +1476,11 @@
 				047FFD8927733336009503CB /* CommunitySearchViewModel.swift */,
 				887994B1273AB2ED00904D1F /* Table */,
 				887994B8273AB2ED00904D1F /* CommunitySearchViewController.swift */,
+				04456E71277C54AB00C6E0FE /* GroupMembersViewController.swift */,
 				5F191EF1277209DC00836126 /* CommunitySearchViewModel.swift */,
 				887994B9273AB2ED00904D1F /* CommunityDetailViewController.swift */,
 				04F0CB2F277458C0002873DB /* CommunityDetailViewModel.swift */,
+				04456E6E277C506800C6E0FE /* CommunityDetailCoordinator.swift */,
 				047E3EE4276C7AD600C8C8A1 /* CommunityAdaptables.swift */,
 				047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */,
 			);
@@ -2099,6 +2105,7 @@
 				5FF6CD55274E6A5A007ADC2F /* ChatViewController.swift in Sources */,
 				88021C67273CF688004A58F5 /* AddGroupImageViewController.swift in Sources */,
 				8814B4342743874100A6DE01 /* AuthRequests.swift in Sources */,
+				04456E72277C54AB00C6E0FE /* GroupMembersViewController.swift in Sources */,
 				88E580762722F5F300D4CAFB /* SetThemeViewController.swift in Sources */,
 				8814B43A2743874100A6DE01 /* APIClient.swift in Sources */,
 				5FF6CD27274E6A5A007ADC2F /* Reachability.swift in Sources */,
@@ -2197,6 +2204,7 @@
 				045BF9D32769CDD9008B1C8A /* AddGroupImageCoordinator.swift in Sources */,
 				5FF6CD66274E6A5A007ADC2F /* ChatPrivateTitleView.swift in Sources */,
 				5FF6CD5C274E6A5A007ADC2F /* SelectAssetCell.swift in Sources */,
+				04456E6F277C506800C6E0FE /* CommunityDetailCoordinator.swift in Sources */,
 				8814B43C2743874100A6DE01 /* Base.swift in Sources */,
 				88E028652716F73F00D90BB1 /* AppDelegate.swift in Sources */,
 				5FF6CD82274E6A5A007ADC2F /* UIView+Pins.swift in Sources */,

@@ -78,14 +78,14 @@ final class HabitServiceProvider: HabitServiceProvidable {
         }
     }
     
-    func groupInvitations(param: HabitParams.GroupInvitations) {
+    func shareHabit(param: HabitParams.ShareHabit) {
         WebService().StartIndicator()
-        task.groupInvitations(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+        task.shareHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .groupInvitations, with: resp, with: err)
+                self?.delegate?.completed(for: .shareHabit, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .groupInvitations, with: resp, with: nil)
+            self?.delegate?.completed(for: .shareHabit, with: resp, with: nil)
         }
     }
     

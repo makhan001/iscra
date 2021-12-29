@@ -12,6 +12,7 @@ class CommunityDetailViewController: UIViewController {
     
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnJoin: UIButton!
+    @IBOutlet weak var btnMates: UIButton!
     @IBOutlet weak var lblGroupName: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lbldiscription: UILabel!
@@ -21,7 +22,7 @@ class CommunityDetailViewController: UIViewController {
     var vibrantLabel = UILabel()
     var headerImageView: UIView?
     var objInvitaion: Invitaion?
-    var objShowHabitDetail: HabitDetails?
+    var objGroupHabitDetails: GroupHabitDetails?
 
     weak var router: NextSceneDismisser?
     let viewModel: CommunityDetailViewModel = CommunityDetailViewModel(provider: HabitServiceProvider())
@@ -37,7 +38,7 @@ class CommunityDetailViewController: UIViewController {
 extension CommunityDetailViewController {
     private func setup() {
         self.viewModel.view = self
-        [btnBack,btnJoin].forEach {
+        [btnBack,btnJoin,btnMates].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
         self.viewModel.habitId = self.objInvitaion?.id ?? 0
@@ -102,6 +103,8 @@ extension CommunityDetailViewController {
             self.backAction()
         case btnJoin:
             self.joinAction()
+        case btnMates:
+            self.matesAction()
         default:
             break
         }
@@ -116,6 +119,10 @@ extension CommunityDetailViewController {
     private func backAction() {
         self.router?.dismiss(controller: .communityDetail)
     }
+    private func matesAction() {
+        print("matesAction clicked")
+        self.router?.push(scene: .groupMembers)
+    }
 }
 
 extension CommunityDetailViewController: HabitViewRepresentable{
@@ -124,7 +131,7 @@ extension CommunityDetailViewController: HabitViewRepresentable{
         case  let .errorMessage(msg):
             self.showToast(message: msg)
         case .sucessMessage(_):
-            self.objShowHabitDetail = self.viewModel.objShowHabitDetail
+            self.objGroupHabitDetails = self.viewModel.objGroupHabitDetails
             self.reloadUI()
             print("load data")
         case let .joinHabitMessage(msg):
@@ -142,12 +149,12 @@ extension CommunityDetailViewController: HabitViewRepresentable{
     }
     
     func reloadUI() {
-        self.objShowHabitDetail = self.viewModel.objShowHabitDetail
-        self.lblGroupName.text = self.objShowHabitDetail?.name
-        self.lbldiscription.text = self.objShowHabitDetail?.habitDetailsDescription
-        self.lblMembersCount.text = "(" + String(self.objShowHabitDetail?.members?.count ?? 0) + ")"
-        self.setupParallaxHeader(groupImage: self.objShowHabitDetail?.groupImage ?? "ic-Rectangle")
+        self.objGroupHabitDetails = self.viewModel.objGroupHabitDetails
+        self.lblGroupName.text = self.objGroupHabitDetails?.name
+        self.lbldiscription.text = self.objGroupHabitDetails?.groupHabitDetailsDescription
+        self.lblMembersCount.text = "(" + String(self.objGroupHabitDetails?.memberCount ?? 0) + ")"
+        self.setupParallaxHeader(groupImage: self.objGroupHabitDetails?.image ?? "ic-Rectangle")
         self.addTitleLabel()
-        self.collectionMates.configure(arrMember: self.objShowHabitDetail?.members)
+        self.collectionMates.configure(arrMember: self.objGroupHabitDetails?.usersProfileImageURL)
     }
 }

@@ -268,6 +268,12 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func convertedDate(format: String, strDate: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.date(from: strDate) ?? Date()
+    }
+    
     func addDays(days:Int) -> TimeInterval {
         var dayComponent = DateComponents()
         dayComponent.day = days

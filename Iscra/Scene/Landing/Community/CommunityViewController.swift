@@ -14,7 +14,7 @@ class CommunityViewController: UIViewController {
     @IBOutlet weak var lblNoInvitationFound: UILabel!
     @IBOutlet weak var collectionMyGroups: MyCommunityCollectionView!
     @IBOutlet weak var collectionNewGroupHabit: NewCommunityCollectionView!
-    private let viewModel: CommunityViewModel = CommunityViewModel(provider:  CommunityServiceProvider())
+    let viewModel: CommunityViewModel = CommunityViewModel(provider:  CommunityServiceProvider())
     
     weak var router: NextSceneDismisser?
     var objInvitaion: Invitaion?
@@ -45,6 +45,11 @@ extension CommunityViewController {
     
     @objc func refrershUI() {
         print("refrershUI is called")
+    }
+    
+    private func didSelectCollectionAtIndex(index: Int) {
+        self.viewModel.habitId = self.viewModel.arrMyGroupList[index].id ?? 0
+        self.router?.push(scene: .groupHabitFriends)
     }
 }
 
@@ -99,6 +104,7 @@ extension CommunityViewController: CommunityViewRepresentable {
             self.collectionMyGroups.isHidden = false
             self.lblNoGroupsFound.isHidden = true
             self.collectionMyGroups.configure(myGroups: self.viewModel.arrMyGroupList)
+            self.collectionMyGroups.didSelectCollectionAtIndex = self.didSelectCollectionAtIndex
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
                 self.collectionMyGroups.reloadData()
             }
@@ -119,4 +125,5 @@ extension CommunityViewController: CommunityViewRepresentable {
             self.lblNoInvitationFound.isHidden = false
         }
     }
+
 }

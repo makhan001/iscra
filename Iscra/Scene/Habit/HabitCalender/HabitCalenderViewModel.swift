@@ -13,11 +13,14 @@ final class HabitCalenderViewModel {
     var habitId: Int = 0
     var userId: String = ""
     var habitMonth: String = ""
+    var longestStreak: Int?
+
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
     var objHabitDetail: HabitDetails?
     var arrHabitCalender: [HabitCalender]?
+  //  var arrMembers: [Member]?
 
     init(provider: HabitServiceProvidable) {
         self.provider = provider
@@ -53,15 +56,14 @@ extension HabitCalenderViewModel: HabitServiceProvierDelegate {
             if error != nil {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
-                if let resp = response as? SuccessResponseModel, resp.code == 200 , let objHabitDetail = resp.data?.habitDetails {
+                if let resp = response as? SuccessResponseModel, resp.code == 200, let objHabitDetail = resp.data?.habitDetails {
                     self.objHabitDetail = objHabitDetail
-                  //  self.objHabitDetail = objGroupDetails
-
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
-                } else if let resp = response as? SuccessResponseModel, resp.code == 200 , let arrHabitCalender = resp.data?.habitCalender{
+                } else if let resp = response as? SuccessResponseModel, resp.code == 200, let arrHabitCalender = resp.data?.habitCalender, let longestStreak = resp.data?.longestStreak {
                     self.arrHabitCalender = arrHabitCalender
+                    self.longestStreak = longestStreak
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
-                } else if let resp = response as? SuccessResponseModel, resp.code == 200 , let _ = resp.data?.habitMark{
+                } else if let resp = response as? SuccessResponseModel, resp.code == 200, let _ = resp.data?.habitMark{
                     self.getMonthlyHabitDetail()
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
                 } else if let resp = response as? SuccessResponseModel, resp.code == 200, let status = resp.status {

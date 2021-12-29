@@ -178,8 +178,8 @@ extension VerificationViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-        case let .verification(msg):
-            self.showToast(message: msg, seconds: 0.5)
+        case .verification(_):
+//            self.showToast(message: msg, seconds: 0.5)
             if self.viewModel.isResendVerification != true {
                 self.router?.dismiss(controller: .verification)
             }

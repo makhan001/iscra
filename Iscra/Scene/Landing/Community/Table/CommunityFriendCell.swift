@@ -9,8 +9,8 @@ import UIKit
 
 class CommunityFriendCell: UITableViewCell, Reusable {
     
-    @IBOutlet weak var imageFriend: UIImageView! //
     @IBOutlet weak var lblFriendname: UILabel!
+    @IBOutlet weak var imageFriend: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,15 +18,15 @@ class CommunityFriendCell: UITableViewCell, Reusable {
     }
     
     func configure<T>(with content: T) {
-        guard let objFriend = content as? Friend else { return }
-        self.lblFriendname.text = objFriend.username?.lowercased()
-        self.imageFriend.setImageFromURL(objFriend.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
-    }
-    
-    func configureMembers<T>(with content: T) {
-        guard let objGroupHabitMember = content as? GroupHabitMember else { return }
-        self.lblFriendname.text = objGroupHabitMember.username?.lowercased()
-        self.imageFriend.setImageFromURL(objGroupHabitMember.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
+        if let objFriend = content as? Friend {
+            self.lblFriendname.text = objFriend.username?.lowercased()
+            self.imageFriend.setImageFromURL(objFriend.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
+        }
+        
+        if let objGroupHabitMember = content as? GroupHabitMember {
+            self.lblFriendname.text = objGroupHabitMember.username?.lowercased()
+            self.imageFriend.setImageFromURL(objGroupHabitMember.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

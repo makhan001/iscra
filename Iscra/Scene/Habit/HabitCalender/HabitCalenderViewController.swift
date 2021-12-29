@@ -92,17 +92,6 @@ extension HabitCalenderViewController {
         self.viewCalender.appearance.headerMinimumDissolvedAlpha = 0.0;
         self.viewCalender.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
         self.viewCalender.appearance.headerTitleFont = UIFont.systemFont(ofSize:  CGFloat(22), weight: .medium)
-        
-        let dateStrings = ["2021-11-02","2021-11-03", "2021-11-05", "2021-11-14","2021-12-8"]
-        var dateObjects = [Date]()
-        let dateFormatter = DateFormatter()
-        // dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        for date in dateStrings{
-            let dateObject = dateFormatter.date(from: date)
-            dateObjects.append(dateObject!)
-        }
-        self.eventsDateArray = dateObjects
     }
     
     func reloadCaledar() {
@@ -110,6 +99,13 @@ extension HabitCalenderViewController {
         self.circularViewSetup()
         self.viewNavigation.lblTitle.textColor = self.themeColor
         self.viewNavigation.lblTitle.text = self.strTitleName.capitalized
+
+        
+        self.eventsDateArray = viewModel.arrHabitCalender?.compactMap { $0.date } ?? [Date()]
+        
+        
+        
+        
     }
     
     func circularViewSetup() {
@@ -317,3 +313,18 @@ extension HabitCalenderViewController: NavigationBarViewDelegate {
         self.viewBottom.isHidden = false
     }
 }
+
+extension HabitCalender {
+    var date: Date?{
+        guard let habitDay = habitDay else { return nil }
+        let epocTime =  TimeInterval(habitDay)
+        let calenderDate = Date(timeIntervalSince1970: epocTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date =  dateFormatter.string(from: calenderDate)
+        let convertedDate = dateFormatter.date(from: date)
+        return convertedDate
+    }
+}
+
+

@@ -101,7 +101,11 @@ final class LandingCoordinator: Coordinator<Scenes> {
         groupHabitCalender = GroupHabitCalenderCoordinator(router: Router())
         add(groupHabitCalender)
         groupHabitCalender.delegate = self
-        groupHabitCalender.start(habitId: controller.home.viewModel.habitId)
+        if controller.home.viewModel.habitId != 0 {
+            groupHabitCalender.start(habitId: controller.home.viewModel.habitId)
+        } else {
+            groupHabitCalender.start(habitId: controller.community.viewModel.habitId)
+        }
         self.router.present(groupHabitCalender, animated: true)
     }
     

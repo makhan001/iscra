@@ -19,6 +19,7 @@ struct DataClass: Codable {
     var forgotPassword: String?
     var url: String?
     var verificationCode: Int?
+    var longestStreak: Int?
     var user: User?
     var habit: Habit?
     var habits: [AllHabits]?
@@ -46,7 +47,7 @@ struct DataClass: Codable {
         case habitCalender = "habit_calender"
         case groupHabitDetails = "group_habit_details"
         case groupHabitMembers = "group_habit_members"
-
+        case longestStreak = "longest_streak"
     }
 }
 

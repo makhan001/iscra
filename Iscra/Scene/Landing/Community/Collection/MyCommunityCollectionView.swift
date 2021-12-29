@@ -8,8 +8,9 @@
 import UIKit
 
 class MyCommunityCollectionView: UICollectionView , UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-
+    
     var myGroupList = [GroupHabit]()
+    var didSelectCollectionAtIndex:((Int) -> Void)?
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -25,6 +26,10 @@ class MyCommunityCollectionView: UICollectionView , UICollectionViewDelegate , U
     // MARK: UICollectionViewDataSource
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.myGroupList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.didSelectCollectionAtIndex?(indexPath.row)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

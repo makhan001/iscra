@@ -10,32 +10,40 @@ protocol FriendTableNavigation: class {
     func didNavigateToCalender()
 }
 
-class  GroupHabitFriendsTable: UITableView, UITableViewDataSource, UITableViewDelegate {
-    // MARK: Varibles
-    private var count: Int = 10
-    weak var friendTableNavigationDelegate: FriendTableNavigation?
+class  GroupHabitFriendsTable: UITableView {
     
+    // MARK: Varibles
+    var viewModel: HabitCalenderViewModel!
+    weak var friendTableNavigationDelegate: FriendTableNavigation?
+
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure(obj: Int) {
-        self.register(UINib(nibName: "GroupFriendsCell", bundle: nil), forCellReuseIdentifier: "GroupFriendsCell")
-        self.delegate = self
-        self.dataSource = self
-        self.count = obj
-        self.reloadData()
+    func configure(viewModel: HabitCalenderViewModel) {
+        self.viewModel = viewModel
+        self.setup()
     }
     
+    private func setup() {
+        dataSource = self
+        delegate = self
+        estimatedRowHeight = 70.0
+        rowHeight = UITableView.automaticDimension
+        tableFooterView = UIView(frame: .zero)
+        separatorStyle = .none
+    }
+}
+
+extension GroupHabitFriendsTable: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.count
+        return self.viewModel.objHabitDetail?.members?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupFriendsCell") as? GroupFriendsCell else {
-            return UITableViewCell()
-        }
-        cell.configure()
+        let cell = self.dequeueReusable(indexPath) as GroupFriendsCell
+        cell.configure(with: self.viewModel.objHabitDetail?.members?[indexPath.row])
+       // cell.configure(with: self.viewModel.objHabitDetail?.members?[indexPath.row])
         return cell
     }
     

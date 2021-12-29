@@ -70,8 +70,8 @@ final class UserTask {
         dispatcher.execute(requst: HabitRequests(type: .markAsComplete, params: params), modeling: responseModel, completion: completion)
     }
     
-    func groupInvitations<T:Codable>(params: HabitParams.GroupInvitations, responseModel: T.Type, completion: @escaping APIResult<T>) {
-        dispatcher.execute(requst: HabitRequests(type: .groupInvitations, params: params), modeling: responseModel, completion: completion)
+    func shareHabit<T:Codable>(params: HabitParams.ShareHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .shareHabit, params: params), modeling: responseModel, completion: completion)
     }
     
     func habitCalender<T:Codable>(params: HabitParams.HabitCalender, responseModel: T.Type, completion: @escaping APIResult<T>) {

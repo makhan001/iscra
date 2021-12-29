@@ -155,11 +155,16 @@ extension WalkthroughViewController : UIScrollViewDelegate {
 // MARK:- TextField Delegate
 extension WalkthroughViewController : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if string.rangeOfCharacter(from: .decimalDigits) != nil || string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {
+//            return false
+//        }
+        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {
+            return false
+        }
+        
         let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
         if newLength <= 30 {
-            if string.rangeOfCharacter(from: .decimalDigits) != nil || string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {
-                return false
-            }
+            
             let characterSet = NSCharacterSet(charactersIn: AppConstant.USERNAME_ACCEPTABLE_CHARACTERS).inverted
             let filtered = string.components(separatedBy: characterSet).joined(separator: "")
             self.setNameTextField(newLength: newLength, string: string, range:range)

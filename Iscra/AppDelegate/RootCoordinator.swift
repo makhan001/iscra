@@ -27,8 +27,6 @@ class RootCoordinator {
             onboardingCoordinator.start()
             window.rootViewController = onboardingCoordinator.toPresentable()
         }
-//        landingCoordinator.start()
-//        window.rootViewController = landingCoordinator.toPresentable()
         window.makeKeyAndVisible()
     }
 }

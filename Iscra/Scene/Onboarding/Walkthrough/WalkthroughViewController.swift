@@ -158,7 +158,7 @@ extension WalkthroughViewController : UITextFieldDelegate {
 //        if string.rangeOfCharacter(from: .decimalDigits) != nil || string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {
 //            return false
 //        }
-        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {
+        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil || string.containsEmoji {
             return false
         }
         

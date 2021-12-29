@@ -31,6 +31,7 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.retriveUserDetails()
     }
 }
@@ -56,7 +57,6 @@ extension MyAccountViewController {
     
     private func retriveUserDetails() {
         self.lblName.text = UserStore.userName?.capitalized
-       // self.imageProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
         self.imgProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
     }
     

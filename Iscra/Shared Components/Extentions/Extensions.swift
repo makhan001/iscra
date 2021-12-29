@@ -408,4 +408,7 @@ extension Notification.Name {
     static let EditHabit = Notification.Name("EditHabit")
     static let JoinHabit = Notification.Name("JoinHabit")
     static let SearchAllGroup = Notification.Name("SearchAllGroup")
+    static let IAPHelperPurchaseNotification = Notification.Name("IAPHelperPurchaseNotification")
+    static let IAPHelperPurchaseFinishNotification = Notification.Name("IAPHelperPurchaseFinishNotification")
+    static let IAPHelperSubscriptionExpireDateNotification = Notification.Name("IAPHelperSubscriptionExpireDateNotification")
 }

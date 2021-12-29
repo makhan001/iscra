@@ -167,6 +167,8 @@
 		862E5AFB27565B5A00225894 /* HabitNameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */; };
 		8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A8392747D41100773C57 /* LandingCoordinator.swift */; };
 		86CF862C2775CE1900FB19BC /* QBChatLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF862B2775CE1900FB19BC /* QBChatLogin.swift */; };
+		86DC2EB5277C889100CA4C9F /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC2EB3277C889000CA4C9F /* IAPHelper.swift */; };
+		86DC2EB6277C889100CA4C9F /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC2EB4277C889000CA4C9F /* Products.swift */; };
 		8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800806B2729255E008E3260 /* ReminderViewController.swift */; };
 		880080732729282F008E3260 /* HabitNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080722729282F008E3260 /* HabitNameViewController.swift */; };
 		880080782729346D008E3260 /* WeekCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080772729346D008E3260 /* WeekCollection.swift */; };
@@ -480,6 +482,8 @@
 		862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameCoordinator.swift; sourceTree = "<group>"; };
 		8669A8392747D41100773C57 /* LandingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingCoordinator.swift; sourceTree = "<group>"; };
 		86CF862B2775CE1900FB19BC /* QBChatLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QBChatLogin.swift; sourceTree = "<group>"; };
+		86DC2EB3277C889000CA4C9F /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		86DC2EB4277C889000CA4C9F /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		8800806B2729255E008E3260 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		880080722729282F008E3260 /* HabitNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameViewController.swift; sourceTree = "<group>"; };
 		880080772729346D008E3260 /* WeekCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollection.swift; sourceTree = "<group>"; };
@@ -1183,6 +1187,15 @@
 			path = HabitName;
 			sourceTree = "<group>";
 		};
+		86DC2EB2277C889000CA4C9F /* In App Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				86DC2EB3277C889000CA4C9F /* IAPHelper.swift */,
+				86DC2EB4277C889000CA4C9F /* Products.swift */,
+			);
+			path = "In App Purchase";
+			sourceTree = "<group>";
+		};
 		8800806A27292536008E3260 /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1728,6 +1741,7 @@
 		88E028582716F73F00D90BB1 /* Shared Components */ = {
 			isa = PBXGroup;
 			children = (
+				86DC2EB2277C889000CA4C9F /* In App Purchase */,
 				5F164E5D2763881D0059F8C2 /* NavigationBar */,
 				0496E013275E41B3005C982A /* CircularProgressBar */,
 				5FF6CC8D274E6A5A007ADC2F /* Chat */,
@@ -2249,12 +2263,14 @@
 				882F3E182721AAC300A409A6 /* MyAccountViewController.swift in Sources */,
 				882F3E172721AAC300A409A6 /* MyAccountTableView.swift in Sources */,
 				5FF6CD83274E6A5A007ADC2F /* PDFViewController.swift in Sources */,
+				86DC2EB6277C889100CA4C9F /* Products.swift in Sources */,
 				04295A2B2758BC60001BF65E /* FetchHabit.swift in Sources */,
 				5FF6CD68274E6A5A007ADC2F /* CircularProgressBar.swift in Sources */,
 				8814B418274385E600A6DE01 /* Coordinators.swift in Sources */,
 				887994BE273AB2EE00904D1F /* CommunityGroupHabit.swift in Sources */,
 				5FF6CD71274E6A5A007ADC2F /* ChatDateCell.swift in Sources */,
 				88E028F227170B7F00D90BB1 /* WebRouter.swift in Sources */,
+				86DC2EB5277C889100CA4C9F /* IAPHelper.swift in Sources */,
 				5FF6CD23274E6A5A007ADC2F /* DialogCell.swift in Sources */,
 				887994C5273AB2EE00904D1F /* GroupHabitTableView.swift in Sources */,
 				88E028662716F73F00D90BB1 /* SceneDelegate.swift in Sources */,

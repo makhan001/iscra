@@ -25,7 +25,7 @@ class AppConstant: NSObject {
     // Chat Password
     static let defaultQBUserPassword = "Iscra@123"
     
-    static let USERNAME_ACCEPTABLE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_-"
+    static let USERNAME_ACCEPTABLE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-"
     
     
     //Onboarding --

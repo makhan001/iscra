@@ -51,9 +51,10 @@ extension EditHabitViewModel {
     func apiForUpdateHabit() {
         let habitId = String(self.objHabitDetail?.id ?? 0)
         let icon = self.objHabitDetail?.icon ?? ""
-        let habitType = HabitType(rawValue: (self.objHabitDetail?.habitType)!) ?? .good
+       // let habitType = HabitType(rawValue: (self.objHabitDetail?.habitType)!) ?? .good
+        let habitType = self.objHabitDetail?.habitType
         let description = self.objHabitDetail?.habitDetailsDescription ?? ""
-        let parameters = HabitParams.UpdateHabit(id: habitId, days: self.days, icon: icon, name: self.habitName, timer: self.timer, reminders: self.reminders, habit_type: habitType.rawValue, color_theme: self.colorTheme, description: description)
+        let parameters = HabitParams.UpdateHabit(id: habitId, days: self.days, icon: icon, name: self.habitName, timer: self.timer, reminders: self.reminders, habit_type: habitType, color_theme: self.colorTheme, description: description)
         print("param is  \(parameters)")
         WebService().requestMultiPart(urlString: APIConstants.editHabit,
                                       httpMethod: .put,
@@ -76,7 +77,6 @@ extension EditHabitViewModel {
         }
     }
 }
-
 
 extension EditHabitViewModel: HabitInputViewDelegate {
     func onAction(action: HabitAction, for screen: HabitScreenType) {

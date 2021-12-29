@@ -194,9 +194,9 @@ extension LoginViewController: OnboardingViewRepresentable {
         switch action {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
-        case let .login(msg, isVerified):
-            self.showToast(message: msg, seconds: 0.5)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        case let .login(_ , isVerified):
+//            self.showToast(message: msg, seconds: 0.5)
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self.naviateUserAfterLogin(isVerified)
             }
         case let .socialLogin(msg):

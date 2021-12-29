@@ -7,7 +7,8 @@
 
 import UIKit
 
-class GroupFriendsCell: UITableViewCell {
+class GroupFriendsCell: UITableViewCell , Reusable {
+    
     // MARK: - Outlets
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var lblFriendName: UILabel!
@@ -20,6 +21,7 @@ class GroupFriendsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectiondays.register(UINib(nibName: "HabitDaysCell", bundle: nil), forCellWithReuseIdentifier: "HabitDaysCell")
+        self.imgFriend.makeCircular()
     }
     
     override func updateConstraints() {
@@ -35,9 +37,15 @@ class GroupFriendsCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure() {
-        self.lblFriendName.text = "Mary"
-        self.imgFriend.image = #imageLiteral(resourceName: "ic-MaleCommunity1")
+//    func configure() {
+//        self.lblFriendName.text = "Mary"
+//        self.imgFriend.image = #imageLiteral(resourceName: "ic-MaleCommunity1")
+//    }
+    
+    func configure<T>(with content: T) {
+        guard let objMember = content as? Member else { return }
+        self.lblFriendName.text = objMember.username?.lowercased()
+        self.imgFriend.setImageFromURL(objMember.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
     }
 }
 

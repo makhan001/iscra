@@ -56,7 +56,6 @@ extension HabitCalenderViewController {
     }
     
     private func setViewControls() {
-        self.lblDaysCount.text = "0"
         self.lblLongestStreak.text = "Longest \nStreak"
         self.viewMarkasComplete.isHidden = true
         [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth,btnMarkasComplete,btnNextMonth].forEach {
@@ -98,6 +97,7 @@ extension HabitCalenderViewController {
         self.calenderSetup()
         self.circularViewSetup()
         self.viewNavigation.lblTitle.textColor = self.themeColor
+        self.lblDaysCount.text = String(self.viewModel.longestStreak ?? 0)
         self.viewNavigation.lblTitle.text = self.strTitleName.capitalized
         self.eventsDateArray = viewModel.arrHabitCalender?.compactMap { $0.date } ?? [Date()]
     }

@@ -12,7 +12,8 @@ final class CommunityViewModel {
     
     var arrMyGroupList = [GroupHabit]()
     var arrInvitaions = [Invitaion]()
-    var habit_id: String = ""
+   // var habit_id: String = ""
+   var habitId: Int = 0
 
     let provider: CommunityServiceProvidable
     weak var view: CommunityViewRepresentable?

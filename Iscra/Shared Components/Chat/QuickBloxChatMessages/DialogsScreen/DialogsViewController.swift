@@ -70,7 +70,7 @@ class DialogTableViewCellModel: NSObject {
                 ChatManager.instance.loadUser(UInt(dialog.recipientID)) { [weak self] (user) in
                     self?.textLabelText = user?.fullName ?? user?.login ?? ""
                     print("user img URL ---> \(Date().timeIntervalSince1970)")
-                    //print("user img URL=========>>\(user?.customData ?? "")")
+                    print("user img URL=========>>\(user?.customData ?? "")")
                     self?.customData = user?.customData ?? ""
                 }
             }
@@ -94,18 +94,16 @@ class DialogsViewController: UITableViewController {
         super.viewDidLoad()
         // Spinner.hide()
         //Hide Tab Bar
-        //setNavigationBar()
-        
+//        setNavigationBar()
         tableView.register(UINib(nibName: DialogCellConstant.reuseIdentifier, bundle: nil), forCellReuseIdentifier: DialogCellConstant.reuseIdentifier)
-        setupNavigationBar()
         setupNavigationTitle()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = false
+        setupNavigationBar()
         reloadContent()
         
         QBChat.instance.addDelegate(self)
@@ -185,10 +183,10 @@ class DialogsViewController: UITableViewController {
     }
     
     private func setupNavigationBar() {
-        
+        if let navigation = self.navigationController {
         navigationItem.rightBarButtonItems = []
         navigationItem.leftBarButtonItems = []
-
+        navigation.isNavigationBarHidden = false
         let leftMyChatBarButtonItem = UIBarButtonItem(title: "My chats", style: .done, target: self, action: #selector(logoutUser))
         leftMyChatBarButtonItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 28.0)!,
@@ -200,9 +198,13 @@ class DialogsViewController: UITableViewController {
                                               target: self,
                                               action: #selector(didTapNewChat(_:)))
         navigationItem.rightBarButtonItem = usersButtonItem
-        usersButtonItem.tintColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-       
-      
+        usersButtonItem.tintColor =  #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+            
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.barTintColor = .white
+            navigationController?.view.backgroundColor = .white
+            navigationController?.title = "My chats"
+        }
         // addInfoButton()
     }
     @objc func logoutUser() {
@@ -474,21 +476,14 @@ class DialogsViewController: UITableViewController {
         if dialogs.count > 0 {
             print("Chat list not empty")
         } else {
-            //            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-            //                       label.center = CGPoint(x: 160, y: 285)
-            //                       label.textAlignment = .center
-            //                       label.text = "I'm a test label"
-            //                      self.view.addSubview(label)
             print("chat is EMPTY")
         }
         tableView.reloadData()
-        
     }
     
     fileprivate func setupDate(_ dateSent: Date) -> String {
         let formatter = DateFormatter()
         var dateString = ""
-        
         if Calendar.current.isDateInToday(dateSent) == true {
             dateString = messageTimeDateFormatter.string(from: dateSent)
         } else if Calendar.current.isDateInYesterday(dateSent) == true {
@@ -504,7 +499,6 @@ class DialogsViewController: UITableViewController {
             }
             dateString = anotherYearDate
         }
-        
         return dateString
     }
 }
@@ -516,19 +510,13 @@ extension DialogsViewController: QBChatDelegate {
     }
     
     func chatDidReceive(_ message: QBChatMessage) {
-        guard let dialogID = message.dialogID else {
-            return
-        }
+        guard let dialogID = message.dialogID else { return }
         chatManager.updateDialog(with: dialogID, with: message)
     }
     
     func chatDidReceiveSystemMessage(_ message: QBChatMessage) {
-        guard let dialogID = message.dialogID else {
-            return
-        }
-        if let _ = chatManager.storage.dialog(withID: dialogID) {
-            return
-        }
+        guard let dialogID = message.dialogID else { return }
+        if let _ = chatManager.storage.dialog(withID: dialogID) { return }
         chatManager.updateDialog(with: dialogID, with: message)
     }
     
@@ -551,27 +539,21 @@ extension DialogsViewController: QBChatDelegate {
 extension DialogsViewController: ChatManagerDelegate {
     func chatManager(_ chatManager: ChatManager, didUpdateChatDialog chatDialog: QBChatDialog) {
         reloadContent()
-        
         SVProgressHUD.dismiss()
     }
     
     func chatManager(_ chatManager: ChatManager, didFailUpdateStorage message: String) {
-        
         SVProgressHUD.showError(withStatus: message)
     }
     
     func chatManager(_ chatManager: ChatManager, didUpdateStorage message: String) {
         reloadContent()
-        
-        
-        
         SVProgressHUD.dismiss()
         QBChat.instance.addDelegate(self)
     }
     
     func chatManagerWillUpdateStorage(_ chatManager: ChatManager) {
         if navigationController?.topViewController == self {
-            
             SVProgressHUD.show()
         }
     }

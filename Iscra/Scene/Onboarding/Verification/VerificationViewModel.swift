@@ -54,9 +54,9 @@ extension VerificationViewModel: OnboardingServiceProvierDelegate, InputViewDele
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.status == true {
-                    let code =  resp.data?.verificationCode ?? 0
-                    let msg = (resp.message! + " code is " + String(code))
-                        self.view?.onAction(.verification(msg))
+//                    let code =  resp.data?.verificationCode ?? 0
+                    //                    let msg = (resp.message! + " code is " + String(code))
+                    self.view?.onAction(.verification(""))
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

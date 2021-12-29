@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         print("self. router on HomeViewController is \(String(describing: self.router))")
         self.lblUserName.text = "Hi, " + (UserStore.userName ?? "").capitalized
         self.viewModel.fetchHabitList()

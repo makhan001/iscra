@@ -63,7 +63,6 @@ extension GroupHabitFriendsViewController {
     }
     
     private func setViewControls() {
-        self.lblDaysCount.text = "0"
         self.viewBottom.isHidden = true
         self.viewProgress.isHidden = true
         self.viewMarkasComplete.isHidden = true
@@ -114,6 +113,8 @@ extension GroupHabitFriendsViewController {
         self.calenderSetup()
         self.circularViewSetup()
         self.viewNavigation.lblTitle.textColor = self.themeColor
+        self.btnSegment.selectedSegmentTintColor = self.themeColor
+        self.lblDaysCount.text = String(self.viewModel.longestStreak ?? 0)
         self.viewNavigation.lblTitle.text = self.strTitleName.capitalized
         self.eventsDateArray = viewModel.arrHabitCalender?.compactMap { $0.date } ?? [Date()]
     }
@@ -134,9 +135,9 @@ extension GroupHabitFriendsViewController {
     }
     
     private func configureTable() {
-   //   self.tableFriends.configure(viewModel: viewModel)
+      self.tableFriends.configure(viewModel: viewModel)
       self.tableFriends.isHidden = false
-      self.tableFriends.configure(obj: 10)
+     // self.tableFriends.configure(obj: 10)
       self.tableFriends.friendTableNavigationDelegate = self
   }
 }
@@ -311,13 +312,9 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
                 self.viewDeleteHabit.isHidden = true
             }
             self.reloadCaledar()
-            print("members count is \(self.viewModel.objHabitDetail?.members?.count)")
-           // self.tableFriends.configure(obj: self.viewModel.objHabitDetail?.members!.count ?? 0)
-           // self.tableFriends.configure(obj: 10)
-//            DispatchQueue.main.async {
-//              self.configureTable()
-//            }
-            
+            print("members count is \(String(describing: self.viewModel.objHabitDetail?.members?.count))")
+            self.tableFriends.reloadData()
+
             break
         case let .isHabitDelete(true, msg):
             self.showToast(message: msg, seconds: 0.5)

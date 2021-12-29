@@ -8,12 +8,12 @@
 import UIKit
 
 class GroupMembersViewController: UIViewController {
-
+   
     @IBOutlet weak var viewNavigation: NavigationBarView!
-    @IBOutlet weak var tableFriends: CommunityFriendTableView!
+    @IBOutlet weak var tableview: GroupMembersTableView!
     
     weak var router: NextSceneDismisser?
-
+    let viewModel: GroupMembersViewModel = GroupMembersViewModel(provider: HabitServiceProvider())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,10 @@ class GroupMembersViewController: UIViewController {
     }
     
     private func setup() {
+        self.viewModel.view = self
         self.setUpNavigationBar()
+        self.tableview.configure(viewModel: viewModel)
+        self.viewModel.fetchGroupMembers()
     }
 }
 
@@ -35,5 +38,20 @@ extension GroupMembersViewController: NavigationBarViewDelegate {
     
     func navigationBackAction() {
         self.router?.dismiss(controller: .groupMembers)
+    }
+}
+
+// MARK: API Callback
+extension GroupMembersViewController: HabitViewRepresentable {
+    func onAction(_ action: HabitAction) {
+        switch action {
+        case  let .errorMessage(msg):
+            self.showToast(message: msg)
+        case .sucessMessage(_):
+            self.tableview.reloadData()
+          //  break
+        default:
+            break
+        }
     }
 }

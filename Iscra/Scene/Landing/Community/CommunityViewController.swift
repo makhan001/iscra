@@ -67,7 +67,6 @@ extension CommunityViewController {
     
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
-        self.showToast(message: "Under development", seconds: 0.5)
     }
 }
 

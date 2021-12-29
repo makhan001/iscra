@@ -23,6 +23,12 @@ class CommunityFriendCell: UITableViewCell, Reusable {
         self.imageFriend.setImageFromURL(objFriend.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
     }
     
+    func configureMembers<T>(with content: T) {
+        guard let objGroupHabitMember = content as? GroupHabitMember else { return }
+        self.lblFriendname.text = objGroupHabitMember.username?.lowercased()
+        self.imageFriend.setImageFromURL(objGroupHabitMember.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

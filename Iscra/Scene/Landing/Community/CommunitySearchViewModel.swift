@@ -10,10 +10,12 @@ import Foundation
 
 final class CommunitySearchViewModel {
     
-    var arrGroupList = [AllGroupHabit]() //[GroupHabit]()
-    var arrFriend = [Friend]()
+    var habitId: Int = 0
     var strSearchText = ""
     var isSearching:Bool=false
+    var arrFriend = [Friend]()
+    var arrGroupList = [AllGroupHabit]()
+
     let provider: CommunityServiceProvidable
     weak var view: CommunityViewRepresentable?
     var delegate: CommunityServiceProvierDelegate?

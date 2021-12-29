@@ -131,7 +131,7 @@ class QBChatLogin {
             //did Login action
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
                 //AppDelegate.shared.rootController.goToDialogsScreen()
-             
+                
             }
         } else {
             QBChat.instance.connect(withUserID: user.id,
@@ -146,12 +146,14 @@ class QBChatLogin {
                                             } else {
                                                // self.showAlertView(LoginConstant.checkInternet, message: LoginConstant.checkInternetMessage)
                                                 //self.handleError(error, domain: ErrorDomain.logIn)
+//                                                print("not Connected")
                                             }
                                         } else {
                                             //did Login action
                                            // DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .nanoseconds(Int(0.01))) {
                                                // AppDelegate.shared.rootViewController.goToDialogsScreen()
                                            // self.goToDialogsScreen()
+                                            //self.showLoginScreen()
                                               //  self.inputedUsername = nil
                                         
                                                // self.inputedLogin = nil
@@ -222,5 +224,13 @@ class QBChatLogin {
 //                infoText = LoginConstant.checkInternet
 //            }
 //        }
+//    func showLoginScreen() {
+//        let dialogsViewController = DialogsViewController()
+//        let navigationController = UINavigationController(rootViewController: dialogsViewController)
+//
+//        navigationController.pushViewController(dialogsViewController, animated: true)
+//        
+//        //changeCurrentViewController(DialogsVC)
+//    }
     
 }

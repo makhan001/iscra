@@ -70,7 +70,7 @@ class DialogTableViewCellModel: NSObject {
                 ChatManager.instance.loadUser(UInt(dialog.recipientID)) { [weak self] (user) in
                     self?.textLabelText = user?.fullName ?? user?.login ?? ""
                     print("user img URL ---> \(Date().timeIntervalSince1970)")
-                    print("user img URL=========>>\(user?.customData ?? "")")
+                    //print("user img URL=========>>\(user?.customData ?? "")")
                     self?.customData = user?.customData ?? ""
                 }
             }
@@ -94,7 +94,8 @@ class DialogsViewController: UITableViewController {
         super.viewDidLoad()
         // Spinner.hide()
         //Hide Tab Bar
-       // setNavigationBar()
+        //setNavigationBar()
+        
         tableView.register(UINib(nibName: DialogCellConstant.reuseIdentifier, bundle: nil), forCellReuseIdentifier: DialogCellConstant.reuseIdentifier)
         setupNavigationBar()
         setupNavigationTitle()
@@ -184,10 +185,10 @@ class DialogsViewController: UITableViewController {
     }
     
     private func setupNavigationBar() {
-        if let navigation = self.navigationController {
+        
         navigationItem.rightBarButtonItems = []
         navigationItem.leftBarButtonItems = []
-        navigation.isNavigationBarHidden = false
+
         let leftMyChatBarButtonItem = UIBarButtonItem(title: "My chats", style: .done, target: self, action: #selector(logoutUser))
         leftMyChatBarButtonItem.setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 28.0)!,
@@ -200,7 +201,8 @@ class DialogsViewController: UITableViewController {
                                               action: #selector(didTapNewChat(_:)))
         navigationItem.rightBarButtonItem = usersButtonItem
         usersButtonItem.tintColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        }
+       
+      
         // addInfoButton()
     }
     @objc func logoutUser() {

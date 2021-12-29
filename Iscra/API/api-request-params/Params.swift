@@ -124,9 +124,10 @@ enum HabitParams {
     struct AllHabitList: Codable {
     }
     
-    struct GroupInvitations: Codable {
-        let habit_id: String?
-        let user_ids: [String]?
+    struct ShareHabit: Codable {
+        let habit_id: Int?
+        let user_ids: [Int]?
+        let share_type: String?
     }
     
     struct MarkAsComplete: Codable {

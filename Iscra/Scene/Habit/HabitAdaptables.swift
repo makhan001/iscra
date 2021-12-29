@@ -55,7 +55,7 @@ enum HabitAction {
   case updateHabit
   case habitCalender
   case markAsComplete
-  case groupInvitations
+  case shareHabit
   case groupHabitDetails
   case groupHabitMembers
   case isHabitDelete(_ isDelete: Bool, _ msg:String)

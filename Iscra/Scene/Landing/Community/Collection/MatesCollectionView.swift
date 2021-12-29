@@ -9,12 +9,12 @@ import UIKit
 
 class MatesCollectionView: UICollectionView , UICollectionViewDelegate , UICollectionViewDataSource, CustomCollectionViewLayoutDelegate{
     
-    var arrMemberList = [Member]()
+    var arrMemberList: [UsersProfileImageURL]?
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure(arrMember: [Member]?) {
+    func configure(arrMember: [UsersProfileImageURL]?) {
         self.register(UINib(nibName: "MatesCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MatesCollectionCell")
         self.delegate = self
         self.dataSource = self
@@ -24,20 +24,19 @@ class MatesCollectionView: UICollectionView , UICollectionViewDelegate , UIColle
     
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.arrMemberList.count
+        return self.arrMemberList?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatesCollectionCell", for: indexPath) as? MatesCollectionCell else { return UICollectionViewCell() }
-        
-        cell.configure()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatesCollectionCell", for: indexPath) as? MatesCollectionCell else { return UICollectionViewCell()
+        }
+
+        guard let objGroupMembers = self.arrMemberList?[indexPath.row] else {  return UICollectionViewCell()  }
+        cell.configureGroupHabitMembers(obj: objGroupMembers)
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, getSizeAtIndexPath indexPath: IndexPath) -> CGSize {
         return CGSize(width: 35, height: 35)
     }
-    
-    
 }

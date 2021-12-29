@@ -20,6 +20,10 @@ class MatesCollectionCell: UICollectionViewCell {
         self.imgMatesMember.image = #imageLiteral(resourceName: "ic_user1")
     }
     
+    func configureGroupHabitMembers(obj: UsersProfileImageURL) {
+        self.imgMatesMember.setImageFromURL(obj.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user1"))
+    }
+    
     func configureGroupMembers(obj: GroupMember) {
         self.imgMatesMember.setImageFromURL(obj.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user1"))
     }

@@ -34,7 +34,7 @@ class GroupHabitFriendsViewController: UIViewController {
     private var themeColor = UIColor(hex: "#7B86EB")
     private let selectedColor = [NSAttributedString.Key.foregroundColor: UIColor(named: "WhiteAccent")]
     private let unselectedColor = [NSAttributedString.Key.foregroundColor: UIColor(named: "BlackAccent")]
-    
+
     var strTitleName = ""
     weak var router: NextSceneDismisser?
     let viewModel: HabitCalenderViewModel = HabitCalenderViewModel(provider: HabitServiceProvider())
@@ -45,8 +45,8 @@ class GroupHabitFriendsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
 
@@ -54,25 +54,15 @@ class GroupHabitFriendsViewController: UIViewController {
 extension GroupHabitFriendsViewController {
     private func setup() {
         self.viewModel.view = self
-        self.calenderSetup()
-        self.circularViewSetup()
-        self.setUpNavigationBar()
+        self.viewBottom.isHidden = true
         self.configureTable()
-        self.configureControls()
+        self.setViewControls()
         self.viewModel.userId = UserStore.userID ?? ""
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .EditHabit, object: nil)
-        self.viewModel.fetchHabitDetail()
-        self.habitDetailSetup()
+        self.reloadView()
+        self.addObserver()
     }
     
-      private func configureTable() {
-     //   self.tableFriends.configure(viewModel: viewModel)
-        self.tableFriends.isHidden = false
-        self.tableFriends.configure(obj: 10)
-        self.tableFriends.friendTableNavigationDelegate = self
-    }
-    
-    private func configureControls() {
+    private func setViewControls() {
         self.lblDaysCount.text = "0"
         self.viewBottom.isHidden = true
         self.viewProgress.isHidden = true
@@ -88,45 +78,44 @@ extension GroupHabitFriendsViewController {
         }
         self.btnSegment.setTitleTextAttributes(unselectedColor as [NSAttributedString.Key : Any], for: .normal)
         self.btnSegment.setTitleTextAttributes(selectedColor as [NSAttributedString.Key : Any], for: .selected)
+        self.setUpNavigationBar()
+        self.addGestureOnBottomView()
     }
     
-    @objc func refrershUI() {
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadView) , name: .EditHabit, object: nil)
+    }
+    
+    private func addGestureOnBottomView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        self.viewBottom.addGestureRecognizer(tap)
+    }
+    
+    @objc func reloadView() {
         self.viewModel.fetchHabitDetail()
-        self.habitDetailSetup()
+        self.getMonthlyHabitDetail()
+        self.reloadCaledar()
     }
-    
+        
     private func calenderSetup() {
         self.viewCalender.firstWeekday = 1
         self.viewCalender.placeholderType = .none
         self.viewCalender.allowsSelection = false
         self.viewCalender.appearance.borderRadius = 0.40
         self.viewCalender.appearance.headerDateFormat = "MMMM YYYY"
+        self.viewCalender.appearance.weekdayTextColor = UIColor(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1)
         self.viewCalender.appearance.headerTitleColor = UIColor.black
         self.viewCalender.appearance.headerMinimumDissolvedAlpha = 0.0;
-        self.viewCalender.appearance.weekdayTextColor = UIColor(named: "GrayAccent") ?? #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1)
         self.viewCalender.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
         self.viewCalender.appearance.headerTitleFont = UIFont.systemFont(ofSize:  CGFloat(22), weight: .medium)
-        
-        let dateStrings = ["2021-11-02","2021-11-03", "2021-11-05", "2021-11-14","2021-12-8"]
-        var dateObjects = [Date]()
-        let dateFormatter = DateFormatter()
-        // dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        for date in dateStrings{
-            let dateObject = dateFormatter.date(from: date)
-            dateObjects.append(dateObject!)
-        }
-        self.eventsDateArray = dateObjects
     }
-    
-    func habitDetailSetup() {
+        
+    func reloadCaledar() {
         self.calenderSetup()
         self.circularViewSetup()
         self.viewNavigation.lblTitle.textColor = self.themeColor
         self.viewNavigation.lblTitle.text = self.strTitleName.capitalized
-        if #available(iOS 13.0, *) {
-            self.btnSegment.selectedSegmentTintColor = self.themeColor
-        }
+        self.eventsDateArray = viewModel.arrHabitCalender?.compactMap { $0.date } ?? [Date()]
     }
     
     func circularViewSetup() {
@@ -143,6 +132,13 @@ extension GroupHabitFriendsViewController {
             }
         }
     }
+    
+    private func configureTable() {
+   //   self.tableFriends.configure(viewModel: viewModel)
+      self.tableFriends.isHidden = false
+      self.tableFriends.configure(obj: 10)
+      self.tableFriends.friendTableNavigationDelegate = self
+  }
 }
 
 // MARK:- Button Action
@@ -274,12 +270,18 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
 //    }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        print("self.viewCalender.currentPage timeIntervalSince1970 is \(self.viewCalender.currentPage.timeIntervalSince1970)")
-        self.viewModel.habitMonth =  String(format: "%.0f", self.viewCalender.currentPage.timeIntervalSince1970)
+        self.getMonthlyHabitDetail()
+    }
+    
+    func getMonthlyHabitDetail() {
+        let timestamp = self.viewCalender.currentPage.addDays(days: 10)
+        print("timestamp is \(timestamp)")
+        self.viewModel.habitMonth =  String(format: "%.0f", timestamp)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.viewModel.getMonthlyHabitDetail()
         }
     }
+
 }
 
 extension GroupHabitFriendsViewController: FriendTableNavigation{
@@ -313,7 +315,7 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
                 self.viewEditHabit.isHidden = true
                 self.viewDeleteHabit.isHidden = true
             }
-            self.habitDetailSetup()
+            self.reloadCaledar()
             print("members count is \(self.viewModel.objHabitDetail?.members?.count)")
            // self.tableFriends.configure(obj: self.viewModel.objHabitDetail?.members!.count ?? 0)
            // self.tableFriends.configure(obj: 10)

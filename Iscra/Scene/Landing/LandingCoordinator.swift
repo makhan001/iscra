@@ -13,13 +13,11 @@ final class LandingCoordinator: Coordinator<Scenes> {
     weak var delegate: CoordinatorDimisser?
     let controller: LandingTabBarController = LandingTabBarController.from(from: .landing, with: .landing)
     let selectHabitPopUp: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
-    let communityDetail: CommunityDetailViewController = CommunityDetailViewController.from(from: .landing, with: .communityDetail)
     let webViewController: WebViewController = WebViewController.from(from: .landing, with: .webViewController)
     let myAccountViewController: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
     let changePassword: ChangePasswordViewController = ChangePasswordViewController.from(from: .onboarding, with: .changePassword)
     let updateProfile: UpdateProfileViewController = UpdateProfileViewController.from(from: .onboarding, with: .updateProfile)
     let myAccountPopup: MyAccountPopupViewController = MyAccountPopupViewController.from(from: .landing, with: .myAccountPopup)
-    // let habitNameVC: HabitNameViewController = HabitNameViewController.from(from: .habit, with: .habitName)
     
     private var login: LoginCoordinator!
     private var welcome: OnboardingCoordinator!
@@ -29,6 +27,8 @@ final class LandingCoordinator: Coordinator<Scenes> {
     private var myAccount: MyAccountCoordinator!
     private var groupHabitCalender: GroupHabitCalenderCoordinator!
     private var addMemojiCoordinator: AddMemojiCoordinator!
+    private var communityDetail: CommunityDetailCoordinator!
+
     
     override func start() {
         super.start()
@@ -40,13 +40,11 @@ final class LandingCoordinator: Coordinator<Scenes> {
         controller.router = self
         selectHabitPopUp.router = self
         selectHabitPopUp.delegate = self
-        communityDetail.router = self
         webViewController.router = self
         myAccountViewController.router = self
         changePassword.router = self
         updateProfile.router = self
         myAccountPopup.router = self
-        // habitNameVC.router = self
     }
     
     private func startLogin() {
@@ -57,16 +55,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         login.start()
         self.router.present(login, animated: true)
     }
-    
-    private func startWalkthrough() {
-        //        let router = Router()
-        //        walkthrough = WalkthroughCoordinator(router: router)
-        //        add(walkthrough)
-        //        walkthrough.delegate = self
-        //        walkthrough.start()
-        //        self.router.present(walkthrough, animated: true)
-    }
-    
+        
     private func startWelcome() {
         let router = Router()
         welcome = OnboardingCoordinator(router: router)
@@ -100,22 +89,6 @@ final class LandingCoordinator: Coordinator<Scenes> {
         self.router.present(addMemojiCoordinator, animated: true)
     }
     
-    private func startLanding() {
-        //        landing = LandingCoordinator(router: Router())
-        //        add(landing)
-        //        landing.delegate = self
-        //        landing.start(imageUrl: controller.viewModel.socialLoginImageURL)
-        //        self.router.present(landing, animated: true)
-    }
-    
-    private func startHome() {
-        //        home = HomeCoordinator(router: Router())
-        //        add(home)
-        //        home.delegate = self
-        //        home.start()
-        //        self.router.present(home, animated: true)
-    }
-    
     private func startHabitCalender() {
         habitCalender = HabitCalenderCoordinator(router: Router())
         add(habitCalender)
@@ -145,11 +118,15 @@ final class LandingCoordinator: Coordinator<Scenes> {
     }
     
     private func startCommunityDetail() {
-        //        communityDetail.viewModel.habitId = 5
-        //        communityDetail.viewModel.userId = 50
-        communityDetail.objInvitaion = controller.community.objInvitaion
-        router.present(communityDetail, animated: true)
+        communityDetail = CommunityDetailCoordinator(router: Router())
+        add(communityDetail)
+        communityDetail.delegate = self
+        if let objInvitation = controller.community.objInvitaion {
+            communityDetail.start(objInvitation: objInvitation)
+        }
+        self.router.present(communityDetail, animated: true)
     }
+    
     
     private func startUpdateProfile() {
         updateProfile.didUpdateName = controller.myAccount.didUpdateName
@@ -169,23 +146,16 @@ final class LandingCoordinator: Coordinator<Scenes> {
     private func startMyAccountPopup() {
         router.present(myAccountPopup, animated: true)
     }
-    
-    //    private func starthabitNameVC() {
-    //        router.present(habitNameVC, animated: true)
-    //    }
 }
 
 extension LandingCoordinator: NextSceneDismisser {
     
     func push(scene: Scenes) {
         switch scene {
-            // case .home: startHome()
         case .login: startLogin()
         case .welcome: startWelcome()
-            // case .landing: startLanding()
         case .communitySearch: startCommunitySearch()
         case .myAccount: startMyAccount()
-        case .walkthrough: startWalkthrough()
         case .habitCalender: startHabitCalender()
         case .updateProfile: startUpdateProfile()
         case .changePassword: startChangePassword()
@@ -201,12 +171,6 @@ extension LandingCoordinator: NextSceneDismisser {
     
     func dismiss(controller: Scenes) {
         router.dismissModule(animated: true, completion: nil)
-        //        switch controller {
-        //        case .updateProfile:
-        //            router.dismissModule(animated: true, completion: nil)
-        //        default:
-        //            router.dismissModule(animated: true, completion: nil)
-        //        }
     }
 }
 

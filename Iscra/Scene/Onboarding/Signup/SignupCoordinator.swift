@@ -36,7 +36,6 @@ final class SignupCoordinator: Coordinator<Scenes> {
         add(landing)
         landing.delegate = self
         landing.start()
-        //landing.start(imageUrl: controller.viewModel.socialLoginImageURL)
         self.router.present(landing, animated: true)
     }
 }

@@ -9,12 +9,14 @@ import UIKit
 
 class VerificationViewController: UIViewController {
     
-    @IBOutlet weak var btnSubmit: UIButton!
-    @IBOutlet weak var btnResendCode: UIButton!
-    
     @IBOutlet weak var lblTimer: UILabel!
     @IBOutlet weak var lblHeaderTitle: UILabel!
     @IBOutlet weak var lblMiddleTittle: UILabel!
+    
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var btnSubmit: UIButton!
+    @IBOutlet weak var btnResendCode: UIButton!
+    
     
     @IBOutlet weak var otpTextFieldThird: UITextField!
     @IBOutlet weak var otpTextFieldFirst: UITextField!
@@ -45,7 +47,7 @@ extension VerificationViewController {
         self.lblHeaderTitle.text = AppConstant.otpHeaderTitle
         self.lblMiddleTittle.text = AppConstant.otpMiddleTittle
         self.setViewTextFields()
-        [btnResendCode, btnSubmit].forEach {
+        [btnCancel, btnResendCode, btnSubmit].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }
@@ -103,6 +105,8 @@ extension VerificationViewController {
             self.resendCodeAction()
         case btnSubmit:
             self.submitAction()
+        case btnCancel:
+            self.dismiss(animated: true)
         default:
             break
         }

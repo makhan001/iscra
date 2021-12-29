@@ -261,14 +261,10 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
         return UIColor.white // Return Default UIColor
     }
     
-//    func maximumDate(for calendar: FSCalendar) -> Date {
-//        return Date()
-//    }
-//
-//    func minimumDate(for calendar: FSCalendar) -> Date {
-//        return Date()
-//    }
-    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date()
+    }
+
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.getMonthlyHabitDetail()
     }
@@ -281,7 +277,6 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
             self.viewModel.getMonthlyHabitDetail()
         }
     }
-
 }
 
 extension GroupHabitFriendsViewController: FriendTableNavigation{

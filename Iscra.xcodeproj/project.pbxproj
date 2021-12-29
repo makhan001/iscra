@@ -24,6 +24,8 @@
 		0440B9312752050D0096DC2D /* HabitCalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */; };
 		04456E6F277C506800C6E0FE /* CommunityDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04456E6E277C506800C6E0FE /* CommunityDetailCoordinator.swift */; };
 		04456E72277C54AB00C6E0FE /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04456E71277C54AB00C6E0FE /* GroupMembersViewController.swift */; };
+		04456E77277C6ABF00C6E0FE /* GroupMembersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04456E76277C6ABF00C6E0FE /* GroupMembersViewModel.swift */; };
+		04456E7E277C714200C6E0FE /* GroupMembersTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04456E7D277C714200C6E0FE /* GroupMembersTableView.swift */; };
 		0456AE972750CA4500DB3ED4 /* HabitProvider.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940B2750BC1A00503123 /* HabitProvider.swift */; };
 		0456AE982750CA4500DB3ED4 /* HabitAdaptables.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04BE940E2750BC9A00503123 /* HabitAdaptables.swift */; };
 		0456AE9B2750D1E300DB3ED4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */; };
@@ -332,6 +334,8 @@
 		0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderCoordinator.swift; sourceTree = "<group>"; };
 		04456E6E277C506800C6E0FE /* CommunityDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailCoordinator.swift; sourceTree = "<group>"; };
 		04456E71277C54AB00C6E0FE /* GroupMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersViewController.swift; sourceTree = "<group>"; };
+		04456E76277C6ABF00C6E0FE /* GroupMembersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersViewModel.swift; sourceTree = "<group>"; };
+		04456E7D277C714200C6E0FE /* GroupMembersTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersTableView.swift; sourceTree = "<group>"; };
 		0456AE9A2750D1E300DB3ED4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		045791DE27549EAA006E0410 /* MyAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountCoordinator.swift; sourceTree = "<group>"; };
 		045791E12754AA67006E0410 /* HabitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitUtils.swift; sourceTree = "<group>"; };
@@ -1477,6 +1481,7 @@
 				887994B1273AB2ED00904D1F /* Table */,
 				887994B8273AB2ED00904D1F /* CommunitySearchViewController.swift */,
 				04456E71277C54AB00C6E0FE /* GroupMembersViewController.swift */,
+				04456E76277C6ABF00C6E0FE /* GroupMembersViewModel.swift */,
 				5F191EF1277209DC00836126 /* CommunitySearchViewModel.swift */,
 				887994B9273AB2ED00904D1F /* CommunityDetailViewController.swift */,
 				04F0CB2F277458C0002873DB /* CommunityDetailViewModel.swift */,
@@ -1507,6 +1512,7 @@
 				887994B2273AB2ED00904D1F /* GroupHabitCell.swift */,
 				887994B3273AB2ED00904D1F /* CommunityFriendCell.swift */,
 				887994B4273AB2ED00904D1F /* CommunityFriendTableView.swift */,
+				04456E7D277C714200C6E0FE /* GroupMembersTableView.swift */,
 				887994B5273AB2ED00904D1F /* GroupHabitTableView.swift */,
 				887994B6273AB2ED00904D1F /* GroupHabitCell.xib */,
 				887994B7273AB2ED00904D1F /* CommunityFriendCell.xib */,
@@ -2104,6 +2110,7 @@
 				5FF6CD32274E6A5A007ADC2F /* UITextField+Extention.swift in Sources */,
 				5FF6CD55274E6A5A007ADC2F /* ChatViewController.swift in Sources */,
 				88021C67273CF688004A58F5 /* AddGroupImageViewController.swift in Sources */,
+				04456E7E277C714200C6E0FE /* GroupMembersTableView.swift in Sources */,
 				8814B4342743874100A6DE01 /* AuthRequests.swift in Sources */,
 				04456E72277C54AB00C6E0FE /* GroupMembersViewController.swift in Sources */,
 				88E580762722F5F300D4CAFB /* SetThemeViewController.swift in Sources */,
@@ -2141,6 +2148,7 @@
 				5FF6CD3F274E6A5A007ADC2F /* ChatNotificationPopUpViewController.swift in Sources */,
 				04BE940C2750BC1A00503123 /* HabitProvider.swift in Sources */,
 				882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */,
+				04456E77277C6ABF00C6E0FE /* GroupMembersViewModel.swift in Sources */,
 				88E028712716FBB100D90BB1 /* LoginViewController.swift in Sources */,
 				887994C9273AB2EE00904D1F /* CommunityDetailViewController.swift in Sources */,
 				880F3E302727DE04007CA895 /* ColorPopUpViewController.swift in Sources */,

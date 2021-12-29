@@ -105,7 +105,7 @@ struct HabitRequests: RequestRepresentable {
         case .groupHabitDetails:
             return "habits/group_habit_details"
         case .groupHabitMembers:
-            return "habits​/group_habit_members"
+            return "habits/group_habit_members"
         }
     }
     

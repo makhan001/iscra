@@ -23,13 +23,12 @@ struct DataClass: Codable {
     var habit: Habit?
     var habits: [AllHabits]?
     var habitDetails: HabitDetails?
-  //  let showHabitDetails: ShowHabitDetail?
     var habitMark: HabitMark?
     let groupHabits: [GroupHabit]?
     let invitaions: [Invitaion]?
     let friends: [Friend]?
     let joinHabit: JoinHabit?
-    let allGroupHabits: [AllGroupHabit]?// [GroupHabit]?
+    let allGroupHabits: [AllGroupHabit]?
     let habitCalender: [HabitCalender]?
     let groupHabitDetails: GroupHabitDetails?
     let groupHabitMembers: [GroupHabitMember]?
@@ -44,7 +43,6 @@ struct DataClass: Codable {
         case groupHabits = "group_habits"
         case allGroupHabits = "all_group_habits"
         case joinHabit = "join_habit"
-     //   case showHabitDetails = "show_habit_details"
         case habitCalender = "habit_calender"
         case groupHabitDetails = "group_habit_details"
         case groupHabitMembers = "group_habit_members"

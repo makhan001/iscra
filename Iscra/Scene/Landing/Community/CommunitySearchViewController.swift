@@ -19,12 +19,11 @@ class CommunitySearchViewController: UIViewController {
     @IBOutlet weak var tableGroupHabit: GroupHabitTableView!
     @IBOutlet weak var tableFriends: CommunityFriendTableView!
     
-    
     var arrGroupList = [GroupHabit]()
     var arrFriend = [Friend]()
     var isSearching:Bool = false
     weak var router: NextSceneDismisser?
-    private let viewModel: CommunitySearchViewModel = CommunitySearchViewModel(provider:  CommunityServiceProvider())
+    let viewModel: CommunitySearchViewModel = CommunitySearchViewModel(provider:  CommunityServiceProvider())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +65,8 @@ extension CommunitySearchViewController {
     }
     
     private func didSelectTableAtIndex(index: Int) {
-        self.showToast(message: "Under development", seconds: 0.5)
+        self.viewModel.habitId = self.viewModel.arrGroupList[index].id ?? 0
+        self.router?.push(scene: .groupHabitFriends)
     }
     
     @objc func refrershUI() {

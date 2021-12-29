@@ -46,9 +46,7 @@ final class CommunityDetailCoordinator: Coordinator<Scenes> {
     }
      
         private func startGroupMembers() {
-            //        communityDetail.viewModel.habitId = 5
-            //        communityDetail.viewModel.userId = 50
-          //  communityDetail.objInvitaion = controller.community.objInvitaion
+            groupMembers.viewModel.habitId = controller.viewModel.habitId
             router.present(groupMembers, animated: true)
         }
 }

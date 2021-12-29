@@ -69,9 +69,6 @@ extension HomeViewController {
 // MARK: Callbacks
 extension HomeViewController {
     private func didSelectedAtIndex(_ index: Int) {
-        
-    //    self.showToast(message: "Under development", seconds: 0.5)
-
        // /*
          self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0  // viewModel.habitList[index].id ?? 0
       //  print("habit id is in HomeViewController  \(viewModel.habitList[index].id ?? 0)")

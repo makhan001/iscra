@@ -37,7 +37,6 @@ class LoginViewController: UIViewController {
 // MARK: Instance Methods
 extension LoginViewController: NavigationBarViewDelegate {
     private func setup() {
-        self.txtPassword.isSecureTextEntry = false
         self.lblHeaderTitle.text = AppConstant.loginHeaderTitle
         self.viewModel.view = self
         self.viewNavigation.lblTitle.text =  "Login"

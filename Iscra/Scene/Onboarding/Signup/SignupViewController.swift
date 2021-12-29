@@ -34,7 +34,6 @@ class SignupViewController: UIViewController {
 extension SignupViewController {
     private func setup() {
         self.viewModel.view = self
-        self.txtPassword.isSecureTextEntry = false
         self.setViewControls()
     }
     

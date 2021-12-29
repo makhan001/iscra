@@ -17,7 +17,6 @@ final class HabitCalenderViewModel {
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
     var objHabitDetail: HabitDetails?
-  //  var objShowHabitDetail: HabitDetails?
     var arrHabitCalender: [HabitCalender]?
 
     init(provider: HabitServiceProvidable) {

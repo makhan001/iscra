@@ -34,6 +34,7 @@ class SignupViewController: UIViewController {
 extension SignupViewController {
     private func setup() {
         self.viewModel.view = self
+        self.txtPassword.isSecureTextEntry = false
         self.setViewControls()
     }
     
@@ -133,7 +134,7 @@ extension SignupViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = txtEmail.text, let textRange = Range(range, in: text) else { return false }
+        guard let text = textField.text, let textRange = Range(range, in: text) else { return false }
         if textField == txtEmail {
             viewModel.email = text.replacingCharacters(in: textRange, with: string)
         } else if textField == txtPassword {

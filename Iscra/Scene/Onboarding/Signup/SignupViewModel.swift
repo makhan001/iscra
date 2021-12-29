@@ -55,14 +55,14 @@ final class SignupViewModel {
                                       decodingType: SuccessResponseModel.self,
                                       imageArray: [["profile_image": selectedImage ?? UIImage()]],
                                       fileArray: [],
-                                      file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
+                                      file: ["profile_image": selectedImage ?? UIImage()]) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .register, with: resp, with: nil)
                 return
             } else {
                 if let response = resp as? SuccessResponseModel  {
                     if response.status == true {
-                        self?.registerSuccess(response)
+                        self?.registerSuccess(response, false)
                         self?.verificationCode = response.data?.register?.verificationCode ?? ""
                         self?.view?.onAction(.register)
                     } else {
@@ -73,13 +73,23 @@ final class SignupViewModel {
         }
     }
     
-    private func registerSuccess(_ response: SuccessResponseModel) {
-        UserStore.save(isVerify: true)
-        UserStore.save(userID: response.data?.register?.id)
-        UserStore.save(userEmail: response.data?.register?.email)
-        UserStore.save(userImage: response.data?.register?.profileImage)
-        UserStore.save(token: response.data?.register?.authenticationToken)
-        UserStore.save(userName: response.data?.register?.username?.capitalized)
+    private func registerSuccess(_ response: SuccessResponseModel, _ isSocialLogin: Bool) {
+        if isSocialLogin {
+            UserStore.save(isVerify: true)
+        }
+        if response.data?.register != nil {
+            UserStore.save(userID: response.data?.register?.id)
+            UserStore.save(userEmail: response.data?.register?.email)
+            UserStore.save(userImage: response.data?.register?.profileImage)
+            UserStore.save(token: response.data?.register?.authenticationToken)
+            UserStore.save(userName: response.data?.register?.username?.capitalized)
+        } else {
+            UserStore.save(userID: response.data?.user?.id)
+            UserStore.save(userEmail: response.data?.user?.email)
+            UserStore.save(userImage: response.data?.user?.profileImage)
+            UserStore.save(token: response.data?.user?.authenticationToken)
+            UserStore.save(userName: response.data?.user?.username?.capitalized)
+        }
         QBChatLogin.shared.registerQBUser()
     }
     
@@ -104,7 +114,7 @@ final class SignupViewModel {
             } else {
                 if let response = resp as? SuccessResponseModel {
                     if response.status == true {
-                        self?.registerSuccess(response)
+                        self?.registerSuccess(response, true)
                         self?.view?.onAction(.socialLogin(response.message ?? ""))
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

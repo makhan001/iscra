@@ -68,21 +68,16 @@ extension ChangePasswordViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == txtFieldCurrentPassword {
-            if let text = txtFieldCurrentPassword.text, let textRange = Range(range, in: text) {
-                let updatedText = text.replacingCharacters(in: textRange, with: string)
-                viewModel.password = updatedText
-            }
-        } else if textField == txtFieldNewPassword {
-            if let text = txtFieldNewPassword.text, let textRange = Range(range, in: text) {
-                let updatedText = text.replacingCharacters(in: textRange, with: string)
-                viewModel.newPassword = updatedText
-            }
-        } else if textField == txtFieldConfirmPassword {
-            if let text = txtFieldConfirmPassword.text, let textRange = Range(range, in: text) {
-                let updatedText = text.replacingCharacters(in: textRange, with: string)
-                viewModel.confirmPassword = updatedText
-            }
+        guard let text = textField.text, let textRange = Range(range, in: text) else { return false }
+        switch textField {
+        case txtFieldCurrentPassword:
+            viewModel.password = text.replacingCharacters(in: textRange, with: string)
+        case txtFieldNewPassword:
+            viewModel.newPassword = text.replacingCharacters(in: textRange, with: string)
+        case txtFieldConfirmPassword:
+            viewModel.confirmPassword = text.replacingCharacters(in: textRange, with: string)
+        default:
+            break
         }
         return true
     }

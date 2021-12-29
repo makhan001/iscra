@@ -37,8 +37,8 @@ class LoginViewController: UIViewController {
 // MARK: Instance Methods
 extension LoginViewController: NavigationBarViewDelegate {
     private func setup() {
-        self.navigationController?.view.backgroundColor = UIColor.white
-        lblHeaderTitle.text = AppConstant.loginHeaderTitle
+        self.txtPassword.isSecureTextEntry = false
+        self.lblHeaderTitle.text = AppConstant.loginHeaderTitle
         self.viewModel.view = self
         self.viewNavigation.lblTitle.text =  "Login"
         self.viewNavigation.delegateBarAction = self
@@ -154,7 +154,7 @@ extension LoginViewController:UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil { return false }
-        guard let text = txtEmail.text, let textRange = Range(range, in: text) else { return false }
+        guard let text = textField.text, let textRange = Range(range, in: text) else { return false }
         if textField == txtEmail {
             viewModel.email = text.replacingCharacters(in: textRange, with: string)
         } else {

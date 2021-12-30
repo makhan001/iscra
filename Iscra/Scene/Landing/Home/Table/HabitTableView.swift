@@ -33,14 +33,6 @@ class  HabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let objHabitList = self.habitList[indexPath.row]
-//        print("self.arrHabitMarks?.count is \(objHabitList.habitMarks?.count)")
-//        
-//        if objHabitList.habitMarks?.count == nil {
-//            print("self.arrHabitMarks?.count is  0")
-//        } else {
-//            print("self.arrHabitMarks?.count is not 0")
-//        }
-        
         cell.configure(obj: objHabitList)
         cell.collectiondays.reloadData()
         return cell

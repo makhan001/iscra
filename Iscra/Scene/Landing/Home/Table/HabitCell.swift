@@ -20,10 +20,10 @@ class HabitCell: UITableViewCell {
     @IBOutlet weak var collectionMates: UICollectionView!
     @IBOutlet weak var collectiondays: UICollectionView!
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
-    var arrHabitMarks: [HabitMark]?
-    var arrGroupMembers: [GroupMember]?
     
     var colorTheme: String = ""
+    var arrHabitMarks: [HabitMark]?
+    var arrGroupMembers: [GroupMember]?
     
     override func awakeFromNib() {
         super.awakeFromNib()

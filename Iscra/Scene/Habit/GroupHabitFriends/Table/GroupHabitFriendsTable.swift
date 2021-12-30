@@ -43,7 +43,7 @@ extension GroupHabitFriendsTable: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.dequeueReusable(indexPath) as GroupFriendsCell
         cell.configure(with: self.viewModel.objHabitDetail?.members?[indexPath.row])
-       // cell.configure(with: self.viewModel.objHabitDetail?.members?[indexPath.row])
+        cell.colorTheme = self.viewModel.objHabitDetail?.colorTheme ?? ""
         return cell
     }
     

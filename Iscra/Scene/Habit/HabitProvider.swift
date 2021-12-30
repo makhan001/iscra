@@ -48,10 +48,10 @@ final class HabitServiceProvider: HabitServiceProvidable {
         WebService().StartIndicator()
         task.allHabitList(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                self?.delegate?.completed(for: .habitList, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+            self?.delegate?.completed(for: .habitList, with: resp, with: nil)
         }
     }
     

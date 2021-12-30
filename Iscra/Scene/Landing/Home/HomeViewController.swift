@@ -27,10 +27,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        print("self. router on HomeViewController is \(String(describing: self.router))")
-        self.lblUserName.text = "Hi, " + (UserStore.userName ?? "").capitalized
-        self.viewModel.fetchHabitList()
+        self.reload()
     }
 }
 
@@ -43,27 +40,34 @@ extension HomeViewController {
         self.lblTitle.text = AppConstant.firstHabitTitle
         self.lblSubTitle.text = AppConstant.firstHabitSubTitle
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .EditHabit, object: nil)
-        if UserStore.chatLogin != true {
-//            QBChatLogin.shared.setChatLoginSetup()
-        }
+    }
+    
+    private func reload() {
+        self.lblUserName.text = "Hi, " + (UserStore.userName ?? "").capitalized
+        self.viewModel.fetchHabitList()
     }
     
     private func setTableView() {
         self.tableView.isHidden = false
+        self.tableView.configure(viewModel: viewModel)
         self.tableView.didSelectedAtIndex = didSelectedAtIndex
-        self.tableView.isHabitDelete = {
-            selected , id in
-            if selected {
-                print("is is \(id)")
-                self.showAlert(habitId: id)
-            }
-        }
+        self.tableView.didDeleteHabitAtIndex = didDeleteHabitAtIndex
         self.setPullToRefresh()
     }
     
     @objc func refrershUI() {
-        print("refrershUI is called")
         self.viewModel.fetchHabitList()
+    }
+    
+    private func handleSuccessResponse() {
+        if self.viewModel.habitList.count == 0 {
+            self.viewFirstHabit.isHidden = false
+            self.tableView.isHidden = true
+        } else {
+            self.viewFirstHabit.isHidden = true
+            self.tableView.isHidden = false
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -81,6 +85,11 @@ extension HomeViewController {
         }
        // */
     }
+    
+    private func didDeleteHabitAtIndex(_ index: Int) {
+        guard let id = viewModel.habitList[index].id else { return }
+        self.deleteAlert(id: String(id))
+    }
 }
 
 // MARK: API Callback
@@ -94,35 +103,19 @@ extension HomeViewController: HabitViewRepresentable {
             self.viewModel.habitList.removeAll()
             self.viewModel.fetchHabitList()
         case  .sucessMessage(_):
-            self.fetchHabitListResponse()
+            self.handleSuccessResponse()
         default:
             break
-        }
-    }
-    
-    private func fetchHabitListResponse() {
-       //  print("self.viewModel.habitList is \(self.viewModel.habitList.count)")
-        if self.viewModel.habitList.count == 0 {
-            self.viewFirstHabit.isHidden = false
-            self.tableView.isHidden = true
-        } else {
-            self.viewFirstHabit.isHidden = true
-            self.tableView.isHidden = false
-            self.tableView.configure(habits: self.viewModel.habitList)
-            self.tableView.reloadData()
-//            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)){
-//                self.tableView.reloadData()
-//            }
         }
     }
 }
 
 // MARK: showAlert for delete habit
 extension HomeViewController {
-    func showAlert(habitId: String) {
+    func deleteAlert(id: String) {
         let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
-            self.viewModel.deleteHabit(habitId: habitId)
+            self.viewModel.deleteHabit(id: id)
         }
         deleteAction.setValue(UIColor.gray, forKey: "titleTextColor")
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction!) in

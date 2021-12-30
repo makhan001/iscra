@@ -57,7 +57,7 @@ extension MyAccountViewController {
     
     private func retriveUserDetails() {
         self.lblName.text = UserStore.userName?.capitalized
-        self.imgProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
+        self.imgProfile.setImageFromURL(UserStore.userImage ?? "", with: AppConstant.UserPlaceHolderImage)
     }
     
     func didUpdateName() {
@@ -216,7 +216,7 @@ extension MyAccountViewController: OnboardingViewRepresentable {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
         case .updateProfile:
-            self.imgProfile.setImageFromURL(UserStore.userImage ?? "", with: nil)
+            self.imgProfile.setImageFromURL(UserStore.userImage ?? "", with: AppConstant.UserPlaceHolderImage)
         case .logout:
             self.router?.push(scene: .welcome)
         default:

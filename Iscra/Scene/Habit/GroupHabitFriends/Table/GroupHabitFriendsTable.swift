@@ -7,7 +7,7 @@
 
 import UIKit
 protocol FriendTableNavigation: class {
-    func didNavigateToCalender()
+    func didNavigateToCalender(index: Int)
 }
 
 class  GroupHabitFriendsTable: UITableView {
@@ -48,6 +48,6 @@ extension GroupHabitFriendsTable: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        friendTableNavigationDelegate?.didNavigateToCalender()
+        friendTableNavigationDelegate?.didNavigateToCalender(index: indexPath.row)
     }
 }

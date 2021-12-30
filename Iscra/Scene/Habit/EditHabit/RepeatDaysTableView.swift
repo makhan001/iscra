@@ -51,9 +51,6 @@ class  RepeatDaysTableView: UITableView, UITableViewDataSource, UITableViewDeleg
         var strDays = ""
         for i in temp {
             if i.isSelected == true {
-               // strDays =  i.dayname + "," + strDays
-              ///  strDays =  strDays + "," + i.dayname
-                
                 if strDays == "" {
                     strDays =   i.dayname
                 } else {

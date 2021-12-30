@@ -11,6 +11,7 @@ import Foundation
 
 final class AddHabitViewModel {
     
+    var habitId: Int = 0
     var habitName = ""
     var icon: String = ""
     var days: String = ""
@@ -143,6 +144,9 @@ extension AddHabitViewModel {
             } else {
                 if let response = resp as? SuccessResponseModel  {
                     if response.status == true {
+                        if let objHabit = response.data?.habit {
+                            self?.habitId = objHabit.id ?? 0
+                        }
                         self?.view?.onAction(.sucessMessage(response.message ?? ""))
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

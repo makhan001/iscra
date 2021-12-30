@@ -139,6 +139,10 @@ enum HabitParams {
     struct JoinHabit: Codable {
         let habit_id: String?
     }
+    
+    struct Friends: Codable {
+        let search: String?
+    }
 }
 
 enum CommunityParams {

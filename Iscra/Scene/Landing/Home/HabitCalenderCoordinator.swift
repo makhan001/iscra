@@ -11,6 +11,8 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
 
     weak var delegate: CoordinatorDimisser?
     let controller: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
+    let shareHabit: ShareHabitViewController = ShareHabitViewController.from(from: .landing, with: .shareHabit)
+    
 
     private var landing: LandingCoordinator!
     private var editHabit: EditHabitCoordinator!
@@ -23,23 +25,21 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
     
     func start(habitId: Int , userId: String) {
         super.start()
-        print("habitId is HabitCalenderCoordinator  \(habitId)")
+        router.setRootModule(controller, hideBar: true)
         controller.viewModel.habitId = habitId
         controller.viewModel.userId = userId
-      //  controller.habitId = habitId
-        router.setRootModule(controller, hideBar: true)
         self.onStart()
     }
 
     private func onStart() {
         controller.router = self
+        shareHabit.router = self
     }
 
     private func startHabitCalender() {
         router.present(controller, animated: true)
     }
     
-       
     private func startLanding() {
         router.dismissModule(animated: false, completion: nil)
         landing = LandingCoordinator(router: Router())
@@ -58,15 +58,21 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
         }
         self.router.present(editHabit, animated: true)
     }
+    
+    private func startShareHabit() {
+        shareHabit.viewModel.habitId = controller.viewModel.habitId
+        router.present(shareHabit, animated: true)
+    }
 }
 
 extension HabitCalenderCoordinator: NextSceneDismisser {
 
     func push(scene: Scenes) {
         switch scene {
-        case .habitCalender: startHabitCalender()
         case .landing: startLanding()
         case .editHabit: startEditHabit()
+        case .shareHabit: startShareHabit()
+        case .habitCalender: startHabitCalender()
         default: break
         }
     }

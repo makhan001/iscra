@@ -11,7 +11,7 @@ import Foundation
 final class HabitCalenderViewModel {
     
     var habitId: Int = 0
-    var userId: String = ""
+    var userId: String = UserStore.userID ?? ""
     var habitMonth: String = ""
     var longestStreak: Int?
 

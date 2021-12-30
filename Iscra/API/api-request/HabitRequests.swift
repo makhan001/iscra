@@ -20,7 +20,8 @@ struct HabitRequests: RequestRepresentable {
     var shareHabit: HabitParams.ShareHabit?
     var groupHabitDetails: HabitParams.GroupHabitDetails?
     var groupHabitMembers: HabitParams.GroupHabitMembers?
-
+    var friends: HabitParams.Friends?
+    
     let requestType: RequestType
     enum RequestType {
         case joinHabit
@@ -34,6 +35,7 @@ struct HabitRequests: RequestRepresentable {
         case shareHabit
         case groupHabitDetails
         case groupHabitMembers
+        case friends
     }
     
     init(requestType: RequestType) {
@@ -65,6 +67,8 @@ struct HabitRequests: RequestRepresentable {
             self.groupHabitDetails = params as? HabitParams.GroupHabitDetails
         case is HabitParams.GroupHabitMembers:
             self.groupHabitMembers = params as? HabitParams.GroupHabitMembers
+        case is HabitParams.Friends:
+            self.friends = params as? HabitParams.Friends
         default:break
         }
     }
@@ -106,6 +110,8 @@ struct HabitRequests: RequestRepresentable {
             return "habits/group_habit_details"
         case .groupHabitMembers:
             return "habits/group_habit_members"
+        case .friends:
+            return "joinhabits/friends"
         }
     }
     
@@ -133,6 +139,8 @@ struct HabitRequests: RequestRepresentable {
             return .body(data: encodeBody(data: groupHabitDetails))
         case .groupHabitMembers:
             return .body(data: encodeBody(data: groupHabitMembers))
+        case .friends:
+            return  .body(data: encodeBody(data: friends))
         default:
             return .none
         }

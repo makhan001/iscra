@@ -25,8 +25,8 @@ final class HabitNameCoordinator: Coordinator<Scenes> {
     
     func start(type: HabitType) {
         super.start()
-        controller.viewModel.habitType = type
         router.setRootModule(controller, hideBar: true)
+        controller.viewModel.habitType = type
         self.onStart()
     }
     

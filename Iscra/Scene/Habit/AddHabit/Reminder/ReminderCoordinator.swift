@@ -57,7 +57,8 @@ final class ReminderCoordinator: Coordinator<Scenes> {
         inviteFriend = InviteFriendCoordinator(router: Router())
         add(inviteFriend)
         inviteFriend.delegate = self
-        inviteFriend.start()
+       // inviteFriend.start()
+        inviteFriend.start(habitId: controller.viewModel.habitId)
         self.router.present(inviteFriend, animated: true)
     }
 }

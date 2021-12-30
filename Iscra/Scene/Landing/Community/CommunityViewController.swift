@@ -26,6 +26,7 @@ class CommunityViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.viewModel.fetchCommunityList()
     }
 }
@@ -72,6 +73,13 @@ extension CommunityViewController {
     
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
+        self.showActivityViewController(url: URL(string: "https://www.apple.com")!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
+    }
+    
+    private func showActivityViewController(url:URL,  text: String,  image: UIImage) {
+        let items = [url, text, image] as [Any]
+        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(ac, animated: true)
     }
 }
 

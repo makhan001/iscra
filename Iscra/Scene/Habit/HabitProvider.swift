@@ -128,5 +128,16 @@ final class HabitServiceProvider: HabitServiceProvidable {
             self?.delegate?.completed(for: .groupHabitDetails, with: resp, with: nil)
         }
     }
+
+    func friends(param: HabitParams.Friends) {
+        WebService().StartIndicator()
+        task.friendsForShare(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .friends, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .friends, with: resp, with: nil)
+        }
+    }
 }
 

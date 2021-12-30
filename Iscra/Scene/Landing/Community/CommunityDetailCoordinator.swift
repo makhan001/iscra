@@ -22,8 +22,8 @@ final class CommunityDetailCoordinator: Coordinator<Scenes> {
     
     func start(objInvitation: Invitaion) {
         super.start()
-        controller.objInvitaion = objInvitation
         router.setRootModule(controller, hideBar: true)
+        controller.objInvitaion = objInvitation
         self.onStart()
     }
     

@@ -33,6 +33,7 @@ struct DataClass: Codable {
     let habitCalender: [HabitCalender]?
     let groupHabitDetails: GroupHabitDetails?
     let groupHabitMembers: [GroupHabitMember]?
+    let shareHabit: [ShareHabit]?
 
     enum CodingKeys: String, CodingKey {
         case register, user, habit, habits, url, invitaions, friends //, groupdetails
@@ -48,6 +49,7 @@ struct DataClass: Codable {
         case groupHabitDetails = "group_habit_details"
         case groupHabitMembers = "group_habit_members"
         case longestStreak = "longest_streak"
+        case shareHabit = "share_habit"
     }
 }
 

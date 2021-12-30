@@ -22,6 +22,11 @@ struct WeekDays {
     var isSelected: Bool
 }
 
+enum ShareHabitSourceScreen:String {
+    case invite
+    case groupHabit
+}
+
 var WeakDaysArray = [WeekDays(id: 7, shortDayname: "S", dayname: "sunday", isSelected: false),
                 WeekDays(id: 1, shortDayname: "M", dayname: "monday", isSelected: false),
                 WeekDays(id: 2, shortDayname: "T", dayname: "tuesday", isSelected: false),
@@ -56,6 +61,7 @@ enum HabitAction {
   case habitCalender
   case markAsComplete
   case shareHabit
+  case friends
   case groupHabitDetails
   case groupHabitMembers
   case isHabitDelete(_ isDelete: Bool, _ msg:String)
@@ -69,6 +75,7 @@ enum HabitAction {
   case editingDidChange(_ field:String, _ value:String)
   case errorMessage(_ text:String)
   case sucessMessage(_ text:String)
+  case shareHabitSucess(_ text:String)
   case joinHabitMessage(_ text:String)
 }
 protocol HabitViewRepresentable: AnyObject {
@@ -80,6 +87,8 @@ protocol HabitInputViewDelegate:AnyObject {
 protocol HabitServiceProvidable: AnyObject {
   var delegate: HabitServiceProvierDelegate? { get set }
   func joinHabit(param: HabitParams.JoinHabit)
+  func friends(param: HabitParams.Friends)
+  func shareHabit(param: HabitParams.ShareHabit)
   func habitList(param: HabitParams.AllHabitList)
   func createHabit(param: HabitParams.CreateHabit)
   func deleteHabit(param: HabitParams.DeleteHabit)

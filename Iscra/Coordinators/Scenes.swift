@@ -48,6 +48,7 @@ enum Scenes:String {
     case myAccountPopup
     case dialogs
     case groupMembers
+    case shareHabit
 //    case RepeatDaysPopUp
 }
 
@@ -103,5 +104,6 @@ enum StoryboardIdentifier:String {
     case myAccountPopup
     case dialogs
     case groupMembers
+    case shareHabit
 //    case RepeatDaysPopUp
 }

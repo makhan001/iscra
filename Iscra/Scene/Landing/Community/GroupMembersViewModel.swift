@@ -10,7 +10,6 @@ import Foundation
 
 final class GroupMembersViewModel {
     
-
     var habitId: Int = 0
     var arrGroupHabitMembers = [GroupHabitMember]()
 

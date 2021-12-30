@@ -14,7 +14,7 @@ class AddGroupImageViewController: UIViewController {
     @IBOutlet weak var imgGroup: UIImageView!
     @IBOutlet weak var btnImagePicker: UIButton!
     @IBOutlet weak var viewNavigation:NavigationBarView!
-    private let viewModel = AddHabitViewModel()
+    let viewModel = AddHabitViewModel()
     weak var router: NextSceneDismisser?
 
     override func viewDidLoad() {

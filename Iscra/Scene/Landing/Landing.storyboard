@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rj-vD-jDM" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="170.66666666666666" y="350" width="72.666666666666657" height="36"/>
+                                <rect key="frame" x="189" y="358" width="36.333333333333343" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="BlackAccent"/>
                                 <nil key="highlightedColor"/>
@@ -463,7 +463,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USER NAME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbM-Nj-7Cb" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="118.99999999999999" width="337" height="38.333333333333329"/>
+                                                <rect key="frame" x="10" y="119.00000000000001" width="337" height="21.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                 <color key="textColor" name="SecondryAccent"/>
                                                 <nil key="highlightedColor"/>
@@ -476,15 +476,15 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2se-TB-CcR" customClass="MyAccountTableView" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="177.33333333333334" width="341" height="292.66666666666663"/>
+                                                <rect key="frame" x="8" y="160.66666666666666" width="341" height="315.33333333333337"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzI-dq-UI8">
-                                                <rect key="frame" x="0.0" y="470" width="357" height="127"/>
+                                                <rect key="frame" x="0.0" y="476" width="357" height="121"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cfd-Xj-QFi">
-                                                <rect key="frame" x="10" y="480" width="337" height="107"/>
+                                                <rect key="frame" x="10" y="486" width="337" height="101"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzi-eY-W0N" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="337" height="56"/>
@@ -506,7 +506,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMg-w0-bk0" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="71" width="337" height="36"/>
+                                                        <rect key="frame" x="0.0" y="71" width="337" height="30"/>
                                                         <state key="normal" title="Log out">
                                                             <color key="titleColor" name="GrayAccent"/>
                                                         </state>
@@ -691,7 +691,7 @@
                                                                         <rect key="frame" x="0.0" y="20" width="244" height="148"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It’s seems there is no group like this" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmr-in-0yx" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                        <rect key="frame" x="8" y="187" width="228" height="114.66666666666669"/>
+                                                                        <rect key="frame" x="8" y="187" width="228" height="43"/>
                                                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                                                         <color key="textColor" name="SecondryAccent"/>
                                                                         <nil key="highlightedColor"/>
@@ -703,7 +703,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can create your own group and share it with others people. Let’s do it!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0by-x4-gCN" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                        <rect key="frame" x="8" y="325.66666666666669" width="228" height="64.666666666666686"/>
+                                                                        <rect key="frame" x="8" y="254" width="228" height="61"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -715,7 +715,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebr-vC-DYH" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="414.33333333333337" width="244" height="56"/>
+                                                                        <rect key="frame" x="0.0" y="339" width="244" height="56"/>
                                                                         <color key="backgroundColor" name="PrimaryAccent"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="56" id="pd7-9a-Men"/>
@@ -862,7 +862,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for a group habits or friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mya-Y2-gmA" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="38" y="12" width="320" height="17"/>
+                                                <rect key="frame" x="38" y="10.333333333333334" width="320" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -933,7 +933,7 @@
                                                         <rect key="frame" x="24" y="62" width="386" height="161"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HHf-1q-uh3" customClass="MyCommunityCollectionView" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="200.66666666666666" height="161"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="258" height="161"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="161" id="51L-1B-gfw"/>
@@ -947,7 +947,7 @@
                                                                 <cells/>
                                                             </collectionView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No groups found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oby-Fs-6bg" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="200.66666666666663" y="0.0" width="185.33333333333337" height="161"/>
+                                                                <rect key="frame" x="258" y="0.0" width="128" height="161"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="BlackAccent"/>
                                                                 <nil key="highlightedColor"/>
@@ -986,7 +986,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Together is more fun" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnu-ZQ-P8Z" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="68.666666666666671" y="100" width="228.66666666666663" height="29"/>
+                                                                <rect key="frame" x="104.33333333333333" y="100" width="157.33333333333337" height="29"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="29" id="LRd-qA-JRD"/>
                                                                 </constraints>
@@ -1089,7 +1089,7 @@
                                                         <rect key="frame" x="24" y="566" width="386" height="239"/>
                                                         <subviews>
                                                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="szg-9L-Gux" customClass="NewCommunityCollectionView" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="175" height="239"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="242.66666666666666" height="239"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="239" id="TRB-9k-dGz"/>
@@ -1103,7 +1103,7 @@
                                                                 <cells/>
                                                             </collectionView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No invitation found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0n9-Fl-eKP" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                                <rect key="frame" x="175" y="0.0" width="211" height="239"/>
+                                                                <rect key="frame" x="242.66666666666669" y="0.0" width="143.33333333333331" height="239"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="BlackAccent"/>
                                                                 <nil key="highlightedColor"/>
@@ -1253,8 +1253,8 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="SSMedium" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(120people)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StM-NQ-0pH" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                            <rect key="frame" x="84.666666666666686" y="195.66666666666666" width="109.33333333333331" height="24"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StM-NQ-0pH" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                            <rect key="frame" x="84.666666666666671" y="195.66666666666666" width="0.0" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="qjQ-7w-S5K"/>
                                             </constraints>
@@ -1376,7 +1376,7 @@
                                 <color key="backgroundColor" name="BlackAccent"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Clg-9H-1rz" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="318.33333333333326" width="414" height="432.66666666666674"/>
+                                <rect key="frame" x="0.0" y="326.66666666666674" width="414" height="424.33333333333326"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5v-WK-8Cl" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="179" y="24" width="56" height="8"/>
@@ -1392,7 +1392,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHv-nH-VDo" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="48" width="374" height="28.666666666666671"/>
+                                        <rect key="frame" x="20" y="48" width="374" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="BlackAccent"/>
                                         <nil key="highlightedColor"/>
@@ -1408,7 +1408,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="A3A-by-No5" customClass="RepeatDaysTableView" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92.666666666666686" width="414" height="300"/>
+                                        <rect key="frame" x="0.0" y="84.333333333333314" width="414" height="300"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="VhT-wm-v99"/>
@@ -2182,6 +2182,7 @@
                         <outlet property="viewEditHabit" destination="wDf-32-1KG" id="GYt-oe-s66"/>
                         <outlet property="viewMarkasComplete" destination="gXm-w7-1be" id="6Zn-Cq-TL0"/>
                         <outlet property="viewNavigation" destination="z7w-v0-HRu" id="pPE-7V-Uks"/>
+                        <outlet property="viewShareHabit" destination="B3b-Fs-y5S" id="Ijw-kR-hY1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOY-xG-R3Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2649,6 +2650,7 @@
                         <outlet property="viewMarkasComplete" destination="rxi-7k-ObN" id="ADE-kR-MgE"/>
                         <outlet property="viewNavigation" destination="xLc-oc-TGe" id="BPs-VV-W0I"/>
                         <outlet property="viewProgress" destination="qCA-F9-tiO" id="bHH-1N-hEn"/>
+                        <outlet property="viewShareHabit" destination="nwk-QU-fN8" id="jJW-DQ-hdQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTe-aI-tpr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2757,6 +2759,59 @@
             </objects>
             <point key="canvasLocation" x="-4546.376811594203" y="1903.5326086956522"/>
         </scene>
+        <!--Share Habit View Controller-->
+        <scene sceneID="rYt-wq-VZ1">
+            <objects>
+                <viewController storyboardIdentifier="shareHabit" id="laQ-Mk-VCE" customClass="ShareHabitViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MMB-JD-Y1T">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v55-0X-IGC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zY2-tq-yad" customClass="NavigationBarView" customModule="Iscra" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="giY-bW-m0U"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NaA-Kv-rTv" customClass="ShareHabitTableView" customModule="Iscra" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="85" width="366" height="651"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="NaA-Kv-rTv" firstAttribute="leading" secondItem="v55-0X-IGC" secondAttribute="leading" constant="24" id="AVM-05-zYw"/>
+                                    <constraint firstItem="zY2-tq-yad" firstAttribute="top" secondItem="v55-0X-IGC" secondAttribute="top" id="H6x-dJ-smf"/>
+                                    <constraint firstAttribute="trailing" secondItem="zY2-tq-yad" secondAttribute="trailing" id="RcU-D1-zQ4"/>
+                                    <constraint firstItem="NaA-Kv-rTv" firstAttribute="top" secondItem="zY2-tq-yad" secondAttribute="bottom" constant="15" id="Y7u-pC-zNZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="NaA-Kv-rTv" secondAttribute="trailing" constant="24" id="cgu-Sw-aAd"/>
+                                    <constraint firstAttribute="bottom" secondItem="NaA-Kv-rTv" secondAttribute="bottom" id="l5p-Se-hDE"/>
+                                    <constraint firstItem="zY2-tq-yad" firstAttribute="leading" secondItem="v55-0X-IGC" secondAttribute="leading" id="n3y-hi-4WF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TZm-XS-NOT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="v55-0X-IGC" firstAttribute="leading" secondItem="MMB-JD-Y1T" secondAttribute="leading" id="0DT-xB-HN0"/>
+                            <constraint firstItem="v55-0X-IGC" firstAttribute="top" secondItem="MMB-JD-Y1T" secondAttribute="top" id="7lP-ae-67Y"/>
+                            <constraint firstAttribute="trailing" secondItem="v55-0X-IGC" secondAttribute="trailing" id="MIM-Pm-jqa"/>
+                            <constraint firstAttribute="bottom" secondItem="v55-0X-IGC" secondAttribute="bottom" id="UEz-yj-cFX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableview" destination="NaA-Kv-rTv" id="qPE-oj-w9Q"/>
+                        <outlet property="viewNavigation" destination="zY2-tq-yad" id="flt-z0-pui"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jFz-pb-e8x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3319" y="1837"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="0by-x4-gCN">
@@ -2800,9 +2855,7 @@
         <designable name="SUV-aL-C8u">
             <size key="intrinsicContentSize" width="206" height="25.333333333333332"/>
         </designable>
-        <designable name="StM-NQ-0pH">
-            <size key="intrinsicContentSize" width="109.33333333333333" height="24"/>
-        </designable>
+        <designable name="StM-NQ-0pH"/>
         <designable name="TMg-w0-bk0">
             <size key="intrinsicContentSize" width="67" height="36"/>
         </designable>

@@ -202,7 +202,23 @@ struct AllGroupHabit: Codable {
     }
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// MARK: - ShareHabit
+struct ShareHabit: Codable {
+    let id, userID, habitID: Int?
+    let randomCode, url: JSONNull?
+    let createdAt, updatedAt, shareType: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userID = "user_id"
+        case habitID = "habit_id"
+        case randomCode = "random_code"
+        case url
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case shareType = "share_type"
+    }
+}
 
 
 

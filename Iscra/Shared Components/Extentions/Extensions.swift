@@ -78,7 +78,7 @@ extension UIView {
     func makeCircular() {
         self.layer.cornerRadius = self.frame.size.width / 2
         self.clipsToBounds = true
-
+        
     }
 }
 
@@ -218,10 +218,10 @@ extension Character {
         guard let firstScalar = unicodeScalars.first else { return false }
         return firstScalar.properties.isEmoji && firstScalar.value > 0x238C
     }
-
+    
     /// Checks if the scalars will be merged into an emoji
     var isCombinedIntoEmoji: Bool { unicodeScalars.count > 1 && unicodeScalars.first?.properties.isEmoji ?? false }
-
+    
     var isEmoji: Bool { isSimpleEmoji || isCombinedIntoEmoji }
 }
 
@@ -232,10 +232,10 @@ extension String {
         let date = NSDate(timeIntervalSince1970: Double(timeStamp) ?? 0.0 / 1000)
         let dayTimePeriodFormatter = DateFormatter()
         dayTimePeriodFormatter.dateFormat = "dd-EE" // "dd MMM YY, hh:mm a, EEEE"
-    //    dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
+        //    dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
         let dateString = dayTimePeriodFormatter.string(from: date as Date)
         let fullNameArr = dateString.components(separatedBy: "-")
-      //  print("dateString is \(fullNameArr[0]) and \(fullNameArr[1])")
+        //  print("dateString is \(fullNameArr[0]) and \(fullNameArr[1])")
         if isDayName == true {
             return  fullNameArr[1]
         } else {
@@ -294,11 +294,33 @@ extension Date {
         dayComponent.day = days
         let theCalendar = Calendar.current
         if let nextDate = theCalendar.date(byAdding: dayComponent, to: self) {
-          return nextDate.timeIntervalSince1970
+            return nextDate.timeIntervalSince1970
         } else {
-          return self.timeIntervalSince1970
+            return self.timeIntervalSince1970
         }
-      }
+    }
+    
+    var currentHabitDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        return dateFormatter.string(from: self)
+    }
+    
+    var currentDate: Int {
+        let calendar = Calendar.current
+        let compomnents = calendar.dateComponents([.day], from: self)
+        return compomnents.day ?? 0
+    }
+    var currentMonth: Int {
+        let calendar = Calendar.current
+        let compomnents = calendar.dateComponents([.month], from: self)
+        return compomnents.month ?? 0
+    }
+    var currentYear: Int {
+        let calendar = Calendar.current
+        let compomnents = calendar.dateComponents([.year], from: self)
+        return compomnents.year ?? 0
+    }
 }
 
 extension UITableView {
@@ -390,7 +412,7 @@ extension UIAlertController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.center
         let attributeString = NSMutableAttributedString(string: title, attributes: [
-            NSAttributedString.Key.paragraphStyle: paragraphStyle])//1
+                                                            NSAttributedString.Key.paragraphStyle: paragraphStyle])//1
         if let titleFont = font {
             attributeString.addAttributes([NSAttributedString.Key.font : titleFont],//2
                                           range: NSMakeRange(0, title.utf8.count))
@@ -408,7 +430,7 @@ extension UIAlertController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.left
         let attributedString = NSMutableAttributedString(string: title, attributes: [
-            NSAttributedString.Key.paragraphStyle: paragraphStyle])
+                                                            NSAttributedString.Key.paragraphStyle: paragraphStyle])
         if let titleFont = font {
             attributedString.addAttributes([NSAttributedString.Key.font : titleFont], range: NSMakeRange(0, title.utf8.count))
         }
@@ -427,3 +449,93 @@ extension Notification.Name {
     static let IAPHelperPurchaseFinishNotification = Notification.Name("IAPHelperPurchaseFinishNotification")
     static let IAPHelperSubscriptionExpireDateNotification = Notification.Name("IAPHelperSubscriptionExpireDateNotification")
 }
+
+extension Int {
+    var toDouble: Double {
+        return Double(self)
+    }
+}
+
+extension TimeInterval {
+    var habitDate: String {
+        let date = Date(timeIntervalSince1970: self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        return dateFormatter.string(from: date)
+    }
+}
+
+extension UICollectionView {
+    private struct AssociatedObjectKey {
+        static var registeredCells = "registeredCells"
+    }
+    private var registeredCells: Set<String> {
+        get {
+            if objc_getAssociatedObject(self, &AssociatedObjectKey.registeredCells) as? Set<String> == nil {
+                self.registeredCells = Set<String>()
+            }
+            return objc_getAssociatedObject(self, &AssociatedObjectKey.registeredCells) as! Set<String>
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &AssociatedObjectKey.registeredCells, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    func registerReusable<T: UICollectionViewCell>(_: T.Type) where T: Reusable {
+        let bundle = Bundle(for: T.self)
+        if bundle.path(forResource: T.reuseIndentifier, ofType: "nib") != nil {
+            let nib = UINib(nibName: T.reuseIndentifier, bundle: bundle)
+            register(nib, forCellWithReuseIdentifier: T.reuseIndentifier)
+        } else {
+            register(T.self, forCellWithReuseIdentifier: T.reuseIndentifier)
+        }
+    }
+    func dequeueReusable<T: UICollectionViewCell>(_ indexPath: IndexPath) -> T where T: Reusable {
+        if registeredCells.contains(T.reuseIndentifier) == false {
+            registeredCells.insert(T.reuseIndentifier)
+            registerReusable(T.self)
+        }
+        guard let reuseCell = self.dequeueReusableCell(withReuseIdentifier: T.reuseIndentifier, for: indexPath) as? T else {
+            fatalError("Unable to dequeue cell with identifier \(T.reuseIndentifier)")
+        }
+        return reuseCell
+    }
+    func registerReusable<T: UICollectionViewCell>(_: T.Type) where T: ReusableReminder {
+        let bundle = Bundle(for: T.self)
+        if bundle.path(forResource: T.reuseIndentifier, ofType: "nib") != nil {
+            let nib = UINib(nibName: T.reuseIndentifier, bundle: bundle)
+            register(nib, forCellWithReuseIdentifier: T.reuseIndentifier)
+        } else {
+            register(T.self, forCellWithReuseIdentifier: T.reuseIndentifier)
+        }
+    }
+    func dequeueReusable<T: UICollectionViewCell>(_ indexPath: IndexPath) -> T where T: ReusableReminder {
+        if registeredCells.contains(T.reuseIndentifier) == false {
+            registeredCells.insert(T.reuseIndentifier)
+            registerReusable(T.self)
+        }
+        guard let reuseCell = self.dequeueReusableCell(withReuseIdentifier: T.reuseIndentifier, for: indexPath) as? T else {
+            fatalError("Unable to dequeue cell with identifier \(T.reuseIndentifier)")
+        }
+        return reuseCell
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

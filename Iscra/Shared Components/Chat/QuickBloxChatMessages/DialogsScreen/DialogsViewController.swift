@@ -65,6 +65,7 @@ class DialogTableViewCellModel: NSObject {
                let fullName = recipient.fullName {
                 self.textLabelText = fullName
                 print("recipient ========>>\(recipient)")
+                
                 self.customData = recipient.customData ?? ""
             } else {
                 ChatManager.instance.loadUser(UInt(dialog.recipientID)) { [weak self] (user) in
@@ -80,13 +81,15 @@ class DialogTableViewCellModel: NSObject {
     }
 }
 
-class DialogsViewController: UITableViewController {
+class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UINavigationBarDelegate {
     
     //MARK: - Properties
     private let chatManager = ChatManager.instance
     private var dialogs: [QBChatDialog] = []
     private var cancel = false
     
+   
+    @IBOutlet var tableView: UITableView!
     weak var router: NextSceneDismisser?
     
     //MARK: - Life Cycle
@@ -96,8 +99,11 @@ class DialogsViewController: UITableViewController {
         //Hide Tab Bar
 //        setNavigationBar()
         tableView.register(UINib(nibName: DialogCellConstant.reuseIdentifier, bundle: nil), forCellReuseIdentifier: DialogCellConstant.reuseIdentifier)
+        
         setupNavigationTitle()
+       
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -105,7 +111,7 @@ class DialogsViewController: UITableViewController {
         self.tabBarController?.tabBar.isHidden = false
         setupNavigationBar()
         reloadContent()
-        
+       
         QBChat.instance.addDelegate(self)
         chatManager.delegate = self
         
@@ -183,7 +189,7 @@ class DialogsViewController: UITableViewController {
     }
     
     private func setupNavigationBar() {
-        if let navigation = self.navigationController {
+       if let navigation = self.navigationController {
         navigationItem.rightBarButtonItems = []
         navigationItem.leftBarButtonItems = []
         navigation.isNavigationBarHidden = false
@@ -200,10 +206,13 @@ class DialogsViewController: UITableViewController {
         navigationItem.rightBarButtonItem = usersButtonItem
         usersButtonItem.tintColor =  #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
             
-            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.isTranslucent = true
             self.navigationController?.navigationBar.barTintColor = .white
             navigationController?.view.backgroundColor = .white
             navigationController?.title = "My chats"
+            self.navigationController?.navigationItem.leftBarButtonItem = leftMyChatBarButtonItem
+            self.navigationController?.navigationItem.rightBarButtonItem = usersButtonItem
+            
         }
         // addInfoButton()
     }
@@ -326,19 +335,19 @@ class DialogsViewController: UITableViewController {
     }
     
     // MARK: - UITableViewDataSource
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dialogs.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DialogCellConstant.reuseIdentifier,for: indexPath) as? DialogCell else {
             return UITableViewCell()
@@ -388,7 +397,7 @@ class DialogsViewController: UITableViewController {
     }
     
     // MARK: - UITableViewDelegate
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let dialog = dialogs[indexPath.row]
         if let dialogID = dialog.id {
@@ -396,7 +405,7 @@ class DialogsViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         let dialog = dialogs[indexPath.row]
         if dialog.type == .publicGroup {
             return false
@@ -404,7 +413,7 @@ class DialogsViewController: UITableViewController {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
         if Reachability.instance.networkConnectionStatus() == .notConnection {
             showAlertView(LoginConstant.checkInternet, message: LoginConstant.checkInternetMessage)
@@ -458,7 +467,7 @@ class DialogsViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "SA_STR_DELETE".localized
     }
     

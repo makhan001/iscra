@@ -106,7 +106,9 @@ extension VerificationViewController {
         case btnSubmit:
             self.submitAction()
         case btnCancel:
-            self.dismiss(animated: true)
+            self.dismiss(animated: true) {
+                self.router?.push(scene: .welcome)
+            }
         default:
             break
         }

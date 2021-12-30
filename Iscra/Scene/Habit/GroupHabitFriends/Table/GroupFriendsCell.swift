@@ -59,7 +59,7 @@ extension GroupFriendsCell: UICollectionViewDelegate, UICollectionViewDataSource
         }
         
         guard let objHabitMarks = self.arrHabitMarks?[indexPath.row] else {  return UICollectionViewCell()  }
-        cell.configureHabitDays(obj: objHabitMarks, colorTheme: self.colorTheme )
+//        cell.configureHabitDays(obj: objHabitMarks, colorTheme: self.colorTheme )
         return cell
 
     }

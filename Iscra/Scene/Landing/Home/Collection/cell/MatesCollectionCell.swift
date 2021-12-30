@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MatesCollectionCell: UICollectionViewCell {
+class MatesCollectionCell: UICollectionViewCell, Reusable {
   
     // MARK: - Outlets
     @IBOutlet weak var imgMatesMember: UIImageView!
@@ -15,6 +15,11 @@ class MatesCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    func configure<T>(with content: T) {
+        
+    }
+    
     
     func configure() {
         self.imgMatesMember.image = #imageLiteral(resourceName: "ic_user1")

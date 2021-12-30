@@ -42,7 +42,7 @@ class GroupFriendsCell: UITableViewCell , Reusable {
     func configure<T>(with content: T) {
         guard let objMember = content as? Member else { return }
         self.lblFriendName.text = objMember.username?.lowercased()
-        self.imgFriend.setImageFromURL(objMember.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
+        self.imgFriend.setImageFromURL(objMember.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
         self.arrHabitMarks = objMember.habitMark
     }
 }

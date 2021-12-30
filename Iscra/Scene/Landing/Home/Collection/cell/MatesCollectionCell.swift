@@ -30,6 +30,6 @@ class MatesCollectionCell: UICollectionViewCell, Reusable {
     }
     
     func configureGroupMembers(obj: GroupMember) {
-        self.imgMatesMember.setImageFromURL(obj.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user1"))
+        self.imgMatesMember.setImageFromURL(obj.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
     }
 }

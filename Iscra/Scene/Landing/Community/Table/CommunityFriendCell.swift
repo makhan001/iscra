@@ -20,12 +20,12 @@ class CommunityFriendCell: UITableViewCell, Reusable {
     func configure<T>(with content: T) {
         if let objFriend = content as? Friend {
             self.lblFriendname.text = objFriend.username?.lowercased()
-            self.imageFriend.setImageFromURL(objFriend.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
+            self.imageFriend.setImageFromURL(objFriend.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
         }
         
         if let objGroupHabitMember = content as? GroupHabitMember {
             self.lblFriendname.text = objGroupHabitMember.username?.lowercased()
-            self.imageFriend.setImageFromURL(objGroupHabitMember.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
+            self.imageFriend.setImageFromURL(objGroupHabitMember.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
         }
     }
     

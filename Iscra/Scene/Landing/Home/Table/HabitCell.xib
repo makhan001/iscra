@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -87,7 +87,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mates:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCV-Pq-mg5" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="70" width="54.5" height="21"/>
+                                                <rect key="frame" x="15" y="70" width="51.5" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="DFW-kn-vYb"/>
                                                 </constraints>
@@ -131,7 +131,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEk-Ch-0dB">
                                 <rect key="frame" x="447" y="10" width="55" height="125"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6na-WE-bbP">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6na-WE-bbP" customClass="HabitDaysCollectionView" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="10" y="0.0" width="45" height="125"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -193,8 +193,8 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="collectionDays" destination="6na-WE-bbP" id="8vM-H5-Kpl"/>
                 <outlet property="collectionMates" destination="KIT-uB-CXg" id="Jrc-XV-1ri"/>
-                <outlet property="collectiondays" destination="6na-WE-bbP" id="D1o-0q-Gba"/>
                 <outlet property="constraintWidth" destination="KNd-tm-6eq" id="Nox-eP-GWd"/>
                 <outlet property="imgHabit" destination="s2x-9A-gKC" id="O2C-x1-do9"/>
                 <outlet property="imgHabitMates" destination="Ife-MM-rtr" id="yci-oo-afK"/>
@@ -209,13 +209,13 @@
     </objects>
     <designables>
         <designable name="RMQ-Fc-dl4">
-            <size key="intrinsicContentSize" width="108" height="24"/>
+            <size key="intrinsicContentSize" width="94.5" height="20.5"/>
         </designable>
         <designable name="YCV-Pq-mg5">
-            <size key="intrinsicContentSize" width="54.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="51.5" height="20.5"/>
         </designable>
         <designable name="yQv-Ae-JBf">
-            <size key="intrinsicContentSize" width="112" height="24"/>
+            <size key="intrinsicContentSize" width="94.5" height="20.5"/>
         </designable>
     </designables>
     <resources>

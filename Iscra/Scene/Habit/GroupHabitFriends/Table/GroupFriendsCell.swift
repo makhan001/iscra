@@ -17,7 +17,9 @@ class GroupFriendsCell: UITableViewCell , Reusable {
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
     
     private let arr = ["1","1","1","1","1","1","1"]
-    
+    var colorTheme: String = ""
+    var arrHabitMarks: [HabitMark]?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectiondays.register(UINib(nibName: "HabitDaysCell", bundle: nil), forCellWithReuseIdentifier: "HabitDaysCell")
@@ -37,33 +39,32 @@ class GroupFriendsCell: UITableViewCell , Reusable {
         super.setSelected(selected, animated: animated)
     }
     
-//    func configure() {
-//        self.lblFriendName.text = "Mary"
-//        self.imgFriend.image = #imageLiteral(resourceName: "ic-MaleCommunity1")
-//    }
-    
     func configure<T>(with content: T) {
         guard let objMember = content as? Member else { return }
         self.lblFriendName.text = objMember.username?.lowercased()
         self.imgFriend.setImageFromURL(objMember.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user3"))
+        self.arrHabitMarks = objMember.habitMark
     }
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource and UICollectionViewDelegateFlowLayout
 extension GroupFriendsCell: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.arr.count
+        return self.arrHabitMarks?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = self.collectiondays.dequeueReusableCell(withReuseIdentifier: "HabitDaysCell", for: indexPath) as? HabitDaysCell else {
             return UICollectionViewCell()
         }
-        cell.configure()
+        
+        guard let objHabitMarks = self.arrHabitMarks?[indexPath.row] else {  return UICollectionViewCell()  }
+        cell.configureHabitDays(obj: objHabitMarks, colorTheme: self.colorTheme )
         return cell
+
     }
-    
+   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Int(self.collectiondays.bounds.width) / self.arr.count , height: 125)
+       return CGSize(width: Int(self.collectiondays.bounds.width) / self.arr.count , height: 125)   // deepak
     }
 }

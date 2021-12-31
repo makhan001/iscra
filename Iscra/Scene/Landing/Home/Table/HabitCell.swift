@@ -35,7 +35,7 @@ class HabitCell: UITableViewCell, Reusable {
         self.viewModel = viewModel
         self.viewModel.habitMarks = item.habitMarks ?? self.viewModel.habitMarks
         self.viewModel.groupMembers = item.groupMembers ?? self.viewModel.groupMembers
-        self.collectionDays.configure(viewModel)
+        self.collectionDays.configure(colorTheme: viewModel.colorTheme, habitMark: viewModel.habitMarks)
         self.populateData(item: item)
     }
     
@@ -72,44 +72,3 @@ class HabitCell: UITableViewCell, Reusable {
         super.setSelected(selected, animated: animated)
     }
 }
-
-//extension HabitCell: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout , CustomCollectionViewLayoutDelegate{
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return (collectionView == self.collectionDays) ? viewModel.habitMarks.count : viewModel.groupMembers.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if collectionView == self.collectionDays {
-//            let cell = collectionView.dequeueReusable(indexPath) as HabitDaysCell
-//            cell.configure(viewModel: viewModel, item: viewModel.habitMarks[indexPath.row])
-//            return cell
-//        } else {
-//            let cell = collectionView.dequeueReusable(indexPath) as MatesCollectionCell
-////            guard let objGroupMembers = self.viewModel.groupMembers[indexPath.row] else {  return UICollectionViewCell()  }
-////            cell.configureGroupMembers(obj: objGroupMembers)
-//            return cell
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if collectionView == self.collectionDays{
-//            if viewModel.habitMarks.count <= 3 {
-//                let width = Int(self.collectionDays.bounds.width) / viewModel.habitMarks.count
-//                return CGSize(width: width, height: 125)
-//            } else {
-//                return CGSize(width: self.collectionDays.bounds.width/3.5, height: 125)
-//            }
-//        } else {
-//            return CGSize(width: 35, height: 35)
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, getSizeAtIndexPath indexPath: IndexPath) -> CGSize {
-//        if collectionView == self.collectionDays{
-//            return CGSize(width: 50, height: 125)
-//        } else {
-//            return CGSize(width: 35, height: 35)
-//        }
-//    }
-//}

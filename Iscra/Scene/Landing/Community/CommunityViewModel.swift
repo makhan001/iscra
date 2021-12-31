@@ -10,15 +10,17 @@ import Foundation
 
 final class CommunityViewModel {
     
-    var arrMyGroupList = [GroupHabit]()
-    var arrInvitaions = [Invitaion]()
-   // var habit_id: String = ""
-   var habitId: Int = 0
-
+    var colorTheme: String = "#ff7B86EB"
+    var habitId: Int = 0
+    var myGroups = [GroupHabit]()
+    var habitMarks = [HabitMark]()
+    var myInvitaions = [Invitaion]()
+    var groupMembers = [GroupMember]()
+    
     let provider: CommunityServiceProvidable
     weak var view: CommunityViewRepresentable?
     var delegate: CommunityServiceProvierDelegate?
-
+    
     init(provider: CommunityServiceProvidable) {
         self.provider = provider
         self.provider.delegate = self
@@ -29,8 +31,8 @@ final class CommunityViewModel {
     }
     
     func callApiGroupInvitation() {
-       // self.provider.groupInvitations(param: CommunityParams.GroupInvitations(habit_id: self.habit_id, user_ids: ["1"]))
-   }
+        // self.provider.groupInvitations(param: CommunityParams.GroupInvitations(habit_id: self.habit_id, user_ids: ["1"]))
+    }
 }
 
 extension CommunityViewModel: CommunityServiceProvierDelegate{
@@ -41,16 +43,11 @@ extension CommunityViewModel: CommunityServiceProvierDelegate{
                 WebService().StopIndicator()
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
-                if let resp = response as? SuccessResponseModel, resp.code == 200, let groupList = resp.data?.groupHabits, let invitaionsList = resp.data?.invitaions{
-                    //                    let arrForGroup = groupList.filter({$0.habitType == "group_habit"})
-                    //                    self.myGroupList = arrForGroup
-                    self.arrMyGroupList = groupList
-                    self.arrMyGroupList.sort { Int($0.createdAt!) > Int($1.createdAt!) }
-                    print("self.groupList is \(self.arrMyGroupList.count)")
-                    
-                    self.arrInvitaions = invitaionsList
-                     self.arrInvitaions.sort { Int($0.createdAt!) > Int($1.createdAt!) }
-                    print("self.arrInvitaions is \(self.arrInvitaions.count)")
+                if let resp = response as? SuccessResponseModel, resp.code == 200, let myGroups = resp.data?.groupHabits, let myInvitaions = resp.data?.invitaions {
+                    self.myGroups = myGroups
+                    self.myGroups.sort { Int($0.createdAt ?? 0) > Int($1.createdAt ?? 0) }
+                    self.myInvitaions = myInvitaions
+                    self.myInvitaions.sort { Int($0.createdAt!) > Int($1.createdAt!) }
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
                 } else {
                     self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))

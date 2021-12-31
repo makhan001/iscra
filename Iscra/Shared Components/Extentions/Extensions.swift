@@ -388,7 +388,7 @@ extension UITableView {
     }
 }
 
-// MARK:- UIAlertController
+// MARK: UIAlertController
 extension UIAlertController {
     
     //Set message font and message color

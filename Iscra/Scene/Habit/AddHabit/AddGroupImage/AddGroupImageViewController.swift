@@ -36,7 +36,7 @@ extension AddGroupImageViewController {
         }
     }}
 
-// MARK:- Button Action
+// MARK: Button Action
 extension AddGroupImageViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {

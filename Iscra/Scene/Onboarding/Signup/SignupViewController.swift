@@ -114,14 +114,14 @@ extension SignupViewController {
     }
 }
 
-// MARK:- Verification Delegate
+// MARK: Verification Delegate
 extension SignupViewController : VerificationViewControllerDelegate {
     func isUserVerified() {
         router?.push(scene: .landing)
     }
 }
 
-// MARK:- Textfiled Delegate
+// MARK: Textfiled Delegate
 extension SignupViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.txtEmail {

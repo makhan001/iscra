@@ -46,7 +46,7 @@ extension SelectHabitPopUpViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension SelectHabitPopUpViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {

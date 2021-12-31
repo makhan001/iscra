@@ -14,15 +14,14 @@ class GroupFriendsCell: UITableViewCell , Reusable {
     @IBOutlet weak var lblFriendName: UILabel!
     @IBOutlet weak var imgFriend: UIImageView!
     @IBOutlet weak var collectiondays: UICollectionView!
+    @IBOutlet weak var daysCollectionView: HabitDaysCollectionView!
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
     
     private let arr = ["1","1","1","1","1","1","1"]
-    var colorTheme: String = ""
-    var arrHabitMarks: [HabitMark]?
+    var member: Member!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.collectiondays.register(UINib(nibName: "HabitDaysCell", bundle: nil), forCellWithReuseIdentifier: "HabitDaysCell")
         self.imgFriend.makeCircular()
     }
     
@@ -40,31 +39,27 @@ class GroupFriendsCell: UITableViewCell , Reusable {
     }
     
     func configure<T>(with content: T) {
-        guard let objMember = content as? Member else { return }
-        self.lblFriendName.text = objMember.username?.lowercased()
-        self.imgFriend.setImageFromURL(objMember.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
-        self.arrHabitMarks = objMember.habitMark
+        guard let item = content as? Member else { return }
+        self.member = item
+        self.lblFriendName.text = item.username?.lowercased()
+        self.imgFriend.setImageFromURL(item.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
+        self.daysCollectionView.configure(colorTheme: "", habitMark: item.habitMark ?? [])
     }
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource and UICollectionViewDelegateFlowLayout
 extension GroupFriendsCell: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.arrHabitMarks?.count ?? 0
+        return member.habitMark?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = self.collectiondays.dequeueReusableCell(withReuseIdentifier: "HabitDaysCell", for: indexPath) as? HabitDaysCell else {
-            return UICollectionViewCell()
-        }
-        
-        guard let objHabitMarks = self.arrHabitMarks?[indexPath.row] else {  return UICollectionViewCell()  }
-//        cell.configureHabitDays(obj: objHabitMarks, colorTheme: self.colorTheme )
+        let cell = collectionView.dequeueReusable(indexPath) as HabitDaysCell
+        cell.configure(with: member.habitMark?[indexPath.row])
         return cell
-
     }
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       return CGSize(width: Int(self.collectiondays.bounds.width) / self.arr.count , height: 125)   // deepak
+        CGSize(width: Int(self.daysCollectionView.bounds.width) / self.arr.count , height: 125)
     }
 }

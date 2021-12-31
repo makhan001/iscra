@@ -28,7 +28,7 @@ class WalkthroughViewController: UIViewController {
     }
 }
 
-// MARK:- Instance Methods
+// MARK: Instance Methods
 extension WalkthroughViewController {
     private func setup() {
         self.lblHeaderTitle.text = AppConstant.onbordingName //"How do your \nfriends call you?"
@@ -66,7 +66,7 @@ extension WalkthroughViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension WalkthroughViewController  {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
@@ -135,7 +135,7 @@ extension WalkthroughViewController  {
     }
 }
 
-// MARK:- ScrollView Delegate
+// MARK: ScrollView Delegate
 extension WalkthroughViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if currentIndex == 2 {
@@ -152,7 +152,7 @@ extension WalkthroughViewController : UIScrollViewDelegate {
     }
 }
 
-// MARK:- TextField Delegate
+// MARK: TextField Delegate
 extension WalkthroughViewController : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 //        if string.rangeOfCharacter(from: .decimalDigits) != nil || string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {

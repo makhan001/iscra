@@ -108,7 +108,7 @@ extension ReminderViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension ReminderViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {

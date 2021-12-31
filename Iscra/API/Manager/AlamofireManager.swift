@@ -12,7 +12,7 @@ import Alamofire
 //class AlamofireManager : NSObject {
 //    
 //    static let shared = AlamofireManager()
-//    //Mark:- private let alamofireManager : AF.session
+//    //MARK: private let alamofireManager : AF.session
 //    
 //    let unAuthorizedError = NSError(domain: "UnAuthorized", code: 401, userInfo: nil)
 //    let badRequestError = NSError(domain: "BadRequest", code: 400, userInfo: nil)

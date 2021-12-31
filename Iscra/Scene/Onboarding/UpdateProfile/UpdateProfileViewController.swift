@@ -9,7 +9,7 @@ import UIKit
 
 class UpdateProfileViewController: UIViewController {
     
-    // MARK:-Outlets and variables
+    // MARK:Outlets and variables
     
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var viewNavigation: NavigationBarView!
@@ -60,7 +60,7 @@ extension UpdateProfileViewController: NavigationBarViewDelegate{
     }
 }
 
-// MARK:- Textfiled Delegate
+// MARK: Textfiled Delegate
 extension UpdateProfileViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.txtName.resignFirstResponder()

@@ -63,7 +63,7 @@ extension HabitNameViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension HabitNameViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
@@ -86,7 +86,7 @@ extension HabitNameViewController {
     }
 }
 
-// MARK:- UITextField Delegate
+// MARK: UITextField Delegate
 extension HabitNameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -124,7 +124,7 @@ extension HabitNameViewController: UITextFieldDelegate {
     }
 }
 
-// MARK:- UITextViewDelegate
+// MARK: UITextViewDelegate
 extension HabitNameViewController: UITextViewDelegate {
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

@@ -74,7 +74,7 @@ extension CommunitySearchViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension CommunitySearchViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {

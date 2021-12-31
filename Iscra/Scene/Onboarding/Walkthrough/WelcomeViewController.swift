@@ -21,7 +21,7 @@ class WelcomeViewController: UIViewController {
     }
 }
 
-// MARK:- Instance Methods
+// MARK: Instance Methods
 extension WelcomeViewController {
     private func setup() {
         lblHeaderTitle.text = AppConstant.welComeDiscription
@@ -31,7 +31,7 @@ extension WelcomeViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension WelcomeViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {

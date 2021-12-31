@@ -48,6 +48,7 @@ extension CommunityViewController {
     private func setCollectionView() {
         self.collectionMyGroups.configure(viewModel: viewModel)
         self.collectionMyGroups.didSelectCollectionAtIndex = self.didSelectCollectionAtIndex
+        self.collectionNewGroupHabit.configure(viewModel: viewModel)
         self.collectionNewGroupHabit.communityDelegate = self
     }
     
@@ -58,6 +59,11 @@ extension CommunityViewController {
     private func didSelectCollectionAtIndex(index: Int) {
         self.viewModel.habitId = self.viewModel.myGroups[index].id ?? 0
         self.router?.push(scene: .groupHabitFriends)
+    }
+    
+    private func didSelectInvitedHabitAtIndex(_ index: Int) {
+//        self.objInvitaion = obj
+//        self.router?.push(scene: .communityDetail)
     }
     
     private func reload() {
@@ -82,7 +88,7 @@ extension CommunityViewController {
         if self.viewModel.myInvitaions.isEmpty != true {
             self.collectionNewGroupHabit.isHidden = false
             self.lblNoInvitationFound.isHidden = true
-            self.collectionNewGroupHabit.configure(myInvitaion: self.viewModel.myInvitaions)
+            self.collectionNewGroupHabit.configure(viewModel: viewModel)
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
                 self.collectionNewGroupHabit.reloadData()
             }

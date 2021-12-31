@@ -57,15 +57,15 @@ class HabitCell: UITableViewCell, Reusable {
     
     override func updateConstraints() {
         super.updateConstraints()
-        if viewModel.habitMarks.isEmpty {
-            self.constraintWidth.constant = 0
-        } else {
-            if viewModel.habitMarks.count <= 3 {
-                self.constraintWidth.constant = CGFloat(( viewModel.habitMarks.count * 60))
-            } else {
-                self.constraintWidth.constant = CGFloat(( viewModel.habitMarks.count * 50))
-            }
-        }
+//        if viewModel.habitMarks.isEmpty {
+//            self.constraintWidth.constant = 0
+//        } else {
+//            if viewModel.habitMarks.count <= 3 {
+//                self.constraintWidth.constant = CGFloat(( viewModel.habitMarks.count * 60))
+//            } else {
+//                self.constraintWidth.constant = CGFloat(( viewModel.habitMarks.count * 50))
+//            }
+//        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

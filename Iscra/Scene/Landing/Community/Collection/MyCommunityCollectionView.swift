@@ -45,10 +45,6 @@ extension MyCommunityCollectionView: UICollectionViewDelegate, UICollectionViewD
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if viewModel.myGroups.isEmpty {
-            return CGSize(width:  (collectionView.bounds.size.width - 10 ) , height: 161)
-        } else {
-            return CGSize(width: 386.0, height: 161.0)
-        }
+        collectionView.bounds.size
     }
 }

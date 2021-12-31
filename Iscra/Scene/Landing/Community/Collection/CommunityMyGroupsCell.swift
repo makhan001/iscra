@@ -68,20 +68,11 @@ class CommunityMyGroupsCell: UICollectionViewCell, Reusable {
     
     override func updateConstraints() {
         super.updateConstraints()
-        if viewModel.habitMarks.isEmpty {
-            constraintWidth.constant =  0
-        } else {
-            if viewModel.habitMarks.count <= 3 {
-                self.constraintWidth.constant =  CGFloat(( viewModel.habitMarks.count * 45))
-            } else {
-                self.constraintWidth.constant =  150
-            }
-        }
     }
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource and UICollectionViewDelegateFlowLayout
-extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout , CustomCollectionViewLayoutDelegate {
+extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.daysCollectionView {
@@ -105,28 +96,38 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, getSizeAtIndexPath indexPath: IndexPath) -> CGSize {
-        if collectionView == self.daysCollectionView{
-            return CGSize(width: 50, height: 125)
-        } else {
-            return CGSize(width: 35, height: 35)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: collectionView.bounds.width / 3.0, height: 125.0)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.daysCollectionView{
-            if !(viewModel.habitMarks.isEmpty) {
-                if viewModel.habitMarks.count <= 3 {
-                    return CGSize(width: Int(self.daysCollectionView.bounds.width) / viewModel.habitMarks.count - 10, height: 125)
-                } else {
-                    return CGSize(width: self.daysCollectionView.bounds.width/3.5, height: 125)
-                }
-            } else {
-                return CGSize(width: 45.0, height: 125.0)
-            }
-            
-        } else {
-            return CGSize(width: 35, height: 35)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        .zero
     }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        20.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        5.0
+    }
+
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if collectionView == self.daysCollectionView {
+//            if !(viewModel.habitMarks.isEmpty) {
+//                if viewModel.habitMarks.count <= 3 {
+//                    return CGSize(width: Int(self.daysCollectionView.bounds.width) / viewModel.habitMarks.count - 10, height: 125)
+//                } else {
+//                    return CGSize(width: self.daysCollectionView.bounds.width/3.5, height: 125)
+//                }
+//            } else {
+//                return CGSize(width: 45.0, height: 125.0)
+//            }
+//
+//        } else {
+//            return CGSize(width: 35, height: 35)
+//        }
+//    }
+    
 }

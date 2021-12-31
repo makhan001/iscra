@@ -9,9 +9,16 @@ import UIKit
 
 class HabitDaysCollectionView: UICollectionView {
 
-    var habitMarks: [HabitMark] = []
     var colorTheme: String = ""
-
+    var habitMarks: [HabitMark] = []
+    
+    
+    let columnFlowLayout = ColumnFlowLayout(
+        cellsPerRow: 3,
+        minimumInteritemSpacing: 10,
+        minimumLineSpacing: 10,
+        sectionInset: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setup()
@@ -24,14 +31,14 @@ class HabitDaysCollectionView: UICollectionView {
     }
     
     private func setup() {
-        contentInsetAdjustmentBehavior = .always
         delegate = self
         dataSource = self
+        layoutIfNeeded()
         reloadData()
     }
 }
 
-extension HabitDaysCollectionView: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension HabitDaysCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return habitMarks.count
     }
@@ -43,15 +50,18 @@ extension HabitDaysCollectionView: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if habitMarks.count <= 3 {
-            let width = Int(self.bounds.width) / habitMarks.count
-            return CGSize(width: width, height: 125)
-        } else {
-            return CGSize(width: self.bounds.width/3.5, height: 125)
-        }
+        CGSize(width: collectionView.bounds.width / 3.0, height: 125.0)
     }
     
-    func collectionView(_ collectionView: UICollectionView, getSizeAtIndexPath indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 50, height: 125)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        .zero
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        20.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        5.0
     }
 }

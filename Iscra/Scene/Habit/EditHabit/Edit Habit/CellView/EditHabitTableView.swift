@@ -9,7 +9,7 @@ import UIKit
 
 
 class EditHabitTableView: UITableView {
-    // MARK:-Outlets and variables
+    // MARK:Outlets and variables
     let items = [
         MyAccount(titleImage: "ic-Everyday-image", titleName: "Everyday", clickManager: .everyDay),
         MyAccount(titleImage: "ic-Reminader-image", titleName: "Reminder", clickManager: .reminder),
@@ -30,7 +30,7 @@ class EditHabitTableView: UITableView {
     
 
 }
-// MARK:- TableView Method
+// MARK: TableView Method
 extension EditHabitTableView: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

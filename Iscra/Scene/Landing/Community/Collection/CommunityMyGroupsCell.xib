@@ -130,7 +130,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3j-LF-cYQ">
                                 <rect key="frame" x="447" y="10" width="55" height="125"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bYT-6y-gon">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bYT-6y-gon" customClass="HabitDaysCollectionView" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="10" y="0.0" width="45" height="125"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -191,8 +191,8 @@
             </collectionViewCellContentView>
             <connections>
                 <outlet property="collectionMates" destination="EkP-Ep-OZ8" id="DVm-os-wdb"/>
-                <outlet property="collectiondays" destination="bYT-6y-gon" id="IEc-El-7nA"/>
                 <outlet property="constraintWidth" destination="HkN-D1-p3U" id="3Yk-Zc-Dpr"/>
+                <outlet property="daysCollectionView" destination="bYT-6y-gon" id="UWh-2f-yA0"/>
                 <outlet property="imgHabit" destination="7LT-TW-Hj3" id="Nj5-6B-hxm"/>
                 <outlet property="imgHabitMates" destination="Tgf-GA-o2X" id="zqO-ht-015"/>
                 <outlet property="lblHabitTitle" destination="Hxw-QW-I6j" id="9yW-Dc-Geb"/>

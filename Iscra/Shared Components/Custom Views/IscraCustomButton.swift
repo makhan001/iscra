@@ -223,17 +223,17 @@ private let springVelocity: CGFloat = 8.00
 
 extension IscraCustomButton {
     
-    //MARK:- Default Animation here
+    //MARK: Default Animation here
     public func AnimateImage() {
         provideAnimation(animationDuration: animationDuration, deleyTime: deleyTime, springDamping: springDamping, springVelocity: springVelocity)
     }
     
-    //MARK:- Custom Animation here
+    //MARK: Custom Animation here
     public func AnimateImageWithSpringDuration(_ name:UIButton, animationDuration:TimeInterval, springDamping:CGFloat, springVelocity:CGFloat){
         provideAnimation(animationDuration: animationDuration, deleyTime: deleyTime, springDamping: springDamping, springVelocity: springVelocity)
     }
     
-    //MARK:- Low Damping Custom Animation here
+    //MARK: Low Damping Custom Animation here
     public func AnimateImageWithSpringDurationWithLowDamping(_ name:UIButton, animationDuration:TimeInterval, springVelocity:CGFloat){
         provideAnimation(animationDuration: animationDuration, deleyTime: deleyTime, springDamping: lowSpringDamping, springVelocity: springVelocity)
     }

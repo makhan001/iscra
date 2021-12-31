@@ -9,7 +9,7 @@ import UIKit
 
 class MyAccountTableViewCell: UITableViewCell {
 
-    // MARK:-Outlets and variables
+    // MARK:Outlets and variables
     
     @IBOutlet weak var imageMyAccountIcon: UIImageView!
     @IBOutlet weak var lblMyAccountTitle: UILabel!

@@ -15,14 +15,13 @@ class LandingTabBarController: UITabBarController {
     
     var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
     var dialogs: DialogsViewController = DialogsViewController.from(from: .dialogs, with: .dialogs)
-    var addHabit: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
     var community: CommunityViewController = CommunityViewController.from(from: .landing, with: .community)
     var myAccount: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
+    var addHabit: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
-        self.setnavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +45,7 @@ extension LandingTabBarController {
         if let newButtonImage = UIImage(named: "tab3") {
             self.addCenterButton(withImage: newButtonImage, highlightImage: newButtonImage)
         }
+        self.setnavigationBar()
     }
     
     private func setTabbar() {

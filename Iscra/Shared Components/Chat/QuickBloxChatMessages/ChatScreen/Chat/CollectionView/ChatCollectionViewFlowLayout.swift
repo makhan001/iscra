@@ -189,7 +189,7 @@ class ChatCollectionViewFlowLayout: UICollectionViewFlowLayout {
         }
     }
     
-    //MARK:- Invalidation utilities
+    //MARK: Invalidation utilities
     func resetLayout() {
         cache.removeAll()
     }

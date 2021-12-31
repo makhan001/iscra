@@ -127,7 +127,7 @@ extension HabitCalenderViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension HabitCalenderViewController {
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         self.viewBottom.isHidden = true

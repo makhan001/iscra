@@ -33,7 +33,7 @@
 //        self.loginQBUser()
 //        self.tabBarController?.tabBar.isHidden = false
 //    }
-//    //Mark:- Login Chat
+//    //MARK: Login Chat
 //    func loginQBUser() {
 //        //Spinner.show("")
 //        //  let userEmail = UserDefaults.standard.value(forKey: Message.shared.K_UserEmail) as? String ?? ""
@@ -59,7 +59,7 @@
 //            print("LoginChatNotSuccess",response)
 //        }
 //    }
-//    //Mark:- Connect to chat
+//    //MARK: Connect to chat
 //    private func connectToChat(user: QBUUser) {
 //        //infoText = LoginStatusConstant.intoChat
 //        let userPassword = "12345678"//"jitu12345"
@@ -100,7 +100,7 @@
 //        }
 //    }
 //    
-//    //Mark:- Navigate to next screen
+//    //MARK: Navigate to next screen
 //    func goToDialogsScreen() {
 //        let storyboard = UIStoryboard(name: "Dialogs", bundle: nil)
 //        if let dialogsVC = storyboard.instantiateViewController(withIdentifier: "DialogsViewController") as? DialogsViewController {

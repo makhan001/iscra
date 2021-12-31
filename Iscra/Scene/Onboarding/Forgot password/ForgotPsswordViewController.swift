@@ -42,7 +42,7 @@ extension ForgotPasswordViewController : NavigationBarViewDelegate {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension ForgotPasswordViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
@@ -58,7 +58,7 @@ extension ForgotPasswordViewController {
     }
 }
 
-// MARK:- UITextFieldDelegate
+// MARK: UITextFieldDelegate
 extension ForgotPasswordViewController:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.textEmail {

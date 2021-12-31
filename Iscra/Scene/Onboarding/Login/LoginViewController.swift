@@ -71,7 +71,7 @@ extension LoginViewController: NavigationBarViewDelegate {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension LoginViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
@@ -140,7 +140,7 @@ extension LoginViewController {
     }
 }
 
-// MARK:- UITextFieldDelegate
+// MARK: UITextFieldDelegate
 extension LoginViewController:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.txtEmail {

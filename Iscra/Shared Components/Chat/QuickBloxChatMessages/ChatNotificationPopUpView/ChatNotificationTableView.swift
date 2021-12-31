@@ -23,7 +23,7 @@ struct ChatNotification {
 
 class ChatNotificationTableView: UITableView {
 
-    // MARK:-Outlets and variables
+    // MARK:Outlets and variables
     let itemsChatNotification = [
         ChatNotification(titleNotifictaion: "Mute for 1 hour", notificationPopUpClickManager: .muteFor1Hour),
         ChatNotification(titleNotifictaion: "Mute for 8 hour", notificationPopUpClickManager: .muteFor8Hour),
@@ -45,7 +45,7 @@ class ChatNotificationTableView: UITableView {
     }
 
 }
-// MARK:- TableView Method
+// MARK: TableView Method
 extension ChatNotificationTableView: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

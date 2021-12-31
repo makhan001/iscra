@@ -49,12 +49,12 @@ extension InviteFriendViewController {
             imgIcon.image = UIImage(named: "goodhabitfriends")
             lblHeaderTitle.text = AppConstant.inviteFriendsGoodTitle
             lblMiddleText.text = AppConstant.inviteFriendsGoodSubTitle
-            btnMaybeLetter.setTitle("Maybe Latter", for: .normal)
+            btnMaybeLetter.setTitle("Maybe later", for: .normal)
         case .bad:
             imgIcon.image = UIImage(named: "badHabitfriends")
             lblHeaderTitle.text = AppConstant.inviteFriendsBadTitle
             lblMiddleText.text = AppConstant.inviteFriendsBadSubTitle
-            btnMaybeLetter.setTitle("Maybe Latter", for: .normal)
+            btnMaybeLetter.setTitle("Maybe later", for: .normal)
         case .group:
             self.btnSkip.isHidden = false
             imgIcon.image = UIImage(named: "groupHabitFriends")

@@ -14,21 +14,23 @@ class QBChatLogin {
     //Mark:- Signp user in chat
     func registerQBUser() {
         let user = QBUUser()
+        user.email = UserStore.userEmail
         user.login = UserStore.userEmail
         user.fullName = UserStore.userName
+        user.customData = UserStore.userImage
         user.password =  AppConstant.defaultQBUserPassword
         
         QBRequest.signUp(user, successBlock: { [weak self] response, user in
             guard let self = self else {
                 return
             }
-            self.loginQBUser(fullName: UserStore.userName ?? "", login: UserStore.userEmail ?? "")
+            self.loginQBUser(fullName: UserStore.userName ?? "", login: UserStore.userEmail ?? "", email: UserStore.userEmail ?? "", customData: UserStore.userImage ?? "")
             print("UserSignUpInQuickBlox", user)
             }, errorBlock: { [weak self] response in
                 
                 if response.status == QBResponseStatusCode.validationFailed {
                     // The user with existent login was created earlier
-                    self?.loginQBUser(fullName: UserStore.userName ?? "", login: UserStore.userEmail ?? "")
+                    self?.loginQBUser(fullName: UserStore.userName ?? "", login: UserStore.userEmail ?? "", email: UserStore.userEmail ?? "", customData: UserStore.userImage ?? "")
                     return
                 }
                 print("UserNOTSignUpInQuickBlox", response)
@@ -36,23 +38,26 @@ class QBChatLogin {
     }
     
     //Mark:- Login user in chat
-    func loginQBUser(fullName: String, login: String, password: String = AppConstant.defaultQBUserPassword){
+    func loginQBUser(fullName: String, login: String, password: String = AppConstant.defaultQBUserPassword, email: String, customData: String){
           QBRequest.logIn(withUserLogin: UserStore.userEmail ?? "",
                         password: AppConstant.defaultQBUserPassword,
                         successBlock: { [weak self] response, user in
                             guard let self = self else {
                                 return
                             }
-                            user.password = AppConstant.defaultQBUserPassword
-                            Profile.synchronize(user)
-                            if user.fullName != fullName {
-                                print(user.fullName)
-                               // self.updateFullName(fullName: fullName, login: login)
-                            } else {
-                                self.connectToChat(user: user)
-                                print("user===>\(user)")
-                            }
-                            print("LoginChatSuccess",response)
+                            let current = Profile()
+                                do {
+                                    let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
+                                    let userDefaults = UserDefaults.standard
+                                    userDefaults.set(data, forKey: UserProfileConstant.curentProfile)
+                                    } catch {
+                                        debugPrint("[Profile] Couldn't write file to UserDefaults")
+                                    }
+                                    print(current.fullName)
+                                    print(current.customData)
+                                    print(current.login)
+                                    print("LoginChatSuccess",user)
+                                    self.connectToChat(user: user)
                             
             }, errorBlock: { [weak self] response in
               if response.status == QBResponseStatusCode.unAuthorized {
@@ -85,19 +90,4 @@ class QBChatLogin {
                                     })
             }
     }
-//    private func updateFullName(fullName: String, login: String) {
-//        let updateUserParameter = QBUpdateUserParameters()
-//        updateUserParameter.fullName = fullName
-//        QBRequest.updateCurrentUser(updateUserParameter, successBlock: { [weak self] response, user in
-//            guard let self = self else {
-//                return
-//            }
-//            //self.infoText = LoginConstant.fullNameDidChange
-//            Profile.update(user)
-//            self.connectToChat(user: user, userPassword: AppConstant.defaultQBUserPassword)
-//
-//            }, errorBlock: { [weak self] response in
-//                //self?.handleError(response.error?.error, domain: ErrorDomain.signUp)
-//        })
-//    }
 }

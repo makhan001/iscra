@@ -14,7 +14,8 @@ class MyAccountPopupViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var viewBackground: UIView!
     @IBOutlet weak var btnCamera: UIButton!
     @IBOutlet weak var btnGallery: UIButton!
-    
+    weak var router: NextSceneDismisser?
+
     var delegate:ImagePickerDelegate? = nil
     private var imagePicker = UIImagePickerController()
     override func viewDidLoad() {
@@ -34,45 +35,44 @@ extension MyAccountPopupViewController {
     }
     @objc func handleTaps(_ sender: UITapGestureRecognizer? = nil) {
         self.dismiss(animated: true, completion: nil)
+      //  self.router?.dismiss(controller: .myAccountPopup)
     }
 }
-// MARK:- Button Action
+// MARK: Button Action
 extension MyAccountPopupViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnCamera:
-            self.CameraAction()
+            self.cameraAction()
         case btnGallery:
-            self.GalleryAction()
+            self.galleryAction()
         default:
             break
         }
     }
-    private func CameraAction() {
+    
+    private func cameraAction() {
         self.openCamera()
     }
     
-    private func GalleryAction() {
+    private func galleryAction() {
         self.openGallary()
     }
-    func openCamera()
-    {
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
-        {
+    
+    func openCamera() {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self;
             imagePickerController.sourceType = UIImagePickerController.SourceType.camera
             imagePickerController.allowsEditing = true
             self.present(imagePickerController, animated: true, completion: nil)
-        }
-        else
-        {
+        } else {
             let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-
     }
+    
 //    func openCameraPhoto() {
 //            CameraHandler.shared.showActionSheetPrivate(vc: self, isEditable: true, isAlreadyExist: false)
 //            CameraHandler.shared.camera(allowsEditing: true)
@@ -103,7 +103,7 @@ extension MyAccountPopupViewController {
         }
         delegate?.fetchedImage(img: selectedImage)
         dismiss(animated: true, completion: nil)
-        
+       // self.router?.dismiss(controller: .myAccountPopup)
     }
     
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,28 +11,25 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommunityFriendCell" rowHeight="83" id="p7H-Nt-oiK" customClass="CommunityFriendCell" customModule="Iscra" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="279" height="58"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommunityFriendCell" rowHeight="70" id="p7H-Nt-oiK" customClass="CommunityFriendCell" customModule="Iscra" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="290" height="70"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p7H-Nt-oiK" id="OkL-hu-Say">
-                <rect key="frame" x="0.0" y="0.0" width="279" height="58"/>
+                <rect key="frame" x="0.0" y="0.0" width="290" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dde-SJ-uID">
-                        <rect key="frame" x="0.0" y="5" width="279" height="48"/>
+                        <rect key="frame" x="0.0" y="15" width="290" height="55"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6JQ-Uy-etM">
-                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6JQ-Uy-etM">
+                                <rect key="frame" x="0.0" y="3.5" width="48" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="Bbo-Px-oAM"/>
-                                    <constraint firstAttribute="height" constant="48" id="ZYe-b0-edR"/>
+                                    <constraint firstAttribute="width" constant="48" id="6Sd-0J-LT6"/>
+                                    <constraint firstAttribute="height" constant="48" id="JDQ-qF-0DT"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Together is more fun" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwj-uh-kqW" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="56" y="12" width="215" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="ax5-0F-VEU"/>
-                                </constraints>
+                                <rect key="frame" x="63" y="0.0" width="212" height="55"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="BlackAccent"/>
                                 <nil key="highlightedColor"/>
@@ -47,33 +44,33 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6JQ-Uy-etM" firstAttribute="top" secondItem="dde-SJ-uID" secondAttribute="top" id="3lx-Nt-7wt"/>
-                            <constraint firstItem="6JQ-Uy-etM" firstAttribute="leading" secondItem="dde-SJ-uID" secondAttribute="leading" id="GD7-Ic-d1o"/>
-                            <constraint firstItem="6JQ-Uy-etM" firstAttribute="centerY" secondItem="dde-SJ-uID" secondAttribute="centerY" id="KtN-21-Z1f"/>
-                            <constraint firstAttribute="trailing" secondItem="Gwj-uh-kqW" secondAttribute="trailing" constant="8" id="RwF-QQ-6ob"/>
-                            <constraint firstItem="Gwj-uh-kqW" firstAttribute="leading" secondItem="6JQ-Uy-etM" secondAttribute="trailing" constant="8" id="WDu-hE-00S"/>
-                            <constraint firstAttribute="bottom" secondItem="6JQ-Uy-etM" secondAttribute="bottom" id="Zau-Da-9CO"/>
-                            <constraint firstItem="Gwj-uh-kqW" firstAttribute="centerY" secondItem="6JQ-Uy-etM" secondAttribute="centerY" id="aiF-go-4MS"/>
+                            <constraint firstItem="Gwj-uh-kqW" firstAttribute="leading" secondItem="6JQ-Uy-etM" secondAttribute="trailing" constant="15" id="5lG-HD-rAf"/>
+                            <constraint firstItem="6JQ-Uy-etM" firstAttribute="centerY" secondItem="dde-SJ-uID" secondAttribute="centerY" id="CZ4-RR-gs3"/>
+                            <constraint firstItem="Gwj-uh-kqW" firstAttribute="top" secondItem="dde-SJ-uID" secondAttribute="top" id="Deb-KT-EDv"/>
+                            <constraint firstAttribute="bottom" secondItem="Gwj-uh-kqW" secondAttribute="bottom" id="Ikf-2k-g5B"/>
+                            <constraint firstAttribute="trailing" secondItem="Gwj-uh-kqW" secondAttribute="trailing" constant="15" id="MEa-QQ-mfc"/>
+                            <constraint firstItem="6JQ-Uy-etM" firstAttribute="leading" secondItem="dde-SJ-uID" secondAttribute="leading" id="ih8-ZP-eXN"/>
+                            <constraint firstAttribute="height" constant="55" id="o1M-8c-B7L"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="dde-SJ-uID" firstAttribute="top" secondItem="OkL-hu-Say" secondAttribute="top" constant="5" id="4d8-Dy-jey"/>
-                    <constraint firstAttribute="bottom" secondItem="dde-SJ-uID" secondAttribute="bottom" constant="5" id="kU1-Z5-UrR"/>
-                    <constraint firstAttribute="trailing" secondItem="dde-SJ-uID" secondAttribute="trailing" id="njf-hf-bJv"/>
-                    <constraint firstItem="dde-SJ-uID" firstAttribute="leading" secondItem="OkL-hu-Say" secondAttribute="leading" id="zOH-Sy-W4b"/>
+                    <constraint firstAttribute="trailing" secondItem="dde-SJ-uID" secondAttribute="trailing" id="6nc-EP-p1r"/>
+                    <constraint firstAttribute="bottom" secondItem="dde-SJ-uID" secondAttribute="bottom" id="dNj-Lp-BPp"/>
+                    <constraint firstItem="dde-SJ-uID" firstAttribute="top" secondItem="OkL-hu-Say" secondAttribute="top" constant="15" id="hS7-ZK-VXt"/>
+                    <constraint firstItem="dde-SJ-uID" firstAttribute="leading" secondItem="OkL-hu-Say" secondAttribute="leading" id="kZE-es-HaL"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="imgFriend" destination="6JQ-Uy-etM" id="v57-q1-A0C"/>
+                <outlet property="imageFriend" destination="6JQ-Uy-etM" id="F64-bY-99t"/>
                 <outlet property="lblFriendname" destination="Gwj-uh-kqW" id="bD1-sR-MHl"/>
             </connections>
-            <point key="canvasLocation" x="58.695652173913047" y="106.47321428571428"/>
+            <point key="canvasLocation" x="66.666666666666671" y="110.82589285714285"/>
         </tableViewCell>
     </objects>
     <designables>
         <designable name="Gwj-uh-kqW">
-            <size key="intrinsicContentSize" width="193.5" height="24"/>
+            <size key="intrinsicContentSize" width="157.5" height="20.5"/>
         </designable>
     </designables>
     <resources>

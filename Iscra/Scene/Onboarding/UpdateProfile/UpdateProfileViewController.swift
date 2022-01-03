@@ -9,47 +9,58 @@ import UIKit
 
 class UpdateProfileViewController: UIViewController {
     
-    // MARK:-Outlets and variables
+    // MARK:Outlets and variables
     
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var viewNavigation: NavigationBarView!
     
+    var didUpdateName:(() -> Void)?
     weak var router: NextSceneDismisser?
-    var delegateBarAction:navigationBarAction?
+    var delegateBarAction:NavigationBarViewDelegate?
     private let viewModel: UpdateProfileViewModel = UpdateProfileViewModel(provider: OnboardingServiceProvider())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       setUp()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.setup()
     }
 }
+
 // MARK: Instance Methods
-extension UpdateProfileViewController:  navigationBarAction{
-    private func setUp() {
-        viewModel.view = self
+extension UpdateProfileViewController {
+    private func setup() {
+        self.viewModel.view = self
         self.txtName.text = UserStore.userName?.capitalized
-        viewModel.username = UserStore.userName  ?? ""
+        self.viewModel.username = UserStore.userName  ?? ""
         self.viewNavigation.navType = .editName
         self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text =  "Edit name"
         self.viewNavigation.delegateBarAction = self
-        [txtName].forEach {
-            $0?.delegate = self
-        }
+        self.txtName.delegate = self
     }
-    func ActionType() {
-      self.navigationController?.popViewController(animated: true)
-}
-    func RightButtonAction() {
-        viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
+    
+    private func setNameTextField(string:String, range: NSRange) {
+        guard let text = txtName.text, let textRange = Range(range, in: text) else { return }
+        let updatedText = text.replacingCharacters(in: textRange, with: string)
+        self.viewModel.username = updatedText
     }
 }
 
-// MARK:- Textfiled Delegate
+// MARK: Navigation Bar Delegate
+extension UpdateProfileViewController: NavigationBarViewDelegate{
+    func navigationBackAction() {
+        self.router?.dismiss(controller: .updateProfile)
+    }
+    
+    func navigationRightButtonAction() {
+        self.viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
+    }
+}
+
+// MARK: Textfiled Delegate
 extension UpdateProfileViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.txtName.resignFirstResponder()
@@ -57,21 +68,25 @@ extension UpdateProfileViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-       let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
+//        if string.rangeOfCharacter(from: .decimalDigits) != nil
+//            || string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil {
+//            return false
+//        }
+        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil || string.containsEmoji {
+            return false
+        }
+        let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
         if newLength <= 30 {
-            if textField == txtName {
-                if let text = txtName.text, let textRange = Range(range, in: text) {
-                    let updatedText = text.replacingCharacters(in: textRange, with: string)
-                    viewModel.username = updatedText
-                }
-            }
-            return true
+            let characterSet = NSCharacterSet(charactersIn: AppConstant.USERNAME_ACCEPTABLE_CHARACTERS).inverted
+            let filtered = string.components(separatedBy: characterSet).joined(separator: "")
+            self.setNameTextField(string: string, range:range)
+            return (string == filtered)
         } else {
             return false
         }
-       
     }
 }
+
 // MARK: API Callback
 extension UpdateProfileViewController: OnboardingViewRepresentable {
     func onAction(_ action: OnboardingAction) {
@@ -79,8 +94,9 @@ extension UpdateProfileViewController: OnboardingViewRepresentable {
         case let .requireFields(msg), let .errorMessage(msg):
             self.showToast(message: msg)
         case .updateProfile:
-            navigationController?.popViewController(animated: true)
-       default:
+            self.didUpdateName?()
+            self.router?.dismiss(controller: .updateProfile)
+        default:
             break
         }
     }

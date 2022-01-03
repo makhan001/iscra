@@ -18,6 +18,7 @@ enum Scenes:String {
     case home
     case myAccount
     case changePassword
+    case confirmPassword
     case verification
     case habitName
     case addHabit
@@ -28,7 +29,6 @@ enum Scenes:String {
     case inviteFriend
     case addGroupImage
     case editHabit
-
     case addMyPicture
     case editName
     case learnHowToAddMemoji
@@ -43,6 +43,12 @@ enum Scenes:String {
     case editReminder
     case habitCalender
     case groupHabitFriends
+    case webViewController
+    case updateProfile
+    case myAccountPopup
+    case dialogs
+    case groupMembers
+    case shareHabit
 //    case RepeatDaysPopUp
 }
 
@@ -54,6 +60,7 @@ enum Storyboard:String {
     case profile = "Profile"
     case common = "Common"
     case habit = "Habit"
+    case dialogs = "Dialogs"
 }
 
 enum StoryboardIdentifier:String {
@@ -66,6 +73,7 @@ enum StoryboardIdentifier:String {
     case home
     case myAccount
     case changePassword
+    case confirmPassword
     case verification
     case habitName
     case addHabit
@@ -77,7 +85,6 @@ enum StoryboardIdentifier:String {
     case addGroupImage
     case editHabit
     case webView
-
     case addMyPicture
     case editName
     case learnHowToAddMemoji
@@ -92,5 +99,11 @@ enum StoryboardIdentifier:String {
     case editReminder
     case habitCalender
     case groupHabitFriends
+    case webViewController
+    case updateProfile
+    case myAccountPopup
+    case dialogs
+    case groupMembers
+    case shareHabit
 //    case RepeatDaysPopUp
 }

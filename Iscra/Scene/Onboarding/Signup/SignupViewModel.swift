@@ -6,8 +6,9 @@
 //
 
 import UIKit
-import Foundation
 import Quickblox
+import Foundation
+import GoogleSignIn
 
 final class SignupViewModel {
     
@@ -15,17 +16,17 @@ final class SignupViewModel {
     var password: String = ""
     var social_id: String = ""
     var verificationCode: String = ""
+    var socialLoginImageURL: URL?
+    var delegate: OnboardingServiceProvierDelegate?
     var username: String = OnboadingUtils.shared.username // singeleton class
     var selectedImage: UIImage! = OnboadingUtils.shared.userImage // singleton class
-    var delegate: OnboardingServiceProvierDelegate?
-
-    weak var view: OnboardingViewRepresentable?
+    let gidConfiguration = GIDConfiguration.init(clientID: AppConstant.googleClientID)
+    
     let provider: OnboardingServiceProvidable
+    weak var view: OnboardingViewRepresentable?
     
     init(provider: OnboardingServiceProvidable) {
         self.provider = provider
-        self.provider.delegate = self
-        delegate = self
     }
     
     func onAction(action: OnboardingAction, for screen: OnboardingScreenType) {
@@ -34,9 +35,8 @@ final class SignupViewModel {
         default: break
         }
     }
-    
+
     private func validateUserInput() {
-        
         if Validation().textValidation(text: email, validationType: .email).0 {
             view?.onAction(.requireFields(Validation().textValidation(text: email, validationType: .email).1))
             return
@@ -49,27 +49,21 @@ final class SignupViewModel {
         
         let parameters =  UserParams.Signup(email: email, username: username, password: password, fcm_token: "fcmToken", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, device_udid: "", device_type: "ios")
         
-        WebService().requestMultiPart(urlString: "/users/registration",
+        WebService().requestMultiPart(urlString: APIConstants.userRegister,
                                       httpMethod: .post,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
                                       imageArray: [["profile_image": selectedImage ?? UIImage()]],
                                       fileArray: [],
-                                      file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
+                                      file: ["profile_image": selectedImage ?? UIImage()]) { [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .register, with: resp, with: nil)
                 return
             } else {
                 if let response = resp as? SuccessResponseModel  {
                     if response.status == true {
-                        UserStore.save(token: response.data?.register?.authenticationToken)
-                        UserStore.save(isVerify: response.data?.register?.isVerified ?? false)
-                        UserStore.save(userEmail: response.data?.register?.email)
-                        UserStore.save(userName: response.data?.register?.username)
-                        UserStore.save(userID: response.data?.register?.id)
-                        UserStore.save(userImage: response.data?.register?.profileImage)
+                        self?.registerSuccess(response, false)
                         self?.verificationCode = response.data?.register?.verificationCode ?? ""
-                        self?.setChatUserSignupSetup()
                         self?.view?.onAction(.register)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
@@ -78,26 +72,36 @@ final class SignupViewModel {
             }
         }
     }
-    //Mark:- QuickBlox Chat SignUp--------
     
-    func setChatUserSignupSetup() {
-        let user = QBUUser()
-        user.email = UserStore.userEmail//UserDetails.globalVariable.userEmail
-        user.login = UserStore.userEmail//UserDetails.globalVariable.userEmail
-        user.fullName = UserStore.userName
-        user.password = "jitu12345"//Message.shared.K_QuickBloxPassword
-        QBRequest.signUp(user, successBlock: { response, user in
-         print("UserSignUpInQuickBlox", user)
-        }, errorBlock: { (response) in
-          print("UserNOTSignUpInQuickBlox", response)
-        })
-      }
-    //Mark:- Social Login Api-----------------------
-    func socialLogin(logintype:SocialLoginType){
-        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: logintype)
-        print("parameter---> \(parameters)")
+    private func registerSuccess(_ response: SuccessResponseModel, _ isSocialLogin: Bool) {
+        if isSocialLogin {
+            UserStore.save(isVerify: true)
+        }
+        if response.data?.register != nil {
+            UserStore.save(userID: response.data?.register?.id)
+            UserStore.save(userEmail: response.data?.register?.email)
+            UserStore.save(userImage: response.data?.register?.profileImage)
+            UserStore.save(token: response.data?.register?.authenticationToken)
+            UserStore.save(userName: response.data?.register?.username?.capitalized)
+        } else {
+            UserStore.save(userID: response.data?.user?.id)
+            UserStore.save(userEmail: response.data?.user?.email)
+            UserStore.save(userImage: response.data?.user?.profileImage)
+            UserStore.save(token: response.data?.user?.authenticationToken)
+            UserStore.save(userName: response.data?.user?.username?.capitalized)
+        }
+        QBChatLogin.shared.registerQBUser()
+    }
+    
+    func socialLogin(logintype:SocialLoginType) {
+        let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: UIDevice.current.identifierForVendor?.uuidString ?? "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: logintype)
+        if let url = socialLoginImageURL {
+            if let data = try? Data(contentsOf: url) {
+                self.selectedImage = UIImage(data: data) ?? UIImage()
+            }
+        }
         
-        WebService().requestMultiPart(urlString: "/users/sociallogin",
+        WebService().requestMultiPart(urlString: APIConstants.socialLogin,
                                       httpMethod: .post,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
@@ -106,18 +110,11 @@ final class SignupViewModel {
                                       file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
                 self?.view?.onAction(.errorMessage(err ?? ERROR_MESSAGE))
-               // print(err)
                 return
             } else {
                 if let response = resp as? SuccessResponseModel {
                     if response.status == true {
-                        UserStore.save(token: response.data?.user?.authenticationToken)
-                        UserStore.save(userName: response.data?.user?.email)
-                        UserStore.save(userName: response.data?.user?.username?.capitalized)
-                        print("socialLoginApi Success---> \(response)")
-                        UserStore.save(userID: response.data?.user?.id)
-                        UserStore.save(userImage: response.data?.user?.profileImage)
-                        self?.setChatUserSignupSetup()
+                        self?.registerSuccess(response, true)
                         self?.view?.onAction(.socialLogin(response.message ?? ""))
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
@@ -126,25 +123,4 @@ final class SignupViewModel {
             }
         }
     }
-
 }
-
-extension SignupViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
-    func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
-        DispatchQueue.main.async {
-            WebService().StopIndicator()
-            if error != nil {
-                self.view?.onAction(.errorMessage(ERROR_MESSAGE))
-            } else {
-                if let resp = response as? SuccessResponseModel, resp.status == true {
-                    //                   self.register = resp.data?.register
-                    UserStore.save(token: resp.data?.register?.authenticationToken)
-                    self.view?.onAction(.register)
-                } else {
-                    self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
-                }
-            }
-        }
-    }
-}
-

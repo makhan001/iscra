@@ -14,6 +14,7 @@ final class MyAccountViewModel {
     var password: String = ""
     var username: String = ""
     var selectedImage: UIImage = UIImage()
+    var webPage: WebPage = .termsAndConditions
     let provider: OnboardingServiceProvidable
     weak var view: OnboardingViewRepresentable?
     var delegate: OnboardingServiceProvierDelegate?
@@ -33,13 +34,13 @@ final class MyAccountViewModel {
     }
     private func validateUserInput() {
         let parameters =  UserParams.UpdateProfile(username: UserStore.userName)
-        WebService().requestMultiPart(urlString: "/users/update",
+        WebService().requestMultiPart(urlString: APIConstants.updateProfile,
                                       httpMethod: .put,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
-                                      imageArray: [["profile_image": selectedImage ?? UIImage()]],
+                                      imageArray: [["profile_image": selectedImage]],
                                       fileArray: [],
-                                      file: ["profile_image": selectedImage ?? UIImage()]){ [weak self](resp, err) in
+                                      file: ["profile_image": selectedImage]){ [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .updateProfile, with: resp, with: nil)
                 return
@@ -51,7 +52,6 @@ final class MyAccountViewModel {
                         print("updateProfileApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)
-                      
                         self?.view?.onAction(.updateProfile)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
@@ -61,7 +61,7 @@ final class MyAccountViewModel {
         }
     }
 }
-//Mark:- OnboardingServiceProvierDelegate
+//MARK: OnboardingServiceProvierDelegate
 extension MyAccountViewModel: OnboardingServiceProvierDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {

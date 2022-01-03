@@ -14,10 +14,10 @@ class LandingTabBarController: UITabBarController {
     weak var router: NextSceneDismisser?
     
     var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
-    var myChat: MyChatViewController = MyChatViewController.from(from: .landing, with: .myChat)
-    var addHabit: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
+    var dialogs: DialogsViewController = DialogsViewController.from(from: .dialogs, with: .dialogs)
     var community: CommunityViewController = CommunityViewController.from(from: .landing, with: .community)
     var myAccount: MyAccountViewController = MyAccountViewController.from(from: .landing, with: .myAccount)
+    var addHabit: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,24 +31,21 @@ class LandingTabBarController: UITabBarController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         var tabFrame = self.tabBar.frame
-      tabFrame.size.height = kBarHeight
-       
+        tabFrame.size.height = kBarHeight
         tabFrame.origin.y = self.view.frame.size.height - kBarHeight
         self.tabBar.frame = tabFrame
     }
-    
-    
 }
 
 // MARK: Instance Method
 extension LandingTabBarController {
-    
-    private func setup() {
+       private func setup() {
         self.setupItems()
         self.setTabbar()
         if let newButtonImage = UIImage(named: "tab3") {
             self.addCenterButton(withImage: newButtonImage, highlightImage: newButtonImage)
         }
+        self.setnavigationBar()
     }
     
     private func setTabbar() {
@@ -67,7 +64,6 @@ extension LandingTabBarController {
     }
     
     func setupItems() {
-        
         let home = UITabBarItem()
         home.image = UIImage(named: "tab1")
         home.tag = 1
@@ -79,10 +75,10 @@ extension LandingTabBarController {
         let addHabit = UITabBarItem()
         addHabit.tag = 3
         
-        let myChat = UITabBarItem()
-        myChat.image = UIImage(named: "tab4")
-        myChat.tag = 4
-        
+        let dialogs = UITabBarItem()
+        dialogs.image = UIImage(named: "tab4")
+        dialogs.tag = 4
+
         let myAccount = UITabBarItem()
         myAccount.image = UIImage(named: "tab5")
         myAccount.tag = 5
@@ -96,14 +92,51 @@ extension LandingTabBarController {
         self.addHabit.tabBarItem = addHabit
         self.addHabit.router = router
         
-        self.myChat.tabBarItem = myChat
-        self.myChat.router = router
+        self.dialogs.tabBarItem = dialogs
+        self.dialogs.router = router
         
         self.myAccount.tabBarItem = myAccount
         self.myAccount.router = router
         
-        self.viewControllers = [self.home, self.community, self.addHabit, self.myChat, self.myAccount]
+        self.viewControllers = [self.home, self.community, self.addHabit, self.dialogs, self.myAccount]
         self.setViewControllers(self.viewControllers, animated: true)
+    }
+    
+    private func setnavigationBar(){
+        if let navigation = self.navigationController {
+         navigationItem.rightBarButtonItems = []
+         navigationItem.leftBarButtonItems = []
+         navigation.isNavigationBarHidden = false
+         let leftMyChatBarButtonItem = UIBarButtonItem(title: "My chats", style: .done, target: self, action: #selector(logoutUser))
+         leftMyChatBarButtonItem.setTitleTextAttributes([
+             NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 28.0)!,
+             NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1)],
+                                                        for: .normal)
+         self.navigationItem.leftBarButtonItem  = leftMyChatBarButtonItem
+         let usersButtonItem = UIBarButtonItem(image: UIImage(named: "search"),
+                                               style: .plain,
+                                               target: self,
+                                               action: #selector(didTapNewChat(_:)))
+         navigationItem.rightBarButtonItem = usersButtonItem
+         usersButtonItem.tintColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+             
+             self.navigationController?.navigationBar.isTranslucent = true
+             self.navigationController?.navigationBar.barTintColor = .white
+             navigationController?.view.backgroundColor = .white
+             navigationController?.title = "My chats"
+             self.navigationController?.navigationItem.leftBarButtonItem = leftMyChatBarButtonItem
+             self.navigationController?.navigationItem.rightBarButtonItem = usersButtonItem
+             }
+    }
+    
+    @objc private func didTapNewChat(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Dialogs", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CreateNewDialogViewController")
+        self.navigationController?.pushViewController(vc, animated: true)
+      
+    }
+    @objc func logoutUser() {
+        print("clicked")
     }
 }
 
@@ -157,7 +190,10 @@ extension LandingTabBarController : UITabBarControllerDelegate {
                 (viewController as! CommunityViewController).router = router
             }
         case 2:
-            print("chatVc")
+            if viewController.isKind(of: DialogsViewController.self) {
+                (viewController as! DialogsViewController).router = router
+            }
+          print("chatVc")
         case 3:
             if viewController.isKind(of: MyAccountViewController.self) {
                 (viewController as! MyAccountViewController).router = router

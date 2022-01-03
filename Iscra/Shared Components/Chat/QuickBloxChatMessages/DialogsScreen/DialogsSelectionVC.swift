@@ -257,7 +257,7 @@ class DialogsSelectionVC: UITableViewController {
                                                           borderColor: UIColor(red:0.42, green:0.48, blue:0.57, alpha:1))
             cell.checkBoxImageView.isHidden = true
         }
-        //Mark:- Delete chat change title name and image
+        //MARK: Delete chat change title name and image
         cell.dialogLastMessage.text = chatDialog.lastMessageText
         if chatDialog.lastMessageText == nil && chatDialog.lastMessageID != nil {
             cell.dialogLastMessage.text = "[Attachment]"

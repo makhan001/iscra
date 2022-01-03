@@ -7,25 +7,29 @@
 
 import UIKit
 
-class CommunityFriendCell: UITableViewCell {
+class CommunityFriendCell: UITableViewCell, Reusable {
     
-    @IBOutlet weak var imgFriend: UIImageView!
     @IBOutlet weak var lblFriendname: UILabel!
+    @IBOutlet weak var imageFriend: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.imageFriend.makeCircular()
     }
-
+    
+    func configure<T>(with content: T) {
+        if let objFriend = content as? Friend {
+            self.lblFriendname.text = objFriend.username?.lowercased()
+            self.imageFriend.setImageFromURL(objFriend.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
+        }
+        
+        if let objGroupHabitMember = content as? GroupHabitMember {
+            self.lblFriendname.text = objGroupHabitMember.username?.lowercased()
+            self.imageFriend.setImageFromURL(objGroupHabitMember.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-    
-    func configure() {
-        self.lblFriendname.text = "Amira"
-        self.imgFriend.image = #imageLiteral(resourceName: "ic_user3")
-    }
-    
 }

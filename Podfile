@@ -15,8 +15,12 @@ target 'Iscra' do
   pod 'GoogleSignIn'
   pod 'SVProgressHUD'
   pod 'ParallaxHeader'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
   pod 'Firebase/Database'
   pod 'TTTAttributedLabel'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Crashlytics'
   pod 'IQKeyboardManagerSwift'
   
   

@@ -66,6 +66,7 @@
                             <constraint firstItem="qGi-sp-s7a" firstAttribute="width" secondItem="YPt-ka-CuG" secondAttribute="width" multiplier="0.889273" id="O5Y-bc-gyy"/>
                             <constraint firstItem="cGp-ll-1Vn" firstAttribute="leading" secondItem="i8l-ai-LvQ" secondAttribute="leading" constant="16" id="Ou7-zc-jIQ"/>
                             <constraint firstItem="cGp-ll-1Vn" firstAttribute="top" secondItem="YPt-ka-CuG" secondAttribute="bottom" constant="15" id="PvK-S5-94L"/>
+                            <constraint firstAttribute="height" constant="219" id="UXd-ox-GNb"/>
                             <constraint firstAttribute="trailing" secondItem="cGp-ll-1Vn" secondAttribute="trailing" constant="16" id="k6v-fc-7eS"/>
                             <constraint firstItem="YPt-ka-CuG" firstAttribute="top" secondItem="i8l-ai-LvQ" secondAttribute="top" id="uVp-7o-fWa"/>
                             <constraint firstAttribute="trailing" secondItem="qGi-sp-s7a" secondAttribute="trailing" constant="16" id="vXV-JL-MlO"/>
@@ -110,10 +111,10 @@
     </objects>
     <designables>
         <designable name="cGp-ll-1Vn">
-            <size key="intrinsicContentSize" width="150.5" height="29"/>
+            <size key="intrinsicContentSize" width="102" height="20.5"/>
         </designable>
         <designable name="qGi-sp-s7a">
-            <size key="intrinsicContentSize" width="463" height="19.5"/>
+            <size key="intrinsicContentSize" width="485" height="20.5"/>
         </designable>
     </designables>
     <resources>

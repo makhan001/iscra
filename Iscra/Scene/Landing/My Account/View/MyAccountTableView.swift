@@ -6,10 +6,10 @@
 //
 
 import UIKit
-protocol clickManagerDelegate{
+protocol clickManagerDelegate { // ClickManagerManager
     func tableViewCellNavigation(performAction: clickManager)
 }
-enum clickManager {
+enum clickManager { // ClickManager
     case changeProfilePhoto
     case addYourOwnMemoji
     case changePassword
@@ -29,7 +29,7 @@ struct MyAccount {
     var clickManager : clickManager
 }
 class MyAccountTableView: UITableView {
-    // MARK:-Outlets and variables
+    // MARK:Outlets and variables
     let items = [
         MyAccount(titleImage: "ic-changeProfilePhoto-image", titleName: "Change profile photo", clickManager: .changeProfilePhoto),
         MyAccount(titleImage: "ic-addYourOwnMemoji-image", titleName: "Add your own memoji", clickManager: .addYourOwnMemoji),
@@ -54,7 +54,7 @@ class MyAccountTableView: UITableView {
         reloadData()
     }
 }
-// MARK:- TableView Method
+// MARK: TableView Method
 extension MyAccountTableView: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

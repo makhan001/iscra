@@ -9,52 +9,59 @@ import UIKit
 
 class ReminderViewController: UIViewController {
     
-    @IBOutlet var viewTime:UIView!
     @IBOutlet var btnTime:UIButton!
     @IBOutlet var btnNext:UIButton!
+    
+    @IBOutlet var viewTime:UIView!
     @IBOutlet var viewTimePicker:UIView!
     @IBOutlet var viewBackground:UIView!
+    
     @IBOutlet var switchReminder:UISwitch!
-    @IBOutlet var weekCollection:WeekCollection!
+    @IBOutlet var weekCollection:WeekCollection! // colletionView
     @IBOutlet weak var lblReminderTime: UILabel!
     @IBOutlet weak var pickerTime: UIDatePicker!
     @IBOutlet weak var btnSegment: UISegmentedControl!
     @IBOutlet weak var viewNavigation:NavigationBarView!
     
-    var reminderTime = ""
-    var habitType : HabitType = .good
-    private let viewModel = AddHabitViewModel()
-    var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
+//    var habitType : HabitType = .good
     weak var router: NextSceneDismisser?
+    let viewModel = AddHabitViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-    }
-    
-    @IBAction func TimePickerClick(_ sender: Any) {
-        timemanager()
+        self.setup()
     }
 }
 
 extension ReminderViewController {
-    func setup()  {
+    private func setup()  {
         self.viewModel.view = self
-        self.habitType = self.viewModel.habitType
-        self.viewNavigation.lblTitle.text = ""
-        self.viewNavigation.delegateBarAction = self
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        self.weekCollection.didSelectedDayAtIndex = didSelectedAtIndex
-        navigationController?.navigationBar.isHidden = false
-        switchReminder.addTarget(self, action:#selector(self.reminderSwitchValueChanged(_:)), for: .valueChanged)
-        weekCollection.configure(selectedColor: selectedColorTheme)
+        self.setNavigationView()
+        self.addTapGeture()
+        self.timePickerValueOnUpdate()
+        self.setViewControls()
+        self.weekCollection.confirgure(viewModel: viewModel)
+    }
+    
+    private func setViewControls() {
+        self.switchReminder.addTarget(self, action:#selector(self.reminderSwitchValueChanged(_:)), for: .valueChanged)
         [btnTime, btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        viewBackground.addGestureRecognizer(tap)
-        timemanager()
     }
+    
+    private func setNavigationView() {
+        self.viewNavigation.navType = .addHabit
+        self.viewNavigation.commonInit()
+        self.viewNavigation.lblTitle.text = ""
+        self.viewNavigation.delegateBarAction = self
+    }
+    
+    private func addTapGeture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        self.viewBackground.addGestureRecognizer(tap)
+    }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         self.viewTimePicker.isHidden = true
     }
@@ -69,29 +76,40 @@ extension ReminderViewController {
         }
     }
     
-    func timemanager(){
+    private func timePickerValueOnUpdate() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
         let dateString = dateFormatter.string(from: pickerTime.date)
         let fullNameArr = dateString.components(separatedBy: " ")
         lblReminderTime.text = fullNameArr[0]
-//        self.viewModel.timer = dateString
-//        // print("self.viewModel.timer is \(self.viewModel.timer)")
-        self.reminderTime = dateString
-        if dateString.contains("AM")
-        {
+        self.viewModel.reminderTime = dateString
+        if dateString.contains("AM") {
             btnSegment.selectedSegmentIndex = 0
-        }
-        else{
+        } else {
             btnSegment.selectedSegmentIndex = 1
         }
     }
     
-    
+    private func showHabitCancelAlert() {
+        let alertController = UIAlertController(title: "Warning!!", message: "Do you really want exit from adding habit?", preferredStyle: .alert)
+        let logoutaction = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction!) in
+            HabitUtils.shared.removeAllHabitData()
+            self.router?.push(scene: .landing)
+        }
+        logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        alertController.addAction(logoutaction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
+    }
 }
-// MARK:- Button Action
+
+// MARK: Button Action
 extension ReminderViewController {
-    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnTime:
@@ -103,6 +121,10 @@ extension ReminderViewController {
         }
     }
     
+    @IBAction func timePickerClick(_ sender: Any) {
+        self.timePickerValueOnUpdate()
+    }
+    
     private func timeClick() {
         UIView.animate(withDuration: 3.0, animations: {
             self.viewTimePicker.isHidden = false
@@ -111,9 +133,8 @@ extension ReminderViewController {
     }
     
     private func nextClick() {
-        
         let currentDate = Date().string(format: "yyyy-MM-dd")
-        let yourDate = currentDate + "-" + self.reminderTime
+        let yourDate = currentDate + "-" + self.viewModel.reminderTime
          let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd-hh:mm a"
          let dateString = dateFormatter.date(from: yourDate)
@@ -123,7 +144,7 @@ extension ReminderViewController {
             HabitUtils.shared.timer = String(dateTimeStamp)
             self.viewModel.timer = String(dateTimeStamp)
             HabitUtils.shared.reminders = true
-        }else{
+        } else {
             HabitUtils.shared.timer = ""
             self.viewModel.timer = ""
         }
@@ -131,11 +152,21 @@ extension ReminderViewController {
     }
 }
 
-// MARK: Callbacks
+// MARK: NavigationBarView Delegate
+extension ReminderViewController: NavigationBarViewDelegate {
+    func navigationBackAction()  {
+        self.router?.dismiss(controller: .setTheme)
+    }
+    
+    func navigationRightButtonAction() {
+        self.showHabitCancelAlert()
+    }
+}
+
+// MARK: API Callbacks
 extension ReminderViewController: HabitViewRepresentable {
-    private func didSelectedAtIndex(_ index: String) {
-        // print("strDays is \(index)")
-        viewModel.days = index
+    private func selectedHabitDays(_ days: String) {
+        self.viewModel.sortWeekDays(days: days)
     }
     
     func onAction(_ action: HabitAction) {
@@ -145,7 +176,7 @@ extension ReminderViewController: HabitViewRepresentable {
         case let .sucessMessage(msg):
             self.showToast(message: msg, seconds: 0.5)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.router?.push(scene: .inviteFriend) 
+                self.router?.push(scene: .inviteFriend)
             }
         case .navigateToGroupImage(true):
             self.router?.push(scene: .addGroupImage)
@@ -153,21 +184,5 @@ extension ReminderViewController: HabitViewRepresentable {
         default:
             break
         }
-    }
-    
-}
-// MARK: navigationBarAction Callback
-extension ReminderViewController: navigationBarAction {
-    
-    func ActionType()  {
-        self.router?.dismiss(controller: .setTheme)
-    }
-}
-
-extension Date {
-    func string(format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: self)
     }
 }

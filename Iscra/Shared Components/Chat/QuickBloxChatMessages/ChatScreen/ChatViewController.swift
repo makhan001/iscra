@@ -1159,8 +1159,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
             } errorBlock: { (error) in
                 print("NoTSuceee",error.description)
             }
-        }
-        else {
+        } else {
             //for group chat
             QBRequest.sendPush(withText: pushMessage.text ?? "", toUsers: "\(PushDialog.occupantIDs)") {
                 (response, event) in
@@ -1361,13 +1360,10 @@ extension ChatViewController: ChatDataSourceDelegate {
             guard let self = self else {
                 return
             }
-            
             let indexPaths = chatDataSource.performChangesFor(messages: messagesArray, action: action)
-            
             if indexPaths.isEmpty {
                 return
             }
-            
             switch action {
             case .add: self.collectionView.insertItems(at: indexPaths)
             case .update: self.collectionView.reloadItems(at: indexPaths)
@@ -1395,7 +1391,6 @@ extension ChatViewController: InputToolbarDelegate {
             didPressSend(sender)
         }
     }
-    
     func didPressAccessoryButton(_ sender: UIButton) {
         if isUploading {
             showAlertView("You can send 1 attachment per message", message: nil)
@@ -1408,18 +1403,15 @@ extension ChatViewController: InputToolbarDelegate {
                                                     preferredStyle: .actionSheet)
             #if targetEnvironment(simulator)
             debugPrint("[ChatViewController] targetEnvironment simulator")
-            
             #else
             alertController.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
                 self.showPickerController(self.pickerController, sourceType:.camera)
                 print("camera handler showpickercontroller")
             }))
             #endif
-            
             alertController.addAction(UIAlertAction(title: "Photo", style: .default, handler: { (action) in
-                self.showPickerController(nil, sourceType: .photoLibrary)
+            self.showPickerController(nil, sourceType: .photoLibrary)
             }))
-            
             alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             if let popoverPresentationController = alertController.popoverPresentationController {
                 // iPad support
@@ -1441,21 +1433,16 @@ extension ChatViewController: UICollectionViewDelegate {
               let message = dataSource.messageWithIndexPath(selectedIndexPath) else {
             return nil
         }
-        
         let parameters = UIPreviewParameters()
         parameters.backgroundColor = .clear
-        
         var roundingCorners: UIRectCorner = [.bottomLeft, .topLeft, .topRight]
-        
         if message.senderID != currentUserID {
             roundingCorners = [.topLeft, .topRight, .bottomRight]
         }
         let cornerRadius = selectedCell is ChatAttachmentCell ? 6.0 : 20.0
-        
         parameters.visiblePath = UIBezierPath(roundedRect: selectedCell.previewContainer.bounds,
                                               byRoundingCorners:  roundingCorners,
                                               cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
-        
         return UITargetedPreview(view: selectedCell.previewContainer, parameters: parameters)
     }
     

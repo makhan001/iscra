@@ -7,50 +7,51 @@
 
 import UIKit
 
-protocol communityGroupHabitDetail: class {
-    func navigate()
+protocol CommunityInvitationDetailDelegate: AnyObject {
+    func navigate(obj: Invitaion)
 }
 
-class NewCommunityCollectionView: UICollectionView , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
-
-    var count: Int = 0
-    weak var delegate1 : communityGroupHabitDetail?
+class NewCommunityCollectionView: UICollectionView {
     
+    var viewModel: CommunityViewModel!
+    var didSelectInvitedHabitAtIndex: ((Int) -> Void)?
+    var arrInvitaions = [Invitaion]()
+    
+    weak var communityDelegate : CommunityInvitationDetailDelegate?
     override class func awakeFromNib() {
         super.awakeFromNib()
-        
-    }
-
-    func configure(obj: Int) {
-        self.register(UINib(nibName: "CommunityGroupHabit", bundle: nil), forCellWithReuseIdentifier: "CommunityGroupHabit")
-        self.delegate = self
-        self.dataSource = self
-        self.count = obj
-        reloadData()
     }
     
-    // MARK: UICollectionViewDataSource
-
-     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return count
+    func configure(viewModel: CommunityViewModel) {
+        self.viewModel = viewModel
+        self.setup()
     }
+    
+    private func setup() {
+        delegate = self
+        dataSource = self
+        reloadData()
+    }
+}
 
+extension NewCommunityCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.myInvitaions.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommunityGroupHabit", for: indexPath) as? CommunityGroupHabit else {
-                return UICollectionViewCell()
-            }
-            cell.configure()
-            return cell
+        let cell = collectionView.dequeueReusable(indexPath) as CommunityGroupHabit
+        cell.configure(with: viewModel.myInvitaions[indexPath.row])
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("navigate")
-        delegate1?.navigate()
+//                didSelectInvitedHabitAtIndex?(indexPath.row)
+        let objInvitaion = viewModel.myInvitaions[indexPath.row]
+        communityDelegate?.navigate(obj: objInvitaion)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       // return CGSize(width: 289, height: 229)
-        return CGSize(width: collectionView.frame.width - 10, height: collectionView.frame.height)
+        collectionView.bounds.size
     }
-    
 }

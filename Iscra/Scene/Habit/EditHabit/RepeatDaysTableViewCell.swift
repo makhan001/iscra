@@ -16,11 +16,11 @@ class RepeatDaysTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func configure(day: weekStruct) {
+    func configure(day: WeekDays) {
         lblDayName.text = day.dayname.capitalized
-        if day.isSelect == false {
+        if day.isSelected == false {
             imgSelect.image = .none
-        }else{
+        } else {
             imgSelect.image =  #imageLiteral(resourceName: "ic-checkmark")
         }
 

@@ -25,12 +25,12 @@
                                 <rect key="frame" x="5" y="0.0" width="85" height="145"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gg6-d9-nMw">
-                                        <rect key="frame" x="0.0" y="5" width="85" height="95"/>
+                                        <rect key="frame" x="10" y="15" width="65" height="65"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icc-cl-ot0" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="105" width="85" height="25"/>
+                                        <rect key="frame" x="0.0" y="95" width="85" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="meQ-El-RQO"/>
+                                            <constraint firstAttribute="height" constant="30" id="meQ-El-RQO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="BlackAccent"/>
@@ -48,19 +48,19 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="9qg-Ai-iUP"/>
                                     <constraint firstAttribute="trailing" secondItem="Icc-cl-ot0" secondAttribute="trailing" id="O4r-1D-asn"/>
-                                    <constraint firstAttribute="trailing" secondItem="gg6-d9-nMw" secondAttribute="trailing" id="UuK-tr-7VA"/>
+                                    <constraint firstAttribute="trailing" secondItem="gg6-d9-nMw" secondAttribute="trailing" constant="10" id="UuK-tr-7VA"/>
                                     <constraint firstItem="Icc-cl-ot0" firstAttribute="leading" secondItem="BM9-Lx-WKS" secondAttribute="leading" id="XoL-4N-vm7"/>
-                                    <constraint firstItem="gg6-d9-nMw" firstAttribute="top" secondItem="BM9-Lx-WKS" secondAttribute="top" constant="5" id="dRs-uW-Usu"/>
+                                    <constraint firstItem="gg6-d9-nMw" firstAttribute="top" secondItem="BM9-Lx-WKS" secondAttribute="top" constant="15" id="dRs-uW-Usu"/>
                                     <constraint firstAttribute="height" constant="145" id="mXe-9K-MGC"/>
-                                    <constraint firstItem="Icc-cl-ot0" firstAttribute="top" secondItem="gg6-d9-nMw" secondAttribute="bottom" constant="5" id="oax-08-w4o"/>
-                                    <constraint firstAttribute="bottom" secondItem="Icc-cl-ot0" secondAttribute="bottom" constant="15" id="wem-7a-n8T"/>
-                                    <constraint firstItem="gg6-d9-nMw" firstAttribute="leading" secondItem="BM9-Lx-WKS" secondAttribute="leading" id="xU3-HJ-6JM"/>
+                                    <constraint firstItem="Icc-cl-ot0" firstAttribute="top" secondItem="gg6-d9-nMw" secondAttribute="bottom" constant="15" id="oax-08-w4o"/>
+                                    <constraint firstAttribute="bottom" secondItem="Icc-cl-ot0" secondAttribute="bottom" constant="20" id="wem-7a-n8T"/>
+                                    <constraint firstItem="gg6-d9-nMw" firstAttribute="leading" secondItem="BM9-Lx-WKS" secondAttribute="leading" constant="10" id="xU3-HJ-6JM"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWN-Mg-5HF">
                                 <rect key="frame" x="95" y="0.0" width="401" height="145"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="V18-jX-VRg">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="V18-jX-VRg" customClass="HabitDaysCollectionView" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="401" height="145"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lfv-RH-giV">
@@ -107,8 +107,8 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="collectiondays" destination="V18-jX-VRg" id="lXa-Z3-yZl"/>
                 <outlet property="constraintWidth" destination="NZa-qc-3iv" id="QQt-KC-cgJ"/>
+                <outlet property="daysCollectionView" destination="V18-jX-VRg" id="lil-ie-ezJ"/>
                 <outlet property="imgFriend" destination="gg6-d9-nMw" id="f2k-Na-mbO"/>
                 <outlet property="lblFriendName" destination="Icc-cl-ot0" id="18n-ld-AJI"/>
                 <outlet property="viewContainer" destination="zuy-EI-TnW" id="vLq-UZ-u5J"/>

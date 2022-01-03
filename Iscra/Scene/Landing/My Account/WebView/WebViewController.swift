@@ -9,9 +9,9 @@ import UIKit
 import WebKit
 
 enum WebPage {
-    case termsAndConditions
-    case privacyPolicy
     case aboutUs
+    case privacyPolicy
+    case termsAndConditions
 }
 
 class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
@@ -21,17 +21,21 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     var webPage: WebPage = .termsAndConditions
     weak var router: NextSceneDismisser?
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.setUp()
-        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setup()
+    }
 }
 
 extension WebViewController {
-    private func setUp(){
-     self.viewNavigation.delegateBarAction = self
-      switch webPage {
+    private func setup() {
+        self.viewNavigation.delegateBarAction = self
+        switch webPage {
         case .termsAndConditions:
             self.viewNavigation.lblTitle.text = AppConstant.termsAndConditionTitle
             self.loadUrl(urlString: AppConstant.termsAndConditionURL)
@@ -41,21 +45,20 @@ extension WebViewController {
         case .aboutUs:
             self.viewNavigation.lblTitle.text = AppConstant.aboutUsTitle
             self.loadUrl(urlString: AppConstant.aboutUsURL)
-            }
+        }
     }
     
-
     private func loadUrl(urlString: String){
-        let myURL = URL(string: urlString)
-             let myRequest = URLRequest(url: myURL!)
-        viewWeb.load(myRequest)
+        guard let url = URL(string: urlString) else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.cachePolicy = .returnCacheDataElseLoad
+        self.viewWeb.load(urlRequest)
     }
 }
 
-// NavigationBar delegates
-extension WebViewController : navigationBarAction {
-    func ActionType()  {
-       // router?.dismiss(controller: .login)
-        self.navigationController?.popViewController(animated: true)
+// MARK:  NavigationBar Delegate
+extension WebViewController: NavigationBarViewDelegate {
+    func navigationBackAction()  {
+        self.router?.dismiss(controller: .webViewController)
     }
 }

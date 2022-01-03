@@ -8,24 +8,34 @@
 import Foundation
 
 struct HabitRequests: RequestRepresentable {
-        
+    
+    var joinHabit: HabitParams.JoinHabit?
     var createHabit: HabitParams.CreateHabit?
     var updateHabit: HabitParams.UpdateHabit?
     var deleteHabit: HabitParams.DeleteHabit?
     var habitDetail: HabitParams.HabitDetail?
     var allHabitList: HabitParams.AllHabitList?
-    var groupInvitations: HabitParams.GroupInvitations?
+    var habitCalender: HabitParams.HabitCalender?
     var markAsComplete: HabitParams.MarkAsComplete?
-
+    var shareHabit: HabitParams.ShareHabit?
+    var groupHabitDetails: HabitParams.GroupHabitDetails?
+    var groupHabitMembers: HabitParams.GroupHabitMembers?
+    var friends: HabitParams.Friends?
+    
     let requestType: RequestType
     enum RequestType {
+        case joinHabit
         case createHabit
         case updateHabit
         case deleteHabit
         case habitDetail
         case allHabitList
-        case groupInvitations
+        case habitCalender
         case markAsComplete
+        case shareHabit
+        case groupHabitDetails
+        case groupHabitMembers
+        case friends
     }
     
     init(requestType: RequestType) {
@@ -35,6 +45,8 @@ struct HabitRequests: RequestRepresentable {
     init(type: RequestType, params:Codable) {
         self.requestType = type
         switch params {
+        case is HabitParams.JoinHabit:
+            self.joinHabit = params as? HabitParams.JoinHabit
         case is HabitParams.CreateHabit:
             self.createHabit = params as? HabitParams.CreateHabit
         case is HabitParams.UpdateHabit:
@@ -45,10 +57,18 @@ struct HabitRequests: RequestRepresentable {
             self.habitDetail = params as? HabitParams.HabitDetail
         case is HabitParams.AllHabitList:
             self.allHabitList = params as? HabitParams.AllHabitList
-        case is HabitParams.GroupInvitations:
-            self.groupInvitations = params as? HabitParams.GroupInvitations
+        case is HabitParams.HabitCalender:
+            self.habitCalender = params as? HabitParams.HabitCalender
         case is HabitParams.MarkAsComplete:
             self.markAsComplete = params as? HabitParams.MarkAsComplete
+        case is HabitParams.ShareHabit:
+            self.shareHabit = params as? HabitParams.ShareHabit
+        case is HabitParams.GroupHabitDetails:
+            self.groupHabitDetails = params as? HabitParams.GroupHabitDetails
+        case is HabitParams.GroupHabitMembers:
+            self.groupHabitMembers = params as? HabitParams.GroupHabitMembers
+        case is HabitParams.Friends:
+            self.friends = params as? HabitParams.Friends
         default:break
         }
     }
@@ -68,6 +88,8 @@ struct HabitRequests: RequestRepresentable {
     
     var endpoint: String {
         switch self.requestType {
+        case .joinHabit:
+            return "joinhabits/join_habit"
         case .createHabit:
             return "habits/add_habit"
         case .allHabitList:
@@ -78,10 +100,18 @@ struct HabitRequests: RequestRepresentable {
             return "habits/delete"
         case .habitDetail:
             return "habits/habit_details"
-        case .groupInvitations:
-            return "groupinvitations/invited"
+        case .shareHabit:
+            return "sendinvites/share_habit"
         case .markAsComplete:
             return "habitmarks/mark_as_complete"
+        case .habitCalender:
+            return "habits/habit_calender"
+        case .groupHabitDetails:
+            return "habits/group_habit_details"
+        case .groupHabitMembers:
+            return "habits/group_habit_members"
+        case .friends:
+            return "joinhabits/friends"
         }
     }
     
@@ -97,10 +127,20 @@ struct HabitRequests: RequestRepresentable {
             return .body(data: encodeBody(data: deleteHabit))
         case .habitDetail:
             return .body(data: encodeBody(data: habitDetail))
-        case .groupInvitations:
-            return .body(data: encodeBody(data: groupInvitations))
+        case .shareHabit:
+            return .body(data: encodeBody(data: shareHabit))
         case .markAsComplete:
             return .body(data: encodeBody(data: markAsComplete))
+        case .habitCalender:
+            return .body(data: encodeBody(data: habitCalender))
+        case .joinHabit:
+            return .body(data: encodeBody(data: joinHabit))
+        case .groupHabitDetails:
+            return .body(data: encodeBody(data: groupHabitDetails))
+        case .groupHabitMembers:
+            return .body(data: encodeBody(data: groupHabitMembers))
+        case .friends:
+            return  .body(data: encodeBody(data: friends))
         default:
             return .none
         }

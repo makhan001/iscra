@@ -15,7 +15,8 @@ final class HabitNameCoordinator: Coordinator<Scenes> {
     let selectHabitPopUp: SelectHabitPopUpViewController = SelectHabitPopUpViewController.from(from: .landing, with: .selectHabitPopUp)
 
     private var setTheme: SetThemeCoordinator!
-
+    private var landing: LandingCoordinator!
+    
     override func start() {
         super.start()
         router.setRootModule(controller, hideBar: true)
@@ -24,8 +25,8 @@ final class HabitNameCoordinator: Coordinator<Scenes> {
     
     func start(type: HabitType) {
         super.start()
-        controller.viewModel.habitType = type
         router.setRootModule(controller, hideBar: true)
+        controller.viewModel.habitType = type
         self.onStart()
     }
     
@@ -41,12 +42,21 @@ final class HabitNameCoordinator: Coordinator<Scenes> {
         setTheme.start()
         self.router.present(setTheme, animated: true)
     }
+    
+    private func startLanding() {
+        landing = LandingCoordinator(router: Router())
+        add(landing)
+        landing.delegate = self
+        landing.start()
+        self.router.present(landing, animated: true)
+    }
 }
 
 extension HabitNameCoordinator: NextSceneDismisser {
     func push(scene: Scenes) {
         switch scene {
         case .setTheme: startSetTheme()
+        case .landing: startLanding()
         default: break
         }
     }

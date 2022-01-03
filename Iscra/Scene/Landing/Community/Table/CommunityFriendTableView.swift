@@ -7,31 +7,37 @@
 
 import UIKit
 
-class CommunityFriendTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
-    var count: Int = 0
-    
+class CommunityFriendTableView: UITableView {
+
+    var viewModel: CommunitySearchViewModel!
+
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure(obj: Int) {
-        self.register(UINib(nibName: "CommunityFriendCell", bundle: nil), forCellReuseIdentifier: "CommunityFriendCell")
-        self.delegate = self
-        self.dataSource = self
-        self.count = obj
-        reloadData()
+    func configure(viewModel: CommunitySearchViewModel) {
+        self.viewModel = viewModel
+        self.setup()
     }
     
+    private func setup() {
+        dataSource = self
+        delegate = self
+        estimatedRowHeight = 70.0
+        rowHeight = UITableView.automaticDimension
+        tableFooterView = UIView(frame: .zero)
+        separatorStyle = .none
+    }
+}
+
+extension CommunityFriendTableView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return count
+        return viewModel.arrFriend.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommunityFriendCell") as? CommunityFriendCell else {
-            return UITableViewCell()
-        }
-        cell.configure()
+        let cell = self.dequeueReusable(indexPath) as CommunityFriendCell
+        cell.configure(with: viewModel.arrFriend[indexPath.row])
         return cell
     }
-    
 }

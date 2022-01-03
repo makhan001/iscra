@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    // MARK:-Outlets and variables
+    // MARK:Outlets and variables
     
     @IBOutlet weak var lblTitle:UILabel!
     @IBOutlet weak var lblUserName:UILabel!
@@ -26,92 +26,54 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("self. router on HomeViewController is \(String(describing: self.router))")
         super.viewWillAppear(animated)
-        self.lblUserName.text = "Hi, " + (UserStore.userName ?? "").capitalized
-        self.viewModel.fetchHabitList()
+        self.reload()
     }
 }
 
 // MARK: Instance Methods
 extension HomeViewController {
     private func setup() {
-        viewModel.view = self
-        self.tableView.isHidden = false
+        self.viewModel.view = self
+        self.setTableView()
         self.viewFirstHabit.isHidden = true
-        self.tableView.didSelectedAtIndex = didSelectedAtIndex
         self.lblTitle.text = AppConstant.firstHabitTitle
         self.lblSubTitle.text = AppConstant.firstHabitSubTitle
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: NSNotification.Name(rawValue: "editHabit"), object: nil)
-
-       // self.tableView.delegate1 = self
-        self.tableView.isHabitDelete = {
-            selected , id in
-            if selected {
-                print("is is \(id)")
-                self.showAlert(habitId: id)
-            }
-        }
-        self.setPullToRefresh()
-    }
-    @objc func refrershUI(){
-        print("refrershUI is called")
-        self.viewModel.fetchHabitList()
-    }
-}
-
-// MARK: Callbacks
-extension HomeViewController {
-    private func didSelectedAtIndex(_ index: Int) {
-        self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0  // viewModel.habitList[index].id ?? 0
-      //  print("habit id is in HomeViewController  \(viewModel.habitList[index].id ?? 0)")
-     //   print("self.router is HomeViewController  \(String(describing: self.router))")
-        if self.viewModel.habitList[index].habitType == "group_habit" {
-            self.router?.push(scene: .groupHabitFriends)
-        }else{
-            self.router?.push(scene: .habitCalender)
-        }
-        
-    }
-}
-
-// MARK: API Callback
-extension HomeViewController: HabitViewRepresentable {
-    func onAction(_ action: HabitAction) {
-        switch action {
-        case  let .errorMessage(msg):
-            self.showToast(message: msg)
-        case let .isHabitDelete(true, msg):
-            self.showToast(message: msg)
-            self.viewModel.habitList.removeAll()
-            self.viewModel.fetchHabitList()
-        case  .sucessMessage(_):
-            self.fetchHabitList()
-        default:
-            break
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .EditHabit, object: nil)
     }
     
-    private func fetchHabitList() {
-       //  print("self.viewModel.habitList is \(self.viewModel.habitList.count)")
+    private func reload() {
+        self.lblUserName.text = "Hi, " + (UserStore.userName ?? "").capitalized
+        self.viewModel.fetchHabitList()
+    }
+    
+    private func setTableView() {
+        self.tableView.isHidden = false
+        self.tableView.configure(viewModel: viewModel)
+        self.tableView.didSelectedAtIndex = didSelectedAtIndex
+        self.tableView.didDeleteHabitAtIndex = didDeleteHabitAtIndex
+        self.setPullToRefresh()
+    }
+    
+    @objc func refrershUI() {
+        self.viewModel.fetchHabitList()
+    }
+    
+    private func handleSuccessResponse() {
         if self.viewModel.habitList.count == 0 {
             self.viewFirstHabit.isHidden = false
             self.tableView.isHidden = true
-        }else{
+        } else {
             self.viewFirstHabit.isHidden = true
             self.tableView.isHidden = false
-            self.tableView.configure(habits: self.viewModel.habitList)
             self.tableView.reloadData()
         }
     }
-}
-
-// MARK: showAlert for delete habit
-extension HomeViewController {
-    func showAlert(habitId: String) {
+    
+    private func deleteAlert(id: String) {
         let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
-            self.viewModel.deleteHabit(habitId: habitId)
+            self.viewModel.deleteHabit(id: id)
         }
         deleteAction.setValue(UIColor.gray, forKey: "titleTextColor")
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction!) in
@@ -124,9 +86,26 @@ extension HomeViewController {
     }
 }
 
+// MARK: Callbacks
+extension HomeViewController {
+    private func didSelectedAtIndex(_ index: Int) {
+        self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0  // viewModel.habitList[index].id ?? 0
+        if self.viewModel.habitList[index].habitType == "group_habit" {
+            self.router?.push(scene: .groupHabitFriends)
+        } else {
+            self.router?.push(scene: .habitCalender)
+        }
+    }
+    
+    private func didDeleteHabitAtIndex(_ index: Int) {
+        guard let id = viewModel.habitList[index].id else { return }
+        self.deleteAlert(id: String(id))
+    }
+}
+
 //MARK: - Pull to refresh list
 extension HomeViewController{
-    func setPullToRefresh(){
+    func setPullToRefresh() {
         self.viewModel.pullToRefreshCtrl = UIRefreshControl()
         self.viewModel.pullToRefreshCtrl.addTarget(self, action: #selector(self.pullToRefreshClick(sender:)), for: .valueChanged)
         if #available(iOS 10.0, *) {
@@ -139,5 +118,24 @@ extension HomeViewController{
     @objc func pullToRefreshClick(sender:UIRefreshControl) {
         self.viewModel.isRefreshing = true
         self.viewModel.fetchHabitList()
+    }
+}
+
+
+// MARK: API Callback
+extension HomeViewController: HabitViewRepresentable {
+    func onAction(_ action: HabitAction) {
+        switch action {
+        case  let .errorMessage(msg):
+            self.showToast(message: msg)
+        case let .isHabitDelete(true, msg):
+            self.showToast(message: msg)
+            self.viewModel.habitList.removeAll()
+            self.viewModel.fetchHabitList()
+        case  .sucessMessage(_):
+            self.handleSuccessResponse()
+        default:
+            break
+        }
     }
 }

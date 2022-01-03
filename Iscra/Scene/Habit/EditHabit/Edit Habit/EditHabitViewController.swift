@@ -19,7 +19,7 @@ class EditHabitViewController: UIViewController {
     var timer: String = ""
     var colorTheme: String = ""
     var reminders: Bool = false
-    var objHabitDetail: HabitDetails?
+    var objHabitDetail: HabitDetails? 
     let viewModel: EditHabitViewModel = EditHabitViewModel(provider: HabitServiceProvider())
     weak var router: NextSceneDismisser?
     
@@ -65,7 +65,7 @@ extension EditHabitViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension EditHabitViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
@@ -118,7 +118,7 @@ extension EditHabitViewController: clickManagerDelegate{
             if isReminderOn {
                 self.reminders = isReminderOn
                 self.timer = reminderTime
-            }else{
+            } else {
                 self.reminders = isReminderOn
                 self.timer = reminderTime
             }
@@ -138,15 +138,15 @@ extension EditHabitViewController: clickManagerDelegate{
         self.navigationController?.present(colorPopUp, animated: false, completion: nil)
     }
 }
-// MARK: navigationBarAction Callback
-extension EditHabitViewController  : navigationBarAction {
-    
-    func ActionType()  {
+
+// MARK: NavigationBar ViewDelegate Callback
+extension EditHabitViewController: NavigationBarViewDelegate {
+    func navigationBackAction()  {
         router?.dismiss(controller: .editHabit)
        // self.navigationController?.popViewController(animated: true)
     }
     
-    func RightButtonAction() {
+    func navigationRightButtonAction() {
         self.viewModel.habitName =   self.txtMyHabit.text ?? ""
         self.viewModel.colorTheme = self.colorTheme
         self.viewModel.reminders = self.reminders
@@ -161,12 +161,12 @@ extension EditHabitViewController  : navigationBarAction {
                  let dateString = dateFormatter.date(from: yourDate)
                  let dateTimeStamp  = dateString!.timeIntervalSince1970
                 self.viewModel.timer = String(dateTimeStamp)
-            }else{
+            } else {
                 self.viewModel.timer = self.timer
             }
             self.viewModel.reminders = true
             
-        }else{
+        } else {
             self.viewModel.timer = ""
             self.viewModel.reminders = false
         }
@@ -176,7 +176,7 @@ extension EditHabitViewController  : navigationBarAction {
     }
 }
 
-// MARK:- UITextField Delegate
+// MARK: UITextField Delegate
 extension EditHabitViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             if textField == self.txtMyHabit {
@@ -210,7 +210,7 @@ extension EditHabitViewController: HabitViewRepresentable {
         case let .sucessMessage(msg):
             self.showToast(message: msg, seconds: 0.5)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "editHabit"), object: nil)
+                NotificationCenter.default.post(name: .EditHabit, object: nil)
               //  self.navigationController?.popViewController(animated: true)
                 self.router?.dismiss(controller: .editHabit)
             }

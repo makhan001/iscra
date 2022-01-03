@@ -22,9 +22,9 @@ final class ReminderCoordinator: Coordinator<Scenes> {
         self.onStart()
     }
     
-    func start(selectedColorTheme: ColorStruct) {
+    func start(selectedColorTheme: HabitThemeColor) {
         super.start()
-        controller.selectedColorTheme = selectedColorTheme
+        controller.viewModel.selectedColorTheme = selectedColorTheme
         router.setRootModule(controller, hideBar: true)
         self.onStart()
     }
@@ -57,7 +57,8 @@ final class ReminderCoordinator: Coordinator<Scenes> {
         inviteFriend = InviteFriendCoordinator(router: Router())
         add(inviteFriend)
         inviteFriend.delegate = self
-        inviteFriend.start()
+       // inviteFriend.start()
+        inviteFriend.start(habitId: controller.viewModel.habitId)
         self.router.present(inviteFriend, animated: true)
     }
 }

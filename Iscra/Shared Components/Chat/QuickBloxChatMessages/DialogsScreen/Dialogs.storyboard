@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0jF-MJ-5Qm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ecq-Yg-aFi">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -95,6 +95,7 @@
                             <outlet property="delegate" destination="vc2-Gx-igO" id="ReJ-IK-BCH"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="FOi-iK-FI9"/>
                     <connections>
                         <outlet property="chatNameLabel" destination="Lzc-Bo-o0a" id="gqY-J8-tar"/>
                         <outlet property="chatNameTextField" destination="2Jt-Xb-Gmo" id="cRu-JY-sFF"/>
@@ -115,7 +116,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NiN-qh-lem" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="360" height="70"/>
+                                <rect key="frame" x="0.0" y="88" width="360" height="70"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="YFg-I8-0pr">
                                         <rect key="frame" x="10" y="8" width="350" height="56"/>
@@ -153,7 +154,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3C0-8u-123">
-                                <rect key="frame" x="372" y="51" width="56" height="56"/>
+                                <rect key="frame" x="372" y="95" width="56" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="VYy-an-4p7"/>
@@ -166,7 +167,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHZ-t8-gqh" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="16" y="134" width="396" height="34"/>
+                                <rect key="frame" x="16" y="178" width="396" height="34"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DTT-yJ-C0L">
                                         <rect key="frame" x="0.0" y="0.0" width="396" height="35"/>
@@ -192,13 +193,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSc-j3-uwG">
-                                <rect key="frame" x="0.0" y="188" width="428" height="738"/>
+                                <rect key="frame" x="0.0" y="232" width="428" height="694"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2v-gC-xBQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="738"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="694"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BzL-JB-5R6">
-                                                <rect key="frame" x="0.0" y="0.0" width="428" height="738"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="428" height="694"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="Vel-6d-V4i" id="k1k-AT-BmZ"/>
@@ -215,7 +216,7 @@
                                         </constraints>
                                     </view>
                                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rx3-a5-fmK">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="738"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="694"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -299,12 +300,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLy-c3-qc6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="873" y="-74"/>
+            <point key="canvasLocation" x="2671.9626168224299" y="-74.514038876889856"/>
         </scene>
         <!--Dialogs View Controller-->
         <scene sceneID="CYX-bM-TUn">
             <objects>
-                <tableViewController storyboardIdentifier="DialogsViewController" id="0jF-MJ-5Qm" customClass="DialogsViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="dialogs" id="0jF-MJ-5Qm" customClass="DialogsViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="OIt-u6-Mqx">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -317,6 +318,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="dAr-0b-suU"/>
                     <connections>
+                        <outlet property="tableView" destination="OIt-u6-Mqx" id="f3p-HH-jpN"/>
                         <segue destination="tWq-7O-OZJ" kind="show" identifier="PresentInfoViewController" id="BIH-kV-h3d"/>
                         <segue destination="X0T-IX-vU4" kind="show" identifier="goToChat" id="sKO-4C-cnH"/>
                         <segue destination="Vel-6d-V4i" kind="show" identifier="SelectOpponents" id="PK8-SQ-rA8"/>
@@ -324,7 +326,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vEQ-EF-hRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1" y="-74"/>
+            <point key="canvasLocation" x="1798.5981308411215" y="-74.514038876889856"/>
         </scene>
         <!--InfoScreen-->
         <scene sceneID="mO6-a9-l7k">
@@ -335,6 +337,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WwH-8v-V6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="550" y="-527"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9Ia-Kl-bcU">
+            <objects>
+                <navigationController storyboardIdentifier="DialogsVC" automaticallyAdjustsScrollViewInsets="NO" id="Ecq-Yg-aFi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Qy-mM-5Vv">
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0jF-MJ-5Qm" kind="relationship" relationship="rootViewController" id="dTp-de-TQd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="59x-SW-7R3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="898.59813084112147" y="-74.514038876889856"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

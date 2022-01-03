@@ -8,7 +8,7 @@
 import UIKit
 
 class GetSubcriptionViewController: UIViewController {
-
+    
     @IBOutlet weak var friends_image: UIImageView!
     @IBOutlet weak var lblHeaderTitle: UILabel!
     @IBOutlet weak var lblMiddleText: UILabel!
@@ -18,9 +18,9 @@ class GetSubcriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      setup()
-        // Do any additional setup after loading the view.
+        self.setup()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -29,11 +29,11 @@ class GetSubcriptionViewController: UIViewController {
     }
     
 }
-// MARK:- Instance Methods
-extension GetSubcriptionViewController : navigationBarAction {
+// MARK: Instance Methods
+extension GetSubcriptionViewController : NavigationBarViewDelegate {
     
     private func setup() {
-//        navigationController?.setNavigationBarHidden(false, animated: false)
+        //        navigationController?.setNavigationBarHidden(false, animated: false)
         friends_image.image = UIImage(named: "ic-getSubscription")
         lblHeaderTitle.text = "Dear \(UserStore.userName ?? ""), we need your support"
         lblMiddleText.text = AppConstant.subscriptionTitle
@@ -41,28 +41,28 @@ extension GetSubcriptionViewController : navigationBarAction {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }
-    func ActionType()  {
-       // router?.dismiss(controller: .login)
+    func navigationBackAction()  {
+        // router?.dismiss(controller: .login)
         self.navigationController?.popViewController(animated: true)
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension GetSubcriptionViewController  {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnGetSubcription:
-            self.GetSubscriptionAction()
+            self.getSubscriptionAction()
         case btnAllowAds:
-            self.AllowAdsAction()
+            self.allowAdsAction()
         default:
             break
         }
     }
-    private func GetSubscriptionAction() {
-       print("GetSubscriptionAction")
+    private func getSubscriptionAction() {
+        print("getSubscriptionAction")
     }
-    private func AllowAdsAction() {
-       print("AllowAdsAction")
+    private func allowAdsAction() {
+        print("allowAdsAction")
     }
 }

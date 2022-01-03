@@ -37,7 +37,7 @@ class ChatPrivateTitleView: UIStackView {
         avatarImageView.contentMode = .scaleAspectFill
         return avatarImageView
     }()
-//Mark:- Chat Screen Title Label Color,Size------
+//MARK: Chat Screen Title Label Color,Size------
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1)

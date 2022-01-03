@@ -5,10 +5,12 @@
 //  Created by Lokesh Patil on 12/11/21.
 //
 
-import Foundation
 import UIKit
+import Foundation
 
 class AppConstant: NSObject {
+    
+    static let UserPlaceHolderImage = UIImage(named: "ic-user-placeholder")
     
     // SocialLogin Constants
     //  static let googleClientID = "39692170766-8vkfqscsq4ommlmsnrdmeld8knjne2ec.apps.googleusercontent.com"
@@ -20,6 +22,12 @@ class AppConstant: NSObject {
     
     // Alert Messages
     static let alert_emptynameMsg = "Please enter your name"
+    
+    
+    // Chat Password
+    static let defaultQBUserPassword = "Iscra@123"
+    
+    static let USERNAME_ACCEPTABLE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-"
     
     
     //Onboarding --

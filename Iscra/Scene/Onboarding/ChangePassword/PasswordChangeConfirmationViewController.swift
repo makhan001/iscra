@@ -8,19 +8,26 @@
 import UIKit
 
 class PasswordChangeConfirmationViewController: UIViewController {
-    // MARK:-Outlets and variables
+    
     @IBOutlet weak var transprentView: UIView!
-     override func viewDidLoad() {
+    
+    weak var router: NextSceneDismisser?
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        transprentView.addGestureRecognizer(tap)
-       }
+        self.setup()
+    }
 }
 
 // MARK: Instance Methods
 extension PasswordChangeConfirmationViewController {
-   @objc func handleTap() {
-            print("tapped")
-       self.dismiss(animated: true, completion: nil)
-        }
+    
+    private func setup() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.transprentView.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap() {
+        self.router?.dismiss(controller: .changePassword)
+    }
 }

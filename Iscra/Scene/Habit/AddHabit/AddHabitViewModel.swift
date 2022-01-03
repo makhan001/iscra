@@ -11,21 +11,29 @@ import Foundation
 
 final class AddHabitViewModel {
     
+    var habitId: Int = 0
     var habitName = ""
     var icon: String = ""
     var days: String = ""
     var timer: String = ""
     var colorTheme: String = ""
     var description: String = ""
+    var reminderTime: String = ""
     var reminders: Bool = false
     var habitType : HabitType = .good
     var groupImage: UIImage?
     var didNavigateToSetTheme:((_ :Bool)   ->())?
     
+    var selectedColorTheme =  HabitThemeColor(id: "1", colorHex: "#ff7B86EB", isSelected: true)
+    var weakDays = WeakDaysArray
     weak var view: HabitViewRepresentable?
     
     private func validateHabitInput() {
-        if habitType == .group_habit{
+        
+        self.habitName  = self.habitName.trimmingCharacters(in: .whitespacesAndNewlines)
+        self.description  = self.description.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if habitType == .group {
             if Validation().textValidation(text: habitName, validationType: .habitName).0 {
                 view?.onAction(.requireFields(Validation().textValidation(text: habitName, validationType: .habitName).1))
                 return
@@ -35,14 +43,13 @@ final class AddHabitViewModel {
                 view?.onAction(.requireFields(Validation().textValidation(text: description, validationType: .description).1))
                 return
             }
-        }else{
+        } else {
             if Validation().textValidation(text: habitName, validationType: .habitName).0 {
                 view?.onAction(.requireFields(Validation().textValidation(text: habitName, validationType: .habitName).1))
                 return
             }
         }
         HabitUtils.shared.name = self.habitName
-      //  HabitUtils.shared.habitType = self.habitType
         HabitUtils.shared.description = self.description
         self.didNavigateToSetTheme?(true)
     }
@@ -53,46 +60,54 @@ final class AddHabitViewModel {
         self.didNavigateToSetTheme?(true)
     }
     
+    private func setDaysAfterSelection() {
+        self.days = (weakDays.filter { $0.isSelected }.map{ $0.dayname}.sorted(by: { (WeekDayNumbers[$0] ?? 7) < (WeekDayNumbers[$1] ?? 7) })).joined(separator: ",")
+        HabitUtils.shared.days = self.days
+    }
+    
     private func validateDaysSelection() {
-        if HabitUtils.shared.habitType != .group_habit {
-            if self.days == "" {
+        if HabitUtils.shared.habitType != .group {
+            if weakDays.filter({ $0.isSelected }).isEmpty {
                 view?.onAction(.requireFields(AppConstant.emptyDays))
-            }else{
-                HabitUtils.shared.days = self.days
-                print("Api call")
-                self.apiForCreateHabit()
+            } else {
+                self.setDaysAfterSelection()
+                self.addHabit()
             }
-        }else{
-            if self.days == "" {
+        } else {
+            if weakDays.filter({ $0.isSelected }).isEmpty {
                 view?.onAction(.requireFields(AppConstant.emptyDays))
-            }else{
-                HabitUtils.shared.days = self.days
-                view?.onAction(.navigateToGroupImage(true))
-                print("navigateToGroupImage")
+            } else {
+                self.setDaysAfterSelection()
+                self.view?.onAction(.navigateToGroupImage(true))
             }
         }
     }
     
     private func validateGroupImageSelection() {
-        if HabitUtils.shared.habitType == .group_habit {
-               // if (HabitUtils.shared.groupImage == nil){
+        if HabitUtils.shared.habitType == .group {
+            // if (HabitUtils.shared.groupImage == nil){
             if (self.groupImage == nil){
                 view?.onAction(.requireFields(AppConstant.emptyGroupImage))
-                    print("image unavailable")
-                }else{
-                    print("image available")
-                    self.apiForCreateHabit()
-            HabitUtils.shared.groupImage = self.groupImage
-                }
-        }else{
+                print("image unavailable")
+            } else {
+                print("image available")
+                self.addHabit()
+                HabitUtils.shared.groupImage = self.groupImage
+            }
+        } else {
             view?.onAction(.createHabit)
         }
+    }
+    
+    func sortWeekDays(days: String) {
+        self.days = (days.components(separatedBy: ",").sorted(by: { (WeekDayNumbers[$0] ?? 7) < (WeekDayNumbers[$1] ?? 7) })).joined(separator: ",")
+        print(self.days)
     }
 }
 
 extension AddHabitViewModel: HabitInputViewDelegate {
     func onAction(action: HabitAction, for screen: HabitScreenType) {
-        if HabitUtils.shared.habitType == .group_habit {
+        if HabitUtils.shared.habitType == .group {
             switch action {
             case .inputComplete(screen): validateHabitInput()
             case .setTheme(screen): validateSetTheme()
@@ -100,7 +115,7 @@ extension AddHabitViewModel: HabitInputViewDelegate {
             case .setGroupImage(screen): validateGroupImageSelection()
             default: break
             }
-        }else{
+        } else {
             switch action {
             case .inputComplete(screen): validateHabitInput()
             case .setTheme(screen): validateSetTheme()
@@ -113,12 +128,11 @@ extension AddHabitViewModel: HabitInputViewDelegate {
 
 // MARK: Api Call
 extension AddHabitViewModel {
-    func apiForCreateHabit() {
-        
+    func addHabit() {
         let obj = HabitUtils.shared
         let parameters = HabitParams.CreateHabit(days: obj.days, icon: obj.icon, name: obj.name, timer: obj.timer, reminders: obj.reminders, habit_type: obj.habitType.rawValue , color_theme: obj.colorTheme , description: obj.description)
-        print("param is  \(parameters)")
-        WebService().requestMultiPart(urlString: "habits/add_habit",
+        
+        WebService().requestMultiPart(urlString: APIConstants.addHabit,
                                       httpMethod: .post,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
@@ -126,14 +140,13 @@ extension AddHabitViewModel {
                                       fileArray: [],
                                       file: ["group_image": self.groupImage ?? UIImage()]){ [weak self](resp, err) in
             if err != nil {
-                //  self?.delegate?.completed(for: .register, with: resp, with: nil)
-               // print("error is \(err)")
                 return
             } else {
                 if let response = resp as? SuccessResponseModel  {
                     if response.status == true {
-                      //  print("response.data?.habit?.id is \(response.data?.habit?.id)")
-                      //  self?.view?.onAction(.createHabit)
+                        if let objHabit = response.data?.habit {
+                            self?.habitId = objHabit.id ?? 0
+                        }
                         self?.view?.onAction(.sucessMessage(response.message ?? ""))
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

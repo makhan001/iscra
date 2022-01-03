@@ -29,7 +29,6 @@ class CommunityDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("self.router is \(String(describing: self.router))")
         self.setup()
     }
 }
@@ -73,9 +72,6 @@ extension CommunityDetailViewController {
         
         imageView.contentMode = .scaleAspectFill
         
-        //setup blur vibrant view
-//        imageView.blurView.setup(style: UIBlurEffect.Style.dark, alpha: 1).enable()
-//        imageView.blurView.alpha = 0
         headerImageView = imageView
         tableView.parallaxHeader.view = imageView
         tableView.parallaxHeader.view.backgroundColor = UIColor.red
@@ -83,7 +79,6 @@ extension CommunityDetailViewController {
         tableView.parallaxHeader.minimumHeight = 90
         tableView.parallaxHeader.mode = .centerFill
         tableView.parallaxHeader.parallaxHeaderDidScrollHandler = { [self] parallaxHeader in
-           // parallaxHeader.view.blurView.alpha = 1 - parallaxHeader.progress
             print("progress is ---> \(parallaxHeader.progress)")
             if parallaxHeader.progress <= 0.3 {
                 self.vibrantLabel.isHidden = false
@@ -111,8 +106,6 @@ extension CommunityDetailViewController {
     }
     
     private func joinAction() {
-        print("self.viewModel.habitId. \(self.viewModel.habitId)")
-        print("self.viewModel.userId. \(self.viewModel.userId)")
         self.viewModel.joinHabit()
     }
     
@@ -120,7 +113,6 @@ extension CommunityDetailViewController {
         self.router?.dismiss(controller: .communityDetail)
     }
     private func matesAction() {
-        print("matesAction clicked")
         self.router?.push(scene: .groupMembers)
     }
 }
@@ -133,10 +125,8 @@ extension CommunityDetailViewController: HabitViewRepresentable{
         case .sucessMessage(_):
             self.objGroupHabitDetails = self.viewModel.objGroupHabitDetails
             self.reloadUI()
-            print("load data")
         case let .joinHabitMessage(msg):
             self.showToast(message: msg, seconds: 0.5)
-            print("habit is join on VC")
             self.router?.dismiss(controller: .community)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 NotificationCenter.default.post(name: .JoinHabit, object: nil)

@@ -23,11 +23,12 @@ final class HabitCalenderCoordinator: Coordinator<Scenes> {
         self.onStart()
     }
     
-    func start(habitId: Int , userId: String) {
+    func start(habitId: Int , userId: String, isfromGroupHabitCalendar: Bool) {
         super.start()
         router.setRootModule(controller, hideBar: true)
         controller.viewModel.habitId = habitId
         controller.viewModel.userId = userId
+        controller.viewModel.isfromGroupHabitCalendar = isfromGroupHabitCalendar
         self.onStart()
     }
 

@@ -22,11 +22,11 @@ class MatesCollectionCell: UICollectionViewCell, Reusable {
     
     
     func configure() {
-        self.imgMatesMember.image = #imageLiteral(resourceName: "ic_user1")
+        self.imgMatesMember.image = #imageLiteral(resourceName: "ic-user-placeholder")
     }
     
     func configureGroupHabitMembers(obj: UsersProfileImageURL) {
-        self.imgMatesMember.setImageFromURL(obj.profileImage ?? "", with: #imageLiteral(resourceName: "ic_user1"))
+        self.imgMatesMember.setImageFromURL(obj.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
     }
     
     func configureGroupMembers(obj: GroupMember) {

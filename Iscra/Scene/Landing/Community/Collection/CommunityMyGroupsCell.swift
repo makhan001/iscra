@@ -88,10 +88,8 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
             cell.configure(item: viewModel.habitMarks[indexPath.item], colorTheme: viewModel.colorTheme)
             return cell
         } else {
-            guard let cell = self.collectionMates.dequeueReusableCell(withReuseIdentifier: "MatesCollectionCell", for: indexPath) as? MatesCollectionCell else {
-                return UICollectionViewCell()
-            }
-            cell.configureGroupMembers(obj: viewModel.groupMembers[indexPath.row] )
+            let cell = collectionView.dequeueReusable(indexPath) as MatesCollectionCell
+            cell.configure(with: viewModel.groupMembers[indexPath.row].profileImage)
             return cell
         }
     }

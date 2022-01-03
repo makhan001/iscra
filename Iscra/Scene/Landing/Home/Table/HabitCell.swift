@@ -12,21 +12,22 @@ class HabitCell: UITableViewCell, Reusable {
     @IBOutlet weak var viewMates: UIView!
     @IBOutlet weak var viewNomates: UIView!
     @IBOutlet weak var viewContainer: UIView!
-    @IBOutlet weak var imgHabit: UIImageView!
+    
     @IBOutlet weak var lblHabitTitle: UILabel!
-    @IBOutlet weak var imgHabitMates: UIImageView!
     @IBOutlet weak var lblHabitTitleMates: UILabel!
-    @IBOutlet weak var collectionMates: UICollectionView! //HabitMatesCollectionView
-    @IBOutlet weak var collectionDays: HabitDaysCollectionView!
+    
+    @IBOutlet weak var imgHabit: UIImageView!
+    @IBOutlet weak var imgHabitMates: UIImageView!
+    
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
+    
+    @IBOutlet weak var daysCollectionView: HabitDaysCollectionView!
+    @IBOutlet weak var matesCollectionView: HabitMatesCollectionView!
     
     var viewModel: HomeViewModel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.collectionMates.register(UINib(nibName: "MatesCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MatesCollectionCell")
-        self.collectionMates.backgroundColor = UIColor.clear.withAlphaComponent(0)
-        self.collectionMates.reloadData()
     }
     
     func configure<T>(with content: T) { }
@@ -35,7 +36,8 @@ class HabitCell: UITableViewCell, Reusable {
         self.viewModel = viewModel
         self.viewModel.habitMarks = item.habitMarks ?? self.viewModel.habitMarks
         self.viewModel.groupMembers = item.groupMembers ?? self.viewModel.groupMembers
-        self.collectionDays.configure(colorTheme: viewModel.colorTheme, habitMark: viewModel.habitMarks)
+        self.daysCollectionView.configure(colorTheme: viewModel.colorTheme, habitMark: viewModel.habitMarks)
+        self.matesCollectionView.configure(groupMember: viewModel.groupMembers)
         self.populateData(item: item)
     }
     

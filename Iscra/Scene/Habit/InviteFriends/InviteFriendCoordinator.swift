@@ -41,7 +41,7 @@ final class InviteFriendCoordinator: Coordinator<Scenes> {
     }
     
     private func startShareHabit() {
-        shareHabit.viewModel.habitId = controller.habitId // deepak
+        shareHabit.viewModel.habitId = controller.habitId 
         shareHabit.viewModel.sourceScreen = .invite
         router.present(shareHabit, animated: true)
     }

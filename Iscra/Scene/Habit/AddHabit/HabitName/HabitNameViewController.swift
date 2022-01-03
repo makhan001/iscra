@@ -105,6 +105,10 @@ extension HabitNameViewController: UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil || string.containsEmoji {
+            return false
+        }
        let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
         if newLength <= 30 {
             if textField == txtFieldTitle {

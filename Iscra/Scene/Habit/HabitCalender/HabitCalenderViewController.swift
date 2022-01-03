@@ -56,7 +56,6 @@ extension HabitCalenderViewController {
     
     private func setViewControls() {
         self.lblLongestStreak.text = "Longest \nStreak"
-        self.viewNavigation.lblTitle.text = ""
         self.viewMarkasComplete.isHidden = true
         [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth,btnMarkasComplete,btnNextMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -95,9 +94,10 @@ extension HabitCalenderViewController {
     }
     
     private func headerMonthSetup() {
-        if Date().currentMonth == self.viewCalender.currentPage.currentMonth {
+        
+        if Date().currentMonth == self.viewCalender.currentPage.currentMonth && Date().currentYear == self.viewCalender.currentPage.currentYear {
             self.btnNextMonth.isHidden = true
-        }else{
+        } else {
             self.btnNextMonth.isHidden = false
         }
     }
@@ -110,6 +110,11 @@ extension HabitCalenderViewController {
         
         if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
             self.viewMarkasComplete.isHidden = true
+        }
+        if self.viewModel.objHabitDetail?.habitType == "group_habit" {
+            self.viewShareHabit.isHidden = false
+        } else {
+            self.viewShareHabit.isHidden = true
         }
     }
     

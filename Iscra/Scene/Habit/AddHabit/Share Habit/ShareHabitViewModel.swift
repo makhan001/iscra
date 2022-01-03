@@ -45,10 +45,14 @@ extension ShareHabitViewModel: HabitServiceProvierDelegate {
                 
                 if let resp = response as? SuccessResponseModel, resp.code == 200, let friendsList = resp.data?.friends{
                    self.arrFriend = friendsList
+                    if let index = friendsList.firstIndex(where: { $0.id == Int(UserStore.userID ?? "") }) {
+                        self.arrFriend.remove(at: index)
+                    }
+                    
                    self.arrFriend.sort { $0.username ?? "" < $1.username ?? "" }
                    print("self.arrFriend is \(self.arrFriend.count)")
                    self.view?.onAction(.sucessMessage(resp.message ?? ""))
-               } else if let resp = response as? SuccessResponseModel, resp.code == 200 , let shareHabit = resp.data?.shareHabit{
+                } else if let resp = response as? SuccessResponseModel, resp.code == 200 , let _ = resp.data?.shareHabit{
                     self.view?.onAction(.shareHabitSucess(resp.message ?? ""))
                 } else {
                     self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))

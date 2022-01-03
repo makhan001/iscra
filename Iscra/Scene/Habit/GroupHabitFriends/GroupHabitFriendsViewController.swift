@@ -66,7 +66,6 @@ extension GroupHabitFriendsViewController {
         self.viewProgress.isHidden = true
         self.viewMarkasComplete.isHidden = true
         self.lblLongestStreak.text = "Longest \nStreak"
-        self.viewNavigation.lblTitle.text = ""
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
         [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth,btnMarkasComplete,btnNextMonth].forEach {
@@ -111,9 +110,9 @@ extension GroupHabitFriendsViewController {
     }
     
     private func headerMonthSetup() {
-        if Date().currentMonth == self.viewCalender.currentPage.currentMonth {
+        if Date().currentMonth == self.viewCalender.currentPage.currentMonth && Date().currentYear == self.viewCalender.currentPage.currentYear {
             self.btnNextMonth.isHidden = true
-        }else{
+        } else {
             self.btnNextMonth.isHidden = false
         }
     }
@@ -329,6 +328,7 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
             // self.showToast(message: msg)
             self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
             self.viewNavigation.lblTitle.text = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
+
            // self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)
             if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
                 self.viewEditHabit.isHidden = false

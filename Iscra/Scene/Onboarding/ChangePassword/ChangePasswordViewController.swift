@@ -54,7 +54,7 @@ extension ChangePasswordViewController: NavigationBarViewDelegate {
     }
 }
 
-// MARK:-TextField Delegate Methods
+// MARK:TextField Delegate Methods
 extension ChangePasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.txtFieldCurrentPassword {
@@ -83,7 +83,7 @@ extension ChangePasswordViewController: UITextFieldDelegate {
         return true
     }
 }
-// MARK:- Button Action
+// MARK: Button Action
 extension ChangePasswordViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {

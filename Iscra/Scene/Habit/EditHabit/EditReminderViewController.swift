@@ -154,7 +154,7 @@ extension EditReminderViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension EditReminderViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {

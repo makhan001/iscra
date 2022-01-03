@@ -65,7 +65,7 @@ extension EditHabitViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension EditHabitViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
@@ -176,7 +176,7 @@ extension EditHabitViewController: NavigationBarViewDelegate {
     }
 }
 
-// MARK:- UITextField Delegate
+// MARK: UITextField Delegate
 extension EditHabitViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             if textField == self.txtMyHabit {

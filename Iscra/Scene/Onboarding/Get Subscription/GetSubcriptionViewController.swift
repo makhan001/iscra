@@ -29,7 +29,7 @@ class GetSubcriptionViewController: UIViewController {
     }
     
 }
-// MARK:- Instance Methods
+// MARK: Instance Methods
 extension GetSubcriptionViewController : NavigationBarViewDelegate {
     
     private func setup() {
@@ -47,7 +47,7 @@ extension GetSubcriptionViewController : NavigationBarViewDelegate {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension GetSubcriptionViewController  {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {

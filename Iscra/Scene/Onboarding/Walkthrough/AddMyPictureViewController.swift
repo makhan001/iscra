@@ -39,7 +39,7 @@ extension AddMyPictureViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension AddMyPictureViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch sender {
@@ -79,7 +79,7 @@ extension AddMyPictureViewController {
     }
 }
 
-// MARK:- NavigationBarView Delegate
+// MARK: NavigationBarView Delegate
 extension AddMyPictureViewController: NavigationBarViewDelegate {
     func navigationBackAction()  {
         router?.dismiss(controller: .addMyPicture)

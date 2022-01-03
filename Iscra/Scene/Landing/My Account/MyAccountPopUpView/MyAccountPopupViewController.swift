@@ -38,7 +38,7 @@ extension MyAccountPopupViewController {
       //  self.router?.dismiss(controller: .myAccountPopup)
     }
 }
-// MARK:- Button Action
+// MARK: Button Action
 extension MyAccountPopupViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {

@@ -61,7 +61,7 @@ final class MyAccountViewModel {
         }
     }
 }
-//Mark:- OnboardingServiceProvierDelegate
+//MARK: OnboardingServiceProvierDelegate
 extension MyAccountViewModel: OnboardingServiceProvierDelegate {
     func completed<T>(for action: OnboardingAction, with response: T?, with error: APIError?) {
         DispatchQueue.main.async {

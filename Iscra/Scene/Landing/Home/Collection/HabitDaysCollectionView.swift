@@ -8,48 +8,60 @@
 import UIKit
 
 class HabitDaysCollectionView: UICollectionView {
+
+    var colorTheme: String = ""
+    var habitMarks: [HabitMark] = []
     
-    var viewModel: HomeViewModel!
     
+    let columnFlowLayout = ColumnFlowLayout(
+        cellsPerRow: 3,
+        minimumInteritemSpacing: 10,
+        minimumLineSpacing: 10,
+        sectionInset: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-    
-    func configure(_ viewModel: HomeViewModel) {
-        self.viewModel = viewModel
         self.setup()
     }
     
+    func configure(colorTheme: String, habitMark: [HabitMark]) {
+        self.colorTheme = colorTheme
+        self.habitMarks = habitMark
+        reloadData()
+    }
+    
     private func setup() {
-        contentInsetAdjustmentBehavior = .always
         delegate = self
         dataSource = self
-        reloadData()
         layoutIfNeeded()
+        reloadData()
     }
 }
 
-extension HabitDaysCollectionView: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension HabitDaysCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.habitMarks.count
+        return habitMarks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusable(indexPath) as HabitDaysCell
-        cell.configure(viewModel: viewModel, item: viewModel.habitMarks[indexPath.row])
+        cell.configure(item: habitMarks[indexPath.row], colorTheme: colorTheme)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if viewModel.habitMarks.count <= 3 {
-            let width = Int(self.bounds.width) / viewModel.habitMarks.count
-            return CGSize(width: width, height: 125)
-        } else {
-            return CGSize(width: self.bounds.width/3.5, height: 125)
-        }
+        CGSize(width: collectionView.bounds.width / 3.0, height: 125.0)
     }
     
-    func collectionView(_ collectionView: UICollectionView, getSizeAtIndexPath indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 50, height: 125)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        .zero
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        20.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        5.0
     }
 }

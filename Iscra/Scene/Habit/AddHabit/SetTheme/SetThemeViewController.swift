@@ -30,7 +30,7 @@ class SetThemeViewController: UIViewController {
     }
 }
 
-// MARK:- Instance Methods
+// MARK: Instance Methods
 extension SetThemeViewController {
     private func setup() {
         self.viewModel.view = self
@@ -80,7 +80,7 @@ extension SetThemeViewController {
         self.present(alertController, animated: true, completion:nil)
     }
 }
-// MARK:- Button Action
+// MARK: Button Action
 extension SetThemeViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {

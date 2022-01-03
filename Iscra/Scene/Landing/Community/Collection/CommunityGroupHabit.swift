@@ -7,9 +7,8 @@
 
 import UIKit
 import SDWebImage
-class CommunityGroupHabit: UICollectionViewCell {
+class CommunityGroupHabit: UICollectionViewCell, Reusable {
     
-    // MARK: - Outlets
     @IBOutlet weak var imgHabit: UIImageView!
     @IBOutlet weak var lblHabitTitle: UILabel!
     @IBOutlet weak var lblHabitSubtitle: UILabel!
@@ -17,17 +16,11 @@ class CommunityGroupHabit: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
- 
-    func configure(obj: Invitaion) {
-        self.lblHabitTitle.text = obj.name?.capitalized
-        self.lblHabitSubtitle.text = obj.invitaionDescription
-
-        let profilePic = obj.groupImage
-        if profilePic != nil && profilePic != "<null>"  {
-            let url = URL(string: profilePic!)
-            self.imgHabit.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic-Rectangle"))
-        } else {
-            self.imgHabit.image = #imageLiteral(resourceName: "ic-Rectangle")
-        }
+    
+    func configure<T>(with content: T) {
+        guard let item = content as? Invitaion else { return }
+        self.lblHabitTitle.text = item.name?.capitalized
+        self.lblHabitSubtitle.text = item.invitaionDescription
+        self.imgHabit.setImageFromURL(item.groupImage ?? "", with: #imageLiteral(resourceName: "ic-Rectangle"))
     }
 }

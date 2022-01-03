@@ -76,7 +76,7 @@ extension AddMemojiViewController: NavigationBarViewDelegate {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension AddMemojiViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
@@ -106,7 +106,7 @@ extension AddMemojiViewController {
     }
 }
 
-// MARK:- Image Picker Delegate
+// MARK: Image Picker Delegate
 extension AddMemojiViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -117,7 +117,7 @@ extension AddMemojiViewController: UIImagePickerControllerDelegate, UINavigation
     }
 }
 
-// MARK:- Navigation Bar Delegate
+// MARK: Navigation Bar Delegate
 extension AddMemojiViewController {
     func navigationBackAction()  {
         self.router?.dismiss(controller: .learnHowToAddMemoji)

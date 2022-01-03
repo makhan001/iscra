@@ -132,7 +132,7 @@ struct LoginData: Codable {
     }
 }
 
-//Mark:- UserData
+//Mark: UserData
 struct User: Codable {
     var id: Int?
     var email, encryptedPassword: String?

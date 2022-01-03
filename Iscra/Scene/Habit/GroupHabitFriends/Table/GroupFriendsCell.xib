@@ -60,7 +60,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWN-Mg-5HF">
                                 <rect key="frame" x="95" y="0.0" width="401" height="145"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="V18-jX-VRg">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="V18-jX-VRg" customClass="HabitDaysCollectionView" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="401" height="145"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lfv-RH-giV">
@@ -107,8 +107,8 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="collectiondays" destination="V18-jX-VRg" id="lXa-Z3-yZl"/>
                 <outlet property="constraintWidth" destination="NZa-qc-3iv" id="QQt-KC-cgJ"/>
+                <outlet property="daysCollectionView" destination="V18-jX-VRg" id="lil-ie-ezJ"/>
                 <outlet property="imgFriend" destination="gg6-d9-nMw" id="f2k-Na-mbO"/>
                 <outlet property="lblFriendName" destination="Icc-cl-ot0" id="18n-ld-AJI"/>
                 <outlet property="viewContainer" destination="zuy-EI-TnW" id="vLq-UZ-u5J"/>

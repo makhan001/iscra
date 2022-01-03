@@ -34,7 +34,7 @@ class VerificationViewController: UIViewController {
         self.setup()
     }
 }
-// MARK:- Instance Methods
+// MARK: Instance Methods
 extension VerificationViewController {
     private func setup() {
         self.viewModel.view = self
@@ -97,7 +97,7 @@ extension VerificationViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension VerificationViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
@@ -128,7 +128,7 @@ extension VerificationViewController {
     }
 }
 
-// MARK:- TextField Delegate
+// MARK: TextField Delegate
 extension VerificationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         

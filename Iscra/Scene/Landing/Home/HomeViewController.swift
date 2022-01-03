@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    // MARK:-Outlets and variables
+    // MARK:Outlets and variables
     
     @IBOutlet weak var lblTitle:UILabel!
     @IBOutlet weak var lblUserName:UILabel!
@@ -69,50 +69,8 @@ extension HomeViewController {
             self.tableView.reloadData()
         }
     }
-}
-
-// MARK: Callbacks
-extension HomeViewController {
-    private func didSelectedAtIndex(_ index: Int) {
-       // /*
-         self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0  // viewModel.habitList[index].id ?? 0
-      //  print("habit id is in HomeViewController  \(viewModel.habitList[index].id ?? 0)")
-     //   print("self.router is HomeViewController  \(String(describing: self.router))")
-        if self.viewModel.habitList[index].habitType == "group_habit" {
-            self.router?.push(scene: .groupHabitFriends)
-        } else {
-            self.router?.push(scene: .habitCalender)
-        }
-       // */
-    }
     
-    private func didDeleteHabitAtIndex(_ index: Int) {
-        guard let id = viewModel.habitList[index].id else { return }
-        self.deleteAlert(id: String(id))
-    }
-}
-
-// MARK: API Callback
-extension HomeViewController: HabitViewRepresentable {
-    func onAction(_ action: HabitAction) {
-        switch action {
-        case  let .errorMessage(msg):
-            self.showToast(message: msg)
-        case let .isHabitDelete(true, msg):
-            self.showToast(message: msg)
-            self.viewModel.habitList.removeAll()
-            self.viewModel.fetchHabitList()
-        case  .sucessMessage(_):
-            self.handleSuccessResponse()
-        default:
-            break
-        }
-    }
-}
-
-// MARK: showAlert for delete habit
-extension HomeViewController {
-    func deleteAlert(id: String) {
+    private func deleteAlert(id: String) {
         let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
             self.viewModel.deleteHabit(id: id)
@@ -125,6 +83,23 @@ extension HomeViewController {
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
+    }
+}
+
+// MARK: Callbacks
+extension HomeViewController {
+    private func didSelectedAtIndex(_ index: Int) {
+        self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0  // viewModel.habitList[index].id ?? 0
+        if self.viewModel.habitList[index].habitType == "group_habit" {
+            self.router?.push(scene: .groupHabitFriends)
+        } else {
+            self.router?.push(scene: .habitCalender)
+        }
+    }
+    
+    private func didDeleteHabitAtIndex(_ index: Int) {
+        guard let id = viewModel.habitList[index].id else { return }
+        self.deleteAlert(id: String(id))
     }
 }
 
@@ -143,5 +118,24 @@ extension HomeViewController{
     @objc func pullToRefreshClick(sender:UIRefreshControl) {
         self.viewModel.isRefreshing = true
         self.viewModel.fetchHabitList()
+    }
+}
+
+
+// MARK: API Callback
+extension HomeViewController: HabitViewRepresentable {
+    func onAction(_ action: HabitAction) {
+        switch action {
+        case  let .errorMessage(msg):
+            self.showToast(message: msg)
+        case let .isHabitDelete(true, msg):
+            self.showToast(message: msg)
+            self.viewModel.habitList.removeAll()
+            self.viewModel.fetchHabitList()
+        case  .sucessMessage(_):
+            self.handleSuccessResponse()
+        default:
+            break
+        }
     }
 }

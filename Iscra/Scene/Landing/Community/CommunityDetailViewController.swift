@@ -94,7 +94,7 @@ extension CommunityDetailViewController {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension CommunityDetailViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {

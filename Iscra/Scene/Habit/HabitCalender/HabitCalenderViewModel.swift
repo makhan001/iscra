@@ -11,16 +11,15 @@ import Foundation
 final class HabitCalenderViewModel {
     
     var habitId: Int = 0
-    var userId: String = UserStore.userID ?? ""
     var habitMonth: String = ""
     var longestStreak: Int?
+    var userId: String = UserStore.userID ?? ""
 
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
     var objHabitDetail: HabitDetails?
     var arrHabitCalender: [HabitCalender]?
-  //  var arrMembers: [Member]?
 
     init(provider: HabitServiceProvidable) {
         self.provider = provider

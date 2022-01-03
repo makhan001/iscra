@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,10 +22,10 @@
                         <rect key="frame" x="5" y="8" width="507" height="145"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dVy-Gx-dpb">
-                                <rect key="frame" x="5" y="0.0" width="442" height="145"/>
+                                <rect key="frame" x="5" y="0.0" width="269" height="145"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmY-yR-XcG">
-                                        <rect key="frame" x="0.0" y="0.0" width="442" height="145"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="269" height="145"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s2x-9A-gKC">
                                                 <rect key="frame" x="15" y="60" width="25" height="25"/>
@@ -35,7 +35,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghfghfghfgh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMQ-Fc-dl4" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="60" width="394" height="25"/>
+                                                <rect key="frame" x="48" y="60" width="221" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="TcU-NH-iBK"/>
                                                 </constraints>
@@ -62,7 +62,7 @@
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhL-Dw-oD3">
-                                        <rect key="frame" x="0.0" y="145" width="442" height="145"/>
+                                        <rect key="frame" x="0.0" y="145" width="269" height="145"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ife-MM-rtr">
                                                 <rect key="frame" x="15" y="30" width="25" height="25"/>
@@ -72,7 +72,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghfghfghfgh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQv-Ae-JBf" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="30" width="394" height="25"/>
+                                                <rect key="frame" x="48" y="30" width="221" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Jb6-wo-LMt"/>
                                                 </constraints>
@@ -102,7 +102,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KIT-uB-CXg">
-                                                <rect key="frame" x="15" y="96" width="412" height="35"/>
+                                                <rect key="frame" x="15" y="96" width="239" height="35"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="Oie-wV-d56"/>
@@ -129,14 +129,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEk-Ch-0dB">
-                                <rect key="frame" x="447" y="10" width="55" height="125"/>
+                                <rect key="frame" x="274" y="10" width="228" height="125"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6na-WE-bbP" customClass="HabitDaysCollectionView" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="0.0" width="45" height="125"/>
+                                        <rect key="frame" x="10" y="0.0" width="208" height="125"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="KNd-tm-6eq"/>
-                                        </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tW7-hR-iOI">
                                             <size key="itemSize" width="50" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -148,7 +145,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="6na-WE-bbP" firstAttribute="top" secondItem="HEk-Ch-0dB" secondAttribute="top" id="16s-gr-hzi"/>
-                                    <constraint firstAttribute="trailing" secondItem="6na-WE-bbP" secondAttribute="trailing" id="9dG-rB-9Q3"/>
+                                    <constraint firstAttribute="trailing" secondItem="6na-WE-bbP" secondAttribute="trailing" constant="10" id="9dG-rB-9Q3"/>
                                     <constraint firstAttribute="bottom" secondItem="6na-WE-bbP" secondAttribute="bottom" id="VLy-0L-eBi"/>
                                     <constraint firstItem="6na-WE-bbP" firstAttribute="leading" secondItem="HEk-Ch-0dB" secondAttribute="leading" constant="10" id="lEK-xs-hEk"/>
                                 </constraints>
@@ -160,6 +157,7 @@
                             <constraint firstAttribute="trailing" secondItem="HEk-Ch-0dB" secondAttribute="trailing" constant="5" id="NME-6F-JVm"/>
                             <constraint firstAttribute="bottom" secondItem="HEk-Ch-0dB" secondAttribute="bottom" constant="10" id="OSr-u1-fRw"/>
                             <constraint firstAttribute="bottom" secondItem="dVy-Gx-dpb" secondAttribute="bottom" id="QLG-AZ-iic"/>
+                            <constraint firstItem="HEk-Ch-0dB" firstAttribute="width" secondItem="g3u-kO-aOj" secondAttribute="width" multiplier="0.45" id="YjW-AJ-dmb"/>
                             <constraint firstItem="dVy-Gx-dpb" firstAttribute="top" secondItem="g3u-kO-aOj" secondAttribute="top" id="dt3-6Q-mcm"/>
                             <constraint firstItem="dVy-Gx-dpb" firstAttribute="leading" secondItem="g3u-kO-aOj" secondAttribute="leading" constant="5" id="i6U-Jy-7wj"/>
                             <constraint firstItem="HEk-Ch-0dB" firstAttribute="leading" secondItem="dVy-Gx-dpb" secondAttribute="trailing" id="kvX-Wg-rXg"/>
@@ -195,7 +193,6 @@
             <connections>
                 <outlet property="collectionDays" destination="6na-WE-bbP" id="8vM-H5-Kpl"/>
                 <outlet property="collectionMates" destination="KIT-uB-CXg" id="Jrc-XV-1ri"/>
-                <outlet property="constraintWidth" destination="KNd-tm-6eq" id="Nox-eP-GWd"/>
                 <outlet property="imgHabit" destination="s2x-9A-gKC" id="O2C-x1-do9"/>
                 <outlet property="imgHabitMates" destination="Ife-MM-rtr" id="yci-oo-afK"/>
                 <outlet property="lblHabitTitle" destination="RMQ-Fc-dl4" id="O1G-hB-qdM"/>

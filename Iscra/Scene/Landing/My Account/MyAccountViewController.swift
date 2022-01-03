@@ -11,7 +11,7 @@ import MessageUI
 
 class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
-    // MARK:-Outlets and variables
+    // MARK:Outlets and variables
     @IBOutlet weak var btnLogout: UIButton!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblName: IscraCustomLabel!
@@ -74,7 +74,7 @@ extension MyAccountViewController: NavigationBarViewDelegate {
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension MyAccountViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
@@ -191,7 +191,7 @@ extension MyAccountViewController: clickManagerDelegate{
     }
 }
 
-//Mark:- Mail Composer Delegate
+//MARK: Mail Composer Delegate
 extension MyAccountViewController: MFMailComposeViewControllerDelegate{
     func mailComposeController(_ controller: MFMailComposeViewController,
                                didFinishWith result: MFMailComposeResult, error: Error?) {
@@ -199,7 +199,7 @@ extension MyAccountViewController: MFMailComposeViewControllerDelegate{
     }
 }
 
-//Mark:- Image Picker Delegate
+//MARK: Image Picker Delegate
 extension MyAccountViewController: ImagePickerDelegate{
     func fetchedImage(img: UIImage) {
         imgProfile.image = img

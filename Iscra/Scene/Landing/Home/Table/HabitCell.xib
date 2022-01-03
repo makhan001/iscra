@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -101,7 +101,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KIT-uB-CXg">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KIT-uB-CXg" customClass="HabitMatesCollectionView" customModule="Iscra" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="96" width="239" height="35"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -131,7 +131,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEk-Ch-0dB">
                                 <rect key="frame" x="274" y="10" width="228" height="125"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6na-WE-bbP" customClass="HabitDaysCollectionView" customModule="Iscra" customModuleProvider="target">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6na-WE-bbP" customClass="HabitDaysCollectionView" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="10" y="0.0" width="208" height="125"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tW7-hR-iOI">
@@ -191,12 +191,12 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="collectionDays" destination="6na-WE-bbP" id="8vM-H5-Kpl"/>
-                <outlet property="collectionMates" destination="KIT-uB-CXg" id="Jrc-XV-1ri"/>
+                <outlet property="daysCollectionView" destination="6na-WE-bbP" id="Dl4-2z-f8w"/>
                 <outlet property="imgHabit" destination="s2x-9A-gKC" id="O2C-x1-do9"/>
                 <outlet property="imgHabitMates" destination="Ife-MM-rtr" id="yci-oo-afK"/>
                 <outlet property="lblHabitTitle" destination="RMQ-Fc-dl4" id="O1G-hB-qdM"/>
                 <outlet property="lblHabitTitleMates" destination="yQv-Ae-JBf" id="IoF-xA-7UY"/>
+                <outlet property="matesCollectionView" destination="KIT-uB-CXg" id="Ewd-30-idZ"/>
                 <outlet property="viewContainer" destination="g3u-kO-aOj" id="vXz-AZ-Gda"/>
                 <outlet property="viewMates" destination="nhL-Dw-oD3" id="R3i-XS-liw"/>
                 <outlet property="viewNomates" destination="mmY-yR-XcG" id="Ly8-DE-olN"/>

@@ -173,6 +173,7 @@
 		86CF862C2775CE1900FB19BC /* QBChatLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF862B2775CE1900FB19BC /* QBChatLogin.swift */; };
 		86DC2EB5277C889100CA4C9F /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC2EB3277C889000CA4C9F /* IAPHelper.swift */; };
 		86DC2EB6277C889100CA4C9F /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC2EB4277C889000CA4C9F /* Products.swift */; };
+		86ED8D8427831DA700DD65D5 /* HabitMatesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED8D8327831DA700DD65D5 /* HabitMatesCollectionView.swift */; };
 		8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800806B2729255E008E3260 /* ReminderViewController.swift */; };
 		880080732729282F008E3260 /* HabitNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080722729282F008E3260 /* HabitNameViewController.swift */; };
 		880080782729346D008E3260 /* WeekCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880080772729346D008E3260 /* WeekCollection.swift */; };
@@ -492,6 +493,7 @@
 		86CF862B2775CE1900FB19BC /* QBChatLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QBChatLogin.swift; sourceTree = "<group>"; };
 		86DC2EB3277C889000CA4C9F /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		86DC2EB4277C889000CA4C9F /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		86ED8D8327831DA700DD65D5 /* HabitMatesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitMatesCollectionView.swift; sourceTree = "<group>"; };
 		8800806B2729255E008E3260 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		880080722729282F008E3260 /* HabitNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameViewController.swift; sourceTree = "<group>"; };
 		880080772729346D008E3260 /* WeekCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollection.swift; sourceTree = "<group>"; };
@@ -1946,6 +1948,7 @@
 			isa = PBXGroup;
 			children = (
 				04840995277DF3DE006862B2 /* HabitDaysCollectionView.swift */,
+				86ED8D8327831DA700DD65D5 /* HabitMatesCollectionView.swift */,
 				04840994277DF3C5006862B2 /* cell */,
 			);
 			path = Collection;
@@ -2231,6 +2234,7 @@
 				04FD568727671F69008E7CB2 /* CommunityRequest.swift in Sources */,
 				5FF6CD53274E6A5A007ADC2F /* LoadingButton.swift in Sources */,
 				887994BA273AB2EE00904D1F /* MyCommunityCollectionView.swift in Sources */,
+				86ED8D8427831DA700DD65D5 /* HabitMatesCollectionView.swift in Sources */,
 				5FF6CD7F274E6A5A007ADC2F /* ChatActionsHandler.swift in Sources */,
 				5FF6CD2E274E6A5A007ADC2F /* UILabel+Extention.swift in Sources */,
 				88202D5F2719AAAA00F0EA2E /* WalkthroughViewController.swift in Sources */,

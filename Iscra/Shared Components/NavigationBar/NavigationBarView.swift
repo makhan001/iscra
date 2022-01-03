@@ -19,22 +19,27 @@ enum navRightViewType{
 }
 
 class NavigationBarView: UIView {
-    let XIB_NAME = "NavigationBarView"
-    @IBOutlet var viewContent: UIView!
-    @IBOutlet var lblTitle: UILabel!
     @IBOutlet var btnBack: UIButton!
-    @IBOutlet var btnRightBar: UIButton!
     @IBOutlet var btnSave: UIButton!
-    var delegateBarAction:NavigationBarViewDelegate?
+    @IBOutlet var btnRightBar: UIButton!
+    
+    @IBOutlet var lblTitle: UILabel!
+    @IBOutlet var viewContent: UIView!
+    
+    let XIB_NAME = "NavigationBarView"
     var navType:navRightViewType = .other
+    var delegateBarAction:NavigationBarViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
+    
     func commonInit() {
         Bundle.main.loadNibNamed(XIB_NAME, owner: self, options: nil)
         viewContent.fixInView(self)

@@ -1,3 +1,4 @@
+
 //
 //  GroupHabitFriendsViewController.swift
 //  Iscra
@@ -35,7 +36,6 @@ class GroupHabitFriendsViewController: UIViewController {
     private let selectedColor = [NSAttributedString.Key.foregroundColor: UIColor(named: "WhiteAccent")]
     private let unselectedColor = [NSAttributedString.Key.foregroundColor: UIColor(named: "BlackAccent")]
     
-    //var strTitleName = ""
     weak var router: NextSceneDismisser?
     let viewModel: HabitCalenderViewModel = HabitCalenderViewModel(provider: HabitServiceProvider())
     
@@ -327,7 +327,8 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
         case .sucessMessage(_):
             // self.showToast(message: msg)
             self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
-            self.viewNavigation.lblTitle.text = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
+            guard let name = self.viewModel.objHabitDetail?.name else { return }
+            self.viewNavigation.lblTitle.text = name.capitalized
 
            // self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)
             if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {

@@ -26,6 +26,10 @@ class WalkthroughViewController: UIViewController {
         super.viewDidLoad()
         self.setup()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        txtName.text = ""
+        print("WalkThrough====>\(txtName)")
+    }
 }
 
 // MARK: Instance Methods
@@ -33,6 +37,8 @@ extension WalkthroughViewController {
     private func setup() {
         self.lblHeaderTitle.text = AppConstant.onbordingName //"How do your \nfriends call you?"
         self.scrollView.delegate = self
+        txtName.text = ""
+        print("WalkThrough====> \(txtName)")
         self.setButtonStatus()
         [btnBack, btnNext, btnAddMyPicture, btnHowToAddMemoji].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)

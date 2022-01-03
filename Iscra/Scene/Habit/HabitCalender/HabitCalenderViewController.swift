@@ -1,3 +1,4 @@
+
 //
 //  HabitCalenderViewController.swift
 //  Iscra
@@ -274,12 +275,16 @@ extension HabitCalenderViewController: HabitViewRepresentable {
             // self.showToast(message: msg)
             self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
             if self.viewModel.isfromGroupHabitCalendar != true {
-                self.viewNavigation.lblTitle.text = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
-
+                
+                guard let name = self.viewModel.objHabitDetail?.name else { return }
+                self.viewNavigation.lblTitle.text = name.capitalized
             } else {
                 let arrMember = self.viewModel.objHabitDetail?.members?.filter({$0.id == Int(self.viewModel.userId)})
                 if arrMember?.isEmpty != true {
-                    self.viewNavigation.lblTitle.text = String(arrMember?[0].username ?? "").capitalized + "’s progress"
+                    
+                    guard let member = arrMember?[0], let username = member.username else { return }
+                    let name = username.capitalized + "’s progress"
+                    self.viewNavigation.lblTitle.text = name
                 }
             }
         //    self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)

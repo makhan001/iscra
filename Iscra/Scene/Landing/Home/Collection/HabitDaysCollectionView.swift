@@ -7,26 +7,26 @@
 
 import UIKit
 
+enum HabitDaysSourceScreen: String {
+    case home
+    case friend
+}
+
 class HabitDaysCollectionView: UICollectionView {
 
     var colorTheme: String = ""
     var habitMarks: [HabitMark] = []
-    
-    
-    let columnFlowLayout = ColumnFlowLayout(
-        cellsPerRow: 3,
-        minimumInteritemSpacing: 10,
-        minimumLineSpacing: 10,
-        sectionInset: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
-        
+    var sourceScreen: HabitDaysSourceScreen = .home
+            
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setup()
     }
     
-    func configure(colorTheme: String, habitMark: [HabitMark]) {
+    func configure(colorTheme: String, habitMark: [HabitMark], sourceScreen: HabitDaysSourceScreen = .home) {
         self.colorTheme = colorTheme
         self.habitMarks = habitMark
+        self.sourceScreen = sourceScreen
         reloadData()
     }
     
@@ -50,7 +50,11 @@ extension HabitDaysCollectionView: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.bounds.width / 3.0, height: 125.0)
+        if sourceScreen == .home {
+           return CGSize(width: collectionView.bounds.width / 3.0, height: 125.0)
+        } else {
+            return CGSize(width: collectionView.bounds.width / 7.0, height: 125.0)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

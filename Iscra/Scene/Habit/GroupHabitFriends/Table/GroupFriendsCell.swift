@@ -43,7 +43,7 @@ class GroupFriendsCell: UITableViewCell , Reusable {
         self.member = item
         self.lblFriendName.text = item.username?.lowercased()
         self.imgFriend.setImageFromURL(item.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
-        self.daysCollectionView.configure(colorTheme: "", habitMark: item.habitMark ?? [])
+        self.daysCollectionView.configure(colorTheme: "", habitMark: item.habitMark ?? [], sourceScreen: .friend)
     }
 }
 

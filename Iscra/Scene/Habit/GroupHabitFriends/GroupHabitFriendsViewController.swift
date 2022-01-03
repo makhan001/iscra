@@ -35,7 +35,7 @@ class GroupHabitFriendsViewController: UIViewController {
     private let selectedColor = [NSAttributedString.Key.foregroundColor: UIColor(named: "WhiteAccent")]
     private let unselectedColor = [NSAttributedString.Key.foregroundColor: UIColor(named: "BlackAccent")]
     
-    var strTitleName = ""
+    //var strTitleName = ""
     weak var router: NextSceneDismisser?
     let viewModel: HabitCalenderViewModel = HabitCalenderViewModel(provider: HabitServiceProvider())
     
@@ -66,6 +66,7 @@ extension GroupHabitFriendsViewController {
         self.viewProgress.isHidden = true
         self.viewMarkasComplete.isHidden = true
         self.lblLongestStreak.text = "Longest \nStreak"
+        self.viewNavigation.lblTitle.text = ""
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
         [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth,btnMarkasComplete,btnNextMonth].forEach {
@@ -96,6 +97,7 @@ extension GroupHabitFriendsViewController {
     }
     
     private func calenderSetup() {
+        self.headerMonthSetup()
         self.viewCalender.firstWeekday = 1
         self.viewCalender.placeholderType = .none
         self.viewCalender.allowsSelection = false
@@ -108,13 +110,20 @@ extension GroupHabitFriendsViewController {
         self.viewCalender.appearance.headerTitleFont = UIFont.systemFont(ofSize:  CGFloat(22), weight: .medium)
     }
     
+    private func headerMonthSetup() {
+        if Date().currentMonth == self.viewCalender.currentPage.currentMonth {
+            self.btnNextMonth.isHidden = true
+        }else{
+            self.btnNextMonth.isHidden = false
+        }
+    }
+    
     func reloadCaledar() {
         self.calenderSetup()
         self.circularViewSetup()
         self.viewNavigation.lblTitle.textColor = self.themeColor
         self.btnSegment.selectedSegmentTintColor = self.themeColor
         self.lblDaysCount.text = String(self.viewModel.longestStreak ?? 0)
-        self.viewNavigation.lblTitle.text = self.strTitleName.capitalized
         
         if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
             self.viewMarkasComplete.isHidden = true
@@ -284,6 +293,7 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
     }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        self.headerMonthSetup()
         self.getMonthlyHabitDetail()
     }
     
@@ -306,18 +316,7 @@ extension GroupHabitFriendsViewController: FriendTableNavigation {
         self.viewModel.userId =  String(self.viewModel.objHabitDetail?.members?[index].id ?? 0)
         print(" self.viewModel.userId \( self.viewModel.userId)")
         self.router?.push(scene: .habitCalender)
-        
-        //        let habitCalender: HabitCalenderViewController = HabitCalenderViewController.from(from: .landing, with: .habitCalender)
-        //        habitCalender.strTitleName = "Me"
-        //        habitCalender.router = self.router
-        //        print("self.router is \(self.router)")
-        //        self.navigationController?.pushViewController(habitCalender, animated: true)
-        //
-        //  self.showToast(message: "Under development", seconds: 0.5)
-        
     }
-    
-    
 }
 
 // MARK: API Callback
@@ -329,8 +328,8 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
         case .sucessMessage(_):
             // self.showToast(message: msg)
             self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
-            self.strTitleName = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
-            //  self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)
+            self.viewNavigation.lblTitle.text = (self.viewModel.objHabitDetail?.name) ?? "Learn English".capitalized
+           // self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)
             if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
                 self.viewEditHabit.isHidden = false
                 self.viewDeleteHabit.isHidden = false

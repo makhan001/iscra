@@ -45,13 +45,17 @@ extension HabitTableView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            self.didDeleteHabitAtIndex?(indexPath.row)
-        })
-        deleteAction.image = #imageLiteral(resourceName: "ic_deleteShadow")
-        deleteAction.backgroundColor = UIColor(white: 1, alpha: 0.001)
-        let swipeAction = UISwipeActionsConfiguration(actions:[deleteAction])
-        swipeAction.performsFirstActionWithFullSwipe = false
-        return swipeAction
+        if UserStore.userID == String(self.viewModel.habitList[indexPath.row].userID ?? 0) {
+            let deleteAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                self.didDeleteHabitAtIndex?(indexPath.row)
+            })
+            deleteAction.image = #imageLiteral(resourceName: "ic_deleteShadow")
+            deleteAction.backgroundColor = UIColor(white: 1, alpha: 0.001)
+            let swipeAction = UISwipeActionsConfiguration(actions:[deleteAction])
+            swipeAction.performsFirstActionWithFullSwipe = false
+            return swipeAction
+        } else {
+            return nil
+        }
     }
 }

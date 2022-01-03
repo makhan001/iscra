@@ -54,6 +54,7 @@ extension CommunityViewController {
     
     @objc func refrershUI() {
         print("refrershUI is called")
+        self.viewModel.fetchCommunityList()
     }
     
     private func didSelectCollectionAtIndex(index: Int) {

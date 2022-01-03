@@ -14,7 +14,7 @@ final class HabitCalenderViewModel {
     var habitMonth: String = ""
     var longestStreak: Int?
     var userId: String = UserStore.userID ?? ""
-
+    var isfromGroupHabitCalendar: Bool = false
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?

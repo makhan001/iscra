@@ -152,7 +152,7 @@ extension LoginViewController:UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil { return false }
+        if (string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil) || string.containsEmoji{ return false }
         guard let text = textField.text, let textRange = Range(range, in: text) else { return false }
         if textField == txtEmail {
             viewModel.email = text.replacingCharacters(in: textRange, with: string)

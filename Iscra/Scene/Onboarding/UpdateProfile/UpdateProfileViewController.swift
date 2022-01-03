@@ -82,6 +82,7 @@ extension UpdateProfileViewController: UITextFieldDelegate {
             self.setNameTextField(string: string, range:range)
             return (string == filtered)
         } else {
+            
             return false
         }
     }

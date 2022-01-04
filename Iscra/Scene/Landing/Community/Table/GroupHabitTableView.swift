@@ -29,6 +29,7 @@ class GroupHabitTableView: UITableView {
         rowHeight = UITableView.automaticDimension
         tableFooterView = UIView(frame: .zero)
         separatorStyle = .none
+        reloadData()
     }
 }
 
@@ -41,8 +42,10 @@ extension GroupHabitTableView: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupHabitCell") as? GroupHabitCell else {
             return UITableViewCell()
         }
+        if self.arrGroupList.count > 0 {
         let objGroup = self.arrGroupList[indexPath.row]
         cell.configure(obj: objGroup)
+        }
         return cell
     }
     

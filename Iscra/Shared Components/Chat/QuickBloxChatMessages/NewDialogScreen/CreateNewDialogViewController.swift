@@ -571,6 +571,7 @@ extension CreateNewDialogViewController: UISearchBarDelegate {
                 cancel = false
                 setupUsers(downloadedUsers)
             }
+           
         }
        
        else {

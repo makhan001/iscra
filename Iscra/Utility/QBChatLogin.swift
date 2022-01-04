@@ -50,6 +50,9 @@ class QBChatLogin {
                                     let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
                                     let userDefaults = UserDefaults.standard
                                     userDefaults.set(data, forKey: UserProfileConstant.curentProfile)
+                                    self.updateFullName(fullName: UserStore.userName ?? "")
+                                    
+                                    print("update user name===>\(UserStore.userName)")
                                     } catch {
                                         debugPrint("[Profile] Couldn't write file to UserDefaults")
                                     }
@@ -89,5 +92,22 @@ class QBChatLogin {
                                         }
                                     })
             }
+    }
+     func updateFullName(fullName: String) {
+        let updateUserParameter = QBUpdateUserParameters()
+        updateUserParameter.fullName = UserStore.userName ?? ""
+        QBRequest.updateCurrentUser(updateUserParameter, successBlock: { [weak self] response, user in
+            guard let self = self else {
+                return
+            }
+           // self.infoText = LoginConstant.fullNameDidChange
+            Profile.update(user)
+           
+            print("updateUserParameter====>\(fullName)")
+            self.connectToChat(user: user)
+            
+            }, errorBlock: { [weak self] response in
+                //self?.handleError(response.error?.error, domain: ErrorDomain.signUp)
+        })
     }
 }

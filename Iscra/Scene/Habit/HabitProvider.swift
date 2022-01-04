@@ -26,10 +26,10 @@ final class HabitServiceProvider: HabitServiceProvidable {
     func deleteHabit(param: HabitParams.DeleteHabit) {
         task.deleteHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                self?.delegate?.completed(for: .deleteHabit, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+            self?.delegate?.completed(for: .deleteHabit, with: resp, with: nil)
         }
     }
     
@@ -37,10 +37,10 @@ final class HabitServiceProvider: HabitServiceProvidable {
         WebService().StartIndicator()
         task.habitDetail(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                self?.delegate?.completed(for: .habitDetail, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+            self?.delegate?.completed(for: .habitDetail, with: resp, with: nil)
         }
     }
     
@@ -59,10 +59,10 @@ final class HabitServiceProvider: HabitServiceProvidable {
         WebService().StartIndicator()
         task.updateHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                self?.delegate?.completed(for: .updateHabit, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+            self?.delegate?.completed(for: .updateHabit, with: resp, with: nil)
         }
     }
     
@@ -71,10 +71,10 @@ final class HabitServiceProvider: HabitServiceProvidable {
        // WebService().StartIndicator()
         task.markAsComplete(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                self?.delegate?.completed(for: .markAsComplete, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+            self?.delegate?.completed(for: .markAsComplete, with: resp, with: nil)
         }
     }
     

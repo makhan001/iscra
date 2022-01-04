@@ -1026,6 +1026,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                     if granted {
                         DispatchQueue.main.async {
                             show(pickerController)
+                            accessDenied(sourceType)
                         }
                     } else {
                         accessDenied(sourceType)
@@ -1039,13 +1040,19 @@ class ChatViewController: UIViewController, ChatContextMenu {
             switch PHPhotoLibrary.authorizationStatus() {
             case .authorized:
                 showAllAssets()
+                //accessDenied(sourceType)
             case .notDetermined:
                 PHPhotoLibrary.requestAuthorization { (status) in
+                    
                     if status == .authorized {
-                        showAllAssets()
+                      showAllAssets()
+                       // accessDenied(sourceType)
+                      
                     } else {
-                        accessDenied(sourceType)
+                       accessDenied(sourceType)
+                       
                     }
+                  
                 }
             case .denied, .restricted:
                 accessDenied(sourceType)

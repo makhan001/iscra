@@ -58,6 +58,7 @@ final class LoginViewModel {
         UserStore.save(userName: response.data?.user?.username?.capitalized)
         //QBChatLogin.shared.loginQBUser(email: self.email)
         QBChatLogin.shared.loginQBUser(fullName: self.username, login: self.email, email: self.email, customData: self.selectedImage as? String ?? "")
+        
         self.view?.onAction(.socialLogin(response.message ?? ""))
     }
     

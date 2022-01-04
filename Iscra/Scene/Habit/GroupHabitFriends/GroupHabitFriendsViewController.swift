@@ -137,11 +137,11 @@ extension GroupHabitFriendsViewController {
     func checkCurrentDay(days: [String]) {
         var dayName: String = ""
         dayName =  dayName.getDateFromTimeStamp(timeStamp : String(format: "%.0f", NSDate().timeIntervalSince1970), isDayName: true).lowercased()
-        for i in days {
-            if i.contains(dayName){
-                self.viewMarkasComplete.isHidden = false
-            }
-        }
+//        for i in days {
+//            if i.contains(dayName){
+//                self.viewMarkasComplete.isHidden = false
+//            }
+//        }
     }
     
     private func configureTable() {

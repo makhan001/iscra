@@ -27,7 +27,7 @@ extension ShareHabitViewController {
         self.viewModel.view = self
         self.setUpNavigationBar()
         self.tableview.configure(viewModel: viewModel)
-        self.viewModel.callApiFriendList()
+        self.viewModel.fetchGroupMembers()
     }
     
     private func dismiss(_ messgae: String) {

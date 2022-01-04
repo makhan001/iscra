@@ -57,6 +57,9 @@ extension IconPopupViewController: selectedIconCatogory , selectedIcon{
          icons =  iconResorces.iconCategory?[selectedCategoryIndex].icons ?? [IconModel]()
          IconCollection.configure(icons: icons, theme: themeColor.colorHex)
          */
+        print("selectedIconIndex on vc is \(Index)")
+        print("selectedCategoryIndex on vc is \(selectedCategoryIndex)")
+        
         for iconCategoryIndex in 0..<iconResorces.iconCategory!.count{
             if iconCategoryIndex != selectedCategoryIndex {
                 for iconCategoryIndex in 0..<(iconResorces.iconCategory?[selectedCategoryIndex].icons!.count)!{

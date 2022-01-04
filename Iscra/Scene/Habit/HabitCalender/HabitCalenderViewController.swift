@@ -57,7 +57,7 @@ extension HabitCalenderViewController {
     
     private func setViewControls() {
         self.lblLongestStreak.text = "Longest \nStreak"
-        self.viewMarkasComplete.isHidden = false // deepak
+        self.viewMarkasComplete.isHidden = false
         [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth,btnMarkasComplete,btnNextMonth].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -109,9 +109,20 @@ extension HabitCalenderViewController {
         self.viewNavigation.lblTitle.textColor = self.themeColor
         self.lblDaysCount.text = String(self.viewModel.longestStreak ?? 0)
         
-//        if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
-//            self.viewMarkasComplete.isHidden = true
-//        } // deepak
+        if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
+            self.viewMarkasComplete.isHidden = true
+        }
+        
+       // if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
+        if UserStore.userID == self.viewModel.userId {
+            self.viewEditHabit.isHidden = false
+            self.viewDeleteHabit.isHidden = false
+        } else {
+            self.viewEditHabit.isHidden = true
+            self.viewDeleteHabit.isHidden = true
+            self.viewMarkasComplete.isHidden = true // deepak
+        }
+        
         if self.viewModel.objHabitDetail?.habitType == "group_habit" {
             self.viewShareHabit.isHidden = false
         } else {
@@ -122,16 +133,6 @@ extension HabitCalenderViewController {
     func circularViewSetup() {
         self.viewCircular.lineWidth = 20
         self.viewCircular.ringColor =  self.themeColor!
-    }
-    
-    func checkCurrentDay(days: [String]) {
-        var dayName: String = ""
-        dayName =  dayName.getDateFromTimeStamp(timeStamp : String(format: "%.0f", NSDate().timeIntervalSince1970), isDayName: true).lowercased()
-//        for i in days {
-//            if i.contains(dayName){
-//                self.viewMarkasComplete.isHidden = false
-//            }
-//        }
     }
 }
 
@@ -253,9 +254,6 @@ extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate
     }
     
     func getMonthlyHabitDetail() {
-//        if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
-//            self.viewMarkasComplete.isHidden = true
-//        } // deepak
         let timestamp = self.viewCalender.currentPage.addDays(days: 10)
         print("timestamp is \(timestamp)")
         self.viewModel.habitMonth =  String(format: "%.0f", timestamp)
@@ -287,15 +285,7 @@ extension HabitCalenderViewController: HabitViewRepresentable {
                     self.viewNavigation.lblTitle.text = name
                 }
             }
-        //    self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)
             
-            if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
-                self.viewEditHabit.isHidden = false
-                self.viewDeleteHabit.isHidden = false
-            } else {
-                self.viewEditHabit.isHidden = true
-                self.viewDeleteHabit.isHidden = true
-            }
             self.reloadCaledar()
             break
         case let .isHabitDelete(true, msg):
@@ -340,9 +330,6 @@ extension HabitCalenderViewController: NavigationBarViewDelegate {
     }
     
     func navigationRightButtonAction() {
-        if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
-            self.viewMarkasComplete.isHidden = true
-        }
         self.viewBottom.isHidden = false
     }
 }

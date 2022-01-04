@@ -124,24 +124,24 @@ extension GroupHabitFriendsViewController {
         self.btnSegment.selectedSegmentTintColor = self.themeColor
         self.lblDaysCount.text = String(self.viewModel.longestStreak ?? 0)
         
-        if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
-            self.viewMarkasComplete.isHidden = true
+//        if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
+//            self.viewMarkasComplete.isHidden = true
+//        }
+        
+        if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
+            self.viewEditHabit.isHidden = false
+            self.viewDeleteHabit.isHidden = false
+        } else {
+            self.viewEditHabit.isHidden = true
+            self.viewDeleteHabit.isHidden = true
+          //  self.viewMarkasComplete.isHidden = true // deepak
         }
+        
     }
     
     func circularViewSetup() {
         self.viewCircular.lineWidth = 20
         self.viewCircular.ringColor =  self.themeColor!
-    }
-    
-    func checkCurrentDay(days: [String]) {
-        var dayName: String = ""
-        dayName =  dayName.getDateFromTimeStamp(timeStamp : String(format: "%.0f", NSDate().timeIntervalSince1970), isDayName: true).lowercased()
-//        for i in days {
-//            if i.contains(dayName){
-//                self.viewMarkasComplete.isHidden = false
-//            }
-//        }
     }
     
     private func configureTable() {
@@ -297,10 +297,7 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
     }
     
     func getMonthlyHabitDetail() {
-        if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
-            self.viewMarkasComplete.isHidden = true
-        }
-        
+
         let timestamp = self.viewCalender.currentPage.addDays(days: 10)
         print("timestamp is \(timestamp)")
         self.viewModel.habitMonth =  String(format: "%.0f", timestamp)
@@ -329,15 +326,6 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
             self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
             guard let name = self.viewModel.objHabitDetail?.name else { return }
             self.viewNavigation.lblTitle.text = name.capitalized
-
-           // self.checkCurrentDay(days: (self.viewModel.objHabitDetail?.days)!)
-            if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
-                self.viewEditHabit.isHidden = false
-                self.viewDeleteHabit.isHidden = false
-            } else {
-                self.viewEditHabit.isHidden = true
-                self.viewDeleteHabit.isHidden = true
-            }
             self.reloadCaledar()
             print("members count is \(String(describing: self.viewModel.objHabitDetail?.members?.count))")
             self.tableFriends.reloadData()

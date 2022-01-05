@@ -45,6 +45,13 @@ final class HabitCalenderViewModel {
         let timestamp = String(format: "%.0f", NSDate().timeIntervalSince1970)
         self.provider.markAsComplete(param: HabitParams.MarkAsComplete(habit_id: String(self.habitId), habit_day: String(timestamp) , is_completed: "true"))
     }
+    
+    func monthName(monthNumber:Int) -> String {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "MMMM"
+        let month = fmt.monthSymbols[monthNumber - 1]
+        return month
+    }
 }
 
 extension HabitCalenderViewModel: HabitServiceProvierDelegate {
@@ -65,6 +72,7 @@ extension HabitCalenderViewModel: HabitServiceProvierDelegate {
                 } else if let resp = response as? SuccessResponseModel, resp.code == 200, let _ = resp.data?.habitMark{
                     self.getMonthlyHabitDetail()
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
+                    NotificationCenter.default.post(name: .MarkAsComplete, object: nil)
                 } else if let resp = response as? SuccessResponseModel, resp.code == 200, let status = resp.status {
                      if status == true {
                          print("data is nil")

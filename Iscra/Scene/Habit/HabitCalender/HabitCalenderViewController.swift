@@ -120,7 +120,7 @@ extension HabitCalenderViewController {
         } else {
             self.viewEditHabit.isHidden = true
             self.viewDeleteHabit.isHidden = true
-            self.viewMarkasComplete.isHidden = true // deepak
+            self.viewMarkasComplete.isHidden = true
         }
         
         if self.viewModel.objHabitDetail?.habitType == "group_habit" {

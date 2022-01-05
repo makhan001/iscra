@@ -13,6 +13,8 @@ class HabitCell: UITableViewCell, Reusable {
     @IBOutlet weak var viewNomates: UIView!
     @IBOutlet weak var viewContainer: UIView!
     
+    @IBOutlet weak var btnHabitDetail: UIButton!
+
     @IBOutlet weak var lblHabitTitle: UILabel!
     @IBOutlet weak var lblHabitTitleMates: UILabel!
     

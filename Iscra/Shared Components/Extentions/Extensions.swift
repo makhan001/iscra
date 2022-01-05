@@ -276,6 +276,13 @@ extension UIImageView {
     }
 }
 
+extension Locale {
+    static var is24Hour: Bool {
+        let dateFormat = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)!
+        return dateFormat.firstIndex(of: "a") == nil
+    }
+}
+
 extension Date {
     func string(format: String) -> String {
         let formatter = DateFormatter()

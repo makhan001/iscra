@@ -37,11 +37,15 @@ extension HabitTableView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusable(indexPath) as HabitCell
         cell.configure(viewModel: viewModel, item: viewModel.habitList[indexPath.row])
+        cell.btnHabitDetail.tag = indexPath.row
+        cell.btnHabitDetail.addTarget(self,action:#selector(navigateToHabitDetail(sender:)), for: .touchUpInside)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.didSelectedAtIndex?(indexPath.row)
+    @objc func navigateToHabitDetail(sender:UIButton) {
+        if viewModel.habitList.count > 0 {
+            self.didSelectedAtIndex?(sender.tag)
+        }
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

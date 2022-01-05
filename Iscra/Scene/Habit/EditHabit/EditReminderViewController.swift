@@ -108,7 +108,7 @@ extension EditReminderViewController {
                                 dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                                 let date = dateFormatter.date(from: strDate)
                                 self.pickerTime.datePickerMode = .time
-                                self.pickerTime.setDate(date!, animated: false)
+                                self.pickerTime.setDate(date ?? Date(), animated: false)
                                 print("strDate is  \(strDate)")
                                 // print("date is  \(date)")
                                 dateString = strDate
@@ -116,7 +116,7 @@ extension EditReminderViewController {
             } else {
                 // print("self.reminderTime contains timestamp")
                 
-                        let date = NSDate(timeIntervalSince1970: Double(self.reminderTime) ?? 0.0 / 1000)
+                        let date = Date(timeIntervalSince1970: Double(self.reminderTime) ?? 0.0 / 1000)
                             let dayTimePeriodFormatter = DateFormatter()
                             dayTimePeriodFormatter.dateFormat = "hh:mm a" // "dd MMM YY, hh:mm a, EEEE"
                       //  dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
@@ -129,7 +129,7 @@ extension EditReminderViewController {
                 dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                 let pickerDate = dateFormatter.date(from: dateString)
                 self.pickerTime.datePickerMode = .time
-                self.pickerTime.setDate(pickerDate!, animated: false)
+                self.pickerTime.setDate(pickerDate ?? Date(), animated: false)
                 // print("pickerDate is  \(pickerDate)")
                 //
             }

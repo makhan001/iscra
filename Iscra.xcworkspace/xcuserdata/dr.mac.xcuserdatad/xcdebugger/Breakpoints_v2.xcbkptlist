@@ -428,7 +428,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "22CC2CA6-43F1-490B-B15A-030F4471B9C6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Iscra/Utility/QBChatLogin.swift"
@@ -452,7 +452,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "29"
                   endingLineNumber = "29"
-                  offsetFromSymbolStart = "1060">
+                  offsetFromSymbolStart = "1375">
                </Location>
                <Location
                   uuid = "22CC2CA6-43F1-490B-B15A-030F4471B9C6 - 5e54ea66ec44f6a4"
@@ -467,7 +467,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "29"
                   endingLineNumber = "29"
-                  offsetFromSymbolStart = "1068">
+                  offsetFromSymbolStart = "1372">
                </Location>
                <Location
                   uuid = "22CC2CA6-43F1-490B-B15A-030F4471B9C6 - faab6315fc23f96"
@@ -482,7 +482,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "29"
                   endingLineNumber = "29"
-                  offsetFromSymbolStart = "52">
+                  offsetFromSymbolStart = "108">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -625,7 +625,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "100"
                   endingLineNumber = "100"
-                  offsetFromSymbolStart = "1240">
+                  offsetFromSymbolStart = "1434">
                </Location>
                <Location
                   uuid = "AC46EE67-D9F3-4080-BE13-2E88964312A3 - 47b1966b343a1e70"
@@ -640,7 +640,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
                   endingLineNumber = "101"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "82">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1042,6 +1042,38 @@
             startingLineNumber = "1060"
             endingLineNumber = "1060"
             landmarkName = "showPickerController(_:sourceType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58A4BFF2-8E96-46A4-9E81-FACCC4C98B70"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/ChatScreen/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1175"
+            endingLineNumber = "1175"
+            landmarkName = "sendPushNotificationSetup(pushMessage:PushDialog:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "21A17274-238C-44B0-BF79-9C2D505B7321"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Iscra/Shared Components/Chat/QuickBloxChatMessages/ChatScreen/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1167"
+            endingLineNumber = "1167"
+            landmarkName = "sendPushNotificationSetup(pushMessage:PushDialog:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

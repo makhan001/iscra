@@ -1164,7 +1164,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 (response, event) in
                  print("Push message successfully sent")
             } errorBlock: { (error) in
-                print("NoTSuceee",error.description)
+                print("NotSuceees",error.description)
             }
         } else {
             //for group chat
@@ -1172,7 +1172,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 (response, event) in
                  print("Push message successfully sent")
             } errorBlock: { (error) in
-                print("NoTSuceee",error.description)
+                print("NotSuceees",error.description)
             }
         }
     }

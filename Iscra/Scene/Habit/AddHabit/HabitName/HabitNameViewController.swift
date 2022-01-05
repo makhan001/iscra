@@ -37,7 +37,7 @@ extension HabitNameViewController {
         self.viewNavigation.navType = .addHabit
         self.viewNavigation.delegateBarAction = self
         self.lblUserName.text = "Alright \(UserStore.userName!), let’s \ndefine your habit"
-        viewModel.didNavigateToSetTheme = self.didNavigateToSetTheme
+        self.viewModel.didNavigateToSetTheme = self.didNavigateToSetTheme
         [btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -79,10 +79,8 @@ extension HabitNameViewController {
         viewModel.onAction(action: .inputComplete(.createHabit), for: .createHabit)
     }
     
-    private func didNavigateToSetTheme(isNavigate: Bool) {
-        if isNavigate{
-           self.router?.push(scene: .setTheme)
-        }
+    private func didNavigateToSetTheme() {
+        self.router?.push(scene: .setTheme)
     }
 }
 

@@ -22,7 +22,7 @@ final class AddHabitViewModel {
     var reminders: Bool = false
     var habitType : HabitType = .good
     var groupImage: UIImage?
-    var didNavigateToSetTheme:((_ :Bool)   ->())?
+    var didNavigateToSetTheme:(() ->())?
     
     var selectedColorTheme =  HabitThemeColor(id: "1", colorHex: "#ff7B86EB", isSelected: true)
     var weakDays = WeakDaysArray
@@ -51,13 +51,13 @@ final class AddHabitViewModel {
         }
         HabitUtils.shared.name = self.habitName
         HabitUtils.shared.description = self.description
-        self.didNavigateToSetTheme?(true)
+        self.didNavigateToSetTheme?()
     }
     
     private func validateSetTheme() {
         HabitUtils.shared.icon = self.icon
         HabitUtils.shared.colorTheme = self.colorTheme
-        self.didNavigateToSetTheme?(true)
+        self.didNavigateToSetTheme?()
     }
     
     private func setDaysAfterSelection() {

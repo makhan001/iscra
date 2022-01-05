@@ -56,14 +56,18 @@ final class LoginViewModel {
         UserStore.save(userImage: response.data?.user?.profileImage)
         UserStore.save(token: response.data?.user?.authenticationToken)
         UserStore.save(userName: response.data?.user?.username?.capitalized)
-        //QBChatLogin.shared.loginQBUser(email: self.email)
-        QBChatLogin.shared.loginQBUser(fullName: self.username, login: self.email, email: self.email, customData: self.selectedImage as? String ?? "")
-        self.view?.onAction(.socialLogin(response.message ?? ""))
+        UserStore.save(userCreateDate: (response.data?.user?.createdAt ?? 0).toDouble)
+        QBChatLogin.shared.loginQBUser(fullName: self.username, login: self.email, email: self.email, customData: "")
+        if UserStore.userCreateDate.daysDifference <= 21 {
+            self.view?.onAction(.socialLogin(response.message ?? ""))
+        } else {
+            self.view?.onAction(.subscription)
+        }
     }
     
     func socialLogin(logintype:SocialLoginType) {
         let parameters =  UserParams.SocialLogin(email: email, username: username, social_id: social_id, fcm_token: "fcmToken", device_udid: UIDevice.current.identifierForVendor?.uuidString ?? "", device_type: "ios", os_version: UIDevice.current.systemVersion, device_model: UIDevice.current.modelName, login_type: SocialLoginType(rawValue: logintype.rawValue))
-
+        
         if let url = socialLoginImageURL {
             if let data = try? Data(contentsOf: url) {
                 self.selectedImage = UIImage(data: data) ?? UIImage()
@@ -107,12 +111,11 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                     UserStore.save(userName: resp.data?.loginData?.username)
                     UserStore.save(userID: resp.data?.loginData?.id)
                     UserStore.save(userImage: resp.data?.loginData?.profileImage)
-                   QBChatLogin.shared.loginQBUser(fullName: self.username, login: self.email, email: self.email, customData: self.selectedImage as? String ?? "")
+                    UserStore.save(userCreateDate: (resp.data?.loginData?.createdAt ?? 0).toDouble)
+                    QBChatLogin.shared.loginQBUser(fullName: self.username, login: self.email, email: self.email, customData: "")
                     if resp.data?.loginData?.isVerified == true {
                         self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
                     } else {
-//                        let code =  resp.data?.loginData?.verificationCode
-//                        let msg = (resp.message! + " code is " + code!)
                         self.view?.onAction(.login("", resp.data?.loginData?.isVerified ?? false))
                     }
                 } else {

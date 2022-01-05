@@ -37,11 +37,11 @@ class LoginViewController: UIViewController {
 // MARK: Instance Methods
 extension LoginViewController: NavigationBarViewDelegate {
     private func setup() {
-        self.lblHeaderTitle.text = AppConstant.loginHeaderTitle
+        self.setViewControls()
         self.viewModel.view = self
         self.viewNavigation.lblTitle.text =  "Login"
         self.viewNavigation.delegateBarAction = self
-        self.setViewControls()
+        self.lblHeaderTitle.text = AppConstant.loginHeaderTitle
     }
     
     private func setViewControls() {
@@ -152,7 +152,7 @@ extension LoginViewController:UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil { return false }
+        if (string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil) || string.containsEmoji{ return false }
         guard let text = textField.text, let textRange = Range(range, in: text) else { return false }
         if textField == txtEmail {
             viewModel.email = text.replacingCharacters(in: textRange, with: string)

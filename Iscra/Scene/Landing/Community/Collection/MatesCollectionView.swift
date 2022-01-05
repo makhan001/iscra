@@ -32,7 +32,7 @@ class MatesCollectionView: UICollectionView , UICollectionViewDelegate , UIColle
         }
 
         guard let objGroupMembers = self.arrMemberList?[indexPath.row] else {  return UICollectionViewCell()  }
-        cell.configureGroupHabitMembers(obj: objGroupMembers)
+//        cell.configureGroupHabitMembers(obj: objGroupMembers)
         return cell
     }
     

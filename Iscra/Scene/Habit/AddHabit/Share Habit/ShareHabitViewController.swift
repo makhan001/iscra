@@ -27,11 +27,11 @@ extension ShareHabitViewController {
         self.viewModel.view = self
         self.setUpNavigationBar()
         self.tableview.configure(viewModel: viewModel)
-        self.viewModel.callApiFriendList()
+        self.viewModel.fetchGroupMembers()
     }
     
-    private func dismiss(_ messgae: String) {
-        self.showToast(message: messgae, seconds: 0.5)
+    private func dismiss(_ message: String) {
+        self.showToast(message: message, seconds: 0.5)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.51) {
             self.dismiss(animated: true) {
                 switch self.viewModel.sourceScreen {
@@ -56,6 +56,7 @@ extension ShareHabitViewController: NavigationBarViewDelegate {
     }
     
     func navigationBackAction() {
+        self.reloadTable()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -63,16 +64,22 @@ extension ShareHabitViewController: NavigationBarViewDelegate {
         self.viewModel.shareHabit()
         self.router?.dismiss(controller: .shareHabit)
     }
+    
+    private func reloadTable() {
+        self.viewModel.arrSelectedUsers.removeAll()
+        self.tableview.reloadData()
+    }
 }
 
 // MARK: API Callback
 extension ShareHabitViewController: HabitViewRepresentable {
     func onAction(_ action: HabitAction) {
         switch action {
-        case  let .errorMessage(messgae):
-            self.showToast(message: messgae)
-        case let .shareHabitSucess(messgae):
-            self.dismiss(messgae)
+        case  let .errorMessage(message):
+            self.showToast(message: message)
+        case let .shareHabitSucess(message):
+            self.reloadTable()
+            self.dismiss(message)
         case .sucessMessage(_):
             self.tableview.reloadData()
         default:

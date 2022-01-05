@@ -56,7 +56,11 @@ extension CommunitySearchViewModel: CommunityServiceProvierDelegate {
                 } else if let resp = response as? SuccessResponseModel, resp.code == 200, let friendsList = resp.data?.friends{
                     self.arrGroupList.removeAll()
                     self.arrFriend = friendsList
-                    self.arrFriend.sort { $0.username ?? "" < $1.username ?? "" }
+                    self.arrFriend = self.arrFriend.sorted(by: { (Obj1, Obj2) -> Bool in
+                          let Obj1_Name = Obj1.username ?? ""
+                          let Obj2_Name = Obj2.username ?? ""
+                          return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedAscending)
+                       })
                     print("self.arrFriend is \(self.arrFriend.count)")
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
                 } else {

@@ -54,6 +54,7 @@ extension CommunityViewController {
     
     @objc func refrershUI() {
         print("refrershUI is called")
+        self.viewModel.fetchCommunityList()
     }
     
     private func didSelectCollectionAtIndex(index: Int) {
@@ -61,10 +62,10 @@ extension CommunityViewController {
         self.router?.push(scene: .groupHabitFriends)
     }
     
-    private func didSelectInvitedHabitAtIndex(_ index: Int) {
+//    private func didSelectInvitedHabitAtIndex(_ index: Int) {
 //        self.objInvitaion = obj
 //        self.router?.push(scene: .communityDetail)
-    }
+//    }
     
     private func reload() {
         self.reloadMyGroups()

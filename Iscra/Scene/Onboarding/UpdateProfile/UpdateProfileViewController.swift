@@ -42,11 +42,12 @@ extension UpdateProfileViewController {
         self.txtName.delegate = self
     }
     
-    private func setNameTextField(string:String, range: NSRange) {
+    private func setNameTextField(string:String, range: NSRange)  {
         guard let text = txtName.text, let textRange = Range(range, in: text) else { return }
         let updatedText = text.replacingCharacters(in: textRange, with: string)
         self.viewModel.username = updatedText
     }
+    
 }
 
 // MARK: Navigation Bar Delegate
@@ -77,12 +78,14 @@ extension UpdateProfileViewController: UITextFieldDelegate {
         }
         let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
         if newLength <= 30 {
+            
             let characterSet = NSCharacterSet(charactersIn: AppConstant.USERNAME_ACCEPTABLE_CHARACTERS).inverted
             let filtered = string.components(separatedBy: characterSet).joined(separator: "")
-            self.setNameTextField(string: string, range:range)
+           // self.setNameTextField(string: string, range: range)
+            self.setNameTextField(string: filtered, range:range)
             return (string == filtered)
         } else {
-            return false
+            return true
         }
     }
 }

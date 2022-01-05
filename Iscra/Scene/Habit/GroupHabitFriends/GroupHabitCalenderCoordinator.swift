@@ -53,7 +53,7 @@ final class GroupHabitCalenderCoordinator: Coordinator<Scenes> {
         habitCalender = HabitCalenderCoordinator(router: Router())
         add(habitCalender)
         habitCalender.delegate = self
-        habitCalender.start(habitId: controller.viewModel.habitId, userId: controller.viewModel.userId)
+        habitCalender.start(habitId: controller.viewModel.habitId, userId: controller.viewModel.userId, isfromGroupHabitCalendar: true)
         print("GroupHabitCalenderCoordinator controller.viewModel.habitId is \(controller.viewModel.habitId)")
         self.router.present(habitCalender, animated: true)
     }

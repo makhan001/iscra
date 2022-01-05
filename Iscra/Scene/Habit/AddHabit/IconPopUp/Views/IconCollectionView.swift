@@ -50,5 +50,7 @@ extension IconCollectionView:  UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selcteIndex = indexPath.row
         delegateIcon?.selectedIconIndex(Index: indexPath.row)
+        
+        print("selectedCategoryIndex on didselect is \(indexPath.row)")
     }
 }

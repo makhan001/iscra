@@ -101,7 +101,7 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tableView.register(UINib(nibName: DialogCellConstant.reuseIdentifier, bundle: nil), forCellReuseIdentifier: DialogCellConstant.reuseIdentifier)
         
         setupNavigationTitle()
-       
+        
     }
     
     
@@ -110,7 +110,7 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = false
         setupNavigationBar()
-        reloadContent()
+         reloadContent()
        
         QBChat.instance.addDelegate(self)
         chatManager.delegate = self
@@ -129,10 +129,11 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             if notConnection == true {
                 self.showAlertView(LoginConstant.checkInternet, message: LoginConstant.checkInternetMessage)
             } else {
-                if QBChat.instance.isConnected == false {
-                    self.chatManager.connect()
-                }
-                self.chatManager.updateStorage()
+//                if QBChat.instance.isConnected == false {
+//                    self.chatManager.connect()
+//                }
+                //self.chatManager.updateStorage()
+               // self.chatManager.storage.clear()
             }
         }
         Reachability.instance.networkStatusBlock = { status in
@@ -386,8 +387,10 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         } else if let dateUpdate = chatDialog.updatedAt {
             cell.lastMessageDateLabel.text = setupDate(dateUpdate)
         }
-        
+       // cellModel.textLabelText = UserStore.userName ?? ""
         cell.dialogName.text = cellModel.textLabelText.capitalized
+        print("cellModel.textLabelText====>\(cell.dialogName.text)")
+       // cell.dialogName.text = UserStore.userName?.capitalized
         
         print("cell for row ---> \(Date().timeIntervalSince1970)")
         print("cellModel.customData\(cellModel.customData)")
@@ -484,6 +487,7 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         dialogs = chatManager.storage.dialogsSortByUpdatedAt()
         if dialogs.count > 0 {
             print("Chat list not empty")
+           
         } else {
             print("chat is EMPTY")
         }

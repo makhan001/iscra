@@ -15,8 +15,9 @@ final class ShareHabitViewModel {
     var arrSelectedUsers = [Int]()
     var arrShareHabit = [ShareHabit]()
     var navigationFormCommunityDetail = false
+    var arrGroupHabitMembers = [GroupHabitMember]()
     var sourceScreen: ShareHabitSourceScreen = .invite
-
+    
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
@@ -33,6 +34,10 @@ final class ShareHabitViewModel {
     func callApiFriendList() {
         self.provider.friends(param: HabitParams.Friends(search: ""))
     }
+    
+    func fetchGroupMembers() {
+        self.provider.groupHabitMembers(param: HabitParams.GroupHabitMembers(habit_id: self.habitId))
+    }
 }
 
 extension ShareHabitViewModel: HabitServiceProvierDelegate {
@@ -43,12 +48,22 @@ extension ShareHabitViewModel: HabitServiceProvierDelegate {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 
-                if let resp = response as? SuccessResponseModel, resp.code == 200, let friendsList = resp.data?.friends{
-                   self.arrFriend = friendsList
-                   self.arrFriend.sort { $0.username ?? "" < $1.username ?? "" }
-                   print("self.arrFriend is \(self.arrFriend.count)")
-                   self.view?.onAction(.sucessMessage(resp.message ?? ""))
-               } else if let resp = response as? SuccessResponseModel, resp.code == 200 , let shareHabit = resp.data?.shareHabit{
+                if let resp = response as? SuccessResponseModel, resp.code == 200, let arrGroupHabitMembers = resp.data?.groupHabitMembers {
+                    self.arrGroupHabitMembers = arrGroupHabitMembers
+                    self.callApiFriendList()
+                } else if let resp = response as? SuccessResponseModel, resp.code == 200, let friendsList = resp.data?.friends {
+                    self.arrFriend = friendsList.filter { (friend) -> Bool in
+                        let arruserIds = self.arrGroupHabitMembers.compactMap { $0.id }
+                        return !arruserIds.contains(friend.id ?? 0)
+                    }
+                    self.arrFriend = self.arrFriend.sorted(by: { (Obj1, Obj2) -> Bool in
+                          let Obj1_Name = Obj1.username ?? ""
+                          let Obj2_Name = Obj2.username ?? ""
+                          return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedAscending)
+                       })
+                    self.view?.onAction(.sucessMessage(resp.message ?? ""))
+                } else if let resp = response as? SuccessResponseModel, resp.code == 200 , let _ = resp.data?.shareHabit{
+                    WebService().StopIndicator()
                     self.view?.onAction(.shareHabitSucess(resp.message ?? ""))
                 } else {
                     self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))

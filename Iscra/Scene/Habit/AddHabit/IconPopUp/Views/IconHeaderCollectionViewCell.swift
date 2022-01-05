@@ -18,8 +18,8 @@ class IconHeaderCollectionViewCell: UICollectionViewCell {
 
     func configure(title:String, SelecedIndex:Int, index:Int){
         lblTitle.text = title
-        print("SelecedIndex\(SelecedIndex)")
-        print("Index\(index)")
+//        print("SelecedIndex\(SelecedIndex)")
+//        print("Index\(index)")
         if SelecedIndex == index{
             viewBottomBar.isHidden = false
             lblTitle.textColor = UIColor(named: "BlackAccent")

@@ -20,7 +20,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var txtPassword:UITextField!
     
     @IBOutlet weak var lblHeaderTitle:UILabel!
-    
+   
     weak var router: NextSceneDismisser?
     private let viewModel: SignupViewModel = SignupViewModel(provider: OnboardingServiceProvider())
     
@@ -33,13 +33,14 @@ class SignupViewController: UIViewController {
 // MARK: Instance Methods
 extension SignupViewController {
     private func setup() {
-        self.viewModel.view = self
         self.setViewControls()
+        self.viewModel.view = self
+        txtPassword.delegate = self
+        self.lblHeaderTitle.text = AppConstant.signUpHeaderTitle
     }
     
     private func setViewControls() {
-        self.lblHeaderTitle.text = AppConstant.signUpHeaderTitle
-        [txtEmail, txtPassword].forEach {
+       [txtEmail, txtPassword].forEach {
             $0?.delegate = self
         }
         [btnRegister, btnGoogle, btnApple, btnShowPassword].forEach {
@@ -51,6 +52,7 @@ extension SignupViewController {
             btnApple.isHidden = true
         }
     }
+    
 }
 
 // MARK: Button Actions
@@ -109,7 +111,8 @@ extension SignupViewController {
     }
     
     private func registerAction() {
-        self.dismissKeyboard()
+       // self.dismissKeyboard()
+        self.view.endEditing(true)
         self.viewModel.onAction(action: .inputComplete(.signup), for: .signup)
     }
 }
@@ -125,7 +128,8 @@ extension SignupViewController : VerificationViewControllerDelegate {
 extension SignupViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.txtEmail {
-            self.txtEmail.becomeFirstResponder()
+            //self.txtEmail.becomeFirstResponder()
+            self.txtPassword.becomeFirstResponder()
         } else {
             self.txtPassword.resignFirstResponder()
         }
@@ -133,15 +137,20 @@ extension SignupViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil { return false }
+        if (string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil) || string.containsEmoji{ return false }
         guard let text = textField.text, let textRange = Range(range, in: text) else { return false }
         if textField == txtEmail {
             viewModel.email = text.replacingCharacters(in: textRange, with: string)
-        } else if textField == txtPassword {
+        }else {
             viewModel.password = text.replacingCharacters(in: textRange, with: string)
         }
+//        else if textField == txtPassword {
+//            viewModel.password = text.replacingCharacters(in: textRange, with: string)
+//        }
+
         return true
     }
+    
 }
 
 // MARK: Apple Login

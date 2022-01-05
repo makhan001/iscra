@@ -204,6 +204,7 @@ class CreateNewDialogViewController: UIViewController {
         self.isFriendsTab = true
         chatView.isHidden = true
         tblChatListView.isHidden = false
+       
     }
     private func setupNavigationTitle() {
         let title = CreateNewDialogConstant.newChat

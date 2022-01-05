@@ -7,6 +7,8 @@
 
 import UIKit
 import MessageUI
+import Quickblox
+import SVProgressHUD
 
 
 class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
@@ -76,6 +78,7 @@ extension MyAccountViewController: NavigationBarViewDelegate {
 
 // MARK: Button Action
 extension MyAccountViewController {
+   
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnGetSubscription:
@@ -95,7 +98,9 @@ extension MyAccountViewController {
         let alertController = UIAlertController(title: "Logout", message: "Are you sure? logout from Iscra.", preferredStyle: .alert)
         let logoutaction = UIAlertAction(title: "Logout", style: .default) { (action:UIAlertAction!) in
             print("Delete button tapped");
+            
             self.viewModel.logout()
+            
         }
         logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
         

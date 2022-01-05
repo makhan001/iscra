@@ -96,12 +96,12 @@ extension MyAccountViewModel {
     
     private func quickbloxLogout(){
         guard Reachability.instance.networkConnectionStatus() != .notConnection else {
-                 //  showAlertView(LoginConstant.checkInternet, message: LoginConstant.checkInternetMessage)
+                  // showAlertView(LoginConstant.checkInternet, message: LoginConstant.checkInternetMessage)
                    return
                }
                
-               //SVProgressHUD.show(withStatus: "SA_STR_LOGOUTING".localized)
-               //SVProgressHUD.setDefaultMaskType(.clear)
+//               SVProgressHUD.show(withStatus: "SA_STR_LOGOUTING".localized)
+//               SVProgressHUD.setDefaultMaskType(.clear)
                
                guard let identifierForVendor = UIDevice.current.identifierForVendor else {
                    return
@@ -116,7 +116,7 @@ extension MyAccountViewModel {
                            if let subscriptionsUIUD = subscriptions.first?.deviceUDID,
                               subscriptionsUIUD == uuidString,
                               subscription.notificationChannel == .APNS {
-                             self.unregisterSubscription(forUniqueDeviceIdentifier: uuidString) // madhuri
+                            // self.unregisterSubscription(forUniqueDeviceIdentifier: uuidString) // madhuri
                                return
                            }
                        }
@@ -145,10 +145,11 @@ extension MyAccountViewModel {
             Profile.clearProfile()
             self.chatManager.storage.clear()
             CacheManager.shared.clearCache()
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-                //AppDelegate.shared.rootViewController.showLoginScreen()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(100)) {
+               // AppDelegate.shared.rootViewController.showLoginScreen()
+                
             }
-            //SVProgressHUD.showSuccess(withStatus: "SA_STR_COMPLETED".localized)
+           // SVProgressHUD.showSuccess(withStatus: "SA_STR_COMPLETED".localized)
         }) { response in
             debugPrint("[DialogsViewController] logOut error: \(response)")
         }

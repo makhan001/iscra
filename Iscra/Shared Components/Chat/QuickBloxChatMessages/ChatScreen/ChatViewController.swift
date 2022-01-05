@@ -298,6 +298,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         self.hideTabBarSetup()
         QBChat.instance.addDelegate(self)
         selectedIndexPathForMenu = nil
+        setupTitleView()
         willResignActiveBlock = NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
                                                                        object: nil,
                                                                        queue: nil) { [weak self] (notification) in
@@ -1041,21 +1042,22 @@ class ChatViewController: UIViewController, ChatContextMenu {
             //Photo Library
             switch PHPhotoLibrary.authorizationStatus() {
             case .authorized:
-                //showAllAssets()
-                accessDenied(sourceType)
+              showAllAssets()
+               // accessDenied(sourceType)
             case .notDetermined:
                 PHPhotoLibrary.requestAuthorization { (status) in
-                    
+
                     if status == .authorized {
                       showAllAssets()
                        // accessDenied(sourceType)
-                      
+
                     } else {
                        accessDenied(sourceType)
-                       
+
                     }
-                  
+
                 }
+          
             case .denied, .restricted:
                 accessDenied(sourceType)
             case .limited:
@@ -1635,7 +1637,7 @@ extension ChatViewController: ChatCollectionViewDataSource {
 
         chatCell.timeLabel.text = timeLabelAttributedString(forItem: message)
         if let chatOutgoingCell = chatCell as? ChatOutgoingCell {
-            //chatOutgoingCell.setupStatusImage(statusImageForMessage(message: message))
+            chatOutgoingCell.setupStatusImage(statusImageForMessage(message: message))
         }
         
         if let textView = chatCell.textView {

@@ -43,10 +43,15 @@ extension GroupHabitFriendsTable: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.dequeueReusable(indexPath) as GroupFriendsCell
         cell.configure(with: self.viewModel.objHabitDetail?.members?[indexPath.row])
+        cell.btnHabitDetail.tag = indexPath.row
+        cell.btnHabitDetail.addTarget(self,action:#selector(navigateToHabitDetail(sender:)), for: .touchUpInside)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        friendTableNavigationDelegate?.didNavigateToCalender(index: indexPath.row)
+    @objc func navigateToHabitDetail(sender:UIButton) {
+        if self.viewModel.objHabitDetail?.members?.count ?? 0 > 0 {
+            friendTableNavigationDelegate?.didNavigateToCalender(index: sender.tag)
+        }
     }
+    
 }

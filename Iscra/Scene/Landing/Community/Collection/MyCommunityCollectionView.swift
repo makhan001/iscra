@@ -36,13 +36,16 @@ extension MyCommunityCollectionView: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusable(indexPath) as CommunityMyGroupsCell
         cell.configure(viewModel: viewModel, groupHabit: viewModel.myGroups[indexPath.row])
+        cell.btnHabitDetail.tag = indexPath.item
+        cell.btnHabitDetail.addTarget(self,action:#selector(navigateToHabitDetail(sender:)), for: .touchUpInside)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.didSelectCollectionAtIndex?(indexPath.row)
+    @objc func navigateToHabitDetail(sender:UIButton) {
+        if viewModel.myGroups.count > 0 {
+            self.didSelectCollectionAtIndex?(sender.tag)
+        }
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         collectionView.bounds.size

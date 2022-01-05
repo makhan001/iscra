@@ -13,6 +13,8 @@ class CommunityMyGroupsCell: UICollectionViewCell, Reusable {
     @IBOutlet weak var viewNomates: UIView!
     @IBOutlet weak var viewContainer: UIView!
     
+    @IBOutlet weak var btnHabitDetail: UIButton!
+
     @IBOutlet weak var imgHabit: UIImageView! // imageHabit
     @IBOutlet weak var imgHabitMates: UIImageView! // imageHabitMates
     

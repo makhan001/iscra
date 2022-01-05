@@ -13,6 +13,7 @@ class GroupFriendsCell: UITableViewCell , Reusable {
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var lblFriendName: UILabel!
     @IBOutlet weak var imgFriend: UIImageView!
+    @IBOutlet weak var btnHabitDetail: UIButton!
     @IBOutlet weak var collectiondays: UICollectionView!
     @IBOutlet weak var daysCollectionView: HabitDaysCollectionView!
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!

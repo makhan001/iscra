@@ -299,7 +299,7 @@ extension Date {
             return self.timeIntervalSince1970
         }
     }
-    
+ 
     var currentHabitDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
@@ -311,11 +311,13 @@ extension Date {
         let compomnents = calendar.dateComponents([.day], from: self)
         return compomnents.day ?? 0
     }
+    
     var currentMonth: Int {
         let calendar = Calendar.current
         let compomnents = calendar.dateComponents([.month], from: self)
         return compomnents.month ?? 0
     }
+    
     var currentYear: Int {
         let calendar = Calendar.current
         let compomnents = calendar.dateComponents([.year], from: self)
@@ -444,6 +446,7 @@ extension UIAlertController {
 extension Notification.Name {
     static let EditHabit = Notification.Name("EditHabit")
     static let JoinHabit = Notification.Name("JoinHabit")
+    static let MarkAsComplete = Notification.Name("MarkAsComplete")
     static let SearchAllGroup = Notification.Name("SearchAllGroup")
     static let IAPHelperPurchaseNotification = Notification.Name("IAPHelperPurchaseNotification")
     static let IAPHelperPurchaseFinishNotification = Notification.Name("IAPHelperPurchaseFinishNotification")

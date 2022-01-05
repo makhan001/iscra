@@ -63,6 +63,7 @@ extension ShareHabitViewModel: HabitServiceProvierDelegate {
                        })
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
                 } else if let resp = response as? SuccessResponseModel, resp.code == 200 , let _ = resp.data?.shareHabit{
+                    WebService().StopIndicator()
                     self.view?.onAction(.shareHabitSucess(resp.message ?? ""))
                 } else {
                     self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))

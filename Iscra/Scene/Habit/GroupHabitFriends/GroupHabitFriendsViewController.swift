@@ -123,20 +123,14 @@ extension GroupHabitFriendsViewController {
         self.viewNavigation.lblTitle.textColor = self.themeColor
         self.btnSegment.selectedSegmentTintColor = self.themeColor
         self.lblDaysCount.text = String(self.viewModel.longestStreak ?? 0)
-        
-//        if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
-//            self.viewMarkasComplete.isHidden = true
-//        }
-        
+
         if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
             self.viewEditHabit.isHidden = false
             self.viewDeleteHabit.isHidden = false
         } else {
             self.viewEditHabit.isHidden = true
             self.viewDeleteHabit.isHidden = true
-          //  self.viewMarkasComplete.isHidden = true // deepak
         }
-        
     }
     
     func circularViewSetup() {
@@ -297,7 +291,6 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
     }
     
     func getMonthlyHabitDetail() {
-
         let timestamp = self.viewCalender.currentPage.addDays(days: 10)
         print("timestamp is \(timestamp)")
         self.viewModel.habitMonth =  String(format: "%.0f", timestamp)

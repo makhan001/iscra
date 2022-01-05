@@ -37,11 +37,11 @@ class LoginViewController: UIViewController {
 // MARK: Instance Methods
 extension LoginViewController: NavigationBarViewDelegate {
     private func setup() {
-        self.lblHeaderTitle.text = AppConstant.loginHeaderTitle
+        self.setViewControls()
         self.viewModel.view = self
         self.viewNavigation.lblTitle.text =  "Login"
         self.viewNavigation.delegateBarAction = self
-        self.setViewControls()
+        self.lblHeaderTitle.text = AppConstant.loginHeaderTitle
     }
     
     private func setViewControls() {

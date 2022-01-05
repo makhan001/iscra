@@ -26,6 +26,7 @@ class LandingTabBarController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        OnboadingUtils.shared.username = ""
     }
     
     override func viewWillLayoutSubviews() {

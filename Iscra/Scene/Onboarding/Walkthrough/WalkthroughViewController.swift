@@ -173,7 +173,7 @@ extension WalkthroughViewController : UITextFieldDelegate {
             
             let characterSet = NSCharacterSet(charactersIn: AppConstant.USERNAME_ACCEPTABLE_CHARACTERS).inverted
             let filtered = string.components(separatedBy: characterSet).joined(separator: "")
-            self.setNameTextField(newLength: newLength, string: string, range:range)
+            self.setNameTextField(newLength: newLength, string: filtered, range:range)
             return (string == filtered)
         } else {
             return false

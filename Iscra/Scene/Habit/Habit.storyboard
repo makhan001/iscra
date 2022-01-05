@@ -55,7 +55,7 @@
                                         <rect key="frame" x="10" y="0.0" width="315" height="77"/>
                                         <color key="tintColor" name="PrimaryAccent"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                 <integer key="value" value="24"/>
@@ -1275,7 +1275,7 @@
                                         <rect key="frame" x="10" y="0.0" width="315" height="77"/>
                                         <color key="tintColor" name="PrimaryAccent"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                 <integer key="value" value="20"/>

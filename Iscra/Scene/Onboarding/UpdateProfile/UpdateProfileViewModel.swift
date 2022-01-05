@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Quickblox
 import Foundation
 
 final class UpdateProfileViewModel {
@@ -56,6 +57,7 @@ final class UpdateProfileViewModel {
                         print("updateProfileApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)
+                        QBChatLogin.shared.updateFullName(fullName: self?.username ?? "")
                         self?.view?.onAction(.updateProfile)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
@@ -73,6 +75,7 @@ extension UpdateProfileViewModel: OnboardingServiceProvierDelegate, InputViewDel
             if error != nil {
                 self.view?.onAction(.errorMessage(ERROR_MESSAGE))
             } else {
+                QBChatLogin.shared.updateFullName(fullName: self.username)
                 if let resp = response as? SuccessResponseModel, resp.status == true {
                                    //    self.register = resp.data?.register
                     UserStore.save(token: resp.data?.register?.authenticationToken)

@@ -51,11 +51,10 @@ final class MyAccountViewModel {
             } else {
                 if let response = resp as? SuccessResponseModel  {
                     if response.status == true {
-                        UserStore.save(token: response.data?.user?.authenticationToken)
-                        UserStore.save(userName: response.data?.user?.username)
-                        print("updateProfileApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
+                        UserStore.save(userName: response.data?.user?.username)
                         UserStore.save(userImage: response.data?.user?.profileImage)
+                        UserStore.save(token: response.data?.user?.authenticationToken)
                         self?.view?.onAction(.updateProfile)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

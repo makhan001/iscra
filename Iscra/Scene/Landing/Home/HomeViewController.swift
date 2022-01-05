@@ -91,7 +91,7 @@ extension HomeViewController {
 // MARK: Callbacks
 extension HomeViewController {
     private func didSelectedAtIndex(_ index: Int) {
-        self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0  // viewModel.habitList[index].id ?? 0
+        self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0
         if self.viewModel.habitList[index].habitType == "group_habit" {
             self.router?.push(scene: .groupHabitFriends)
         } else {

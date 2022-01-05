@@ -36,7 +36,8 @@ extension HabitNameViewController {
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.navType = .addHabit
         self.viewNavigation.delegateBarAction = self
-        viewModel.didNavigateToSetTheme = self.didNavigateToSetTheme
+        self.lblUserName.text = "Alright \(UserStore.userName!), let’s \ndefine your habit"
+        self.viewModel.didNavigateToSetTheme = self.didNavigateToSetTheme
         [btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -78,10 +79,8 @@ extension HabitNameViewController {
         viewModel.onAction(action: .inputComplete(.createHabit), for: .createHabit)
     }
     
-    private func didNavigateToSetTheme(isNavigate: Bool) {
-        if isNavigate{
-           self.router?.push(scene: .setTheme)
-        }
+    private func didNavigateToSetTheme() {
+        self.router?.push(scene: .setTheme)
     }
 }
 
@@ -105,10 +104,9 @@ extension HabitNameViewController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-//        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil || string.containsEmoji {
-//            viewModel.habitName = ""
-//            return false
-//        }
+        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil || string.containsEmoji {
+            return false
+        }
        let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
         if newLength <= 30 {
             if textField == txtFieldTitle {
@@ -116,10 +114,10 @@ extension HabitNameViewController: UITextFieldDelegate {
                     let updatedText = text.replacingCharacters(in: textRange, with: string)
                     viewModel.habitName = updatedText
                 }
-//                let allowedCharacter = CharacterSet.letters
-//                let allowedCharacter1 = CharacterSet.whitespaces
-//                let characterSet = CharacterSet(charactersIn: string)
-//                return allowedCharacter.isSuperset(of: characterSet) || allowedCharacter1.isSuperset(of: characterSet)
+                let allowedCharacter = CharacterSet.letters
+                let allowedCharacter1 = CharacterSet.whitespaces
+                let characterSet = CharacterSet(charactersIn: string)
+                return allowedCharacter.isSuperset(of: characterSet) || allowedCharacter1.isSuperset(of: characterSet)
             }
             return true
         } else {

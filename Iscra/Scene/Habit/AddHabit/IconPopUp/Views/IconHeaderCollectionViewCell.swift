@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IconHeaderCollectionViewCell: UICollectionViewCell {
+class IconHeaderCollectionViewCell: UICollectionViewCell, Reusable {
     
     @IBOutlet weak var viewBottomBar:UIView!
     @IBOutlet weak var lblTitle:UILabel!
@@ -15,17 +15,17 @@ class IconHeaderCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
-    func configure(title:String, SelecedIndex:Int, index:Int){
-        lblTitle.text = title
-//        print("SelecedIndex\(SelecedIndex)")
-//        print("Index\(index)")
-        if SelecedIndex == index{
-            viewBottomBar.isHidden = false
-            lblTitle.textColor = UIColor(named: "BlackAccent")
+    
+    func configure<T>(with content: T) { }
+    
+    func configure(title:String, isSelected: Bool) {
+        self.lblTitle.text = title
+        if isSelected {
+            self.viewBottomBar.isHidden = false
+            self.lblTitle.textColor = UIColor(named: "BlackAccent")
         } else {
-            viewBottomBar.isHidden = true
-            lblTitle.textColor = UIColor(named: "GrayAccent")
+            self.viewBottomBar.isHidden = true
+            self.lblTitle.textColor = UIColor(named: "GrayAccent")
         }
     }
 }

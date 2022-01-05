@@ -33,7 +33,7 @@ enum Scenes:String {
     case editName
     case learnHowToAddMemoji
     case passwordChangeConfirmation
-    case getSubcription
+    case subscription
     case selectHabitPopUp
     case myChat
     case communitySearch
@@ -89,7 +89,7 @@ enum StoryboardIdentifier:String {
     case editName
     case learnHowToAddMemoji
     case passwordChangeConfirmation
-    case getSubcription
+    case subscription
     case selectHabitPopUp
     case myChat
     case communitySearch

@@ -13,11 +13,11 @@ import SVProgressHUD
 
 class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
-    // MARK:Outlets and variables
     @IBOutlet weak var btnLogout: UIButton!
+    @IBOutlet weak var btnGetSubscription: UIButton!
+    
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblName: IscraCustomLabel!
-    @IBOutlet weak var btnGetSubscription: UIButton!
     @IBOutlet weak var tableView: MyAccountTableView!
     @IBOutlet weak var viewNavigation: NavigationBarView!
     
@@ -91,8 +91,7 @@ extension MyAccountViewController {
     }
     
     private func getSubscriptionAction() {
-        let getSubcription: GetSubcriptionViewController = GetSubcriptionViewController.from(from: .onboarding, with: .getSubcription)
-        self.navigationController?.pushViewController(getSubcription, animated: true)
+        self.router?.push(scene: .subscription)
     }
     
     private func logoutAction() {

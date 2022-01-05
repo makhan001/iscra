@@ -473,6 +473,16 @@ extension TimeInterval {
         dateFormatter.dateFormat = "dd MMM yyyy"
         return dateFormatter.string(from: date)
     }
+    
+    var date: Date {
+        return Date(timeIntervalSince1970: self)
+    }
+    
+    var daysDifference: Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: self.date, to: Date())
+        return components.day ?? 0
+    }
 }
 
 extension UICollectionView {
@@ -555,3 +565,4 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         return context
     }
 }
+

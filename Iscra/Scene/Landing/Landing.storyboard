@@ -66,16 +66,17 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvs-oh-0en" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="103.66666666666669" y="501" width="207" height="165"/>
+                                <rect key="frame" x="107.66666666666667" y="486" width="198.66666666666663" height="165"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F1E-h0-1NJ">
-                                        <rect key="frame" x="0.0" y="15" width="207" height="135"/>
+                                        <rect key="frame" x="0.0" y="15" width="198.66666666666666" height="135"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8T-cz-OLs">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="t1u-me-FB5"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="25" maxY="0.0"/>
                                                 <state key="normal" title="Good habit" image="GoodHabit">
@@ -83,10 +84,11 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5J-DD-7hc">
-                                                <rect key="frame" x="0.0" y="45" width="207" height="45"/>
+                                                <rect key="frame" x="0.0" y="45" width="198.66666666666666" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="Ag4-ja-E4a"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="35" maxY="0.0"/>
                                                 <state key="normal" title="Bad habit" image="BadHabit">
@@ -94,10 +96,11 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0e-vk-Gpe">
-                                                <rect key="frame" x="0.0" y="90" width="207" height="45"/>
+                                                <rect key="frame" x="0.0" y="90" width="198.66666666666666" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="ZgS-bt-Jw7"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <inset key="titleEdgeInsets" minX="22" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="16" maxY="0.0"/>
                                                 <state key="normal" title="Group habit" image="GroupHabit">
@@ -129,8 +132,8 @@
                             <constraint firstItem="LGG-2F-exH" firstAttribute="top" secondItem="kxd-ol-ec8" secondAttribute="top" id="Pqy-dh-8oC"/>
                             <constraint firstItem="LGG-2F-exH" firstAttribute="leading" secondItem="6xH-l7-pPn" secondAttribute="leading" id="V6P-b9-vr1"/>
                             <constraint firstItem="Jvs-oh-0en" firstAttribute="centerX" secondItem="6xH-l7-pPn" secondAttribute="centerX" id="WM9-eR-f9X"/>
-                            <constraint firstItem="Jvs-oh-0en" firstAttribute="width" secondItem="kxd-ol-ec8" secondAttribute="width" multiplier="0.5" id="pW5-s0-Fqn"/>
-                            <constraint firstAttribute="bottom" secondItem="Jvs-oh-0en" secondAttribute="bottom" constant="70" id="vG2-Ly-eOO"/>
+                            <constraint firstItem="Jvs-oh-0en" firstAttribute="width" secondItem="kxd-ol-ec8" secondAttribute="width" multiplier="0.48" id="pW5-s0-Fqn"/>
+                            <constraint firstAttribute="bottom" secondItem="Jvs-oh-0en" secondAttribute="bottom" constant="85" id="vG2-Ly-eOO"/>
                         </constraints>
                     </view>
                     <connections>

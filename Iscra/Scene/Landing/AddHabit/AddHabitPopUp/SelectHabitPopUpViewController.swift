@@ -25,7 +25,7 @@ class SelectHabitPopUpViewController: UIViewController { // HabitTypeViewControl
     var habitType: HabitType = .good
     weak var router: NextSceneDismisser?
     weak var delegate: SelectHabitPopUpDelegate?
-    
+    var habitPopupSelected:((Bool) ->())?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -41,7 +41,10 @@ extension SelectHabitPopUpViewController {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        let imageDataDict:[String: String] = ["name": "tab3"]
+        NotificationCenter.default.post(name: .RotateTab, object: nil, userInfo: imageDataDict)
         self.dismiss(animated: true, completion: nil)
     }
 }

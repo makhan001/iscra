@@ -36,6 +36,7 @@ class ReminderViewController: UIViewController {
 extension ReminderViewController {
     private func setup()  {
         self.viewModel.view = self
+        self.pickerTime.locale = NSLocale(localeIdentifier: "en_US") as Locale
         self.setNavigationView()
         self.addTapGeture()
         self.timePickerValueOnUpdate()

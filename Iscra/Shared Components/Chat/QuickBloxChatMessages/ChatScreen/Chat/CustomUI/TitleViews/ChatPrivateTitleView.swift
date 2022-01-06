@@ -53,7 +53,7 @@ class ChatPrivateTitleView: UIStackView {
         let userImage = opponentUser.customData
         avatarImageView.sd_setImage(with: URL(string: userImage ?? ""), placeholderImage: UIImage(named: "group") )
         
-        titleLabel.text = userName
+        titleLabel.text = userName?.capitalized
         //addArrangedSubview(avatarLabel)
         addArrangedSubview(avatarImageView)
         addArrangedSubview(titleLabel)

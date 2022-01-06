@@ -12,7 +12,8 @@ class TitleView: UIView {
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 17.0, weight: .bold)
-        titleLabel.textColor = UIColor(red: 0.758, green: 0.639, blue: 0.158, alpha: 1)
+       titleLabel.textColor = UIColor(red: 0.758, green: 0.639, blue: 0.158, alpha: 1)
+       
         titleLabel.textAlignment = .center
         titleLabel.lineBreakMode = .byTruncatingTail
         addSubview(titleLabel)
@@ -28,6 +29,7 @@ class TitleView: UIView {
         let subTitleLabel = UILabel()
         subTitleLabel.font = .systemFont(ofSize: 13.0)
         subTitleLabel.textColor = UIColor(red: 0.758, green: 0.639, blue: 0.158, alpha: 1)
+       
         subTitleLabel.textAlignment = .center
         subTitleLabel.lineBreakMode = .byTruncatingTail
         addSubview(subTitleLabel)
@@ -51,8 +53,8 @@ class TitleView: UIView {
     }
     
     func setupTitleView(title: String, subTitle: String) {
-        titleLabel.text = title
-        subTitleLabel.text = subTitle
+        titleLabel.text = title.capitalized
+        subTitleLabel.text = subTitle.capitalized
     }
 }
 

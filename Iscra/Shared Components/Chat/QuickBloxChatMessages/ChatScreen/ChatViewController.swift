@@ -274,7 +274,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 self.toolbarBottomLayoutGuide.constant = 250
             }
         }
-
+       
     }
     
     func mainViewTappedSetup() {

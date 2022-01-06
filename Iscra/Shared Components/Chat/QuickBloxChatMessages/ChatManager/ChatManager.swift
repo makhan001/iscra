@@ -254,7 +254,8 @@ class ChatManager: NSObject {
         
         let chatDialog = QBChatDialog(dialogID: nil, type: .group)
         
-        chatDialog.name = name
+        chatDialog.name = name.capitalized
+        print("group chat name====>\(name)")
         chatDialog.occupantIDs = occupants.map({ NSNumber(value: $0.id) })
         
         QBRequest.createDialog(chatDialog, successBlock: { response, dialog in
@@ -265,8 +266,8 @@ class ChatManager: NSObject {
                 }
                 self.storage.update(dialogs:[dialog])
                 //Notify about create new dialog
-                let dialogName = dialog.name ?? ""
-                self.delegate?.chatManager(self, didUpdateStorage: "SA_STR_CREATE_NEW".localized + dialogName)
+                let dialogName = dialog.name?.capitalized ?? ""
+                self.delegate?.chatManager(self, didUpdateStorage: "SA_STR_CREATE_NEW".localized + dialogName.capitalized)
                 completion?(response, dialog)
             })
         }, errorBlock: { response in
@@ -290,7 +291,7 @@ class ChatManager: NSObject {
             QBRequest.createDialog(dialog, successBlock: { response, createdDialog in
                 self.storage.update(dialogs:[createdDialog])
                 //Notify about create new dialog
-                let dialogName = createdDialog.name ?? ""
+                let dialogName = createdDialog.name?.capitalized ?? ""
                 self.delegate?.chatManager(self, didUpdateStorage: "SA_STR_CREATE_NEW".localized + dialogName)
                 completion?(response, createdDialog)
             }, errorBlock: { response in

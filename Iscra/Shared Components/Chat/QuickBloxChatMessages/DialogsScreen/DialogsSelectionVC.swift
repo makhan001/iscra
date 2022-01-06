@@ -106,11 +106,11 @@ class DialogsSelectionVC: UITableViewController {
             forwardedMessage.dateSent = Date()
             forwardedMessage.customParameters["save_to_history"] = true
             let originSenderUser = chatManager.storage.user(withID: originMessage.senderID)
-            if let fullName = originSenderUser?.fullName {
-                forwardedMessage.customParameters[ChatDataSourceConstant.forwardedMessage] = fullName
+            if let fullName = originSenderUser?.fullName?.capitalized {
+                forwardedMessage.customParameters[ChatDataSourceConstant.forwardedMessage] = fullName.capitalized
             } else {
                 let currentUser = Profile()
-                forwardedMessage.customParameters[ChatDataSourceConstant.forwardedMessage] = currentUser.fullName
+                forwardedMessage.customParameters[ChatDataSourceConstant.forwardedMessage] = currentUser.fullName.capitalized
             }
             forwardedMessage.dialogID = dialogID
             if let attachment = originMessage.attachments?.first {
@@ -179,7 +179,7 @@ class DialogsSelectionVC: UITableViewController {
                     let currentUser = Profile()
                     dialog.pullOccupantsIDs = [(NSNumber(value: currentUser.ID)).stringValue]
                     
-                    let message = "\(currentUser.fullName) " + "SA_STR_USER_HAS_LEFT".localized
+                    let message = "\(currentUser.fullName.capitalized) " + "SA_STR_USER_HAS_LEFT".localized
                     // Notifies occupants that user left the dialog.
                     self.chatManager.sendLeaveMessage(message, to: dialog, completion: { (error) in
                         if let error = error {
@@ -353,7 +353,7 @@ class DialogsSelectionVC: UITableViewController {
                 // group
                 dialog.pullOccupantsIDs = [(NSNumber(value: currentUser.ID)).stringValue]
                 
-                let message = "\(currentUser.fullName) " + "SA_STR_USER_HAS_LEFT".localized
+                let message = "\(currentUser.fullName.capitalized) " + "SA_STR_USER_HAS_LEFT".localized
                 // Notifies occupants that user left the dialog.
                 self.chatManager.sendLeaveMessage(message, to: dialog, completion: { (error) in
                     if let error = error {
@@ -405,7 +405,7 @@ class DialogsSelectionVC: UITableViewController {
         }
         
         let numberChats = "\(selectedPaths.count) \(chats) selected"
-        titleView.setupTitleView(title: title, subTitle: numberChats)
+        titleView.setupTitleView(title: title.capitalized, subTitle: numberChats)
     }
 }
 

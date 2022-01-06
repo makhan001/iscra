@@ -62,14 +62,15 @@ class DialogTableViewCellModel: NSObject {
             }
             // Getting recipient from users.
             if let recipient = ChatManager.instance.storage.user(withID: UInt(dialog.recipientID)),
-               let fullName = recipient.fullName {
-                self.textLabelText = fullName
+               let fullName = recipient.fullName?.capitalized {
+                self.textLabelText = fullName.capitalized
                 print("recipient ========>>\(recipient)")
+                print("recipient ========>>\(recipient.fullName)")
                 
                 self.customData = recipient.customData ?? ""
             } else {
                 ChatManager.instance.loadUser(UInt(dialog.recipientID)) { [weak self] (user) in
-                    self?.textLabelText = user?.fullName ?? user?.login ?? ""
+                    self?.textLabelText = user?.fullName?.capitalized ?? user?.login ?? ""
                     print("user img URL ---> \(Date().timeIntervalSince1970)")
                     print("user img URL=========>>\(user?.customData ?? "")")
                     self?.customData = user?.customData ?? ""
@@ -77,6 +78,7 @@ class DialogTableViewCellModel: NSObject {
             }
         } else {
             self.dialogIcon = UIImage(named: "group")
+           
         }
     }
 }

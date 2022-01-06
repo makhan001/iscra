@@ -101,7 +101,7 @@ class EnterChatNameVC: UITableViewController {
     private func validate(_ textField: UITextField?) {
         if textField == chatNameTextField, isValid(chatName: chatNameTextField.text) == false {
             navigationItem.rightBarButtonItem?.isEnabled = false
-            hintLabel.text = EnterChatNameConstant.nameHint
+            hintLabel.text = EnterChatNameConstant.nameHint.capitalized
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = true
             hintLabel.text = ""
@@ -128,7 +128,7 @@ class EnterChatNameVC: UITableViewController {
         }
         
         if selectedUsers.count > 1 {
-            let chatName = chatNameTextField.text ?? "New Group Chat"
+            let chatName = chatNameTextField.text?.capitalized ?? "New Group Chat"
             sender.isEnabled = false
             SVProgressHUD.show()
             chatManager.storage.update(users: selectedUsers)

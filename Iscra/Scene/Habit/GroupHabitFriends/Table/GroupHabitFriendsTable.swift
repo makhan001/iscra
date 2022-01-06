@@ -6,15 +6,12 @@
 //
 
 import UIKit
-protocol FriendTableNavigation: class {
-    func didNavigateToCalender(index: Int)
-}
 
 class  GroupHabitFriendsTable: UITableView {
     
     // MARK: Varibles
+    var showHabitDetail:((Int) ->())?
     var viewModel: HabitCalenderViewModel!
-    weak var friendTableNavigationDelegate: FriendTableNavigation?
 
     override class func awakeFromNib() {
         super.awakeFromNib()
@@ -42,16 +39,10 @@ extension GroupHabitFriendsTable: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.dequeueReusable(indexPath) as GroupFriendsCell
-        cell.configure(with: self.viewModel.objHabitDetail?.members?[indexPath.row])
-        cell.btnHabitDetail.tag = indexPath.row
-        cell.btnHabitDetail.addTarget(self,action:#selector(navigateToHabitDetail(sender:)), for: .touchUpInside)
+        cell.showHabitDetail = showHabitDetail
+        if let arrMember = self.viewModel.objHabitDetail?.members {
+            cell.configure(viewModel: viewModel, item: arrMember[indexPath.row])
+        }        
         return cell
     }
-    
-    @objc func navigateToHabitDetail(sender:UIButton) {
-        if self.viewModel.objHabitDetail?.members?.count ?? 0 > 0 {
-            friendTableNavigationDelegate?.didNavigateToCalender(index: sender.tag)
-        }
-    }
-    
 }

@@ -47,7 +47,7 @@ extension CommunityViewController {
     
     private func setCollectionView() {
         self.collectionMyGroups.configure(viewModel: viewModel)
-        self.collectionMyGroups.didSelectCollectionAtIndex = self.didSelectCollectionAtIndex
+        self.collectionMyGroups.showHabitDetail = didSelectCollectionAtIndex
         self.collectionNewGroupHabit.configure(viewModel: viewModel)
         self.collectionNewGroupHabit.communityDelegate = self
     }
@@ -61,12 +61,7 @@ extension CommunityViewController {
         self.viewModel.habitId = self.viewModel.myGroups[index].id ?? 0
         self.router?.push(scene: .groupHabitFriends)
     }
-    
-//    private func didSelectInvitedHabitAtIndex(_ index: Int) {
-//        self.objInvitaion = obj
-//        self.router?.push(scene: .communityDetail)
-//    }
-    
+
     private func reload() {
         self.reloadMyGroups()
         self.reloadNewGroups()

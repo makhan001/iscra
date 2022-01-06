@@ -140,7 +140,7 @@ extension GroupHabitFriendsViewController {
     
     private func configureTable() {
         self.tableFriends.isHidden = false
-        self.tableFriends.friendTableNavigationDelegate = self
+        self.tableFriends.showHabitDetail = didSelectedAtIndex
         self.tableFriends.configure(viewModel: viewModel)
     }
 }
@@ -300,8 +300,9 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
     }
 }
 
-extension GroupHabitFriendsViewController: FriendTableNavigation {
-    func didNavigateToCalender(index: Int) {
+// MARK: Closures Callbacks
+extension GroupHabitFriendsViewController {
+    private func didSelectedAtIndex(_ index: Int) {
         self.viewModel.userId =  String(self.viewModel.objHabitDetail?.members?[index].id ?? 0)
         print(" self.viewModel.userId \( self.viewModel.userId)")
         self.router?.push(scene: .habitCalender)

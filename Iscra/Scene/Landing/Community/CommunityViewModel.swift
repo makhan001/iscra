@@ -27,7 +27,7 @@ final class CommunityViewModel {
     }
     
     func fetchCommunityList() {
-        self.provider.fetchCommunity(param: CommunityParams.FetchCommunity())
+        self.provider.fetchCommunity(param: CommunityParams.FetchCommunity()) 
     }
     
     func callApiGroupInvitation() {

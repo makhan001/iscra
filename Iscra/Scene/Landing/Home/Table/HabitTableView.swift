@@ -10,7 +10,7 @@ import UIKit
 class  HabitTableView: UITableView {
     
     var viewModel: HomeViewModel!
-    var didSelectedAtIndex: ((Int) -> Void)?
+    var showHabitDetail:((Int) ->())?
     var didDeleteHabitAtIndex: ((Int) -> Void)?
     
     override class func awakeFromNib() {
@@ -36,16 +36,9 @@ extension HabitTableView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusable(indexPath) as HabitCell
-        cell.configure(viewModel: viewModel, item: viewModel.habitList[indexPath.row])
-        cell.btnHabitDetail.tag = indexPath.row
-        cell.btnHabitDetail.addTarget(self,action:#selector(navigateToHabitDetail(sender:)), for: .touchUpInside)
+        cell.showHabitDetail = showHabitDetail
+        cell.configure(viewModel: viewModel, item: viewModel.habitList[indexPath.row], tag: indexPath.row)
         return cell
-    }
-    
-    @objc func navigateToHabitDetail(sender:UIButton) {
-        if viewModel.habitList.count > 0 {
-            self.didSelectedAtIndex?(sender.tag)
-        }
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

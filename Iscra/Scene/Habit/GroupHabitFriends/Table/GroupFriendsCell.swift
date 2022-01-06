@@ -18,33 +18,37 @@ class GroupFriendsCell: UITableViewCell , Reusable {
     @IBOutlet weak var daysCollectionView: HabitDaysCollectionView!
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
     
-    private let arr = ["1","1","1","1","1","1","1"]
+    var viewModel: HabitCalenderViewModel!
     var member: Member!
-
+    var showHabitDetail:((Int) ->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.imgFriend.makeCircular()
+        self.setup()
     }
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        if self.arr.count <= 3 {
-            constraintWidth.constant =  CGFloat((self.arr.count * 60))
-        } else {
-            constraintWidth.constant =  CGFloat((self.arr.count * 50))
-        }
-    }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
     func configure<T>(with content: T) {
-        guard let item = content as? Member else { return }
+    }
+    
+    func configure(viewModel: HabitCalenderViewModel, item: Member) {
+        self.viewModel = viewModel
         self.member = item
         self.lblFriendName.text = item.username?.lowercased()
         self.imgFriend.setImageFromURL(item.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
-        self.daysCollectionView.configure(colorTheme: "", habitMark: item.habitMark ?? [], sourceScreen: .friend)
+        self.daysCollectionView.configure(colorTheme: self.viewModel.objHabitDetail?.colorTheme ?? "#7B86EB", habitMark: item.habitMark ?? [], sourceScreen: .friend)
+    }
+    
+    private func setup() {
+        btnHabitDetail.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+    }
+    
+    @objc func buttonPressed(_ sender: UIButton) {
+        self.showHabitDetail?(sender.tag)
     }
 }
 
@@ -58,9 +62,5 @@ extension GroupFriendsCell: UICollectionViewDelegate, UICollectionViewDataSource
         let cell = collectionView.dequeueReusable(indexPath) as HabitDaysCell
         cell.configure(with: member.habitMark?[indexPath.row])
         return cell
-    }
-   
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: Int(self.daysCollectionView.bounds.width) / self.arr.count , height: 125)
     }
 }

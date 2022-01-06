@@ -107,10 +107,9 @@ extension EditReminderViewController {
                                 dateFormatter.dateFormat = "hh:mm a"
                                 dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                                 let date = dateFormatter.date(from: strDate)
+                                 print("strDate is on setdefalut  \(strDate)")
                                 self.pickerTime.datePickerMode = .time
                                 self.pickerTime.setDate(date ?? Date(), animated: false)
-                                print("strDate is  \(strDate)")
-                                // print("date is  \(date)")
                                 dateString = strDate
                 // print("self.reminderTime setDefalutTime is actual time in dateString \(dateString)")
             } else {
@@ -123,15 +122,31 @@ extension EditReminderViewController {
                              dateString = dayTimePeriodFormatter.string(from: date as Date)
    
                  print("self.reminderTime contains timestamp in dateString \(dateString)")
+                
+                dateString = "22:50" // deepak
+                if !Locale.is24Hour {
+                    print("12 hour")
               //
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "hh:mm a"
                 dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                 let pickerDate = dateFormatter.date(from: dateString)
+                    print("pickerDate is on 12 hour \(pickerDate)")
                 self.pickerTime.datePickerMode = .time
                 self.pickerTime.setDate(pickerDate ?? Date(), animated: false)
-                // print("pickerDate is  \(pickerDate)")
+                
                 //
+                }else{
+                    print("24 hour")
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "hh:mm"
+                    dateFormatter.locale = Locale(identifier: "en_GB")
+                    self.pickerTime.locale = Locale(identifier: "en_GB")
+                    let pickerDate = dateFormatter.date(from: dateString)
+                    print("pickerDate is on 24 hour \(pickerDate)")
+                    self.pickerTime.datePickerMode = .time
+                    self.pickerTime.setDate(pickerDate ?? Date(), animated: false)
+                }
             }
             
         }

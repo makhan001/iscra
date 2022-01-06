@@ -447,7 +447,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLc-H7-3AW" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="998" width="1024" height="383"/>
+                                <rect key="frame" x="0.0" y="1006.5" width="1024" height="374.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgU-bq-7vN" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="484" y="24" width="56" height="8"/>
@@ -463,7 +463,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1B-ra-dKo" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="48" width="984" height="29"/>
+                                        <rect key="frame" x="20" y="48" width="984" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="BlackAccent"/>
                                         <nil key="highlightedColor"/>
@@ -479,7 +479,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kUm-rz-kpS" customClass="ChatNotificationTableView" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93" width="1024" height="250"/>
+                                        <rect key="frame" x="0.0" y="84.5" width="1024" height="250"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="l4o-jb-veS"/>
@@ -541,7 +541,7 @@
     </scenes>
     <designables>
         <designable name="K1B-ra-dKo">
-            <size key="intrinsicContentSize" width="123.5" height="29"/>
+            <size key="intrinsicContentSize" width="87.5" height="20.5"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>

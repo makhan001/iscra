@@ -26,7 +26,7 @@ class QBChatLogin {
             }
             self.loginQBUser(fullName: UserStore.userName ?? "", login: UserStore.userEmail ?? "", email: UserStore.userEmail ?? "", customData: UserStore.userImage ?? "")
             print("UserSignUpInQuickBlox", user)
-            }, errorBlock: { [weak self] response in
+            }, errorBlock: { [weak self] response in                    
                 
                 if response.status == QBResponseStatusCode.validationFailed {
                     // The user with existent login was created earlier
@@ -52,8 +52,8 @@ class QBChatLogin {
                                     let userDefaults = UserDefaults.standard
                                     userDefaults.set(data, forKey: UserProfileConstant.curentProfile)
                                     self.updateFullName(fullName: UserStore.userName ?? "")
-                                    
                                     print("update user name===>\(UserStore.userName)")
+                                    print("update user Image===>\(UserStore.userImage)")
                                     } catch {
                                         debugPrint("[Profile] Couldn't write file to UserDefaults")
                                     }
@@ -97,6 +97,7 @@ class QBChatLogin {
      func updateFullName(fullName: String) {
         let updateUserParameter = QBUpdateUserParameters()
         updateUserParameter.fullName = UserStore.userName ?? ""
+       // updateUserParameter.customData = UserStore.userImage ?? ""
         QBRequest.updateCurrentUser(updateUserParameter, successBlock: { [weak self] response, user in
             guard let self = self else {
                 return
@@ -105,6 +106,7 @@ class QBChatLogin {
             Profile.update(user)
            
             print("updateUserParameter====>\(fullName)")
+            //print("updateUserParameter====>\(customData)")
             self.connectToChat(user: user)
             
             }, errorBlock: { [weak self] response in

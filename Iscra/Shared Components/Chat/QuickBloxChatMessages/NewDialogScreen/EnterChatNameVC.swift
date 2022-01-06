@@ -92,7 +92,7 @@ class EnterChatNameVC: UITableViewController {
     private func isValid(chatName: String?) -> Bool {
         let characterSet = CharacterSet.whitespaces
         let trimmedText = chatName?.trimmingCharacters(in: characterSet)
-        let regularExtension = EnterChatNameConstant.chatname
+        let regularExtension = EnterChatNameConstant.chatname.capitalized
         let predicate = NSPredicate(format: "SELF MATCHES %@", regularExtension)
         let isValid = predicate.evaluate(with: trimmedText)
         return isValid
@@ -160,10 +160,10 @@ class EnterChatNameVC: UITableViewController {
     private func messageText(withChatName chatName: String) -> String {
         let actionMessage = "SA_STR_CREATE_NEW".localized
         guard let current = QBSession.current.currentUser,
-              let fullName = current.fullName else {
+              let fullName = current.fullName?.capitalized else {
             return ""
         }
-        return "\(fullName) \(actionMessage) \"\(chatName)\""
+        return "\(fullName.capitalized) \(actionMessage) \"\(chatName)\""
     }
     
     private func openNewDialog(_ newDialog: QBChatDialog) {

@@ -170,7 +170,7 @@ class ChatStorage {
     private func update(user: QBUUser) {
         if let localUser = users.filter({ $0.id == user.id }).first {
             //Update local User
-            localUser.fullName = user.fullName
+            localUser.fullName = user.fullName?.capitalized
             localUser.lastRequestAt = user.lastRequestAt
             return
         }

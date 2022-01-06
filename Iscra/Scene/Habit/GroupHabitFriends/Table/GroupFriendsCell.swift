@@ -19,7 +19,6 @@ class GroupFriendsCell: UITableViewCell , Reusable {
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
     
     var viewModel: HabitCalenderViewModel!
-    var member: Member!
     var showHabitDetail:((Int) ->())?
     
     override func awakeFromNib() {
@@ -27,24 +26,26 @@ class GroupFriendsCell: UITableViewCell , Reusable {
         self.imgFriend.makeCircular()
         self.setup()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    private func setup() {
+        btnHabitDetail.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+    }
+    
+    
     func configure<T>(with content: T) {
     }
     
-    func configure(viewModel: HabitCalenderViewModel, item: Member) {
+    func configure(viewModel: HabitCalenderViewModel, index: Int) {
         self.viewModel = viewModel
-        self.member = item
-        self.lblFriendName.text = item.username?.lowercased()
-        self.imgFriend.setImageFromURL(item.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
-        self.daysCollectionView.configure(colorTheme: self.viewModel.objHabitDetail?.colorTheme ?? "#7B86EB", habitMark: item.habitMark ?? [], sourceScreen: .friend)
-    }
-    
-    private func setup() {
-        btnHabitDetail.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        self.viewModel.groupIndex = index
+        self.btnHabitDetail.tag = index
+        self.lblFriendName.text = viewModel.objHabitDetail?.members?[index].username?.lowercased()
+        self.imgFriend.setImageFromURL(viewModel.objHabitDetail?.members?[index].profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
+        self.daysCollectionView.configure(colorTheme: self.viewModel.objHabitDetail?.colorTheme ?? "#7B86EB", habitMark: viewModel.objHabitDetail?.members?[index].habitMark ?? [], sourceScreen: .friend)
     }
     
     @objc func buttonPressed(_ sender: UIButton) {
@@ -55,12 +56,12 @@ class GroupFriendsCell: UITableViewCell , Reusable {
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource and UICollectionViewDelegateFlowLayout
 extension GroupFriendsCell: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return member.habitMark?.count ?? 0
+        return viewModel.objHabitDetail?.members?[viewModel.groupIndex].habitMark?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusable(indexPath) as HabitDaysCell
-        cell.configure(with: member.habitMark?[indexPath.row])
+        cell.configure(with: viewModel.objHabitDetail?.members?[viewModel.groupIndex].habitMark?[indexPath.row])
         return cell
     }
 }

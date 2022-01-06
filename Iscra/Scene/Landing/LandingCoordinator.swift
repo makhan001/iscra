@@ -110,6 +110,8 @@ final class LandingCoordinator: Coordinator<Scenes> {
     }
     
     private func startHabitTypeView() {
+        let imageDataDict:[String: String] = ["name": "tab33"]
+        NotificationCenter.default.post(name: .RotateTab, object: nil, userInfo: imageDataDict)
         self.router.present(selectHabitPopUp, animated: true)
     }
     

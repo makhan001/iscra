@@ -451,6 +451,7 @@ extension UIAlertController {
 }
 
 extension Notification.Name {
+    static let RotateTab = Notification.Name("rotateTab")
     static let EditHabit = Notification.Name("EditHabit")
     static let JoinHabit = Notification.Name("JoinHabit")
     static let MarkAsComplete = Notification.Name("MarkAsComplete")

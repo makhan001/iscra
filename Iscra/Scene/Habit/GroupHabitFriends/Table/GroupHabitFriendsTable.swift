@@ -40,9 +40,7 @@ extension GroupHabitFriendsTable: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.dequeueReusable(indexPath) as GroupFriendsCell
         cell.showHabitDetail = showHabitDetail
-        if let arrMember = self.viewModel.objHabitDetail?.members {
-            cell.configure(viewModel: viewModel, item: arrMember[indexPath.row])
-        }        
+        cell.configure(viewModel: viewModel, index: indexPath.row)
         return cell
     }
 }

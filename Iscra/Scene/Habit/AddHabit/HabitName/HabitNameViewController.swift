@@ -170,6 +170,8 @@ extension HabitNameViewController: HabitViewRepresentable {
 // MARK: NavigationBarView Gelegate
 extension HabitNameViewController  : NavigationBarViewDelegate {
     func navigationBackAction() {
+        let imageDataDict:[String: String] = ["name": "tab3"]
+        NotificationCenter.default.post(name: .RotateTab, object: nil, userInfo: imageDataDict)
         NotificationCenter.default.post(name: .SearchAllGroup, object: nil)
         HabitUtils.shared.removeAllHabitData()
         router?.dismiss(controller: .addHabit)

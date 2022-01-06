@@ -52,8 +52,8 @@ extension HomeViewController {
     private func setTableView() {
         self.tableView.isHidden = false
         self.tableView.configure(viewModel: viewModel)
-        self.tableView.didSelectedAtIndex = didSelectedAtIndex
         self.tableView.didDeleteHabitAtIndex = didDeleteHabitAtIndex
+        self.tableView.showHabitDetail = didSelectedAtIndex
         self.setPullToRefresh()
     }
     
@@ -88,7 +88,7 @@ extension HomeViewController {
     }
 }
 
-// MARK: Callbacks
+// MARK: Closures Callbacks
 extension HomeViewController {
     private func didSelectedAtIndex(_ index: Int) {
         self.viewModel.habitId =  self.viewModel.habitList[index].id ?? 0

@@ -14,7 +14,6 @@ final class HomeViewModel {
     var habitId: Int = 0
     var pullToRefreshCtrl:UIRefreshControl!
     var isRefreshing = false
-
     var colorTheme: String = "#ff7B86EB"
     var habitList = [AllHabits]()
     var habitMarks = [HabitMark]()
@@ -30,7 +29,7 @@ final class HomeViewModel {
     }
     
     func fetchHabitList() {
-        self.provider.habitList(param: HabitParams.AllHabitList())
+        self.provider.habitList(param: HabitParams.AllHabitList()) 
         if self.isRefreshing {
             WebService().StopIndicator()
         }

@@ -38,7 +38,7 @@ final class UpdateProfileViewModel {
             return
         }
         
-        let parameters =  UserParams.UpdateProfile(username: username, profile_image: selectedImage  as? String)
+        let parameters =  UserParams.UpdateProfile(username: username)
         WebService().requestMultiPart(urlString: APIConstants.updateProfile,
                                       httpMethod: .put,
                                       parameters: parameters,
@@ -58,7 +58,6 @@ final class UpdateProfileViewModel {
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)
                         QBChatLogin.shared.updateFullName(fullName: self?.username ?? "", customData: self?.selectedImage as? String ?? "")
-                        print("updateProfileimage---> \(self?.selectedImage as? String ?? "")")
                         self?.view?.onAction(.updateProfile)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

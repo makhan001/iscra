@@ -7,14 +7,16 @@
 
 
 import UIKit
+import StoreKit
 import Foundation
 
 final class HomeViewModel {
     
     var habitId: Int = 0
-    var pullToRefreshCtrl:UIRefreshControl!
     var isRefreshing = false
+    var products = [SKProduct]()
     var colorTheme: String = "#ff7B86EB"
+    var pullToRefreshCtrl:UIRefreshControl!
     var habitList = [AllHabits]()
     var habitMarks = [HabitMark]()
     var groupMembers = [GroupMember]()
@@ -26,6 +28,18 @@ final class HomeViewModel {
     init(provider: HabitServiceProvidable) {
         self.provider = provider
         self.provider.delegate = self
+    }
+    
+    func getProducts() {
+        Products.store.requestProducts{ [weak self] success, products in
+            guard let self = self else { return }
+            if success {
+                self.products = products!
+                self.view?.onAction(.products)
+            } else {
+                self.view?.onAction(.errorMessage("No products found"))
+            }
+        }
     }
     
     func fetchHabitList() {

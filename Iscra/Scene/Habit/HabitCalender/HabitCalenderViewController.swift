@@ -29,7 +29,7 @@ class HabitCalenderViewController: UIViewController {
     @IBOutlet weak var btnMarkasComplete: UIButton!
     @IBOutlet weak var viewShareHabit: UIView!
     
-    private var themeColor = UIColor(hex: "#7B86EB")
+    private var themeColor = UIColor.clear//UIColor(hex: "#7B86EB")
     weak var router: NextSceneDismisser?
     let viewModel: HabitCalenderViewModel = HabitCalenderViewModel(provider: HabitServiceProvider())
     
@@ -56,6 +56,7 @@ extension HabitCalenderViewController {
     }
     
     private func setViewControls() {
+        self.lblDaysCount.text = ""
         self.lblLongestStreak.text = "Longest \nStreak"
         self.viewMarkasComplete.isHidden = false
         [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth,btnMarkasComplete,btnNextMonth].forEach {
@@ -132,7 +133,7 @@ extension HabitCalenderViewController {
     
     func circularViewSetup() {
         self.viewCircular.lineWidth = 20
-        self.viewCircular.ringColor =  self.themeColor!
+        self.viewCircular.ringColor =  self.themeColor
     }
 }
 
@@ -236,7 +237,7 @@ extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate
               let inCompletedArray = habitArrays.inCompletedArray
         else { return nil }
         if completedArray.contains(date) {
-            return self.themeColor!
+            return self.themeColor
         } else if inCompletedArray.contains(date) {
             return .systemRed
         }
@@ -271,7 +272,7 @@ extension HabitCalenderViewController: HabitViewRepresentable {
             self.showToast(message: msg)
         case .sucessMessage(_):
             // self.showToast(message: msg)
-            self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
+            self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB") ?? UIColor.clear
             if self.viewModel.isfromGroupHabitCalendar != true {
                 
                 guard let name = self.viewModel.objHabitDetail?.name else { return }

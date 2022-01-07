@@ -57,7 +57,7 @@ extension CommunityViewController {
         self.viewModel.fetchCommunityList()
     }
     
-    private func didSelectCollectionAtIndex(index: Int) {
+    private func didSelectCollectionAtIndex(index: Int) { // didSelectHabitAtIndex
         self.viewModel.habitId = self.viewModel.myGroups[index].id ?? 0
         self.router?.push(scene: .groupHabitFriends)
     }

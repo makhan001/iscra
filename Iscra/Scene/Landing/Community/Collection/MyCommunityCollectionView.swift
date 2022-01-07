@@ -35,7 +35,7 @@ extension MyCommunityCollectionView: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusable(indexPath) as CommunityMyGroupsCell
-        cell.configure(viewModel: viewModel, groupHabit: viewModel.myGroups[indexPath.row])
+        cell.configure(viewModel: viewModel, groupHabit: viewModel.myGroups[indexPath.row], tag: indexPath.row)
         cell.showHabitDetail = showHabitDetail
         return cell
     }

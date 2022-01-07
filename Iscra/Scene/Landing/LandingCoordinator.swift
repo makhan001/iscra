@@ -101,7 +101,12 @@ final class LandingCoordinator: Coordinator<Scenes> {
         groupHabitCalender = GroupHabitCalenderCoordinator(router: Router())
         add(groupHabitCalender)
         groupHabitCalender.delegate = self
-        if controller.home.viewModel.habitId != 0 {
+        print("controller.home.viewModel.habitId is \(controller.home.viewModel.habitId)")
+        print("controller.community.viewModel.habitId is \(controller.community.viewModel.habitId)")
+        
+        
+        
+        if controller.calendarScreenType == .home {
             groupHabitCalender.start(habitId: controller.home.viewModel.habitId)
         } else {
             groupHabitCalender.start(habitId: controller.community.viewModel.habitId)

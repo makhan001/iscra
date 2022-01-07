@@ -32,7 +32,7 @@ class GroupHabitFriendsViewController: UIViewController {
     @IBOutlet weak var viewMarkasComplete: UIView!
     @IBOutlet weak var btnMarkasComplete: UIButton!
     
-    private var themeColor = UIColor(hex: "#7B86EB")
+    private var themeColor = UIColor.clear//UIColor(hex: "#7B86EB")
     private let selectedColor = [NSAttributedString.Key.foregroundColor: UIColor(named: "WhiteAccent")]
     private let unselectedColor = [NSAttributedString.Key.foregroundColor: UIColor(named: "BlackAccent")]
     
@@ -65,6 +65,7 @@ extension GroupHabitFriendsViewController {
         self.viewBottom.isHidden = true
         self.viewProgress.isHidden = true
         self.viewMarkasComplete.isHidden = true
+        self.lblDaysCount.text = ""
         self.lblLongestStreak.text = "Longest \nStreak"
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         viewBottom.addGestureRecognizer(tap)
@@ -135,7 +136,7 @@ extension GroupHabitFriendsViewController {
     
     func circularViewSetup() {
         self.viewCircular.lineWidth = 20
-        self.viewCircular.ringColor =  self.themeColor!
+        self.viewCircular.ringColor =  self.themeColor
     }
     
     private func configureTable() {
@@ -273,7 +274,7 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
               let inCompletedArray = habitArrays.inCompletedArray
         else { return nil }
         if completedArray.contains(date) {
-            return self.themeColor!
+            return self.themeColor
         } else if inCompletedArray.contains(date) {
             return .systemRed
         }
@@ -317,7 +318,7 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
             self.showToast(message: msg)
         case .sucessMessage(_):
             // self.showToast(message: msg)
-            self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
+            self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB") ?? UIColor.clear
             guard let name = self.viewModel.objHabitDetail?.name else { return }
             self.viewNavigation.lblTitle.text = name.capitalized
             self.reloadCaledar()

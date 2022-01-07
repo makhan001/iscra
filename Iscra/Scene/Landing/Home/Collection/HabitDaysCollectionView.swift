@@ -26,7 +26,7 @@ class HabitDaysCollectionView: UICollectionView {
     func configure(colorTheme: String, habitMark: [HabitMark], sourceScreen: HabitDaysSourceScreen = .home) {
         self.colorTheme = colorTheme
         self.habitMarks = habitMark
-     //   self.habitMarks.sort { Int($0.createdAt!) < Int($1.createdAt!) } //deepak
+        self.habitMarks.sort { Int($0.habitDay!) > Int($1.habitDay!) } 
         self.sourceScreen = sourceScreen
         reloadData()
     }

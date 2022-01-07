@@ -40,6 +40,11 @@ extension HomeViewController {
         self.viewFirstHabit.isHidden = true
         self.lblTitle.text = AppConstant.firstHabitTitle
         self.lblSubTitle.text = AppConstant.firstHabitSubTitle
+        self.viewModel.getProducts()
+        self.addNotificationObserver()
+    }
+    
+    private func addNotificationObserver(){
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .EditHabit, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .MarkAsComplete, object: nil)
     }

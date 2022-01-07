@@ -71,6 +71,7 @@ class DialogTableViewCellModel: NSObject {
             } else {
                 ChatManager.instance.loadUser(UInt(dialog.recipientID)) { [weak self] (user) in
                     self?.textLabelText = user?.fullName?.capitalized ?? user?.login ?? ""
+                  
                     print("user img URL ---> \(Date().timeIntervalSince1970)")
                     print("user img URL=========>>\(user?.customData ?? "")")
                     self?.customData = user?.customData ?? ""
@@ -316,7 +317,7 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             //ClearProfile
             Profile.clearProfile()
             self?.chatManager.storage.clear()
-            CacheManager.shared.clearCache()
+//            CacheManager.shared.clearCache()
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
                 // AppDelegate.shared.rootViewController.showLoginScreen()
             }
@@ -490,9 +491,9 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         dialogs = chatManager.storage.dialogsSortByUpdatedAt()
         if dialogs.count >= 0 {
             print("Chat list not empty")
-           
-        } else {
+           } else {
             print("chat is EMPTY")
+          
             QBChat.instance.removeDelegate(self)
         }
         tableView.reloadData()

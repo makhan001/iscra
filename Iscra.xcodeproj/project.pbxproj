@@ -60,6 +60,7 @@
 		5F164E602763881E0059F8C2 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */; };
 		5F164E612763881F0059F8C2 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */; };
 		5F191EF2277209DC00836126 /* CommunitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F191EF1277209DC00836126 /* CommunitySearchViewModel.swift */; };
+		5F19BB97278868B20099DE2D /* ZoomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F19BB96278868B20099DE2D /* ZoomImageViewController.swift */; };
 		5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */; };
 		5FF6CD20274E6A5A007ADC2F /* AddOccupantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CC90274E6A5A007ADC2F /* AddOccupantsVC.swift */; };
 		5FF6CD21274E6A5A007ADC2F /* DialogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF6CC92274E6A5A007ADC2F /* DialogCell.xib */; };
@@ -378,6 +379,7 @@
 		5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
 		5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		5F191EF1277209DC00836126 /* CommunitySearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunitySearchViewModel.swift; sourceTree = "<group>"; };
+		5F19BB96278868B20099DE2D /* ZoomImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageViewController.swift; sourceTree = "<group>"; };
 		5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		5F2AFB7527607F4800115228 /* IscraRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IscraRelease.entitlements; sourceTree = "<group>"; };
 		5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iscra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1847,6 +1849,7 @@
 				04D34F28274FB917009763D1 /* MyAccountViewModel.swift */,
 				5FFDDB6F27550ECF00051011 /* MyAccountPopUpView */,
 				882F3E102721AAC300A409A6 /* View */,
+				5F19BB96278868B20099DE2D /* ZoomImageViewController.swift */,
 			);
 			path = "My Account";
 			sourceTree = "<group>";
@@ -2236,6 +2239,7 @@
 				5FF6CD31274E6A5A007ADC2F /* PHAsset+Extention.swift in Sources */,
 				88E028FA27170D0600D90BB1 /* APIConstants.swift in Sources */,
 				5FF6CD5E274E6A5A007ADC2F /* AttachmentUploadBar.swift in Sources */,
+				5F19BB97278868B20099DE2D /* ZoomImageViewController.swift in Sources */,
 				8814B43D2743874100A6DE01 /* APIResponder.swift in Sources */,
 				04FD568727671F69008E7CB2 /* CommunityRequest.swift in Sources */,
 				5FF6CD53274E6A5A007ADC2F /* LoadingButton.swift in Sources */,

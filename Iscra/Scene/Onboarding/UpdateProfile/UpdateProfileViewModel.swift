@@ -38,14 +38,14 @@ final class UpdateProfileViewModel {
             return
         }
         
-        let parameters =  UserParams.UpdateProfile(username: username)
+        let parameters =  UserParams.UpdateProfile(username: username, profile_image: selectedImage  as? String)
         WebService().requestMultiPart(urlString: APIConstants.updateProfile,
                                       httpMethod: .put,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
-                                      imageArray: [["profile_image": selectedImage]],
+                                      imageArray: [["profile_image": selectedImage ]],
                                       fileArray: [],
-                                      file: ["profile_image": selectedImage]){ [weak self](resp, err) in
+                                      file: ["profile_image": selectedImage ]){ [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .updateProfile, with: resp, with: nil)
                 return
@@ -57,7 +57,8 @@ final class UpdateProfileViewModel {
                         print("updateProfileApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)
-                        QBChatLogin.shared.updateFullName(fullName: self?.username ?? "")
+                        QBChatLogin.shared.updateFullName(fullName: self?.username ?? "", customData: self?.selectedImage as? String ?? "")
+                        print("updateProfileimage---> \(self?.selectedImage as? String ?? "")")
                         self?.view?.onAction(.updateProfile)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))
@@ -75,7 +76,7 @@ extension UpdateProfileViewModel: OnboardingServiceProvierDelegate, InputViewDel
             if error != nil {
                 self.view?.onAction(.errorMessage(ERROR_MESSAGE))
             } else {
-                QBChatLogin.shared.updateFullName(fullName: self.username)
+                QBChatLogin.shared.updateFullName(fullName: self.username, customData: self.selectedImage as? String ?? "")
                 if let resp = response as? SuccessResponseModel, resp.status == true {
                                    //    self.register = resp.data?.register
                     UserStore.save(token: resp.data?.register?.authenticationToken)

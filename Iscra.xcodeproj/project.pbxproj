@@ -39,6 +39,7 @@
 		04671A38277D9C2600AF9484 /* ShareHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04671A37277D9C2600AF9484 /* ShareHabitViewModel.swift */; };
 		04671A3C277D9D2200AF9484 /* ShareHabitTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04671A3B277D9D2200AF9484 /* ShareHabitTableView.swift */; };
 		046F92C12769D9C100190D9A /* InviteFriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */; };
+		047DAF2127887AE800422884 /* InviteFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047DAF2027887AE800422884 /* InviteFriendViewModel.swift */; };
 		047E3EE5276C7AD700C8C8A1 /* CommunityAdaptables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E3EE4276C7AD600C8C8A1 /* CommunityAdaptables.swift */; };
 		047E3EE8276C7AEE00C8C8A1 /* CommunityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */; };
 		047FFD8A27733336009503CB /* CommunitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FFD8927733336009503CB /* CommunitySearchViewModel.swift */; };
@@ -356,6 +357,7 @@
 		04671A37277D9C2600AF9484 /* ShareHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHabitViewModel.swift; sourceTree = "<group>"; };
 		04671A3B277D9D2200AF9484 /* ShareHabitTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHabitTableView.swift; sourceTree = "<group>"; };
 		046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendCoordinator.swift; sourceTree = "<group>"; };
+		047DAF2027887AE800422884 /* InviteFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendViewModel.swift; sourceTree = "<group>"; };
 		047E3EE4276C7AD600C8C8A1 /* CommunityAdaptables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityAdaptables.swift; sourceTree = "<group>"; };
 		047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProvider.swift; sourceTree = "<group>"; };
 		047FFD8927733336009503CB /* CommunitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchViewModel.swift; sourceTree = "<group>"; };
@@ -1340,6 +1342,7 @@
 			isa = PBXGroup;
 			children = (
 				880F3E68272816D9007CA895 /* InviteFriendViewController.swift */,
+				047DAF2027887AE800422884 /* InviteFriendViewModel.swift */,
 				046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */,
 			);
 			path = InviteFriends;
@@ -2182,6 +2185,7 @@
 				0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */,
 				880F3E362727EC73007CA895 /* IconPopupViewController.swift in Sources */,
 				8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */,
+				047DAF2127887AE800422884 /* InviteFriendViewModel.swift in Sources */,
 				042CC9E227709BFB002C23EC /* FetchCommunity.swift in Sources */,
 				5FF6CD3A274E6A5A007ADC2F /* CacheManager.swift in Sources */,
 				5FF6CD7C274E6A5A007ADC2F /* ChatCollectionViewFlowLayout.swift in Sources */,

@@ -108,7 +108,9 @@ extension HabitCalenderViewController {
         self.calenderSetup()
         self.circularViewSetup()
         self.viewNavigation.lblTitle.textColor = self.themeColor
-        self.lblDaysCount.text = String(self.viewModel.longestStreak ?? 0)
+        if let daysCount = self.viewModel.longestStreak {
+            self.lblDaysCount.text = String(daysCount)
+        }
         
         if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
             self.viewMarkasComplete.isHidden = true

@@ -13,6 +13,8 @@ class CommunityMyGroupsCell: UICollectionViewCell, Reusable {
     @IBOutlet weak var viewNomates: UIView!
     @IBOutlet weak var viewContainer: UIView!
     
+    @IBOutlet weak var btnHabitDetail: UIButton!
+
     @IBOutlet weak var imgHabit: UIImageView! // imageHabit
     @IBOutlet weak var imgHabitMates: UIImageView! // imageHabitMates
     
@@ -24,14 +26,20 @@ class CommunityMyGroupsCell: UICollectionViewCell, Reusable {
     @IBOutlet weak var constraintWidth: NSLayoutConstraint!
     
     var viewModel: CommunityViewModel!
+    var showHabitDetail:((Int) ->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setup()
         self.collectionMates.register(UINib(nibName: "MatesCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MatesCollectionCell")
         self.collectionMates.backgroundColor = UIColor.clear.withAlphaComponent(0)
         self.collectionMates.dataSource = self
         self.collectionMates.delegate = self
         self.collectionMates.reloadData()
+    }
+    
+    private func setup() {
+        btnHabitDetail.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
     }
     
     func configure<T>(with content: T) { }
@@ -68,6 +76,10 @@ class CommunityMyGroupsCell: UICollectionViewCell, Reusable {
     
     override func updateConstraints() {
         super.updateConstraints()
+    }
+    
+    @objc func buttonPressed(_ sender: UIButton) {
+        self.showHabitDetail?(sender.tag)
     }
 }
 
@@ -110,22 +122,4 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
         5.0
     }
 
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if collectionView == self.daysCollectionView {
-//            if !(viewModel.habitMarks.isEmpty) {
-//                if viewModel.habitMarks.count <= 3 {
-//                    return CGSize(width: Int(self.daysCollectionView.bounds.width) / viewModel.habitMarks.count - 10, height: 125)
-//                } else {
-//                    return CGSize(width: self.daysCollectionView.bounds.width/3.5, height: 125)
-//                }
-//            } else {
-//                return CGSize(width: 45.0, height: 125.0)
-//            }
-//
-//        } else {
-//            return CGSize(width: 35, height: 35)
-//        }
-//    }
-    
 }

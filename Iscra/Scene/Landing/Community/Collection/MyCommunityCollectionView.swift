@@ -10,7 +10,7 @@ import UIKit
 class MyCommunityCollectionView: UICollectionView {
     
     var viewModel: CommunityViewModel!
-    var didSelectCollectionAtIndex:((Int) -> Void)?
+    var showHabitDetail:((Int) ->())?
     
     override class func awakeFromNib() {
         super.awakeFromNib()
@@ -36,13 +36,9 @@ extension MyCommunityCollectionView: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusable(indexPath) as CommunityMyGroupsCell
         cell.configure(viewModel: viewModel, groupHabit: viewModel.myGroups[indexPath.row])
+        cell.showHabitDetail = showHabitDetail
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.didSelectCollectionAtIndex?(indexPath.row)
-    }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         collectionView.bounds.size

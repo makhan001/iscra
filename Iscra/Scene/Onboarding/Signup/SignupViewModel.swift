@@ -83,12 +83,14 @@ final class SignupViewModel {
             UserStore.save(userImage: response.data?.register?.profileImage)
             UserStore.save(token: response.data?.register?.authenticationToken)
             UserStore.save(userName: response.data?.register?.username?.capitalized)
+            UserStore.save(userCreateDate: (response.data?.register?.createdAt ?? 0).toDouble)
         } else {
             UserStore.save(userID: response.data?.user?.id)
             UserStore.save(userEmail: response.data?.user?.email)
             UserStore.save(userImage: response.data?.user?.profileImage)
             UserStore.save(token: response.data?.user?.authenticationToken)
             UserStore.save(userName: response.data?.user?.username?.capitalized)
+            UserStore.save(userCreateDate: (response.data?.user?.createdAt ?? 0).toDouble)
         }
         QBChatLogin.shared.registerQBUser()
     }

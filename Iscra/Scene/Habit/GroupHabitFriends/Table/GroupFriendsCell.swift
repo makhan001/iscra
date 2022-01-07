@@ -13,53 +13,55 @@ class GroupFriendsCell: UITableViewCell , Reusable {
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var lblFriendName: UILabel!
     @IBOutlet weak var imgFriend: UIImageView!
+    @IBOutlet weak var btnHabitDetail: UIButton!
     @IBOutlet weak var collectiondays: UICollectionView!
     @IBOutlet weak var daysCollectionView: HabitDaysCollectionView!
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
     
-    private let arr = ["1","1","1","1","1","1","1"]
-    var member: Member!
-
+    var viewModel: HabitCalenderViewModel!
+    var showHabitDetail:((Int) ->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.imgFriend.makeCircular()
-    }
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        if self.arr.count <= 3 {
-            constraintWidth.constant =  CGFloat((self.arr.count * 60))
-        } else {
-            constraintWidth.constant =  CGFloat((self.arr.count * 50))
-        }
+        self.setup()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    private func setup() {
+        btnHabitDetail.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+    }
+    
+    
     func configure<T>(with content: T) {
-        guard let item = content as? Member else { return }
-        self.member = item
-        self.lblFriendName.text = item.username?.lowercased()
-        self.imgFriend.setImageFromURL(item.profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
-        self.daysCollectionView.configure(colorTheme: "", habitMark: item.habitMark ?? [], sourceScreen: .friend)
+    }
+    
+    func configure(viewModel: HabitCalenderViewModel, index: Int) {
+        self.viewModel = viewModel
+        self.viewModel.groupIndex = index
+        self.btnHabitDetail.tag = index
+        self.lblFriendName.text = viewModel.objHabitDetail?.members?[index].username?.lowercased()
+        self.imgFriend.setImageFromURL(viewModel.objHabitDetail?.members?[index].profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
+        self.daysCollectionView.configure(colorTheme: self.viewModel.objHabitDetail?.colorTheme ?? "#7B86EB", habitMark: viewModel.objHabitDetail?.members?[index].habitMark ?? [], sourceScreen: .friend)
+    }
+    
+    @objc func buttonPressed(_ sender: UIButton) {
+        self.showHabitDetail?(sender.tag)
     }
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource and UICollectionViewDelegateFlowLayout
 extension GroupFriendsCell: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return member.habitMark?.count ?? 0
+        return viewModel.objHabitDetail?.members?[viewModel.groupIndex].habitMark?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusable(indexPath) as HabitDaysCell
-        cell.configure(with: member.habitMark?[indexPath.row])
+        cell.configure(with: viewModel.objHabitDetail?.members?[viewModel.groupIndex].habitMark?[indexPath.row])
         return cell
-    }
-   
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: Int(self.daysCollectionView.bounds.width) / self.arr.count , height: 125)
     }
 }

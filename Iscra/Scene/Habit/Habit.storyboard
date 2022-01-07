@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -635,7 +635,7 @@
                                         </collectionViewFlowLayout>
                                         <cells/>
                                     </collectionView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yWT-HH-Z4n" customClass="IconHeader" customModule="Iscra" customModuleProvider="target">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yWT-HH-Z4n" customClass="IconHeaderCollectionView" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="20" y="24" width="355" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -694,9 +694,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="IconCollection" destination="CXk-Vl-dO0" id="Zni-kg-eM9"/>
-                        <outlet property="IocnHeaderCollection" destination="yWT-HH-Z4n" id="elz-Cu-kFK"/>
                         <outlet property="backGroundView" destination="IZV-ce-gIB" id="pdy-Vt-lX6"/>
+                        <outlet property="iconCollectionView" destination="CXk-Vl-dO0" id="Csj-6b-z4r"/>
+                        <outlet property="iocnHeaderCollectionView" destination="yWT-HH-Z4n" id="3sp-XR-9AA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mt8-fS-vhv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

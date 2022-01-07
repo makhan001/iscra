@@ -6,15 +6,12 @@
 //
 
 import UIKit
-protocol FriendTableNavigation: class {
-    func didNavigateToCalender(index: Int)
-}
 
 class  GroupHabitFriendsTable: UITableView {
     
     // MARK: Varibles
+    var showHabitDetail:((Int) ->())?
     var viewModel: HabitCalenderViewModel!
-    weak var friendTableNavigationDelegate: FriendTableNavigation?
 
     override class func awakeFromNib() {
         super.awakeFromNib()
@@ -42,11 +39,8 @@ extension GroupHabitFriendsTable: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.dequeueReusable(indexPath) as GroupFriendsCell
-        cell.configure(with: self.viewModel.objHabitDetail?.members?[indexPath.row])
+        cell.showHabitDetail = showHabitDetail
+        cell.configure(viewModel: viewModel, index: indexPath.row)
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        friendTableNavigationDelegate?.didNavigateToCalender(index: indexPath.row)
     }
 }

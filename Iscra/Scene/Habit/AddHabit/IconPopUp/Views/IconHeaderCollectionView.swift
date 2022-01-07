@@ -1,5 +1,5 @@
 //
-//  IconCollectionView.swift
+//  IconHeaderCollectionView.swift
 //  Iscra
 //
 //  Created by Lokesh Patil on 26/10/21.
@@ -8,10 +8,10 @@
 import UIKit
 import Foundation
 
-class IconCollectionView: UICollectionView {
+class IconHeaderCollectionView: UICollectionView {
     
     var viewModel: IconsViewModel!
-    var didSelectIconAtIndex:((Int) -> Void)?
+    var didSelectCategoryAtIndex:((Int) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,7 +20,6 @@ class IconCollectionView: UICollectionView {
     
     func configure(viewModel: IconsViewModel) {
         self.viewModel = viewModel
-        self.setup()
     }
     
     private func setup() {
@@ -30,29 +29,28 @@ class IconCollectionView: UICollectionView {
     }
 }
 
-extension IconCollectionView: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+extension IconHeaderCollectionView:  UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.icons.count
+        viewModel.iconCategory.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusable(indexPath) as IconCollectionViewCell
-        cell.configure(item: viewModel.icons[indexPath.row], theme: viewModel.themeColor.colorHex)
-        if viewModel.iconIndex == indexPath.item {
-            viewModel.icons[indexPath.item].isSelected = true
+        let cell = collectionView.dequeueReusable(indexPath) as IconHeaderCollectionViewCell
+        cell.configure(title: viewModel.iconCategory[indexPath.row].habitName, isSelected: viewModel.iconCategory[indexPath.item].isSelected)
+        if self.viewModel.categoryIndex == indexPath.item {
+            self.viewModel.iconCategory[indexPath.row].isSelected = true
         } else {
-            viewModel.icons[indexPath.item].isSelected = false
+            self.viewModel.iconCategory[indexPath.item].isSelected = false
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width/4 - 10
-        return CGSize(width: width , height: width )
+        return CGSize(width: collectionView.frame.width/4 , height:collectionView.frame.height )
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.didSelectIconAtIndex?(indexPath.row)
+        self.didSelectCategoryAtIndex?(indexPath.item)
     }
 }

@@ -22,13 +22,13 @@ final class LandingCoordinator: Coordinator<Scenes> {
     private var login: LoginCoordinator!
     private var welcome: OnboardingCoordinator!
     private var habitName: HabitNameCoordinator!
-    private var communitySearch: CommunitySearchCoordinator!
-    private var habitCalender: HabitCalenderCoordinator!
     private var myAccount: MyAccountCoordinator!
-    private var groupHabitCalender: GroupHabitCalenderCoordinator!
+    private var subscription: SubscriptionCoordinator!
+    private var habitCalender: HabitCalenderCoordinator!
     private var addMemojiCoordinator: AddMemojiCoordinator!
     private var communityDetail: CommunityDetailCoordinator!
-
+    private var communitySearch: CommunitySearchCoordinator!
+    private var groupHabitCalender: GroupHabitCalenderCoordinator!
     
     override func start() {
         super.start()
@@ -110,6 +110,8 @@ final class LandingCoordinator: Coordinator<Scenes> {
     }
     
     private func startHabitTypeView() {
+        let imageDataDict:[String: String] = ["name": "tab33"]
+        NotificationCenter.default.post(name: .RotateTab, object: nil, userInfo: imageDataDict)
         self.router.present(selectHabitPopUp, animated: true)
     }
     
@@ -150,6 +152,14 @@ final class LandingCoordinator: Coordinator<Scenes> {
     private func startMyAccountPopup() {
         router.present(myAccountPopup, animated: true)
     }
+    
+    private func startSubscription() {
+        subscription = SubscriptionCoordinator(router: Router())
+        add(subscription)
+        subscription.delegate = self
+        subscription.start(sourceScreen: .myAccount)
+        self.router.present(subscription, animated: true)
+    }
 }
 
 extension LandingCoordinator: NextSceneDismisser {
@@ -158,8 +168,8 @@ extension LandingCoordinator: NextSceneDismisser {
         switch scene {
         case .login: startLogin()
         case .welcome: startWelcome()
-        case .communitySearch: startCommunitySearch()
         case .myAccount: startMyAccount()
+        case .subscription: startSubscription()
         case .habitCalender: startHabitCalender()
         case .updateProfile: startUpdateProfile()
         case .changePassword: startChangePassword()
@@ -167,6 +177,7 @@ extension LandingCoordinator: NextSceneDismisser {
         case .learnHowToAddMemoji: startAddMemoji()
         case .selectHabitPopUp: startHabitTypeView()
         case .communityDetail: startCommunityDetail()
+        case .communitySearch: startCommunitySearch()
         case .webViewController: startWebViewController()
         case .groupHabitFriends: startGroupHabitCalender()
         default: break

@@ -36,7 +36,8 @@ extension HabitNameViewController {
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.navType = .addHabit
         self.viewNavigation.delegateBarAction = self
-        viewModel.didNavigateToSetTheme = self.didNavigateToSetTheme
+        self.lblUserName.text = "Alright \(UserStore.userName!), let’s \ndefine your habit"
+        self.viewModel.didNavigateToSetTheme = self.didNavigateToSetTheme
         [btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
@@ -78,10 +79,8 @@ extension HabitNameViewController {
         viewModel.onAction(action: .inputComplete(.createHabit), for: .createHabit)
     }
     
-    private func didNavigateToSetTheme(isNavigate: Bool) {
-        if isNavigate{
-           self.router?.push(scene: .setTheme)
-        }
+    private func didNavigateToSetTheme() {
+        self.router?.push(scene: .setTheme)
     }
 }
 
@@ -106,7 +105,6 @@ extension HabitNameViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
 //        if string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil || string.containsEmoji {
-//            viewModel.habitName = ""
 //            return false
 //        }
        let newLength = (textField.text?.utf16.count)! + string.utf16.count - range.length
@@ -172,6 +170,8 @@ extension HabitNameViewController: HabitViewRepresentable {
 // MARK: NavigationBarView Gelegate
 extension HabitNameViewController  : NavigationBarViewDelegate {
     func navigationBackAction() {
+        let imageDataDict:[String: String] = ["name": "tab3"]
+        NotificationCenter.default.post(name: .RotateTab, object: nil, userInfo: imageDataDict)
         NotificationCenter.default.post(name: .SearchAllGroup, object: nil)
         HabitUtils.shared.removeAllHabitData()
         router?.dismiss(controller: .addHabit)

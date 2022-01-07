@@ -7,15 +7,17 @@
 
 import UIKit
 import MessageUI
+import Quickblox
+import SVProgressHUD
 
 
 class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
-    // MARK:Outlets and variables
     @IBOutlet weak var btnLogout: UIButton!
+    @IBOutlet weak var btnGetSubscription: UIButton!
+    
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblName: IscraCustomLabel!
-    @IBOutlet weak var btnGetSubscription: UIButton!
     @IBOutlet weak var tableView: MyAccountTableView!
     @IBOutlet weak var viewNavigation: NavigationBarView!
     
@@ -76,6 +78,7 @@ extension MyAccountViewController: NavigationBarViewDelegate {
 
 // MARK: Button Action
 extension MyAccountViewController {
+   
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnGetSubscription:
@@ -88,15 +91,16 @@ extension MyAccountViewController {
     }
     
     private func getSubscriptionAction() {
-        let getSubcription: GetSubcriptionViewController = GetSubcriptionViewController.from(from: .onboarding, with: .getSubcription)
-        self.navigationController?.pushViewController(getSubcription, animated: true)
+        self.router?.push(scene: .subscription)
     }
     
     private func logoutAction() {
         let alertController = UIAlertController(title: "Logout", message: "Are you sure? logout from Iscra.", preferredStyle: .alert)
         let logoutaction = UIAlertAction(title: "Logout", style: .default) { (action:UIAlertAction!) in
             print("Delete button tapped");
+            
             self.viewModel.logout()
+            
         }
         logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
         

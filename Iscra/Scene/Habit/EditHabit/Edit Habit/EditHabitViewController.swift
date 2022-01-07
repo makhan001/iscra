@@ -32,6 +32,11 @@ class EditHabitViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
        // print("objHabitDetail is \(objHabitDetail)")
+        if Locale.is24Hour {
+                   print("24 hour")
+               } else {
+                   print("12 hour")
+               }
     }
 }
 

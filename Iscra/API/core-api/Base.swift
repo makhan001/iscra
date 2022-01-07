@@ -16,11 +16,11 @@ public enum Environment {
     var host: String {
         switch self {
         case .dev:
-            return "http://18.116.115.175/api/v1/"
+            return "http://18.219.111.58/api/v1/"
         case .staging:
-            return "http://18.116.115.175/api/v1/"
+            return "http://18.219.111.58/api/v1/"
         case .production:
-            return "http://18.116.115.175/api/v1/"
+            return "http://18.219.111.58/api/v1/"
         }
     }
     case staging

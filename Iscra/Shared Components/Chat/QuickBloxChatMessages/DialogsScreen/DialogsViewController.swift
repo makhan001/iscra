@@ -62,14 +62,15 @@ class DialogTableViewCellModel: NSObject {
             }
             // Getting recipient from users.
             if let recipient = ChatManager.instance.storage.user(withID: UInt(dialog.recipientID)),
-               let fullName = recipient.fullName {
-                self.textLabelText = fullName
+               let fullName = recipient.fullName?.capitalized {
+                self.textLabelText = fullName.capitalized
                 print("recipient ========>>\(recipient)")
+                print("recipient ========>>\(recipient.fullName)")
                 
                 self.customData = recipient.customData ?? ""
             } else {
                 ChatManager.instance.loadUser(UInt(dialog.recipientID)) { [weak self] (user) in
-                    self?.textLabelText = user?.fullName ?? user?.login ?? ""
+                    self?.textLabelText = user?.fullName?.capitalized ?? user?.login ?? ""
                     print("user img URL ---> \(Date().timeIntervalSince1970)")
                     print("user img URL=========>>\(user?.customData ?? "")")
                     self?.customData = user?.customData ?? ""
@@ -77,6 +78,7 @@ class DialogTableViewCellModel: NSObject {
             }
         } else {
             self.dialogIcon = UIImage(named: "group")
+           
         }
     }
 }
@@ -101,6 +103,7 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tableView.register(UINib(nibName: DialogCellConstant.reuseIdentifier, bundle: nil), forCellReuseIdentifier: DialogCellConstant.reuseIdentifier)
         
         setupNavigationTitle()
+     
         
     }
     
@@ -129,11 +132,11 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             if notConnection == true {
                 self.showAlertView(LoginConstant.checkInternet, message: LoginConstant.checkInternetMessage)
             } else {
-//                if QBChat.instance.isConnected == false {
-//                    self.chatManager.connect()
-//                }
-                //self.chatManager.updateStorage()
-               // self.chatManager.storage.clear()
+                if QBChat.instance.isConnected == false {
+                    self.chatManager.connect()
+                }
+                self.chatManager.updateStorage()
+                self.chatManager.storage.clear()
             }
         }
         Reachability.instance.networkStatusBlock = { status in
@@ -485,11 +488,12 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     // MARK: - Helpers
     private func reloadContent() {
         dialogs = chatManager.storage.dialogsSortByUpdatedAt()
-        if dialogs.count > 0 {
+        if dialogs.count >= 0 {
             print("Chat list not empty")
            
         } else {
             print("chat is EMPTY")
+            QBChat.instance.removeDelegate(self)
         }
         tableView.reloadData()
     }

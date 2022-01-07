@@ -170,6 +170,10 @@
 		861CF1D32743E02300727D1E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861CF1D22743E02300727D1E /* LoginCoordinator.swift */; };
 		862E5AFB27565B5A00225894 /* HabitNameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */; };
 		8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669A8392747D41100773C57 /* LandingCoordinator.swift */; };
+		8690C17127846506003CFBF0 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690C17027846506003CFBF0 /* SubscriptionViewController.swift */; };
+		8690C17327846694003CFBF0 /* SubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690C17227846694003CFBF0 /* SubscriptionViewModel.swift */; };
+		8690C1752784669F003CFBF0 /* SubscriptionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690C1742784669F003CFBF0 /* SubscriptionCoordinator.swift */; };
+		8690C1772784809F003CFBF0 /* IconsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690C1762784809E003CFBF0 /* IconsViewModel.swift */; };
 		86CF862C2775CE1900FB19BC /* QBChatLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF862B2775CE1900FB19BC /* QBChatLogin.swift */; };
 		86DC2EB5277C889100CA4C9F /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC2EB3277C889000CA4C9F /* IAPHelper.swift */; };
 		86DC2EB6277C889100CA4C9F /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC2EB4277C889000CA4C9F /* Products.swift */; };
@@ -184,10 +188,9 @@
 		880D683F273AB89600B232CC /* EditHabitTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D683D273AB89600B232CC /* EditHabitTableView.swift */; };
 		880D6840273AB89600B232CC /* EditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880D683E273AB89600B232CC /* EditHabitViewController.swift */; };
 		880E79FA273145D200FB277C /* HabitIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880E79F9273145D200FB277C /* HabitIcons.xcassets */; };
-		880E79FD2731503F00FB277C /* HabitIcons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 880E79FC2731503F00FB277C /* HabitIcons.plist */; };
 		880F3E302727DE04007CA895 /* ColorPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E2F2727DE04007CA895 /* ColorPopUpViewController.swift */; };
 		880F3E362727EC73007CA895 /* IconPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E352727EC73007CA895 /* IconPopupViewController.swift */; };
-		880F3E412727EFFE007CA895 /* IconHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E402727EFFE007CA895 /* IconHeader.swift */; };
+		880F3E412727EFFE007CA895 /* IconHeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E402727EFFE007CA895 /* IconHeaderCollectionView.swift */; };
 		880F3E492727F03F007CA895 /* IconHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E472727F03F007CA895 /* IconHeaderCollectionViewCell.swift */; };
 		880F3E4A2727F03F007CA895 /* IconHeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880F3E482727F03F007CA895 /* IconHeaderCollectionViewCell.xib */; };
 		880F3E4D27280C48007CA895 /* IconCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F3E4C27280C48007CA895 /* IconCollectionView.swift */; };
@@ -219,7 +222,6 @@
 		88202D592719923700F0EA2E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202D582719923700F0EA2E /* WelcomeViewController.swift */; };
 		88202D5F2719AAAA00F0EA2E /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */; };
 		8822D4E72731775500C68EE5 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822D4E62731775500C68EE5 /* VerificationViewController.swift */; };
-		8822D4EC2731777E00C68EE5 /* GetSubcriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822D4EB2731777E00C68EE5 /* GetSubcriptionViewController.swift */; };
 		8827C3C12750C125009D12C4 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827C3C02750C124009D12C4 /* CameraHandler.swift */; };
 		882F3E002721A50A00A409A6 /* LandingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */; };
 		882F3E092721A88400A409A6 /* SelectHabitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */; };
@@ -490,6 +492,10 @@
 		861CF1D22743E02300727D1E /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		862E5AFA27565B5A00225894 /* HabitNameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNameCoordinator.swift; sourceTree = "<group>"; };
 		8669A8392747D41100773C57 /* LandingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingCoordinator.swift; sourceTree = "<group>"; };
+		8690C17027846506003CFBF0 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		8690C17227846694003CFBF0 /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
+		8690C1742784669F003CFBF0 /* SubscriptionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionCoordinator.swift; sourceTree = "<group>"; };
+		8690C1762784809E003CFBF0 /* IconsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsViewModel.swift; sourceTree = "<group>"; };
 		86CF862B2775CE1900FB19BC /* QBChatLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QBChatLogin.swift; sourceTree = "<group>"; };
 		86DC2EB3277C889000CA4C9F /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		86DC2EB4277C889000CA4C9F /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
@@ -504,10 +510,9 @@
 		880D683D273AB89600B232CC /* EditHabitTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitTableView.swift; sourceTree = "<group>"; };
 		880D683E273AB89600B232CC /* EditHabitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitViewController.swift; sourceTree = "<group>"; };
 		880E79F9273145D200FB277C /* HabitIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HabitIcons.xcassets; sourceTree = "<group>"; };
-		880E79FC2731503F00FB277C /* HabitIcons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HabitIcons.plist; sourceTree = "<group>"; };
 		880F3E2F2727DE04007CA895 /* ColorPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPopUpViewController.swift; sourceTree = "<group>"; };
 		880F3E352727EC73007CA895 /* IconPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPopupViewController.swift; sourceTree = "<group>"; };
-		880F3E402727EFFE007CA895 /* IconHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconHeader.swift; sourceTree = "<group>"; };
+		880F3E402727EFFE007CA895 /* IconHeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconHeaderCollectionView.swift; sourceTree = "<group>"; };
 		880F3E472727F03F007CA895 /* IconHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		880F3E482727F03F007CA895 /* IconHeaderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconHeaderCollectionViewCell.xib; sourceTree = "<group>"; };
 		880F3E4C27280C48007CA895 /* IconCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionView.swift; sourceTree = "<group>"; };
@@ -539,7 +544,6 @@
 		88202D582719923700F0EA2E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		8822D4E62731775500C68EE5 /* VerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
-		8822D4EB2731777E00C68EE5 /* GetSubcriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSubcriptionViewController.swift; sourceTree = "<group>"; };
 		8827C3C02750C124009D12C4 /* CameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		882F3DFF2721A50A00A409A6 /* LandingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingTabBarController.swift; sourceTree = "<group>"; };
 		882F3E082721A88400A409A6 /* SelectHabitPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHabitPopUpViewController.swift; sourceTree = "<group>"; };
@@ -1295,7 +1299,6 @@
 		880E79F8273145A700FB277C /* HabitIconResources */ = {
 			isa = PBXGroup;
 			children = (
-				880E79FC2731503F00FB277C /* HabitIcons.plist */,
 				880E79F9273145D200FB277C /* HabitIcons.xcassets */,
 			);
 			path = HabitIconResources;
@@ -1314,6 +1317,7 @@
 			isa = PBXGroup;
 			children = (
 				880F3E352727EC73007CA895 /* IconPopupViewController.swift */,
+				8690C1762784809E003CFBF0 /* IconsViewModel.swift */,
 				880F3E3A2727EDBA007CA895 /* Views */,
 			);
 			path = IconPopUp;
@@ -1322,7 +1326,7 @@
 		880F3E3A2727EDBA007CA895 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				880F3E402727EFFE007CA895 /* IconHeader.swift */,
+				880F3E402727EFFE007CA895 /* IconHeaderCollectionView.swift */,
 				880F3E472727F03F007CA895 /* IconHeaderCollectionViewCell.swift */,
 				880F3E482727F03F007CA895 /* IconHeaderCollectionViewCell.xib */,
 				880F3E4C27280C48007CA895 /* IconCollectionView.swift */,
@@ -1431,12 +1435,14 @@
 			path = Verification;
 			sourceTree = "<group>";
 		};
-		8822D4EA2731777E00C68EE5 /* Get Subscription */ = {
+		8822D4EA2731777E00C68EE5 /* Subscription */ = {
 			isa = PBXGroup;
 			children = (
-				8822D4EB2731777E00C68EE5 /* GetSubcriptionViewController.swift */,
+				8690C17027846506003CFBF0 /* SubscriptionViewController.swift */,
+				8690C17227846694003CFBF0 /* SubscriptionViewModel.swift */,
+				8690C1742784669F003CFBF0 /* SubscriptionCoordinator.swift */,
 			);
-			path = "Get Subscription";
+			path = Subscription;
 			sourceTree = "<group>";
 		};
 		8827C3BF2750C0DD009D12C4 /* CameraHandler */ = {
@@ -1745,7 +1751,7 @@
 				8814B441274393EB00A6DE01 /* OnboardingProvider.swift */,
 				8814B4082743844D00A6DE01 /* OnboardingAdaptables.swift */,
 				8841878227478D0F00C6EE39 /* Forgot password */,
-				8822D4EA2731777E00C68EE5 /* Get Subscription */,
+				8822D4EA2731777E00C68EE5 /* Subscription */,
 				88202D572719920A00F0EA2E /* Walkthrough */,
 				88E028532716F73F00D90BB1 /* Signup */,
 				8822D4E52731775500C68EE5 /* Verification */,
@@ -2053,7 +2059,6 @@
 				88E028922716FECF00D90BB1 /* Landing.storyboard in Resources */,
 				880F3E4A2727F03F007CA895 /* IconHeaderCollectionViewCell.xib in Resources */,
 				88B0F95A27180A9100EF92B3 /* SourceSansPro-Bold.ttf in Resources */,
-				880E79FD2731503F00FB277C /* HabitIcons.plist in Resources */,
 				5FF6CD60274E6A5A007ADC2F /* ToolbarContentView.xib in Resources */,
 				8845B731271EF539007A5069 /* Onboarding.storyboard in Resources */,
 				88B0F95E27180A9100EF92B3 /* SourceSansPro-BlackItalic.ttf in Resources */,
@@ -2171,7 +2176,7 @@
 				8814B43A2743874100A6DE01 /* APIClient.swift in Sources */,
 				5FF6CD27274E6A5A007ADC2F /* Reachability.swift in Sources */,
 				8669A83A2747D41100773C57 /* LandingCoordinator.swift in Sources */,
-				880F3E412727EFFE007CA895 /* IconHeader.swift in Sources */,
+				880F3E412727EFFE007CA895 /* IconHeaderCollectionView.swift in Sources */,
 				8814B4372743874100A6DE01 /* APIParser.swift in Sources */,
 				88E0289D2716FFE500D90BB1 /* SignupViewController.swift in Sources */,
 				0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */,
@@ -2185,6 +2190,7 @@
 				5FFDDB3A2755054600051011 /* MyAccountPopupViewController.swift in Sources */,
 				5FF6CD62274E6A5A007ADC2F /* InputToolbar.swift in Sources */,
 				5FF6CD47274E6A5A007ADC2F /* UserTableViewCell.swift in Sources */,
+				8690C1772784809F003CFBF0 /* IconsViewModel.swift in Sources */,
 				5FF6CD76274E6A5A007ADC2F /* ChatAttachmentIncomingCell.swift in Sources */,
 				04F0CB30277458C0002873DB /* CommunityDetailViewModel.swift in Sources */,
 				885F7FB6273E2F7500B8D4EF /* UserStore.swift in Sources */,
@@ -2245,6 +2251,7 @@
 				5FF6CD6A274E6A5A007ADC2F /* ChatIncomingCell.swift in Sources */,
 				5FF6CD7E274E6A5A007ADC2F /* ChatContainerView.swift in Sources */,
 				880F3E4D27280C48007CA895 /* IconCollectionView.swift in Sources */,
+				8690C17127846506003CFBF0 /* SubscriptionViewController.swift in Sources */,
 				5FF6CD43274E6A5A007ADC2F /* Profile.swift in Sources */,
 				5FF6CD5F274E6A5A007ADC2F /* PlaceHolderTextView.swift in Sources */,
 				04671A35277D9B3600AF9484 /* ShareHabitViewController.swift in Sources */,
@@ -2310,6 +2317,7 @@
 				04295A2B2758BC60001BF65E /* FetchHabit.swift in Sources */,
 				5FF6CD68274E6A5A007ADC2F /* CircularProgressBar.swift in Sources */,
 				8814B418274385E600A6DE01 /* Coordinators.swift in Sources */,
+				8690C17327846694003CFBF0 /* SubscriptionViewModel.swift in Sources */,
 				887994BE273AB2EE00904D1F /* CommunityGroupHabit.swift in Sources */,
 				5FF6CD71274E6A5A007ADC2F /* ChatDateCell.swift in Sources */,
 				88E028F227170B7F00D90BB1 /* WebRouter.swift in Sources */,
@@ -2397,7 +2405,6 @@
 				887994C1273AB2EE00904D1F /* CommunityViewController.swift in Sources */,
 				887994BB273AB2EE00904D1F /* CommunityMyGroupsCell.swift in Sources */,
 				5FF6CD46274E6A5A007ADC2F /* EnterChatNameVC.swift in Sources */,
-				8822D4EC2731777E00C68EE5 /* GetSubcriptionViewController.swift in Sources */,
 				88B0F9C027181A4B00EF92B3 /* IscraCustomButton.swift in Sources */,
 				5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */,
 				5FF6CD67274E6A5A007ADC2F /* TypingView.swift in Sources */,
@@ -2405,6 +2412,7 @@
 				8814B4382743874100A6DE01 /* APIError.swift in Sources */,
 				045BF9D02769CC8C008B1C8A /* ReminderCoordinator.swift in Sources */,
 				5FF6CD7A274E6A5A007ADC2F /* ChatCollectionViewDelegateFlowLayout.swift in Sources */,
+				8690C1752784669F003CFBF0 /* SubscriptionCoordinator.swift in Sources */,
 				046F92C12769D9C100190D9A /* InviteFriendCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

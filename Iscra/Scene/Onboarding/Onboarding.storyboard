@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -2629,10 +2629,10 @@
             </objects>
             <point key="canvasLocation" x="3469.5999999999999" y="1553.9730134932536"/>
         </scene>
-        <!--Get Subcription View Controller-->
+        <!--Subscription View Controller-->
         <scene sceneID="Fk9-7o-5Zb">
             <objects>
-                <viewController storyboardIdentifier="getSubcription" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kCS-Rf-9xQ" customClass="GetSubcriptionViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="subscription" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kCS-Rf-9xQ" customClass="SubscriptionViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QCM-8Q-4sx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2792,8 +2792,8 @@
                     </view>
                     <connections>
                         <outlet property="btnAllowAds" destination="3xM-69-dgw" id="n3A-0m-AsW"/>
-                        <outlet property="btnGetSubcription" destination="uuI-Ne-qmK" id="vEm-IA-ugf"/>
-                        <outlet property="friends_image" destination="sjn-mt-y5j" id="XJE-wu-TtA"/>
+                        <outlet property="btnSubscription" destination="uuI-Ne-qmK" id="N4j-Ab-Mz6"/>
+                        <outlet property="imageFriends" destination="sjn-mt-y5j" id="RfZ-sd-eiX"/>
                         <outlet property="lblHeaderTitle" destination="Nyg-Pp-IgW" id="3p8-ML-ZwY"/>
                         <outlet property="lblMiddleText" destination="jcT-7Q-KPU" id="4O3-cV-MW3"/>
                         <outlet property="viewNavigation" destination="Qzx-rq-6lU" id="LhL-G0-Ya7"/>
@@ -3364,7 +3364,7 @@
             <size key="intrinsicContentSize" width="67" height="34"/>
         </designable>
         <designable name="2ls-IB-Blx">
-            <size key="intrinsicContentSize" width="209" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="209.33333333333334" height="21.666666666666668"/>
         </designable>
         <designable name="3xM-69-dgw">
             <size key="intrinsicContentSize" width="66" height="30"/>
@@ -3386,7 +3386,7 @@
             <size key="intrinsicContentSize" width="58.666666666666664" height="24"/>
         </designable>
         <designable name="B9a-dm-i6h">
-            <size key="intrinsicContentSize" width="539.33333333333337" height="38.333333333333336"/>
+            <size key="intrinsicContentSize" width="539" height="38.333333333333336"/>
         </designable>
         <designable name="Bft-tY-T2W">
             <size key="intrinsicContentSize" width="567.66666666666663" height="57.333333333333336"/>
@@ -3407,7 +3407,7 @@
             <size key="intrinsicContentSize" width="191" height="24"/>
         </designable>
         <designable name="Lf5-2i-KVi">
-            <size key="intrinsicContentSize" width="804" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="804.33333333333337" height="21.666666666666668"/>
         </designable>
         <designable name="MJs-dO-gf3"/>
         <designable name="N04-yo-qRO"/>
@@ -3440,7 +3440,7 @@
             <size key="intrinsicContentSize" width="82.333333333333329" height="26.333333333333332"/>
         </designable>
         <designable name="Uhw-aA-CSh">
-            <size key="intrinsicContentSize" width="804" height="21.666666666666668"/>
+            <size key="intrinsicContentSize" width="804.33333333333337" height="21.666666666666668"/>
         </designable>
         <designable name="UwO-VI-JaW"/>
         <designable name="WMm-Js-G1K"/>
@@ -3448,7 +3448,7 @@
             <size key="intrinsicContentSize" width="14" height="28.666666666666668"/>
         </designable>
         <designable name="Xhj-tO-UvY">
-            <size key="intrinsicContentSize" width="539.33333333333337" height="38.333333333333336"/>
+            <size key="intrinsicContentSize" width="539" height="38.333333333333336"/>
         </designable>
         <designable name="YTY-Xr-Eih"/>
         <designable name="Ysp-xF-SZL">

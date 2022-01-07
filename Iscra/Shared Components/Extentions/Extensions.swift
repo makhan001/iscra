@@ -276,6 +276,13 @@ extension UIImageView {
     }
 }
 
+extension Locale {
+    static var is24Hour: Bool {
+        let dateFormat = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)!
+        return dateFormat.firstIndex(of: "a") == nil
+    }
+}
+
 extension Date {
     func string(format: String) -> String {
         let formatter = DateFormatter()
@@ -444,6 +451,7 @@ extension UIAlertController {
 }
 
 extension Notification.Name {
+    static let RotateTab = Notification.Name("rotateTab")
     static let EditHabit = Notification.Name("EditHabit")
     static let JoinHabit = Notification.Name("JoinHabit")
     static let MarkAsComplete = Notification.Name("MarkAsComplete")
@@ -465,6 +473,16 @@ extension TimeInterval {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         return dateFormatter.string(from: date)
+    }
+    
+    var date: Date {
+        return Date(timeIntervalSince1970: self)
+    }
+    
+    var daysDifference: Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: self.date, to: Date())
+        return components.day ?? 0
     }
 }
 
@@ -548,3 +566,4 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         return context
     }
 }
+

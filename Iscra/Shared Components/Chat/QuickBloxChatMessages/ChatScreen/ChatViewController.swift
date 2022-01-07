@@ -274,7 +274,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 self.toolbarBottomLayoutGuide.constant = 250
             }
         }
-
+       
     }
     
     func mainViewTappedSetup() {
@@ -298,6 +298,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         self.hideTabBarSetup()
         QBChat.instance.addDelegate(self)
         selectedIndexPathForMenu = nil
+        setupTitleView()
         willResignActiveBlock = NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
                                                                        object: nil,
                                                                        queue: nil) { [weak self] (notification) in
@@ -531,7 +532,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         collectionView.transform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: -1.0, tx: 0.0, ty: 0.0)
         setupInputToolbar()
        
-    }
+     }
     
     private func registerCells() {
         if let headerNib = HeaderCollectionReusableView.nib(),
@@ -988,9 +989,11 @@ class ChatViewController: UIViewController, ChatContextMenu {
                             self?.showAttachmentBar(with: selectedAsset, attachmentType: .Image)
                         }
                     }
+                   
                 }
                 self.present(selectAssetsVC, animated: false)
             }
+            
         }
         //camera access
         let accessDenied: (_ withSourceType: UIImagePickerController.SourceType) -> Void = { [weak self] (sourceType) in
@@ -1039,21 +1042,22 @@ class ChatViewController: UIViewController, ChatContextMenu {
             //Photo Library
             switch PHPhotoLibrary.authorizationStatus() {
             case .authorized:
-                showAllAssets()
-                //accessDenied(sourceType)
+              showAllAssets()
+               // accessDenied(sourceType)
             case .notDetermined:
                 PHPhotoLibrary.requestAuthorization { (status) in
-                    
+
                     if status == .authorized {
                       showAllAssets()
                        // accessDenied(sourceType)
-                      
+
                     } else {
                        accessDenied(sourceType)
-                       
+
                     }
-                  
+
                 }
+          
             case .denied, .restricted:
                 accessDenied(sourceType)
             case .limited:
@@ -1164,7 +1168,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 (response, event) in
                  print("Push message successfully sent")
             } errorBlock: { (error) in
-                print("NoTSuceee",error.description)
+                print("NotSuceees",error.description)
             }
         } else {
             //for group chat
@@ -1172,7 +1176,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 (response, event) in
                  print("Push message successfully sent")
             } errorBlock: { (error) in
-                print("NoTSuceee",error.description)
+                print("NotSuceees",error.description)
             }
         }
     }
@@ -1394,6 +1398,8 @@ extension ChatViewController: InputToolbarDelegate {
     func messagesInputToolbar(_ toolbar: InputToolbar, didPressLeftBarButton sender: UIButton) {
         if toolbar.sendButtonOnRight {
             didPressAccessoryButton(sender)
+            
+            
         } else {
             didPressSend(sender)
         }
@@ -1631,7 +1637,7 @@ extension ChatViewController: ChatCollectionViewDataSource {
 
         chatCell.timeLabel.text = timeLabelAttributedString(forItem: message)
         if let chatOutgoingCell = chatCell as? ChatOutgoingCell {
-            //chatOutgoingCell.setupStatusImage(statusImageForMessage(message: message))
+            chatOutgoingCell.setupStatusImage(statusImageForMessage(message: message))
         }
         
         if let textView = chatCell.textView {

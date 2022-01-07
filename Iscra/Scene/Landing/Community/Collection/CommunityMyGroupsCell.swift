@@ -44,7 +44,8 @@ class CommunityMyGroupsCell: UICollectionViewCell, Reusable {
     
     func configure<T>(with content: T) { }
     
-    func configure(viewModel: CommunityViewModel, groupHabit: GroupHabit ) {
+    func configure(viewModel: CommunityViewModel, groupHabit: GroupHabit , tag:Int ) {
+        self.btnHabitDetail.tag = tag
         self.viewModel = viewModel
         self.viewModel.colorTheme = groupHabit.colorTheme ?? self.viewModel.colorTheme
         self.viewModel.habitMarks = groupHabit.habitMarks ?? self.viewModel.habitMarks

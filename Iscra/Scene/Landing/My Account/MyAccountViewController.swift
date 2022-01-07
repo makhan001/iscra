@@ -55,6 +55,7 @@ extension MyAccountViewController {
             print("Mail services are not available")
             return
         }
+       
     }
     
     private func retriveUserDetails() {
@@ -65,6 +66,7 @@ extension MyAccountViewController {
     func didUpdateName() {
         self.lblName.text = UserStore.userName?.capitalized
     }
+   
 }
 
 // MARK: Navigation Delegates
@@ -81,6 +83,7 @@ extension MyAccountViewController {
    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
+        
         case btnGetSubscription:
             self.getSubscriptionAction()
         case btnLogout:
@@ -89,7 +92,7 @@ extension MyAccountViewController {
             break
         }
     }
-    
+   
     private func getSubscriptionAction() {
         self.router?.push(scene: .subscription)
     }
@@ -208,6 +211,7 @@ extension MyAccountViewController: ImagePickerDelegate{
     func fetchedImage(img: UIImage) {
         imgProfile.image = img
         viewModel.selectedImage = img
+        print("fetchImage===>\(img)")
         viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
         self.dismiss(animated: true, completion: nil)
     }

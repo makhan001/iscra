@@ -396,8 +396,8 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
        // cell.dialogName.text = UserStore.userName?.capitalized
         
         print("cell for row ---> \(Date().timeIntervalSince1970)")
-        print("cellModel.customData\(cellModel.customData)")
-        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+        print("cellModel.customData\(String(describing: cellModel.customData))")
+        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData ?? ""), placeholderImage: UIImage(named: "group"))
         
         return cell
     }

@@ -499,8 +499,8 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             cell.dialogName.text = cellModel.textLabelText.capitalized
 
             print("cell for row ---> \(Date().timeIntervalSince1970)")
-            print("cellModel.customData\(cellModel.customData)")
-            cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+            print("cellModel.customData\(String(describing: cellModel.customData))")
+            cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData ?? ""), placeholderImage: UIImage(named: "group"))
             let lastItemNumber = users.count - 1
             if indexPath.row == lastItemNumber {
                 if isSearch == true, cancel == false {

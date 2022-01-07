@@ -133,20 +133,62 @@ struct LoginData: Codable {
 }
 
 //Mark: UserData
+//struct User: Codable {
+//    var id: Int?
+//    var email, encryptedPassword: String?
+//    var confirmationToken, resetPasswordToken, resetPasswordSentAt, rememberCreatedAt: String?
+//    var createdAt, updatedAt: Int?
+//    var verificationCode, authenticationToken, username: String?
+//    var memoji: String?
+//    var isVerified: Bool?
+//    var deviceType, osVersion, deviceModel, fcmToken: String?
+//    var forgotPassword: String?
+//    var deviceUdid: String?
+//    var loginType, socialID: String?
+//    var isGoogle, isApple: Bool?
+//    var profileImage: String?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id, email
+//        case encryptedPassword = "encrypted_password"
+//        case confirmationToken = "confirmation_token"
+//        case resetPasswordToken = "reset_password_token"
+//        case resetPasswordSentAt = "reset_password_sent_at"
+//        case rememberCreatedAt = "remember_created_at"
+//        case createdAt = "created_at"
+//        case updatedAt = "updated_at"
+//        case verificationCode = "verification_code"
+//        case authenticationToken = "authentication_token"
+//        case username, memoji
+//        case isVerified = "is_verified"
+//        case deviceType = "device_type"
+//        case osVersion = "os_version"
+//        case deviceModel = "device_model"
+//        case fcmToken = "fcm_token"
+//        case forgotPassword = "forgot_password"
+//        case deviceUdid = "device_udid"
+//        case loginType = "login_type"
+//        case socialID = "social_id"
+//        case isGoogle = "is_google"
+//        case isApple = "is_apple"
+//        case profileImage = "profile_image"
+//    }
+//}
+
 struct User: Codable {
-    var id: Int?
-    var email, encryptedPassword: String?
-    var confirmationToken, resetPasswordToken, resetPasswordSentAt, rememberCreatedAt: String?
-    var createdAt, updatedAt: Int?
-    var verificationCode, authenticationToken, username: String?
-    var memoji: String?
-    var isVerified: Bool?
-    var deviceType, osVersion, deviceModel, fcmToken: String?
-    var forgotPassword: String?
-    var deviceUdid: String?
-    var loginType, socialID: String?
-    var isGoogle, isApple: Bool?
-    var profileImage: String?
+    let id: Int?
+    let email, encryptedPassword: String?
+    let confirmationToken, resetPasswordToken, resetPasswordSentAt, rememberCreatedAt: String?
+    let createdAt, updatedAt: Int?
+    let verificationCode, authenticationToken, username: String?
+    let memoji: String?
+    let isVerified: Bool?
+    let deviceType, osVersion, deviceModel, fcmToken: String?
+    let forgotPassword: String?
+    let deviceUdid: String?
+    let loginType, socialID: String?
+    let isGoogle, isApple: Bool?
+    let profileImage: String?
 
     enum CodingKeys: String, CodingKey {
         case id, email

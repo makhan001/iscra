@@ -37,7 +37,8 @@ final class MyAccountViewModel {
         self.provider.logout(param: UserParams.logout())
     }
     private func validateUserInput() {
-        let parameters =  UserParams.UpdateProfile(username: UserStore.userName)
+        let parameters =  UserParams.UpdateProfile(username: UserStore.userName, profile_image: UserStore.userImage )
+        print("Parameter====>\(parameters)")
         WebService().requestMultiPart(urlString: APIConstants.updateProfile,
                                       httpMethod: .put,
                                       parameters: parameters,
@@ -54,6 +55,7 @@ final class MyAccountViewModel {
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userName: response.data?.user?.username)
                         UserStore.save(userImage: response.data?.user?.profileImage)
+                        print("AccountImage====>\(String(describing: UserStore.userImage as? UIImage))")
                         UserStore.save(token: response.data?.user?.authenticationToken)
                         self?.view?.onAction(.updateProfile)
                     } else {

@@ -225,6 +225,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
+        
         QBChat.instance.addDelegate(self)
         setupViewMessages()
         dataSource.delegate = self
@@ -1771,8 +1772,10 @@ extension ChatViewController: ChatCollectionViewDelegateFlowLayout {
 
 //MARK: - UITextViewDelegate
 extension ChatViewController: UITextViewDelegate {
+   
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView != inputToolbar.contentView.textView {
+            textView.allowsEditingTextAttributes = true
             return
         }
         if automaticallyScrollsToMostRecentMessage == true {
@@ -1827,11 +1830,13 @@ extension ChatViewController: UITextViewDelegate {
     override func paste(_ sender: Any?) {
         let textAttachment = NSTextAttachment()
         textAttachment.image = UIPasteboard.general.image
+        //let memojiString = NSAttributedString(attachment: image)
         let attributedText = NSAttributedString(attachment: textAttachment)
         if let textView = inputToolbar.contentView.textView {
             textView.attributedText = attributedText
         }
     }
+   
 }
 
 //MARK: - ChatCellDelegate

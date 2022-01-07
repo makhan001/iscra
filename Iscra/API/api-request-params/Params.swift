@@ -64,6 +64,7 @@ enum UserParams {
     
     struct UpdateProfile: Codable {
         let username: String?
+        let profile_image : String?        
     }
 }
 

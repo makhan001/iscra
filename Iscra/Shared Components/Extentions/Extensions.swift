@@ -246,8 +246,8 @@ extension String {
 
 extension UIImageView {
     func setImageFromURL(_ url:String, with defaultImage:UIImage?) {
+        self.image = defaultImage
         if url.contains("null") {
-            self.image = defaultImage
             self.contentMode = .scaleAspectFit
             return
         }
@@ -456,6 +456,7 @@ extension Notification.Name {
     static let JoinHabit = Notification.Name("JoinHabit")
     static let MarkAsComplete = Notification.Name("MarkAsComplete")
     static let SearchAllGroup = Notification.Name("SearchAllGroup")
+    static let purchaseFinished = Notification.Name("purchaseFinished")
     static let IAPHelperPurchaseNotification = Notification.Name("IAPHelperPurchaseNotification")
     static let IAPHelperPurchaseFinishNotification = Notification.Name("IAPHelperPurchaseFinishNotification")
     static let IAPHelperSubscriptionExpireDateNotification = Notification.Name("IAPHelperSubscriptionExpireDateNotification")

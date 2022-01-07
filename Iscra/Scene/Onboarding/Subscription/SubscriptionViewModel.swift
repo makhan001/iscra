@@ -5,10 +5,12 @@
 //  Created by m@k on 04/01/22.
 //
 
+import StoreKit
 import Foundation
 
 final class SubscriptionViewModel {
     
+    var products = [SKProduct]()
     var sourceScreen: SubscriptionSourceScreen = .myAccount
     
     let provider: OnboardingServiceProvidable
@@ -17,6 +19,24 @@ final class SubscriptionViewModel {
     init(provider: OnboardingServiceProvidable) {
         self.provider = provider
         self.provider.delegate = self
+    }
+    
+    func getProducts() {
+        Products.store.requestProducts{ [weak self] success, products in
+            guard let self = self else { return }
+            if success {
+                self.products = products!
+                self.view?.onAction(.products)
+            } else {
+                self.view?.onAction(.errorMessage("No products found"))
+            }
+        }
+    }
+    
+    func buyProduct(_ product: SKProduct) {
+        if IAPHelper.canMakePayments() {
+            Products.store.buyProduct(product)
+        } else {}
     }
 }
 

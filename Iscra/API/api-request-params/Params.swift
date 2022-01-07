@@ -64,7 +64,6 @@ enum UserParams {
     
     struct UpdateProfile: Codable {
         let username: String?
-        let profile_image : String?        
     }
 }
 
@@ -128,7 +127,6 @@ enum HabitParams {
     struct ShareHabit: Codable {
         let habit_id: Int?
         let user_ids: [Int]?
-        let share_type: String?
     }
     
     struct MarkAsComplete: Codable {

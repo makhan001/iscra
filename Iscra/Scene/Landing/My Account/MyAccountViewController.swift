@@ -41,6 +41,9 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
 // MARK: Instance Methods
 extension MyAccountViewController {
     private func setup() {
+        imgProfile.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        imgProfile.addGestureRecognizer(tapRecognizer)
         self.viewModel.view = self
         [btnGetSubscription,btnLogout].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -55,7 +58,16 @@ extension MyAccountViewController {
             print("Mail services are not available")
             return
         }
+       // imgProfile.isUserInteractionEnabled = true
        
+       
+    }
+    @objc func imageTapped(sender: UIImageView) {
+        print("image tapped")
+        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ZoomImageViewController") as! ZoomImageViewController
+        vc.strUrl = UserStore.userImage ?? ""
+        self.navigationController?.present(vc, animated: false, completion: nil)
     }
     
     private func retriveUserDetails() {

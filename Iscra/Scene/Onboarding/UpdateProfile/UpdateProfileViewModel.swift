@@ -43,9 +43,9 @@ final class UpdateProfileViewModel {
                                       httpMethod: .put,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
-                                      imageArray: [["profile_image": selectedImage ]],
+                                      imageArray: [["profile_image": self.selectedImage]],
                                       fileArray: [],
-                                      file: ["profile_image": selectedImage ]){ [weak self](resp, err) in
+                                      file: ["profile_image": self.selectedImage]){ [weak self](resp, err) in
             if err != nil {
                 self?.delegate?.completed(for: .updateProfile, with: resp, with: nil)
                 return

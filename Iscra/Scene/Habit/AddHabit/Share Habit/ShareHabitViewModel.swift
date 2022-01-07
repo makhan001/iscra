@@ -28,7 +28,8 @@ final class ShareHabitViewModel {
     }
     
     func shareHabit() {
-        self.provider.shareHabit(param: HabitParams.ShareHabit(habit_id: self.habitId, user_ids: self.arrSelectedUsers, share_type: "1"))
+     //   self.provider.shareHabit(param: HabitParams.ShareHabit(habit_id: self.habitId, user_ids: self.arrSelectedUsers, share_type: "")) // old
+          self.provider.shareHabit(param: HabitParams.ShareHabit(habit_id: self.habitId, user_ids: self.arrSelectedUsers))
     }
     
     func callApiFriendList() {

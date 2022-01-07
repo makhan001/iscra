@@ -54,6 +54,7 @@ class GroupHabitFriendsViewController: UIViewController {
 extension GroupHabitFriendsViewController {
     private func setup() {
         self.viewModel.view = self
+        self.btnSegment.isHidden = true
         self.viewBottom.isHidden = true
         self.configureTable()
         self.setViewControls()
@@ -123,8 +124,10 @@ extension GroupHabitFriendsViewController {
         self.circularViewSetup()
         self.viewNavigation.lblTitle.textColor = self.themeColor
         self.btnSegment.selectedSegmentTintColor = self.themeColor
-        self.lblDaysCount.text = String(self.viewModel.longestStreak ?? 0)
-
+        if let daysCount = self.viewModel.longestStreak {
+            self.lblDaysCount.text = String(daysCount)
+        }
+        
         if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
             self.viewEditHabit.isHidden = false
             self.viewDeleteHabit.isHidden = false
@@ -318,6 +321,7 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
             self.showToast(message: msg)
         case .sucessMessage(_):
             // self.showToast(message: msg)
+            self.btnSegment.isHidden = false
             self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB") ?? UIColor.clear
             guard let name = self.viewModel.objHabitDetail?.name else { return }
             self.viewNavigation.lblTitle.text = name.capitalized

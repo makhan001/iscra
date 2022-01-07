@@ -36,7 +36,6 @@ extension HabitNameViewController {
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.navType = .addHabit
         self.viewNavigation.delegateBarAction = self
-        self.lblUserName.text = "Alright \(UserStore.userName!), let’s \ndefine your habit"
         self.viewModel.didNavigateToSetTheme = self.didNavigateToSetTheme
         [btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)

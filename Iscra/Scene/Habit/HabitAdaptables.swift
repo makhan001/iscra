@@ -15,6 +15,11 @@ enum HabitScreenType: String {
     case editHabit
 }
 
+enum CalendarScreenType: String {
+    case home
+    case community
+}
+
 struct WeekDays {
     var id : Int
     var shortDayname: String

@@ -27,7 +27,8 @@ class HabitCell: UITableViewCell, Reusable {
     
     var viewModel: HomeViewModel!
     var showHabitDetail:((Int) ->())?
-    
+    var didMarkAsComplete:((Int) ->())?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setup()
@@ -35,6 +36,7 @@ class HabitCell: UITableViewCell, Reusable {
     
     private func setup() {
         btnHabitDetail.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        self.daysCollectionView.didMarkAsComplete = self.didMarkAsCompleteIndex
     }
     
     func configure<T>(with content: T) { }
@@ -70,10 +72,14 @@ class HabitCell: UITableViewCell, Reusable {
     }
     
     @objc func buttonPressed(_ sender: UIButton) {
-        self.showHabitDetail?(sender.tag)
+      self.showHabitDetail?(sender.tag)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    private func didMarkAsCompleteIndex(_ index: Int) {
+        self.didMarkAsComplete?(index)
     }
 }

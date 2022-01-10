@@ -11,8 +11,9 @@ class  HabitTableView: UITableView {
     
     var viewModel: HomeViewModel!
     var showHabitDetail:((Int) ->())?
+    var didMarkAsComplete:((Int) ->())?
     var didDeleteHabitAtIndex: ((Int) -> Void)?
-    
+
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -37,6 +38,7 @@ extension HabitTableView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusable(indexPath) as HabitCell
         cell.showHabitDetail = showHabitDetail
+        cell.didMarkAsComplete = didMarkAsComplete
         cell.configure(viewModel: viewModel, item: viewModel.habitList[indexPath.row], tag: indexPath.row)
         return cell
     }
@@ -54,5 +56,5 @@ extension HabitTableView: UITableViewDataSource, UITableViewDelegate {
         } else {
             return nil
         }
-    }
+    }    
 }

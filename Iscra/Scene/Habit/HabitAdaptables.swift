@@ -81,6 +81,7 @@ enum HabitAction {
     case editingDidChange(_ field:String, _ value:String)
     case errorMessage(_ text:String)
     case sucessMessage(_ text:String)
+    case markAsCompleteSucess(_ text:String)
     case shareHabitSucess(_ text:String)
     case joinHabitMessage(_ text:String)
 }

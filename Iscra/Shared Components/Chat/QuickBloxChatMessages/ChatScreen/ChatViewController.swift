@@ -230,6 +230,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         setupViewMessages()
         dataSource.delegate = self
         inputToolbar.inputToolbarDelegate = self
+       
         inputToolbar.toggleSendButtonEnabled(isUploaded: isUploading)
         edgesForExtendedLayout = [] //same UIRectEdgeNone
         
@@ -254,8 +255,10 @@ class ChatViewController: UIViewController, ChatContextMenu {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
        
     }
+   
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+        
             return
         }
 //       self.toolbarBottomLayoutGuide.constant = 200
@@ -495,6 +498,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 self?.dataSource.clear()
                 self?.dialog.clearTypingStatusBlocks()
                 self?.inputToolbar.isUserInteractionEnabled = false
+                
                 self?.collectionView.isScrollEnabled = false
                 self?.collectionView.reloadData()
                 self?.title = ""
@@ -1812,9 +1816,13 @@ extension ChatViewController: UITextViewDelegate {
             view.endEditing(true)
             return false
         }
+        if textView.textInputMode?.primaryLanguage == "emoji"{
 
+                       return textView.textInputMode != nil
+                   }
         return true
     }
+    
 //    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
 //    {
 //        if(text == "\n")
@@ -1830,11 +1838,12 @@ extension ChatViewController: UITextViewDelegate {
     override func paste(_ sender: Any?) {
         let textAttachment = NSTextAttachment()
         textAttachment.image = UIPasteboard.general.image
-        //let memojiString = NSAttributedString(attachment: image)
         let attributedText = NSAttributedString(attachment: textAttachment)
         if let textView = inputToolbar.contentView.textView {
             textView.attributedText = attributedText
+           
         }
+        
     }
    
 }

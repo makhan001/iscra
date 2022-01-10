@@ -31,8 +31,7 @@ class QBChatLogin {
                 if response.status == QBResponseStatusCode.validationFailed {
                     // The user with existent login was created earlier
                     self?.loginQBUser(fullName: UserStore.userName ?? "", login: UserStore.userEmail ?? "", email: UserStore.userEmail ?? "", customData: UserStore.userImage ?? "")
-                    QBChat.instance.removeDelegate(self as? QBChatDelegate as! QBChatDelegate)
-                    return
+                    QBChat.instance.removeDelegate(self as! QBChatDelegate )
                 }
                 print("UserNOTSignUpInQuickBlox", response)
              })

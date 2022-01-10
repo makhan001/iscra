@@ -137,15 +137,15 @@ struct LoginData: Codable {
 struct User: Codable {
     var id: Int?
     var email, encryptedPassword: String?
-    var confirmationToken, resetPasswordToken, resetPasswordSentAt, rememberCreatedAt: JSONNull?
+    var confirmationToken, resetPasswordToken, resetPasswordSentAt, rememberCreatedAt: String?
     var createdAt, updatedAt: Int?
     var verificationCode, authenticationToken, username: String?
-    var memoji: JSONNull?
+    var memoji: String?
     var isVerified: Bool?
     var deviceType, osVersion, deviceModel, fcmToken: String?
-    var forgotPassword: JSONNull?
+    var forgotPassword: String?
     var deviceUdid: String?
-    var loginType, socialID: JSONNull?
+    var loginType, socialID: String?
     var isGoogle, isApple: Bool?
     var profileImage: String?
 

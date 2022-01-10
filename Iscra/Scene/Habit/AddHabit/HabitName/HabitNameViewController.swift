@@ -74,6 +74,7 @@ extension HabitNameViewController {
     }
     
     private func nextClick() {
+        viewModel.description = self.txtViewDescription.text
         HabitUtils.shared.habitType = self.viewModel.habitType
         viewModel.onAction(action: .inputComplete(.createHabit), for: .createHabit)
     }

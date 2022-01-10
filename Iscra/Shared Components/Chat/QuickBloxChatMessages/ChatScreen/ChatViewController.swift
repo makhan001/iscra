@@ -275,7 +275,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 self.toolbarBottomLayoutGuide.constant = 200
             default:
                 print("other models")
-                self.toolbarBottomLayoutGuide.constant = 250
+                self.toolbarBottomLayoutGuide.constant = 275
             }
         }
        
@@ -491,6 +491,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                              successCompletion: { [weak self] (messages, cancel) in
             self?.cancel = cancel
             self?.dataSource.addMessages(messages)
+            
             self?.collectionView.reloadData()
             SVProgressHUD.dismiss()
         }, errorHandler: { [weak self] (error) in
@@ -1814,6 +1815,7 @@ extension ChatViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if textView != inputToolbar.contentView.textView {
             view.endEditing(true)
+            textView.allowsEditingTextAttributes = true
             return false
         }
         if textView.textInputMode?.primaryLanguage == "emoji"{
@@ -1841,10 +1843,41 @@ extension ChatViewController: UITextViewDelegate {
         let attributedText = NSAttributedString(attachment: textAttachment)
         if let textView = inputToolbar.contentView.textView {
             textView.attributedText = attributedText
-           
+            
+//            textView.attributedText?.enumerateAttribute(NSAttributedString.Key.attachment, in: NSRange(location: 0, length: attributedText.length), options: [], using: {(value,range,_) -> Void in
+//                         if (value is NSTextAttachment) {
+//                             let attachment: NSTextAttachment? = (value as? NSTextAttachment)
+//                             var image: UIImage?
+//
+//                             if ((attachment?.image) != nil) {
+//                                 image = attachment?.image
+//                             } else {
+//                                 image = attachment?.image(forBounds: (attachment?.bounds)!, textContainer: nil, characterIndex: range.location)
+//                             }
+//
+//                             guard let pasteImage = image else { return }
+//
+//                             // IMAGE IN PASTE IMAGE. YOU CAN WORK WITH IT
+//
+//
+//                            guard let pngData = pasteImage.pngData() else { return }
+//                                              guard let pngImage = UIImage(data: pngData) else { return }
+//
+//
+//
+//
+//
+//                             return
+//                         }
+//                     })
+
+            
+          
         }
-        
-    }
+       }
+      
+       
+    
    
 }
 
@@ -1982,6 +2015,7 @@ extension ChatViewController: ChatCellDelegate {
 //MARK: - QBChatDelegate
 extension ChatViewController: QBChatDelegate {
     func chatDidReadMessage(withID messageID: String, dialogID: String, readerID: UInt) {
+        print(#function)
         if currentUserID == readerID || dialogID != self.dialogID {
             return
         }
@@ -1994,6 +2028,7 @@ extension ChatViewController: QBChatDelegate {
     }
     
     func chatDidDeliverMessage(withID messageID: String, dialogID: String, toUserID userID: UInt) {
+        print(#function)
         if currentUserID == userID || dialogID != self.dialogID {
             return
         }
@@ -2006,27 +2041,31 @@ extension ChatViewController: QBChatDelegate {
     }
     
     func chatDidReceive(_ message: QBChatMessage) {
+        print(#function)
         if message.dialogID == self.dialogID && message.senderID != currentUserID {
             dataSource.addMessage(message)
         }
     }
     func chatRoomDidReceive(_ message: QBChatMessage, fromDialogID dialogID: String) {
+        print(#function)
         if dialogID == self.dialogID && message.senderID != currentUserID {
             dataSource.addMessage(message)
         }
     }
     
     func chatDidConnect() {
+        print(#function)
         refreshAndReadMessages()
     }
     
     func chatDidReconnect() {
+        print(#function)
         refreshAndReadMessages()
     }
     
     
     
-    //MARK - Help
+    //MARK:- Help
     private func refreshAndReadMessages() {
         // Autojoin to the group chat
         if dialog.type != .private, dialog.isJoined() == false {

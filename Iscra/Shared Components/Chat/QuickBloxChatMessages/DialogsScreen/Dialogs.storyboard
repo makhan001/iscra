@@ -318,6 +318,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="dAr-0b-suU"/>
                     <connections>
+                        <outlet property="noChatView" destination="di8-s4-5vr" id="j4E-Ld-w1T"/>
                         <outlet property="tableView" destination="OIt-u6-Mqx" id="f3p-HH-jpN"/>
                         <segue destination="tWq-7O-OZJ" kind="show" identifier="PresentInfoViewController" id="BIH-kV-h3d"/>
                         <segue destination="X0T-IX-vU4" kind="show" identifier="goToChat" id="sKO-4C-cnH"/>
@@ -325,6 +326,30 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vEQ-EF-hRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="di8-s4-5vr">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Chat Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mH-5W-pgI" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                            <rect key="frame" x="53.666666666666657" y="110.33333333333333" width="133" height="19.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" name="BlackAccent"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="SSSemiBold" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                    <integer key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="d7r-2F-hYH"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="5mH-5W-pgI" firstAttribute="centerX" secondItem="di8-s4-5vr" secondAttribute="centerX" id="v4i-gq-0hj"/>
+                        <constraint firstItem="5mH-5W-pgI" firstAttribute="centerY" secondItem="di8-s4-5vr" secondAttribute="centerY" id="w9A-I5-L1G"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="1798.5981308411215" y="-74.514038876889856"/>
         </scene>
@@ -357,11 +382,19 @@
             <point key="canvasLocation" x="898.59813084112147" y="-74.514038876889856"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="5mH-5W-pgI">
+            <size key="intrinsicContentSize" width="133" height="19.333333333333332"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="GVb-kp-0u6"/>
+        <segue reference="Qeg-LQ-VSf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ic_cancel" width="13" height="13"/>
+        <namedColor name="BlackAccent">
+            <color red="0.10999999940395355" green="0.090000003576278687" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SecondryAccent">
             <color red="0.76800000667572021" green="0.65100002288818359" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -101,7 +101,8 @@ class ChatManager: NSObject {
                                 message = self.errorMessage(response: response) ?? ""
                             }
                             if message.isEmpty {
-                             
+                             print("no chat")
+                               
                                 self.delegate?.chatManager(self, didUpdateStorage: "SA_STR_COMPLETED".localized)
                             } else {
                                 self.delegate?.chatManager(self, didFailUpdateStorage: message)

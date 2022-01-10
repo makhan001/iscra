@@ -442,7 +442,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             let user = self.users[indexPath.row]
             cell.userColor = user.id.generateColor()
             cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
-            cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+            cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData ?? ""), placeholderImage: UIImage(named: "group"))
             cell.tag = indexPath.row
             
             let lastItemNumber = users.count - 1

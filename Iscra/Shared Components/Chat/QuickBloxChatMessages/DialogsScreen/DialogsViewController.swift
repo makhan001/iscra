@@ -95,6 +95,8 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet var tableView: UITableView!
     weak var router: NextSceneDismisser?
     
+    @IBOutlet var noChatView: UIView!
+    @IBOutlet var lblNoChatFound: UILabel!
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,8 +106,10 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tableView.register(UINib(nibName: DialogCellConstant.reuseIdentifier, bundle: nil), forCellReuseIdentifier: DialogCellConstant.reuseIdentifier)
         
         setupNavigationTitle()
-     
-        
+        noChatView.center = self.view.center
+        view.addSubview(noChatView)
+        noChatView.isHidden = true
+        tableView.isHidden = true
     }
     
     
@@ -345,8 +349,15 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dialogs.count
-    }
+        
+        if dialogs.count > 0{
+          return dialogs.count
+        }
+        else{
+           noChatView.isHidden = false
+             return 0
+        }
+   }
     
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
@@ -491,15 +502,19 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         dialogs = chatManager.storage.dialogsSortByUpdatedAt()
         if dialogs.count >= 0 {
             print("Chat list not empty")
-           } else {
+            noChatView.isHidden = true
+            tableView.isHidden = false
+            tableView.reloadData()
+        } else {
             print("chat is EMPTY")
-          
+            noChatView.isHidden = false
+            tableView.isHidden = true
             QBChat.instance.removeDelegate(self)
         }
-        tableView.reloadData()
+      
+        
     }
-    
-    fileprivate func setupDate(_ dateSent: Date) -> String {
+  fileprivate func setupDate(_ dateSent: Date) -> String {
         let formatter = DateFormatter()
         var dateString = ""
         if Calendar.current.isDateInToday(dateSent) == true {
@@ -566,6 +581,7 @@ extension DialogsViewController: ChatManagerDelegate {
     
     func chatManager(_ chatManager: ChatManager, didUpdateStorage message: String) {
         reloadContent()
+      
         SVProgressHUD.dismiss()
         QBChat.instance.addDelegate(self)
     }

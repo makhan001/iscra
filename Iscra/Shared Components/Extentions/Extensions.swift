@@ -90,7 +90,9 @@ extension UIViewController {
         alert.view.backgroundColor = UIColor.init(named: "PrimaryAccent")
         alert.view.alpha = 0.7
         alert.view.layer.cornerRadius = 15
-        self.present(alert, animated: true)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true)
         }

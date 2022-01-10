@@ -59,6 +59,7 @@ extension HomeViewController {
         self.tableView.configure(viewModel: viewModel)
         self.tableView.didDeleteHabitAtIndex = didDeleteHabitAtIndex
         self.tableView.showHabitDetail = didSelectedAtIndex
+        self.tableView.didMarkAsComplete = didMarkAsComplete
         self.setPullToRefresh()
     }
     
@@ -108,6 +109,11 @@ extension HomeViewController {
         guard let id = viewModel.habitList[index].id else { return }
         self.deleteAlert(id: String(id))
     }
+    
+    private func didMarkAsComplete(_ index: Int) {
+       print("index is on home screen \(index)")
+        self.viewModel.apiMarkAsComplete(habitId: String(index))
+    }
 }
 
 //MARK: - Pull to refresh list
@@ -141,6 +147,9 @@ extension HomeViewController: HabitViewRepresentable {
             self.viewModel.fetchHabitList()
         case  .sucessMessage(_):
             self.handleSuccessResponse()
+        case .markAsCompleteSucess(_):
+            self.viewModel.habitList.removeAll()
+            self.viewModel.fetchHabitList()
         default:
             break
         }

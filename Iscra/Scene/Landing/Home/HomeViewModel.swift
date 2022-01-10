@@ -52,6 +52,11 @@ final class HomeViewModel {
     func deleteHabit(id: String) {
         self.provider.deleteHabit(param: HabitParams.DeleteHabit(id: id))
     }
+    
+    func apiMarkAsComplete(habitId: String) {
+        let timestamp = String(format: "%.0f", NSDate().timeIntervalSince1970)
+        self.provider.markAsComplete(param: HabitParams.MarkAsComplete(habit_id: habitId, habit_day: String(timestamp) , is_completed: "true"))
+    }
 }
 
 extension HomeViewModel: HabitServiceProvierDelegate {
@@ -76,7 +81,9 @@ extension HomeViewModel: HabitServiceProvierDelegate {
                         
                     case .deleteHabit:
                         self.view?.onAction(.isHabitDelete(true, resp.message ?? ""))
-                        
+                    
+                    case .markAsComplete:
+                    self.view?.onAction(.markAsCompleteSucess(resp.message ?? ""))
                     default:
                         self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
 

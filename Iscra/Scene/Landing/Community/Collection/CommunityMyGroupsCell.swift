@@ -98,7 +98,7 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.daysCollectionView {
             let cell = collectionView.dequeueReusable(indexPath) as HabitDaysCell
-            cell.configure(item: viewModel.habitMarks[indexPath.item], colorTheme: viewModel.colorTheme)
+            cell.configure(item: viewModel.habitMarks[indexPath.item], colorTheme: viewModel.colorTheme, tag: indexPath.row)
             return cell
         } else {
             let cell = collectionView.dequeueReusable(indexPath) as MatesCollectionCell

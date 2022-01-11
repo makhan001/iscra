@@ -709,13 +709,24 @@ class ChatViewController: UIViewController, ChatContextMenu {
     
     private func statusImageForMessage(message: QBChatMessage) -> UIImage {
         //check and add users who read the message
+//        if let readIDs = message.readIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
+//           readIDs.isEmpty == false {
+//            if #available(iOS 13.0, *) {
+//                return #imageLiteral(resourceName: "delivered").withTintColor(#colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1))
+//            } else {
+//                // Fallback on earlier versions
+//            }
+//        }
+//        //check and add users to whom the message was delivered
+//        if let deliveredIDs = message.deliveredIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
+//           deliveredIDs.isEmpty == false  {
+//            return #imageLiteral(resourceName: "delivered")
+//        }
+//        return UIImage(named: "sent")!
+        //check and add users who read the message
         if let readIDs = message.readIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
            readIDs.isEmpty == false {
-            if #available(iOS 13.0, *) {
-                return #imageLiteral(resourceName: "delivered").withTintColor(#colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1))
-            } else {
-                // Fallback on earlier versions
-            }
+            return #imageLiteral(resourceName: "delivered").withTintColor(#colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1))
         }
         //check and add users to whom the message was delivered
         if let deliveredIDs = message.deliveredIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
@@ -1566,8 +1577,8 @@ extension ChatViewController: ChatCollectionViewDataSource {
                       userName.isEmpty == false else {return}
                 
                 chatCell.topLabel.text = userName
-                chatCell.avatarLabel.text = String(userName.capitalized.first ?? Character("QB"))
-                chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
+                //chatCell.avatarLabel.text = String(userName.capitalized.first ?? Character("QB"))
+               // chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
                 self.collectionView.reloadItems(at: [indexPath])
             }
         }
@@ -1635,15 +1646,15 @@ extension ChatViewController: ChatCollectionViewDataSource {
         chatCell.topLabel.text = username
         if (cell is ChatIncomingCell || cell is ChatAttachmentIncomingCell) && dialog.type != .private {
             let userName = username?.string
-            if userName != nil {
-               // chatCell.avatarLabel.text = String(userName?.capitalized.first ?? Character("QB"))
-            }
-            chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
+//            if userName != nil {
+//               // chatCell.avatarLabel.text = String(userName?.capitalized.first ?? Character("QB"))
+//            }
+           // chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
         }
 
         chatCell.timeLabel.text = timeLabelAttributedString(forItem: message)
         if let chatOutgoingCell = chatCell as? ChatOutgoingCell {
-            chatOutgoingCell.setupStatusImage(statusImageForMessage(message: message))
+           chatOutgoingCell.setupStatusImage(statusImageForMessage(message: message))
         }
         
         if let textView = chatCell.textView {
@@ -2025,6 +2036,7 @@ extension ChatViewController: QBChatDelegate {
         }
         message.readIDs?.append(NSNumber(value: readerID))
         dataSource.updateMessage(message)
+        
     }
     
     func chatDidDeliverMessage(withID messageID: String, dialogID: String, toUserID userID: UInt) {

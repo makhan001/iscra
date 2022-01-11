@@ -30,7 +30,9 @@ class HabitDaysCell: UICollectionViewCell,UIGestureRecognizerDelegate, Reusable 
     
     func configure(item: HabitMark, colorTheme: String, tag: Int) {
         let str: String = ""
-        self.imgActive.tag = item.habitID ?? 0
+        self.imgActive.tag = tag
+       // print("item.habitDay is \(item.habitDay)")
+        
         self.lblDates.text = str.getDateFromTimeStamp(timeStamp : String(item.habitDay ?? 0), isDayName: false)
         self.lblDays.text = str.getDateFromTimeStamp(timeStamp : String(item.habitDay ?? 0), isDayName: true)
         if item.isCompleted == true {

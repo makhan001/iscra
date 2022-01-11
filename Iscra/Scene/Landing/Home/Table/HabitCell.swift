@@ -27,8 +27,10 @@ class HabitCell: UITableViewCell, Reusable {
     
     var viewModel: HomeViewModel!
     var showHabitDetail:((Int) ->())?
-    var didMarkAsComplete:((Int) ->())?
-
+    var didMarkAsComplete:((HabitMark) ->())?
+    
+    private var tableIndex:Int?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setup()
@@ -42,6 +44,7 @@ class HabitCell: UITableViewCell, Reusable {
     func configure<T>(with content: T) { }
     
     func configure(viewModel: HomeViewModel, item: AllHabits, tag:Int) {
+        self.tableIndex = tag
         self.viewModel = viewModel
         self.viewModel.habitMarks = item.habitMarks ?? self.viewModel.habitMarks
         self.viewModel.groupMembers = item.groupMembers ?? self.viewModel.groupMembers
@@ -80,6 +83,8 @@ class HabitCell: UITableViewCell, Reusable {
     }
     
     private func didMarkAsCompleteIndex(_ index: Int) {
-        self.didMarkAsComplete?(index)
+        if let habitMarks = self.viewModel.habitList[self.tableIndex ?? 0].habitMarks?[index] {
+            self.didMarkAsComplete?(habitMarks)
+        }
     }
 }

@@ -176,23 +176,23 @@ extension HabitCalenderViewController {
     }
     
     private func editAction() {
-        self.viewBottom.isHidden = true
         self.router?.push(scene: .editHabit)
+        self.viewBottom.isHidden = true
     }
     
     private func markAsCompleteAction() {
-        self.viewBottom.isHidden = true
         self.viewModel.apiMarkAsComplete()
+        self.viewBottom.isHidden = true
     }
     
     private func shareAction() {
-        self.viewBottom.isHidden = true
         self.router?.push(scene: .shareHabit)
+        self.viewBottom.isHidden = true
     }
     
     private func deleteAction() {
-        self.viewBottom.isHidden = true
         self.showAlert(habitId: String(self.viewModel.habitId))
+        self.viewBottom.isHidden = true
     }
     
     private func previousMonthAction() {

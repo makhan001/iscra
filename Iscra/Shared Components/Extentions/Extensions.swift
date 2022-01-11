@@ -237,7 +237,6 @@ extension String {
         //    dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
         let dateString = dayTimePeriodFormatter.string(from: date as Date)
         let fullNameArr = dateString.components(separatedBy: "-")
-        //  print("dateString is \(fullNameArr[0]) and \(fullNameArr[1])")
         if isDayName == true {
             return  fullNameArr[1]
         } else {

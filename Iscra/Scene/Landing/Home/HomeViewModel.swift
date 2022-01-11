@@ -43,7 +43,7 @@ final class HomeViewModel {
     }
     
     func fetchHabitList() {
-        self.provider.habitList(param: HabitParams.AllHabitList()) 
+        self.provider.habitList(param: HabitParams.AllHabitList())
         if self.isRefreshing {
             WebService().StopIndicator()
         }
@@ -53,9 +53,16 @@ final class HomeViewModel {
         self.provider.deleteHabit(param: HabitParams.DeleteHabit(id: id))
     }
     
-    func apiMarkAsComplete(habitId: String) {
+    func apiMarkAsComplete(objHabitMark: HabitMark) {
         let timestamp = String(format: "%.0f", NSDate().timeIntervalSince1970)
-        self.provider.markAsComplete(param: HabitParams.MarkAsComplete(habit_id: habitId, habit_day: String(timestamp) , is_completed: "true"))
+        let id  = objHabitMark.habitID ?? 0
+        if  objHabitMark.isCompleted == false &&  objHabitMark.habitDay?.toDouble.habitDate == Date().currentHabitDate {
+           self.provider.markAsComplete(param: HabitParams.MarkAsComplete(habit_id: String(id), habit_day: String(timestamp) , is_completed: "true"))
+        } else if  objHabitMark.isCompleted == true &&  objHabitMark.habitDay?.toDouble.habitDate == Date().currentHabitDate {
+            self.view?.onAction(.errorMessage("You have already marked this habit as completed!!"))
+        }else{
+            self.view?.onAction(.errorMessage("You can't mark this habit as complete, since day is already passed!!"))
+        }
     }
 }
 
@@ -93,3 +100,4 @@ extension HomeViewModel: HabitServiceProvierDelegate {
         }
     }
 }
+

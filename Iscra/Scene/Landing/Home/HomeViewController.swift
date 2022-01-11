@@ -109,10 +109,9 @@ extension HomeViewController {
         guard let id = viewModel.habitList[index].id else { return }
         self.deleteAlert(id: String(id))
     }
-    
-    private func didMarkAsComplete(_ index: Int) {
-       print("index is on home screen \(index)")
-        self.viewModel.apiMarkAsComplete(habitId: String(index))
+
+    private func didMarkAsComplete(_ objHabitMark: HabitMark) {
+        self.viewModel.apiMarkAsComplete(objHabitMark: objHabitMark)
     }
 }
 

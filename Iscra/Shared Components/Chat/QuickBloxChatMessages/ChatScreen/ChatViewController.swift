@@ -547,6 +547,12 @@ class ChatViewController: UIViewController, ChatContextMenu {
                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                                     withReuseIdentifier: headerIdentifier)
         }
+//        ChatDateCell.registerForReuse(inView: collectionView)
+//        ChatNotificationCell.registerForReuse(inView: collectionView)
+//        ChatOutgoingCell.registerForReuse(inView: collectionView)
+//        ChatIncomingCell.registerForReuse(inView: collectionView)
+//        ChatAttachmentIncomingCell.registerForReuse(inView: collectionView)
+//        ChatAttachmentOutgoingCell.registerForReuse(inView: collectionView)
         ChatDateCell.registerForReuse(inView: collectionView)
         ChatNotificationCell.registerForReuse(inView: collectionView)
         ChatOutgoingCell.registerForReuse(inView: collectionView)
@@ -737,42 +743,52 @@ class ChatViewController: UIViewController, ChatContextMenu {
     }
     
     @objc private func didTapInfo(_ sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "Chat", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
-        vc.delegateNavigate = self
-        self.navigationController?.present(vc, animated: false, completion: nil)
+//        let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
+//        vc.delegateNavigate = self
+//        self.navigationController?.present(vc, animated: false, completion: nil)
+        guard let actionsMenuVC = storyboard?.instantiateViewController(withIdentifier: "ActionsMenuViewController") as? ActionsMenuViewController else {
+            return
+        }
+        actionsMenuVC.modalPresentationStyle = .popover
+        let presentation = actionsMenuVC.popoverPresentationController
+        presentation?.delegate = self
+        presentation?.barButtonItem = infoItem
+        presentation?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         
-//        guard let actionsMenuVC = storyboard?.instantiateViewController(withIdentifier: "ActionsMenuViewController") as? ActionsMenuViewController else {
-//            return
-//        }
-//        actionsMenuVC.modalPresentationStyle = .popover
-//        let presentation = actionsMenuVC.popoverPresentationController
-//        presentation?.delegate = self
-//        presentation?.barButtonItem = infoItem
-//        presentation?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-//
-//        let leaveChatAction = MenuAction(title: "Delete chat") { [weak self] in
+//        let leaveChatAction = MenuAction(title: "Leave Chat") { [weak self] in
 //            self?.didTapDelete()
 //        }
-//        let groupChatAction = MenuAction(title: "Leave group") { [weak self] in
-//            self?.didGroupLeaveTapped()
-//        }
-//        let chatInfoAction = MenuAction(title: "Group info") { [weak self]  in
-//            self?.performSegue(withIdentifier: "SA_STR_SEGUE_GO_TO_INFO".localized, sender: ChatAction.ChatInfo)
-//        }
-//
-//        if dialog.type == .private {
-//            actionsMenuVC.addAction(leaveChatAction)
-//        } else {
-//            actionsMenuVC.addAction(groupChatAction)
-//            actionsMenuVC.addAction(chatInfoAction)
-//        }
-//
-//        actionsMenuVC.cancelAction = {
-//            self.hideKeyboard(animated: false)
-//        }
-//
-//        present(actionsMenuVC, animated: false)
+        let chatInfoAction = MenuAction(title: "Chat info") { [weak self]  in
+            self?.performSegue(withIdentifier: "SA_STR_SEGUE_GO_TO_INFO".localized, sender: ChatAction.ChatInfo)
+        }
+        
+        let chatNotificationAction = MenuAction(title: "Chat Notification") { [weak self] in
+            let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
+            vc.delegateNavigate = self
+            self?.navigationController?.present(vc, animated: false, completion: nil)
+
+        }
+        
+        if dialog.type == .private {
+            //actionsMenuVC.addAction(leaveChatAction)
+            let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
+            vc.delegateNavigate = self
+            self.navigationController?.present(vc, animated: false, completion: nil)
+        } else {
+            //actionsMenuVC.addAction(leaveChatAction)
+           actionsMenuVC.addAction(chatNotificationAction)
+           actionsMenuVC.addAction(chatInfoAction)
+        }
+        
+        actionsMenuVC.cancelAction = {
+            self.hideKeyboard(animated: false)
+        }
+        
+        present(actionsMenuVC, animated: false)
+
     }
     
     //MARK - Navigation

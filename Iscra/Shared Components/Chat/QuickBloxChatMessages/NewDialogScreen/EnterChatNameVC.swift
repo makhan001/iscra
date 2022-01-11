@@ -127,7 +127,7 @@ class EnterChatNameVC: UITableViewController {
             return
         }
         
-        if selectedUsers.count > 1 {
+        if selectedUsers.count > 0 {
             let chatName = chatNameTextField.text?.capitalized ?? "New Group Chat"
             sender.isEnabled = false
             SVProgressHUD.show()

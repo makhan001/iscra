@@ -24,8 +24,8 @@ class ChatOutgoingCell: ChatCell {
         var defaultLayoutModel = super.layoutModel()
         defaultLayoutModel.avatarSize = .zero
         defaultLayoutModel.containerInsets = containerInsets
-        defaultLayoutModel.timeLabelHeight = 15.0
-        defaultLayoutModel.spaceBetweenTopLabelAndTextView = 12.0
+//        defaultLayoutModel.timeLabelHeight = 15.0
+//        defaultLayoutModel.spaceBetweenTopLabelAndTextView = 12.0
         
         return defaultLayoutModel
     }
@@ -41,9 +41,9 @@ class ChatOutgoingCell: ChatCell {
         previewContainer.layer.mask = layer
     }
     
-    func drawChatBubble() {
-        
-    }
+//    func drawChatBubble() {
+//        
+//    }
     func setupStatusImage(_ image: UIImage) {
         statusImageView.image = image
     }

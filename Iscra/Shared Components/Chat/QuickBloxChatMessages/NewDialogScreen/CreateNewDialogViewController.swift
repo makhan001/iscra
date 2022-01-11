@@ -224,6 +224,11 @@ class CreateNewDialogViewController: UIViewController {
         }
 
         self.users = filteredUsers
+        self.users = self.users.sorted(by: { (Obj1, Obj2) -> Bool in
+                              let Obj1_Name = Obj1.fullName ?? ""
+                              let Obj2_Name = Obj2.fullName ?? ""
+                              return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedAscending)
+                           })        
 
        // self.users = users
         
@@ -442,6 +447,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             let user = self.users[indexPath.row]
             cell.userColor = user.id.generateColor()
             cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
+            
             cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData ?? ""), placeholderImage: UIImage(named: "group"))
             cell.tag = indexPath.row
             

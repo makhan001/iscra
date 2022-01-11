@@ -35,12 +35,12 @@ class DialogTableViewCellModel: NSObject {
     init(dialog: QBChatDialog) {
         super.init()
         
-        textLabelText = dialog.name ?? "UN"
+        textLabelText = dialog.name ?? ""
         customData = dialog.photo ?? ""
         
         // Unread messages counter label
         if dialog.unreadMessagesCount > 0 {
-            var trimmedUnreadMessageCount = ""
+            var trimmedUnreadMessageCount = " "
             
             if dialog.unreadMessagesCount > 99 {
                 trimmedUnreadMessageCount = "99+"
@@ -193,8 +193,8 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         guard currentUser.isFull == true else {
             return
         }
-        //        let title = currentUser.fullName.count > 0 ? currentUser.fullName : currentUser.login
-        //        self.title = title
+//        let title = currentUser.fullName.count > 0 ? currentUser.fullName.capitalized : currentUser.login
+//                self.title = title
     }
     
     private func setupNavigationBar() {

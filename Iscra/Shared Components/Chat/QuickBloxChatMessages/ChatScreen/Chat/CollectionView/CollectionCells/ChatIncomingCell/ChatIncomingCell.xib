@@ -16,45 +16,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="284" height="139"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0n-sL-BzS" userLabel="Avatar Container">
-                        <rect key="frame" x="10" y="99" width="40" height="40"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejm-C7-TjL">
-                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L8j-KZ-jCD" userLabel="Avatar Image View">
-                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="L8j-KZ-jCD" secondAttribute="bottom" id="0hB-Nr-dNZ"/>
-                            <constraint firstAttribute="trailing" secondItem="Ejm-C7-TjL" secondAttribute="trailing" id="0ob-qn-vJZ"/>
-                            <constraint firstItem="L8j-KZ-jCD" firstAttribute="top" secondItem="W0n-sL-BzS" secondAttribute="top" id="6bm-wm-4cy"/>
-                            <constraint firstAttribute="height" constant="40" id="7kl-5d-tBN"/>
-                            <constraint firstAttribute="bottom" secondItem="Ejm-C7-TjL" secondAttribute="bottom" id="9wx-5D-Xu3"/>
-                            <constraint firstAttribute="width" constant="40" id="UuG-S6-eN7"/>
-                            <constraint firstItem="Ejm-C7-TjL" firstAttribute="leading" secondItem="W0n-sL-BzS" secondAttribute="leading" id="eza-XU-CSI"/>
-                            <constraint firstAttribute="trailing" secondItem="L8j-KZ-jCD" secondAttribute="trailing" id="ldT-sO-cgJ"/>
-                            <constraint firstItem="Ejm-C7-TjL" firstAttribute="top" secondItem="W0n-sL-BzS" secondAttribute="top" id="lyf-7k-Kz8"/>
-                            <constraint firstItem="L8j-KZ-jCD" firstAttribute="leading" secondItem="W0n-sL-BzS" secondAttribute="leading" id="vwP-sD-aKt"/>
-                        </constraints>
-                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lux-vg-6Z5" userLabel="ContainerView" customClass="ChatContainerView" customModule="Iscra" customModuleProvider="target">
-                        <rect key="frame" x="58" y="0.0" width="163" height="139"/>
+                        <rect key="frame" x="10" y="0.0" width="181" height="139"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBa-gJ-Bzq" userLabel="Message Container">
-                                <rect key="frame" x="24" y="0.0" width="123" height="139"/>
+                                <rect key="frame" x="24" y="0.0" width="133" height="139"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVP-kf-E2R" userLabel="Preview Container">
-                                        <rect key="frame" x="-16" y="21" width="155" height="130"/>
+                                        <rect key="frame" x="-16" y="21" width="165" height="130"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Message Text" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ct-WW-zaC" customClass="TTTAttributedLabel">
-                                                <rect key="frame" x="16" y="0.0" width="123" height="130"/>
+                                                <rect key="frame" x="16" y="0.0" width="133" height="130"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,7 +42,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NickName" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVl-fR-cgk" customClass="TTTAttributedLabel">
-                                        <rect key="frame" x="58" y="1" width="65" height="15"/>
+                                        <rect key="frame" x="64" y="1" width="65" height="15"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" identifier="incCellTopLabelHeight" id="xq4-Ck-zDx"/>
@@ -80,7 +52,7 @@
                                         <color key="highlightedColor" red="0.4255777597" green="0.47677099699999997" blue="0.57233744860000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33:33" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sp9-fQ-dGT" customClass="TTTAttributedLabel">
-                                        <rect key="frame" x="-6" y="1" width="37" height="15"/>
+                                        <rect key="frame" x="0.0" y="1" width="37" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="V4s-uP-G4I"/>
                                             <constraint firstAttribute="width" constant="37" id="Z4y-gB-0nP"/>
@@ -94,7 +66,7 @@
                                 <constraints>
                                     <constraint firstItem="MVP-kf-E2R" firstAttribute="top" secondItem="cBa-gJ-Bzq" secondAttribute="top" constant="21" id="36t-BG-329"/>
                                     <constraint firstItem="FVl-fR-cgk" firstAttribute="leading" secondItem="sp9-fQ-dGT" secondAttribute="trailing" constant="27" id="8xj-dj-Rqf"/>
-                                    <constraint firstItem="sp9-fQ-dGT" firstAttribute="leading" secondItem="cBa-gJ-Bzq" secondAttribute="leading" constant="-6" id="CsJ-oL-kmV"/>
+                                    <constraint firstItem="sp9-fQ-dGT" firstAttribute="leading" secondItem="cBa-gJ-Bzq" secondAttribute="leading" id="CsJ-oL-kmV"/>
                                     <constraint firstAttribute="trailing" secondItem="MVP-kf-E2R" secondAttribute="trailing" constant="-16" id="Gt9-fC-YRC"/>
                                     <constraint firstItem="sp9-fQ-dGT" firstAttribute="top" secondItem="cBa-gJ-Bzq" secondAttribute="top" constant="1" id="JRU-Ql-FAm"/>
                                     <constraint firstItem="FVl-fR-cgk" firstAttribute="top" secondItem="cBa-gJ-Bzq" secondAttribute="top" constant="1" identifier="incCellTopLabelTopToMsgContainerTop" id="Jke-hK-Vbu"/>
@@ -106,14 +78,14 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cBa-gJ-Bzq" firstAttribute="leading" secondItem="lux-vg-6Z5" secondAttribute="leading" constant="24" identifier="incCellMsgContainerLeadingToContainerLeading" id="Iyk-PP-Jxf"/>
-                            <constraint firstAttribute="width" constant="163" id="JJF-la-T3e"/>
+                            <constraint firstAttribute="width" constant="181" id="JJF-la-T3e"/>
                             <constraint firstAttribute="bottom" secondItem="cBa-gJ-Bzq" secondAttribute="bottom" identifier="incCellContainerBottomToMsgContainerBottom" id="V2F-O3-LZU"/>
-                            <constraint firstAttribute="trailing" secondItem="cBa-gJ-Bzq" secondAttribute="trailing" constant="16" identifier="incCellContainerTrailingToMsgContainerTrailing" id="bIP-2g-9Q4"/>
+                            <constraint firstAttribute="trailing" secondItem="cBa-gJ-Bzq" secondAttribute="trailing" constant="24" identifier="incCellContainerTrailingToMsgContainerTrailing" id="bIP-2g-9Q4"/>
                             <constraint firstItem="cBa-gJ-Bzq" firstAttribute="top" secondItem="lux-vg-6Z5" secondAttribute="top" identifier="incCellMsgContainerTopToContainerTop" id="hyM-CH-TM3"/>
                         </constraints>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LeftTail" translatesAutoresizingMaskIntoConstraints="NO" id="5yk-GN-swa">
-                        <rect key="frame" x="64" y="138" width="20" height="20"/>
+                        <rect key="frame" x="17" y="138" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="KKb-q8-XSu"/>
                             <constraint firstAttribute="height" constant="20" id="LI7-Ei-HAN"/>
@@ -123,19 +95,13 @@
             </view>
             <constraints>
                 <constraint firstItem="lux-vg-6Z5" firstAttribute="top" secondItem="C3M-tc-m20" secondAttribute="top" identifier="incCellContainerTopToCellTop" id="2aL-wM-yzn"/>
+                <constraint firstItem="lux-vg-6Z5" firstAttribute="leading" secondItem="C3M-tc-m20" secondAttribute="leading" constant="10" id="RrF-Vs-Y1x"/>
                 <constraint firstItem="5yk-GN-swa" firstAttribute="bottom" secondItem="MVP-kf-E2R" secondAttribute="bottom" constant="7" id="Sfw-xE-n3m"/>
-                <constraint firstItem="lux-vg-6Z5" firstAttribute="leading" secondItem="W0n-sL-BzS" secondAttribute="trailing" constant="8" id="Ua4-Rg-gGn"/>
-                <constraint firstAttribute="bottom" secondItem="W0n-sL-BzS" secondAttribute="bottom" id="XfG-HX-1Wd"/>
                 <constraint firstAttribute="bottom" secondItem="lux-vg-6Z5" secondAttribute="bottom" identifier="incCellBottomToContainerBottom" id="m5g-Xl-Xx2"/>
-                <constraint firstItem="W0n-sL-BzS" firstAttribute="leading" secondItem="C3M-tc-m20" secondAttribute="leading" constant="10" id="nbp-Bf-697"/>
-                <constraint firstItem="5yk-GN-swa" firstAttribute="leading" secondItem="MVP-kf-E2R" secondAttribute="leading" constant="-2" id="vPH-pQ-0RD"/>
+                <constraint firstItem="5yk-GN-swa" firstAttribute="leading" secondItem="MVP-kf-E2R" secondAttribute="leading" constant="-1" id="vPH-pQ-0RD"/>
             </constraints>
             <size key="customSize" width="252" height="75"/>
             <connections>
-                <outlet property="avatarContainerViewHeightConstraint" destination="7kl-5d-tBN" id="wqg-kF-IuR"/>
-                <outlet property="avatarContainerViewWidthConstraint" destination="UuG-S6-eN7" id="EJr-hl-ghy"/>
-                <outlet property="avatarLabel" destination="Ejm-C7-TjL" id="mZE-4a-ZEn"/>
-                <outlet property="avatarView" destination="L8j-KZ-jCD" id="kYF-ZE-tdV"/>
                 <outlet property="containerView" destination="lux-vg-6Z5" id="AK5-pz-Tza"/>
                 <outlet property="containerWidthConstraint" destination="JJF-la-T3e" id="KoJ-3a-aut"/>
                 <outlet property="messageContainer" destination="cBa-gJ-Bzq" id="9BB-iq-0rq"/>

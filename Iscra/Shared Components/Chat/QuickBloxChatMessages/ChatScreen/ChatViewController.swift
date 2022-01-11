@@ -547,6 +547,12 @@ class ChatViewController: UIViewController, ChatContextMenu {
                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                                     withReuseIdentifier: headerIdentifier)
         }
+//        ChatDateCell.registerForReuse(inView: collectionView)
+//        ChatNotificationCell.registerForReuse(inView: collectionView)
+//        ChatOutgoingCell.registerForReuse(inView: collectionView)
+//        ChatIncomingCell.registerForReuse(inView: collectionView)
+//        ChatAttachmentIncomingCell.registerForReuse(inView: collectionView)
+//        ChatAttachmentOutgoingCell.registerForReuse(inView: collectionView)
         ChatDateCell.registerForReuse(inView: collectionView)
         ChatNotificationCell.registerForReuse(inView: collectionView)
         ChatOutgoingCell.registerForReuse(inView: collectionView)
@@ -709,13 +715,24 @@ class ChatViewController: UIViewController, ChatContextMenu {
     
     private func statusImageForMessage(message: QBChatMessage) -> UIImage {
         //check and add users who read the message
+//        if let readIDs = message.readIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
+//           readIDs.isEmpty == false {
+//            if #available(iOS 13.0, *) {
+//                return #imageLiteral(resourceName: "delivered").withTintColor(#colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1))
+//            } else {
+//                // Fallback on earlier versions
+//            }
+//        }
+//        //check and add users to whom the message was delivered
+//        if let deliveredIDs = message.deliveredIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
+//           deliveredIDs.isEmpty == false  {
+//            return #imageLiteral(resourceName: "delivered")
+//        }
+//        return UIImage(named: "sent")!
+        //check and add users who read the message
         if let readIDs = message.readIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
            readIDs.isEmpty == false {
-            if #available(iOS 13.0, *) {
-                return #imageLiteral(resourceName: "delivered").withTintColor(#colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1))
-            } else {
-                // Fallback on earlier versions
-            }
+            return #imageLiteral(resourceName: "delivered").withTintColor(#colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1))
         }
         //check and add users to whom the message was delivered
         if let deliveredIDs = message.deliveredIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
@@ -726,42 +743,52 @@ class ChatViewController: UIViewController, ChatContextMenu {
     }
     
     @objc private func didTapInfo(_ sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "Chat", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
-        vc.delegateNavigate = self
-        self.navigationController?.present(vc, animated: false, completion: nil)
+//        let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
+//        vc.delegateNavigate = self
+//        self.navigationController?.present(vc, animated: false, completion: nil)
+        guard let actionsMenuVC = storyboard?.instantiateViewController(withIdentifier: "ActionsMenuViewController") as? ActionsMenuViewController else {
+            return
+        }
+        actionsMenuVC.modalPresentationStyle = .popover
+        let presentation = actionsMenuVC.popoverPresentationController
+        presentation?.delegate = self
+        presentation?.barButtonItem = infoItem
+        presentation?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         
-//        guard let actionsMenuVC = storyboard?.instantiateViewController(withIdentifier: "ActionsMenuViewController") as? ActionsMenuViewController else {
-//            return
-//        }
-//        actionsMenuVC.modalPresentationStyle = .popover
-//        let presentation = actionsMenuVC.popoverPresentationController
-//        presentation?.delegate = self
-//        presentation?.barButtonItem = infoItem
-//        presentation?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-//
-//        let leaveChatAction = MenuAction(title: "Delete chat") { [weak self] in
+//        let leaveChatAction = MenuAction(title: "Leave Chat") { [weak self] in
 //            self?.didTapDelete()
 //        }
-//        let groupChatAction = MenuAction(title: "Leave group") { [weak self] in
-//            self?.didGroupLeaveTapped()
-//        }
-//        let chatInfoAction = MenuAction(title: "Group info") { [weak self]  in
-//            self?.performSegue(withIdentifier: "SA_STR_SEGUE_GO_TO_INFO".localized, sender: ChatAction.ChatInfo)
-//        }
-//
-//        if dialog.type == .private {
-//            actionsMenuVC.addAction(leaveChatAction)
-//        } else {
-//            actionsMenuVC.addAction(groupChatAction)
-//            actionsMenuVC.addAction(chatInfoAction)
-//        }
-//
-//        actionsMenuVC.cancelAction = {
-//            self.hideKeyboard(animated: false)
-//        }
-//
-//        present(actionsMenuVC, animated: false)
+        let chatInfoAction = MenuAction(title: "Chat info") { [weak self]  in
+            self?.performSegue(withIdentifier: "SA_STR_SEGUE_GO_TO_INFO".localized, sender: ChatAction.ChatInfo)
+        }
+        
+        let chatNotificationAction = MenuAction(title: "Chat Notification") { [weak self] in
+            let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
+            vc.delegateNavigate = self
+            self?.navigationController?.present(vc, animated: false, completion: nil)
+
+        }
+        
+        if dialog.type == .private {
+            //actionsMenuVC.addAction(leaveChatAction)
+            let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
+            vc.delegateNavigate = self
+            self.navigationController?.present(vc, animated: false, completion: nil)
+        } else {
+            //actionsMenuVC.addAction(leaveChatAction)
+           actionsMenuVC.addAction(chatNotificationAction)
+           actionsMenuVC.addAction(chatInfoAction)
+        }
+        
+        actionsMenuVC.cancelAction = {
+            self.hideKeyboard(animated: false)
+        }
+        
+        present(actionsMenuVC, animated: false)
+
     }
     
     //MARK - Navigation
@@ -1566,8 +1593,8 @@ extension ChatViewController: ChatCollectionViewDataSource {
                       userName.isEmpty == false else {return}
                 
                 chatCell.topLabel.text = userName
-                chatCell.avatarLabel.text = String(userName.capitalized.first ?? Character("QB"))
-                chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
+                //chatCell.avatarLabel.text = String(userName.capitalized.first ?? Character("QB"))
+               // chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
                 self.collectionView.reloadItems(at: [indexPath])
             }
         }
@@ -1635,15 +1662,15 @@ extension ChatViewController: ChatCollectionViewDataSource {
         chatCell.topLabel.text = username
         if (cell is ChatIncomingCell || cell is ChatAttachmentIncomingCell) && dialog.type != .private {
             let userName = username?.string
-            if userName != nil {
-               // chatCell.avatarLabel.text = String(userName?.capitalized.first ?? Character("QB"))
-            }
-            chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
+//            if userName != nil {
+//               // chatCell.avatarLabel.text = String(userName?.capitalized.first ?? Character("QB"))
+//            }
+           // chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
         }
 
         chatCell.timeLabel.text = timeLabelAttributedString(forItem: message)
         if let chatOutgoingCell = chatCell as? ChatOutgoingCell {
-            chatOutgoingCell.setupStatusImage(statusImageForMessage(message: message))
+           chatOutgoingCell.setupStatusImage(statusImageForMessage(message: message))
         }
         
         if let textView = chatCell.textView {
@@ -2025,6 +2052,7 @@ extension ChatViewController: QBChatDelegate {
         }
         message.readIDs?.append(NSNumber(value: readerID))
         dataSource.updateMessage(message)
+        
     }
     
     func chatDidDeliverMessage(withID messageID: String, dialogID: String, toUserID userID: UInt) {

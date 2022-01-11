@@ -33,12 +33,19 @@ class HabitCell: UITableViewCell, Reusable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        btnHabitDetail.isUserInteractionEnabled = false
+        btnHabitDetail.isHidden = true
         self.setup()
     }
     
     private func setup() {
         btnHabitDetail.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         self.daysCollectionView.didMarkAsComplete = self.didMarkAsCompleteIndex
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        self.daysCollectionView.addGestureRecognizer(tap)
+        self.matesCollectionView.addGestureRecognizer(tap1)
     }
     
     func configure<T>(with content: T) { }
@@ -86,5 +93,10 @@ class HabitCell: UITableViewCell, Reusable {
         if let habitMarks = self.viewModel.habitList[self.tableIndex ?? 0].habitMarks?[index] {
             self.didMarkAsComplete?(habitMarks)
         }
+    }
+    
+    @objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
+        print("self.tableIndex on collection tap is \(String(describing: self.tableIndex))")
+        self.showHabitDetail?(self.tableIndex ?? 0)
     }
 }

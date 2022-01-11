@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HabitDaysCell: UICollectionViewCell,UIGestureRecognizerDelegate, Reusable {
+class HabitDaysCell: UICollectionViewCell, Reusable {
     
     @IBOutlet weak var lblDays: UILabel!
     @IBOutlet weak var lblDates: UILabel!
@@ -23,7 +23,6 @@ class HabitDaysCell: UICollectionViewCell,UIGestureRecognizerDelegate, Reusable 
     private func setup() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         self.imgActive.addGestureRecognizer(tap)
-        tap.delegate = self
     }
     
     func configure<T>(with content: T) { }
@@ -31,8 +30,6 @@ class HabitDaysCell: UICollectionViewCell,UIGestureRecognizerDelegate, Reusable 
     func configure(item: HabitMark, colorTheme: String, tag: Int) {
         let str: String = ""
         self.imgActive.tag = tag
-       // print("item.habitDay is \(item.habitDay)")
-        
         self.lblDates.text = str.getDateFromTimeStamp(timeStamp : String(item.habitDay ?? 0), isDayName: false)
         self.lblDays.text = str.getDateFromTimeStamp(timeStamp : String(item.habitDay ?? 0), isDayName: true)
         if item.isCompleted == true {

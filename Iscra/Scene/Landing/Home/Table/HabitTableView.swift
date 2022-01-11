@@ -11,7 +11,7 @@ class  HabitTableView: UITableView {
     
     var viewModel: HomeViewModel!
     var showHabitDetail:((Int) ->())?
-    var didMarkAsComplete:((Int) ->())?
+    var didMarkAsComplete:((HabitMark) ->())?
     var didDeleteHabitAtIndex: ((Int) -> Void)?
 
     override class func awakeFromNib() {

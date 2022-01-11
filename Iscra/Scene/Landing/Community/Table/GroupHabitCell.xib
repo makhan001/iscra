@@ -21,10 +21,10 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uy4-sx-Krb" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="10" width="637" height="209"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="yyO-dI-RZw">
-                                <rect key="frame" x="0.0" y="5" width="637" height="199"/>
+                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="yyO-dI-RZw">
+                                <rect key="frame" x="0.0" y="0.0" width="637" height="199"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lHh-B4-npG">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lHh-B4-npG">
                                         <rect key="frame" x="0.0" y="0.0" width="637" height="110"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="110" id="YQs-IJ-SLz"/>
@@ -78,8 +78,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="yyO-dI-RZw" secondAttribute="bottom" constant="5" id="IID-WE-yIu"/>
-                            <constraint firstItem="yyO-dI-RZw" firstAttribute="top" secondItem="uy4-sx-Krb" secondAttribute="top" constant="5" id="Pw9-bQ-MQ0"/>
+                            <constraint firstAttribute="bottom" secondItem="yyO-dI-RZw" secondAttribute="bottom" constant="10" id="IID-WE-yIu"/>
+                            <constraint firstItem="yyO-dI-RZw" firstAttribute="top" secondItem="uy4-sx-Krb" secondAttribute="top" id="Pw9-bQ-MQ0"/>
                             <constraint firstAttribute="trailing" secondItem="yyO-dI-RZw" secondAttribute="trailing" id="Tbm-Xm-ImW"/>
                             <constraint firstItem="yyO-dI-RZw" firstAttribute="leading" secondItem="uy4-sx-Krb" secondAttribute="leading" id="uHF-VC-cPb"/>
                             <constraint firstItem="lHh-B4-npG" firstAttribute="width" secondItem="uy4-sx-Krb" secondAttribute="width" id="vz9-lB-xN1"/>

@@ -15,6 +15,7 @@ class GroupHabitCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.imgHabit.roundCorners(corners: [.topLeft ,.topRight], radius: 8)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,16 +29,12 @@ class GroupHabitCell: UITableViewCell {
         self.imgHabit.isHidden = true
         if profilePic != nil && profilePic != "<null>"  {
             self.imgHabit.isHidden = false
-            let url = URL(string: profilePic!)
-            self.imgHabit.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic-Rectangle"))
+//            let url = URL(string: profilePic!)
+//            self.imgHabit.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic-Rectangle"))
+            self.imgHabit.setImageFromURL(obj.groupImage ?? "", with: AppConstant.UserPlaceHolderImage)
         } else {
             self.imgHabit.isHidden = true
         }
-        
-//        if indexPath.row == 1 || indexPath.row == 3 {
-//        cell.imgHabit.isHidden = true
-//        } else {
-//            cell.imgHabit.isHidden = false
-//        }
+
     }
 }

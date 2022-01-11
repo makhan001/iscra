@@ -56,5 +56,9 @@ extension HabitTableView: UITableViewDataSource, UITableViewDelegate {
         } else {
             return nil
         }
-    }    
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       self.showHabitDetail?(indexPath.row) // deepak new
+    }
 }

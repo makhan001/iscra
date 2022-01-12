@@ -97,14 +97,16 @@ extension EditReminderViewController {
             if self.reminderTime.contains(":"){
                 let strDate : String = self.reminderTime
                 dateString = strDate
-                self.setPickerTime(dateString: dateString)
+               // self.setPickerTime(dateString: dateString)
+                self.pickerTime.setDate(from: dateString, format: "hh:mm a")
             } else {
                         let date = Date(timeIntervalSince1970: Double(self.reminderTime) ?? 0.0 / 1000)
                             let dayTimePeriodFormatter = DateFormatter()
                             dayTimePeriodFormatter.locale = Locale(identifier: "en_US_POSIX")
                             dayTimePeriodFormatter.dateFormat = "hh:mm a" // "dd MMM YY, hh:mm a, EEEE"
                              dateString = dayTimePeriodFormatter.string(from: date as Date)
-                self.setPickerTime(dateString: dateString)
+               // self.setPickerTime(dateString: dateString)
+                self.pickerTime.setDate(from: dateString, format: "hh:mm a")
             }
         }
         let fullNameArr = dateString.components(separatedBy: " ")
@@ -130,8 +132,9 @@ extension EditReminderViewController {
         dateFormatter.dateFormat = "hh:mm a"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         let date = dateFormatter.date(from: dateString)
-         print("strDate is on setdefalut  \(dateString)")
         self.pickerTime.datePickerMode = .time
+     //   print("strDate is on setting on picker  \(dateString)")
+     //  print("date is on setting on picker  \(String(describing: date))")
         self.pickerTime.setDate(date ?? Date(), animated: false)
     }
 }
@@ -154,8 +157,4 @@ extension EditReminderViewController {
             self.view.layoutIfNeeded()
         })
     }
- 
 }
-
-
-

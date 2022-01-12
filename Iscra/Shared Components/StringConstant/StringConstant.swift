@@ -11,6 +11,7 @@ import Foundation
 class AppConstant: NSObject {
     
     static let UserPlaceHolderImage = UIImage(named: "ic-user-placeholder")
+    static let HabitPlaceHolderImage = UIImage(named: "ic-habit-placeholder")
     
     // SocialLogin Constants
     //  static let googleClientID = "39692170766-8vkfqscsq4ommlmsnrdmeld8knjne2ec.apps.googleusercontent.com"

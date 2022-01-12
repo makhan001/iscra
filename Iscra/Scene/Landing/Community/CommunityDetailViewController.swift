@@ -60,14 +60,13 @@ extension CommunityDetailViewController {
         
     private func setupParallaxHeader(groupImage: String) {
         let imageView = UIImageView()
-       // imageView.image = UIImage(named: "ic-Rectangle")
         
         let profilePic = groupImage
             if profilePic != "" && profilePic != "<null>" {
               let url = URL(string: profilePic)
-                imageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic-Rectangle"))
+                imageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic-habit-placeholder"))
             } else {
-                imageView.image = UIImage(named: "ic-Rectangle")
+                imageView.image = UIImage(named: "ic-habit-placeholder")
             }
         
         imageView.contentMode = .scaleAspectFill
@@ -143,7 +142,7 @@ extension CommunityDetailViewController: HabitViewRepresentable{
         self.lblGroupName.text = self.objGroupHabitDetails?.name
         self.lbldiscription.text = self.objGroupHabitDetails?.groupHabitDetailsDescription
         self.lblMembersCount.text = "(" + String(self.objGroupHabitDetails?.memberCount ?? 0) + ")"
-        self.setupParallaxHeader(groupImage: self.objGroupHabitDetails?.image ?? "ic-Rectangle")
+        self.setupParallaxHeader(groupImage: self.objGroupHabitDetails?.image ?? "ic-habit-placeholder")
         self.addTitleLabel()
         self.collectionMates.configure(arrMember: self.objGroupHabitDetails?.usersProfileImageURL)
     }

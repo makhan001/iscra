@@ -127,7 +127,7 @@ extension GroupHabitFriendsViewController {
             self.lblDaysCount.text = String(daysCount)
         }
         
-        if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
+        if UserStore.userID == self.viewModel.userId &&  UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
             self.viewEditHabit.isHidden = false
             self.viewDeleteHabit.isHidden = false
         } else {

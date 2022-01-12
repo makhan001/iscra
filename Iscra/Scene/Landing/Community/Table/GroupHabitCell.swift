@@ -29,9 +29,7 @@ class GroupHabitCell: UITableViewCell {
         self.imgHabit.isHidden = true
         if profilePic != nil && profilePic != "<null>"  {
             self.imgHabit.isHidden = false
-//            let url = URL(string: profilePic!)
-//            self.imgHabit.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic-Rectangle"))
-            self.imgHabit.setImageFromURL(obj.groupImage ?? "", with: AppConstant.UserPlaceHolderImage)
+            self.imgHabit.setImageFromURL(obj.groupImage ?? "", with: AppConstant.HabitPlaceHolderImage)
         } else {
             self.imgHabit.isHidden = true
         }

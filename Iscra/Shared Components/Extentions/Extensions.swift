@@ -293,7 +293,21 @@ extension Locale {
     }
 }
 
+extension UIDatePicker {
+   func setDate(from string: String, format: String) {
+      let formater = DateFormatter()
+      formater.dateFormat = format
+      let date = formater.date(from: string) ?? Date()
+      setDate(date, animated: false)
+   }
+}
+
 extension Date {
+    var calendar: Calendar { Calendar.current }
+    var weekdayIndex: Int {
+        (calendar.component(.weekday, from: self) - calendar.firstWeekday + 7) % 7 + 1
+    }
+    
     func string(format: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format

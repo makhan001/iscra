@@ -17,6 +17,13 @@ final class AddMemojiCoordinator: Coordinator<Scenes> {
         router.setRootModule(controller, hideBar: true)
         self.onStart()
     }
+    
+    func start(isfromMyAccount: Bool) {
+        super.start()
+        controller.isfromMyAccount = isfromMyAccount
+        router.setRootModule(controller, hideBar: true)
+        self.onStart()
+    }
         
     private func onStart() {
         controller.router = self
@@ -35,6 +42,7 @@ extension AddMemojiCoordinator: NextSceneDismisser {
     func push(scene: Scenes) {
         switch scene {
         case .signup: startSignup()
+            
         default: break
         }
     }

@@ -54,14 +54,17 @@ extension MyAccountViewController {
         self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text =  "My profile"
         self.viewNavigation.delegateBarAction = self
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUserImage(_:)), name: .UpdateUserImage, object: nil)
         if !MFMailComposeViewController.canSendMail() {
             print("Mail services are not available")
             return
         }
-       // imgProfile.isUserInteractionEnabled = true
-       
-       
     }
+    
+    @objc func updateUserImage(_ notification: Notification) {
+        self.imgProfile.setImageFromURL(UserStore.userImage ?? "", with: AppConstant.UserPlaceHolderImage)
+    }
+    
     @objc func imageTapped(sender: UIImageView) {
         print("image tapped")
         let storyboard = UIStoryboard(name: "Landing", bundle: nil)
@@ -139,7 +142,7 @@ extension MyAccountViewController: clickManagerDelegate{
         case .changePassword:
             self.changePasswordAction()
         case .shareWithFriends:
-            self.showActivityViewController(url: URL(string: "https://www.apple.com")!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
+            self.showActivityViewController(url: URL(string: AppConstant.IscraAppLink)!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
         case .rateUs:
             self.rateUs()
         case .contactDeveloper:

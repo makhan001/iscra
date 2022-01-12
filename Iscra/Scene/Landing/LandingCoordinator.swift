@@ -85,7 +85,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         addMemojiCoordinator = AddMemojiCoordinator(router: Router())
         add(addMemojiCoordinator)
         addMemojiCoordinator.delegate = self
-        addMemojiCoordinator.start()
+        addMemojiCoordinator.start(isfromMyAccount: true)
         self.router.present(addMemojiCoordinator, animated: true)
     }
     

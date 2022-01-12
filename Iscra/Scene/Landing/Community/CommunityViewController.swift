@@ -114,7 +114,7 @@ extension CommunityViewController {
     
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
-        self.showActivityViewController(url: URL(string: "https://www.apple.com")!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
+        self.showActivityViewController(url: URL(string: AppConstant.IscraAppLink)!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
     }
     
     private func showActivityViewController(url:URL,  text: String,  image: UIImage) {

@@ -12,6 +12,11 @@ enum SubscriptionSourceScreen: String {
     case myAccount
 }
 
+enum MemojiSourceScreen: String {
+    case walkthrough
+    case myAccount
+}
+
 enum OnboardingScreenType: String {
     case signup
     case login

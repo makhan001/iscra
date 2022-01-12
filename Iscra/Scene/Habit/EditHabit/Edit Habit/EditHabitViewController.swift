@@ -162,7 +162,7 @@ extension EditHabitViewController: NavigationBarViewDelegate {
                 let currentDate = Date().string(format: "yyyy-MM-dd")
                 let yourDate = currentDate + "-" + self.timer
                  let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd-hh:mm a"
+                dateFormatter.dateFormat = "yyyy-MM-dd-HH:mm a"
                  let dateString = dateFormatter.date(from: yourDate)
                  let dateTimeStamp  = dateString!.timeIntervalSince1970
                 self.viewModel.timer = String(dateTimeStamp)

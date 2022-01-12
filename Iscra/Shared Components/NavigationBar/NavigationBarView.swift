@@ -16,6 +16,7 @@ enum navRightViewType{
     case editHabit
     case habitCalender
     case addHabit
+    case memoji
 }
 
 class NavigationBarView: UIView {
@@ -66,6 +67,9 @@ class NavigationBarView: UIView {
         case .addHabit:
             btnRightBar.isHidden = false
             btnRightBar.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+        case .memoji:
+            btnRightBar.isHidden = false
+            btnRightBar.setTitle("Next", for: .normal)
         case .other:
             btnRightBar.isHidden = true
         }

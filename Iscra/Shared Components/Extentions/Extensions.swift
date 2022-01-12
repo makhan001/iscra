@@ -252,6 +252,36 @@ extension String {
             return fullNameArr[0]
         }
     }
+    
+    func getDate() -> Date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm a"
+            dateFormatter.timeZone = TimeZone.current
+            dateFormatter.locale = Locale.current
+            return dateFormatter.date(from: self) ?? Date()
+        }
+        var timeStamp: String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm a"
+            let date = dateFormatter.date(from: self)
+            let dateStamp: TimeInterval = (date ?? Date()).timeIntervalSince1970
+            return String(Int(dateStamp))
+        }
+        var convertTo12Hour: String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            let date = dateFormatter.date(from: self)
+            dateFormatter.dateFormat = "h:mm a"
+            return dateFormatter.string(from: date ?? Date())
+        }
+        var timeConversion12: String {
+            let df = DateFormatter()
+            df.dateFormat = "HH:mm"
+            let date = df.date(from: self)
+            df.dateFormat = "hh:mm a"
+            let time12 = df.string(from: date ?? Date())
+            return time12
+        }
 }
 
 extension UIImageView {
@@ -480,6 +510,7 @@ extension Notification.Name {
     static let JoinHabit = Notification.Name("JoinHabit")
     static let MarkAsComplete = Notification.Name("MarkAsComplete")
     static let SearchAllGroup = Notification.Name("SearchAllGroup")
+    static let UpdateUserImage = Notification.Name("UpdateUserImage")
     static let purchaseFinished = Notification.Name("purchaseFinished")
     static let IAPHelperPurchaseNotification = Notification.Name("IAPHelperPurchaseNotification")
     static let IAPHelperPurchaseFinishNotification = Notification.Name("IAPHelperPurchaseFinishNotification")

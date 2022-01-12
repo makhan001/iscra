@@ -44,6 +44,7 @@
 		047E3EE8276C7AEE00C8C8A1 /* CommunityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */; };
 		047FFD8A27733336009503CB /* CommunitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FFD8927733336009503CB /* CommunitySearchViewModel.swift */; };
 		04810DBE275F7B5000DEC36F /* EditHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */; };
+		0483C586278F08A400FD02FC /* AddMemojiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483C585278F08A400FD02FC /* AddMemojiViewModel.swift */; };
 		04840996277DF3DF006862B2 /* HabitDaysCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04840995277DF3DE006862B2 /* HabitDaysCollectionView.swift */; };
 		0496E011275E0253005C982A /* HabitCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E010275E0253005C982A /* HabitCalenderViewModel.swift */; };
 		0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */; };
@@ -363,6 +364,7 @@
 		047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProvider.swift; sourceTree = "<group>"; };
 		047FFD8927733336009503CB /* CommunitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchViewModel.swift; sourceTree = "<group>"; };
 		04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitViewModel.swift; sourceTree = "<group>"; };
+		0483C585278F08A400FD02FC /* AddMemojiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemojiViewModel.swift; sourceTree = "<group>"; };
 		04840995277DF3DE006862B2 /* HabitDaysCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDaysCollectionView.swift; sourceTree = "<group>"; };
 		0496E010275E0253005C982A /* HabitCalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderViewModel.swift; sourceTree = "<group>"; };
 		0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCircularProgressBar.swift; sourceTree = "<group>"; };
@@ -1424,6 +1426,7 @@
 				88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */,
 				88B4A224271FF9C300488AA3 /* AddMyPictureViewController.swift */,
 				88B4A227271FFA8100488AA3 /* AddMemojiViewController.swift */,
+				0483C585278F08A400FD02FC /* AddMemojiViewModel.swift */,
 				043CF54B2768B3B200526FBC /* AddMemojiCoordinator.swift */,
 				043CF5452768A71300526FBC /* AddMyPictureCoordinator.swift */,
 				043CF5482768AAC500526FBC /* WalkthroughCoordinator.swift */,
@@ -2368,6 +2371,7 @@
 				5FF6CD57274E6A5A007ADC2F /* ActionMenu.swift in Sources */,
 				5FF6CD37274E6A5A007ADC2F /* ReplaceSegue.swift in Sources */,
 				5FF6CD48274E6A5A007ADC2F /* CreateNewDialogViewController.swift in Sources */,
+				0483C586278F08A400FD02FC /* AddMemojiViewModel.swift in Sources */,
 				88C7C2FA2726D39800EAA8CA /* ColorCollectionViewCell.swift in Sources */,
 				5FF6CD2B274E6A5A007ADC2F /* UIImage+Extention.swift in Sources */,
 				8814B4132743858900A6DE01 /* Row.swift in Sources */,

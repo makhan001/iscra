@@ -24,7 +24,7 @@
                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="yyO-dI-RZw">
                                 <rect key="frame" x="0.0" y="0.0" width="637" height="199"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lHh-B4-npG">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-habit-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="lHh-B4-npG">
                                         <rect key="frame" x="0.0" y="0.0" width="637" height="110"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="110" id="YQs-IJ-SLz"/>
@@ -129,6 +129,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="ic-habit-placeholder" width="67" height="78"/>
         <namedColor name="BlackAccent">
             <color red="0.10999999940395355" green="0.090000003576278687" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

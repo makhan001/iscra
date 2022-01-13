@@ -335,7 +335,7 @@ extension UIDatePicker {
 extension Date {
     var calendar: Calendar { Calendar.current }
     var weekdayIndex: Int {
-        (calendar.component(.weekday, from: self) - calendar.firstWeekday + 7) % 7 + 1
+        (calendar.component(.weekday, from: self) - calendar.firstWeekday + 7) % 7 //+ 1
     }
     
     func string(format: String) -> String {

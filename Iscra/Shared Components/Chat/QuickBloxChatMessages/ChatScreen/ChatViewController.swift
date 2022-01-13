@@ -96,7 +96,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
             self.dialog = chatManager.storage.dialog(withID: dialogID)
         }
     }
-    private var dialog: QBChatDialog!
+    var dialog: QBChatDialog!
     /**
      *  Cell's contact request delegate.
      */

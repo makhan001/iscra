@@ -159,13 +159,19 @@ extension EditHabitViewController: NavigationBarViewDelegate {
         self.viewModel.days = self.days
         if self.reminders == true {
             if self.timer.contains(":"){
+//                let currentDate = Date().string(format: "yyyy-MM-dd")
+//                let yourDate = currentDate + "-" + self.timer
+//                 let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "yyyy-MM-dd-HH:mm a"
+//                 let dateString = dateFormatter.date(from: yourDate)
+//                 let dateTimeStamp  = dateString!.timeIntervalSince1970
+//                self.viewModel.timer = String(dateTimeStamp)
                 let currentDate = Date().string(format: "yyyy-MM-dd")
-                let yourDate = currentDate + "-" + self.timer
-                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd-HH:mm a"
-                 let dateString = dateFormatter.date(from: yourDate)
-                 let dateTimeStamp  = dateString!.timeIntervalSince1970
+                let dateTimeStamp = (currentDate + " " + self.timer).timeStamp
                 self.viewModel.timer = String(dateTimeStamp)
+        
+            self.viewModel.timer = self.timer
+                
             } else {
                 self.viewModel.timer = self.timer
             }

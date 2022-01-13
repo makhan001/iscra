@@ -58,6 +58,7 @@ final class MyAccountViewModel {
                         UserStore.save(userName: response.data?.user?.username)
                         UserStore.save(userImage: response.data?.user?.profileImage)
                         UserStore.save(token: response.data?.user?.authenticationToken)
+                        QBChatLogin.shared.updateFullName(fullName: self?.username ?? "", customData: self?.selectedImage as? String ?? "")
                         self?.view?.onAction(.updateProfile)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

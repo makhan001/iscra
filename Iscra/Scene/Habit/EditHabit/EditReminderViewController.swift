@@ -34,6 +34,7 @@ class EditReminderViewController: UIViewController {
 extension EditReminderViewController {
     func setup()  {
         self.pickerTime.locale = NSLocale(localeIdentifier: "en_US") as Locale
+       // self.pickerTime.locale = .current
         self.viewTime.isHidden = true
         self.viewTimePicker.isHidden = true
         navigationController?.navigationBar.isHidden = false
@@ -73,18 +74,79 @@ extension EditReminderViewController {
     }
     
     func timemanager() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm a"
-        let dateString = dateFormatter.string(from: pickerTime.date)
-        let fullNameArr = dateString.components(separatedBy: " ")
+        let dateFormatter12 = DateFormatter()
+        dateFormatter12.dateFormat = "hh:mm a"
+        dateFormatter12.locale = Locale(identifier: "en-US")
+        let dateString1 = dateFormatter12.string(from: pickerTime.date)
+        print(" dateString1 is \(dateString1.convertTo12Hour)")
+        //////////////
+        let fullNameArr = dateString1.components(separatedBy: " ")
+        print("pickerTime.date is \(pickerTime.date)")
+        print("fullNameArr[0] is \(fullNameArr[0])")
         lblReminderTime.text = fullNameArr[0]
-        self.reminderTime = dateString
+        self.reminderTime = dateString1
         self.reminders = true
-        if dateString.contains("AM") {
+        if dateString1.contains("AM") {
             self.btnSegment.selectedSegmentIndex = 0
         } else {
             self.btnSegment.selectedSegmentIndex = 1
         }
+    }
+    
+//    func timemanager() {
+//        let dateAsString = "13:15"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "HH:mm"
+//
+//        let date = dateFormatter.date(from: dateAsString)
+//        dateFormatter.dateFormat = "h:mm a"
+//        let Date12 = dateFormatter.string(from: date!)
+//        print("12 hour formatted Date:",Date12)
+//    }
+//    func timemanager() {
+//
+//
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss Z"
+//
+//        print("proper date is \(formatter.string(from: pickerTime.date))")
+//
+//        let formatingDate = getFormattedDate(date: pickerTime.date, format: "yyyy-MM-dd HH:mm:ss Z")
+//                print("formatingDate is \(formatingDate)")
+//
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "HH:mm"
+//        let date = dateFormatter.date(from: formatingDate)
+//        print("Converte date is \(date)")
+////        dateFormatter.locale = .current
+//        let dateString = dateFormatter.string(from: pickerTime.date)
+//        dateFormatter.dateFormat = "HH:mm a"
+//       //        dateFormatter.locale = .current
+//        let dateStringss = dateFormatter.string(from: pickerTime.date)
+//        print(dateStringss)
+//        let fullNameArr = dateString.components(separatedBy: " ")
+//
+//        print("fullNameArr[0] is \(fullNameArr[0])")
+//        print("pickerTime.date is \(pickerTime.date)")
+//
+//        print("dateString is \(dateString)")
+//
+//        lblReminderTime.text = fullNameArr[0]
+//        self.reminderTime = dateString
+//        self.reminders = true
+//        if dateString.contains("AM") {
+//            self.btnSegment.selectedSegmentIndex = 0
+//        } else {
+//            self.btnSegment.selectedSegmentIndex = 1
+//        }
+//    }
+    
+    func getFormattedDate(date: Date, format: String) -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        dateformat.timeZone = .current
+        return dateformat.string(from: date)
     }
         
     func setDefalutTime() {
@@ -98,6 +160,8 @@ extension EditReminderViewController {
                 let strDate : String = self.reminderTime
                 dateString = strDate
                // self.setPickerTime(dateString: dateString)
+                
+                print("dateString on if \(dateString)")
                 self.pickerTime.setDate(from: dateString, format: "hh:mm a")
             } else {
                         let date = Date(timeIntervalSince1970: Double(self.reminderTime) ?? 0.0 / 1000)
@@ -106,6 +170,7 @@ extension EditReminderViewController {
                             dayTimePeriodFormatter.dateFormat = "hh:mm a" // "dd MMM YY, hh:mm a, EEEE"
                              dateString = dayTimePeriodFormatter.string(from: date as Date)
                // self.setPickerTime(dateString: dateString)
+                print("dateString on else \(dateString)")
                 self.pickerTime.setDate(from: dateString, format: "hh:mm a")
             }
         }

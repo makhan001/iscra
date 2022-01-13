@@ -69,11 +69,14 @@ extension CommunityDetailViewController {
                 imageView.image = UIImage(named: "ic-habit-placeholder")
             }
         
-        imageView.contentMode = .scaleAspectFill
-        
+        if imageView.image == #imageLiteral(resourceName: "ic-habit-placeholder") {
+            imageView.contentMode = .center
+        } else{
+            imageView.contentMode = .scaleAspectFill
+        }
         headerImageView = imageView
         tableView.parallaxHeader.view = imageView
-        tableView.parallaxHeader.view.backgroundColor = UIColor.red
+       // tableView.parallaxHeader.view.backgroundColor = UIColor.red
         tableView.parallaxHeader.height = 242
         tableView.parallaxHeader.minimumHeight = 90
         tableView.parallaxHeader.mode = .centerFill

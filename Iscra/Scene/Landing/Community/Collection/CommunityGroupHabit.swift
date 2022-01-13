@@ -22,6 +22,6 @@ class CommunityGroupHabit: UICollectionViewCell, Reusable {
         guard let item = content as? Invitaion else { return }
         self.lblHabitTitle.text = item.name?.capitalized
         self.lblHabitSubtitle.text = item.invitaionDescription
-        self.imgHabit.setImageFromURL(item.groupImage ?? "", with: AppConstant.UserPlaceHolderImage)
+        self.imgHabit.setImageFromURL(item.groupImage ?? "", with: AppConstant.HabitPlaceHolderImage)
     }
 }

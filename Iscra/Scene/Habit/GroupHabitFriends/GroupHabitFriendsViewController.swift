@@ -83,6 +83,7 @@ extension GroupHabitFriendsViewController {
     
     private func addObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadView) , name: .EditHabit, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadView) , name: .MarkAsComplete, object: nil)
     }
     
     private func addGestureOnBottomView() {
@@ -118,7 +119,7 @@ extension GroupHabitFriendsViewController {
         }
     }
     
-    func reloadCaledar() {
+    private func reloadCaledar() {
         self.calenderSetup()
         self.circularViewSetup()
         self.viewNavigation.lblTitle.textColor = self.themeColor
@@ -126,7 +127,7 @@ extension GroupHabitFriendsViewController {
         if let daysCount = self.viewModel.longestStreak {
             self.lblDaysCount.text = String(daysCount)
         }
-        
+      // if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
         if UserStore.userID == self.viewModel.userId &&  UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
             self.viewEditHabit.isHidden = false
             self.viewDeleteHabit.isHidden = false
@@ -136,7 +137,7 @@ extension GroupHabitFriendsViewController {
         }
     }
     
-    func circularViewSetup() {
+    private func circularViewSetup() {
         self.viewCircular.lineWidth = 20
         self.viewCircular.ringColor =  self.themeColor
     }
@@ -226,15 +227,15 @@ extension GroupHabitFriendsViewController {
         //  self.viewCalender.setCurrentPage(getNextMonth(date: self.viewCalender.currentPage), animated: true)
     }
     
-    func getNextMonth(date:Date)->Date {
+    private func getNextMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
     }
     
-    func getPreviousMonth(date:Date)->Date {
+    private func getPreviousMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
     }
     
-    func showAlert() {
+    private func showAlert() {
         let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
             print("Delete button tapped");
@@ -252,14 +253,14 @@ extension GroupHabitFriendsViewController {
 
 extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDelegate , FSCalendarDelegateAppearance {
     
-    var habitArrays: (completedArray: [Date]?, inCompletedArray: [Date]?) {
+    private var habitArrays: (completedArray: [Date]?, inCompletedArray: [Date]?) {
         let completedArray = viewModel.arrHabitCalender?.filter { $0.isCompleted == true }.compactMap { $0.date }
         let inCompletedArray = viewModel.arrHabitCalender?.filter { $0.isCompleted == false }.compactMap { $0.date }
         return (completedArray: completedArray, inCompletedArray: inCompletedArray)
     }
     
     // Return UIColor for numbers;
-    func calendar(_ calendar: FSCalendar,appearance: FSCalendarAppearance,titleDefaultColorFor date: Date) -> UIColor? {
+     func calendar(_ calendar: FSCalendar,appearance: FSCalendarAppearance,titleDefaultColorFor date: Date) -> UIColor? {
         guard let completedArray = habitArrays.completedArray,  let inCompletedArray = habitArrays.inCompletedArray else { return nil }
         
         if completedArray.contains(date)  {
@@ -271,7 +272,7 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
     }
     
     // Return UIColor for Background;
-    func calendar(_ calendar: FSCalendar,appearance: FSCalendarAppearance,fillDefaultColorFor date: Date) -> UIColor? {
+     func calendar(_ calendar: FSCalendar,appearance: FSCalendarAppearance,fillDefaultColorFor date: Date) -> UIColor? {
         guard let completedArray = habitArrays.completedArray,
               let inCompletedArray = habitArrays.inCompletedArray
         else { return nil }
@@ -284,16 +285,16 @@ extension GroupHabitFriendsViewController : FSCalendarDataSource, FSCalendarDele
         return UIColor.white
     }
     
-    func maximumDate(for calendar: FSCalendar) -> Date {
+     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date()
     }
     
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.headerMonthSetup()
         self.getMonthlyHabitDetail()
     }
     
-    func getMonthlyHabitDetail() {
+    private func getMonthlyHabitDetail() {
         let timestamp = self.viewCalender.currentPage.addDays(days: 10)
         print("timestamp is \(timestamp)")
         self.viewModel.habitMonth =  String(format: "%.0f", timestamp)
@@ -314,7 +315,7 @@ extension GroupHabitFriendsViewController {
 
 // MARK: API Callback
 extension GroupHabitFriendsViewController: HabitViewRepresentable {
-    func onAction(_ action: HabitAction) {
+     func onAction(_ action: HabitAction) {
         switch action {
         case  let .errorMessage(msg):
             self.showToast(message: msg)
@@ -341,7 +342,7 @@ extension GroupHabitFriendsViewController: HabitViewRepresentable {
 }
 // MARK: showAlert for delete habit
 extension GroupHabitFriendsViewController {
-    func showAlert(habitId: String) {
+    private func showAlert(habitId: String) {
         let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
             self.viewModel.deleteHabit(habitId: habitId)

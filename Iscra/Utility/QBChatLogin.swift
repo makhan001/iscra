@@ -51,8 +51,8 @@ class QBChatLogin {
                                     let userDefaults = UserDefaults.standard
                                     userDefaults.set(data, forKey: UserProfileConstant.curentProfile)
                                     self.updateFullName(fullName: UserStore.userName ?? "", customData: UserStore.userImage ?? "")
-                                    print("update user name===>\(UserStore.userName)")
-                                    print("update user Image===>\(UserStore.userImage)")
+                                    print("update user name===>\(String(describing: UserStore.userName))")
+                                    print("update user Image===>\(String(describing: UserStore.userImage))")
                                     } catch {
                                         debugPrint("[Profile] Couldn't write file to UserDefaults")
                                     }

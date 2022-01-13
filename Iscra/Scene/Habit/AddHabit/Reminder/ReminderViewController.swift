@@ -78,16 +78,32 @@ extension ReminderViewController {
     }
     
     private func timePickerValueOnUpdate() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm a"
-        let dateString = dateFormatter.string(from: pickerTime.date)
-        let fullNameArr = dateString.components(separatedBy: " ")
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "hh:mm a"
+//        let dateString = dateFormatter.string(from: pickerTime.date)
+//        let fullNameArr = dateString.components(separatedBy: " ")
+//        lblReminderTime.text = fullNameArr[0]
+//        self.viewModel.reminderTime = dateString
+//        if dateString.contains("AM") {
+//            btnSegment.selectedSegmentIndex = 0
+//        } else {
+//            btnSegment.selectedSegmentIndex = 1
+//        }
+        
+        let dateFormatter12 = DateFormatter()
+        dateFormatter12.dateFormat = "hh:mm a"
+        dateFormatter12.locale = Locale(identifier: "en-US")
+        let dateString1 = dateFormatter12.string(from: pickerTime.date)
+        print(" dateString1 is \(dateString1.convertTo12Hour)")
+        //////////////
+        let fullNameArr = dateString1.components(separatedBy: " ")
+        print("pickerTime.date is \(pickerTime.date)")
+        print("fullNameArr[0] is \(fullNameArr[0])")
         lblReminderTime.text = fullNameArr[0]
-        self.viewModel.reminderTime = dateString
-        if dateString.contains("AM") {
-            btnSegment.selectedSegmentIndex = 0
+        if dateString1.contains("AM") {
+            self.btnSegment.selectedSegmentIndex = 0
         } else {
-            btnSegment.selectedSegmentIndex = 1
+            self.btnSegment.selectedSegmentIndex = 1
         }
     }
     
@@ -134,13 +150,18 @@ extension ReminderViewController {
     }
     
     private func nextClick() {
-        let currentDate = Date().string(format: "yyyy-MM-dd")
-        let yourDate = currentDate + "-" + self.viewModel.reminderTime
-         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd-hh:mm a"
-         let dateString = dateFormatter.date(from: yourDate)
-         let dateTimeStamp  = dateString!.timeIntervalSince1970
+//        let currentDate = Date().string(format: "yyyy-MM-dd")
+//        let yourDate = currentDate + "-" + self.viewModel.reminderTime
+//         let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd-hh:mm a"
+//         let dateString = dateFormatter.date(from: yourDate)
+//         let dateTimeStamp  = dateString!.timeIntervalSince1970
 
+        let currentDate = Date().string(format: "yyyy-MM-dd")
+        let dateTimeStamp = (currentDate + " " + self.viewModel.reminderTime).timeStamp
+        self.viewModel.timer = String(dateTimeStamp)
+        
+        
         if self.viewModel.reminders == true {
             HabitUtils.shared.timer = String(dateTimeStamp)
             self.viewModel.timer = String(dateTimeStamp)

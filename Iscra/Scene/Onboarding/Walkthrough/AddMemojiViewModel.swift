@@ -11,7 +11,8 @@ import SVProgressHUD
 import Quickblox
 
 final class AddMemojiViewModel {
-  
+    
+    var username: String = ""
     weak var view: OnboardingViewRepresentable?
     var selectedImage: UIImage! = OnboadingUtils.shared.userImage // singleton class
 
@@ -36,6 +37,7 @@ final class AddMemojiViewModel {
                         UserStore.save(userImage: response.data?.user?.profileImage)
                         UserStore.save(token: response.data?.user?.authenticationToken)
                         NotificationCenter.default.post(name: .UpdateUserImage, object: nil)
+                        QBChatLogin.shared.updateFullName(fullName: self?.username ?? "", customData: self?.selectedImage as? String ?? "")
                         self?.view?.onAction(.updateProfile)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

@@ -324,12 +324,13 @@ extension Locale {
 }
 
 extension UIDatePicker {
-   func setDate(from string: String, format: String) {
-      let formater = DateFormatter()
-      formater.dateFormat = format
-      let date = formater.date(from: string) ?? Date()
-      setDate(date, animated: false)
-   }
+    func setDate(from string: String, format: String) {
+        let formater = DateFormatter()
+        formater.dateFormat = format
+        formater.locale = Locale(identifier: "en-US")
+        let date = formater.date(from: string) ?? Date()
+        setDate(date, animated: false)
+    }
 }
 
 extension Date {
@@ -383,6 +384,10 @@ extension Date {
         let calendar = Calendar.current
         let compomnents = calendar.dateComponents([.year], from: self)
         return compomnents.year ?? 0
+    }
+    
+    var millisecondsSince1970:Int64 {
+        Int64((self.timeIntervalSince1970 * 1000.0).rounded())
     }
 }
 
@@ -524,6 +529,7 @@ extension Int {
 }
 
 extension TimeInterval {
+    
     var habitDate: String {
         let date = Date(timeIntervalSince1970: self)
         let dateFormatter = DateFormatter()
@@ -622,4 +628,5 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         return context
     }
 }
+
 

@@ -18,6 +18,7 @@ enum CommunityAction {
     case fetchCommunity
     case allGroupHabit
     case friends
+    case groupHabitMembers
     case requireFields(_ text:String)
     case inputComplete(_ screen: CommunityScreenType)
     case setTheme(_ screen: CommunityScreenType)
@@ -27,6 +28,7 @@ enum CommunityAction {
     case editingDidChange(_ field:String, _ value:String)
     case errorMessage(_ text:String)
     case sucessMessage(_ text:String)
+    case isUserAvailable(_ isAvailable:Bool)
 }
 
 protocol CommunityViewRepresentable: AnyObject {
@@ -43,6 +45,7 @@ protocol CommunityServiceProvidable: AnyObject {
     func fetchCommunity(param: CommunityParams.FetchCommunity)
     func allGroupHabit(param: CommunityParams.AllGroupHabit)
     func friends(param: CommunityParams.Friends)
+    func groupHabitMembers(param: CommunityParams.GroupHabitMembers)
 }
 
 protocol CommunityServiceProvierDelegate: AnyObject {

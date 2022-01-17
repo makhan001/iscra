@@ -55,7 +55,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         login.start()
         self.router.present(login, animated: true)
     }
-        
+    
     private func startWelcome() {
         let router = Router()
         welcome = OnboardingCoordinator(router: router)
@@ -132,8 +132,8 @@ final class LandingCoordinator: Coordinator<Scenes> {
         communityDetail = CommunityDetailCoordinator(router: Router())
         add(communityDetail)
         communityDetail.delegate = self
-        if let objInvitation = controller.community.objInvitaion {
-            communityDetail.start(objInvitation: objInvitation)
+        if let habitId = controller.community.objInvitaion?.id {
+            communityDetail.start(habitId: habitId)
         }
         self.router.present(communityDetail, animated: true)
     }

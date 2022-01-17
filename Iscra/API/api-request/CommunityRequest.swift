@@ -12,12 +12,14 @@ struct CommunityRequest: RequestRepresentable {
     var fetchCommunity: CommunityParams.FetchCommunity?
     var allGroupHabit: CommunityParams.AllGroupHabit?
     var friends: CommunityParams.Friends?
+    var groupHabitMembers: CommunityParams.GroupHabitMembers?
 
     let requestType: RequestType
     enum RequestType {
         case fetchCommunity
         case allGroupHabit
         case friends
+        case groupHabitMembers
     }
     
     init(requestType: RequestType) {
@@ -33,6 +35,8 @@ struct CommunityRequest: RequestRepresentable {
             self.allGroupHabit = params as? CommunityParams.AllGroupHabit
         case is CommunityParams.Friends:
             self.friends = params as? CommunityParams.Friends
+        case is CommunityParams.GroupHabitMembers:
+            self.groupHabitMembers = params as? CommunityParams.GroupHabitMembers
         default:break
         }
     }
@@ -54,6 +58,8 @@ struct CommunityRequest: RequestRepresentable {
             return "joinhabits/all_group_habit"
         case .friends:
             return "joinhabits/friends"
+        case .groupHabitMembers:
+            return "habits/group_habit_members"
         }
     }
     
@@ -65,6 +71,8 @@ struct CommunityRequest: RequestRepresentable {
             return  .body(data: encodeBody(data: allGroupHabit))
         case .friends:
             return  .body(data: encodeBody(data: friends))
+        case .groupHabitMembers:
+            return .body(data: encodeBody(data: groupHabitMembers))
         default:
             return .none
         }

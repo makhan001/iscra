@@ -79,25 +79,12 @@ extension ReminderViewController {
     }
     
     private func timePickerValueOnUpdate() {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "hh:mm a"
-//        let dateString = dateFormatter.string(from: pickerTime.date)
-//        let fullNameArr = dateString.components(separatedBy: " ")
-//        lblReminderTime.text = fullNameArr[0]
-//        self.viewModel.reminderTime = dateString
-//        if dateString.contains("AM") {
-//            btnSegment.selectedSegmentIndex = 0
-//        } else {
-//            btnSegment.selectedSegmentIndex = 1
-//        }
-        
         let dateFormatter12 = DateFormatter()
         dateFormatter12.dateFormat = "hh:mm a"
         dateFormatter12.locale = Locale(identifier: "en-US")
         let dateString1 = dateFormatter12.string(from: pickerTime.date)
-        self.viewModel.reminderTime = dateString1 // deepak
+        self.viewModel.reminderTime = dateString1 
         print(" dateString1 is \(dateString1.convertTo12Hour)")
-        //////////////
         let fullNameArr = dateString1.components(separatedBy: " ")
         print("pickerTime.date is \(pickerTime.date)")
         print("fullNameArr[0] is \(fullNameArr[0])")
@@ -151,24 +138,23 @@ extension ReminderViewController {
         })
     }
     
-    func getTimeStampForHabit(strTime: String) -> String {
-        let dateFromatter = DateFormatter()
-        dateFromatter.locale = Locale(identifier: "en-US")
-        dateFromatter.dateFormat = "hh:mm a"
-        let daatee = dateFromatter.date(from: strTime)
-        dateFromatter.dateFormat = "HH:mm"
-        let strDate = dateFromatter.string(from: daatee ?? Date())
-        
-        let time = strDate.components(separatedBy: ":")
-        let hour = Int(time[0]) ?? 00
-        let minutes = Int(time[1]) ?? 00
-        
-        let date = Calendar.current.date(bySettingHour: hour, minute: minutes, second: 00, of: Date())
-        let timeStamp = date?.millisecondsSince1970
-        print("timeStamp is \(timeStamp)")
-        return "\(timeStamp)"
-        
-    }
+//    func getTimeStampForHabit(strTime: String) -> String {
+//        let dateFromatter = DateFormatter()
+//        dateFromatter.locale = Locale(identifier: "en-US")
+//        dateFromatter.dateFormat = "hh:mm a"
+//        let daatee = dateFromatter.date(from: strTime)
+//        dateFromatter.dateFormat = "HH:mm"
+//        let strDate = dateFromatter.string(from: daatee ?? Date())
+//        
+//        let time = strDate.components(separatedBy: ":")
+//        let hour = Int(time[0]) ?? 00
+//        let minutes = Int(time[1]) ?? 00
+//        
+//        let date = Calendar.current.date(bySettingHour: hour, minute: minutes, second: 00, of: Date())
+//        let timeStamp = date?.millisecondsSince1970
+//        print("timeStamp is \(timeStamp)")
+//        return "\(timeStamp)"
+//    }
     
     private func nextClick() {
         let dateFromatter = DateFormatter()

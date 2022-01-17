@@ -15,6 +15,7 @@ final class CommunitySearchCoordinator: Coordinator<Scenes> {
     
     private var landing: LandingCoordinator!
     private var habitName: HabitNameCoordinator!
+    private var communityDetail: CommunityDetailCoordinator!
     private var groupHabitCalender: GroupHabitCalenderCoordinator!
 
     override func start() {
@@ -55,6 +56,15 @@ final class CommunitySearchCoordinator: Coordinator<Scenes> {
         groupHabitCalender.start(habitId: controller.viewModel.habitId)
         self.router.present(groupHabitCalender, animated: true)
     }
+    
+    private func startCommunityDetail() {
+        communityDetail = CommunityDetailCoordinator(router: Router())
+        add(communityDetail)
+        communityDetail.delegate = self
+        print("controller.viewModel.habitId is \(controller.viewModel.habitId)")
+        communityDetail.start(habitId: controller.viewModel.habitId)
+        self.router.present(communityDetail, animated: true)
+    }
 }
 
 extension CommunitySearchCoordinator: NextSceneDismisser {
@@ -64,6 +74,7 @@ extension CommunitySearchCoordinator: NextSceneDismisser {
         case .landing: startLanding()
         case .habitName: startHabitName()
         case .habitCalender: startHabitCalender()
+        case .communityDetail: startCommunityDetail()
         case .groupHabitFriends: startGroupHabitCalender()
         default: break
         }

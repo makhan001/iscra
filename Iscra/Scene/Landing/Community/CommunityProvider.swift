@@ -44,5 +44,15 @@ final class CommunityServiceProvider: CommunityServiceProvidable {
         }
     }
     
+    func groupHabitMembers(param: CommunityParams.GroupHabitMembers) {
+        task.groupHabitMembers(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .groupHabitMembers, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .groupHabitMembers, with: resp, with: nil)
+        }
+    }
+    
 }
 

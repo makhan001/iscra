@@ -105,5 +105,9 @@ final class UserTask {
     func friendsForShare<T:Codable>(params: HabitParams.Friends, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: HabitRequests(type: .friends, params: params), modeling: responseModel, completion: completion)
     }
+        
+    func groupHabitMembers<T:Codable>(params: CommunityParams.GroupHabitMembers, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: CommunityRequest(type: .groupHabitMembers, params: params), modeling: responseModel, completion: completion)
+    }
 }
 

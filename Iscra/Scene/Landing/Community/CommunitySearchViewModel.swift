@@ -15,6 +15,7 @@ final class CommunitySearchViewModel {
     var isSearching:Bool=false
     var arrFriend = [Friend]()
     var arrGroupList = [AllGroupHabit]()
+    var arrGroupHabitMembers = [GroupHabitMember]()
 
     let provider: CommunityServiceProvidable
     weak var view: CommunityViewRepresentable?
@@ -38,6 +39,10 @@ final class CommunitySearchViewModel {
             WebService().StopIndicator()
         }
     }
+    
+    func fetchGroupMembers() {
+        self.provider.groupHabitMembers(param: CommunityParams.GroupHabitMembers(habit_id: self.habitId))
+    }
 }
 
 extension CommunitySearchViewModel: CommunityServiceProvierDelegate {
@@ -51,7 +56,6 @@ extension CommunitySearchViewModel: CommunityServiceProvierDelegate {
                     self.arrFriend.removeAll()
                     self.arrGroupList = allGroupList
                     self.arrFriend.sort { String($0.createdAt!) > String($1.createdAt!) }
-                    print("self.arrGroupList is \(self.arrGroupList.count)")
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
                 } else if let resp = response as? SuccessResponseModel, resp.code == 200, let friendsList = resp.data?.friends{
                     self.arrGroupList.removeAll()
@@ -61,8 +65,17 @@ extension CommunitySearchViewModel: CommunityServiceProvierDelegate {
                           let Obj2_Name = Obj2.username ?? ""
                           return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedAscending)
                        })
-                    print("self.arrFriend is \(self.arrFriend.count)")
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
+                } else if let resp = response as? SuccessResponseModel, resp.code == 200, let arrGroupHabitMembers = resp.data?.groupHabitMembers{
+                    self.arrGroupHabitMembers = arrGroupHabitMembers
+                    let arrIsUserAvailable = self.arrGroupHabitMembers.filter({$0.id == Int(UserStore.userID ?? "")})
+                                                                if arrIsUserAvailable.count == 0 {
+                                                                    print("is not Exist")
+                                                                    self.view?.onAction(.isUserAvailable(false))
+                                                                } else {
+                                                                    print("isExist")
+                                                                    self.view?.onAction(.isUserAvailable(true))
+                                                                }
                 } else {
                     self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

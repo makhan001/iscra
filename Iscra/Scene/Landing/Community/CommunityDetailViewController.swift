@@ -21,7 +21,6 @@ class CommunityDetailViewController: UIViewController {
 
     var vibrantLabel = UILabel()
     var headerImageView: UIView?
-    var objInvitaion: Invitaion?
     var objGroupHabitDetails: GroupHabitDetails?
 
     weak var router: NextSceneDismisser?
@@ -40,7 +39,6 @@ extension CommunityDetailViewController {
         [btnBack,btnJoin,btnMates].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
-        self.viewModel.habitId = self.objInvitaion?.id ?? 0
         self.viewModel.userId = UserStore.userID ?? ""
         self.viewModel.fetchHabitDetail()
     }
@@ -142,7 +140,7 @@ extension CommunityDetailViewController: HabitViewRepresentable{
     
     func reloadUI() {
         self.objGroupHabitDetails = self.viewModel.objGroupHabitDetails
-        self.lblGroupName.text = self.objGroupHabitDetails?.name
+        self.lblGroupName.text = self.objGroupHabitDetails?.name?.capitalized
         self.lbldiscription.text = self.objGroupHabitDetails?.groupHabitDetailsDescription
         self.lblMembersCount.text = "(" + String(self.objGroupHabitDetails?.memberCount ?? 0) + ")"
         self.setupParallaxHeader(groupImage: self.objGroupHabitDetails?.image ?? "ic-habit-placeholder")

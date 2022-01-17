@@ -19,13 +19,14 @@ final class CommunityDetailCoordinator: Coordinator<Scenes> {
         router.setRootModule(controller, hideBar: true)
         self.onStart()
     }
-    
-    func start(objInvitation: Invitaion) {
+
+    func start(habitId: Int) {
         super.start()
         router.setRootModule(controller, hideBar: true)
-        controller.objInvitaion = objInvitation
+        controller.viewModel.habitId = habitId
         self.onStart()
     }
+    
     
     private func onStart() {
         controller.router = self

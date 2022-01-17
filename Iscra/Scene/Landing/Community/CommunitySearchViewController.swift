@@ -66,7 +66,7 @@ extension CommunitySearchViewController {
     
     private func didSelectTableAtIndex(index: Int) {
         self.viewModel.habitId = self.viewModel.arrGroupList[index].id ?? 0
-        self.router?.push(scene: .groupHabitFriends)
+        self.viewModel.fetchGroupMembers()
     }
     
     @objc func refrershUI() {
@@ -135,6 +135,13 @@ extension CommunitySearchViewController: CommunityViewRepresentable {
             self.showToast(message: msg)
         case  .sucessMessage(_):
             self.reloadTable()
+        case let . isUserAvailable(isAvailable):
+            print("Navigate here \(isAvailable)")
+            if isAvailable == true {
+                self.router?.push(scene: .groupHabitFriends)
+            } else {
+                self.router?.push(scene: .communityDetail)
+            }
         default:
             break
         }

@@ -156,4 +156,8 @@ enum CommunityParams {
     struct Friends: Codable {
         let search: String?
     }
+    
+    struct GroupHabitMembers: Codable {
+        let habit_id: Int?
+    }
 }

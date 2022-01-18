@@ -1054,7 +1054,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         if let pickerController = pickerController, sourceType == .camera {
             switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized:
-                //showAllAssets()
+               showAllAssets()
                 //Camera access
                 show(pickerController)
             case .notDetermined:
@@ -1081,8 +1081,8 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 PHPhotoLibrary.requestAuthorization { (status) in
 
                     if status == .authorized {
-                      showAllAssets()
-                       // accessDenied(sourceType)
+                     // showAllAssets()
+                        accessDenied(sourceType)
 
                     } else {
                        accessDenied(sourceType)
@@ -1452,11 +1452,29 @@ extension ChatViewController: InputToolbarDelegate {
             #else
             alertController.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
                 self.showPickerController(self.pickerController, sourceType:.camera)
+//                if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
+//                    let imagePickerController = UIImagePickerController()
+//                    imagePickerController.delegate = self;
+//                    imagePickerController.sourceType = UIImagePickerController.SourceType.camera
+//                    imagePickerController.allowsEditing = true
+//                    self.present(imagePickerController, animated: true, completion: nil)
+//                } else {
+//                    let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                    self.present(alert, animated: true, completion: nil)
+//                }
                 print("camera handler showpickercontroller")
             }))
             #endif
             alertController.addAction(UIAlertAction(title: "Photo", style: .default, handler: { (action) in
-            self.showPickerController(nil, sourceType: .photoLibrary)
+            //self.showPickerController(nil, sourceType: .photoLibrary)
+                let myPickerControllerGallery = UIImagePickerController()
+                myPickerControllerGallery.delegate = self
+                myPickerControllerGallery.sourceType = UIImagePickerController.SourceType.photoLibrary
+                myPickerControllerGallery.allowsEditing = true
+                myPickerControllerGallery.setEditing(true, animated: true)
+                
+                self.present(myPickerControllerGallery, animated: true, completion: nil)
             }))
             alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             if let popoverPresentationController = alertController.popoverPresentationController {
@@ -1559,7 +1577,7 @@ extension ChatViewController: ChatCollectionViewDataSource {
         if indexPath.section == lastSection,
            indexPath.item == lastItem,
            cancel == false  {
-            loadMessages(with: dataSource.loadMessagesCount)
+            loadMessages(with: dataSource.loadMessagesCount )
         }
         
         return chatCell

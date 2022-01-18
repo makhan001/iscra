@@ -215,6 +215,7 @@ class AddOccupantsVC: UIViewController {
         let actionMessage = "SA_STR_ADDED".localized
         guard let current = QBSession.current.currentUser,
               let fullName = current.fullName?.capitalized else {
+            
                 return ""
         }
         var message = "\(fullName) \(actionMessage)"
@@ -222,7 +223,7 @@ class AddOccupantsVC: UIViewController {
             guard let userFullName = user.fullName?.capitalized else {
                 continue
             }
-            message += " \(userFullName.capitalized),"
+          //  message += " \(userFullName.capitalized),"
         }
         message = String(message.dropLast())
         return message

@@ -642,9 +642,12 @@ class ChatViewController: UIViewController, ChatContextMenu {
     }
     
     private func attributedString(forItem messageItem: QBChatMessage) -> NSAttributedString? {
-        guard let text = messageItem.text  else {
+        guard var text = messageItem.text  else {
             return NSAttributedString(string: "@")
         }
+        if text.contains("adde"){
+              text = text + "d"
+            }
         let textColor = messageItem.senderID == currentUserID ? UIColor.white : .black
         
         let font = UIFont(name: "Helvetica", size: 15)

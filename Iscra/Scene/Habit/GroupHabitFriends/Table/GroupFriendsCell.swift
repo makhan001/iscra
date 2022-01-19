@@ -33,6 +33,8 @@ class GroupFriendsCell: UITableViewCell , Reusable {
     
     private func setup() {
         btnHabitDetail.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        self.daysCollectionView.addGestureRecognizer(tap)
     }
     
     
@@ -45,11 +47,16 @@ class GroupFriendsCell: UITableViewCell , Reusable {
         self.btnHabitDetail.tag = index
         self.lblFriendName.text = viewModel.objHabitDetail?.members?[index].username?.lowercased()
         self.imgFriend.setImageFromURL(viewModel.objHabitDetail?.members?[index].profileImage ?? "", with: AppConstant.UserPlaceHolderImage)
+        self.daysCollectionView.isScrollEnabled = true 
         self.daysCollectionView.configure(colorTheme: self.viewModel.objHabitDetail?.colorTheme ?? "#7B86EB", habitMark: viewModel.objHabitDetail?.members?[index].habitMark ?? [], sourceScreen: .friend)
     }
     
     @objc func buttonPressed(_ sender: UIButton) {
         self.showHabitDetail?(sender.tag)
+    }
+    
+    @objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
+        self.showHabitDetail?(self.btnHabitDetail.tag)
     }
 }
 

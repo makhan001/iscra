@@ -196,6 +196,7 @@ class EnterChatNameVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SA_STR_SEGUE_GO_TO_CHAT".localized {
             if let chatVC = segue.destination as? ChatViewController {
+                chatVC.isFromCreateGroup = true
                 chatVC.dialogID = sender as? String
             }
         }

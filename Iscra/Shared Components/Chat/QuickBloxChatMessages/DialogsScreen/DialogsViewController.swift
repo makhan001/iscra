@@ -84,7 +84,7 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     private var dialogs: [QBChatDialog] = []
     private var cancel = false
     
-   
+    
     @IBOutlet var tableView: UITableView!
     weak var router: NextSceneDismisser?
     
@@ -95,7 +95,7 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         super.viewDidLoad()
         // Spinner.hide()
         //Hide Tab Bar
-//        setNavigationBar()
+        //        setNavigationBar()
         tableView.register(UINib(nibName: DialogCellConstant.reuseIdentifier, bundle: nil), forCellReuseIdentifier: DialogCellConstant.reuseIdentifier)
         
         setupNavigationTitle()
@@ -111,8 +111,8 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = false
         setupNavigationBar()
-         reloadContent()
-       
+        reloadContent()
+        
         QBChat.instance.addDelegate(self)
         chatManager.delegate = self
         
@@ -141,7 +141,7 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             updateConnectionStatus?(status)
         }
         updateConnectionStatus?(Reachability.instance.networkConnectionStatus())
-//        self.registerForRemoteNotifications()
+        //        self.registerForRemoteNotifications()
     }
     
     private func setNavigationBar() {
@@ -186,27 +186,27 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         guard currentUser.isFull == true else {
             return
         }
-//        let title = currentUser.fullName.count > 0 ? currentUser.fullName.capitalized : currentUser.login
-//                self.title = title
+        //        let title = currentUser.fullName.count > 0 ? currentUser.fullName.capitalized : currentUser.login
+        //                self.title = title
     }
     
     private func setupNavigationBar() {
-       if let navigation = self.navigationController {
-        navigationItem.rightBarButtonItems = []
-        navigationItem.leftBarButtonItems = []
-        navigation.isNavigationBarHidden = false
-        let leftMyChatBarButtonItem = UIBarButtonItem(title: "My chats", style: .done, target: self, action: #selector(logoutUser))
-        leftMyChatBarButtonItem.setTitleTextAttributes([
-            NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 28.0)!,
-            NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1)],
-                                                       for: .normal)
-        self.navigationItem.leftBarButtonItem  = leftMyChatBarButtonItem
-        let usersButtonItem = UIBarButtonItem(image: UIImage(named: "search"),
-                                              style: .plain,
-                                              target: self,
-                                              action: #selector(didTapNewChat(_:)))
-        navigationItem.rightBarButtonItem = usersButtonItem
-        usersButtonItem.tintColor =  #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        if let navigation = self.navigationController {
+            navigationItem.rightBarButtonItems = []
+            navigationItem.leftBarButtonItems = []
+            navigation.isNavigationBarHidden = false
+            let leftMyChatBarButtonItem = UIBarButtonItem(title: "My chats", style: .done, target: self, action: #selector(logoutUser))
+            leftMyChatBarButtonItem.setTitleTextAttributes([
+                NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 28.0)!,
+                NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1)],
+                                                           for: .normal)
+            self.navigationItem.leftBarButtonItem  = leftMyChatBarButtonItem
+            let usersButtonItem = UIBarButtonItem(image: UIImage(named: "search"),
+                                                  style: .plain,
+                                                  target: self,
+                                                  action: #selector(didTapNewChat(_:)))
+            navigationItem.rightBarButtonItem = usersButtonItem
+            usersButtonItem.tintColor =  #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
             
             self.navigationController?.navigationBar.isTranslucent = true
             self.navigationController?.navigationBar.barTintColor = .white
@@ -314,7 +314,7 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             //ClearProfile
             Profile.clearProfile()
             self?.chatManager.storage.clear()
-//            CacheManager.shared.clearCache()
+            //            CacheManager.shared.clearCache()
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
                 // AppDelegate.shared.rootViewController.showLoginScreen()
             }
@@ -337,26 +337,26 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     // MARK: - UITableViewDataSource
-     func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if dialogs.count > 0{
-          return dialogs.count
+            return dialogs.count
         }
         else{
-           noChatView.isHidden = false
-             return 0
+            noChatView.isHidden = false
+            return 0
         }
-   }
+    }
     
-     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DialogCellConstant.reuseIdentifier,for: indexPath) as? DialogCell else {
             return UITableViewCell()
@@ -396,13 +396,12 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             cell.lastMessageDateLabel.text = setupDate(dateUpdate)
         }
         cell.dialogName.text = cellModel.textLabelText.capitalized
-        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData ?? ""), placeholderImage: UIImage(named: "GroupHabit"))
-        
+        cell.imgTitle.setImageFromURL(cellModel.customData ?? "", with: UIImage(named: "GroupHabit"))
         return cell
     }
     
     // MARK: - UITableViewDelegate
-   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let dialog = dialogs[indexPath.row]
         if let dialogID = dialog.id {
@@ -410,7 +409,7 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
-     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         let dialog = dialogs[indexPath.row]
         if dialog.type == .publicGroup {
             return false
@@ -418,8 +417,8 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         return true
     }
     
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
-                            forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
         if Reachability.instance.networkConnectionStatus() == .notConnection {
             showAlertView(LoginConstant.checkInternet, message: LoginConstant.checkInternetMessage)
             return
@@ -472,7 +471,7 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         present(alertController, animated: true, completion: nil)
     }
     
-     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "SA_STR_DELETE".localized
     }
     
@@ -498,10 +497,10 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             tableView.isHidden = true
             QBChat.instance.removeDelegate(self)
         }
-      
+        
         
     }
-  fileprivate func setupDate(_ dateSent: Date) -> String {
+    fileprivate func setupDate(_ dateSent: Date) -> String {
         let formatter = DateFormatter()
         var dateString = ""
         if Calendar.current.isDateInToday(dateSent) == true {
@@ -568,7 +567,7 @@ extension DialogsViewController: ChatManagerDelegate {
     
     func chatManager(_ chatManager: ChatManager, didUpdateStorage message: String) {
         reloadContent()
-      
+        
         SVProgressHUD.dismiss()
         QBChat.instance.addDelegate(self)
     }

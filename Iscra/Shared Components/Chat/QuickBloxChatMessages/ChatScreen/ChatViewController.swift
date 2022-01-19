@@ -156,7 +156,8 @@ class ChatViewController: UIViewController, ChatContextMenu {
         pickerController.delegate = self
         return pickerController
     }()
-    
+
+    var isFromCreateGroup = false
     private var cancel = false
     
     private var willResignActiveBlock: AnyObject?
@@ -483,7 +484,11 @@ class ChatViewController: UIViewController, ChatContextMenu {
     
     //MARK: - Internal Methods
     @objc func didTapBack(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        if isFromCreateGroup {
+            self.navigationController?.popToRootViewController(animated: true)
+            return
+        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func loadMessages(with skip: Int = 0) {

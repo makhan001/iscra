@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,11 +16,11 @@
             <objects>
                 <viewController storyboardIdentifier="ChatViewController" hidesBottomBarWhenPushed="YES" id="iAf-Te-Wil" customClass="ChatViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xmf-7G-ZSG">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Clx-Ms-7uM" customClass="ChatCollectionView" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1316"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="751"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="Zcf-Ze-3TI" customClass="ChatCollectionViewFlowLayout" customModule="Iscra" customModuleProvider="target"/>
                                 <cells/>
@@ -30,7 +30,7 @@
                                 </connections>
                             </collectionView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkn-Yy-0fU" customClass="InputToolbar" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1316" width="1024" height="50"/>
+                                <rect key="frame" x="0.0" y="795" width="390" height="49"/>
                                 <items/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -71,17 +71,17 @@
             <objects>
                 <viewController storyboardIdentifier="SelectAssetsVC" modalPresentationStyle="overCurrentContext" id="KBM-WR-uy8" customClass="SelectAssetsVC" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MeG-HF-fyv">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2S5-u1-j9L" userLabel="ContainerView">
-                                <rect key="frame" x="0.0" y="382.5" width="1024" height="983.5"/>
+                                <rect key="frame" x="0.0" y="236.33333333333331" width="390" height="607.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66C-mM-HzC">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select files..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACY-5d-WOE">
-                                                <rect key="frame" x="467" y="13" width="90" height="18"/>
+                                                <rect key="frame" x="150" y="13" width="90" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="2fb-6E-UZ2"/>
                                                     <constraint firstAttribute="height" constant="18" id="fff-Ml-W0Z"/>
@@ -91,7 +91,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cN-8W-HRO">
-                                                <rect key="frame" x="938" y="8" width="86" height="36"/>
+                                                <rect key="frame" x="304" y="8" width="86" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="86" id="kSm-gC-UNH"/>
                                                 </constraints>
@@ -129,7 +129,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7a5-hw-ssG">
-                                        <rect key="frame" x="16" y="52" width="992" height="909.5"/>
+                                        <rect key="frame" x="16" y="51.999999999999943" width="358" height="533.66666666666652"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="VQD-pW-l6T">
                                             <size key="itemSize" width="109" height="109"/>
@@ -168,7 +168,7 @@
                                                             </constraints>
                                                         </view>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aft-UD-YMQ">
-                                                            <rect key="frame" x="38.5" y="36.5" width="32" height="36"/>
+                                                            <rect key="frame" x="38.666666666666664" y="36.666666666666664" width="31.999999999999993" height="35.999999999999993"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="32" id="hGp-bm-GAu"/>
                                                                 <constraint firstAttribute="height" constant="36" id="lZH-c3-zvX"/>
@@ -178,7 +178,7 @@
                                                             <rect key="frame" x="24" y="86" width="61" height="15"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_ic" translatesAutoresizingMaskIntoConstraints="NO" id="l5H-SD-BG9">
-                                                                    <rect key="frame" x="5" y="2.5" width="9" height="10"/>
+                                                                    <rect key="frame" x="5" y="2.6666666666666714" width="9" height="10"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="10" id="1qZ-t2-cid"/>
                                                                         <constraint firstAttribute="width" constant="9" id="KzQ-3S-SFs"/>
@@ -272,7 +272,7 @@
             <objects>
                 <viewController storyboardIdentifier="DarkViewController" id="OsM-bk-xFq" customClass="DarkViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZUF-Ld-EBz">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="fGA-En-dsl"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -292,7 +292,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuActionCell" id="Vf6-yP-yiv" customClass="MenuActionCell" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="146" height="44"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="146" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vf6-yP-yiv" id="Nnu-tg-aKX">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="44"/>
@@ -336,7 +336,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="UsersInfoTableViewController" id="rmY-sS-wc4" customClass="UsersInfoTableViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="cbG-Nb-yvg">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.96470588235294119" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
@@ -372,11 +372,11 @@
                         <viewControllerLayoutGuide type="bottom" id="UVZ-av-zum"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ehY-ph-mhQ">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="igV-BD-PJG">
-                                <rect key="frame" x="0.0" y="0.0" width="966" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="332" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="xjP-Ge-F0T"/>
                                 </constraints>
@@ -386,16 +386,8 @@
                                     <outlet property="delegate" destination="U1v-Zg-9Kv" id="pwF-MP-nx5"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gnw-BZ-eQP">
-                                <rect key="frame" x="0.0" y="44" width="1024" height="1322"/>
-                                <color key="backgroundColor" red="0.95686274509803915" green="0.96470588235294119" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="U1v-Zg-9Kv" id="2bs-5g-bCg"/>
-                                    <outlet property="delegate" destination="U1v-Zg-9Kv" id="wM5-Rc-NJ0"/>
-                                </connections>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUf-Oh-X9a">
-                                <rect key="frame" x="968" y="0.0" width="56" height="44"/>
+                                <rect key="frame" x="334" y="44" width="56" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="0fQ-aT-Dns"/>
@@ -406,6 +398,14 @@
                                     <action selector="cancelSearchButtonTapped:" destination="U1v-Zg-9Kv" eventType="touchUpInside" id="Qr6-Wn-xrx"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gnw-BZ-eQP">
+                                <rect key="frame" x="0.0" y="88" width="390" height="756"/>
+                                <color key="backgroundColor" red="0.95686274509803915" green="0.96470588235294119" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="U1v-Zg-9Kv" id="2bs-5g-bCg"/>
+                                    <outlet property="delegate" destination="U1v-Zg-9Kv" id="wM5-Rc-NJ0"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dpa-gx-0id"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -413,11 +413,11 @@
                             <constraint firstItem="Gnw-BZ-eQP" firstAttribute="top" secondItem="iUf-Oh-X9a" secondAttribute="bottom" id="Se4-Ol-u06"/>
                             <constraint firstAttribute="bottom" secondItem="Gnw-BZ-eQP" secondAttribute="bottom" id="TUn-pc-Ay0"/>
                             <constraint firstItem="iUf-Oh-X9a" firstAttribute="leading" secondItem="igV-BD-PJG" secondAttribute="trailing" constant="2" id="Tyx-Gc-tiN"/>
+                            <constraint firstItem="iUf-Oh-X9a" firstAttribute="height" secondItem="igV-BD-PJG" secondAttribute="height" id="aYk-OU-gqj"/>
                             <constraint firstItem="iUf-Oh-X9a" firstAttribute="trailing" secondItem="Dpa-gx-0id" secondAttribute="trailing" id="bAe-2z-vSg"/>
                             <constraint firstItem="Gnw-BZ-eQP" firstAttribute="top" secondItem="igV-BD-PJG" secondAttribute="bottom" id="dgR-0x-nW6"/>
                             <constraint firstAttribute="trailing" secondItem="Gnw-BZ-eQP" secondAttribute="trailing" id="e4E-bR-u26"/>
                             <constraint firstItem="igV-BD-PJG" firstAttribute="top" secondItem="Dpa-gx-0id" secondAttribute="top" id="flz-cv-ykp"/>
-                            <constraint firstItem="iUf-Oh-X9a" firstAttribute="top" secondItem="ehY-ph-mhQ" secondAttribute="top" id="lZQ-tX-RbA"/>
                             <constraint firstItem="Gnw-BZ-eQP" firstAttribute="leading" secondItem="ehY-ph-mhQ" secondAttribute="leading" id="vcN-YK-2v4"/>
                             <constraint firstItem="igV-BD-PJG" firstAttribute="leading" secondItem="ehY-ph-mhQ" secondAttribute="leading" id="w7C-eE-tbG"/>
                         </constraints>
@@ -439,18 +439,18 @@
             <objects>
                 <viewController storyboardIdentifier="ChatNotificationPopUpViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="f9U-eQ-Iu0" customClass="ChatNotificationPopUpViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zcw-sz-QBx">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Div-5r-UJt">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1296"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="760"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLc-H7-3AW" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="998" width="1024" height="383"/>
+                                <rect key="frame" x="0.0" y="476.33333333333326" width="390" height="382.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgU-bq-7vN" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="484" y="24" width="56" height="8"/>
+                                        <rect key="frame" x="167" y="24" width="56" height="8"/>
                                         <color key="backgroundColor" name="GrayAccent"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="7OE-PP-qRy"/>
@@ -463,7 +463,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1B-ra-dKo" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="48" width="984" height="29"/>
+                                        <rect key="frame" x="20" y="48.000000000000057" width="350" height="28.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="BlackAccent"/>
                                         <nil key="highlightedColor"/>
@@ -479,7 +479,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kUm-rz-kpS" customClass="ChatNotificationTableView" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93" width="1024" height="250"/>
+                                        <rect key="frame" x="0.0" y="92.666666666666686" width="390" height="250"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="l4o-jb-veS"/>
@@ -541,16 +541,16 @@
     </scenes>
     <designables>
         <designable name="K1B-ra-dKo">
-            <size key="intrinsicContentSize" width="123.5" height="29"/>
+            <size key="intrinsicContentSize" width="123.66666666666667" height="28.666666666666668"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="MVP-NN-qjU"/>
+        <segue reference="g2V-iR-VLB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" width="12" height="10"/>
         <image name="ic_cancel" width="13" height="13"/>
-        <image name="play_ic" width="16.5" height="18"/>
+        <image name="play_ic" width="11" height="12"/>
         <image name="send" width="27" height="26"/>
         <namedColor name="BlackAccent">
             <color red="0.10999999940395355" green="0.090000003576278687" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

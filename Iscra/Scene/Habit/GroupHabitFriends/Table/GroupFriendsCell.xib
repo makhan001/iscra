@@ -27,7 +27,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gg6-d9-nMw">
                                         <rect key="frame" x="10" y="15" width="65" height="65"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icc-cl-ot0" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icc-cl-ot0" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="95" width="85" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="meQ-El-RQO"/>
@@ -84,7 +84,7 @@
                                     <constraint firstAttribute="bottom" secondItem="V18-jX-VRg" secondAttribute="bottom" id="dN5-Wv-qYZ"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbL-on-7iv">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbL-on-7iv">
                                 <rect key="frame" x="0.0" y="0.0" width="501" height="145"/>
                             </button>
                         </subviews>
@@ -125,9 +125,7 @@
         </tableViewCell>
     </objects>
     <designables>
-        <designable name="Icc-cl-ot0">
-            <size key="intrinsicContentSize" width="28.5" height="24"/>
-        </designable>
+        <designable name="Icc-cl-ot0"/>
     </designables>
     <resources>
         <namedColor name="BlackAccent">

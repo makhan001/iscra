@@ -43,4 +43,8 @@ extension GroupHabitFriendsTable: UITableViewDataSource, UITableViewDelegate {
         cell.configure(viewModel: viewModel, index: indexPath.row)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.showHabitDetail?(indexPath.row)
+    }
 }

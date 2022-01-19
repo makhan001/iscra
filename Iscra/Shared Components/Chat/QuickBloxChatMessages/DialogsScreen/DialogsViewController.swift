@@ -64,22 +64,15 @@ class DialogTableViewCellModel: NSObject {
             if let recipient = ChatManager.instance.storage.user(withID: UInt(dialog.recipientID)),
                let fullName = recipient.fullName?.capitalized {
                 self.textLabelText = fullName.capitalized
-                print("recipient ========>>\(recipient)")
-                print("recipient ========>>\(recipient.fullName)")
-                
                 self.customData = recipient.customData ?? ""
             } else {
                 ChatManager.instance.loadUser(UInt(dialog.recipientID)) { [weak self] (user) in
                     self?.textLabelText = user?.fullName?.capitalized ?? user?.login ?? ""
-                  
-                    print("user img URL ---> \(Date().timeIntervalSince1970)")
-                    print("user img URL=========>>\(user?.customData ?? "")")
                     self?.customData = user?.customData ?? ""
                 }
             }
         } else {
-            self.dialogIcon = UIImage(named: "group")
-           
+            self.dialogIcon = UIImage(named: "GroupHabit")
         }
     }
 }
@@ -402,14 +395,8 @@ class DialogsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         } else if let dateUpdate = chatDialog.updatedAt {
             cell.lastMessageDateLabel.text = setupDate(dateUpdate)
         }
-       // cellModel.textLabelText = UserStore.userName ?? ""
         cell.dialogName.text = cellModel.textLabelText.capitalized
-        print("cellModel.textLabelText====>\(cell.dialogName.text)")
-       // cell.dialogName.text = UserStore.userName?.capitalized
-        
-        print("cell for row ---> \(Date().timeIntervalSince1970)")
-        print("cellModel.customData\(String(describing: cellModel.customData))")
-        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData ?? ""), placeholderImage: UIImage(named: "group"))
+        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData ?? ""), placeholderImage: UIImage(named: "GroupHabit"))
         
         return cell
     }

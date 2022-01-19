@@ -483,7 +483,8 @@ class ChatViewController: UIViewController, ChatContextMenu {
     
     //MARK: - Internal Methods
     @objc func didTapBack(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+      //  navigationController?.popViewController(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     private func loadMessages(with skip: Int = 0) {

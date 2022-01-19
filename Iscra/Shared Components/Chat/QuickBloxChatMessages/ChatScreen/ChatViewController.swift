@@ -25,7 +25,8 @@ var messageTimeDateFormatter: DateFormatter {
     struct Static {
         static let instance : DateFormatter = {
             let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
+            formatter.timeStyle = .short
+            formatter.dateFormat = "h:mm a"
             return formatter
         }()
     }
@@ -1652,6 +1653,13 @@ extension ChatViewController: ChatCollectionViewDataSource {
                     self.dataSource.updateMessage(message)
                     self.dataSource.messagesForRead.remove(message)
                 }
+            }
+        } else {
+            chatManager.read(message, dialog: dialog) { [weak self] (error) in
+                guard let self = self else {return}
+                message.readIDs?.append(NSNumber(value: self.currentUserID))
+                self.dataSource.updateMessage(message)
+                self.dataSource.messagesForRead.remove(message)
             }
         }
         

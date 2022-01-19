@@ -22,7 +22,7 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="an9-gJ-2Hd">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="111"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yjuyhjhjg" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9c-g6-pAd" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yjuyhjhjg" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Y9c-g6-pAd" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="50" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="Dai-QK-Itf"/>
@@ -37,7 +37,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghjghjghj" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkU-HZ-pef" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghjghjghj" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LkU-HZ-pef" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55" width="50" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Z6P-kW-vKK"/>

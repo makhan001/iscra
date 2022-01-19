@@ -248,7 +248,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="om5-t1-SUe"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.26163487346625769" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="om5-t1-SUe" firstAttribute="trailing" secondItem="2S5-u1-j9L" secondAttribute="trailing" id="0XM-eD-NpS"/>
                             <constraint firstItem="2S5-u1-j9L" firstAttribute="leading" secondItem="om5-t1-SUe" secondAttribute="leading" id="2NY-sx-gwO"/>
@@ -545,7 +545,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="MVP-NN-qjU"/>
+        <segue reference="g2V-iR-VLB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" width="12" height="10"/>

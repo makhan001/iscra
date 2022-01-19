@@ -266,6 +266,7 @@ class AddOccupantsVC: UIViewController {
         if segue.identifier == "SA_STR_SEGUE_GO_TO_CHAT".localized {
             if let chatVC = segue.destination as? ChatViewController {
                 chatVC.dialogID = sender as? String
+                chatVC.isFromCreateGroup = true
             }
         }
     }
@@ -371,8 +372,8 @@ extension AddOccupantsVC: UITableViewDelegate, UITableViewDataSource {
         let user = self.users[indexPath.row]
         cell.userColor = user.id.generateColor()
         cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
-      
-        cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+        cell.userAvatarImageView.setImageFromURL(user.customData ?? "", with: AppConstant.UserPlaceHolderImage)
+        
         cell.tag = indexPath.row
         
         let lastItemNumber = users.count - 1

@@ -89,6 +89,16 @@ extension UIView {
             self.layer.mask = maskLayer
         }
     }
+    
+    func addBorder() {
+        self.layer.borderWidth = 0.4
+        self.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    func removeBorder() {
+        self.layer.borderWidth = 0
+        self.layer.borderColor = UIColor.clear.cgColor
+    }
 }
 
 
@@ -287,7 +297,8 @@ extension String {
 extension UIImageView {
     func setImageFromURL(_ url:String, with defaultImage:UIImage?) {
         self.image = defaultImage
-        if url.contains("null") {
+        if url.contains("null") || url.count == 0 || url == "" || url.contains("<null>") {
+            self.addBorder()
             self.contentMode = .scaleAspectFit
             return
         }
@@ -310,6 +321,7 @@ extension UIImageView {
                 self.contentMode = .scaleAspectFit
             } else {
                 self.image = image
+                self.removeBorder()
                 self.contentMode = .scaleAspectFill
             }
         }

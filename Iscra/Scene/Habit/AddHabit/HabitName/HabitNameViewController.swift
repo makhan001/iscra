@@ -140,7 +140,9 @@ extension HabitNameViewController: UITextViewDelegate {
         } else if (text == "\n") {
             textView.resignFirstResponder()
         }
-        return true
+        
+        return textView.text.count - range.length + text.count <= 140
+//        return textView.text.count + (text.count - range.length) <= 140
     }
     
     func searchAutocompleteEntries(withSubstring substring: String) {

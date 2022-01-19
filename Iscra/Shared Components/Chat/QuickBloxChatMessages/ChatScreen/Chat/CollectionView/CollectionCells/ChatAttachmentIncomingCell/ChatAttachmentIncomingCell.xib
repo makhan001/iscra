@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4d-J3-f3R" userLabel="ContainerView" customClass="ChatContainerView" customModule="sample_chat_swift">
-                        <rect key="frame" x="2" y="0.0" width="190" height="200"/>
+                        <rect key="frame" x="15" y="0.0" width="190" height="200"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rv-oZ-ov9" userLabel="Message Container">
                                 <rect key="frame" x="6" y="3" width="179" height="197"/>
@@ -186,7 +186,7 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="X4d-J3-f3R" secondAttribute="bottom" id="30n-9f-7ba"/>
                 <constraint firstItem="X4d-J3-f3R" firstAttribute="top" secondItem="gZD-h7-m4h" secondAttribute="top" id="AdK-Ye-Mly"/>
-                <constraint firstItem="X4d-J3-f3R" firstAttribute="leading" secondItem="gZD-h7-m4h" secondAttribute="leading" constant="2" id="RsN-T3-U0Q"/>
+                <constraint firstItem="X4d-J3-f3R" firstAttribute="leading" secondItem="gZD-h7-m4h" secondAttribute="leading" constant="15" id="RsN-T3-U0Q"/>
             </constraints>
             <size key="customSize" width="252" height="200"/>
             <connections>

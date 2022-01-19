@@ -214,20 +214,19 @@ class AddOccupantsVC: UIViewController {
     private func messageTextWithUsers(_ users: [QBUUser]) -> String {
         let actionMessage = "SA_STR_ADDED".localized
         guard let current = QBSession.current.currentUser,
-              let fullName = current.fullName?.capitalized else {
-            
-                return ""
+           let fullName = current.fullName?.capitalized else {
+            return ""
         }
         var message = "\(fullName) \(actionMessage)"
         for user in users {
-            guard let userFullName = user.fullName?.capitalized else {
-                continue
-            }
-          //  message += " \(userFullName.capitalized),"
+          guard let userFullName = user.fullName?.capitalized else {
+            continue
+          }
+          message += " \(userFullName.capitalized),"
         }
         message = String(message.dropLast())
         return message
-    }
+      }
     
     private func openNewDialog(_ newDialog: QBChatDialog) {
         guard let navigationController = navigationController else {

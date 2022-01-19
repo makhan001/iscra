@@ -265,7 +265,7 @@ class DialogsSelectionVC: UITableViewController {
         
         cell.dialogName.text = cellModel.textLabelText.capitalized
        print("show:\(cellModel.customData)")
-        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData ?? ""), placeholderImage: UIImage(named: "group"))
+        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData ?? ""), placeholderImage: UIImage(named: "GroupHabit"))
        
             
         

@@ -372,7 +372,7 @@ extension AddOccupantsVC: UITableViewDelegate, UITableViewDataSource {
         cell.userColor = user.id.generateColor()
         cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
       
-        cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+        cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "GroupHabit"))
         cell.tag = indexPath.row
         
         let lastItemNumber = users.count - 1

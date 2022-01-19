@@ -51,7 +51,7 @@ class ChatPrivateTitleView: UIStackView {
 //        avatarLabel.text = String(userName?.capitalized.first ?? Character("Q"))
 //        avatarLabel.backgroundColor = opponentUser.id.generateColor()
         let userImage = opponentUser.customData
-        avatarImageView.sd_setImage(with: URL(string: userImage ?? ""), placeholderImage: UIImage(named: "group") )
+        avatarImageView.sd_setImage(with: URL(string: userImage ?? ""), placeholderImage: UIImage(named: "GroupHabit") )
         
         titleLabel.text = userName?.capitalized
         //addArrangedSubview(avatarLabel)

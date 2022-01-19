@@ -209,7 +209,7 @@ class UsersInfoTableViewController: UITableViewController {
         
        //cell.userAvatarLabel.text = String(user.fullName?.capitalized.first ?? Character("U"))
         let customData = user.customData ?? user.login ?? "QB user"
-        cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+        cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "GroupHabit"))
       
         cell.tag = indexPath.row
         cell.checkBoxView.isHidden = true

@@ -1897,37 +1897,7 @@ extension ChatViewController: UITextViewDelegate {
         let attributedText = NSAttributedString(attachment: textAttachment)
         if let textView = inputToolbar.contentView.textView {
             textView.attributedText = attributedText
-            
-//            textView.attributedText?.enumerateAttribute(NSAttributedString.Key.attachment, in: NSRange(location: 0, length: attributedText.length), options: [], using: {(value,range,_) -> Void in
-//                         if (value is NSTextAttachment) {
-//                             let attachment: NSTextAttachment? = (value as? NSTextAttachment)
-//                             var image: UIImage?
-//
-//                             if ((attachment?.image) != nil) {
-//                                 image = attachment?.image
-//                             } else {
-//                                 image = attachment?.image(forBounds: (attachment?.bounds)!, textContainer: nil, characterIndex: range.location)
-//                             }
-//
-//                             guard let pasteImage = image else { return }
-//
-//                             // IMAGE IN PASTE IMAGE. YOU CAN WORK WITH IT
-//
-//
-//                            guard let pngData = pasteImage.pngData() else { return }
-//                                              guard let pngImage = UIImage(data: pngData) else { return }
-//
-//
-//
-//
-//
-//                             return
-//                         }
-//                     })
-
-            
-          
-        }
+            }
        }
       
        

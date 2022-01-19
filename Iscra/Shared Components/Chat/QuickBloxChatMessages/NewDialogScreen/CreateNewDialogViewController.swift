@@ -448,7 +448,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             cell.userColor = user.id.generateColor()
             cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
             
-            cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData ?? ""), placeholderImage: UIImage(named: "group"))
+            cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData ?? ""), placeholderImage: UIImage(named: "GroupHabit"))
             cell.tag = indexPath.row
             
             let lastItemNumber = users.count - 1
@@ -506,7 +506,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
 
             print("cell for row ---> \(Date().timeIntervalSince1970)")
             print("cellModel.customData\(String(describing: cellModel.customData))")
-            cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData ?? ""), placeholderImage: UIImage(named: "group"))
+            cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData ?? ""), placeholderImage: UIImage(named: "GroupHabit"))
             let lastItemNumber = users.count - 1
             if indexPath.row == lastItemNumber {
                 if isSearch == true, cancel == false {

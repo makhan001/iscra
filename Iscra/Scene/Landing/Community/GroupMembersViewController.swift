@@ -8,9 +8,9 @@
 import UIKit
 
 class GroupMembersViewController: UIViewController {
-   
-    @IBOutlet weak var viewNavigation: NavigationBarView!
+    
     @IBOutlet weak var tableview: GroupMembersTableView!
+    @IBOutlet weak var viewNavigation: NavigationBarView!
     
     weak var router: NextSceneDismisser?
     let viewModel: GroupMembersViewModel = GroupMembersViewModel(provider: HabitServiceProvider())
@@ -49,7 +49,6 @@ extension GroupMembersViewController: HabitViewRepresentable {
             self.showToast(message: msg)
         case .sucessMessage(_):
             self.tableview.reloadData()
-          //  break
         default:
             break
         }

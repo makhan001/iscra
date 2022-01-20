@@ -29,7 +29,6 @@ class HabitDaysCollectionView: UICollectionView {
         self.habitMarks = habitMark
         self.sourceScreen = sourceScreen
         reloadData()
-
     }
     
     private func setup() {

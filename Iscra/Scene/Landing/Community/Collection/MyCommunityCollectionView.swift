@@ -1,5 +1,5 @@
 //
-//  MyCommunityCollectionView.swift
+//  MyGroupCollectionView.swift
 //  Iscra
 //
 //  Created by mac on 25/10/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyCommunityCollectionView: UICollectionView {
+class MyGroupCollectionView: UICollectionView {
     
     var viewModel: CommunityViewModel!
     var showHabitDetail:((Int) ->())?
@@ -28,7 +28,7 @@ class MyCommunityCollectionView: UICollectionView {
     }
 }
 
-extension MyCommunityCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MyGroupCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.myGroups.count
     }

@@ -35,13 +35,8 @@ protocol CommunityViewRepresentable: AnyObject {
     func onAction(_ action:  CommunityAction)
 }
 
-//protocolCommunityInputViewDelegate:AnyObject {
-//    func onAction(action: CommunityAction, for screen: CommunityScreenType)
-//}
-
 protocol CommunityServiceProvidable: AnyObject {
     var  delegate: CommunityServiceProvierDelegate? { get set }
-   // func joinHabit(param: CommunityParams.JoinHabit)
     func fetchCommunity(param: CommunityParams.FetchCommunity)
     func allGroupHabit(param: CommunityParams.AllGroupHabit)
     func friends(param: CommunityParams.Friends)

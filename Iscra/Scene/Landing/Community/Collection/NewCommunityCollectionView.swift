@@ -1,5 +1,5 @@
 //
-//  NewCommunityCollectionView.swift
+//  NewGroupCollectionView.swift
 //  Iscra
 //
 //  Created by mac on 25/10/21.
@@ -7,17 +7,12 @@
 
 import UIKit
 
-protocol CommunityInvitationDetailDelegate: AnyObject {
-    func navigate(obj: Invitaion)
-}
-
-class NewCommunityCollectionView: UICollectionView {
+class NewGroupCollectionView: UICollectionView {
     
     var viewModel: CommunityViewModel!
     var didSelectInvitedHabitAtIndex: ((Int) -> Void)?
     var arrInvitaions = [Invitaion]()
     
-    weak var communityDelegate : CommunityInvitationDetailDelegate?
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -34,7 +29,7 @@ class NewCommunityCollectionView: UICollectionView {
     }
 }
 
-extension NewCommunityCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension NewGroupCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.myInvitaions.count
     }
@@ -46,9 +41,7 @@ extension NewCommunityCollectionView: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//                didSelectInvitedHabitAtIndex?(indexPath.row)
-        let objInvitaion = viewModel.myInvitaions[indexPath.row]
-        communityDelegate?.navigate(obj: objInvitaion)
+                didSelectInvitedHabitAtIndex?(indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

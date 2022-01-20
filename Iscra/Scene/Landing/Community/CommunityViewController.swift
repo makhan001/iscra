@@ -12,11 +12,9 @@ class CommunityViewController: UIViewController {
     @IBOutlet weak var lblNoGroupsFound: UILabel!
     @IBOutlet weak var btnInviteFriends: UIButton!
     @IBOutlet weak var lblNoInvitationFound: UILabel!
-    @IBOutlet weak var collectionMyGroups: MyCommunityCollectionView! // myGroupCollectionView
-    @IBOutlet weak var collectionNewGroupHabit: NewCommunityCollectionView! // newGroupCollectionView
+    @IBOutlet weak var collectionMyGroups: MyGroupCollectionView!
+    @IBOutlet weak var collectionNewGroupHabit: NewGroupCollectionView!
     
-    
-    var objInvitaion: Invitaion?
     weak var router: NextSceneDismisser?
     let viewModel: CommunityViewModel = CommunityViewModel(provider:  CommunityServiceProvider())
     
@@ -47,21 +45,15 @@ extension CommunityViewController {
     
     private func setCollectionView() {
         self.collectionMyGroups.configure(viewModel: viewModel)
-        self.collectionMyGroups.showHabitDetail = didSelectCollectionAtIndex
+        self.collectionMyGroups.showHabitDetail = didSelectHabitAtIndex
         self.collectionNewGroupHabit.configure(viewModel: viewModel)
-        self.collectionNewGroupHabit.communityDelegate = self
+        self.collectionNewGroupHabit.didSelectInvitedHabitAtIndex = didSelectInvitedHabitAtIndex
     }
     
     @objc func refrershUI() {
-        print("refrershUI is called")
         self.viewModel.fetchCommunityList()
     }
     
-    private func didSelectCollectionAtIndex(index: Int) { // didSelectHabitAtIndex
-        self.viewModel.habitId = self.viewModel.myGroups[index].id ?? 0
-        self.router?.push(scene: .groupHabitFriends)
-    }
-
     private func reload() {
         self.reloadMyGroups()
         self.reloadNewGroups()
@@ -113,7 +105,6 @@ extension CommunityViewController {
     }
     
     private func inviteFriendsAction() {
-        print("inviteFriendsAction")
         self.showActivityViewController(url: URL(string: AppConstant.IscraAppLink)!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
     }
     
@@ -124,11 +115,16 @@ extension CommunityViewController {
     }
 }
 
-// MARK: - Navigation Bar Delegate
-extension CommunityViewController: CommunityInvitationDetailDelegate {
-    func navigate(obj: Invitaion) {
-        self.objInvitaion = obj
+// MARK: Closures Callbacks
+extension CommunityViewController {
+    private func didSelectInvitedHabitAtIndex(_ index: Int) {
+        self.viewModel.habitId = self.viewModel.myInvitaions[index].id ?? 0
         self.router?.push(scene: .communityDetail)
+    }
+    
+    private func didSelectHabitAtIndex(index: Int) {
+        self.viewModel.habitId = self.viewModel.myGroups[index].id ?? 0
+        self.router?.push(scene: .groupHabitFriends)
     }
 }
 

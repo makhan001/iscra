@@ -16,9 +16,9 @@ class HabitCell: UITableViewCell, Reusable {
     @IBOutlet weak var lblHabitTitle: UILabel!
     @IBOutlet weak var lblHabitTitleMates: UILabel!
     
-    @IBOutlet weak var imgHabit: UIImageView!
-    @IBOutlet weak var imgHabitMates: UIImageView!
-    
+    @IBOutlet weak var imageHabit: UIImageView!
+    @IBOutlet weak var imageHabitMates: UIImageView!
+
     @IBOutlet weak var btnHabitDetail: UIButton!
     @IBOutlet weak var constraintWidth:NSLayoutConstraint!
     
@@ -66,14 +66,14 @@ class HabitCell: UITableViewCell, Reusable {
             self.viewNomates.isHidden = false
             self.viewMates.isHidden = true
             self.lblHabitTitle.text =  item.name?.capitalized
-            self.imgHabit.image = UIImage(named: item.icon ?? "sport1")
-            self.imgHabit.tintColor = UIColor(hex: item.colorTheme ?? viewModel.colorTheme)
+            self.imageHabit.image = UIImage(named: item.icon ?? "sport1")
+            self.imageHabit.tintColor = UIColor(hex: item.colorTheme ?? viewModel.colorTheme)
         } else {
             self.viewNomates.isHidden = true
             self.viewMates.isHidden = false
             self.lblHabitTitleMates.text = item.name?.capitalized
-            self.imgHabitMates.image = UIImage(named: item.icon ?? "sport1")
-            self.imgHabitMates.tintColor = UIColor(hex: item.colorTheme ?? viewModel.colorTheme)
+            self.imageHabitMates.image = UIImage(named: item.icon ?? "sport1")
+            self.imageHabitMates.tintColor = UIColor(hex: item.colorTheme ?? viewModel.colorTheme)
         }
     }
     
@@ -96,7 +96,6 @@ class HabitCell: UITableViewCell, Reusable {
     }
     
     @objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
-        print("self.tableIndex on collection tap is \(String(describing: self.tableIndex))")
         self.showHabitDetail?(self.tableIndex ?? 0)
     }
 }

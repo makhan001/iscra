@@ -200,8 +200,8 @@
             <connections>
                 <outlet property="btnHabitDetail" destination="INF-Zf-VMk" id="MiW-AW-T1Q"/>
                 <outlet property="daysCollectionView" destination="6na-WE-bbP" id="Dl4-2z-f8w"/>
-                <outlet property="imgHabit" destination="s2x-9A-gKC" id="O2C-x1-do9"/>
-                <outlet property="imgHabitMates" destination="Ife-MM-rtr" id="yci-oo-afK"/>
+                <outlet property="imageHabit" destination="s2x-9A-gKC" id="4Rv-pR-8ok"/>
+                <outlet property="imageHabitMates" destination="Ife-MM-rtr" id="yTr-po-NSj"/>
                 <outlet property="lblHabitTitle" destination="RMQ-Fc-dl4" id="O1G-hB-qdM"/>
                 <outlet property="lblHabitTitleMates" destination="yQv-Ae-JBf" id="IoF-xA-7UY"/>
                 <outlet property="matesCollectionView" destination="KIT-uB-CXg" id="Ewd-30-idZ"/>

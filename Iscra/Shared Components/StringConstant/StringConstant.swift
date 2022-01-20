@@ -12,7 +12,7 @@ class AppConstant: NSObject {
     
     static let UserPlaceHolderImage = UIImage(named: "ic-user-placeholder")
     static let HabitPlaceHolderImage = UIImage(named: "ic-habit-placeholder")
-    static let IscraAppLink = "https://apps.apple.com/us/app/iscra-group-habit-tracker/id1602472226"
+    static let IscraAppLink = "https://apps.apple.com/us/app/iscra-group-habit-tracker/id1602472226" // https://apps.apple.com/us/app/itunes-connect/id376771144
    
     // SocialLogin Constants
     //  static let googleClientID = "39692170766-8vkfqscsq4ommlmsnrdmeld8knjne2ec.apps.googleusercontent.com"

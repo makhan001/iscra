@@ -12,7 +12,7 @@ final class GroupMembersViewModel {
     
     var habitId: Int = 0
     var arrGroupHabitMembers = [GroupHabitMember]()
-
+    
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
@@ -37,7 +37,6 @@ extension GroupMembersViewModel: HabitServiceProvierDelegate {
                 if let resp = response as? SuccessResponseModel, resp.code == 200, let arrGroupHabitMembers = resp.data?.groupHabitMembers{
                     self.arrGroupHabitMembers = arrGroupHabitMembers
                     self.arrGroupHabitMembers.sort { $0.username ?? "" < $1.username ?? "" }
-                    print("self.arrGroupHabitMembers is \(self.arrGroupHabitMembers.count)")
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
                 } else {
                     self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))

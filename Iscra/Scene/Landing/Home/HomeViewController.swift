@@ -85,7 +85,6 @@ extension HomeViewController {
         }
         deleteAction.setValue(UIColor.gray, forKey: "titleTextColor")
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction!) in
-            print("Cancel button tapped");
         }
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
         alertController.addAction(deleteAction)

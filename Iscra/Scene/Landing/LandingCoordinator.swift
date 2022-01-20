@@ -101,11 +101,6 @@ final class LandingCoordinator: Coordinator<Scenes> {
         groupHabitCalender = GroupHabitCalenderCoordinator(router: Router())
         add(groupHabitCalender)
         groupHabitCalender.delegate = self
-        print("controller.home.viewModel.habitId is \(controller.home.viewModel.habitId)")
-        print("controller.community.viewModel.habitId is \(controller.community.viewModel.habitId)")
-        
-        
-        
         if controller.calendarScreenType == .home {
             groupHabitCalender.start(habitId: controller.home.viewModel.habitId)
         } else {
@@ -132,9 +127,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         communityDetail = CommunityDetailCoordinator(router: Router())
         add(communityDetail)
         communityDetail.delegate = self
-        if let habitId = controller.community.objInvitaion?.id {
-            communityDetail.start(habitId: habitId)
-        }
+        communityDetail.start(habitId: controller.community.viewModel.habitId)
         self.router.present(communityDetail, animated: true)
     }
     
@@ -149,7 +142,6 @@ final class LandingCoordinator: Coordinator<Scenes> {
     }
     
     private func startWebViewController() {
-        print("self.myAccountViewController.viewModel.webPage on LandingCoordinator is \(controller.myAccount.viewModel.webPage)")
         webViewController.webPage = controller.myAccount.viewModel.webPage
         router.present(webViewController, animated: true)
     }

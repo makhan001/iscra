@@ -14,14 +14,14 @@ class CommunityMyGroupsCell: UICollectionViewCell, Reusable {
     @IBOutlet weak var viewContainer: UIView!
     
     @IBOutlet weak var btnHabitDetail: UIButton!
-
-    @IBOutlet weak var imgHabit: UIImageView! // imageHabit
-    @IBOutlet weak var imgHabitMates: UIImageView! // imageHabitMates
+    
+    @IBOutlet weak var imageHabit: UIImageView!
+    @IBOutlet weak var imageHabitMates: UIImageView!
     
     @IBOutlet weak var lblHabitTitle: UILabel!
     @IBOutlet weak var lblHabitTitleMates: UILabel!
     
-    @IBOutlet weak var collectionMates: UICollectionView! // matesCollectionView
+    @IBOutlet weak var matesCollectionView: UICollectionView!
     @IBOutlet weak var daysCollectionView: HabitDaysCollectionView!
     @IBOutlet weak var constraintWidth: NSLayoutConstraint!
     
@@ -31,11 +31,11 @@ class CommunityMyGroupsCell: UICollectionViewCell, Reusable {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setup()
-        self.collectionMates.register(UINib(nibName: "MatesCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MatesCollectionCell")
-        self.collectionMates.backgroundColor = UIColor.clear.withAlphaComponent(0)
-        self.collectionMates.dataSource = self
-        self.collectionMates.delegate = self
-        self.collectionMates.reloadData()
+        self.matesCollectionView.register(UINib(nibName: "MatesCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MatesCollectionCell")
+        self.matesCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
+        self.matesCollectionView.dataSource = self
+        self.matesCollectionView.delegate = self
+        self.matesCollectionView.reloadData()
     }
     
     private func setup() {
@@ -55,7 +55,7 @@ class CommunityMyGroupsCell: UICollectionViewCell, Reusable {
         } else {
             self.populateGroupHabit(groupHabit: groupHabit)
         }
-        self.collectionMates.reloadData()
+        self.matesCollectionView.reloadData()
         self.daysCollectionView.configure(colorTheme: viewModel.colorTheme, habitMark: viewModel.habitMarks)
     }
     
@@ -63,16 +63,16 @@ class CommunityMyGroupsCell: UICollectionViewCell, Reusable {
         self.viewNomates.isHidden = false
         self.viewMates.isHidden = true
         self.lblHabitTitle.text =  groupHabit.name?.capitalized
-        self.imgHabit.image = UIImage(named: groupHabit.icon ?? "sport1")
-        self.imgHabit.tintColor = UIColor(hex: groupHabit.colorTheme ?? self.viewModel.colorTheme)
+        self.imageHabit.image = UIImage(named: groupHabit.icon ?? "sport1")
+        self.imageHabit.tintColor = UIColor(hex: groupHabit.colorTheme ?? self.viewModel.colorTheme)
     }
     
     private func populateGroupHabit(groupHabit: GroupHabit) {
         self.viewNomates.isHidden = true
         self.viewMates.isHidden = false
         self.lblHabitTitleMates.text = groupHabit.name?.capitalized
-        self.imgHabitMates.image = UIImage(named: groupHabit.icon ?? "sport1")
-        self.imgHabitMates.tintColor = UIColor(hex: groupHabit.colorTheme ?? self.viewModel.colorTheme)
+        self.imageHabitMates.image = UIImage(named: groupHabit.icon ?? "sport1")
+        self.imageHabitMates.tintColor = UIColor(hex: groupHabit.colorTheme ?? self.viewModel.colorTheme)
     }
     
     override func updateConstraints() {
@@ -114,13 +114,13 @@ extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         .zero
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         20.0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         5.0
     }
-
+    
 }

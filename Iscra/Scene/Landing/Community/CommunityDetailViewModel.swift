@@ -13,11 +13,10 @@ final class CommunityDetailViewModel {
     var habitId: Int = 0
     var userId: String = ""
     var objGroupHabitDetails: GroupHabitDetails?
+    
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
-    var pullToRefreshCtrl:UIRefreshControl!
-    var isRefreshing = false
     
     init(provider: HabitServiceProvidable) {
         self.provider = provider
@@ -44,9 +43,7 @@ extension CommunityDetailViewModel: HabitServiceProvierDelegate {
                 if let resp = response as? SuccessResponseModel, resp.code == 200, let groupHabitDetails = resp.data?.groupHabitDetails {
                     self.objGroupHabitDetails = groupHabitDetails
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
-                    
-                } else if let resp = response as? SuccessResponseModel, resp.code == 200, let status = resp.status, let joinHabit = resp.data?.joinHabit {
-                    print("habit is join on view Model")
+                } else if let resp = response as? SuccessResponseModel, resp.code == 200, let _ = resp.status, let _ = resp.data?.joinHabit {
                     self.view?.onAction(.joinHabitMessage(resp.message ?? ""))
                 } else {
                     self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))

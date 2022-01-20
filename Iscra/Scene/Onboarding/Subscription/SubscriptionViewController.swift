@@ -83,6 +83,7 @@ extension SubscriptionViewController  {
     
     private func getSubscriptionAction() {
         print("getSubscriptionAction")
+        self.viewModel.getProducts()
     }
     
     private func allowAdsAction() {

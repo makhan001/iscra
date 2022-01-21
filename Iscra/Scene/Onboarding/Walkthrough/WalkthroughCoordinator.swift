@@ -44,7 +44,7 @@ final class WalkthroughCoordinator: Coordinator<Scenes> {
         addMemoji = AddMemojiCoordinator(router: Router())
         add(addMemoji)
         addMemoji.delegate = self
-        addMemoji.start()
+        addMemoji.start(isfromMyAccount: false)
         self.router.present(addMemoji, animated: true)
     }
 }

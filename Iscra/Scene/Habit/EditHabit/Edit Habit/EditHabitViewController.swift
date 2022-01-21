@@ -19,7 +19,7 @@ class EditHabitViewController: UIViewController {
     var timer: String = ""
     var colorTheme: String = ""
     var reminders: Bool = false
-    var objHabitDetail: HabitDetails? 
+    var objHabitDetail: HabitDetails?
     let viewModel: EditHabitViewModel = EditHabitViewModel(provider: HabitServiceProvider())
     weak var router: NextSceneDismisser?
     
@@ -159,13 +159,20 @@ extension EditHabitViewController: NavigationBarViewDelegate {
         self.viewModel.days = self.days
         if self.reminders == true {
             if self.timer.contains(":"){
-                let currentDate = Date().string(format: "yyyy-MM-dd")
-                let yourDate = currentDate + "-" + self.timer
-                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd-hh:mm a"
-                 let dateString = dateFormatter.date(from: yourDate)
-                 let dateTimeStamp  = dateString!.timeIntervalSince1970
-                self.viewModel.timer = String(dateTimeStamp)
+                let dateFromatter = DateFormatter()
+                dateFromatter.locale = Locale(identifier: "en-US")
+                dateFromatter.dateFormat = "hh:mm a"
+                let daatee = dateFromatter.date(from: self.timer)
+                dateFromatter.dateFormat = "HH:mm"
+                let strDate = dateFromatter.string(from: daatee ?? Date())
+                
+                let time = strDate.components(separatedBy: ":")
+                let hour = Int(time[0]) ?? 00
+                let minutes = Int(time[1]) ?? 00
+                
+                let date = Calendar.current.date(bySettingHour: hour, minute: minutes, second: 00, of: Date())
+                let timeStamp = date?.millisecondsSince1970
+                self.viewModel.timer = "\(timeStamp ?? 0)"
             } else {
                 self.viewModel.timer = self.timer
             }
@@ -247,3 +254,4 @@ extension EditHabitViewController {
         self.present(alertController, animated: true, completion:nil)
     }
 }
+

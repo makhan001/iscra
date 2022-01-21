@@ -7,14 +7,16 @@
 
 
 import UIKit
+import StoreKit
 import Foundation
 
 final class HomeViewModel {
     
     var habitId: Int = 0
-    var pullToRefreshCtrl:UIRefreshControl!
     var isRefreshing = false
+    var products = [SKProduct]()
     var colorTheme: String = "#ff7B86EB"
+    var pullToRefreshCtrl:UIRefreshControl!
     var habitList = [AllHabits]()
     var habitMarks = [HabitMark]()
     var groupMembers = [GroupMember]()
@@ -28,8 +30,20 @@ final class HomeViewModel {
         self.provider.delegate = self
     }
     
+    func getProducts() {
+        Products.store.requestProducts{ [weak self] success, products in
+            guard let self = self else { return }
+            if success {
+                self.products = products!
+                self.view?.onAction(.products)
+            } else {
+                self.view?.onAction(.errorMessage("No products found"))
+            }
+        }
+    }
+    
     func fetchHabitList() {
-        self.provider.habitList(param: HabitParams.AllHabitList()) 
+        self.provider.habitList(param: HabitParams.AllHabitList())
         if self.isRefreshing {
             WebService().StopIndicator()
         }
@@ -37,6 +51,18 @@ final class HomeViewModel {
     
     func deleteHabit(id: String) {
         self.provider.deleteHabit(param: HabitParams.DeleteHabit(id: id))
+    }
+    
+    func apiMarkAsComplete(objHabitMark: HabitMark) {
+        let timestamp = String(format: "%.0f", NSDate().timeIntervalSince1970)
+        let id  = objHabitMark.habitID ?? 0
+        if  objHabitMark.isCompleted == false &&  objHabitMark.habitDay?.toDouble.habitDate == Date().currentHabitDate {
+           self.provider.markAsComplete(param: HabitParams.MarkAsComplete(habit_id: String(id), habit_day: String(timestamp) , is_completed: "true"))
+        } else if  objHabitMark.isCompleted == true &&  objHabitMark.habitDay?.toDouble.habitDate == Date().currentHabitDate {
+            self.view?.onAction(.errorMessage("You have already marked this habit as completed!!"))
+        }else{
+            self.view?.onAction(.errorMessage("You can't mark this habit as complete, since day is already passed!!"))
+        }
     }
 }
 
@@ -62,7 +88,9 @@ extension HomeViewModel: HabitServiceProvierDelegate {
                         
                     case .deleteHabit:
                         self.view?.onAction(.isHabitDelete(true, resp.message ?? ""))
-                        
+                    
+                    case .markAsComplete:
+                    self.view?.onAction(.markAsCompleteSucess(resp.message ?? ""))
                     default:
                         self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
 
@@ -72,3 +100,4 @@ extension HomeViewModel: HabitServiceProvierDelegate {
         }
     }
 }
+

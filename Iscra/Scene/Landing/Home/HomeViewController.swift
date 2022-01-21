@@ -40,6 +40,11 @@ extension HomeViewController {
         self.viewFirstHabit.isHidden = true
         self.lblTitle.text = AppConstant.firstHabitTitle
         self.lblSubTitle.text = AppConstant.firstHabitSubTitle
+        self.viewModel.getProducts()
+        self.addNotificationObserver()
+    }
+    
+    private func addNotificationObserver(){
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .EditHabit, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .MarkAsComplete, object: nil)
     }
@@ -54,6 +59,7 @@ extension HomeViewController {
         self.tableView.configure(viewModel: viewModel)
         self.tableView.didDeleteHabitAtIndex = didDeleteHabitAtIndex
         self.tableView.showHabitDetail = didSelectedAtIndex
+        self.tableView.didMarkAsComplete = didMarkAsComplete
         self.setPullToRefresh()
     }
     
@@ -79,7 +85,6 @@ extension HomeViewController {
         }
         deleteAction.setValue(UIColor.gray, forKey: "titleTextColor")
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction!) in
-            print("Cancel button tapped");
         }
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
         alertController.addAction(deleteAction)
@@ -102,6 +107,10 @@ extension HomeViewController {
     private func didDeleteHabitAtIndex(_ index: Int) {
         guard let id = viewModel.habitList[index].id else { return }
         self.deleteAlert(id: String(id))
+    }
+
+    private func didMarkAsComplete(_ objHabitMark: HabitMark) {
+        self.viewModel.apiMarkAsComplete(objHabitMark: objHabitMark)
     }
 }
 
@@ -136,6 +145,9 @@ extension HomeViewController: HabitViewRepresentable {
             self.viewModel.fetchHabitList()
         case  .sucessMessage(_):
             self.handleSuccessResponse()
+        case .markAsCompleteSucess(_):
+            self.viewModel.habitList.removeAll()
+            self.viewModel.fetchHabitList()
         default:
             break
         }

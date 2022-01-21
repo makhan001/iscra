@@ -78,7 +78,26 @@ extension UIView {
     func makeCircular() {
         self.layer.cornerRadius = self.frame.size.width / 2
         self.clipsToBounds = true
-        
+    }
+    
+    func roundCorners(corners:UIRectCorner, radius: CGFloat) {
+        DispatchQueue.main.async {
+            let path = UIBezierPath(roundedRect: self.bounds,byRoundingCorners: corners,cornerRadii: CGSize(width: radius, height: radius))
+            let maskLayer = CAShapeLayer()
+            maskLayer.frame = self.bounds
+            maskLayer.path = path.cgPath
+            self.layer.mask = maskLayer
+        }
+    }
+    
+    func addBorder() {
+        self.layer.borderWidth = 0.4
+        self.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    func removeBorder() {
+        self.layer.borderWidth = 0
+        self.layer.borderColor = UIColor.clear.cgColor
     }
 }
 
@@ -90,7 +109,9 @@ extension UIViewController {
         alert.view.backgroundColor = UIColor.init(named: "PrimaryAccent")
         alert.view.alpha = 0.7
         alert.view.layer.cornerRadius = 15
-        self.present(alert, animated: true)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true)
         }
@@ -235,19 +256,49 @@ extension String {
         //    dayTimePeriodFormatter.timeZone = TimeZone(abbreviation: "IST") //Set timezone that you want
         let dateString = dayTimePeriodFormatter.string(from: date as Date)
         let fullNameArr = dateString.components(separatedBy: "-")
-        //  print("dateString is \(fullNameArr[0]) and \(fullNameArr[1])")
         if isDayName == true {
             return  fullNameArr[1]
         } else {
             return fullNameArr[0]
         }
     }
+    
+    func getDate() -> Date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm a"
+            dateFormatter.timeZone = TimeZone.current
+            dateFormatter.locale = Locale.current
+            return dateFormatter.date(from: self) ?? Date()
+        }
+        var timeStamp: String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm a"
+            let date = dateFormatter.date(from: self)
+            let dateStamp: TimeInterval = (date ?? Date()).timeIntervalSince1970
+            return String(Int(dateStamp))
+        }
+        var convertTo12Hour: String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            let date = dateFormatter.date(from: self)
+            dateFormatter.dateFormat = "h:mm a"
+            return dateFormatter.string(from: date ?? Date())
+        }
+        var timeConversion12: String {
+            let df = DateFormatter()
+            df.dateFormat = "HH:mm"
+            let date = df.date(from: self)
+            df.dateFormat = "hh:mm a"
+            let time12 = df.string(from: date ?? Date())
+            return time12
+        }
 }
 
 extension UIImageView {
     func setImageFromURL(_ url:String, with defaultImage:UIImage?) {
-        if url.contains("null") {
-            self.image = defaultImage
+        self.image = defaultImage
+        if url.contains("null") || url.count == 0 || url == "" || url.contains("<null>") {
+            self.addBorder()
             self.contentMode = .scaleAspectFit
             return
         }
@@ -270,6 +321,7 @@ extension UIImageView {
                 self.contentMode = .scaleAspectFit
             } else {
                 self.image = image
+                self.removeBorder()
                 self.contentMode = .scaleAspectFill
             }
         }
@@ -283,7 +335,22 @@ extension Locale {
     }
 }
 
+extension UIDatePicker {
+    func setDate(from string: String, format: String) {
+        let formater = DateFormatter()
+        formater.dateFormat = format
+        formater.locale = Locale(identifier: "en-US")
+        let date = formater.date(from: string) ?? Date()
+        setDate(date, animated: false)
+    }
+}
+
 extension Date {
+    var calendar: Calendar { Calendar.current }
+    var weekdayIndex: Int {
+        (calendar.component(.weekday, from: self) - calendar.firstWeekday + 7) % 7 //+ 1
+    }
+    
     func string(format: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
@@ -329,6 +396,10 @@ extension Date {
         let calendar = Calendar.current
         let compomnents = calendar.dateComponents([.year], from: self)
         return compomnents.year ?? 0
+    }
+    
+    var millisecondsSince1970:Int64 {
+        Int64((self.timeIntervalSince1970 * 1000.0).rounded())
     }
 }
 
@@ -456,6 +527,8 @@ extension Notification.Name {
     static let JoinHabit = Notification.Name("JoinHabit")
     static let MarkAsComplete = Notification.Name("MarkAsComplete")
     static let SearchAllGroup = Notification.Name("SearchAllGroup")
+    static let UpdateUserImage = Notification.Name("UpdateUserImage")
+    static let purchaseFinished = Notification.Name("purchaseFinished")
     static let IAPHelperPurchaseNotification = Notification.Name("IAPHelperPurchaseNotification")
     static let IAPHelperPurchaseFinishNotification = Notification.Name("IAPHelperPurchaseFinishNotification")
     static let IAPHelperSubscriptionExpireDateNotification = Notification.Name("IAPHelperSubscriptionExpireDateNotification")
@@ -468,6 +541,7 @@ extension Int {
 }
 
 extension TimeInterval {
+    
     var habitDate: String {
         let date = Date(timeIntervalSince1970: self)
         let dateFormatter = DateFormatter()
@@ -566,4 +640,5 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         return context
     }
 }
+
 

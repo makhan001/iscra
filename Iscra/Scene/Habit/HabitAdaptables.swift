@@ -15,6 +15,11 @@ enum HabitScreenType: String {
     case editHabit
 }
 
+enum CalendarScreenType: String {
+    case home
+    case community
+}
+
 struct WeekDays {
     var id : Int
     var shortDayname: String
@@ -28,12 +33,12 @@ enum ShareHabitSourceScreen:String {
 }
 
 var WeakDaysArray = [WeekDays(id: 7, shortDayname: "S", dayname: "sunday", isSelected: false),
-                WeekDays(id: 1, shortDayname: "M", dayname: "monday", isSelected: false),
-                WeekDays(id: 2, shortDayname: "T", dayname: "tuesday", isSelected: false),
-                WeekDays(id: 3, shortDayname: "W", dayname: "wednesday", isSelected: false),
-                WeekDays(id: 4, shortDayname: "T", dayname: "thursday", isSelected: false),
-                WeekDays(id: 5, shortDayname: "F", dayname: "friday", isSelected: false),
-                WeekDays(id: 6, shortDayname: "S", dayname: "saturday", isSelected: false)]
+                     WeekDays(id: 1, shortDayname: "M", dayname: "monday", isSelected: false),
+                     WeekDays(id: 2, shortDayname: "T", dayname: "tuesday", isSelected: false),
+                     WeekDays(id: 3, shortDayname: "W", dayname: "wednesday", isSelected: false),
+                     WeekDays(id: 4, shortDayname: "T", dayname: "thursday", isSelected: false),
+                     WeekDays(id: 5, shortDayname: "F", dayname: "friday", isSelected: false),
+                     WeekDays(id: 6, shortDayname: "S", dayname: "saturday", isSelected: false)]
 
 struct HabitThemeColor {
     var id : String
@@ -52,31 +57,33 @@ let WeekDayNumbers: [String : Int] = [
 ]
 
 enum HabitAction {
-  case joinHabit
-  case habitList
-  case createHabit
-  case deleteHabit
-  case habitDetail
-  case updateHabit
-  case habitCalender
-  case markAsComplete
-  case shareHabit
-  case friends
-  case groupHabitDetails
-  case groupHabitMembers
-  case isHabitDelete(_ isDelete: Bool, _ msg:String)
-  case navigateToGroupImage(_ isNavigate: Bool)
-  case requireFields(_ text:String)
-  case inputComplete(_ screen: HabitScreenType)
-  case setTheme(_ screen: HabitScreenType)
-  case setDaySelection(_ screen: HabitScreenType)
-  case setGroupImage(_ screen: HabitScreenType)
-  case editingDidEnd(_ field:String, _ value:String)
-  case editingDidChange(_ field:String, _ value:String)
-  case errorMessage(_ text:String)
-  case sucessMessage(_ text:String)
-  case shareHabitSucess(_ text:String)
-  case joinHabitMessage(_ text:String)
+    case joinHabit
+    case habitList
+    case createHabit
+    case deleteHabit
+    case habitDetail
+    case updateHabit
+    case habitCalender
+    case markAsComplete
+    case shareHabit
+    case friends
+    case products
+    case groupHabitDetails
+    case groupHabitMembers
+    case isHabitDelete(_ isDelete: Bool, _ msg:String)
+    case navigateToGroupImage(_ isNavigate: Bool)
+    case requireFields(_ text:String)
+    case inputComplete(_ screen: HabitScreenType)
+    case setTheme(_ screen: HabitScreenType)
+    case setDaySelection(_ screen: HabitScreenType)
+    case setGroupImage(_ screen: HabitScreenType)
+    case editingDidEnd(_ field:String, _ value:String)
+    case editingDidChange(_ field:String, _ value:String)
+    case errorMessage(_ text:String)
+    case sucessMessage(_ text:String)
+    case markAsCompleteSucess(_ text:String)
+    case shareHabitSucess(_ text:String)
+    case joinHabitMessage(_ text:String)
 }
 protocol HabitViewRepresentable: AnyObject {
     func onAction(_ action:  HabitAction)
@@ -85,19 +92,19 @@ protocol HabitInputViewDelegate:AnyObject {
     func onAction(action: HabitAction, for screen: HabitScreenType)
 }
 protocol HabitServiceProvidable: AnyObject {
-  var delegate: HabitServiceProvierDelegate? { get set }
-  func joinHabit(param: HabitParams.JoinHabit)
-  func friends(param: HabitParams.Friends)
-  func shareHabit(param: HabitParams.ShareHabit)
-  func habitList(param: HabitParams.AllHabitList)
-  func createHabit(param: HabitParams.CreateHabit)
-  func deleteHabit(param: HabitParams.DeleteHabit)
-  func habitDetail(param: HabitParams.HabitDetail)
-  func updateHabit(param: HabitParams.UpdateHabit)
-  func habitCalender(param: HabitParams.HabitCalender)
-  func markAsComplete(param: HabitParams.MarkAsComplete)
-  func groupHabitMembers(param: HabitParams.GroupHabitMembers)
-  func groupHabitDetails(param: HabitParams.GroupHabitDetails)
+    var delegate: HabitServiceProvierDelegate? { get set }
+    func joinHabit(param: HabitParams.JoinHabit)
+    func friends(param: HabitParams.Friends)
+    func shareHabit(param: HabitParams.ShareHabit)
+    func habitList(param: HabitParams.AllHabitList)
+    func createHabit(param: HabitParams.CreateHabit)
+    func deleteHabit(param: HabitParams.DeleteHabit)
+    func habitDetail(param: HabitParams.HabitDetail)
+    func updateHabit(param: HabitParams.UpdateHabit)
+    func habitCalender(param: HabitParams.HabitCalender)
+    func markAsComplete(param: HabitParams.MarkAsComplete)
+    func groupHabitMembers(param: HabitParams.GroupHabitMembers)
+    func groupHabitDetails(param: HabitParams.GroupHabitDetails)
 }
 protocol HabitServiceProvierDelegate: AnyObject {
     func completed<T>(for action: HabitAction, with response: T?, with error: APIError?)

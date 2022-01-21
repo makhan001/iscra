@@ -41,6 +41,9 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
 // MARK: Instance Methods
 extension MyAccountViewController {
     private func setup() {
+        imgProfile.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        imgProfile.addGestureRecognizer(tapRecognizer)
         self.viewModel.view = self
         [btnGetSubscription,btnLogout].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -51,10 +54,23 @@ extension MyAccountViewController {
         self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text =  "My profile"
         self.viewNavigation.delegateBarAction = self
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUserImage(_:)), name: .UpdateUserImage, object: nil)
         if !MFMailComposeViewController.canSendMail() {
             print("Mail services are not available")
             return
         }
+    }
+    
+    @objc func updateUserImage(_ notification: Notification) {
+        self.imgProfile.setImageFromURL(UserStore.userImage ?? "", with: AppConstant.UserPlaceHolderImage)
+    }
+    
+    @objc func imageTapped(sender: UIImageView) {
+        print("image tapped")
+        let storyboard = UIStoryboard(name: "Landing", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ZoomImageViewController") as! ZoomImageViewController
+        vc.strUrl = UserStore.userImage ?? ""
+        self.navigationController?.present(vc, animated: false, completion: nil)
     }
     
     private func retriveUserDetails() {
@@ -65,6 +81,7 @@ extension MyAccountViewController {
     func didUpdateName() {
         self.lblName.text = UserStore.userName?.capitalized
     }
+   
 }
 
 // MARK: Navigation Delegates
@@ -81,6 +98,7 @@ extension MyAccountViewController {
    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
+        
         case btnGetSubscription:
             self.getSubscriptionAction()
         case btnLogout:
@@ -89,7 +107,7 @@ extension MyAccountViewController {
             break
         }
     }
-    
+   
     private func getSubscriptionAction() {
         self.router?.push(scene: .subscription)
     }
@@ -124,7 +142,7 @@ extension MyAccountViewController: clickManagerDelegate{
         case .changePassword:
             self.changePasswordAction()
         case .shareWithFriends:
-            self.showActivityViewController(url: URL(string: "https://www.apple.com")!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
+            self.showActivityViewController(url: URL(string: AppConstant.IscraAppLink)!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
         case .rateUs:
             self.rateUs()
         case .contactDeveloper:
@@ -208,6 +226,7 @@ extension MyAccountViewController: ImagePickerDelegate{
     func fetchedImage(img: UIImage) {
         imgProfile.image = img
         viewModel.selectedImage = img
+        print("fetchImage===>\(img)")
         viewModel.onAction(action: .inputComplete(.updateProfile), for: .updateProfile)
         self.dismiss(animated: true, completion: nil)
     }

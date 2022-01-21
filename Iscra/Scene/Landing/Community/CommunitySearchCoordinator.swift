@@ -9,14 +9,15 @@ import Foundation
 import CoreImage
 
 final class CommunitySearchCoordinator: Coordinator<Scenes> {
-
+    
     weak var delegate: CoordinatorDimisser?
     let controller: CommunitySearchViewController = CommunitySearchViewController.from(from: .landing, with: .communitySearch)
     
     private var landing: LandingCoordinator!
     private var habitName: HabitNameCoordinator!
+    private var communityDetail: CommunityDetailCoordinator!
     private var groupHabitCalender: GroupHabitCalenderCoordinator!
-
+    
     override func start() {
         super.start()
         router.setRootModule(controller, hideBar: true)
@@ -26,11 +27,11 @@ final class CommunitySearchCoordinator: Coordinator<Scenes> {
     private func onStart() {
         controller.router = self
     }
-
+    
     private func startHabitCalender() {
         router.present(controller, animated: true)
     }
-       
+    
     private func startLanding() {
         router.dismissModule(animated: false, completion: nil)
         landing = LandingCoordinator(router: Router())
@@ -55,27 +56,36 @@ final class CommunitySearchCoordinator: Coordinator<Scenes> {
         groupHabitCalender.start(habitId: controller.viewModel.habitId)
         self.router.present(groupHabitCalender, animated: true)
     }
+    
+    private func startCommunityDetail() {
+        communityDetail = CommunityDetailCoordinator(router: Router())
+        add(communityDetail)
+        communityDetail.delegate = self
+        communityDetail.start(habitId: controller.viewModel.habitId)
+        self.router.present(communityDetail, animated: true)
+    }
 }
 
 extension CommunitySearchCoordinator: NextSceneDismisser {
-
+    
     func push(scene: Scenes) {
         switch scene {
         case .landing: startLanding()
         case .habitName: startHabitName()
         case .habitCalender: startHabitCalender()
+        case .communityDetail: startCommunityDetail()
         case .groupHabitFriends: startGroupHabitCalender()
         default: break
         }
     }
-
+    
     func dismiss(controller: Scenes) {
         router.dismissModule(animated: false, completion: nil)
     }
 }
 
 extension CommunitySearchCoordinator: CoordinatorDimisser {
-
+    
     func dismiss(coordinator: Coordinator<Scenes>) {
         remove(child: coordinator)
         router.dismissModule(animated: true, completion: nil)

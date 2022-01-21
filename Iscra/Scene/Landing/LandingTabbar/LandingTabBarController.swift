@@ -11,7 +11,10 @@ class LandingTabBarController: UITabBarController {
     
     var toggle:Bool = false
     let kBarHeight: CGFloat = 60
+    var centerButton = UIButton()
+    var calendarScreenType: CalendarScreenType = .home
     weak var router: NextSceneDismisser?
+    
     
     var home: HomeViewController = HomeViewController.from(from: .landing, with: .home)
     var dialogs: DialogsViewController = DialogsViewController.from(from: .dialogs, with: .dialogs)
@@ -51,12 +54,8 @@ extension LandingTabBarController {
     }
     
     @objc func rotateIcon(_ notification: NSNotification) {
-        if let dict = notification.userInfo as NSDictionary? {
-            if let name = dict["name"] as? String {
-                if let newButtonImage = UIImage(named: name) {
-                    self.addCenterButton(withImage: newButtonImage, highlightImage: newButtonImage)
-                }
-            }
+        if let dict = notification.userInfo as NSDictionary?, let name = dict["name"] as? String  {
+                self.centerButton.setImage(UIImage(named: name), for: .normal)
         }
     }
     
@@ -152,9 +151,7 @@ extension LandingTabBarController {
     }
 }
 
-
 extension LandingTabBarController {
-    
     @objc func handleTouchTabbarCenter(sender : UIButton) {
         router?.push(scene: .selectHabitPopUp)
     }
@@ -165,10 +162,11 @@ extension LandingTabBarController {
         self.navigationController?.present(selectHabitPopUp, animated: true, completion: nil)
     }
     
-    func addCenterButton(withImage buttonImage : UIImage, highlightImage: UIImage) {
+    func addCenterButton(withImage buttonImage : UIImage?, highlightImage: UIImage) {
         let paddingBottom : CGFloat = -4.0
         let button = UIButton()
         button.frame = CGRect(x: 0.0, y: 0.0, width: 60, height: 60)
+        self.centerButton = button
         button.setImage(buttonImage, for: .normal)
         button.contentMode = .scaleAspectFill
         button.backgroundColor = .clear
@@ -178,9 +176,9 @@ extension LandingTabBarController {
         let xx = rectBoundTabbar.midX
         let yy = rectBoundTabbar.midY - paddingBottom
         button.center = CGPoint(x: xx, y: yy)
-        self.tabBar.addSubview(button)
-        self.tabBar.bringSubviewToFront(button)
-        button.addTarget(self, action: #selector(handleTouchTabbarCenter), for: .touchUpInside)
+        self.tabBar.addSubview(self.centerButton)
+        self.tabBar.bringSubviewToFront(self.centerButton)
+        self.centerButton.addTarget(self, action: #selector(handleTouchTabbarCenter), for: .touchUpInside)
     }
 }
 
@@ -189,15 +187,16 @@ extension LandingTabBarController : UITabBarControllerDelegate {
         self.getIndexVC(index: tabBarController.selectedIndex, viewController: viewController)
     }
     
-    func getIndexVC(index: Int, viewController: UIViewController) {
+    func getIndexVC(index: Int, viewController: UIViewController) { // viewAtIndex
         switch index {
         case 0:
-            print("HomeVC")
+            self.calendarScreenType = .home
             if viewController.isKind(of: HomeViewController.self) {
                 (viewController as! HomeViewController).router = router
             }
         case 1:
             print("Comunity")
+            self.calendarScreenType = .community
             if viewController.isKind(of: CommunityViewController.self) {
                 (viewController as! CommunityViewController).router = router
             }

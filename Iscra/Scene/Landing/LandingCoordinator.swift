@@ -55,7 +55,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         login.start()
         self.router.present(login, animated: true)
     }
-        
+    
     private func startWelcome() {
         let router = Router()
         welcome = OnboardingCoordinator(router: router)
@@ -85,7 +85,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         addMemojiCoordinator = AddMemojiCoordinator(router: Router())
         add(addMemojiCoordinator)
         addMemojiCoordinator.delegate = self
-        addMemojiCoordinator.start()
+        addMemojiCoordinator.start(isfromMyAccount: true)
         self.router.present(addMemojiCoordinator, animated: true)
     }
     
@@ -101,7 +101,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         groupHabitCalender = GroupHabitCalenderCoordinator(router: Router())
         add(groupHabitCalender)
         groupHabitCalender.delegate = self
-        if controller.home.viewModel.habitId != 0 {
+        if controller.calendarScreenType == .home {
             groupHabitCalender.start(habitId: controller.home.viewModel.habitId)
         } else {
             groupHabitCalender.start(habitId: controller.community.viewModel.habitId)
@@ -127,9 +127,7 @@ final class LandingCoordinator: Coordinator<Scenes> {
         communityDetail = CommunityDetailCoordinator(router: Router())
         add(communityDetail)
         communityDetail.delegate = self
-        if let objInvitation = controller.community.objInvitaion {
-            communityDetail.start(objInvitation: objInvitation)
-        }
+        communityDetail.start(habitId: controller.community.viewModel.habitId)
         self.router.present(communityDetail, animated: true)
     }
     
@@ -144,7 +142,6 @@ final class LandingCoordinator: Coordinator<Scenes> {
     }
     
     private func startWebViewController() {
-        print("self.myAccountViewController.viewModel.webPage on LandingCoordinator is \(controller.myAccount.viewModel.webPage)")
         webViewController.webPage = controller.myAccount.viewModel.webPage
         router.present(webViewController, animated: true)
     }

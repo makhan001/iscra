@@ -36,7 +36,6 @@ extension HabitNameViewController {
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.navType = .addHabit
         self.viewNavigation.delegateBarAction = self
-        self.lblUserName.text = "Alright \(UserStore.userName!), let’s \ndefine your habit"
         self.viewModel.didNavigateToSetTheme = self.didNavigateToSetTheme
         [btnNext].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -75,6 +74,7 @@ extension HabitNameViewController {
     }
     
     private func nextClick() {
+        viewModel.description = self.txtViewDescription.text
         HabitUtils.shared.habitType = self.viewModel.habitType
         viewModel.onAction(action: .inputComplete(.createHabit), for: .createHabit)
     }
@@ -140,7 +140,9 @@ extension HabitNameViewController: UITextViewDelegate {
         } else if (text == "\n") {
             textView.resignFirstResponder()
         }
-        return true
+        
+        return textView.text.count - range.length + text.count <= 140
+//        return textView.text.count + (text.count - range.length) <= 140
     }
     
     func searchAutocompleteEntries(withSubstring substring: String) {

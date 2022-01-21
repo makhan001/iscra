@@ -1,3 +1,4 @@
+
 //
 //  ReminderViewController.swift
 //  Iscra
@@ -78,16 +79,20 @@ extension ReminderViewController {
     }
     
     private func timePickerValueOnUpdate() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm a"
-        let dateString = dateFormatter.string(from: pickerTime.date)
-        let fullNameArr = dateString.components(separatedBy: " ")
+        let dateFormatter12 = DateFormatter()
+        dateFormatter12.dateFormat = "hh:mm a"
+        dateFormatter12.locale = Locale(identifier: "en-US")
+        let dateString1 = dateFormatter12.string(from: pickerTime.date)
+        self.viewModel.reminderTime = dateString1 
+        print(" dateString1 is \(dateString1.convertTo12Hour)")
+        let fullNameArr = dateString1.components(separatedBy: " ")
+        print("pickerTime.date is \(pickerTime.date)")
+        print("fullNameArr[0] is \(fullNameArr[0])")
         lblReminderTime.text = fullNameArr[0]
-        self.viewModel.reminderTime = dateString
-        if dateString.contains("AM") {
-            btnSegment.selectedSegmentIndex = 0
+        if dateString1.contains("AM") {
+            self.btnSegment.selectedSegmentIndex = 0
         } else {
-            btnSegment.selectedSegmentIndex = 1
+            self.btnSegment.selectedSegmentIndex = 1
         }
     }
     
@@ -133,18 +138,46 @@ extension ReminderViewController {
         })
     }
     
+//    func getTimeStampForHabit(strTime: String) -> String {
+//        let dateFromatter = DateFormatter()
+//        dateFromatter.locale = Locale(identifier: "en-US")
+//        dateFromatter.dateFormat = "hh:mm a"
+//        let daatee = dateFromatter.date(from: strTime)
+//        dateFromatter.dateFormat = "HH:mm"
+//        let strDate = dateFromatter.string(from: daatee ?? Date())
+//        
+//        let time = strDate.components(separatedBy: ":")
+//        let hour = Int(time[0]) ?? 00
+//        let minutes = Int(time[1]) ?? 00
+//        
+//        let date = Calendar.current.date(bySettingHour: hour, minute: minutes, second: 00, of: Date())
+//        let timeStamp = date?.millisecondsSince1970
+//        print("timeStamp is \(timeStamp)")
+//        return "\(timeStamp)"
+//    }
+    
     private func nextClick() {
-        let currentDate = Date().string(format: "yyyy-MM-dd")
-        let yourDate = currentDate + "-" + self.viewModel.reminderTime
-         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd-hh:mm a"
-         let dateString = dateFormatter.date(from: yourDate)
-         let dateTimeStamp  = dateString!.timeIntervalSince1970
+        let dateFromatter = DateFormatter()
+        dateFromatter.locale = Locale(identifier: "en-US")
+        dateFromatter.dateFormat = "hh:mm a"
+        let daatee = dateFromatter.date(from: self.viewModel.reminderTime)
+        dateFromatter.dateFormat = "HH:mm"
+        let strDate = dateFromatter.string(from: daatee ?? Date())
 
+        let time = strDate.components(separatedBy: ":")
+        let hour = Int(time[0]) ?? 00
+        let minutes = Int(time[1]) ?? 00
+
+        let date = Calendar.current.date(bySettingHour: hour, minute: minutes, second: 00, of: Date())
+        let timeStamp = date?.millisecondsSince1970
+        print("timeStamp is \(timeStamp)")
+        
+        
         if self.viewModel.reminders == true {
-            HabitUtils.shared.timer = String(dateTimeStamp)
-            self.viewModel.timer = String(dateTimeStamp)
+            HabitUtils.shared.timer = "\(timeStamp ?? 0)"
+            self.viewModel.timer = "\(timeStamp ?? 0)"
             HabitUtils.shared.reminders = true
+            
         } else {
             HabitUtils.shared.timer = ""
             self.viewModel.timer = ""

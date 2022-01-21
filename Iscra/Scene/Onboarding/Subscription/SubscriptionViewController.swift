@@ -32,6 +32,7 @@ extension SubscriptionViewController {
     private func setup() {
         self.viewModel.view = self
         self.setNavigationView()
+        self.addNotificationObserver()
         self.lblHeaderTitle.text = "Dear \(UserStore.userName ?? ""), we need your support"
         self.lblMiddleText.text = AppConstant.subscriptionTitle
         [btnSubscription, btnAllowAds].forEach {
@@ -43,6 +44,27 @@ extension SubscriptionViewController {
         self.viewNavigation.lblTitle.text =  ""
         self.viewNavigation.delegateBarAction = self
         self.viewNavigation.btnBack.isHidden = (viewModel.sourceScreen != .myAccount) ? true : false
+    }
+    
+    private func addNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSuccess(_:)),
+                                               name: .IAPHelperPurchaseFinishNotification,
+                                               object: nil)
+    }
+    
+    @objc func paymentSuccess (_ notification: Notification) {
+        if notification.userInfo?["status"] as? String == "success" {
+            print("Payment done")
+            //            viewModel.transactionID = notification.userInfo?["transactionIdentifier"] as? String ?? ""
+            //            viewModel.productIdentifier = notification.userInfo?["productIdentifier"] as? String ?? ""
+            if UserStore.primeUser == false {
+                UserStore.save(primeUser: true)
+                NotificationCenter.default.post(name: .purchaseFinished, object: nil, userInfo:notification.userInfo)
+                //                            viewModel.setSubscription()
+            }
+        } else {
+            self.stopAnimation()
+        }
     }
 }
 
@@ -61,10 +83,17 @@ extension SubscriptionViewController  {
     
     private func getSubscriptionAction() {
         print("getSubscriptionAction")
+        self.viewModel.getProducts()
     }
     
     private func allowAdsAction() {
         print("allowAdsAction")
+    }
+    
+    private func monthAction() {
+        if let product = (viewModel.products.filter { $0.productIdentifier.contains("month")}).first {
+            self.viewModel.buyProduct(product)
+        }
     }
 }
 

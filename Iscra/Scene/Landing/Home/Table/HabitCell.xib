@@ -64,7 +64,7 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhL-Dw-oD3">
                                         <rect key="frame" x="0.0" y="145" width="269" height="145"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ife-MM-rtr">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ife-MM-rtr">
                                                 <rect key="frame" x="15" y="30" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="3TE-dH-rGP"/>
@@ -151,14 +151,14 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INF-Zf-VMk">
-                                <rect key="frame" x="0.0" y="0.0" width="507" height="145"/>
+                                <rect key="frame" x="0.0" y="0.0" width="274" height="145"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="INF-Zf-VMk" firstAttribute="trailing" secondItem="dVy-Gx-dpb" secondAttribute="trailing" id="28n-hW-w5D"/>
                             <constraint firstItem="HEk-Ch-0dB" firstAttribute="top" secondItem="g3u-kO-aOj" secondAttribute="top" constant="10" id="5Gn-qE-5ap"/>
                             <constraint firstItem="INF-Zf-VMk" firstAttribute="leading" secondItem="g3u-kO-aOj" secondAttribute="leading" id="9QP-Zd-veE"/>
-                            <constraint firstAttribute="trailing" secondItem="INF-Zf-VMk" secondAttribute="trailing" id="DDB-4Z-OPL"/>
                             <constraint firstAttribute="trailing" secondItem="HEk-Ch-0dB" secondAttribute="trailing" constant="5" id="NME-6F-JVm"/>
                             <constraint firstAttribute="bottom" secondItem="HEk-Ch-0dB" secondAttribute="bottom" constant="10" id="OSr-u1-fRw"/>
                             <constraint firstAttribute="bottom" secondItem="dVy-Gx-dpb" secondAttribute="bottom" id="QLG-AZ-iic"/>
@@ -200,8 +200,8 @@
             <connections>
                 <outlet property="btnHabitDetail" destination="INF-Zf-VMk" id="MiW-AW-T1Q"/>
                 <outlet property="daysCollectionView" destination="6na-WE-bbP" id="Dl4-2z-f8w"/>
-                <outlet property="imgHabit" destination="s2x-9A-gKC" id="O2C-x1-do9"/>
-                <outlet property="imgHabitMates" destination="Ife-MM-rtr" id="yci-oo-afK"/>
+                <outlet property="imageHabit" destination="s2x-9A-gKC" id="4Rv-pR-8ok"/>
+                <outlet property="imageHabitMates" destination="Ife-MM-rtr" id="yTr-po-NSj"/>
                 <outlet property="lblHabitTitle" destination="RMQ-Fc-dl4" id="O1G-hB-qdM"/>
                 <outlet property="lblHabitTitleMates" destination="yQv-Ae-JBf" id="IoF-xA-7UY"/>
                 <outlet property="matesCollectionView" destination="KIT-uB-CXg" id="Ewd-30-idZ"/>

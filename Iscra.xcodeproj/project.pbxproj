@@ -39,10 +39,12 @@
 		04671A38277D9C2600AF9484 /* ShareHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04671A37277D9C2600AF9484 /* ShareHabitViewModel.swift */; };
 		04671A3C277D9D2200AF9484 /* ShareHabitTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04671A3B277D9D2200AF9484 /* ShareHabitTableView.swift */; };
 		046F92C12769D9C100190D9A /* InviteFriendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */; };
+		047DAF2127887AE800422884 /* InviteFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047DAF2027887AE800422884 /* InviteFriendViewModel.swift */; };
 		047E3EE5276C7AD700C8C8A1 /* CommunityAdaptables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E3EE4276C7AD600C8C8A1 /* CommunityAdaptables.swift */; };
 		047E3EE8276C7AEE00C8C8A1 /* CommunityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */; };
 		047FFD8A27733336009503CB /* CommunitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FFD8927733336009503CB /* CommunitySearchViewModel.swift */; };
 		04810DBE275F7B5000DEC36F /* EditHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */; };
+		0483C586278F08A400FD02FC /* AddMemojiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483C585278F08A400FD02FC /* AddMemojiViewModel.swift */; };
 		04840996277DF3DF006862B2 /* HabitDaysCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04840995277DF3DE006862B2 /* HabitDaysCollectionView.swift */; };
 		0496E011275E0253005C982A /* HabitCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E010275E0253005C982A /* HabitCalenderViewModel.swift */; };
 		0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */; };
@@ -60,6 +62,7 @@
 		5F164E602763881E0059F8C2 /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */; };
 		5F164E612763881F0059F8C2 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */; };
 		5F191EF2277209DC00836126 /* CommunitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F191EF1277209DC00836126 /* CommunitySearchViewModel.swift */; };
+		5F19BB97278868B20099DE2D /* ZoomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F19BB96278868B20099DE2D /* ZoomImageViewController.swift */; };
 		5F1F7CFE2752144F00DFA84F /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */; };
 		5FF6CD20274E6A5A007ADC2F /* AddOccupantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF6CC90274E6A5A007ADC2F /* AddOccupantsVC.swift */; };
 		5FF6CD21274E6A5A007ADC2F /* DialogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF6CC92274E6A5A007ADC2F /* DialogCell.xib */; };
@@ -356,10 +359,12 @@
 		04671A37277D9C2600AF9484 /* ShareHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHabitViewModel.swift; sourceTree = "<group>"; };
 		04671A3B277D9D2200AF9484 /* ShareHabitTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHabitTableView.swift; sourceTree = "<group>"; };
 		046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendCoordinator.swift; sourceTree = "<group>"; };
+		047DAF2027887AE800422884 /* InviteFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendViewModel.swift; sourceTree = "<group>"; };
 		047E3EE4276C7AD600C8C8A1 /* CommunityAdaptables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityAdaptables.swift; sourceTree = "<group>"; };
 		047E3EE7276C7AEE00C8C8A1 /* CommunityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProvider.swift; sourceTree = "<group>"; };
 		047FFD8927733336009503CB /* CommunitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchViewModel.swift; sourceTree = "<group>"; };
 		04810DBD275F7B5000DEC36F /* EditHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitViewModel.swift; sourceTree = "<group>"; };
+		0483C585278F08A400FD02FC /* AddMemojiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemojiViewModel.swift; sourceTree = "<group>"; };
 		04840995277DF3DE006862B2 /* HabitDaysCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDaysCollectionView.swift; sourceTree = "<group>"; };
 		0496E010275E0253005C982A /* HabitCalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderViewModel.swift; sourceTree = "<group>"; };
 		0496E014275E41C1005C982A /* CalenderCircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCircularProgressBar.swift; sourceTree = "<group>"; };
@@ -378,6 +383,7 @@
 		5F164E5E2763881D0059F8C2 /* NavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
 		5F164E5F2763881D0059F8C2 /* NavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		5F191EF1277209DC00836126 /* CommunitySearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunitySearchViewModel.swift; sourceTree = "<group>"; };
+		5F19BB96278868B20099DE2D /* ZoomImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageViewController.swift; sourceTree = "<group>"; };
 		5F1F7CFD2752144F00DFA84F /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		5F2AFB7527607F4800115228 /* IscraRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IscraRelease.entitlements; sourceTree = "<group>"; };
 		5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Iscra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1340,6 +1346,7 @@
 			isa = PBXGroup;
 			children = (
 				880F3E68272816D9007CA895 /* InviteFriendViewController.swift */,
+				047DAF2027887AE800422884 /* InviteFriendViewModel.swift */,
 				046F92C02769D9C100190D9A /* InviteFriendCoordinator.swift */,
 			);
 			path = InviteFriends;
@@ -1419,6 +1426,7 @@
 				88202D5E2719AAAA00F0EA2E /* WalkthroughViewController.swift */,
 				88B4A224271FF9C300488AA3 /* AddMyPictureViewController.swift */,
 				88B4A227271FFA8100488AA3 /* AddMemojiViewController.swift */,
+				0483C585278F08A400FD02FC /* AddMemojiViewModel.swift */,
 				043CF54B2768B3B200526FBC /* AddMemojiCoordinator.swift */,
 				043CF5452768A71300526FBC /* AddMyPictureCoordinator.swift */,
 				043CF5482768AAC500526FBC /* WalkthroughCoordinator.swift */,
@@ -1847,6 +1855,7 @@
 				04D34F28274FB917009763D1 /* MyAccountViewModel.swift */,
 				5FFDDB6F27550ECF00051011 /* MyAccountPopUpView */,
 				882F3E102721AAC300A409A6 /* View */,
+				5F19BB96278868B20099DE2D /* ZoomImageViewController.swift */,
 			);
 			path = "My Account";
 			sourceTree = "<group>";
@@ -2182,6 +2191,7 @@
 				0496E015275E41C1005C982A /* CalenderCircularProgressBar.swift in Sources */,
 				880F3E362727EC73007CA895 /* IconPopupViewController.swift in Sources */,
 				8800806C2729255E008E3260 /* ReminderViewController.swift in Sources */,
+				047DAF2127887AE800422884 /* InviteFriendViewModel.swift in Sources */,
 				042CC9E227709BFB002C23EC /* FetchCommunity.swift in Sources */,
 				5FF6CD3A274E6A5A007ADC2F /* CacheManager.swift in Sources */,
 				5FF6CD7C274E6A5A007ADC2F /* ChatCollectionViewFlowLayout.swift in Sources */,
@@ -2236,6 +2246,7 @@
 				5FF6CD31274E6A5A007ADC2F /* PHAsset+Extention.swift in Sources */,
 				88E028FA27170D0600D90BB1 /* APIConstants.swift in Sources */,
 				5FF6CD5E274E6A5A007ADC2F /* AttachmentUploadBar.swift in Sources */,
+				5F19BB97278868B20099DE2D /* ZoomImageViewController.swift in Sources */,
 				8814B43D2743874100A6DE01 /* APIResponder.swift in Sources */,
 				04FD568727671F69008E7CB2 /* CommunityRequest.swift in Sources */,
 				5FF6CD53274E6A5A007ADC2F /* LoadingButton.swift in Sources */,
@@ -2360,6 +2371,7 @@
 				5FF6CD57274E6A5A007ADC2F /* ActionMenu.swift in Sources */,
 				5FF6CD37274E6A5A007ADC2F /* ReplaceSegue.swift in Sources */,
 				5FF6CD48274E6A5A007ADC2F /* CreateNewDialogViewController.swift in Sources */,
+				0483C586278F08A400FD02FC /* AddMemojiViewModel.swift in Sources */,
 				88C7C2FA2726D39800EAA8CA /* ColorCollectionViewCell.swift in Sources */,
 				5FF6CD2B274E6A5A007ADC2F /* UIImage+Extention.swift in Sources */,
 				8814B4132743858900A6DE01 /* Row.swift in Sources */,
@@ -2559,6 +2571,7 @@
 				CODE_SIGN_ENTITLEMENTS = Iscra/IscraDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 7K87V8X3V7;
 				INFOPLIST_FILE = Iscra/Resources/Iscra_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2566,6 +2579,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adilbek.iscra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2581,8 +2595,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Iscra/IscraRelease.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 7K87V8X3V7;
 				INFOPLIST_FILE = Iscra/Resources/Iscra_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2590,9 +2605,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adilbek.iscra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Iscra_Development_Profile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

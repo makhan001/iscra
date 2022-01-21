@@ -83,7 +83,7 @@
 
 // User table view cell model
 "SA_STR_PRIVATE" = "private";
-"SA_STR_GROUP" = "group";
+"SA_STR_GROUP" = "GroupHabit";
 "SA_STR_PUBLIC_GROUP" = "public group";
 
 // Action sheet

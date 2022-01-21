@@ -29,7 +29,7 @@ class HabitCalenderViewController: UIViewController {
     @IBOutlet weak var btnMarkasComplete: UIButton!
     @IBOutlet weak var viewShareHabit: UIView!
     
-    private var themeColor = UIColor(hex: "#7B86EB")
+    private var themeColor = UIColor.clear//UIColor(hex: "#7B86EB")
     weak var router: NextSceneDismisser?
     let viewModel: HabitCalenderViewModel = HabitCalenderViewModel(provider: HabitServiceProvider())
     
@@ -56,6 +56,7 @@ extension HabitCalenderViewController {
     }
     
     private func setViewControls() {
+        self.lblDaysCount.text = ""
         self.lblLongestStreak.text = "Longest \nStreak"
         self.viewMarkasComplete.isHidden = false
         [btnEditHabit,btnShare,btnDeleteHabit,btnPreviousMonth,btnMarkasComplete,btnNextMonth].forEach {
@@ -103,36 +104,57 @@ extension HabitCalenderViewController {
         }
     }
     
-    func reloadCaledar() {
+    private func reloadCaledar() {
         self.calenderSetup()
         self.circularViewSetup()
+        self.refreshViews()
         self.viewNavigation.lblTitle.textColor = self.themeColor
-        self.lblDaysCount.text = String(self.viewModel.longestStreak ?? 0)
-        
-        if  viewModel.arrHabitCalender?.last?.isCompleted == true &&  viewModel.arrHabitCalender?.last?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
-            self.viewMarkasComplete.isHidden = true
-        }
-        
-       // if UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
-        if UserStore.userID == self.viewModel.userId {
-            self.viewEditHabit.isHidden = false
-            self.viewDeleteHabit.isHidden = false
-        } else {
-            self.viewEditHabit.isHidden = true
-            self.viewDeleteHabit.isHidden = true
-            self.viewMarkasComplete.isHidden = true
-        }
-        
-        if self.viewModel.objHabitDetail?.habitType == "group_habit" {
-            self.viewShareHabit.isHidden = false
-        } else {
-            self.viewShareHabit.isHidden = true
+        if let daysCount = self.viewModel.longestStreak {
+            self.lblDaysCount.text = String(daysCount)
         }
     }
     
-    func circularViewSetup() {
+    private func circularViewSetup() {
         self.viewCircular.lineWidth = 20
-        self.viewCircular.ringColor =  self.themeColor!
+        self.viewCircular.ringColor =  self.themeColor
+    }
+    
+    private func refreshViews() {
+        //  if UserStore.userID == self.viewModel.userId {
+          if UserStore.userID == self.viewModel.userId &&  UserStore.userID == String(self.viewModel.objHabitDetail?.userID ?? 0) {
+              self.viewEditHabit.isHidden = false
+              self.viewDeleteHabit.isHidden = false
+            self.updateMarksAsCompleteView()
+          } else if UserStore.userID == self.viewModel.userId {
+            self.viewEditHabit.isHidden = true
+            self.viewDeleteHabit.isHidden = true
+            self.updateMarksAsCompleteView()
+          } else {
+              self.viewEditHabit.isHidden = true
+              self.viewDeleteHabit.isHidden = true
+              self.viewMarkasComplete.isHidden = true
+          }
+        
+        
+          if self.viewModel.objHabitDetail?.habitType == "group_habit" {
+              self.viewShareHabit.isHidden = false
+          } else {
+              self.viewShareHabit.isHidden = true
+          }
+    }
+    
+    private func updateMarksAsCompleteView() {
+        print("viewModel.arrHabitCalender?.first?.isCompleted is \(viewModel.arrHabitCalender?.first?.isCompleted)")
+        print("viewModel.arrHabitCalender?.first?.habitDay?.toDouble.habitDate is \(viewModel.arrHabitCalender?.first?.habitDay?.toDouble.habitDate)")
+        print("Date().currentHabitDate is \(Date().currentHabitDate)")
+
+          if  viewModel.arrHabitCalender?.first?.isCompleted == true && viewModel.arrHabitCalender?.first?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
+              self.viewMarkasComplete.isHidden = true
+          } else if viewModel.arrHabitCalender?.first?.habitDay?.toDouble.habitDate != Date().currentHabitDate {
+            self.viewMarkasComplete.isHidden = true
+          } else {
+            self.viewMarkasComplete.isHidden = false
+          }
     }
 }
 
@@ -173,23 +195,23 @@ extension HabitCalenderViewController {
     }
     
     private func editAction() {
-        self.viewBottom.isHidden = true
         self.router?.push(scene: .editHabit)
+        self.viewBottom.isHidden = true
     }
     
     private func markAsCompleteAction() {
-        self.viewBottom.isHidden = true
         self.viewModel.apiMarkAsComplete()
+        self.viewBottom.isHidden = true
     }
     
     private func shareAction() {
-        self.viewBottom.isHidden = true
         self.router?.push(scene: .shareHabit)
+        self.viewBottom.isHidden = true
     }
     
     private func deleteAction() {
-        self.viewBottom.isHidden = true
         self.showAlert(habitId: String(self.viewModel.habitId))
+        self.viewBottom.isHidden = true
     }
     
     private func previousMonthAction() {
@@ -200,11 +222,11 @@ extension HabitCalenderViewController {
         // self.viewCalender.setCurrentPage(getNextMonth(date: self.viewCalender.currentPage), animated: true)
     }
     
-    func getNextMonth(date:Date)->Date {
+    private func getNextMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: 1, to:date)!
     }
     
-    func getPreviousMonth(date:Date)->Date {
+    private func getPreviousMonth(date:Date)->Date {
         return  Calendar.current.date(byAdding: .month, value: -1, to:date)!
     }
 }
@@ -212,7 +234,7 @@ extension HabitCalenderViewController {
 // MARK: FSCalendarDataSource, FSCalendarDelegate
 extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate , FSCalendarDelegateAppearance {
     
-    var habitArrays: (completedArray: [Date]?, inCompletedArray: [Date]?) {
+    private var habitArrays: (completedArray: [Date]?, inCompletedArray: [Date]?) {
         let completedArray = viewModel.arrHabitCalender?.filter { $0.isCompleted == true }.compactMap { $0.date }
         let inCompletedArray = viewModel.arrHabitCalender?.filter { $0.isCompleted == false }.compactMap { $0.date }
         return (completedArray: completedArray, inCompletedArray: inCompletedArray)
@@ -236,7 +258,7 @@ extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate
               let inCompletedArray = habitArrays.inCompletedArray
         else { return nil }
         if completedArray.contains(date) {
-            return self.themeColor!
+            return self.themeColor
         } else if inCompletedArray.contains(date) {
             return .systemRed
         }
@@ -253,7 +275,7 @@ extension HabitCalenderViewController : FSCalendarDataSource, FSCalendarDelegate
         self.getMonthlyHabitDetail()
     }
     
-    func getMonthlyHabitDetail() {
+    private func getMonthlyHabitDetail() {
         let timestamp = self.viewCalender.currentPage.addDays(days: 10)
         print("timestamp is \(timestamp)")
         self.viewModel.habitMonth =  String(format: "%.0f", timestamp)
@@ -271,7 +293,7 @@ extension HabitCalenderViewController: HabitViewRepresentable {
             self.showToast(message: msg)
         case .sucessMessage(_):
             // self.showToast(message: msg)
-            self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB")
+            self.themeColor = UIColor(hex: (self.viewModel.objHabitDetail?.colorTheme) ?? "#7B86EB") ?? UIColor.clear
             if self.viewModel.isfromGroupHabitCalendar != true {
                 
                 guard let name = self.viewModel.objHabitDetail?.name else { return }
@@ -301,7 +323,7 @@ extension HabitCalenderViewController: HabitViewRepresentable {
 
 // MARK: showAlert for delete habit
 extension HabitCalenderViewController {
-    func showAlert(habitId: String) {
+    private func showAlert(habitId: String) {
         let alertController = UIAlertController(title: "Delete Habit", message: AppConstant.deleteHabit, preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action: UIAlertAction!) in
             self.viewModel.deleteHabit(habitId: habitId)
@@ -325,7 +347,7 @@ extension HabitCalenderViewController: NavigationBarViewDelegate {
         self.viewNavigation.delegateBarAction = self
     }
     
-    func navigationBackAction() {
+     func navigationBackAction() {
         self.router?.dismiss(controller: .habitCalender)
     }
     

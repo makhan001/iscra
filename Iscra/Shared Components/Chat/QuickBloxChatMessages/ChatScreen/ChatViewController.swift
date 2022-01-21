@@ -25,7 +25,8 @@ var messageTimeDateFormatter: DateFormatter {
     struct Static {
         static let instance : DateFormatter = {
             let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
+            formatter.timeStyle = .short
+            formatter.dateFormat = "h:mm a"
             return formatter
         }()
     }
@@ -96,7 +97,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
             self.dialog = chatManager.storage.dialog(withID: dialogID)
         }
     }
-    private var dialog: QBChatDialog!
+    var dialog: QBChatDialog!
     /**
      *  Cell's contact request delegate.
      */
@@ -155,7 +156,8 @@ class ChatViewController: UIViewController, ChatContextMenu {
         pickerController.delegate = self
         return pickerController
     }()
-    
+
+    var isFromCreateGroup = false
     private var cancel = false
     
     private var willResignActiveBlock: AnyObject?
@@ -225,10 +227,12 @@ class ChatViewController: UIViewController, ChatContextMenu {
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
+        
         QBChat.instance.addDelegate(self)
         setupViewMessages()
         dataSource.delegate = self
         inputToolbar.inputToolbarDelegate = self
+       
         inputToolbar.toggleSendButtonEnabled(isUploaded: isUploading)
         edgesForExtendedLayout = [] //same UIRectEdgeNone
         
@@ -253,8 +257,10 @@ class ChatViewController: UIViewController, ChatContextMenu {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
        
     }
+   
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+        
             return
         }
 //       self.toolbarBottomLayoutGuide.constant = 200
@@ -271,7 +277,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 self.toolbarBottomLayoutGuide.constant = 200
             default:
                 print("other models")
-                self.toolbarBottomLayoutGuide.constant = 250
+                self.toolbarBottomLayoutGuide.constant = 275
             }
         }
        
@@ -478,7 +484,11 @@ class ChatViewController: UIViewController, ChatContextMenu {
     
     //MARK: - Internal Methods
     @objc func didTapBack(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        if isFromCreateGroup {
+            self.navigationController?.popToRootViewController(animated: true)
+            return
+        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func loadMessages(with skip: Int = 0) {
@@ -487,6 +497,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                              successCompletion: { [weak self] (messages, cancel) in
             self?.cancel = cancel
             self?.dataSource.addMessages(messages)
+            
             self?.collectionView.reloadData()
             SVProgressHUD.dismiss()
         }, errorHandler: { [weak self] (error) in
@@ -494,6 +505,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 self?.dataSource.clear()
                 self?.dialog.clearTypingStatusBlocks()
                 self?.inputToolbar.isUserInteractionEnabled = false
+                
                 self?.collectionView.isScrollEnabled = false
                 self?.collectionView.reloadData()
                 self?.title = ""
@@ -541,6 +553,12 @@ class ChatViewController: UIViewController, ChatContextMenu {
                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                                     withReuseIdentifier: headerIdentifier)
         }
+//        ChatDateCell.registerForReuse(inView: collectionView)
+//        ChatNotificationCell.registerForReuse(inView: collectionView)
+//        ChatOutgoingCell.registerForReuse(inView: collectionView)
+//        ChatIncomingCell.registerForReuse(inView: collectionView)
+//        ChatAttachmentIncomingCell.registerForReuse(inView: collectionView)
+//        ChatAttachmentOutgoingCell.registerForReuse(inView: collectionView)
         ChatDateCell.registerForReuse(inView: collectionView)
         ChatNotificationCell.registerForReuse(inView: collectionView)
         ChatOutgoingCell.registerForReuse(inView: collectionView)
@@ -703,13 +721,24 @@ class ChatViewController: UIViewController, ChatContextMenu {
     
     private func statusImageForMessage(message: QBChatMessage) -> UIImage {
         //check and add users who read the message
+//        if let readIDs = message.readIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
+//           readIDs.isEmpty == false {
+//            if #available(iOS 13.0, *) {
+//                return #imageLiteral(resourceName: "delivered").withTintColor(#colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1))
+//            } else {
+//                // Fallback on earlier versions
+//            }
+//        }
+//        //check and add users to whom the message was delivered
+//        if let deliveredIDs = message.deliveredIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
+//           deliveredIDs.isEmpty == false  {
+//            return #imageLiteral(resourceName: "delivered")
+//        }
+//        return UIImage(named: "sent")!
+        //check and add users who read the message
         if let readIDs = message.readIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
            readIDs.isEmpty == false {
-            if #available(iOS 13.0, *) {
-                return #imageLiteral(resourceName: "delivered").withTintColor(#colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1))
-            } else {
-                // Fallback on earlier versions
-            }
+            return #imageLiteral(resourceName: "delivered").withTintColor(#colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1))
         }
         //check and add users to whom the message was delivered
         if let deliveredIDs = message.deliveredIDs?.filter({ $0 != NSNumber(value: currentUserID) }),
@@ -720,42 +749,52 @@ class ChatViewController: UIViewController, ChatContextMenu {
     }
     
     @objc private func didTapInfo(_ sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "Chat", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
-        vc.delegateNavigate = self
-        self.navigationController?.present(vc, animated: false, completion: nil)
+//        let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
+//        vc.delegateNavigate = self
+//        self.navigationController?.present(vc, animated: false, completion: nil)
+        guard let actionsMenuVC = storyboard?.instantiateViewController(withIdentifier: "ActionsMenuViewController") as? ActionsMenuViewController else {
+            return
+        }
+        actionsMenuVC.modalPresentationStyle = .popover
+        let presentation = actionsMenuVC.popoverPresentationController
+        presentation?.delegate = self
+        presentation?.barButtonItem = infoItem
+        presentation?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         
-//        guard let actionsMenuVC = storyboard?.instantiateViewController(withIdentifier: "ActionsMenuViewController") as? ActionsMenuViewController else {
-//            return
-//        }
-//        actionsMenuVC.modalPresentationStyle = .popover
-//        let presentation = actionsMenuVC.popoverPresentationController
-//        presentation?.delegate = self
-//        presentation?.barButtonItem = infoItem
-//        presentation?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-//
-//        let leaveChatAction = MenuAction(title: "Delete chat") { [weak self] in
+//        let leaveChatAction = MenuAction(title: "Leave Chat") { [weak self] in
 //            self?.didTapDelete()
 //        }
-//        let groupChatAction = MenuAction(title: "Leave group") { [weak self] in
-//            self?.didGroupLeaveTapped()
-//        }
-//        let chatInfoAction = MenuAction(title: "Group info") { [weak self]  in
-//            self?.performSegue(withIdentifier: "SA_STR_SEGUE_GO_TO_INFO".localized, sender: ChatAction.ChatInfo)
-//        }
-//
-//        if dialog.type == .private {
-//            actionsMenuVC.addAction(leaveChatAction)
-//        } else {
-//            actionsMenuVC.addAction(groupChatAction)
-//            actionsMenuVC.addAction(chatInfoAction)
-//        }
-//
-//        actionsMenuVC.cancelAction = {
-//            self.hideKeyboard(animated: false)
-//        }
-//
-//        present(actionsMenuVC, animated: false)
+        let chatInfoAction = MenuAction(title: "Chat info") { [weak self]  in
+            self?.performSegue(withIdentifier: "SA_STR_SEGUE_GO_TO_INFO".localized, sender: ChatAction.ChatInfo)
+        }
+        
+        let chatNotificationAction = MenuAction(title: "Chat Notification") { [weak self] in
+            let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
+            vc.delegateNavigate = self
+            self?.navigationController?.present(vc, animated: false, completion: nil)
+
+        }
+        
+        if dialog.type == .private {
+            //actionsMenuVC.addAction(leaveChatAction)
+            let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChatNotificationPopUpViewController") as! ChatNotificationPopUpViewController
+            vc.delegateNavigate = self
+            self.navigationController?.present(vc, animated: false, completion: nil)
+        } else {
+            //actionsMenuVC.addAction(leaveChatAction)
+           actionsMenuVC.addAction(chatNotificationAction)
+           actionsMenuVC.addAction(chatInfoAction)
+        }
+        
+        actionsMenuVC.cancelAction = {
+            self.hideKeyboard(animated: false)
+        }
+        
+        present(actionsMenuVC, animated: false)
+
     }
     
     //MARK - Navigation
@@ -1021,7 +1060,7 @@ class ChatViewController: UIViewController, ChatContextMenu {
         if let pickerController = pickerController, sourceType == .camera {
             switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized:
-                //showAllAssets()
+               showAllAssets()
                 //Camera access
                 show(pickerController)
             case .notDetermined:
@@ -1048,8 +1087,8 @@ class ChatViewController: UIViewController, ChatContextMenu {
                 PHPhotoLibrary.requestAuthorization { (status) in
 
                     if status == .authorized {
-                      showAllAssets()
-                       // accessDenied(sourceType)
+                     // showAllAssets()
+                        accessDenied(sourceType)
 
                     } else {
                        accessDenied(sourceType)
@@ -1419,11 +1458,29 @@ extension ChatViewController: InputToolbarDelegate {
             #else
             alertController.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
                 self.showPickerController(self.pickerController, sourceType:.camera)
+//                if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
+//                    let imagePickerController = UIImagePickerController()
+//                    imagePickerController.delegate = self;
+//                    imagePickerController.sourceType = UIImagePickerController.SourceType.camera
+//                    imagePickerController.allowsEditing = true
+//                    self.present(imagePickerController, animated: true, completion: nil)
+//                } else {
+//                    let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                    self.present(alert, animated: true, completion: nil)
+//                }
                 print("camera handler showpickercontroller")
             }))
             #endif
             alertController.addAction(UIAlertAction(title: "Photo", style: .default, handler: { (action) in
-            self.showPickerController(nil, sourceType: .photoLibrary)
+            //self.showPickerController(nil, sourceType: .photoLibrary)
+                let myPickerControllerGallery = UIImagePickerController()
+                myPickerControllerGallery.delegate = self
+                myPickerControllerGallery.sourceType = UIImagePickerController.SourceType.photoLibrary
+                myPickerControllerGallery.allowsEditing = true
+                myPickerControllerGallery.setEditing(true, animated: true)
+                
+                self.present(myPickerControllerGallery, animated: true, completion: nil)
             }))
             alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             if let popoverPresentationController = alertController.popoverPresentationController {
@@ -1526,7 +1583,7 @@ extension ChatViewController: ChatCollectionViewDataSource {
         if indexPath.section == lastSection,
            indexPath.item == lastItem,
            cancel == false  {
-            loadMessages(with: dataSource.loadMessagesCount)
+            loadMessages(with: dataSource.loadMessagesCount )
         }
         
         return chatCell
@@ -1560,8 +1617,8 @@ extension ChatViewController: ChatCollectionViewDataSource {
                       userName.isEmpty == false else {return}
                 
                 chatCell.topLabel.text = userName
-                chatCell.avatarLabel.text = String(userName.capitalized.first ?? Character("QB"))
-                chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
+                //chatCell.avatarLabel.text = String(userName.capitalized.first ?? Character("QB"))
+               // chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
                 self.collectionView.reloadItems(at: [indexPath])
             }
         }
@@ -1602,6 +1659,13 @@ extension ChatViewController: ChatCollectionViewDataSource {
                     self.dataSource.messagesForRead.remove(message)
                 }
             }
+        } else {
+            chatManager.read(message, dialog: dialog) { [weak self] (error) in
+                guard let self = self else {return}
+                message.readIDs?.append(NSNumber(value: self.currentUserID))
+                self.dataSource.updateMessage(message)
+                self.dataSource.messagesForRead.remove(message)
+            }
         }
         
         if let dateCell = cell as? ChatDateCell {
@@ -1629,15 +1693,15 @@ extension ChatViewController: ChatCollectionViewDataSource {
         chatCell.topLabel.text = username
         if (cell is ChatIncomingCell || cell is ChatAttachmentIncomingCell) && dialog.type != .private {
             let userName = username?.string
-            if userName != nil {
-               // chatCell.avatarLabel.text = String(userName?.capitalized.first ?? Character("QB"))
-            }
-            chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
+//            if userName != nil {
+//               // chatCell.avatarLabel.text = String(userName?.capitalized.first ?? Character("QB"))
+//            }
+           // chatCell.avatarLabel.backgroundColor = message.senderID.generateColor()
         }
 
         chatCell.timeLabel.text = timeLabelAttributedString(forItem: message)
         if let chatOutgoingCell = chatCell as? ChatOutgoingCell {
-            chatOutgoingCell.setupStatusImage(statusImageForMessage(message: message))
+           chatOutgoingCell.setupStatusImage(statusImageForMessage(message: message))
         }
         
         if let textView = chatCell.textView {
@@ -1771,8 +1835,10 @@ extension ChatViewController: ChatCollectionViewDelegateFlowLayout {
 
 //MARK: - UITextViewDelegate
 extension ChatViewController: UITextViewDelegate {
+   
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView != inputToolbar.contentView.textView {
+            textView.allowsEditingTextAttributes = true
             return
         }
         if automaticallyScrollsToMostRecentMessage == true {
@@ -1807,11 +1873,16 @@ extension ChatViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if textView != inputToolbar.contentView.textView {
             view.endEditing(true)
+            textView.allowsEditingTextAttributes = true
             return false
         }
+        if textView.textInputMode?.primaryLanguage == "emoji"{
 
+                       return textView.textInputMode != nil
+                   }
         return true
     }
+    
 //    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
 //    {
 //        if(text == "\n")
@@ -1830,8 +1901,42 @@ extension ChatViewController: UITextViewDelegate {
         let attributedText = NSAttributedString(attachment: textAttachment)
         if let textView = inputToolbar.contentView.textView {
             textView.attributedText = attributedText
+            
+//            textView.attributedText?.enumerateAttribute(NSAttributedString.Key.attachment, in: NSRange(location: 0, length: attributedText.length), options: [], using: {(value,range,_) -> Void in
+//                         if (value is NSTextAttachment) {
+//                             let attachment: NSTextAttachment? = (value as? NSTextAttachment)
+//                             var image: UIImage?
+//
+//                             if ((attachment?.image) != nil) {
+//                                 image = attachment?.image
+//                             } else {
+//                                 image = attachment?.image(forBounds: (attachment?.bounds)!, textContainer: nil, characterIndex: range.location)
+//                             }
+//
+//                             guard let pasteImage = image else { return }
+//
+//                             // IMAGE IN PASTE IMAGE. YOU CAN WORK WITH IT
+//
+//
+//                            guard let pngData = pasteImage.pngData() else { return }
+//                                              guard let pngImage = UIImage(data: pngData) else { return }
+//
+//
+//
+//
+//
+//                             return
+//                         }
+//                     })
+
+            
+          
         }
-    }
+       }
+      
+       
+    
+   
 }
 
 //MARK: - ChatCellDelegate
@@ -1968,6 +2073,7 @@ extension ChatViewController: ChatCellDelegate {
 //MARK: - QBChatDelegate
 extension ChatViewController: QBChatDelegate {
     func chatDidReadMessage(withID messageID: String, dialogID: String, readerID: UInt) {
+        print(#function)
         if currentUserID == readerID || dialogID != self.dialogID {
             return
         }
@@ -1977,9 +2083,11 @@ extension ChatViewController: QBChatDelegate {
         }
         message.readIDs?.append(NSNumber(value: readerID))
         dataSource.updateMessage(message)
+        
     }
     
     func chatDidDeliverMessage(withID messageID: String, dialogID: String, toUserID userID: UInt) {
+        print(#function)
         if currentUserID == userID || dialogID != self.dialogID {
             return
         }
@@ -1992,27 +2100,31 @@ extension ChatViewController: QBChatDelegate {
     }
     
     func chatDidReceive(_ message: QBChatMessage) {
+        print(#function)
         if message.dialogID == self.dialogID && message.senderID != currentUserID {
             dataSource.addMessage(message)
         }
     }
     func chatRoomDidReceive(_ message: QBChatMessage, fromDialogID dialogID: String) {
+        print(#function)
         if dialogID == self.dialogID && message.senderID != currentUserID {
             dataSource.addMessage(message)
         }
     }
     
     func chatDidConnect() {
+        print(#function)
         refreshAndReadMessages()
     }
     
     func chatDidReconnect() {
+        print(#function)
         refreshAndReadMessages()
     }
     
     
     
-    //MARK - Help
+    //MARK:- Help
     private func refreshAndReadMessages() {
         // Autojoin to the group chat
         if dialog.type != .private, dialog.isJoined() == false {

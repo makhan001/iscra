@@ -42,6 +42,8 @@ class UsersInfoTableViewController: UITableViewController {
                                                     style: .plain,
                                                     target: self,
                                                     action:#selector(didTapAddUsers(_:)))
+    
+    
     //MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -82,7 +84,7 @@ class UsersInfoTableViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = addUsersItem
         if action == ChatAction.ChatInfo {
-            addUsersItem.tintColor = .white
+            addUsersItem.tintColor = #colorLiteral(red: 0.8031229377, green: 0.691909194, blue: 0.2029924691, alpha: 1)
             addUsersItem.isEnabled = true
         } else {
             addUsersItem.tintColor = .clear
@@ -206,9 +208,7 @@ class UsersInfoTableViewController: UITableViewController {
         }
         
        //cell.userAvatarLabel.text = String(user.fullName?.capitalized.first ?? Character("U"))
-        let customData = user.customData ?? user.login ?? "QB user"
-        cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
-      
+        cell.userAvatarImageView.setImageFromURL(user.customData ?? "", with: AppConstant.UserPlaceHolderImage)
         cell.tag = indexPath.row
         cell.checkBoxView.isHidden = true
         cell.checkBoxImageView.isHidden = true

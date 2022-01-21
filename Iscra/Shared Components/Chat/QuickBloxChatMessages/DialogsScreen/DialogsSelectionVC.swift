@@ -262,15 +262,9 @@ class DialogsSelectionVC: UITableViewController {
         if chatDialog.lastMessageText == nil && chatDialog.lastMessageID != nil {
             cell.dialogLastMessage.text = "[Attachment]"
         }
-        
         cell.dialogName.text = cellModel.textLabelText.capitalized
-       print("show:\(cellModel.customData)")
-        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
-       
-            
-        
-        return cell
-        
+        cell.imgTitle.setImageFromURL(cellModel.customData ?? "", with: UIImage(named: "GroupHabit"))
+       return cell
     }
     
     // MARK: - UITableViewDelegate

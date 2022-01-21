@@ -28,11 +28,8 @@ class MatesCollectionView: UICollectionView , UICollectionViewDelegate , UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatesCollectionCell", for: indexPath) as? MatesCollectionCell else { return UICollectionViewCell()
-        }
-
-        guard let objGroupMembers = self.arrMemberList?[indexPath.row] else {  return UICollectionViewCell()  }
-//        cell.configureGroupHabitMembers(obj: objGroupMembers)
+        let cell = collectionView.dequeueReusable(indexPath) as MatesCollectionCell
+        cell.configure(with: self.arrMemberList?[indexPath.row].profileImage)
         return cell
     }
     

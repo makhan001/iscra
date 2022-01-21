@@ -23,6 +23,7 @@ class InviteFriendViewController: UIViewController {
     var habitId: Int = 0
     var habitType: HabitType = .good
     weak var router: NextSceneDismisser?
+    let viewModel: InviteFriendViewModel = InviteFriendViewModel(provider: HabitServiceProvider())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +35,17 @@ class InviteFriendViewController: UIViewController {
 extension InviteFriendViewController {
     
     private func setup() {
+        self.viewModel.view = self
+        self.viewModel.habitId = self.habitId
         self.btnSkip.isHidden = true
         self.habitType = HabitUtils.shared.habitType
-        setUpView(habitType:habitType)
+        self.setUpView(habitType:habitType)
         navigationController?.setNavigationBarHidden(true, animated: false)
         [btnInviteFriends, btnMaybeLetter, btnSkip].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }
-
+    
     func setUpView(habitType: HabitType) {
         switch habitType {
         case .good:
@@ -83,13 +86,13 @@ extension InviteFriendViewController  {
     
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
-        self.showActivityViewController(url: URL(string: "https://www.apple.com")!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
+        self.showActivityViewController(url: URL(string: AppConstant.IscraAppLink)!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
     }
     
     private func maybeLetterAction() {
         if self.btnMaybeLetter.currentTitle == "Share public" {
             print("Share public")
-            self.router?.push(scene: .shareHabit)
+            self.shareTypeActionSheet()
         } else {
             print("MaybeLatterAction")
             self.router?.push(scene: .landing)
@@ -104,5 +107,41 @@ extension InviteFriendViewController  {
         let items = [url, text, image] as [Any]
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(ac, animated: true)
+    }
+    
+    private func shareTypeActionSheet() {
+        let optionMenuController = UIAlertController(title: nil, message: "How do you want to share this habit?", preferredStyle: .actionSheet)
+        let friends = UIAlertAction(title: "Friends", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            optionMenuController.dismiss(animated: true, completion: nil)
+            self.router?.push(scene: .shareHabit)
+        })
+        
+        let everyone = UIAlertAction(title: "Everyone", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            optionMenuController.dismiss(animated: true, completion: nil)
+            self.viewModel.shareHabit()
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenuController.addAction(friends)
+        optionMenuController.addAction(everyone)
+        optionMenuController.addAction(cancelAction)
+        self.present(optionMenuController, animated: true, completion: nil)
+    }
+}
+
+// MARK: Callbacks
+extension InviteFriendViewController: HabitViewRepresentable {
+    func onAction(_ action: HabitAction) {
+        switch action {
+        case .shareHabitSucess(_) :
+            self.router?.push(scene: .landing)
+        default:
+            break
+        }
     }
 }

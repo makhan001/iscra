@@ -17,7 +17,8 @@ class HabitDaysCollectionView: UICollectionView {
     var colorTheme: String = ""
     var habitMarks: [HabitMark] = []
     var sourceScreen: HabitDaysSourceScreen = .home
-            
+    var didMarkAsComplete:((Int) ->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setup()
@@ -45,7 +46,8 @@ extension HabitDaysCollectionView: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusable(indexPath) as HabitDaysCell
-        cell.configure(item: habitMarks[indexPath.row], colorTheme: colorTheme)
+        cell.didMarkAsComplete = didMarkAsComplete
+        cell.configure(item: habitMarks[indexPath.row], colorTheme: colorTheme, tag: indexPath.row)
         return cell
     }
     

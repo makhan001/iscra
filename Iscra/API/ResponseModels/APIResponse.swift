@@ -20,6 +20,7 @@ struct DataClass: Codable {
     var url: String?
     var verificationCode: Int?
     var longestStreak: Int?
+    var isVerified: Bool?
     var user: User?
     var habit: Habit?
     var habits: [AllHabits]?
@@ -50,6 +51,7 @@ struct DataClass: Codable {
         case groupHabitMembers = "group_habit_members"
         case longestStreak = "longest_streak"
         case shareHabit = "share_habit"
+        case isVerified = "is_verified"
     }
 }
 
@@ -132,7 +134,6 @@ struct LoginData: Codable {
     }
 }
 
-//Mark: UserData
 struct User: Codable {
     var id: Int?
     var email, encryptedPassword: String?
@@ -174,3 +175,4 @@ struct User: Codable {
         case profileImage = "profile_image"
     }
 }
+

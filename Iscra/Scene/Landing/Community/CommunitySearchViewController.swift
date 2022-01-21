@@ -10,17 +10,20 @@ import UIKit
 class CommunitySearchViewController: UIViewController {
     
     @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var viewNoGroups: UIView!
-    @IBOutlet weak var txtSearch: UITextField!
-    @IBOutlet weak var viewGroupsHabit: UIView!
-    @IBOutlet weak var lblNoFriendFound: UILabel!
     @IBOutlet weak var btnCreateGroupHabit: UIButton!
+    
+    @IBOutlet weak var viewNoGroups: UIView!
+    @IBOutlet weak var viewGroupsHabit: UIView!
+    
+    @IBOutlet weak var txtSearch: UITextField!
+    @IBOutlet weak var lblNoFriendFound: UILabel!
     @IBOutlet weak var btnSegment: UISegmentedControl!
     @IBOutlet weak var tableGroupHabit: GroupHabitTableView!
     @IBOutlet weak var tableFriends: CommunityFriendTableView!
     
-    var arrGroupList = [GroupHabit]()
     var arrFriend = [Friend]()
+    var arrGroupList = [GroupHabit]()
+    
     var isSearching:Bool = false
     weak var router: NextSceneDismisser?
     let viewModel: CommunitySearchViewModel = CommunitySearchViewModel(provider:  CommunityServiceProvider())
@@ -66,7 +69,7 @@ extension CommunitySearchViewController {
     
     private func didSelectTableAtIndex(index: Int) {
         self.viewModel.habitId = self.viewModel.arrGroupList[index].id ?? 0
-        self.router?.push(scene: .groupHabitFriends)
+        self.viewModel.fetchGroupMembers()
     }
     
     @objc func refrershUI() {
@@ -135,6 +138,12 @@ extension CommunitySearchViewController: CommunityViewRepresentable {
             self.showToast(message: msg)
         case  .sucessMessage(_):
             self.reloadTable()
+        case let . isUserAvailable(isAvailable):
+            if isAvailable == true {
+                self.router?.push(scene: .groupHabitFriends)
+            } else {
+                self.router?.push(scene: .communityDetail)
+            }
         default:
             break
         }
@@ -142,8 +151,6 @@ extension CommunitySearchViewController: CommunityViewRepresentable {
     
     private func reloadTable() {
         WebService().StopIndicator()
-        print("self.viewModel.arrGroupList is \(self.viewModel.arrGroupList.count)")
-        print("self.viewModel.arrFriend is \(self.viewModel.arrFriend.count)")
         if self.viewModel.arrGroupList.isEmpty != true {
             self.viewNoGroups.isHidden = true
             self.tableGroupHabit.isHidden = false
@@ -213,7 +220,6 @@ extension CommunitySearchViewController : UITextFieldDelegate {
     }
     
     @objc func reload() {
-        print("api calling in searching")
         if self.btnSegment.selectedSegmentIndex == 1 {
             self.viewModel.arrFriend.removeAll()
             self.viewModel.callApiFriendList()

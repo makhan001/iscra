@@ -224,6 +224,11 @@ class CreateNewDialogViewController: UIViewController {
         }
 
         self.users = filteredUsers
+        self.users = self.users.sorted(by: { (Obj1, Obj2) -> Bool in
+                              let Obj1_Name = Obj1.fullName ?? ""
+                              let Obj2_Name = Obj2.fullName ?? ""
+                              return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedAscending)
+                           })        
 
        // self.users = users
         
@@ -442,7 +447,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             let user = self.users[indexPath.row]
             cell.userColor = user.id.generateColor()
             cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
-            cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+            cell.userAvatarImageView.setImageFromURL(user.customData ?? "", with: AppConstant.UserPlaceHolderImage)
             cell.tag = indexPath.row
             
             let lastItemNumber = users.count - 1
@@ -499,8 +504,9 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             cell.dialogName.text = cellModel.textLabelText.capitalized
 
             print("cell for row ---> \(Date().timeIntervalSince1970)")
-            print("cellModel.customData\(cellModel.customData)")
-            cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+            print("cellModel.customData\(String(describing: cellModel.customData))")
+            cell.imgTitle.setImageFromURL(cellModel.customData ?? "", with: UIImage(named: "GroupHabit"))
+
             let lastItemNumber = users.count - 1
             if indexPath.row == lastItemNumber {
                 if isSearch == true, cancel == false {

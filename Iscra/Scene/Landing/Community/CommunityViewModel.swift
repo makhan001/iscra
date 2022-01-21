@@ -29,10 +29,6 @@ final class CommunityViewModel {
     func fetchCommunityList() {
         self.provider.fetchCommunity(param: CommunityParams.FetchCommunity()) 
     }
-    
-    func callApiGroupInvitation() {
-        // self.provider.groupInvitations(param: CommunityParams.GroupInvitations(habit_id: self.habit_id, user_ids: ["1"]))
-    }
 }
 
 extension CommunityViewModel: CommunityServiceProvierDelegate{

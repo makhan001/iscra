@@ -15,12 +15,13 @@ class CommunityGroupHabit: UICollectionViewCell, Reusable {
         
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.imgHabit.roundCorners(corners: [.topLeft ,.topRight], radius: 8)
     }
     
     func configure<T>(with content: T) {
         guard let item = content as? Invitaion else { return }
         self.lblHabitTitle.text = item.name?.capitalized
         self.lblHabitSubtitle.text = item.invitaionDescription
-        self.imgHabit.setImageFromURL(item.groupImage ?? "", with: #imageLiteral(resourceName: "ic-Rectangle"))
+        self.imgHabit.setImageFromURL(item.groupImage ?? "", with: AppConstant.HabitPlaceHolderImage)
     }
 }

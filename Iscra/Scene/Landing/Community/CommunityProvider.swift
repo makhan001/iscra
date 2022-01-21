@@ -14,13 +14,13 @@ final class CommunityServiceProvider: CommunityServiceProvidable {
     func fetchCommunity(param: CommunityParams.FetchCommunity) {
         WebService().StartIndicator()
         task.fetchCommunity(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
-                        if err != nil {
-                            self?.delegate?.completed(for: .fetchCommunity, with: resp, with: err)
-                            return
-                        }
-                        self?.delegate?.completed(for: .fetchCommunity, with: resp, with: nil)
-                    }
+            if err != nil {
+                self?.delegate?.completed(for: .fetchCommunity, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .fetchCommunity, with: resp, with: nil)
         }
+    }
     
     func allGroupHabit(param: CommunityParams.AllGroupHabit) {
         WebService().StartIndicator()
@@ -41,6 +41,16 @@ final class CommunityServiceProvider: CommunityServiceProvidable {
                 return
             }
             self?.delegate?.completed(for: .friends, with: resp, with: nil)
+        }
+    }
+    
+    func groupHabitMembers(param: CommunityParams.GroupHabitMembers) {
+        task.groupHabitMembers(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .groupHabitMembers, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .groupHabitMembers, with: resp, with: nil)
         }
     }
     

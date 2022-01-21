@@ -31,8 +31,7 @@ class QBChatLogin {
                 if response.status == QBResponseStatusCode.validationFailed {
                     // The user with existent login was created earlier
                     self?.loginQBUser(fullName: UserStore.userName ?? "", login: UserStore.userEmail ?? "", email: UserStore.userEmail ?? "", customData: UserStore.userImage ?? "")
-                    QBChat.instance.removeDelegate(self as! QBChatDelegate)
-                    return
+                   // QBChat.instance.removeDelegate(self as! QBChatDelegate)
                 }
                 print("UserNOTSignUpInQuickBlox", response)
              })
@@ -51,9 +50,9 @@ class QBChatLogin {
                                     let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
                                     let userDefaults = UserDefaults.standard
                                     userDefaults.set(data, forKey: UserProfileConstant.curentProfile)
-                                    self.updateFullName(fullName: UserStore.userName ?? "")
-                                    print("update user name===>\(UserStore.userName)")
-                                    print("update user Image===>\(UserStore.userImage)")
+                                    self.updateFullName(fullName: UserStore.userName ?? "", customData: UserStore.userImage ?? "")
+                                    print("update user name===>\(String(describing: UserStore.userName))")
+                                    print("update user Image===>\(String(describing: UserStore.userImage))")
                                     } catch {
                                         debugPrint("[Profile] Couldn't write file to UserDefaults")
                                     }
@@ -94,9 +93,10 @@ class QBChatLogin {
                                     })
             }
     }
-     func updateFullName(fullName: String) {
+    func updateFullName(fullName: String, customData: String) {
         let updateUserParameter = QBUpdateUserParameters()
         updateUserParameter.fullName = UserStore.userName ?? ""
+        updateUserParameter.customData = UserStore.userImage ?? ""
        // updateUserParameter.customData = UserStore.userImage ?? ""
         QBRequest.updateCurrentUser(updateUserParameter, successBlock: { [weak self] response, user in
             guard let self = self else {
@@ -106,7 +106,7 @@ class QBChatLogin {
             Profile.update(user)
            
             print("updateUserParameter====>\(fullName)")
-            //print("updateUserParameter====>\(customData)")
+            print("updateUserParameter====>\(customData)")
             self.connectToChat(user: user)
             
             }, errorBlock: { [weak self] response in

@@ -101,10 +101,11 @@ class ChatManager: NSObject {
                                 message = self.errorMessage(response: response) ?? ""
                             }
                             if message.isEmpty {
-                             
+                             print("no chat")
+                               
                                 self.delegate?.chatManager(self, didUpdateStorage: "SA_STR_COMPLETED".localized)
                             } else {
-                                self.delegate?.chatManager(self, didFailUpdateStorage: message)
+                               // self.delegate?.chatManager(self, didFailUpdateStorage: message)
                             }
         })
     }
@@ -730,7 +731,7 @@ class ChatManager: NSObject {
                                 }
             }, errorBlock: { response in
                 completion(response)
-                debugPrint("[ChatManager] updateAllDialogs error: \(self.errorMessage(response: response) ?? "")")
+               // debugPrint("[ChatManager] updateAllDialogs error: \(self.errorMessage(response: response) ?? "")")
                 t_request = nil
             })
         }

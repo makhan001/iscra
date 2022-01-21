@@ -19,6 +19,13 @@ class WeekCollection: UICollectionView { // WeekCollectionView
     }
     
     private func setup() {
+        let currentWeekdayIndex = Date().weekdayIndex
+        if  currentWeekdayIndex == 7 {
+            viewModel.weakDays[0].isSelected = true
+        } else {
+            viewModel.weakDays[currentWeekdayIndex].isSelected = true
+        }
+        
         self.register(UINib(nibName: "WeekDaysCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WeekDaysCollectionViewCell")
         delegate = self
         dataSource = self
@@ -48,3 +55,11 @@ extension WeekCollection:  UICollectionViewDelegate, UICollectionViewDataSource,
         reloadData()
     }
 }
+//extension Date {
+//
+//    var calendar: Calendar { Calendar.current }
+//
+//    var weekdayIndex: Int {
+//        (calendar.component(.weekday, from: self) - calendar.firstWeekday + 7) % 7 + 1
+//    }
+//}

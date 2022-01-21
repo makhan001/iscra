@@ -127,7 +127,6 @@ enum HabitParams {
     struct ShareHabit: Codable {
         let habit_id: Int?
         let user_ids: [Int]?
-        let share_type: String?
     }
     
     struct MarkAsComplete: Codable {
@@ -156,5 +155,9 @@ enum CommunityParams {
     
     struct Friends: Codable {
         let search: String?
+    }
+    
+    struct GroupHabitMembers: Codable {
+        let habit_id: Int?
     }
 }

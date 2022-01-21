@@ -34,6 +34,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
 
 extension WebViewController {
     private func setup() {
+        self.viewWeb.scrollView.delegate = self
         self.viewNavigation.delegateBarAction = self
         switch webPage {
         case .termsAndConditions:
@@ -61,4 +62,10 @@ extension WebViewController: NavigationBarViewDelegate {
     func navigationBackAction()  {
         self.router?.dismiss(controller: .webViewController)
     }
+}
+
+extension WebViewController: UIScrollViewDelegate {
+   func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+      scrollView.pinchGestureRecognizer?.isEnabled = false
+   }
 }

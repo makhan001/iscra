@@ -7,106 +7,120 @@
 
 import UIKit
 
-class CommunityMyGroupsCell: UICollectionViewCell {
+class CommunityMyGroupsCell: UICollectionViewCell, Reusable {
     
-    // MARK: - Outlets
     @IBOutlet weak var viewMates: UIView!
     @IBOutlet weak var viewNomates: UIView!
     @IBOutlet weak var viewContainer: UIView!
-    @IBOutlet weak var imgHabit: UIImageView!
-    @IBOutlet weak var lblHabitTitle: UILabel!
-    @IBOutlet weak var imgHabitMates: UIImageView!
-    @IBOutlet weak var lblHabitTitleMates: UILabel!
-    @IBOutlet weak var collectionMates: UICollectionView!
-    @IBOutlet weak var collectiondays: UICollectionView!
-    @IBOutlet weak var constraintWidth:NSLayoutConstraint!
     
- // let arr = ["1"]
-  //  let arr = ["1","1"]
- //  let arr = ["1","1","1"]
-   let arr = ["1","1","1","1","1","1"]
+    @IBOutlet weak var btnHabitDetail: UIButton!
+    
+    @IBOutlet weak var imageHabit: UIImageView!
+    @IBOutlet weak var imageHabitMates: UIImageView!
+    
+    @IBOutlet weak var lblHabitTitle: UILabel!
+    @IBOutlet weak var lblHabitTitleMates: UILabel!
+    
+    @IBOutlet weak var matesCollectionView: UICollectionView!
+    @IBOutlet weak var daysCollectionView: HabitDaysCollectionView!
+    @IBOutlet weak var constraintWidth: NSLayoutConstraint!
+    
+    var viewModel: CommunityViewModel!
+    var showHabitDetail:((Int) ->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.collectionMates.register(UINib(nibName: "MatesCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MatesCollectionCell")
-        self.collectionMates.backgroundColor = UIColor.clear.withAlphaComponent(0)
-        self.collectionMates.dataSource = self
-        self.collectionMates.delegate = self
-        self.collectionMates.reloadData()
-        
-        self.collectiondays.register(UINib(nibName: "HabitDaysCell", bundle: nil), forCellWithReuseIdentifier: "HabitDaysCell")
-        self.collectiondays.dataSource = self
-        self.collectiondays.delegate = self
-        self.collectiondays.reloadData()
-       
+        self.setup()
+        self.matesCollectionView.register(UINib(nibName: "MatesCollectionCell", bundle: nil), forCellWithReuseIdentifier: "MatesCollectionCell")
+        self.matesCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
+        self.matesCollectionView.dataSource = self
+        self.matesCollectionView.delegate = self
+        self.matesCollectionView.reloadData()
+    }
+    
+    private func setup() {
+        btnHabitDetail.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+    }
+    
+    func configure<T>(with content: T) { }
+    
+    func configure(viewModel: CommunityViewModel, groupHabit: GroupHabit , tag:Int ) {
+        self.btnHabitDetail.tag = tag
+        self.viewModel = viewModel
+        self.viewModel.colorTheme = groupHabit.colorTheme ?? self.viewModel.colorTheme
+        self.viewModel.habitMarks = groupHabit.habitMarks ?? self.viewModel.habitMarks
+        self.viewModel.groupMembers = groupHabit.groupMembers ?? self.viewModel.groupMembers
+        if groupHabit.habitType != "group_habit" {
+            self.populateSingleHabit(groupHabit: groupHabit)
+        } else {
+            self.populateGroupHabit(groupHabit: groupHabit)
+        }
+        self.matesCollectionView.reloadData()
+        self.daysCollectionView.configure(colorTheme: viewModel.colorTheme, habitMark: viewModel.habitMarks)
+    }
+    
+    private func populateSingleHabit(groupHabit: GroupHabit) {
+        self.viewNomates.isHidden = false
+        self.viewMates.isHidden = true
+        self.lblHabitTitle.text =  groupHabit.name?.capitalized
+        self.imageHabit.image = UIImage(named: groupHabit.icon ?? "sport1")
+        self.imageHabit.tintColor = UIColor(hex: groupHabit.colorTheme ?? self.viewModel.colorTheme)
+    }
+    
+    private func populateGroupHabit(groupHabit: GroupHabit) {
+        self.viewNomates.isHidden = true
+        self.viewMates.isHidden = false
+        self.lblHabitTitleMates.text = groupHabit.name?.capitalized
+        self.imageHabitMates.image = UIImage(named: groupHabit.icon ?? "sport1")
+        self.imageHabitMates.tintColor = UIColor(hex: groupHabit.colorTheme ?? self.viewModel.colorTheme)
     }
     
     override func updateConstraints() {
         super.updateConstraints()
-        if arr.count <= 3 {
-            constraintWidth.constant =  CGFloat((Double(arr.count) * 45))
-        }else{
-            constraintWidth.constant =  150
-        }
     }
-        
-    func configure() {
-        self.lblHabitTitle.text = "GYM workout"
-        self.lblHabitTitleMates.text = "GYM workout"
-        self.imgHabit.image = #imageLiteral(resourceName: "icon1")
-        self.imgHabitMates.image = #imageLiteral(resourceName: "google")
-        self.viewNomates.isHidden = true
+    
+    @objc func buttonPressed(_ sender: UIButton) {
+        self.showHabitDetail?(sender.tag)
     }
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource and UICollectionViewDelegateFlowLayout
-extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout , CustomCollectionViewLayoutDelegate{
+extension CommunityMyGroupsCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
-        if collectionView == self.collectiondays{
-            return arr.count
-        }else {
-            return 3
+        if collectionView == self.daysCollectionView {
+            return viewModel.habitMarks.count
+        } else {
+            return viewModel.groupMembers.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.collectiondays{
-            guard let cell = self.collectiondays.dequeueReusableCell(withReuseIdentifier: "HabitDaysCell", for: indexPath) as? HabitDaysCell else {
-                return UICollectionViewCell()
-            }
-            cell.configure()
+        if collectionView == self.daysCollectionView {
+            let cell = collectionView.dequeueReusable(indexPath) as HabitDaysCell
+            cell.configure(item: viewModel.habitMarks[indexPath.item], colorTheme: viewModel.colorTheme, tag: indexPath.row)
             return cell
-        }else{
-            guard let cell = self.collectionMates.dequeueReusableCell(withReuseIdentifier: "MatesCollectionCell", for: indexPath) as? MatesCollectionCell else {
-                return UICollectionViewCell()
-            }
-            cell.configure()
+        } else {
+            let cell = collectionView.dequeueReusable(indexPath) as MatesCollectionCell
+            cell.configure(with: viewModel.groupMembers[indexPath.row].profileImage)
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
-        if collectionView == self.collectiondays{
-            if arr.count <= 3 {
-                return CGSize(width: Int(self.collectiondays.bounds.width) / arr.count - 10, height: 125)
-            }else{
-                return CGSize(width: self.collectiondays.bounds.width/3.5, height: 125)
-            }
-        }else {
-            return CGSize(width: 35, height: 35)
-        }
+        CGSize(width: collectionView.bounds.width / 3.0, height: 125.0)
     }
     
-    func collectionView(_ collectionView: UICollectionView, getSizeAtIndexPath indexPath: IndexPath) -> CGSize {
-        if collectionView == self.collectiondays{
-            return CGSize(width: 50, height: 125)
-        }else {
-            return CGSize(width: 35, height: 35)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        20.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        5.0
     }
     
 }

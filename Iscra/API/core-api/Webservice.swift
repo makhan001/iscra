@@ -18,17 +18,12 @@ class WebService {
     var headers: HTTPHeaders!
     
     func requestMultiPart<T: Decodable, U: Encodable>(urlString: String, httpMethod : HTTPMethod, parameters: U, decodingType: T.Type, imageArray: [[String : Any]], fileArray:[[String:Any]], file: [String:Any]? = nil, completion: @escaping JSONTaskCompletionHandler ) {
-        
-//        if Connectivity.isConnectedToInternet() != true {
-//            completion(nil, NetworkErrorMessage)
-//            return
-//        }
+
         WebService().StartIndicator()
-        
         let jsonData = try! JSONEncoder().encode(parameters)
         let jsonString = String(data: jsonData, encoding: .utf8)
+        print("parameter---> \(parameters)")
         print("jsonString: \(String(describing: jsonString))")
-        
         let s = "\(APIEnvironment.host)\(urlString)"
         print("Requesting url == \(s)")
         let scaped = s.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -51,14 +46,22 @@ class WebService {
                 WebService().StopIndicator()
                 if let data = result {
                     do {
+                        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                            print("json response is : \(json)")
+                        }
+                    } catch let error as NSError {
+                        print("Failed to load: \(error.localizedDescription)")
+                    }
+                    
+                    
+                    do {
                         let genericModel = try JSONDecoder().decode(decodingType, from: data)
                         print("response ---> \(genericModel)")
                         completion(genericModel, nil)
                     } catch let err {
+                        print("error localizedDescription ---> \(err.localizedDescription)")
                         completion(nil, err.localizedDescription)
-                        print("err.localizedDescription ---> \(err.localizedDescription)")
                     }
-
                 } else {
                     completion(nil, encodingResult.error?.localizedDescription)
                 }
@@ -86,15 +89,6 @@ class WebService {
         let header: HTTPHeaders = [
             "Authentication-Token": UserStore.token ?? "",
             "Content-Type": "application/json; charset=UTF-8",
-//            "device_type" : "ios",
-//            "device_id" : "12345",
-//            "current_time_zone" : "IST",
-//            "language" :"en",
-//            "Content-Type": "application/json",
-//            "version" : "1.0.0",
-//            "current_country": "India",
-//            "lat": "22.12541",
-//            "lng": "22.12541"
         ]
         return header
     }
@@ -102,7 +96,7 @@ class WebService {
     func request(urlStr: String, parameters:[String: AnyObject], httpMethod : HTTPMethod, completion: @escaping JSONTaskCompletionHandlers) {
         
         guard let url = URL(string: urlStr) else { return }
-        AF.session.configuration.timeoutIntervalForRequest = 60
+        AF.session.configuration.timeoutIntervalForRequest = 5
         var request = URLRequest.init(url: url)
         let requestData = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
         request.httpMethod = httpMethod.rawValue
@@ -170,12 +164,12 @@ class WebService {
         }
     }
     
-    func StartIndicator(){
+    func StartIndicator() {
         UIApplication.shared.beginIgnoringInteractionEvents()
         SVProgressHUD.show()
     }
     
-    func StopIndicator(){
+    func StopIndicator() {
         UIApplication.shared.endIgnoringInteractionEvents()
         SVProgressHUD.dismiss()
     }

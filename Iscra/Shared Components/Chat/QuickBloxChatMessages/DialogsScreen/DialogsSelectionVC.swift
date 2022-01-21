@@ -106,11 +106,11 @@ class DialogsSelectionVC: UITableViewController {
             forwardedMessage.dateSent = Date()
             forwardedMessage.customParameters["save_to_history"] = true
             let originSenderUser = chatManager.storage.user(withID: originMessage.senderID)
-            if let fullName = originSenderUser?.fullName {
-                forwardedMessage.customParameters[ChatDataSourceConstant.forwardedMessage] = fullName
+            if let fullName = originSenderUser?.fullName?.capitalized {
+                forwardedMessage.customParameters[ChatDataSourceConstant.forwardedMessage] = fullName.capitalized
             } else {
                 let currentUser = Profile()
-                forwardedMessage.customParameters[ChatDataSourceConstant.forwardedMessage] = currentUser.fullName
+                forwardedMessage.customParameters[ChatDataSourceConstant.forwardedMessage] = currentUser.fullName.capitalized
             }
             forwardedMessage.dialogID = dialogID
             if let attachment = originMessage.attachments?.first {
@@ -179,7 +179,7 @@ class DialogsSelectionVC: UITableViewController {
                     let currentUser = Profile()
                     dialog.pullOccupantsIDs = [(NSNumber(value: currentUser.ID)).stringValue]
                     
-                    let message = "\(currentUser.fullName) " + "SA_STR_USER_HAS_LEFT".localized
+                    let message = "\(currentUser.fullName.capitalized) " + "SA_STR_USER_HAS_LEFT".localized
                     // Notifies occupants that user left the dialog.
                     self.chatManager.sendLeaveMessage(message, to: dialog, completion: { (error) in
                         if let error = error {
@@ -257,20 +257,14 @@ class DialogsSelectionVC: UITableViewController {
                                                           borderColor: UIColor(red:0.42, green:0.48, blue:0.57, alpha:1))
             cell.checkBoxImageView.isHidden = true
         }
-        //Mark:- Delete chat change title name and image
+        //MARK: Delete chat change title name and image
         cell.dialogLastMessage.text = chatDialog.lastMessageText
         if chatDialog.lastMessageText == nil && chatDialog.lastMessageID != nil {
             cell.dialogLastMessage.text = "[Attachment]"
         }
-        
         cell.dialogName.text = cellModel.textLabelText.capitalized
-       print("show:\(cellModel.customData)")
-        cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
-       
-            
-        
-        return cell
-        
+        cell.imgTitle.setImageFromURL(cellModel.customData ?? "", with: UIImage(named: "GroupHabit"))
+       return cell
     }
     
     // MARK: - UITableViewDelegate
@@ -353,7 +347,7 @@ class DialogsSelectionVC: UITableViewController {
                 // group
                 dialog.pullOccupantsIDs = [(NSNumber(value: currentUser.ID)).stringValue]
                 
-                let message = "\(currentUser.fullName) " + "SA_STR_USER_HAS_LEFT".localized
+                let message = "\(currentUser.fullName.capitalized) " + "SA_STR_USER_HAS_LEFT".localized
                 // Notifies occupants that user left the dialog.
                 self.chatManager.sendLeaveMessage(message, to: dialog, completion: { (error) in
                     if let error = error {
@@ -405,7 +399,7 @@ class DialogsSelectionVC: UITableViewController {
         }
         
         let numberChats = "\(selectedPaths.count) \(chats) selected"
-        titleView.setupTitleView(title: title, subTitle: numberChats)
+        titleView.setupTitleView(title: title.capitalized, subTitle: numberChats)
     }
 }
 

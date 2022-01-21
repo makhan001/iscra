@@ -214,19 +214,19 @@ class AddOccupantsVC: UIViewController {
     private func messageTextWithUsers(_ users: [QBUUser]) -> String {
         let actionMessage = "SA_STR_ADDED".localized
         guard let current = QBSession.current.currentUser,
-            let fullName = current.fullName else {
-                return ""
+           let fullName = current.fullName?.capitalized else {
+            return ""
         }
         var message = "\(fullName) \(actionMessage)"
         for user in users {
-            guard let userFullName = user.fullName else {
-                continue
-            }
-            message += " \(userFullName),"
+          guard let userFullName = user.fullName?.capitalized else {
+            continue
+          }
+          message += " \(userFullName.capitalized),"
         }
         message = String(message.dropLast())
         return message
-    }
+      }
     
     private func openNewDialog(_ newDialog: QBChatDialog) {
         guard let navigationController = navigationController else {
@@ -265,6 +265,7 @@ class AddOccupantsVC: UIViewController {
         if segue.identifier == "SA_STR_SEGUE_GO_TO_CHAT".localized {
             if let chatVC = segue.destination as? ChatViewController {
                 chatVC.dialogID = sender as? String
+                chatVC.isFromCreateGroup = true
             }
         }
     }
@@ -370,8 +371,8 @@ extension AddOccupantsVC: UITableViewDelegate, UITableViewDataSource {
         let user = self.users[indexPath.row]
         cell.userColor = user.id.generateColor()
         cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
-      
-        cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+        cell.userAvatarImageView.setImageFromURL(user.customData ?? "", with: AppConstant.UserPlaceHolderImage)
+        
         cell.tag = indexPath.row
         
         let lastItemNumber = users.count - 1

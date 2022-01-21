@@ -14,7 +14,7 @@ class AddGroupImageViewController: UIViewController {
     @IBOutlet weak var imgGroup: UIImageView!
     @IBOutlet weak var btnImagePicker: UIButton!
     @IBOutlet weak var viewNavigation:NavigationBarView!
-    private let viewModel = AddHabitViewModel()
+    let viewModel = AddHabitViewModel()
     weak var router: NextSceneDismisser?
 
     override func viewDidLoad() {
@@ -26,6 +26,8 @@ class AddGroupImageViewController: UIViewController {
 extension AddGroupImageViewController {
     func SetUp() {
         viewModel.view = self
+        self.viewNavigation.navType = .addHabit
+        self.viewNavigation.commonInit()
         self.viewNavigation.lblTitle.text = ""
         self.viewNavigation.delegateBarAction = self
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -34,7 +36,7 @@ extension AddGroupImageViewController {
         }
     }}
 
-// MARK:- Button Action
+// MARK: Button Action
 extension AddGroupImageViewController {
     
     @objc func buttonPressed(_ sender: UIButton) {
@@ -55,7 +57,7 @@ extension AddGroupImageViewController {
     }
     
     private func skipClick() {
-        self.viewModel.apiForCreateHabit()
+        self.viewModel.addHabit()
     }
     
     private func imageClick() {
@@ -79,7 +81,7 @@ extension AddGroupImageViewController {
             imagePicker.sourceType = UIImagePickerController.SourceType.camera
             imagePicker.allowsEditing = false
             self.present(imagePicker, animated: true, completion: nil)
-        }else{
+        } else {
             let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -93,11 +95,28 @@ extension AddGroupImageViewController {
             imagePicker.allowsEditing = true
             imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
-        } else{
+        } else {
             let alert  = UIAlertController(title: "Warning", message: "You don't have permission to access gallery.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    private func showHabitCancelAlert() {
+        let alertController = UIAlertController(title: "Warning!!", message: "Do you really want exit from adding habit?", preferredStyle: .alert)
+        let logoutaction = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction!) in
+            HabitUtils.shared.removeAllHabitData()
+            self.router?.push(scene: .landing)
+        }
+        logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        alertController.addAction(logoutaction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
     }
 }
 
@@ -106,12 +125,11 @@ extension AddGroupImageViewController: UINavigationControllerDelegate, UIImagePi
         let tempImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         imgGroup.image = tempImage
         self.viewModel.groupImage = tempImage
-        //HabitUtils.shared.groupImage = tempImage
         self.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -132,9 +150,13 @@ extension AddGroupImageViewController: HabitViewRepresentable {
     }
 }
 
-// MARK: navigationBarAction Callback
-extension AddGroupImageViewController: navigationBarAction {
-    func ActionType() {
+// MARK: NavigationBarViewDelegate Callback
+extension AddGroupImageViewController: NavigationBarViewDelegate {
+    func navigationBackAction() {
         router?.dismiss(controller: .addGroupImage)
+    }
+    
+    func navigationRightButtonAction() {
+        self.showHabitCancelAlert()
     }
 }

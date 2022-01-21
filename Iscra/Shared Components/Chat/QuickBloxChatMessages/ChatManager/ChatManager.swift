@@ -101,10 +101,11 @@ class ChatManager: NSObject {
                                 message = self.errorMessage(response: response) ?? ""
                             }
                             if message.isEmpty {
-                             
+                             print("no chat")
+                               
                                 self.delegate?.chatManager(self, didUpdateStorage: "SA_STR_COMPLETED".localized)
                             } else {
-                                self.delegate?.chatManager(self, didFailUpdateStorage: message)
+                               // self.delegate?.chatManager(self, didFailUpdateStorage: message)
                             }
         })
     }
@@ -254,7 +255,8 @@ class ChatManager: NSObject {
         
         let chatDialog = QBChatDialog(dialogID: nil, type: .group)
         
-        chatDialog.name = name
+        chatDialog.name = name.capitalized
+        print("group chat name====>\(name)")
         chatDialog.occupantIDs = occupants.map({ NSNumber(value: $0.id) })
         
         QBRequest.createDialog(chatDialog, successBlock: { response, dialog in
@@ -265,8 +267,8 @@ class ChatManager: NSObject {
                 }
                 self.storage.update(dialogs:[dialog])
                 //Notify about create new dialog
-                let dialogName = dialog.name ?? ""
-                self.delegate?.chatManager(self, didUpdateStorage: "SA_STR_CREATE_NEW".localized + dialogName)
+                let dialogName = dialog.name?.capitalized ?? ""
+                self.delegate?.chatManager(self, didUpdateStorage: "SA_STR_CREATE_NEW".localized + dialogName.capitalized)
                 completion?(response, dialog)
             })
         }, errorBlock: { response in
@@ -290,7 +292,7 @@ class ChatManager: NSObject {
             QBRequest.createDialog(dialog, successBlock: { response, createdDialog in
                 self.storage.update(dialogs:[createdDialog])
                 //Notify about create new dialog
-                let dialogName = createdDialog.name ?? ""
+                let dialogName = createdDialog.name?.capitalized ?? ""
                 self.delegate?.chatManager(self, didUpdateStorage: "SA_STR_CREATE_NEW".localized + dialogName)
                 completion?(response, createdDialog)
             }, errorBlock: { response in
@@ -729,7 +731,7 @@ class ChatManager: NSObject {
                                 }
             }, errorBlock: { response in
                 completion(response)
-                debugPrint("[ChatManager] updateAllDialogs error: \(self.errorMessage(response: response) ?? "")")
+               // debugPrint("[ChatManager] updateAllDialogs error: \(self.errorMessage(response: response) ?? "")")
                 t_request = nil
             })
         }

@@ -46,10 +46,14 @@ class CreateNewDialogViewController: UIViewController {
     private var isSearch = false
     private var searchText = ""
     private var isFriendsTab : Bool = false
+    private var isMyChatTab : Bool = false
+    
     
     //MARK: - UserChatList
     private var dialogs: [QBChatDialog] = []
+    private var foundedDialogs : [QBChatDialog] = []
     private var dialogsFilterArray: [QBChatDialog] = []
+    private var selectedDialog: Set<QBChatDialog> = []
    
     var tabBar = LandingTabBarController()
     
@@ -191,15 +195,16 @@ class CreateNewDialogViewController: UIViewController {
             break
         }
     }
-    private func chatAction(){
+    private func chatAction() {
         self.isFriendsTab = false
         chatView.isHidden = false
         tblChatListView.isHidden = true
     }
-    private func friendsAction(){
+    private func friendsAction() {
         self.isFriendsTab = true
         chatView.isHidden = true
         tblChatListView.isHidden = false
+       
     }
     private func setupNavigationTitle() {
         let title = CreateNewDialogConstant.newChat
@@ -219,6 +224,11 @@ class CreateNewDialogViewController: UIViewController {
         }
 
         self.users = filteredUsers
+        self.users = self.users.sorted(by: { (Obj1, Obj2) -> Bool in
+                              let Obj1_Name = Obj1.fullName ?? ""
+                              let Obj2_Name = Obj2.fullName ?? ""
+                              return (Obj1_Name.localizedCaseInsensitiveCompare(Obj2_Name) == .orderedAscending)
+                           })        
 
        // self.users = users
         
@@ -242,11 +252,12 @@ class CreateNewDialogViewController: UIViewController {
         if currentUser.isFull == true {
             filteredUsers = foundedUsers.filter({$0.id != currentUser.ID})
         }
+        
         self.users = filteredUsers
         tblChatListView.reloadData()
         checkCreateChatButtonState()
     }
-    
+  
     private func checkCreateChatButtonState() {
         navigationItem.rightBarButtonItem?.isEnabled = selectedUsers.isEmpty == true ? false : true
     }
@@ -255,8 +266,7 @@ class CreateNewDialogViewController: UIViewController {
     @IBAction func cancelSearchButtonTapped(_ sender: UIButton) {
         if isFriendsTab == true {
             setupUsers(downloadedUsers)
-        }
-        else {
+        } else {
             self.dialogs = chatManager.storage.dialogsSortByUpdatedAt()
             self.tblUserChatListView.reloadData()
         }
@@ -269,6 +279,8 @@ class CreateNewDialogViewController: UIViewController {
     
     @objc func didTapBack(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
+        
+        
     }
     
     @objc func createChatButtonPressed(_ sender: UIBarButtonItem) {
@@ -357,8 +369,7 @@ extension CreateNewDialogViewController {
         dialogs = chatManager.storage.dialogsSortByUpdatedAt()
         if dialogs.count > 0 {
           print("Chat list not empty")
-        }
-        else {
+        } else {
             
            print("chat is EMPTY")
         }
@@ -406,6 +417,14 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             }
             return users.count;
         }
+//        else if tableView == self.tblUserChatListView {
+//            if users.count == 0, isSearch == true {
+//                tableView.setupEmptyView("No user with that name")
+//            } else {
+//                tableView.removeEmptyView()
+//            }
+//            return users.count;
+//        }
         else {
             print("Dialogs count \(dialogs.count)")
             return dialogs.count
@@ -415,8 +434,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
     -> CGFloat {
         if tableView == self.tblUserChatListView {
             return 80.0
-        }
-        else {
+        } else {
             return UITableView.automaticDimension
         }
     }
@@ -429,7 +447,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             let user = self.users[indexPath.row]
             cell.userColor = user.id.generateColor()
             cell.userNameLabel.text = user.fullName?.capitalized ?? user.login
-            cell.userAvatarImageView.sd_setImage(with: URL(string: user.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
+            cell.userAvatarImageView.setImageFromURL(user.customData ?? "", with: AppConstant.UserPlaceHolderImage)
             cell.tag = indexPath.row
             
             let lastItemNumber = users.count - 1
@@ -443,8 +461,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
                 }
             }
             return cell
-        }
-        else {
+        } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DialogCellConstant.reuseIdentifier,
                                                            for: indexPath) as? DialogCell else {
                 return UITableViewCell()
@@ -487,9 +504,19 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             cell.dialogName.text = cellModel.textLabelText.capitalized
 
             print("cell for row ---> \(Date().timeIntervalSince1970)")
-            print("cellModel.customData\(cellModel.customData)")
-            cell.imgTitle.sd_setImage(with: URL(string: cellModel.customData as? String ?? ""), placeholderImage: UIImage(named: "group"))
-        
+            print("cellModel.customData\(String(describing: cellModel.customData))")
+            cell.imgTitle.setImageFromURL(cellModel.customData ?? "", with: UIImage(named: "GroupHabit"))
+
+            let lastItemNumber = users.count - 1
+            if indexPath.row == lastItemNumber {
+                if isSearch == true, cancel == false {
+                    if let searchText = searchBar.text {
+                        searchUsers(searchText)
+                    }
+                } else if isSearch == false, cancelFetch == false {
+                    fetchUsers()
+                }
+            }
             return cell
         }
     }//
@@ -500,10 +527,10 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             selectedUsers.insert(user)
             checkCreateChatButtonState()
             setupNavigationTitle()
-        }
-        else {
+        } else {
             tblUserChatListView.deselectRow(at: indexPath, animated: true)
             let dialog = dialogs[indexPath.row]
+        
             if let dialogID = dialog.id {
                 openChatWithDialogID(dialogID)
             }
@@ -515,6 +542,7 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
         if selectedUsers.contains(user) {
             selectedUsers.remove(user)
         }
+        
         checkCreateChatButtonState()
         setupNavigationTitle()
     }
@@ -524,18 +552,20 @@ extension CreateNewDialogViewController: UITableViewDelegate, UITableViewDataSou
             let user = self.users[indexPath.row]
             if selectedUsers.contains(user) {
                 tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-            } else {
+            }
+            else {
                 tableView.deselectRow(at: indexPath, animated: false)
             }
         }
+       
     }
 }
 
 // MARK: - UISearchBarDelegate
 extension CreateNewDialogViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)  {
         if self.isFriendsTab == true {
-            print("FriendsTab")
+            print("FriendsTab === > \(Friend.self)")
             self.searchText = searchText
             if searchText.count > 2 {
                 isSearch = true
@@ -548,19 +578,28 @@ extension CreateNewDialogViewController: UISearchBarDelegate {
                 cancel = false
                 setupUsers(downloadedUsers)
             }
+           
         }
-        else {
+       
+       else {
             if searchText.count > 0 {
                 self.dialogsFilterArray = chatManager.storage.dialogsSortByUpdatedAt()
                 var filteredUsers: [QBChatDialog] = []
-                filteredUsers = dialogsFilterArray.filter { ($0.name!.contains(searchText.lowercased()))
+//                filteredUsers = dialogsFilterArray.filter { ($0.name?.contains(searchText.description)) as! Bool
+//                }
+                let searchText = self.searchBar.text!.lowercased()
+                filteredUsers = dialogsFilterArray.filter { $0.name?.lowercased().range(of: searchText) != nil
                 }
+               
                 self.dialogs = filteredUsers
+                
             }
+             
             else {
                 self.dialogs = chatManager.storage.dialogsSortByUpdatedAt()
             }
             self.tblUserChatListView.reloadData()
+        
         }
     }
 
@@ -581,10 +620,12 @@ extension CreateNewDialogViewController: UISearchBarDelegate {
             }
             if users.isEmpty == false {
                 self?.tblChatListView.removeEmptyView()
+                self?.tblUserChatListView.removeEmptyView()
                 self?.addFoundUsers(users)
             } else {
                 self?.addFoundUsers(users)
                 self?.tblChatListView.setupEmptyView(CreateNewDialogConstant.noUsers)
+                self?.tblUserChatListView.setupEmptyView(CreateNewDialogConstant.noUsers)
             }
         }
     }
@@ -602,6 +643,7 @@ extension CreateNewDialogViewController: UISearchBarDelegate {
             if users.isEmpty == false {
                 self?.tblChatListView.removeEmptyView()
                 self?.tblChatListView.reloadData()
+                self?.tblUserChatListView.reloadData()
             } else {
                 self?.tblChatListView.setupEmptyView(CreateNewDialogConstant.noUsers)
             }

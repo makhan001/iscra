@@ -65,29 +65,49 @@ final class UserTask {
     func habitDetail<T:Codable>(params: HabitParams.HabitDetail, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: HabitRequests(type: .habitDetail, params: params), modeling: responseModel, completion: completion)
     }
-    
-    func groupInvitations<T:Codable>(params: HabitParams.GroupInvitations, responseModel: T.Type, completion: @escaping APIResult<T>) {
-        dispatcher.execute(requst: HabitRequests(type: .groupInvitations, params: params), modeling: responseModel, completion: completion)
-    }
-    
+        
     func markAsComplete<T:Codable>(params: HabitParams.MarkAsComplete, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: HabitRequests(type: .markAsComplete, params: params), modeling: responseModel, completion: completion)
     }
     
-//    func termsAndConditions(completion:@escaping APIResult<SuccessResponseModel> ) {
-//        dispatcher.execute(requst: AuthRequests(requestType: .terms), modeling: SuccessResponseModel.self, completion:   completion)
-//    }
-//
-//    func privacy(completion:@escaping APIResult<SuccessResponseModel> ) {
-//        dispatcher.execute(requst: AuthRequests(requestType: .privacy), modeling: SuccessResponseModel.self, completion:   completion)
-//    }
-//
-//    func myProfile(completion:@escaping APIResult<SuccessResponseModel> ) {
-//        dispatcher.execute(requst: UserRequests(requestType: .profile), modeling: SuccessResponseModel.self, completion:   completion)
-//    }
-//
-//    func logout(completion:@escaping APIResult<SuccessResponseModel> ) {
-//        dispatcher.execute(requst: AuthRequests(requestType: .logout), modeling: SuccessResponseModel.self, completion:   completion)
-//    }
+    func shareHabit<T:Codable>(params: HabitParams.ShareHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .shareHabit, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func habitCalender<T:Codable>(params: HabitParams.HabitCalender, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .habitCalender, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func joinHabit<T:Codable>(params: HabitParams.JoinHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .joinHabit, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func groupHabitMembers<T:Codable>(params: HabitParams.GroupHabitMembers, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .groupHabitMembers, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func groupHabitDetails<T:Codable>(params: HabitParams.GroupHabitDetails, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .groupHabitDetails, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func fetchCommunity<T:Codable>(params: CommunityParams.FetchCommunity, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: CommunityRequest(type: .fetchCommunity, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func allGroupHabit<T:Codable>(params: CommunityParams.AllGroupHabit, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: CommunityRequest(type: .allGroupHabit, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func friends<T:Codable>(params: CommunityParams.Friends, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: CommunityRequest(type: .friends, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func friendsForShare<T:Codable>(params: HabitParams.Friends, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .friends, params: params), modeling: responseModel, completion: completion)
+    }
+        
+    func groupHabitMembers<T:Codable>(params: CommunityParams.GroupHabitMembers, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: CommunityRequest(type: .groupHabitMembers, params: params), modeling: responseModel, completion: completion)
+    }
 }
 

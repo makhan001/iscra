@@ -5,40 +5,45 @@
 //  Created by Lokesh Patil on 26/10/21.
 //
 
-import Foundation
 import UIKit
-protocol selectedIcon : class {
-    func selectedIconIndex(Index:Int)
-}
+import Foundation
 
-class IconCollectionView: UICollectionView{
+class IconCollectionView: UICollectionView {
     
-    var iconArray = [IconModel]()
-    var selcteIndex = 0
-    var themeColor = ""
-    weak var delegateIcon:selectedIcon?
+    var viewModel: IconsViewModel!
+    var didSelectIconAtIndex:((Int) -> Void)?
     
-    func configure(icons : [IconModel], theme:String) {
-        self.register(UINib(nibName: "IconCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "IconCollectionViewCell")
-        self.iconArray = icons
-        themeColor = theme
-        self.delegate = self
-        self.dataSource = self
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.setup()
+    }
+    
+    func configure(viewModel: IconsViewModel) {
+        self.viewModel = viewModel
+        self.setup()
+    }
+    
+    private func setup() {
+        delegate = self
+        dataSource = self
         reloadData()
     }
 }
 
-extension IconCollectionView:  UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+extension IconCollectionView: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return iconArray.count
+        viewModel.icons.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = self.dequeueReusableCell(withReuseIdentifier: "IconCollectionViewCell", for: indexPath) as? IconCollectionViewCell else {
-            return UICollectionViewCell()
+        let cell = collectionView.dequeueReusable(indexPath) as IconCollectionViewCell
+        cell.configure(item: viewModel.icons[indexPath.row], theme: viewModel.themeColor.colorHex)
+        if viewModel.iconIndex == indexPath.item {
+            viewModel.icons[indexPath.item].isSelected = true
+        } else {
+            viewModel.icons[indexPath.item].isSelected = false
         }
-        cell.configure(iconArr: iconArray[indexPath.row], theme: themeColor)
         return cell
     }
     
@@ -48,7 +53,6 @@ extension IconCollectionView:  UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selcteIndex = indexPath.row
-        delegateIcon?.selectedIconIndex(Index: indexPath.row)
+        self.didSelectIconAtIndex?(indexPath.row)
     }
 }

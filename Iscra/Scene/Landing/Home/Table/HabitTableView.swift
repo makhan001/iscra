@@ -7,51 +7,58 @@
 
 import UIKit
 
-class  HabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
-    var didSelectedAtIndex: ((Int) -> Void)?
-    var habitList = [AllHabits]()
-    var isHabitDelete:((_ isSelect:Bool, _ habitId: String)   ->())?
+class  HabitTableView: UITableView {
     
+    var viewModel: HomeViewModel!
+    var showHabitDetail:((Int) ->())?
+    var didMarkAsComplete:((HabitMark) ->())?
+    var didDeleteHabitAtIndex: ((Int) -> Void)?
+
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure(habits: [AllHabits]) {
-        self.register(UINib(nibName: "HabitCell", bundle: nil), forCellReuseIdentifier: "HabitCell")
-        self.delegate = self
-        self.dataSource = self
-        self.habitList = habits
-        reloadData()
+    func configure(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        self.setup()
     }
     
+    private func setup() {
+        delegate = self
+        dataSource = self
+        reloadData()
+    }
+}
+
+extension HabitTableView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.habitList.count
+        return viewModel.habitList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as? HabitCell else {
-            return UITableViewCell()
-        }
-        let objHabitList = self.habitList[indexPath.row]
-        cell.configure(obj: objHabitList)
+        let cell = tableView.dequeueReusable(indexPath) as HabitCell
+        cell.showHabitDetail = showHabitDetail
+        cell.didMarkAsComplete = didMarkAsComplete
+        cell.configure(viewModel: viewModel, item: viewModel.habitList[indexPath.row], tag: indexPath.row)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("navigate")
-        didSelectedAtIndex?(indexPath.row)
-    }
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let objHabitList = self.habitList[indexPath.row]
-        let deleteAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            self.isHabitDelete!(true, String(objHabitList.id!))
-        })
-        deleteAction.image = #imageLiteral(resourceName: "ic_deleteShadow")
-        deleteAction.backgroundColor = UIColor(white: 1, alpha: 0.001)
-        let swipeAction = UISwipeActionsConfiguration(actions:[deleteAction])
-        swipeAction.performsFirstActionWithFullSwipe = false
-        return swipeAction
+        if UserStore.userID == String(self.viewModel.habitList[indexPath.row].userID ?? 0) {
+            let deleteAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                self.didDeleteHabitAtIndex?(indexPath.row)
+            })
+            deleteAction.image = #imageLiteral(resourceName: "ic_deleteShadow")
+            deleteAction.backgroundColor = UIColor(white: 1, alpha: 0.001)
+            let swipeAction = UISwipeActionsConfiguration(actions:[deleteAction])
+            swipeAction.performsFirstActionWithFullSwipe = false
+            return swipeAction
+        } else {
+            return nil
+        }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       self.showHabitDetail?(indexPath.row)
+    }
 }

@@ -35,7 +35,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlp-Ig-WT7" userLabel="ContainerView" customClass="ChatContainerView" customModule="sample_chat_swift">
-                        <rect key="frame" x="26" y="0.0" width="181" height="183"/>
+                        <rect key="frame" x="20" y="0.0" width="181" height="183"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUM-zm-5ky" userLabel="Message Container">
                                 <rect key="frame" x="12" y="4" width="162" height="179"/>
@@ -210,7 +210,7 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="KAl-F5-usR" firstAttribute="leading" secondItem="mlp-Ig-WT7" secondAttribute="trailing" constant="2" id="CRC-3V-ysb"/>
+                <constraint firstItem="KAl-F5-usR" firstAttribute="leading" secondItem="mlp-Ig-WT7" secondAttribute="trailing" constant="8" id="CRC-3V-ysb"/>
                 <constraint firstAttribute="trailing" secondItem="KAl-F5-usR" secondAttribute="trailing" id="OFd-mn-Trv"/>
                 <constraint firstAttribute="bottom" secondItem="KAl-F5-usR" secondAttribute="bottom" id="chG-tq-vW7"/>
                 <constraint firstItem="mlp-Ig-WT7" firstAttribute="top" secondItem="vDG-KF-S8V" secondAttribute="top" id="hdz-W0-txv"/>
@@ -250,7 +250,7 @@
     </objects>
     <designables>
         <designable name="35y-FC-UxN">
-            <size key="intrinsicContentSize" width="39.5" height="18"/>
+            <size key="intrinsicContentSize" width="40" height="18"/>
         </designable>
         <designable name="diF-ca-yd3">
             <size key="intrinsicContentSize" width="63" height="16"/>

@@ -51,11 +51,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEj-uZ-CQ3" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
                                 <rect key="frame" x="20" y="219" width="335" height="77"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="My Habit" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hFT-gq-AVD" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="My habit" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hFT-gq-AVD" customClass="IscraCustomTextField" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="10" y="0.0" width="315" height="77"/>
                                         <color key="tintColor" name="PrimaryAccent"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                 <integer key="value" value="24"/>
@@ -635,7 +635,7 @@
                                         </collectionViewFlowLayout>
                                         <cells/>
                                     </collectionView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yWT-HH-Z4n" customClass="IconHeader" customModule="Iscra" customModuleProvider="target">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yWT-HH-Z4n" customClass="IconHeaderCollectionView" customModule="Iscra" customModuleProvider="target">
                                         <rect key="frame" x="20" y="24" width="355" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -694,9 +694,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="IconCollection" destination="CXk-Vl-dO0" id="Zni-kg-eM9"/>
-                        <outlet property="IocnHeaderCollection" destination="yWT-HH-Z4n" id="elz-Cu-kFK"/>
                         <outlet property="backGroundView" destination="IZV-ce-gIB" id="pdy-Vt-lX6"/>
+                        <outlet property="iconCollectionView" destination="CXk-Vl-dO0" id="Csj-6b-z4r"/>
+                        <outlet property="iocnHeaderCollectionView" destination="yWT-HH-Z4n" id="3sp-XR-9AA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mt8-fS-vhv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -984,7 +984,7 @@
                                                 <rect key="frame" x="10" y="10" width="355" height="216"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
-                                                    <action selector="TimePickerClick:" destination="aij-J7-bsX" eventType="valueChanged" id="QvO-c6-j7o"/>
+                                                    <action selector="timePickerClick:" destination="aij-J7-bsX" eventType="valueChanged" id="ytn-XA-Pv4"/>
                                                 </connections>
                                             </datePicker>
                                         </subviews>
@@ -1061,163 +1061,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7L-96-pLm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3418.840579710145" y="107.8125"/>
-        </scene>
-        <!--Invite Friend View Controller-->
-        <scene sceneID="7Ks-5J-2hb">
-            <objects>
-                <viewController storyboardIdentifier="inviteFriend" id="BsC-4O-NCC" customClass="InviteFriendViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pd1-ca-79N">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdG-Il-bGS">
-                                <rect key="frame" x="0.0" y="534" width="375" height="133"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewC-tX-9sa" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="5" width="335" height="54"/>
-                                        <color key="backgroundColor" name="PrimaryAccent"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="uWh-Gf-klO"/>
-                                        </constraints>
-                                        <state key="normal" title="Invite Friends">
-                                            <color key="titleColor" name="BlackAccent"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                                <integer key="value" value="18"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zv5-GK-GoY" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="69" width="335" height="54"/>
-                                        <state key="normal" title="Maybe letter">
-                                            <color key="titleColor" name="GrayAccent"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="GrayAccent"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                                <integer key="value" value="18"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="zv5-GK-GoY" firstAttribute="height" secondItem="ewC-tX-9sa" secondAttribute="height" id="4Ci-oY-ZtN"/>
-                                    <constraint firstItem="ewC-tX-9sa" firstAttribute="top" secondItem="AdG-Il-bGS" secondAttribute="top" constant="5" id="58J-ZG-jDK"/>
-                                    <constraint firstItem="ewC-tX-9sa" firstAttribute="leading" secondItem="AdG-Il-bGS" secondAttribute="leading" constant="20" id="AcU-CN-h3G"/>
-                                    <constraint firstAttribute="bottom" secondItem="zv5-GK-GoY" secondAttribute="bottom" constant="10" id="P6z-Cv-MFx"/>
-                                    <constraint firstItem="zv5-GK-GoY" firstAttribute="leading" secondItem="AdG-Il-bGS" secondAttribute="leading" constant="20" id="PtZ-DN-FQq"/>
-                                    <constraint firstItem="zv5-GK-GoY" firstAttribute="top" secondItem="ewC-tX-9sa" secondAttribute="bottom" constant="10" id="UgD-vz-7dR"/>
-                                    <constraint firstAttribute="trailing" secondItem="zv5-GK-GoY" secondAttribute="trailing" constant="20" id="qJi-zL-HqT"/>
-                                    <constraint firstAttribute="trailing" secondItem="ewC-tX-9sa" secondAttribute="trailing" constant="20" id="uTh-zC-CjI"/>
-                                </constraints>
-                            </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="128" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDL-oI-8b5">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="524"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbr-gX-hYy">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="417"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-background-image" translatesAutoresizingMaskIntoConstraints="NO" id="Ks3-Ce-XiG">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="468"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodhabitfriends" translatesAutoresizingMaskIntoConstraints="NO" id="NaY-ph-pm1">
-                                                <rect key="frame" x="15" y="49" width="345" height="200"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="Uum-lw-dul"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lable" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CO4-K9-DQf" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="345.5" width="335" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                                        <integer key="value" value="18"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lable" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXV-Qb-SkD" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="268" width="335" height="57.5"/>
-                                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
-                                                <color key="textColor" name="SecondryAccent"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
-                                                        <integer key="value" value="48"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBlack" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="Ks3-Ce-XiG" firstAttribute="centerX" secondItem="PXV-Qb-SkD" secondAttribute="centerX" id="2Ir-tw-nMm"/>
-                                            <constraint firstItem="Ks3-Ce-XiG" firstAttribute="top" secondItem="xbr-gX-hYy" secondAttribute="top" id="4PC-2u-PX3"/>
-                                            <constraint firstItem="CO4-K9-DQf" firstAttribute="trailing" secondItem="PXV-Qb-SkD" secondAttribute="trailing" id="8I3-Ru-N4G"/>
-                                            <constraint firstItem="PXV-Qb-SkD" firstAttribute="top" secondItem="NaY-ph-pm1" secondAttribute="bottom" constant="19" id="D2b-I2-sNQ"/>
-                                            <constraint firstItem="PXV-Qb-SkD" firstAttribute="leading" secondItem="xbr-gX-hYy" secondAttribute="leading" constant="20" id="I2R-tX-3NV"/>
-                                            <constraint firstAttribute="trailing" secondItem="NaY-ph-pm1" secondAttribute="trailing" constant="15" id="IU1-qy-dzD"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ks3-Ce-XiG" secondAttribute="trailing" id="KSj-ig-Gql"/>
-                                            <constraint firstItem="CO4-K9-DQf" firstAttribute="top" secondItem="PXV-Qb-SkD" secondAttribute="bottom" constant="20" id="Q7y-vg-M4a"/>
-                                            <constraint firstItem="NaY-ph-pm1" firstAttribute="top" secondItem="xbr-gX-hYy" secondAttribute="top" constant="49" id="ZEx-3O-gql"/>
-                                            <constraint firstItem="NaY-ph-pm1" firstAttribute="leading" secondItem="xbr-gX-hYy" secondAttribute="leading" constant="15" id="l4L-Q5-0Je"/>
-                                            <constraint firstItem="Ks3-Ce-XiG" firstAttribute="width" secondItem="xbr-gX-hYy" secondAttribute="width" id="m04-ie-b0r"/>
-                                            <constraint firstAttribute="trailing" secondItem="PXV-Qb-SkD" secondAttribute="trailing" constant="20" id="v8Q-Xh-Ex4"/>
-                                            <constraint firstItem="Ks3-Ce-XiG" firstAttribute="leading" secondItem="xbr-gX-hYy" secondAttribute="leading" id="vaX-4u-gpN"/>
-                                            <constraint firstItem="CO4-K9-DQf" firstAttribute="leading" secondItem="PXV-Qb-SkD" secondAttribute="leading" id="wRj-6N-HNl"/>
-                                            <constraint firstAttribute="bottom" secondItem="CO4-K9-DQf" secondAttribute="bottom" constant="50" id="zUe-W0-Avb"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="xbr-gX-hYy" secondAttribute="trailing" id="C4u-Xl-KGQ"/>
-                                    <constraint firstItem="xbr-gX-hYy" firstAttribute="top" secondItem="RDL-oI-8b5" secondAttribute="top" id="Dn1-cM-66L"/>
-                                    <constraint firstItem="xbr-gX-hYy" firstAttribute="leading" secondItem="RDL-oI-8b5" secondAttribute="leading" id="TVY-Mk-nnm"/>
-                                    <constraint firstAttribute="bottom" secondItem="xbr-gX-hYy" secondAttribute="bottom" id="V9l-1R-TWp"/>
-                                    <constraint firstItem="xbr-gX-hYy" firstAttribute="centerX" secondItem="RDL-oI-8b5" secondAttribute="centerX" id="fMx-Tr-Ev2"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="PaW-od-9G6"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="RDL-oI-8b5" firstAttribute="trailing" secondItem="PaW-od-9G6" secondAttribute="trailing" id="30D-SF-FSZ"/>
-                            <constraint firstItem="RDL-oI-8b5" firstAttribute="leading" secondItem="PaW-od-9G6" secondAttribute="leading" id="bIE-ll-Wpt"/>
-                            <constraint firstItem="AdG-Il-bGS" firstAttribute="leading" secondItem="PaW-od-9G6" secondAttribute="leading" id="eqv-xk-5ak"/>
-                            <constraint firstItem="PaW-od-9G6" firstAttribute="bottom" secondItem="AdG-Il-bGS" secondAttribute="bottom" id="jDZ-4B-cXH"/>
-                            <constraint firstItem="AdG-Il-bGS" firstAttribute="top" secondItem="RDL-oI-8b5" secondAttribute="bottom" constant="10" id="q8I-aS-sJo"/>
-                            <constraint firstItem="PaW-od-9G6" firstAttribute="trailing" secondItem="AdG-Il-bGS" secondAttribute="trailing" id="vj0-pI-Uhk"/>
-                            <constraint firstItem="RDL-oI-8b5" firstAttribute="top" secondItem="pd1-ca-79N" secondAttribute="top" id="wCX-Hc-hrc"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="btnInviteFriends" destination="ewC-tX-9sa" id="kdr-6s-viS"/>
-                        <outlet property="btnMaybeLetter" destination="zv5-GK-GoY" id="wQc-v5-oMh"/>
-                        <outlet property="imgIcon" destination="NaY-ph-pm1" id="bgK-7j-Kun"/>
-                        <outlet property="lblHeaderTitle" destination="PXV-Qb-SkD" id="aJM-BJ-9Q0"/>
-                        <outlet property="lblMiddleText" destination="CO4-K9-DQf" id="Lhd-Ap-SLj"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TR4-aj-Jtl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4257.971014492754" y="107.8125"/>
         </scene>
         <!--Add Group Image View Controller-->
         <scene sceneID="e2C-4Z-dIq">
@@ -1396,7 +1239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aZg-hb-E8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5147.826086956522" y="99.776785714285708"/>
+            <point key="canvasLocation" x="5223" y="111"/>
         </scene>
         <!--Edit Habit View Controller-->
         <scene sceneID="i2z-cc-thU">
@@ -1432,7 +1275,7 @@
                                         <rect key="frame" x="10" y="0.0" width="315" height="77"/>
                                         <color key="tintColor" name="PrimaryAccent"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
                                                 <integer key="value" value="20"/>
@@ -1523,6 +1366,181 @@
             </objects>
             <point key="canvasLocation" x="79.710144927536234" y="855.80357142857144"/>
         </scene>
+        <!--Invite Friend View Controller-->
+        <scene sceneID="L8H-A2-rri">
+            <objects>
+                <viewController storyboardIdentifier="inviteFriend" id="Ois-bp-TZz" customClass="InviteFriendViewController" customModule="Iscra" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EUS-CL-SLN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="128" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JhW-89-cMT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="514"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCG-nd-0AM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="417"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-background-image" translatesAutoresizingMaskIntoConstraints="NO" id="rtu-jx-NCK">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="468"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodhabitfriends" translatesAutoresizingMaskIntoConstraints="NO" id="Us9-Nd-OCV">
+                                                <rect key="frame" x="15" y="49" width="345" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="pQN-Ne-LsH"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRq-RX-HQ6" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="345.5" width="335" height="21.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Lable">
+                                                        <attributes>
+                                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="2" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                        <integer key="value" value="18"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lable" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ5-Rs-58X" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="268" width="335" height="57.5"/>
+                                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                                <color key="textColor" name="SecondryAccent"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                        <integer key="value" value="48"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="SSBlack" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="rtu-jx-NCK" firstAttribute="width" secondItem="WCG-nd-0AM" secondAttribute="width" id="5Ru-9X-6xx"/>
+                                            <constraint firstItem="MRq-RX-HQ6" firstAttribute="leading" secondItem="hZ5-Rs-58X" secondAttribute="leading" id="AWf-aP-I0H"/>
+                                            <constraint firstItem="Us9-Nd-OCV" firstAttribute="top" secondItem="WCG-nd-0AM" secondAttribute="top" constant="49" id="K45-II-UOD"/>
+                                            <constraint firstAttribute="bottom" secondItem="MRq-RX-HQ6" secondAttribute="bottom" constant="50" id="QGV-KG-CwB"/>
+                                            <constraint firstItem="hZ5-Rs-58X" firstAttribute="leading" secondItem="WCG-nd-0AM" secondAttribute="leading" constant="20" id="Ruu-vC-8EX"/>
+                                            <constraint firstItem="MRq-RX-HQ6" firstAttribute="top" secondItem="hZ5-Rs-58X" secondAttribute="bottom" constant="20" id="TaU-zx-1em"/>
+                                            <constraint firstItem="rtu-jx-NCK" firstAttribute="leading" secondItem="WCG-nd-0AM" secondAttribute="leading" id="V5w-c7-eb4"/>
+                                            <constraint firstItem="rtu-jx-NCK" firstAttribute="top" secondItem="WCG-nd-0AM" secondAttribute="top" id="Xs3-ue-zhb"/>
+                                            <constraint firstItem="MRq-RX-HQ6" firstAttribute="trailing" secondItem="hZ5-Rs-58X" secondAttribute="trailing" id="bJh-xV-Uzz"/>
+                                            <constraint firstItem="hZ5-Rs-58X" firstAttribute="top" secondItem="Us9-Nd-OCV" secondAttribute="bottom" constant="19" id="bhn-N7-Rl1"/>
+                                            <constraint firstAttribute="trailing" secondItem="Us9-Nd-OCV" secondAttribute="trailing" constant="15" id="d6e-RJ-2nz"/>
+                                            <constraint firstItem="Us9-Nd-OCV" firstAttribute="leading" secondItem="WCG-nd-0AM" secondAttribute="leading" constant="15" id="etP-gU-Tya"/>
+                                            <constraint firstAttribute="trailing" secondItem="hZ5-Rs-58X" secondAttribute="trailing" constant="20" id="iO7-1y-bjl"/>
+                                            <constraint firstItem="rtu-jx-NCK" firstAttribute="centerX" secondItem="hZ5-Rs-58X" secondAttribute="centerX" id="iud-Ic-dpW"/>
+                                            <constraint firstAttribute="trailing" secondItem="rtu-jx-NCK" secondAttribute="trailing" id="tL7-mO-gi5"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="WCG-nd-0AM" firstAttribute="top" secondItem="JhW-89-cMT" secondAttribute="top" id="ZD1-xO-gn9"/>
+                                    <constraint firstItem="WCG-nd-0AM" firstAttribute="centerX" secondItem="JhW-89-cMT" secondAttribute="centerX" id="je4-lS-PCo"/>
+                                    <constraint firstAttribute="trailing" secondItem="WCG-nd-0AM" secondAttribute="trailing" id="rd2-5v-5yp"/>
+                                    <constraint firstItem="WCG-nd-0AM" firstAttribute="leading" secondItem="JhW-89-cMT" secondAttribute="leading" id="u5Q-bf-acV"/>
+                                    <constraint firstAttribute="bottom" secondItem="WCG-nd-0AM" secondAttribute="bottom" id="v8K-Vf-tVi"/>
+                                </constraints>
+                            </scrollView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Uq8-Ra-3kB">
+                                <rect key="frame" x="20" y="524" width="335" height="123"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvC-de-t0Y" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="54"/>
+                                        <color key="backgroundColor" name="PrimaryAccent"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="peC-9H-CpC"/>
+                                        </constraints>
+                                        <state key="normal" title="Invite friends">
+                                            <color key="titleColor" name="BlackAccent"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                <integer key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWV-cc-N0w" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="69" width="335" height="54"/>
+                                        <state key="normal" title="Maybe later">
+                                            <color key="titleColor" name="GrayAccent"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="GrayAccent"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                <integer key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwY-Uq-B9H" customClass="IscraCustomButton" customModule="Iscra" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="123" width="335" height="0.0"/>
+                                        <state key="normal" title="Skip">
+                                            <color key="titleColor" name="GrayAccent"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="GrayAccent"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="FontSize">
+                                                <integer key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="SSRegular" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="28z-Fn-Jjl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Uq8-Ra-3kB" firstAttribute="trailing" secondItem="28z-Fn-Jjl" secondAttribute="trailing" constant="-20" id="Pfk-kn-GzF"/>
+                            <constraint firstItem="JhW-89-cMT" firstAttribute="top" secondItem="EUS-CL-SLN" secondAttribute="top" id="RZu-tS-F5p"/>
+                            <constraint firstItem="Uq8-Ra-3kB" firstAttribute="leading" secondItem="28z-Fn-Jjl" secondAttribute="leading" constant="20" id="T52-gU-dBE"/>
+                            <constraint firstAttribute="bottom" secondItem="Uq8-Ra-3kB" secondAttribute="bottom" constant="20" id="Trl-9r-KsQ"/>
+                            <constraint firstItem="Uq8-Ra-3kB" firstAttribute="top" secondItem="JhW-89-cMT" secondAttribute="bottom" constant="10" id="fFU-TX-Ewq"/>
+                            <constraint firstItem="JhW-89-cMT" firstAttribute="leading" secondItem="28z-Fn-Jjl" secondAttribute="leading" id="jvM-nf-lDp"/>
+                            <constraint firstItem="JhW-89-cMT" firstAttribute="trailing" secondItem="28z-Fn-Jjl" secondAttribute="trailing" id="sjh-YU-Vhi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnInviteFriends" destination="QvC-de-t0Y" id="0vU-Wa-L44"/>
+                        <outlet property="btnMaybeLetter" destination="zWV-cc-N0w" id="Upf-dg-kOv"/>
+                        <outlet property="btnSkip" destination="IwY-Uq-B9H" id="aDI-7D-2k5"/>
+                        <outlet property="imgIcon" destination="Us9-Nd-OCV" id="eg1-7N-bD3"/>
+                        <outlet property="lblHeaderTitle" destination="hZ5-Rs-58X" id="sPy-ul-fV7"/>
+                        <outlet property="lblMiddleText" destination="MRq-RX-HQ6" id="i30-iN-EcL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ul8-hK-hv7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4294" y="111"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="3Nz-2A-3xt">
@@ -1535,17 +1553,20 @@
         <designable name="9jz-cM-SBM">
             <size key="intrinsicContentSize" width="297" height="21.5"/>
         </designable>
-        <designable name="CO4-K9-DQf">
-            <size key="intrinsicContentSize" width="44" height="21.5"/>
+        <designable name="IwY-Uq-B9H">
+            <size key="intrinsicContentSize" width="35" height="34"/>
         </designable>
         <designable name="KoC-GD-bE3">
             <size key="intrinsicContentSize" width="131" height="34"/>
         </designable>
+        <designable name="MRq-RX-HQ6">
+            <size key="intrinsicContentSize" width="44" height="21.5"/>
+        </designable>
         <designable name="OQf-oD-wjl">
             <size key="intrinsicContentSize" width="40" height="34"/>
         </designable>
-        <designable name="PXV-Qb-SkD">
-            <size key="intrinsicContentSize" width="116.5" height="57.5"/>
+        <designable name="QvC-de-t0Y">
+            <size key="intrinsicContentSize" width="104" height="34"/>
         </designable>
         <designable name="Thz-Tw-foE">
             <size key="intrinsicContentSize" width="552" height="38.5"/>
@@ -1562,10 +1583,10 @@
         <designable name="die-BK-Tyx">
             <size key="intrinsicContentSize" width="57.5" height="26.5"/>
         </designable>
-        <designable name="ewC-tX-9sa">
-            <size key="intrinsicContentSize" width="107" height="34"/>
-        </designable>
         <designable name="gnX-iX-iXz"/>
+        <designable name="hZ5-Rs-58X">
+            <size key="intrinsicContentSize" width="116.5" height="57.5"/>
+        </designable>
         <designable name="kOI-fX-1Qj">
             <size key="intrinsicContentSize" width="174.5" height="36"/>
         </designable>
@@ -1594,8 +1615,8 @@
         <designable name="whJ-dy-gsp">
             <size key="intrinsicContentSize" width="190.5" height="29"/>
         </designable>
-        <designable name="zv5-GK-GoY">
-            <size key="intrinsicContentSize" width="101" height="34"/>
+        <designable name="zWV-cc-N0w">
+            <size key="intrinsicContentSize" width="95" height="34"/>
         </designable>
     </designables>
     <resources>

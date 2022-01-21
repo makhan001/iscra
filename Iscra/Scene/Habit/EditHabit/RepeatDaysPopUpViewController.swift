@@ -41,7 +41,7 @@ extension RepeatDaysPopUpViewController {
 extension RepeatDaysPopUpViewController {
     
     func tableViewConfigure() {
-            var updatedArray:[weekStruct] = []
+            var updatedArray:[WeekDays] = []
      //   print("objHabitDetail?.days is \(String(describing: objHabitDetail?.days))")
         print("objHabitDetail?.days is \(String(describing: self.weekdays))")
 
@@ -49,9 +49,9 @@ extension RepeatDaysPopUpViewController {
              //   if let days = objHabitDetail?.days , days.contains(i.dayname) {
                     if let days = self.weekdays , days.contains(i.dayname) {
 
-                    updatedArray.append(weekStruct(id: i.id, shortDayname: i.shortDayname, dayname: i.dayname, isSelect: true))
-                }else{
-                    updatedArray.append(weekStruct(id: i.id, shortDayname: i.shortDayname, dayname: i.dayname, isSelect: false))
+                    updatedArray.append(WeekDays(id: i.id, shortDayname: i.shortDayname, dayname: i.dayname, isSelected: true))
+                } else {
+                    updatedArray.append(WeekDays(id: i.id, shortDayname: i.shortDayname, dayname: i.dayname, isSelected: false))
                 }
             }
             self.tableView.weakDays = updatedArray

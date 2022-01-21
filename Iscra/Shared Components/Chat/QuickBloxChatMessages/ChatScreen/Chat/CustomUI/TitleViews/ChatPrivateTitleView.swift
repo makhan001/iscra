@@ -37,7 +37,7 @@ class ChatPrivateTitleView: UIStackView {
         avatarImageView.contentMode = .scaleAspectFill
         return avatarImageView
     }()
-//Mark:- Chat Screen Title Label Color,Size------
+//MARK: Chat Screen Title Label Color,Size------
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = #colorLiteral(red: 0.6156862745, green: 0.5843137255, blue: 0.4862745098, alpha: 1)
@@ -47,13 +47,11 @@ class ChatPrivateTitleView: UIStackView {
     }()
     
     func setupPrivateChatTitleView(_ opponentUser:QBUUser) {
-        let userName = opponentUser.fullName?.capitalized
 //        avatarLabel.text = String(userName?.capitalized.first ?? Character("Q"))
 //        avatarLabel.backgroundColor = opponentUser.id.generateColor()
-        let userImage = opponentUser.customData
-        avatarImageView.sd_setImage(with: URL(string: userImage ?? ""), placeholderImage: UIImage(named: "group") )
+        avatarImageView.setImageFromURL(opponentUser.customData ?? "", with: AppConstant.UserPlaceHolderImage)
         
-        titleLabel.text = userName
+        titleLabel.text = opponentUser.fullName?.capitalized
         //addArrangedSubview(avatarLabel)
         addArrangedSubview(avatarImageView)
         addArrangedSubview(titleLabel)

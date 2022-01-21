@@ -191,21 +191,26 @@ class ChatAttachmentCell: ChatCell {
             }
             if attachmentType == .File, let fileURL = url {
                 self?.setupCellWithAttachment(image, attachment: attachment, attachmentType: .File)
+                print("Chat Attachment cell-----> file")
                 completion?(fileURL)
             }
             if attachmentType == .Video, let videoURL = url, let image = image {
                 self?.setupCellWithAttachment(image, attachment: attachment, attachmentType: .Video)
+                print("Chat Attachment cell-----> video")
                 completion?(videoURL)
             }
             if attachmentType == .Image, let image = image, url == nil {
                 self?.setupCellWithAttachment(image, attachment: attachment, attachmentType: .Image)
+                print("Chat Attachment cell-----> image")
             }
         }, errorHandler: { [weak self] (error, ID) in
             if self?.attachmentID != ID {
+                print("Chat Attachment cell-----> error handler")
                 return
             }
             let errorImage = UIImage(named: "image_attachment")!
             self?.setupCellWithAttachment(errorImage, attachment: attachment, attachmentType: .Error)
+            print("Chat Attachment cell-----> image attachment")
         })
     }
     
@@ -217,6 +222,7 @@ class ChatAttachmentCell: ChatCell {
             typeAttachmentImageView.image = nil
             attachmentImageView.image = attachmentImage
             attachmentImageView.contentMode = .scaleAspectFit
+            print("Chat Attachment cell-----> image attachment")
             
         } else {
             typeAttachmentImageView.image = nil
@@ -227,10 +233,12 @@ class ChatAttachmentCell: ChatCell {
     private func updateLoadingProgress(_ progress: CGFloat) {
         if progressView.isHidden == true {
             progressView.isHidden = false
+            print("Chat Attachmnet Cell updateLoadingProgress")
         }
         if progress > 0.0 {
             DispatchQueue.main.async {
                 self.progressView.setProgress(to: progress)
+                print("Chat Attachmnet Cell updateLoadingProgress Progress")
             }
         }
     }

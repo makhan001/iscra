@@ -5,13 +5,18 @@
 //  Created by Lokesh Patil on 12/11/21.
 //
 
-import Foundation
 import UIKit
+import Foundation
 
 class AppConstant: NSObject {
     
+    static let UserPlaceHolderImage = UIImage(named: "ic-user-placeholder")
+    static let HabitPlaceHolderImage = UIImage(named: "ic-habit-placeholder")
+    static let IscraAppLink = "https://apps.apple.com/us/app/iscra-group-habit-tracker/id1602472226" // https://apps.apple.com/us/app/itunes-connect/id376771144
+   
     // SocialLogin Constants
-      static let googleClientID = "39692170766-8vkfqscsq4ommlmsnrdmeld8knjne2ec.apps.googleusercontent.com"
+    //  static let googleClientID = "39692170766-8vkfqscsq4ommlmsnrdmeld8knjne2ec.apps.googleusercontent.com"
+    static let googleClientID = "537497635240-eiednf7mbhf7iv3s41f7c62okqak54mc.apps.googleusercontent.com"
     //Navigationtitle
     static let nav_addProfilePicture  = "Add Profile Picture"
     static let nav_memoji = "How to add your own memoji?"
@@ -19,6 +24,12 @@ class AppConstant: NSObject {
     
     // Alert Messages
     static let alert_emptynameMsg = "Please enter your name"
+    
+    
+    // Chat Password
+    static let defaultQBUserPassword = "Iscra@123"
+    
+    static let USERNAME_ACCEPTABLE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-"
     
     
     //Onboarding --
@@ -48,12 +59,12 @@ class AppConstant: NSObject {
     static let groupHabitTitle = "Let’s become better together"
     
     static let inviteFriendsGoodTitle = "Together is \nmore fun"
-    static let inviteFriendsGoodSubTitle = "Do you know it’s much easier to build a new habits when your friend can support you. Invite your friends, build good habits together and have fun!"
+    static let inviteFriendsGoodSubTitle = "Do you know it’s much easier to build a \nnew habits when your friend can support \nyou. Invite your friends, build good habits \ntogether and have fun!"
     static let inviteFriendsBadTitle = "Together we \nare stronger"
-    static let inviteFriendsBadSubTitle = "It’s much easier to get rid of bad habits together! Support each other to become better people."
+    static let inviteFriendsBadSubTitle = "It’s much easier to get rid of bad habits \ntogether! Support each other to become \nbetter people."
     
     static let inviteFriendsGroupTitle = "Let’s invite \nyour friends"
-    static let inviteFriendsGroupSubTitle = "Invite your friends, build good habits together and have fun (if your friends are already with Iscra, they can find your habit in search and join you). You can make your group public and find new friends!"
+    static let inviteFriendsGroupSubTitle = "Invite your friends, build good habits \ntogether and have fun (if your friends are \nalready with Iscra, they can find your habit \nin search and join you). You can make your \ngroup public and find new friends!"
 
     // MARK:Validation Alert messages
     static let emptyEmail = "Email is required"

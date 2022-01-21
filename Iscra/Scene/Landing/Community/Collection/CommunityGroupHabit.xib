@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i8l-ai-LvQ" customClass="IscraCustomView" customModule="Iscra" customModuleProvider="target">
                         <rect key="frame" x="5" y="5" width="289" height="219"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="YPt-ka-CuG">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-habit-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="YPt-ka-CuG">
                                 <rect key="frame" x="0.0" y="0.0" width="289" height="98.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn English" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGp-ll-1Vn" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
@@ -66,6 +66,7 @@
                             <constraint firstItem="qGi-sp-s7a" firstAttribute="width" secondItem="YPt-ka-CuG" secondAttribute="width" multiplier="0.889273" id="O5Y-bc-gyy"/>
                             <constraint firstItem="cGp-ll-1Vn" firstAttribute="leading" secondItem="i8l-ai-LvQ" secondAttribute="leading" constant="16" id="Ou7-zc-jIQ"/>
                             <constraint firstItem="cGp-ll-1Vn" firstAttribute="top" secondItem="YPt-ka-CuG" secondAttribute="bottom" constant="15" id="PvK-S5-94L"/>
+                            <constraint firstAttribute="height" constant="219" id="UXd-ox-GNb"/>
                             <constraint firstAttribute="trailing" secondItem="cGp-ll-1Vn" secondAttribute="trailing" constant="16" id="k6v-fc-7eS"/>
                             <constraint firstItem="YPt-ka-CuG" firstAttribute="top" secondItem="i8l-ai-LvQ" secondAttribute="top" id="uVp-7o-fWa"/>
                             <constraint firstAttribute="trailing" secondItem="qGi-sp-s7a" secondAttribute="trailing" constant="16" id="vXV-JL-MlO"/>
@@ -117,7 +118,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="ic-Rectangle" width="289" height="108"/>
+        <image name="ic-habit-placeholder" width="67" height="78"/>
         <namedColor name="BlackAccent">
             <color red="0.10999999940395355" green="0.090000003576278687" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -14,10 +14,10 @@ import IQKeyboardManagerSwift
 
 
 struct CredentialsConstant {
-    static let applicationID:UInt = 94500
-    static let authKey = "UA5G7ZR4-z-hRM9"
-    static let authSecret = "cT-CPm-3TBU8-42"
-    static let accountKey = "qamiD7ximJfGsNrs-FyX"
+    static let applicationID:UInt = 94837
+    static let authKey = "u23O6e2xksURPzD"
+    static let authSecret = "yNWuKMAOBVzxxp8"
+    static let accountKey = "HzaDQCQWWVkatEE9qjV-"
 }
 
 @available(iOS 13.0, *)
@@ -31,35 +31,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         self.initialConfiguration()
         return true
     }
+    
     func application(
-      _ app: UIApplication,
-      open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+        _ app: UIApplication,
+        open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]
     ) -> Bool {
-      var handled: Bool
-      handled = GIDSignIn.sharedInstance.handle(url)
-      if handled {
-        return true
-      }
-      // Handle other custom URL types.
-
-      // If not handled by this app, return false.
-      return false
+        var handled: Bool
+        handled = GIDSignIn.sharedInstance.handle(url)
+        if handled {
+            return true
+        }
+        // Handle other custom URL types.
+        
+        // If not handled by this app, return false.
+        return false
     }
+    
     private func initialConfiguration() {
         Thread.sleep(forTimeInterval: 0.0)
+        self.setHUD()
+        self.setupQuickBlox()
+        self.setNavigationBar()
+        self.setRootController()
+        self.registerForRemoteNotifications()
+        IQKeyboardManager.shared.enable = true
+        _ = GIDConfiguration.init(clientID: "737448075691-v86u462dj0cepp37pukugf53cg7fbom2.apps.googleusercontent.com")
+    }
+    
+    private func setHUD() {
         SVProgressHUD.setForegroundColor(UIColor.primaryAccent)
         SVProgressHUD.setBackgroundColor(UIColor.black.withAlphaComponent(0.10))
         SVProgressHUD.setRingThickness(5.0)
-        IQKeyboardManager.shared.enable = true
-        self.setNavigationBar()
-        self.setRootController()
-        self.setupQuickBlox()
-        
-        _ = GIDConfiguration.init(clientID: "737448075691-v86u462dj0cepp37pukugf53cg7fbom2.apps.googleusercontent.com")
     }
     
     private func setupQuickBlox() {
@@ -74,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QBSettings.enableXMPPLogging()
         QBSettings.logLevel = .debug
         QBSettings.autoReconnectEnabled = true
-
+        
     }
     
     func setNavigationBar() {
@@ -92,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigation.isTranslucent = false
     }
     
-     func setRootController() {
+    func setRootController() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
             self.rootController.start(window: window)
@@ -176,27 +181,61 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         guard let dialogID = userInfo["SA_STR_PUSH_NOTIFICATION_DIALOG_ID".localized] as? String,
               dialogID.isEmpty == false else {
-            completionHandler()
-            return
-        }
+                  completionHandler()
+                  return
+              }
         DispatchQueue.main.async {
             if ChatManager.instance.storage.dialog(withID: dialogID) != nil {
-               // self.rootViewController.dialogID = dialogID
+                // self.rootViewController.dialogID = dialogID
             } else {
                 ChatManager.instance.loadDialog(withID: dialogID, completion: { (loadedDialog: QBChatDialog?) -> Void in
                     guard loadedDialog != nil else {
                         return
                     }
-//self.rootViewController.dialogID = dialogID
+                    //self.rootViewController.dialogID = dialogID
                 })
             }
         }
         completionHandler()
     }
+    
+    private func registerForRemoteNotifications() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.sound, .alert, .badge], completionHandler: { granted, error in
+            if let error = error {
+                debugPrint("registerForRemoteNotifications error: \(error.localizedDescription)")
+                return
+            }
+            center.getNotificationSettings(completionHandler: { settings in
+                if settings.authorizationStatus != .authorized {
+                    return
+                }
+                DispatchQueue.main.async(execute: {
+                    UIApplication.shared.registerForRemoteNotifications()
+                })
+            })
+        })
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        print("Devcie token for apns ==== \(token)")
+//        Messaging.messaging().apnsToken = deviceToken
+        UserStore.save(apnsToken: token)
+        
+//        Messaging.messaging().token { token, error in
+//            if let error = error {
+//                print("Error fetching FCM registration token: \(error)")
+//            } else if let token = token {
+//                print("FCM registration token: \(token)")
+//                UserStore.save(fcmtoken: token)
+//            }
+//        }
+    }
 }
+
 extension UIApplication {
     static var appVersion: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
 }
-

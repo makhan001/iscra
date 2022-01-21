@@ -15,7 +15,7 @@ final class EditHabitViewModel {
     var colorTheme: String = ""
     var reminders: Bool = false
     var groupImage: UIImage?
-    var objHabitDetail: HabitDetails?
+    var objHabitDetail: HabitDetails? 
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
     var delegate: HabitServiceProvierDelegate?
@@ -26,6 +26,7 @@ final class EditHabitViewModel {
     }
     
     private func validateHabitInput() {
+        self.habitName  = self.habitName.trimmingCharacters(in: .whitespacesAndNewlines)
         if Validation().textValidation(text: habitName, validationType: .habitName).0 {
             view?.onAction(.requireFields(Validation().textValidation(text: habitName, validationType: .habitName).1))
             return
@@ -33,7 +34,7 @@ final class EditHabitViewModel {
         
         if self.days == "" {
             view?.onAction(.requireFields(AppConstant.emptyDays))
-        }else{
+        } else {
             HabitUtils.shared.days = self.days
             print("Api call")
             self.apiForUpdateHabit()
@@ -50,11 +51,12 @@ extension EditHabitViewModel {
     func apiForUpdateHabit() {
         let habitId = String(self.objHabitDetail?.id ?? 0)
         let icon = self.objHabitDetail?.icon ?? ""
-        let habitType = HabitType(rawValue: (self.objHabitDetail?.habitType)!) ?? .good
-        let description = self.objHabitDetail?.habitDescription ?? ""
-        let parameters = HabitParams.UpdateHabit(id: habitId, days: self.days, icon: icon, name: self.habitName, timer: self.timer, reminders: self.reminders, habit_type: habitType.rawValue, color_theme: self.colorTheme, description: description)
+       // let habitType = HabitType(rawValue: (self.objHabitDetail?.habitType)!) ?? .good
+        let habitType = self.objHabitDetail?.habitType
+        let description = self.objHabitDetail?.habitDetailsDescription ?? ""
+        let parameters = HabitParams.UpdateHabit(id: habitId, days: self.days, icon: icon, name: self.habitName, timer: self.timer, reminders: self.reminders, habit_type: habitType, color_theme: self.colorTheme, description: description)
         print("param is  \(parameters)")
-        WebService().requestMultiPart(urlString: "habits/edit",
+        WebService().requestMultiPart(urlString: APIConstants.editHabit,
                                       httpMethod: .put,
                                       parameters: parameters,
                                       decodingType: SuccessResponseModel.self,
@@ -75,7 +77,6 @@ extension EditHabitViewModel {
         }
     }
 }
-
 
 extension EditHabitViewModel: HabitInputViewDelegate {
     func onAction(action: HabitAction, for screen: HabitScreenType) {

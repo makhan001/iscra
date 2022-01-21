@@ -15,13 +15,24 @@ class GroupHabitCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.imgHabit.roundCorners(corners: [.topLeft ,.topRight], radius: 8)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    func configure(obj: AllGroupHabit) {
+        self.lblHabitTitle.text = obj.name?.capitalized
+        self.lblHabitSubtitle.text = obj.allGroupHabitDescription
+        let profilePic = obj.groupImage
+        self.imgHabit.isHidden = true
+        if profilePic != nil && profilePic != "<null>"  {
+            self.imgHabit.isHidden = false
+            self.imgHabit.setImageFromURL(obj.groupImage ?? "", with: AppConstant.HabitPlaceHolderImage)
+        } else {
+            self.imgHabit.isHidden = true
+        }
+
+    }
 }

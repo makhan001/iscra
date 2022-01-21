@@ -22,9 +22,7 @@ enum InputValidation:String {
 class Validation {
     
     func textValidation(text:String,validationType:InputValidation) -> (Bool,String) {
-        
-        switch validationType {
-        
+        switch validationType {        
         case .email:
             return(
                 text == "" ? true :
@@ -57,8 +55,7 @@ class Validation {
             
         case .name:
             return( text == "" ? true :
-                       isTextContainspecialCharacters(string: text) == true ? true : false,
-                       // Validation().isValidname(name: text) == false ? true : false,
+                       Validation().isValidname(name: text) == false ? true : false,
                     text == "" ? AppConstant.emptyName : AppConstant.invalidName)
             
         case .description:
@@ -67,7 +64,6 @@ class Validation {
                     text == "" ? AppConstant.emptyDescription : AppConstant.invalidDescription)
             
         case .habitName:
-            
             return( text == "" ? true :
                         text.count > 30 ? true : false,
                     text == "" ? AppConstant.emptyHabitName : AppConstant.invalidHabitName)
@@ -87,11 +83,11 @@ class Validation {
         let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: password)
     }
-//    func isValidname(name:String) -> Bool {
-//        let nameRegEx = NSPredicate(format: "SELF MATCHES %@",
-//                                     "^[A-Z]+[a-zA-Z]*$")
-//        return nameRegEx.evaluate(with: name)
-//    }
+    func isValidname(name:String) -> Bool {
+        let nameRegEx = NSPredicate(format: "SELF MATCHES %@",
+                                     "^[a-zA-Z]-_")
+        return nameRegEx.evaluate(with: name)
+    }
     
     // Special Characters Validations
     func isTextContainspecialCharacters(string: String) -> Bool {

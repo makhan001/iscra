@@ -92,7 +92,7 @@ class EnterChatNameVC: UITableViewController {
     private func isValid(chatName: String?) -> Bool {
         let characterSet = CharacterSet.whitespaces
         let trimmedText = chatName?.trimmingCharacters(in: characterSet)
-        let regularExtension = EnterChatNameConstant.chatname
+        let regularExtension = EnterChatNameConstant.chatname.capitalized
         let predicate = NSPredicate(format: "SELF MATCHES %@", regularExtension)
         let isValid = predicate.evaluate(with: trimmedText)
         return isValid
@@ -101,7 +101,7 @@ class EnterChatNameVC: UITableViewController {
     private func validate(_ textField: UITextField?) {
         if textField == chatNameTextField, isValid(chatName: chatNameTextField.text) == false {
             navigationItem.rightBarButtonItem?.isEnabled = false
-            hintLabel.text = EnterChatNameConstant.nameHint
+            hintLabel.text = EnterChatNameConstant.nameHint.capitalized
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = true
             hintLabel.text = ""
@@ -127,8 +127,8 @@ class EnterChatNameVC: UITableViewController {
             return
         }
         
-        if selectedUsers.count > 1 {
-            let chatName = chatNameTextField.text ?? "New Group Chat"
+        if selectedUsers.count > 0 {
+            let chatName = chatNameTextField.text?.capitalized ?? "New Group Chat"
             sender.isEnabled = false
             SVProgressHUD.show()
             chatManager.storage.update(users: selectedUsers)
@@ -160,10 +160,10 @@ class EnterChatNameVC: UITableViewController {
     private func messageText(withChatName chatName: String) -> String {
         let actionMessage = "SA_STR_CREATE_NEW".localized
         guard let current = QBSession.current.currentUser,
-              let fullName = current.fullName else {
+              let fullName = current.fullName?.capitalized else {
             return ""
         }
-        return "\(fullName) \(actionMessage) \"\(chatName)\""
+        return "\(fullName.capitalized) \(actionMessage) \"\(chatName)\""
     }
     
     private func openNewDialog(_ newDialog: QBChatDialog) {
@@ -196,6 +196,7 @@ class EnterChatNameVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SA_STR_SEGUE_GO_TO_CHAT".localized {
             if let chatVC = segue.destination as? ChatViewController {
+                chatVC.isFromCreateGroup = true
                 chatVC.dialogID = sender as? String
             }
         }

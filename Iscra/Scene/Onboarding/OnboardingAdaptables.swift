@@ -7,6 +7,16 @@
 
 import Foundation
 
+enum SubscriptionSourceScreen: String {
+    case login
+    case myAccount
+}
+
+enum MemojiSourceScreen: String {
+    case walkthrough
+    case myAccount
+}
+
 enum OnboardingScreenType: String {
     case signup
     case login
@@ -38,6 +48,8 @@ enum OnboardingAction {
     case sessionExpired
     case logout
     case updateProfile
+    case subscription
+    case products
 }
 protocol InputFieldAlertDelegate:AnyObject {
     func userInput(_ text: String)

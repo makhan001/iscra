@@ -14,6 +14,7 @@ final class SignupCoordinator: Coordinator<Scenes> {
     let verification: VerificationViewController = VerificationViewController.from(from: .onboarding, with: .verification)
     
     private var landing: LandingCoordinator!
+    private var welcome: OnboardingCoordinator!
     
     override func start() {
         super.start()
@@ -36,8 +37,16 @@ final class SignupCoordinator: Coordinator<Scenes> {
         add(landing)
         landing.delegate = self
         landing.start()
-        //landing.start(imageUrl: controller.viewModel.socialLoginImageURL)
         self.router.present(landing, animated: true)
+    }
+    
+    private func startWelcome() {
+        let router = Router()
+        welcome = OnboardingCoordinator(router: router)
+        add(welcome)
+        welcome.delegate = self
+        welcome.start()
+        self.router.present(welcome, animated: true)
     }
 }
 
@@ -46,6 +55,7 @@ extension SignupCoordinator: NextSceneDismisser {
     func push(scene: Scenes) {
         switch scene {
         case .landing: startLanding()
+        case .welcome: startWelcome()
         case .verification: startVerification()
         default: break
         }

@@ -36,6 +36,9 @@ class Profile: NSObject  {
             if let fullName = user.fullName {
                 current.fullName = fullName
             }
+            if let customData = user.customData {
+                current.customData = customData
+            }
             if let login = user.login {
                 current.login = login
             }
@@ -83,7 +86,9 @@ class Profile: NSObject  {
     var fullName: String {
         return user?.fullName ?? ""
     }
-    
+    var customData: String {
+        return user?.customData ?? ""
+    }
     private var user: QBUUser? = {
         return Profile.loadObject()
     }()

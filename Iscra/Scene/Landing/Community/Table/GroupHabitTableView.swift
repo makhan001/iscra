@@ -7,43 +7,49 @@
 
 import UIKit
 
-class GroupHabitTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
+class GroupHabitTableView: UITableView {
     var count: Int = 0
-    var navigateToDetail:((_ isSelect:Bool)   ->())?
+    var arrGroupList = [AllGroupHabit]()
+    var didSelectTableAtIndex:((Int) -> Void)?
+    
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure(obj: Int) {
+    func configure(arrGroupList: [AllGroupHabit]) {
         self.register(UINib(nibName: "GroupHabitCell", bundle: nil), forCellReuseIdentifier: "GroupHabitCell")
-        self.delegate = self
-        self.dataSource = self
-        self.count = obj
-        reloadData()
+        self.arrGroupList = arrGroupList
+        self.setup()
     }
     
+    private func setup() {
+        dataSource = self
+        delegate = self
+        estimatedRowHeight = 70.0
+        rowHeight = UITableView.automaticDimension
+        tableFooterView = UIView(frame: .zero)
+        separatorStyle = .none
+        reloadData()
+    }
+}
+
+extension GroupHabitTableView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return count
+        return arrGroupList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupHabitCell") as? GroupHabitCell else {
             return UITableViewCell()
         }
-        cell.lblHabitTitle.text = "Learn English"
-        cell.lblHabitSubtitle.text = "I created this group to build new habit to learn foreign language."
-        cell.imgHabit.image = #imageLiteral(resourceName: "ic-Rectangle")
-        
-        if indexPath.row == 1 || indexPath.row == 3 {
-        cell.imgHabit.isHidden = true
-        }else{
-            cell.imgHabit.isHidden = false
+        if self.arrGroupList.count > 0 {
+        let objGroup = self.arrGroupList[indexPath.row]
+        cell.configure(obj: objGroup)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigateToDetail!(true)
+        self.didSelectTableAtIndex?(indexPath.row)
     }
-        
 }

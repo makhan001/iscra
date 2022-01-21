@@ -26,22 +26,21 @@ final class HabitServiceProvider: HabitServiceProvidable {
     func deleteHabit(param: HabitParams.DeleteHabit) {
         task.deleteHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                self?.delegate?.completed(for: .deleteHabit, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+            self?.delegate?.completed(for: .deleteHabit, with: resp, with: nil)
         }
-        
     }
     
     func habitDetail(param: HabitParams.HabitDetail) {
         WebService().StartIndicator()
         task.habitDetail(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                self?.delegate?.completed(for: .habitDetail, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+            self?.delegate?.completed(for: .habitDetail, with: resp, with: nil)
         }
     }
     
@@ -49,10 +48,10 @@ final class HabitServiceProvider: HabitServiceProvidable {
         WebService().StartIndicator()
         task.allHabitList(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                self?.delegate?.completed(for: .habitList, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+            self?.delegate?.completed(for: .habitList, with: resp, with: nil)
         }
     }
     
@@ -60,32 +59,84 @@ final class HabitServiceProvider: HabitServiceProvidable {
         WebService().StartIndicator()
         task.updateHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                self?.delegate?.completed(for: .updateHabit, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+            self?.delegate?.completed(for: .updateHabit, with: resp, with: nil)
         }
     }
     
-    func groupInvitations(param: HabitParams.GroupInvitations) {
-        WebService().StartIndicator()
-        task.groupInvitations(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
-            if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
-                return
-            }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
-        }
-    }
     
     func markAsComplete(param: HabitParams.MarkAsComplete) {
        // WebService().StartIndicator()
         task.markAsComplete(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
             if err != nil {
-                self?.delegate?.completed(for: .createHabit, with: resp, with: err)
+                self?.delegate?.completed(for: .markAsComplete, with: resp, with: err)
                 return
             }
-            self?.delegate?.completed(for: .createHabit, with: resp, with: nil)
+            self?.delegate?.completed(for: .markAsComplete, with: resp, with: nil)
+        }
+    }
+    
+    func shareHabit(param: HabitParams.ShareHabit) {
+        WebService().StartIndicator()
+        task.shareHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .shareHabit, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .shareHabit, with: resp, with: nil)
+        }
+    }
+    
+    func joinHabit(param: HabitParams.JoinHabit) {
+        task.joinHabit(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .joinHabit, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .joinHabit, with: resp, with: nil)
+        }
+    }
+    
+    func habitCalender(param: HabitParams.HabitCalender) {
+        task.habitCalender(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .habitCalender, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .habitCalender, with: resp, with: nil)
+        }
+    }
+        
+    func groupHabitMembers(param: HabitParams.GroupHabitMembers) {
+        task.groupHabitMembers(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .groupHabitMembers, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .groupHabitMembers, with: resp, with: nil)
+        }
+    }
+    
+    func groupHabitDetails(param: HabitParams.GroupHabitDetails) {
+        task.groupHabitDetails(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .groupHabitDetails, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .groupHabitDetails, with: resp, with: nil)
+        }
+    }
+
+    func friends(param: HabitParams.Friends) {
+        WebService().StartIndicator()
+        task.friendsForShare(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .friends, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .friends, with: resp, with: nil)
         }
     }
 }

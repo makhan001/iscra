@@ -6,19 +6,22 @@
 //
 
 import UIKit
-
-class CommunityGroupHabit: UICollectionViewCell {
+import SDWebImage
+class CommunityGroupHabit: UICollectionViewCell, Reusable {
     
-    // MARK: - Outlets
     @IBOutlet weak var imgHabit: UIImageView!
     @IBOutlet weak var lblHabitTitle: UILabel!
     @IBOutlet weak var lblHabitSubtitle: UILabel!
         
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.imgHabit.roundCorners(corners: [.topLeft ,.topRight], radius: 8)
     }
-        
-    func configure() {
+    
+    func configure<T>(with content: T) {
+        guard let item = content as? Invitaion else { return }
+        self.lblHabitTitle.text = item.name?.capitalized
+        self.lblHabitSubtitle.text = item.invitaionDescription
+        self.imgHabit.setImageFromURL(item.groupImage ?? "", with: AppConstant.HabitPlaceHolderImage)
     }
 }

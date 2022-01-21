@@ -18,16 +18,21 @@ struct UserStore {
     private static let primeUserKey = "primeUser"
     private static let is_social_login_key = "is_social_login"
     private static let is_verify_key = "is_verify_key"
+    private static let chat_login_key = "qb_login"
+    private static let user_created_at = "user_created_at"
     private static let empkey = "emp"
     static let fcmtoken_key = "fcmtoken"
     static let apns_token_key = "apns_token"
     static let socialLoginKey = "social_login_Id"
+    
     static var isVerify: Bool? {
         return UserDefaults.standard.bool(forKey: is_verify_key)
     }
+    
     static var token: String? {
         return UserDefaults.standard.string(forKey: token_key)
     }
+    
     static var emp: String? {
         return UserDefaults.standard.string(forKey: empkey)
     }
@@ -70,6 +75,14 @@ struct UserStore {
     
     static var isSocialLogin:Bool? {
         return UserDefaults.standard.bool(forKey: is_social_login_key)
+    }
+    
+    static var chatLogin:Bool? {
+        return UserDefaults.standard.bool(forKey: chat_login_key)
+    }
+    
+    static var userCreateDate:Double {
+        UserDefaults.standard.double(forKey: user_created_at)
     }
     
     static func save(token:String?) {
@@ -122,7 +135,16 @@ struct UserStore {
     
     static func save(isVerify:Bool) {
         UserDefaults.standard.set(isVerify, forKey:is_verify_key)
-      }
+    }
+    
+    static func save(chatLogin:Bool) {
+        UserDefaults.standard.set(isVerify, forKey:chat_login_key)
+    }
+    
+    static func save(userCreateDate:Double) {
+        UserDefaults.standard.set(userCreateDate, forKey:user_created_at)
+    }
+    
     
     //    static func save(dialHistory:[DialHistory]) {
     //        UserDefaults.standard.set(try? PropertyListEncoder().encode(dialHistory), forKey:dialHistoryKey)

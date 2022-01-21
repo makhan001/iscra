@@ -32,8 +32,7 @@ class CustomDashedView: UIView {
         dashBorder.fillColor = nil
         if cornerRadius > 0 {
             dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
-        }
-        else {
+        } else {
             dashBorder.path = UIBezierPath(rect: bounds).cgPath
         }
         layer.addSublayer(dashBorder)

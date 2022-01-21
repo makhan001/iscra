@@ -23,10 +23,10 @@
                         <rect key="frame" x="5" y="8" width="507" height="145"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3qa-Bi-Mbw">
-                                <rect key="frame" x="5" y="0.0" width="442" height="145"/>
+                                <rect key="frame" x="5" y="0.0" width="264.5" height="145"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXx-hN-Laz">
-                                        <rect key="frame" x="0.0" y="0.0" width="442" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="264.5" height="0.0"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7LT-TW-Hj3">
                                                 <rect key="frame" x="15" y="-12.5" width="25" height="25"/>
@@ -36,7 +36,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghfghfghfgh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-QW-I6j" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="-12.5" width="394" height="25"/>
+                                                <rect key="frame" x="48" y="-12.5" width="216.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="qAh-U3-bzQ"/>
                                                 </constraints>
@@ -61,7 +61,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkM-kC-9kr">
-                                        <rect key="frame" x="0.0" y="0.0" width="442" height="145"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="264.5" height="145"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tgf-GA-o2X">
                                                 <rect key="frame" x="15" y="30" width="25" height="25"/>
@@ -71,7 +71,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ghfghfghfgh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYu-vK-RwO" customClass="IscraCustomLabel" customModule="Iscra" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="30" width="394" height="25"/>
+                                                <rect key="frame" x="48" y="30" width="216.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Glh-kO-zwr"/>
                                                 </constraints>
@@ -101,7 +101,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="EkP-Ep-OZ8">
-                                                <rect key="frame" x="15" y="96" width="412" height="35"/>
+                                                <rect key="frame" x="15" y="96" width="234.5" height="35"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="QJn-Au-Oxg"/>
@@ -128,14 +128,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3j-LF-cYQ">
-                                <rect key="frame" x="447" y="10" width="55" height="125"/>
+                                <rect key="frame" x="269.5" y="10" width="232.5" height="125"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bYT-6y-gon">
-                                        <rect key="frame" x="10" y="0.0" width="45" height="125"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bYT-6y-gon" customClass="HabitDaysCollectionView" customModule="Iscra" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="0.0" width="212.5" height="125"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="HkN-D1-p3U"/>
-                                        </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hcb-Fe-xgR">
                                             <size key="itemSize" width="50" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -147,18 +144,25 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="bYT-6y-gon" secondAttribute="bottom" id="BT8-Ca-JIA"/>
-                                    <constraint firstAttribute="trailing" secondItem="bYT-6y-gon" secondAttribute="trailing" id="Giw-11-knf"/>
+                                    <constraint firstAttribute="trailing" secondItem="bYT-6y-gon" secondAttribute="trailing" constant="10" id="Giw-11-knf"/>
                                     <constraint firstItem="bYT-6y-gon" firstAttribute="top" secondItem="o3j-LF-cYQ" secondAttribute="top" id="IIE-AJ-Rlm"/>
                                     <constraint firstItem="bYT-6y-gon" firstAttribute="leading" secondItem="o3j-LF-cYQ" secondAttribute="leading" constant="10" id="cv4-pB-5dk"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Je7-rm-uls">
+                                <rect key="frame" x="0.0" y="0.0" width="507" height="145"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Je7-rm-uls" secondAttribute="bottom" id="7bw-3i-sGO"/>
+                            <constraint firstItem="Je7-rm-uls" firstAttribute="top" secondItem="YzE-Jj-MNv" secondAttribute="top" id="8Vr-al-qmM"/>
                             <constraint firstItem="o3j-LF-cYQ" firstAttribute="leading" secondItem="3qa-Bi-Mbw" secondAttribute="trailing" id="8mg-C7-62w"/>
                             <constraint firstAttribute="bottom" secondItem="3qa-Bi-Mbw" secondAttribute="bottom" id="9nU-ms-YgY"/>
                             <constraint firstItem="3qa-Bi-Mbw" firstAttribute="top" secondItem="YzE-Jj-MNv" secondAttribute="top" id="H67-W1-Ng9"/>
+                            <constraint firstAttribute="trailing" secondItem="Je7-rm-uls" secondAttribute="trailing" id="J2R-xu-KOL"/>
                             <constraint firstItem="3qa-Bi-Mbw" firstAttribute="leading" secondItem="YzE-Jj-MNv" secondAttribute="leading" constant="5" id="Tze-Ex-kIS"/>
+                            <constraint firstItem="Je7-rm-uls" firstAttribute="leading" secondItem="YzE-Jj-MNv" secondAttribute="leading" id="URf-EI-Grp"/>
                             <constraint firstItem="o3j-LF-cYQ" firstAttribute="top" secondItem="YzE-Jj-MNv" secondAttribute="top" constant="10" id="VYC-w6-lr1"/>
                             <constraint firstAttribute="bottom" secondItem="o3j-LF-cYQ" secondAttribute="bottom" constant="10" id="WN1-pi-zsC"/>
                             <constraint firstAttribute="trailing" secondItem="o3j-LF-cYQ" secondAttribute="trailing" constant="5" id="bz6-1b-Bcb"/>
@@ -185,18 +189,19 @@
                 <constraints>
                     <constraint firstItem="YzE-Jj-MNv" firstAttribute="leading" secondItem="A2r-yL-XGN" secondAttribute="leading" constant="5" id="Gzu-7f-q0Y"/>
                     <constraint firstAttribute="trailing" secondItem="YzE-Jj-MNv" secondAttribute="trailing" constant="5" id="VPz-UD-w9P"/>
+                    <constraint firstItem="o3j-LF-cYQ" firstAttribute="width" secondItem="A2r-yL-XGN" secondAttribute="width" multiplier="0.45" id="twL-JS-YYf"/>
                     <constraint firstAttribute="bottom" secondItem="YzE-Jj-MNv" secondAttribute="bottom" constant="8" id="xP2-vO-pqZ"/>
                     <constraint firstItem="YzE-Jj-MNv" firstAttribute="top" secondItem="A2r-yL-XGN" secondAttribute="top" constant="8" id="yT0-s6-5Kb"/>
                 </constraints>
             </collectionViewCellContentView>
             <connections>
-                <outlet property="collectionMates" destination="EkP-Ep-OZ8" id="DVm-os-wdb"/>
-                <outlet property="collectiondays" destination="bYT-6y-gon" id="IEc-El-7nA"/>
-                <outlet property="constraintWidth" destination="HkN-D1-p3U" id="3Yk-Zc-Dpr"/>
-                <outlet property="imgHabit" destination="7LT-TW-Hj3" id="Nj5-6B-hxm"/>
-                <outlet property="imgHabitMates" destination="Tgf-GA-o2X" id="zqO-ht-015"/>
+                <outlet property="btnHabitDetail" destination="Je7-rm-uls" id="Q08-t2-pgG"/>
+                <outlet property="daysCollectionView" destination="bYT-6y-gon" id="UWh-2f-yA0"/>
+                <outlet property="imageHabit" destination="7LT-TW-Hj3" id="wGa-aw-T6B"/>
+                <outlet property="imageHabitMates" destination="Tgf-GA-o2X" id="jlh-Qv-Nyh"/>
                 <outlet property="lblHabitTitle" destination="Hxw-QW-I6j" id="9yW-Dc-Geb"/>
                 <outlet property="lblHabitTitleMates" destination="mYu-vK-RwO" id="3Ms-gV-yli"/>
+                <outlet property="matesCollectionView" destination="EkP-Ep-OZ8" id="Cjs-wB-C13"/>
                 <outlet property="viewContainer" destination="YzE-Jj-MNv" id="3Li-08-W3T"/>
                 <outlet property="viewMates" destination="pkM-kC-9kr" id="WO6-sx-MOw"/>
                 <outlet property="viewNomates" destination="YXx-hN-Laz" id="Ayo-e4-bTV"/>

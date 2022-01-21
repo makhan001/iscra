@@ -22,8 +22,8 @@ final class EditHabitCoordinator: Coordinator<Scenes> {
     
     func start(objHabitDetail: HabitDetails) {
         super.start()
-        controller.objHabitDetail = objHabitDetail
         router.setRootModule(controller, hideBar: true)
+        controller.objHabitDetail = objHabitDetail
         self.onStart()
     }
 

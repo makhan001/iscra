@@ -6,81 +6,61 @@
 //
 
 import UIKit
-protocol selectedIcondelegate:class {
-    func selectedIcon(Icon:String)
-}
+
 class IconPopupViewController: UIViewController {
+    
     @IBOutlet weak var backGroundView:UIView!
-    @IBOutlet weak var IocnHeaderCollection:IconHeader!
-    @IBOutlet weak var IconCollection:IconCollectionView!
-    var iconResorces = IconsHabitModel()
-    var themeColor = ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
-    var icons = [IconModel]()
-    var selectedCategoryIndex = 0
-    var selectedIcon = "sport1"
-    var delegateIcon:selectedIcondelegate?
+    @IBOutlet weak var iconCollectionView:IconCollectionView! // iconCollectionView
+    @IBOutlet weak var iocnHeaderCollectionView:IconHeaderCollectionView!
+    
+    let viewModel:IconsViewModel = IconsViewModel.init()
+    var selectedIconName:((String) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        self.setup()
     }
 }
 
+// Mark: Instance Methods
 extension IconPopupViewController {
-    func setup()  {
-        IocnHeaderCollection.configure(iconHeader: iconResorces)
-        IocnHeaderCollection.delegateIconCatogory = self
-        icons =  iconResorces.iconCategory?[0].icons ?? [IconModel]()
-        IconCollection.configure(icons: icons, theme: themeColor.colorHex)
-        IconCollection.delegateIcon = self
+    private func setup() {
+        self.iconCollectionView.configure(viewModel: viewModel)
+        self.iconCollectionView.didSelectIconAtIndex = didSelectIconAtIndex
+        
+        self.iocnHeaderCollectionView.configure(viewModel: viewModel)
+        self.iocnHeaderCollectionView.didSelectCategoryAtIndex = didSelectCategoryAtIndex
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        backGroundView.addGestureRecognizer(tap)
+        self.backGroundView.addGestureRecognizer(tap)
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         self.dismiss(animated: true, completion: nil)
-        delegateIcon?.selectedIcon(Icon: selectedIcon)
     }
 }
 
-extension IconPopupViewController: selectedIconCatogory , selectedIcon{
-    
-    func selectedIconIndex(Index: Int) {
-        let dict = iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index]
-        /* if dict?.value == 0 {
-         iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].value = 1
-         }
-         else {
-         iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].value = 0
-         }
-         icons =  iconResorces.iconCategory?[selectedCategoryIndex].icons ?? [IconModel]()
-         IconCollection.configure(icons: icons, theme: themeColor.colorHex)
-         */
-        for iconCategoryIndex in 0..<iconResorces.iconCategory!.count{
-            if iconCategoryIndex != selectedCategoryIndex {
-                for iconCategoryIndex in 0..<(iconResorces.iconCategory?[selectedCategoryIndex].icons!.count)!{
-                    iconResorces.iconCategory?[selectedCategoryIndex].icons?[iconCategoryIndex].value = 0
-                }
-            }
-            else{
-                if dict?.value == 0 {
-                    iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].value = 1
-                    selectedIcon = iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].iconName ?? "sport1"
-                    delegateIcon?.selectedIcon(Icon: selectedIcon)
-                }
-                else {
-                    iconResorces.iconCategory?[selectedCategoryIndex].icons?[Index].value = 0
-                }
-                icons =  iconResorces.iconCategory?[selectedCategoryIndex].icons ?? [IconModel]()
-                iconResorces.iconCategory?[selectedCategoryIndex].icons  = icons
-                IconCollection.configure(icons: icons, theme: themeColor.colorHex)
-            }
+// MARK: Closure Callback
+extension IconPopupViewController {
+    func didSelectIconAtIndex(_ index: Int) {
+        for i in 0..<self.viewModel.icons.count {
+            self.viewModel.icons[i].isSelected = false
         }
+        self.viewModel.iconIndex = index
+        self.viewModel.icons[index].isSelected = true
+        self.selectedIconName?(viewModel.icons[index].iconName)
+        self.iconCollectionView.reloadData()
+        
     }
     
-    func selected(Index: Int) {
-        selectedCategoryIndex = Index
-        IconCollection.configure(icons: iconResorces.iconCategory?[Index].icons ?? [IconModel](), theme: themeColor.colorHex)
+    private func didSelectCategoryAtIndex(_ index: Int) {
+        for i in 0..<viewModel.iconCategory.count {
+            viewModel.iconCategory[i].isSelected = false
+        }
+        self.viewModel.categoryIndex = index
+        self.viewModel.iconCategory[index].isSelected = true
+        self.viewModel.icons = self.viewModel.iconCategory[index].icons
+        self.iconCollectionView.reloadData()
+        self.iocnHeaderCollectionView.reloadData()
     }
 }

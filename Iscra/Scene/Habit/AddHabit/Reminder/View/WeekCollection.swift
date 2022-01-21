@@ -5,70 +5,61 @@
 //  Created by Lokesh Patil on 27/10/21.
 //
 
-import Foundation
 import UIKit
+import Foundation
 
-struct weekStruct{
-    var id : Int
-    var shortDayname: String
-    var dayname: String
-    var isSelect: Bool
-}
 
-class WeekCollection: UICollectionView{
-    var selectedColorTheme =  ColorStruct(id: "1", colorHex: "#ff7B86EB", isSelect: true)
+class WeekCollection: UICollectionView { // WeekCollectionView
     
-    var didSelectedDayAtIndex: ((String) -> Void)?
-
-    var selcteIndex = 0
-    var weakDays = [weekStruct(id: 7, shortDayname: "S", dayname: "sunday", isSelect: false),
-                    weekStruct(id: 1, shortDayname: "M", dayname: "monday", isSelect: false),
-                    weekStruct(id: 2, shortDayname: "T", dayname: "tuesday", isSelect: false),
-                    weekStruct(id: 3, shortDayname: "W", dayname: "wednesday", isSelect: false),
-                    weekStruct(id: 4, shortDayname: "T", dayname: "thursday", isSelect: false),
-                    weekStruct(id: 5, shortDayname: "F", dayname: "friday", isSelect: false),
-                    weekStruct(id: 6, shortDayname: "S", dayname: "suturday", isSelect: false)]
+    var viewModel: AddHabitViewModel!
+        
+    func confirgure(viewModel: AddHabitViewModel) {
+        self.viewModel = viewModel
+        self.setup()
+    }
     
-    func configure(selectedColor:ColorStruct) {
+    private func setup() {
+        let currentWeekdayIndex = Date().weekdayIndex
+        if  currentWeekdayIndex == 7 {
+            viewModel.weakDays[0].isSelected = true
+        } else {
+            viewModel.weakDays[currentWeekdayIndex].isSelected = true
+        }
+        
         self.register(UINib(nibName: "WeekDaysCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WeekDaysCollectionViewCell")
-        self.delegate = self
-        self.dataSource = self
-        selectedColorTheme = selectedColor
+        delegate = self
+        dataSource = self
         reloadData()
     }
 }
 
 extension WeekCollection:  UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return weakDays.count
+        return viewModel.weakDays.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = self.dequeueReusableCell(withReuseIdentifier: "WeekDaysCollectionViewCell", for: indexPath) as? WeekDaysCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(day: weakDays[indexPath.row], selectedColor:selectedColorTheme)
+        cell.configure(day: viewModel.weakDays[indexPath.row], selectedColor: viewModel.selectedColorTheme)
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width/7 - 10, height:collectionView.frame.height )
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var temp = weakDays
-        if temp[indexPath.row].isSelect == true {
-            temp[indexPath.row].isSelect = false
-        }
-        else{
-            temp[indexPath.row].isSelect = true
-        }
-        weakDays = temp
-        var strDays = ""
-        for i in temp {
-            if i.isSelect == true {
-                strDays =  i.dayname + "," + strDays
-            }
-        }
-        self.didSelectedDayAtIndex?(strDays)
+        self.viewModel.weakDays[indexPath.item].isSelected = !self.viewModel.weakDays[indexPath.item].isSelected
         reloadData()
     }
-    
 }
+//extension Date {
+//
+//    var calendar: Calendar { Calendar.current }
+//
+//    var weekdayIndex: Int {
+//        (calendar.component(.weekday, from: self) - calendar.firstWeekday + 7) % 7 + 1
+//    }
+//}

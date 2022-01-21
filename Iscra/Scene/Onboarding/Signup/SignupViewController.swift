@@ -9,22 +9,20 @@ import UIKit
 import GoogleSignIn
 import AuthenticationServices
 
-
 class SignupViewController: UIViewController {
     
-    // MARK:-Outlets and variables
-    
-    @IBOutlet weak var lblHeaderTitle:UILabel!
-    @IBOutlet weak var txtEmail:UITextField!
-    @IBOutlet weak var txtPassword:UITextField!
-    @IBOutlet weak var btnRegister:UIButton!
-    @IBOutlet weak var btnGoogle:UIButton!
     @IBOutlet weak var btnApple:UIButton!
+    @IBOutlet weak var btnGoogle:UIButton!
+    @IBOutlet weak var btnRegister:UIButton!
     @IBOutlet weak var btnShowPassword:UIButton!
     
+    @IBOutlet weak var txtEmail:UITextField!
+    @IBOutlet weak var txtPassword:UITextField!
+    
+    @IBOutlet weak var lblHeaderTitle:UILabel!
+   
     weak var router: NextSceneDismisser?
     private let viewModel: SignupViewModel = SignupViewModel(provider: OnboardingServiceProvider())
-    let signInConfig = GIDConfiguration.init(clientID: AppConstant.googleClientID)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +33,14 @@ class SignupViewController: UIViewController {
 // MARK: Instance Methods
 extension SignupViewController {
     private func setup() {
-        viewModel.view = self
-        lblHeaderTitle.text = AppConstant.signUpHeaderTitle
-        [txtEmail, txtPassword].forEach {
+        self.setViewControls()
+        self.viewModel.view = self
+        txtPassword.delegate = self
+        self.lblHeaderTitle.text = AppConstant.signUpHeaderTitle
+    }
+    
+    private func setViewControls() {
+       [txtEmail, txtPassword].forEach {
             $0?.delegate = self
         }
         [btnRegister, btnGoogle, btnApple, btnShowPassword].forEach {
@@ -49,6 +52,7 @@ extension SignupViewController {
             btnApple.isHidden = true
         }
     }
+    
 }
 
 // MARK: Button Actions
@@ -69,11 +73,16 @@ extension SignupViewController {
     }
     
     private func registerGoogleAction() {
-        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+        GIDSignIn.sharedInstance.signIn(with: self.viewModel.gidConfiguration, presenting: self) { user, error in
             guard error == nil else { return }
-            self.viewModel.email = user?.profile?.email ?? ""
-            self.viewModel.username = user?.profile?.name ?? ""
-            self.viewModel.social_id = user?.userID ?? ""
+            guard let user = user else { return }
+            self.viewModel.email = user.profile?.email ?? ""
+            self.viewModel.username = user.profile?.name ?? ""
+            self.viewModel.social_id = user.userID ?? ""
+            if ((user.profile?.hasImage) != nil) {
+                guard let url = user.profile?.imageURL(withDimension: 200) else { return }
+                self.viewModel.socialLoginImageURL = url
+            }
             self.viewModel.socialLogin(logintype: .google)
         }
     }
@@ -102,24 +111,25 @@ extension SignupViewController {
     }
     
     private func registerAction() {
-        self.txtEmail.resignFirstResponder()
-        self.txtPassword.resignFirstResponder()
-        viewModel.onAction(action: .inputComplete(.signup), for: .signup)
+       // self.dismissKeyboard()
+        self.view.endEditing(true)
+        self.viewModel.onAction(action: .inputComplete(.signup), for: .signup)
     }
 }
 
-// MARK:- Verification Delegate
+// MARK: Verification Delegate
 extension SignupViewController : VerificationViewControllerDelegate {
     func isUserVerified() {
         router?.push(scene: .landing)
     }
 }
 
-// MARK:- Textfiled Delegate
+// MARK: Textfiled Delegate
 extension SignupViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.txtEmail {
-            self.txtEmail.becomeFirstResponder()
+            //self.txtEmail.becomeFirstResponder()
+            self.txtPassword.becomeFirstResponder()
         } else {
             self.txtPassword.resignFirstResponder()
         }
@@ -127,20 +137,39 @@ extension SignupViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil) || string.containsEmoji{ return false }
+        guard let text = textField.text, let textRange = Range(range, in: text) else { return false }
         if textField == txtEmail {
-            if let text = txtEmail.text, let textRange = Range(range, in: text) {
-                let updatedText = text.replacingCharacters(in: textRange, with: string)
-                viewModel.email = updatedText
-            }
-        } else if textField == txtPassword {
-            if let text = txtPassword.text, let textRange = Range(range, in: text) {
-                let updatedText = text.replacingCharacters(in: textRange, with: string)
-                viewModel.password = updatedText
-            }
+            viewModel.email = text.replacingCharacters(in: textRange, with: string)
+        }else {
+            viewModel.password = text.replacingCharacters(in: textRange, with: string)
         }
+//        else if textField == txtPassword {
+//            viewModel.password = text.replacingCharacters(in: textRange, with: string)
+//        }
+
         return true
     }
+    
 }
+
+// MARK: Apple Login
+@available(iOS 13.0, *)
+extension SignupViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
+            self.viewModel.email = appleCredentials.email ?? ""
+            self.viewModel.username = (appleCredentials.fullName?.givenName) ?? ""
+            self.viewModel.social_id = appleCredentials.user
+            self.viewModel.socialLogin(logintype: .apple)
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print(error.localizedDescription)
+    }
+}
+
 // MARK: API Callback
 extension SignupViewController: OnboardingViewRepresentable {
     func onAction(_ action: OnboardingAction) {
@@ -158,21 +187,4 @@ extension SignupViewController: OnboardingViewRepresentable {
             break
         }
     }
-}
-
-extension SignupViewController: ASAuthorizationControllerDelegate {
-  @available(iOS 13.0, *)
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-    if let appleCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
-      //self.setSocialLoginValues(email: appleCredentials.email ?? "", name: (appleCredentials.fullName?.givenName) ?? "", socialId: appleCredentials.user, loginType: .apple)
-        self.viewModel.email = appleCredentials.email ?? ""
-        self.viewModel.username = (appleCredentials.fullName?.givenName) ?? ""
-        self.viewModel.social_id = appleCredentials.user
-        self.viewModel.socialLogin(logintype: .apple)
-    }
-  }
-  @available(iOS 13.0, *)
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-    print(error.localizedDescription)
-  }
 }

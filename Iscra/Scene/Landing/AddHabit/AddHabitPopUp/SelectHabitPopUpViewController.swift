@@ -8,14 +8,14 @@
 
 import UIKit
 enum HabitType: String {
-    case good, bad, group_habit
+    case good, bad, group
 }
 
 protocol SelectHabitPopUpDelegate: AnyObject {
     func addHabit(type: HabitType)
 }
 
-class SelectHabitPopUpViewController: UIViewController {
+class SelectHabitPopUpViewController: UIViewController { // HabitTypeViewController
     
     @IBOutlet weak var btnBadHabit:UIButton!
     @IBOutlet weak var backGroundView:UIView!
@@ -25,11 +25,10 @@ class SelectHabitPopUpViewController: UIViewController {
     var habitType: HabitType = .good
     weak var router: NextSceneDismisser?
     weak var delegate: SelectHabitPopUpDelegate?
-    
+    var habitPopupSelected:((Bool) ->())?
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        print("self. router on SelectHabitPopUpViewController is \(String(describing: self.router))")
+        self.setup()
     }
 }
 
@@ -42,37 +41,31 @@ extension SelectHabitPopUpViewController {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
     }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        let imageDataDict:[String: String] = ["name": "tab3"]
+        NotificationCenter.default.post(name: .RotateTab, object: nil, userInfo: imageDataDict)
         self.dismiss(animated: true, completion: nil)
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension SelectHabitPopUpViewController {
-    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnGoodHabit:
-            self.addGoodHabit()
+            self.habitTypeAction(type: .good)
         case btnBadHabit:
-            self.addBadHabit()
+            self.habitTypeAction(type: .bad)
         case btnGroupHabit:
-            self.addGroupHabit()
+            self.habitTypeAction(type: .group)
         default:
             break
         }
     }
     
-    private func addGoodHabit() {
+    private func habitTypeAction(type: HabitType) {
         self.dismiss(animated: true, completion: nil)
-        delegate?.addHabit(type: .good)
-    }
-    private func addBadHabit() {
-        self.dismiss(animated: true, completion: nil)
-        delegate?.addHabit(type: .bad)
-    }
-    private func addGroupHabit() {
-        self.dismiss(animated: true, completion: nil)
-        delegate?.addHabit(type: .group_habit)
+        delegate?.addHabit(type: type)
     }
 }

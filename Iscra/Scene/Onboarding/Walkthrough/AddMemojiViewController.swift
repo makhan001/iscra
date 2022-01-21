@@ -7,85 +7,87 @@
 
 
 import UIKit
-class AddMemojiViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-  
-    // MARK:-Outlets and variables
+
+class AddMemojiViewController: UIViewController {
+
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var btnAddPhoto: UIButton!
     
     @IBOutlet weak var lblHeaderTitle: UILabel!
+    @IBOutlet weak var lblThirdSubTitle: UILabel!
     @IBOutlet weak var lblFirstSubTitle: UILabel!
     @IBOutlet weak var lblSecondSubTitle: UILabel!
-    @IBOutlet weak var lblThirdSubTitle: UILabel!
+
     @IBOutlet weak var imgUser: UIImageView!
-    @IBOutlet weak var btnAddPhoto: UIButton!
-    @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var viewNavigation:NavigationBarView!
+    
+    var isfromMyAccount: Bool = false
     weak var router: NextSceneDismisser?
+    let viewModel = AddMemojiViewModel()
     private var imagePicker = UIImagePickerController()
-    var isFromMyAccount:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-       
+        self.setup()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
-        self.viewNavigation.lblTitle.text =  "Memoji"
-        self.viewNavigation.delegateBarAction = self
+        self.setNavigationBar()
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        let alertController = UIAlertController (title: "Title", message: "Go to Settings?", preferredStyle: .alert)
-//
-//        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-//
-//            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-//                return
-//            }
-//
-//            if UIApplication.shared.canOpenURL(settingsUrl) {
-//                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-//                    print("Settings opened: \(success)") // Prints true
-//                })
-//            }
-//        }
-//        alertController.addAction(settingsAction)
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-//        alertController.addAction(cancelAction)
-//
-//        present(alertController, animated: true, completion: nil)
-//    }
 }
 
 // MARK: Instance Methods
-extension AddMemojiViewController: navigationBarAction {
+extension AddMemojiViewController: NavigationBarViewDelegate {
     private func setup() {
-        self.navigationItem.title = AppConstant.nav_memoji
-        lblHeaderTitle.text = AppConstant.nav_memoji
-        //lblFirstSubTitle.text = AppConstant.Sub1Title
-        lblSecondSubTitle.text = AppConstant.Sub2Title
-        lblThirdSubTitle.text = AppConstant.Sub3Title
+        self.setHeaderLabel()
+        self.addNoteIconToText()
+        self.addTapGestureForNotes()
+        self.viewModel.view = self
         [btnAddPhoto, btnCancel].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+    }
+    
+    private func setNavigationBar() {
+        if !isfromMyAccount {
+            self.viewNavigation.navType = .memoji
+            self.viewNavigation.commonInit()
+        }
+        self.viewNavigation.lblTitle.text =  "Memoji"
+        self.viewNavigation.delegateBarAction = self
+    }
+    
+    private func setHeaderLabel() {
+        self.navigationItem.title = AppConstant.nav_memoji
+        self.lblHeaderTitle.text = AppConstant.nav_memoji
+        self.lblSecondSubTitle.text = AppConstant.Sub2Title
+        self.lblThirdSubTitle.text = AppConstant.Sub3Title
+    }
+    
+    private func addNoteIconToText() {
         let fullString = NSMutableAttributedString(string: AppConstant.Sub1Title)
         let image1Attachment = NSTextAttachment()
         image1Attachment.image = UIImage(named: "ic-addNote-image")
         let image1String = NSAttributedString(attachment: image1Attachment)
         fullString.append(image1String)
-        lblFirstSubTitle.attributedText = fullString
+        self.lblFirstSubTitle.attributedText = fullString
     }
     
-    func ActionType()  {
-       if  self.isFromMyAccount == true {
-            self.navigationController?.popViewController(animated: true)
-        }else{
-        router?.dismiss(controller: .learnHowToAddMemoji)
-        }
+    private func addTapGestureForNotes() {
+        let labelTapGesture = UITapGestureRecognizer(target:self,action:#selector(self.openNotes))
+        self.lblFirstSubTitle.isUserInteractionEnabled = true
+        self.lblFirstSubTitle.addGestureRecognizer(labelTapGesture)
+    }
+    
+    @objc func openNotes() {
+        //UIApplication.shared.openURL(NSURL(string: UIApplication.openSettingsURLString) as! URL)
+//        UIApplication.shared.open(URL(string: "App-prefs:NOTES")!)
+        print("tapped")
     }
 }
 
-// MARK:- Button Action
+// MARK: Button Action
 extension AddMemojiViewController {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
@@ -99,12 +101,21 @@ extension AddMemojiViewController {
     }
     
     private func addPhotoButtonAction() {
-        openGallary()
-        print("addPhotoButtonAction")
+        self.openGallary()
     }
     
     private func cancelButtonAction() {
         print("cancelButtonAction")
+    }
+    
+    private func navigateToNextScreen() {
+        imagePicker.dismiss(animated: true) {
+            if self.isfromMyAccount == true {
+                self.viewModel.updateProfile()
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     func openGallary() {
@@ -112,17 +123,49 @@ extension AddMemojiViewController {
         myPickerControllerGallery.delegate = self
         myPickerControllerGallery.sourceType = UIImagePickerController.SourceType.photoLibrary
         myPickerControllerGallery.allowsEditing = true
-        
         self.present(myPickerControllerGallery, animated: true, completion: nil)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
-               if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                       self.imgUser.contentMode = .scaleAspectFill
-                       self.imgUser.image = pickedImage
-                   }
-
-               dismiss(animated: true, completion: nil)
-           }
 }
+
+// MARK: Image Picker Delegate
+extension AddMemojiViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.imgUser.contentMode = .scaleAspectFill
+            self.imgUser.image = pickedImage
+            self.viewModel.selectedImage = pickedImage
+            OnboadingUtils.shared.userImage = pickedImage
+            self.navigateToNextScreen()
+        }
+    }
+}
+
+// MARK: Navigation Bar Delegate
+extension AddMemojiViewController {
+    func navigationBackAction()  {
+        OnboadingUtils.shared.userImage = nil
+        self.router?.dismiss(controller: .learnHowToAddMemoji)
+    }
+    
+    func navigationRightButtonAction() {
+        if OnboadingUtils.shared.userImage == nil {
+            showToast(message: "Please pick an image or memoji")
+            return
+        }
+        self.router?.push(scene: .signup)
+    }
+}
+
+    // MARK: API Callback
+    extension AddMemojiViewController: OnboardingViewRepresentable {
+        func onAction(_ action: OnboardingAction) {
+            switch action {
+            case .updateProfile:
+                self.router?.dismiss(controller: .learnHowToAddMemoji)
+            default:
+                break
+            }
+        }
+    }
+
+

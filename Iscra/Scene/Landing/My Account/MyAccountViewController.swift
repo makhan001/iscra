@@ -109,16 +109,19 @@ extension MyAccountViewController {
     }
    
     private func getSubscriptionAction() {
-        self.router?.push(scene: .subscription)
+        let days = 21 - UserStore.userCreateDate.daysDifference
+        if days <= 21 {
+            self.alertForSubscription(days)
+        } else {
+            self.router?.push(scene: .subscription)
+        }
     }
     
     private func logoutAction() {
         let alertController = UIAlertController(title: "Logout", message: "Are you sure? logout from Iscra.", preferredStyle: .alert)
         let logoutaction = UIAlertAction(title: "Logout", style: .default) { (action:UIAlertAction!) in
             print("Delete button tapped");
-            
             self.viewModel.logout()
-            
         }
         logoutaction.setValue(UIColor.red, forKey: "titleTextColor")
         
@@ -127,6 +130,22 @@ extension MyAccountViewController {
         }
         cancelAction.setValue(UIColor.gray, forKey: "titleTextColor")
         alertController.addAction(logoutaction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion:nil)
+    }
+    
+    private func alertForSubscription(_ remainingDays: Int) {
+        let alertController = UIAlertController(title: "Your " + String(remainingDays) + " free trial days are remaining. Do you want to go with subscription to become a prime member?", message: "", preferredStyle: .alert)
+        let SubscriptionAction = UIAlertAction(title: "Proceed", style: .default) { (action:UIAlertAction!) in
+            self.router?.push(scene: .subscription)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        SubscriptionAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+
+        alertController.addAction(SubscriptionAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:nil)
     }
@@ -142,7 +161,7 @@ extension MyAccountViewController: clickManagerDelegate{
         case .changePassword:
             self.changePasswordAction()
         case .shareWithFriends:
-            self.showActivityViewController(url: URL(string: AppConstant.IscraAppLink)!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
+            self.showActivityViewController(url: URL(string: AppConstant.IscraAppLink)!, text: AppConstant.shareAppMessage, image: UIImage(named: "ic-app-logo")!)
         case .rateUs:
             self.rateUs()
         case .contactDeveloper:

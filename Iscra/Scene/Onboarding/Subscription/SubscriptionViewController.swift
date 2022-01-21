@@ -11,7 +11,8 @@ class SubscriptionViewController: UIViewController {
     
     @IBOutlet weak var lblMiddleText: UILabel!
     @IBOutlet weak var lblHeaderTitle: UILabel!
-    
+    @IBOutlet weak var lblIAPContent: UILabel!
+
     @IBOutlet weak var btnAllowAds: UIButton!
     @IBOutlet weak var btnSubscription: UIButton!
     
@@ -38,10 +39,13 @@ extension SubscriptionViewController {
         [btnSubscription, btnAllowAds].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }
+        self.lblIAPContent.text = AppConstant.IAPContent
     }
     
     private func setNavigationView() {
-        self.viewNavigation.lblTitle.text =  ""
+        self.viewNavigation.navType = .subscription
+        self.viewNavigation.commonInit()
+        self.viewNavigation.lblTitle.text =  "Iscra Subscription"
         self.viewNavigation.delegateBarAction = self
         self.viewNavigation.btnBack.isHidden = (viewModel.sourceScreen != .myAccount) ? true : false
     }
@@ -83,7 +87,6 @@ extension SubscriptionViewController  {
     
     private func getSubscriptionAction() {
         print("getSubscriptionAction")
-        self.viewModel.getProducts()
     }
     
     private func allowAdsAction() {
@@ -101,6 +104,10 @@ extension SubscriptionViewController  {
 extension SubscriptionViewController: NavigationBarViewDelegate {
     func navigationBackAction()  {
         self.router?.dismiss(controller: .subscription)
+    }
+    
+    func navigationRightButtonAction() {
+        self.router?.push(scene: .webViewController)
     }
 }
 

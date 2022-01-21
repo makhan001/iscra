@@ -11,7 +11,8 @@ final class SubscriptionCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
     let controller: SubscriptionViewController = SubscriptionViewController.from(from: .onboarding, with: .subscription)
-    
+    let webViewController: WebViewController = WebViewController.from(from: .landing, with: .webViewController)
+
     override func start() {
         super.start()
         router.setRootModule(controller, hideBar: true)
@@ -27,6 +28,12 @@ final class SubscriptionCoordinator: Coordinator<Scenes> {
     
     private func onStart() {
         controller.router = self
+        webViewController.router = self
+    }
+    
+    private func startWebViewController() {
+        webViewController.webPage = .termsAndConditions
+        router.present(webViewController, animated: true)
     }
     
     //    private func startSignup() {
@@ -43,6 +50,7 @@ extension SubscriptionCoordinator: NextSceneDismisser {
     func push(scene: Scenes) {
         switch scene {
         case .walkthrough: break
+        case .webViewController: startWebViewController()
         default: break
         }
     }

@@ -57,7 +57,7 @@ protocol InputFieldAlertDelegate:AnyObject {
 protocol InputViewDelegate:AnyObject {
     func onAction(action: OnboardingAction, for screen: OnboardingScreenType)
 }
-protocol VerificationViewControllerDelegate:class {
+protocol VerificationViewControllerDelegate:AnyObject {
     func isUserVerified()
 }
 protocol OnboardingViewRepresentable:AnyObject {
@@ -74,7 +74,7 @@ protocol OnboardingServiceProvidable:AnyObject {
     func resendVerification(param:UserParams.ResendVerification)
     func logout(param:UserParams.logout)
     func updateProfile(param:UserParams.UpdateProfile)
-    
+    func subscription(param:UserParams.Subscription)
 }
 protocol OnboardingServiceProvierDelegate:AnyObject {
     func completed<T>(for action:OnboardingAction, with response:T?, with error:APIError?)

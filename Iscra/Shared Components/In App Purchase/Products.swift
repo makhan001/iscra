@@ -9,7 +9,7 @@ import Foundation
 
 public struct Products {
     public static let ads = "com.adilbek.iscra.removeads"
-    public static let subscriptionMonth = "com.adilbek.iscra.month"
+    public static let subscriptionMonth = "com.adilbek.iscra.1month"
     
     private static let productIdentifiers: Set<ProductIdentifier> = [ Products.ads, Products.subscriptionMonth]
     public static let store = IAPHelper(productIds: Products.productIdentifiers)

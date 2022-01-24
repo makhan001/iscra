@@ -57,6 +57,7 @@ final class LoginViewModel {
         UserStore.save(token: response.data?.user?.authenticationToken)
         UserStore.save(userName: response.data?.user?.username?.capitalized)
         UserStore.save(userCreateDate: (response.data?.user?.createdAt ?? 0).toDouble)
+        UserStore.save(primeUser: response.data?.user?.isSubscribed)
         QBChatLogin.shared.loginQBUser(fullName: self.username, login: self.email, email: self.email, customData: "")
         if UserStore.userCreateDate.daysDifference <= 21 {
             self.view?.onAction(.socialLogin(response.message ?? ""))
@@ -112,6 +113,7 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                     UserStore.save(userID: resp.data?.loginData?.id)
                     UserStore.save(userImage: resp.data?.loginData?.profileImage)
                     UserStore.save(userCreateDate: (resp.data?.loginData?.createdAt ?? 0).toDouble)
+                    UserStore.save(primeUser: resp.data?.loginData?.isSubscribed)
                     QBChatLogin.shared.loginQBUser(fullName: self.username, login: self.email, email: self.email, customData: "")
                     if resp.data?.loginData?.isVerified == true {
                         self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))

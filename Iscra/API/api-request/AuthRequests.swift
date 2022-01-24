@@ -18,6 +18,7 @@ struct AuthRequests: RequestRepresentable {
     var verification: UserParams.Verification?
     var resendVerification: UserParams.ResendVerification?
     var updateProfile: UserParams.UpdateProfile?
+    var subscription: UserParams.Subscription?
     
     let requestType: RequestType
     enum RequestType {
@@ -32,6 +33,7 @@ struct AuthRequests: RequestRepresentable {
         case verification
         case resendVerification
         case updateProfile
+        case subscription
     }
     
     init(requestType: RequestType) {
@@ -57,6 +59,8 @@ struct AuthRequests: RequestRepresentable {
             self.resendVerification = params as? UserParams.ResendVerification
         case is UserParams.UpdateProfile:
             self.updateProfile = params as? UserParams.UpdateProfile
+        case is UserParams.Subscription:
+            self.subscription = params as? UserParams.Subscription
         default:break
         }
     }
@@ -98,6 +102,8 @@ struct AuthRequests: RequestRepresentable {
             return "users/resendverification"
         case .updateProfile:
             return "users/update"
+        case .subscription:
+            return "users/subscription"
         }
     }
     
@@ -117,6 +123,8 @@ struct AuthRequests: RequestRepresentable {
             return .body(data: encodeBody(data: verification))
         case .resendVerification:
             return .body(data: encodeBody(data: resendVerification))
+        case .subscription:
+            return .body(data: encodeBody(data: subscription))
         default:
             return .none
         }

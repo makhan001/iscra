@@ -38,6 +38,10 @@ final class SubscriptionViewModel {
             Products.store.buyProduct(product)
         } else {}
     }
+    
+    func subscription(type:String, amount:String, identifier:String) {
+        provider.subscription(param: UserParams.Subscription(user_id: Int(UserStore.userID ?? "0"), transaction_date: Int(Date().timeIntervalSince1970), transaction_type: type, transaction_amount: amount, transaction_identifier: identifier))
+    }
 }
 
 extension SubscriptionViewModel: OnboardingServiceProvierDelegate {

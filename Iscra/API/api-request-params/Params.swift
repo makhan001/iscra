@@ -64,6 +64,15 @@ enum UserParams {
     
     struct UpdateProfile: Codable {
         let username: String?
+        var isSubscribed: Bool = false
+    }
+    
+    struct Subscription: Codable {
+        let user_id: Int?
+        let transaction_date: Int?
+        let transaction_type: String?
+        let transaction_amount: String?
+        let transaction_identifier: String?
     }
 }
 

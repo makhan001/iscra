@@ -40,12 +40,33 @@ extension UpdateProfileViewController {
         self.viewNavigation.lblTitle.text =  "Edit name"
         self.viewNavigation.delegateBarAction = self
         self.txtName.delegate = self
+        self.addNotificationObserver()
+    }
+    
+    private func addNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSuccess(_:)),
+                                               name: .SubscriptionActiveNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSuccess(_:)),
+                                               name: .SubscriptionExpireNotification,
+                                               object: nil)
     }
     
     private func setNameTextField(string:String, range: NSRange)  {
         guard let text = txtName.text, let textRange = Range(range, in: text) else { return }
         let updatedText = text.replacingCharacters(in: textRange, with: string)
         self.viewModel.username = updatedText
+    }
+    
+    @objc func paymentSuccess (_ notification: Notification) {
+        if let isSubscribed = notification.userInfo?["isSubscribed"] as? Bool {
+            UserStore.save(primeUser: isSubscribed)
+            self.viewModel.isSubscribed = isSubscribed
+            self.viewModel.updateUser()
+        } else {
+            self.stopAnimation()
+        }
     }
     
 }

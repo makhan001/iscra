@@ -31,9 +31,14 @@ class SubscriptionViewController: UIViewController {
 // MARK: Instance Methods
 extension SubscriptionViewController {
     private func setup() {
-        self.viewModel.view = self
+        self.setViewControls()
         self.setNavigationView()
+        self.viewModel.view = self
+        self.viewModel.getProducts()
         self.addNotificationObserver()
+    }
+    
+    private func setViewControls() {
         self.lblHeaderTitle.text = "Dear \(UserStore.userName ?? ""), we need your support"
         self.lblMiddleText.text = AppConstant.subscriptionTitle
         [btnSubscription, btnAllowAds].forEach {
@@ -59,13 +64,10 @@ extension SubscriptionViewController {
     @objc func paymentSuccess (_ notification: Notification) {
         if notification.userInfo?["status"] as? String == "success" {
             print("Payment done")
-            //            viewModel.transactionID = notification.userInfo?["transactionIdentifier"] as? String ?? ""
-            //            viewModel.productIdentifier = notification.userInfo?["productIdentifier"] as? String ?? ""
-            if UserStore.primeUser == false {
-                UserStore.save(primeUser: true)
-                NotificationCenter.default.post(name: .purchaseFinished, object: nil, userInfo:notification.userInfo)
-                //                            viewModel.setSubscription()
-            }
+            NotificationCenter.default.post(name: .SubscriptionActiveNotification,
+                                            object: nil,
+                                            userInfo:["isSubscribed": true])
+            self.viewModel.subscription(type: "month", amount: "100", identifier: notification.userInfo?["transactionIdentifier"] as? String ?? "")
         } else {
             self.stopAnimation()
         }
@@ -77,7 +79,7 @@ extension SubscriptionViewController  {
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
         case btnSubscription:
-            self.getSubscriptionAction()
+            self.subscriptionAction()
         case btnAllowAds:
             self.allowAdsAction()
         default:
@@ -85,18 +87,15 @@ extension SubscriptionViewController  {
         }
     }
     
-    private func getSubscriptionAction() {
-        print("getSubscriptionAction")
+    private func subscriptionAction() {
+        self.startAnimation()
+        if let product = (viewModel.products.filter { $0.productIdentifier.contains("month")}).first {
+            self.viewModel.buyProduct(product)
+        }
     }
     
     private func allowAdsAction() {
         print("allowAdsAction")
-    }
-    
-    private func monthAction() {
-        if let product = (viewModel.products.filter { $0.productIdentifier.contains("month")}).first {
-            self.viewModel.buyProduct(product)
-        }
     }
 }
 

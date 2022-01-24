@@ -531,7 +531,9 @@ extension Notification.Name {
     static let purchaseFinished = Notification.Name("purchaseFinished")
     static let IAPHelperPurchaseNotification = Notification.Name("IAPHelperPurchaseNotification")
     static let IAPHelperPurchaseFinishNotification = Notification.Name("IAPHelperPurchaseFinishNotification")
-    static let IAPHelperSubscriptionExpireDateNotification = Notification.Name("IAPHelperSubscriptionExpireDateNotification")
+    static let SubscriptionExpireNotification = Notification.Name("SubscriptionExpireNotification")
+    static let SubscriptionActiveNotification = Notification.Name("SubscriptionActiveNotification")
+
 }
 
 extension Int {

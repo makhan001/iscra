@@ -35,6 +35,10 @@ class MyAccountViewController: UIViewController, UIImagePickerControllerDelegate
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.retriveUserDetails()
+        
+        if UserStore.primeUser == true {
+            self.btnGetSubscription.isHidden = true
+        }
     }
 }
 
@@ -55,10 +59,17 @@ extension MyAccountViewController {
         self.viewNavigation.lblTitle.text =  "My profile"
         self.viewNavigation.delegateBarAction = self
         NotificationCenter.default.addObserver(self, selector: #selector(updateUserImage(_:)), name: .UpdateUserImage, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSuccess(_:)),
+                                               name: .SubscriptionActiveNotification,
+                                               object: nil)
         if !MFMailComposeViewController.canSendMail() {
             print("Mail services are not available")
             return
         }
+    }
+    
+    @objc func paymentSuccess (_ notification: Notification) {
+            self.btnGetSubscription.isHidden = true
     }
     
     @objc func updateUserImage(_ notification: Notification) {

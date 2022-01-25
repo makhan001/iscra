@@ -154,7 +154,11 @@ final class LandingCoordinator: Coordinator<Scenes> {
         subscription = SubscriptionCoordinator(router: Router())
         add(subscription)
         subscription.delegate = self
-        subscription.start(sourceScreen: .myAccount)
+        if controller.subscriptionSourceScreen == .login {
+            subscription.start(sourceScreen: .login)
+        } else {
+            subscription.start(sourceScreen: .myAccount)
+        }
         self.router.present(subscription, animated: true)
     }
 }

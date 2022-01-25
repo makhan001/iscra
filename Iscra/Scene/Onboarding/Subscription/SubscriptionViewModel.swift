@@ -52,7 +52,7 @@ extension SubscriptionViewModel: OnboardingServiceProvierDelegate {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200 {
-                    self.view?.onAction(.login("", resp.data?.loginData?.isVerified ?? false))
+                    self.view?.onAction(.subscription)
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

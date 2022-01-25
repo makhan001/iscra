@@ -13,6 +13,7 @@ class LandingTabBarController: UITabBarController {
     let kBarHeight: CGFloat = 60
     var centerButton = UIButton()
     var calendarScreenType: CalendarScreenType = .home
+    var subscriptionSourceScreen: SubscriptionSourceScreen = .login
     weak var router: NextSceneDismisser?
     
     
@@ -191,6 +192,7 @@ extension LandingTabBarController : UITabBarControllerDelegate {
         switch index {
         case 0:
             self.calendarScreenType = .home
+            self.subscriptionSourceScreen = .login
             if viewController.isKind(of: HomeViewController.self) {
                 (viewController as! HomeViewController).router = router
             }
@@ -211,8 +213,8 @@ extension LandingTabBarController : UITabBarControllerDelegate {
             }
             print("MyAccount")
         default:
+            self.subscriptionSourceScreen = .myAccount
             print("default")
-            
         }
     }
 }

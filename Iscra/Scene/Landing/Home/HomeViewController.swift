@@ -28,6 +28,9 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.reload()
+        if UserStore.primeUser == true {
+            self.viewModel.getSubscription()
+        }
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
@@ -40,7 +43,6 @@ extension HomeViewController {
         self.viewFirstHabit.isHidden = true
         self.lblTitle.text = AppConstant.firstHabitTitle
         self.lblSubTitle.text = AppConstant.firstHabitSubTitle
-        self.viewModel.getSubscription()
         self.addNotificationObserver()
     }
     
@@ -51,7 +53,7 @@ extension HomeViewController {
     
     private func reload() {
         self.lblUserName.text = "Hi, " + (UserStore.userName ?? "").capitalized
-        self.viewModel.fetchHabitList()
+       self.viewModel.fetchHabitList()
     }
     
     private func setTableView() {
@@ -148,6 +150,8 @@ extension HomeViewController: HabitViewRepresentable {
         case .markAsCompleteSucess(_):
             self.viewModel.habitList.removeAll()
             self.viewModel.fetchHabitList()
+        case .subscription:
+            self.router?.push(scene: .subscription)
         default:
             break
         }

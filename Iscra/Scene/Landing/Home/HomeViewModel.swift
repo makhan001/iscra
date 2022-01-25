@@ -18,6 +18,7 @@ final class HomeViewModel {
     var habitList = [AllHabits]()
     var habitMarks = [HabitMark]()
     var groupMembers = [GroupMember]()
+    let sourceScreen: SubscriptionSourceScreen = .login
     
     let provider: HabitServiceProvidable
     weak var view: HabitViewRepresentable?
@@ -40,7 +41,11 @@ final class HomeViewModel {
     }
     
     func getSubscription() {
-        
+        self.provider.getSubscription(param: HabitParams.GetSubscription())
+    }
+    
+    func updateSubscription(_ isSubscribed: Bool) {
+        self.provider.updateSubscription(param: HabitParams.UpdateSubscription(is_subscribed: isSubscribed))
     }
     
     func apiMarkAsComplete(objHabitMark: HabitMark) {
@@ -81,13 +86,21 @@ extension HomeViewModel: HabitServiceProvierDelegate {
                     
                     case .markAsComplete:
                     self.view?.onAction(.markAsCompleteSucess(resp.message ?? ""))
+                        
+                    case .getSubscription:
+                        let transactionDate = resp.data?.getSubscription?.transactionDate?.toDouble.date.addDays(days: 29) ?? 0.0
+                        let currentDate = Date().timeIntervalSince1970
+                            if transactionDate <= currentDate {
+                                self.updateSubscription(false)
+                            }
+                    case .updateSubscription:
+                        UserStore.save(primeUser: resp.data?.user?.isSubscribed)
+                        self.view?.onAction(.subscription)
                     default:
                         self.view?.onAction(.sucessMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
-
                     }
                 }
             }
         }
     }
 }
-

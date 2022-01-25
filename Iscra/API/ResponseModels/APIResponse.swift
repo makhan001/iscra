@@ -35,7 +35,8 @@ struct DataClass: Codable {
     let groupHabitDetails: GroupHabitDetails?
     let groupHabitMembers: [GroupHabitMember]?
     let shareHabit: [ShareHabit]?
-
+    let getSubscription: GetSubscription?
+    
     enum CodingKeys: String, CodingKey {
         case register, user, habit, habits, url, invitaions, friends //, groupdetails
         case loginData = "login_data"
@@ -52,6 +53,7 @@ struct DataClass: Codable {
         case longestStreak = "longest_streak"
         case shareHabit = "share_habit"
         case isVerified = "is_verified"
+        case getSubscription = "get_subscription"
     }
 }
 
@@ -179,3 +181,20 @@ struct User: Codable {
     }
 }
 
+// MARK: - GetSubscription
+struct GetSubscription: Codable {
+    let id, userID, transactionDate: Int?
+    let transactionAmount, transactionType, transactionIdentifier: String?
+    let createdAt, updatedAt: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userID = "user_id"
+        case transactionDate = "transaction_date"
+        case transactionAmount = "transaction_amount"
+        case transactionType = "transaction_type"
+        case transactionIdentifier = "transaction_identifier"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}

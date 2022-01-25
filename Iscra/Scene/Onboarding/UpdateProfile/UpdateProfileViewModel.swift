@@ -42,7 +42,7 @@ final class UpdateProfileViewModel {
     }
     
     func updateUser() {
-        let parameters =  UserParams.UpdateProfile(username: username, isSubscribed: isSubscribed)
+        let parameters =  UserParams.UpdateProfile(username: username, is_subscribed: isSubscribed)
         WebService().requestMultiPart(urlString: APIConstants.updateProfile,
                                       httpMethod: .put,
                                       parameters: parameters,

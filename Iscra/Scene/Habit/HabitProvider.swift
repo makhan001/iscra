@@ -139,5 +139,27 @@ final class HabitServiceProvider: HabitServiceProvidable {
             self?.delegate?.completed(for: .friends, with: resp, with: nil)
         }
     }
+    
+    func getSubscription(param: HabitParams.GetSubscription) {
+        task.getSubscription(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .getSubscription, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .getSubscription, with: resp, with: nil)
+        }
+    }
+    
+    func updateSubscription(param: HabitParams.UpdateSubscription) {
+        task.updateSubscription(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .updateSubscription, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .updateSubscription, with: resp, with: nil)
+        }
+    }
+    
+   
 }
 

@@ -64,7 +64,7 @@ enum UserParams {
     
     struct UpdateProfile: Codable {
         let username: String?
-        var isSubscribed: Bool = false
+        var is_subscribed: Bool = false
     }
     
     struct Subscription: Codable {
@@ -150,6 +150,13 @@ enum HabitParams {
     
     struct Friends: Codable {
         let search: String?
+    }
+    
+    struct UpdateSubscription: Codable {
+        var is_subscribed: Bool = false
+    }
+    
+    struct GetSubscription: Codable {
     }
 }
 

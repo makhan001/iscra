@@ -49,6 +49,9 @@ extension HomeViewController {
     private func addNotificationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .EditHabit, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .MarkAsComplete, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSuccess(_:)),
+                                               name: .SubscriptionActiveNotification,
+                                               object: nil)
     }
     
     private func reload() {
@@ -67,6 +70,13 @@ extension HomeViewController {
     
     @objc func refrershUI() {
         self.viewModel.fetchHabitList()
+    }
+    
+    @objc func paymentSuccess (_ notification: Notification) {
+        if let isSubscribed = notification.userInfo?["isSubscribed"] as? Bool {
+            UserStore.save(primeUser: isSubscribed)
+            self.viewModel.updateSubscription(true)
+        }
     }
     
     private func handleSuccessResponse() {

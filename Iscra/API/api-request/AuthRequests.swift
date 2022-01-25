@@ -103,10 +103,10 @@ struct AuthRequests: RequestRepresentable {
         case .updateProfile:
             return "users/update"
         case .subscription:
-            return "users/subscription"
+            return "subscribe/subscription"
         }
     }
-    
+
     var parameters: Parameters {
         switch self.requestType {
         case .signup:

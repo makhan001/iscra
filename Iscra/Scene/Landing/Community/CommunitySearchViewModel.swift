@@ -55,7 +55,7 @@ extension CommunitySearchViewModel: CommunityServiceProvierDelegate {
                 if let resp = response as? SuccessResponseModel, resp.code == 200, let allGroupList = resp.data?.allGroupHabits{
                     self.arrFriend.removeAll()
                     self.arrGroupList = allGroupList
-                    self.arrFriend.sort { String($0.createdAt!) > String($1.createdAt!) }
+                    self.arrGroupList.sort { String($0.createdAt!) > String($1.createdAt!) }
                     self.view?.onAction(.sucessMessage(resp.message ?? ""))
                 } else if let resp = response as? SuccessResponseModel, resp.code == 200, let friendsList = resp.data?.friends{
                     self.arrGroupList.removeAll()

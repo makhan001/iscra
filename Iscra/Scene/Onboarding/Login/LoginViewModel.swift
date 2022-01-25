@@ -59,9 +59,12 @@ final class LoginViewModel {
         UserStore.save(userCreateDate: (response.data?.user?.createdAt ?? 0).toDouble)
         UserStore.save(primeUser: response.data?.user?.isSubscribed)
         QBChatLogin.shared.loginQBUser(fullName: self.username, login: self.email, email: self.email, customData: "")
+        
         if UserStore.userCreateDate.daysDifference <= 21 {
             self.view?.onAction(.socialLogin(response.message ?? ""))
-        } else {
+        } else if UserStore.primeUser == true {
+            self.view?.onAction(.socialLogin(response.message ?? ""))
+        }  else {
             self.view?.onAction(.subscription)
         }
     }
@@ -116,10 +119,18 @@ extension LoginViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
                     UserStore.save(primeUser: resp.data?.loginData?.isSubscribed)
                     QBChatLogin.shared.loginQBUser(fullName: self.username, login: self.email, email: self.email, customData: "")
                     if resp.data?.loginData?.isVerified == true {
-                        self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
+                        //  self.view?.onAction(.login(resp.message ?? "", resp.data?.loginData?.isVerified ?? false))
+                        if UserStore.userCreateDate.daysDifference <= 21 {
+                            self.view?.onAction(.login(resp.message ?? "", true))
+                        } else if UserStore.primeUser == true {
+                            self.view?.onAction(.login(resp.message ?? "", true))
+                        } else {
+                            self.view?.onAction(.subscription)
+                        }
                     } else {
                         self.view?.onAction(.login("", resp.data?.loginData?.isVerified ?? false))
                     }
+                    
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

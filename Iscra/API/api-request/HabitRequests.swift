@@ -9,7 +9,9 @@ import Foundation
 
 struct HabitRequests: RequestRepresentable {
     
+    var friends: HabitParams.Friends?
     var joinHabit: HabitParams.JoinHabit?
+    var shareHabit: HabitParams.ShareHabit?
     var createHabit: HabitParams.CreateHabit?
     var updateHabit: HabitParams.UpdateHabit?
     var deleteHabit: HabitParams.DeleteHabit?
@@ -17,11 +19,11 @@ struct HabitRequests: RequestRepresentable {
     var allHabitList: HabitParams.AllHabitList?
     var habitCalender: HabitParams.HabitCalender?
     var markAsComplete: HabitParams.MarkAsComplete?
-    var shareHabit: HabitParams.ShareHabit?
+    var getSubscription: HabitParams.GetSubscription?
     var groupHabitDetails: HabitParams.GroupHabitDetails?
     var groupHabitMembers: HabitParams.GroupHabitMembers?
-    var friends: HabitParams.Friends?
-    
+    var updateSubscription: HabitParams.UpdateSubscription?
+ 
     let requestType: RequestType
     enum RequestType {
         case joinHabit
@@ -36,6 +38,8 @@ struct HabitRequests: RequestRepresentable {
         case groupHabitDetails
         case groupHabitMembers
         case friends
+        case getSubscription
+        case updateSubscription
     }
     
     init(requestType: RequestType) {
@@ -69,6 +73,10 @@ struct HabitRequests: RequestRepresentable {
             self.groupHabitMembers = params as? HabitParams.GroupHabitMembers
         case is HabitParams.Friends:
             self.friends = params as? HabitParams.Friends
+        case is HabitParams.UpdateSubscription:
+            self.updateSubscription = params as? HabitParams.UpdateSubscription
+        case is HabitParams.GetSubscription:
+            self.getSubscription = params as? HabitParams.GetSubscription
         default:break
         }
     }
@@ -77,7 +85,11 @@ struct HabitRequests: RequestRepresentable {
         switch self.requestType {
         case .allHabitList:
             return .get
+        case .getSubscription:
+            return .get
         case .updateHabit:
+            return .put
+        case .updateSubscription:
             return .put
         case .deleteHabit:
             return .delete
@@ -112,14 +124,20 @@ struct HabitRequests: RequestRepresentable {
             return "habits/group_habit_members"
         case .friends:
             return "joinhabits/friends"
+        case .updateSubscription:
+            return "users/update"
+        case .getSubscription:
+            return "subscribe/get_subscription"
         }
     }
-    
+
     var parameters: Parameters {
         switch self.requestType {
         case .createHabit:
             return .body(data: encodeBody(data: createHabit))
         case .allHabitList:
+            return .none
+        case .getSubscription:
             return .none
         case .updateHabit:
             return .body(data: encodeBody(data: updateHabit))
@@ -141,6 +159,8 @@ struct HabitRequests: RequestRepresentable {
             return .body(data: encodeBody(data: groupHabitMembers))
         case .friends:
             return  .body(data: encodeBody(data: friends))
+        case .updateSubscription:
+            return  .body(data: encodeBody(data: updateSubscription))
         default:
             return .none
         }

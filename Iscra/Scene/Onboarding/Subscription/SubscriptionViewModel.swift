@@ -23,12 +23,12 @@ final class SubscriptionViewModel {
     
     func getProducts() {
         Products.store.requestProducts{ [weak self] success, products in
-            guard let self = self else { return }
+            guard let weakSelf = self else { return }
             if success {
-                self.products = products!
-                self.view?.onAction(.products)
+                weakSelf.products = products!
+                weakSelf.view?.onAction(.products)
             } else {
-                self.view?.onAction(.errorMessage("No products found"))
+                weakSelf.view?.onAction(.errorMessage("No products found"))
             }
         }
     }

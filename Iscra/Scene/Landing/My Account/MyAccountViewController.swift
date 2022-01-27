@@ -109,7 +109,6 @@ extension MyAccountViewController {
    
     @objc func buttonPressed(_ sender: UIButton) {
         switch  sender {
-        
         case btnGetSubscription:
             self.getSubscriptionAction()
         case btnLogout:

@@ -76,6 +76,9 @@ extension IAPHelper: SKProductsRequestDelegate {
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print("Loaded list of products...")
         let products = response.products
+        products.forEach {
+            print("productIdentifier ---> \($0.productIdentifier)")
+        }
         productsRequestCompletionHandler?(true, products)
         clearRequestAndHandler()
     }

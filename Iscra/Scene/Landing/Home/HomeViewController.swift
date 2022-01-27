@@ -28,10 +28,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.reload()
-        if UserStore.primeUser == true {
-            self.viewModel.getSubscription()
-        }
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
 
@@ -56,7 +52,10 @@ extension HomeViewController {
     
     private func reload() {
         self.lblUserName.text = "Hi, " + (UserStore.userName ?? "").capitalized
-       self.viewModel.fetchHabitList()
+        self.viewModel.fetchHabitList()
+        if UserStore.primeUser == true {
+            self.viewModel.getSubscription()
+        }
     }
     
     private func setTableView() {
@@ -120,7 +119,7 @@ extension HomeViewController {
         guard let id = viewModel.habitList[index].id else { return }
         self.deleteAlert(id: String(id))
     }
-
+    
     private func didMarkAsComplete(_ objHabitMark: HabitMark) {
         self.viewModel.apiMarkAsComplete(objHabitMark: objHabitMark)
     }
@@ -161,7 +160,9 @@ extension HomeViewController: HabitViewRepresentable {
             self.viewModel.habitList.removeAll()
             self.viewModel.fetchHabitList()
         case .subscription:
-            self.router?.push(scene: .subscription)
+            if UserStore.primeUser != true {
+                self.router?.push(scene: .subscription)
+            }
         default:
             break
         }

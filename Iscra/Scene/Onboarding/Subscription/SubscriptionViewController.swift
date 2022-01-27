@@ -26,11 +26,16 @@ class SubscriptionViewController: UIViewController {
         super.viewDidLoad()
         self.setup()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
 }
 
 // MARK: Instance Methods
 extension SubscriptionViewController {
     private func setup() {
+        self.startAnimation()
         self.setViewControls()
         self.setNavigationView()
         self.viewModel.view = self
@@ -64,11 +69,13 @@ extension SubscriptionViewController {
     @objc func paymentSuccess (_ notification: Notification) {
         if notification.userInfo?["status"] as? String == "success" {
             print("Payment done")
+            UserStore.save(primeUser: true)
             NotificationCenter.default.post(name: .SubscriptionActiveNotification,
                                             object: nil,
                                             userInfo:["isSubscribed": true])
             self.viewModel.subscription(type: "month", amount: "100", identifier: notification.userInfo?["transactionIdentifier"] as? String ?? "")
         } else {
+            UserStore.save(primeUser: false)
             self.stopAnimation()
         }
     }
@@ -88,14 +95,22 @@ extension SubscriptionViewController  {
     }
     
     private func subscriptionAction() {
-        self.startAnimation()
         if let product = (viewModel.products.filter { $0.productIdentifier.contains("month")}).first {
+            self.startAnimation()
             self.viewModel.buyProduct(product)
         }
     }
     
     private func allowAdsAction() {
         print("allowAdsAction")
+    }
+    
+    private func dismiss() {
+        if self.viewModel.sourceScreen == .myAccount {
+            self.router?.dismiss(controller: .subscription)
+        } else {
+            self.router?.push(scene: .landing)
+        }
     }
 }
 
@@ -115,9 +130,9 @@ extension SubscriptionViewController: OnboardingViewRepresentable {
     func onAction(_ action: OnboardingAction) {
         switch action {
         case .subscription:
-            break
+            self.dismiss()
         default:
-            break
+            self.stopAnimation()
         }
     }
 }

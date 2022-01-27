@@ -61,7 +61,6 @@ extension UpdateProfileViewController {
     
     @objc func paymentSuccess (_ notification: Notification) {
         if let isSubscribed = notification.userInfo?["isSubscribed"] as? Bool {
-            UserStore.save(primeUser: isSubscribed)
             self.viewModel.isSubscribed = isSubscribed
             self.viewModel.updateUser()
         } else {

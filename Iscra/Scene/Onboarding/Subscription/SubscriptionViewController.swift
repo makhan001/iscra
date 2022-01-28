@@ -46,6 +46,7 @@ extension SubscriptionViewController {
     private func setViewControls() {
         self.lblHeaderTitle.text = "Dear \(UserStore.userName ?? ""), we need your support"
         self.lblMiddleText.text = AppConstant.subscriptionTitle
+        self.btnAllowAds.isHidden = true
         [btnSubscription, btnAllowAds].forEach {
             $0?.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         }

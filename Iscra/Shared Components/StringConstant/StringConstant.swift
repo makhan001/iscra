@@ -46,7 +46,8 @@ class AppConstant: NSObject {
     static let otpHeaderTitle = "Verify email"
     static let otpMiddleTittle = "Enter the confirmation \ncode we sent to 'email'."
     static let loginHeaderTitle = "Log in into your \naccount"
-    static let subscriptionTitle = "Thanks for using our app and making yourself and others better people. Unfortunately, for our development we need money. You can choose between two options: subscribe for one dollar per month or allow ads."
+    static let subscriptionTitle = "Thanks for using our app and making yourself and others better people. Unfortunately, for our development we need money. You can subscribe for $0.99 per month."
+    
     //WebView
     static let termsAndConditionTitle = "Terms And Condition"
     static let privacyPolicyTitle = "Privacy Policy"

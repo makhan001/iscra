@@ -24,7 +24,10 @@ class AppConstant: NSObject {
     
     // Alert Messages
     static let alert_emptynameMsg = "Please enter your name"
+    static let shareAppMessage = "Iscra is a habit tracker app that helps you build good habits much easier and enjoyably together with other people."
     
+    // IAPContent Messages
+    static let IAPContent = "Length of subscription: Monthly (1 month).\n■  Payment will be charged to iTunes Account at confirmation of purchase.\n■  Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period.\n■  Account will be charged for renewal within 24-hours prior to the end of the current period, and identify the cost of the renewal.\n■  Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase.\n■  Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable."
     
     // Chat Password
     static let defaultQBUserPassword = "Iscra@123"
@@ -43,7 +46,8 @@ class AppConstant: NSObject {
     static let otpHeaderTitle = "Verify email"
     static let otpMiddleTittle = "Enter the confirmation \ncode we sent to 'email'."
     static let loginHeaderTitle = "Log in into your \naccount"
-    static let subscriptionTitle = "Thanks for using our app and making yourself and others better people. Unfortunately, for our development we need money. You can choose between two options: subscribe for one dollar per month or allow ads."
+    static let subscriptionTitle = "Thanks for using our app and making yourself and others better people. Unfortunately, for our development we need money. You can subscribe for $0.99 per month."
+    
     //WebView
     static let termsAndConditionTitle = "Terms And Condition"
     static let privacyPolicyTitle = "Privacy Policy"

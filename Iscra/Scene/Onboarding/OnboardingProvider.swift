@@ -9,10 +9,10 @@
 import Foundation
 
 final class OnboardingServiceProvider: OnboardingServiceProvidable {
-          
-    var delegate: OnboardingServiceProvierDelegate?
+    
     private let task = UserTask()
-
+    var delegate: OnboardingServiceProvierDelegate?
+    
     func register(param:UserParams.Signup) {
         WebService().StartIndicator()
         task.signup(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
@@ -109,6 +109,16 @@ final class OnboardingServiceProvider: OnboardingServiceProvidable {
                 return
             }
             self?.delegate?.completed(for: .updateProfile, with: resp, with: nil)
+        }
+    }
+    
+    func subscription(param:UserParams.Subscription) {
+        task.subscription(params: param, responseModel: SuccessResponseModel.self) { [weak self](resp, err) in
+            if err != nil {
+                self?.delegate?.completed(for: .subscription, with: resp, with: err)
+                return
+            }
+            self?.delegate?.completed(for: .subscription, with: resp, with: nil)
         }
     }
 }

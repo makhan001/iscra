@@ -28,7 +28,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.reload()
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
 
@@ -40,18 +39,23 @@ extension HomeViewController {
         self.viewFirstHabit.isHidden = true
         self.lblTitle.text = AppConstant.firstHabitTitle
         self.lblSubTitle.text = AppConstant.firstHabitSubTitle
-        self.viewModel.getProducts()
         self.addNotificationObserver()
     }
     
-    private func addNotificationObserver(){
+    private func addNotificationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .EditHabit, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.refrershUI) , name: .MarkAsComplete, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSuccess(_:)),
+                                               name: .SubscriptionActiveNotification,
+                                               object: nil)
     }
     
     private func reload() {
         self.lblUserName.text = "Hi, " + (UserStore.userName ?? "").capitalized
         self.viewModel.fetchHabitList()
+        if UserStore.primeUser == true {
+            self.viewModel.getSubscription()
+        }
     }
     
     private func setTableView() {
@@ -65,6 +69,13 @@ extension HomeViewController {
     
     @objc func refrershUI() {
         self.viewModel.fetchHabitList()
+    }
+    
+    @objc func paymentSuccess (_ notification: Notification) {
+        if let isSubscribed = notification.userInfo?["isSubscribed"] as? Bool {
+            UserStore.save(primeUser: isSubscribed)
+            self.viewModel.updateSubscription(true)
+        }
     }
     
     private func handleSuccessResponse() {
@@ -108,7 +119,7 @@ extension HomeViewController {
         guard let id = viewModel.habitList[index].id else { return }
         self.deleteAlert(id: String(id))
     }
-
+    
     private func didMarkAsComplete(_ objHabitMark: HabitMark) {
         self.viewModel.apiMarkAsComplete(objHabitMark: objHabitMark)
     }
@@ -148,6 +159,10 @@ extension HomeViewController: HabitViewRepresentable {
         case .markAsCompleteSucess(_):
             self.viewModel.habitList.removeAll()
             self.viewModel.fetchHabitList()
+        case .subscription:
+            if UserStore.primeUser != true {
+                self.router?.push(scene: .subscription)
+            }
         default:
             break
         }

@@ -12,6 +12,7 @@ import Foundation
 final class UpdateProfileViewModel {
     
     var username: String = ""
+    var isSubscribed: Bool = false
     var selectedImage: UIImage = UIImage()
     var delegate: OnboardingServiceProvierDelegate?
 
@@ -37,8 +38,11 @@ final class UpdateProfileViewModel {
             self.view?.onAction(.errorMessage("Please update username"))
             return
         }
-        
-        let parameters =  UserParams.UpdateProfile(username: username)
+        self.updateUser()
+    }
+    
+    func updateUser() {
+        let parameters =  UserParams.UpdateProfile(username: username, is_subscribed: isSubscribed)
         WebService().requestMultiPart(urlString: APIConstants.updateProfile,
                                       httpMethod: .put,
                                       parameters: parameters,
@@ -57,7 +61,7 @@ final class UpdateProfileViewModel {
                         print("updateProfileApi Success---> \(response)")
                         UserStore.save(userID: response.data?.user?.id)
                         UserStore.save(userImage: response.data?.user?.profileImage)
-                        QBChatLogin.shared.updateFullName(fullName: self?.username ?? "", customData: self?.selectedImage as? String ?? "")
+                        QBChatLogin.shared.updateFullName(fullName: self?.username ?? "", customData: "")
                         self?.view?.onAction(.updateProfile)
                     } else {
                         self?.view?.onAction(.errorMessage(response.message ?? ERROR_MESSAGE))

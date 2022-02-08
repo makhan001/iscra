@@ -86,7 +86,7 @@ extension InviteFriendViewController  {
     
     private func inviteFriendsAction() {
         print("inviteFriendsAction")
-        self.showActivityViewController(url: URL(string: AppConstant.IscraAppLink)!, text: "Iscra", image: UIImage(named: "ic-app-logo")!)
+        self.showActivityViewController(url: URL(string: AppConstant.IscraAppLink)!, text: AppConstant.shareAppMessage, image: UIImage(named: "ic-app-logo")!)
     }
     
     private func maybeLetterAction() {

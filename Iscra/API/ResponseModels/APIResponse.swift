@@ -35,7 +35,8 @@ struct DataClass: Codable {
     let groupHabitDetails: GroupHabitDetails?
     let groupHabitMembers: [GroupHabitMember]?
     let shareHabit: [ShareHabit]?
-
+    let getSubscription: GetSubscription?
+    
     enum CodingKeys: String, CodingKey {
         case register, user, habit, habits, url, invitaions, friends //, groupdetails
         case loginData = "login_data"
@@ -52,6 +53,7 @@ struct DataClass: Codable {
         case longestStreak = "longest_streak"
         case shareHabit = "share_habit"
         case isVerified = "is_verified"
+        case getSubscription = "get_subscription"
     }
 }
 
@@ -97,10 +99,10 @@ struct LoginData: Codable {
     var id: Int?
     var email, encryptedPassword: String?
     var confirmationToken, resetPasswordToken, resetPasswordSentAt, rememberCreatedAt: String?
-    var createdAt, updatedAt: Int?
+    var createdAt, updatedAt, transactionDate: Int?
     var verificationCode, authenticationToken, username: String?
     var memoji: String?
-    var isVerified: Bool?
+    var isVerified, isSubscribed: Bool?
     var deviceType, osVersion, deviceModel, fcmToken: String?
     var forgotPassword: String?
     var deviceUdid: String?
@@ -131,6 +133,8 @@ struct LoginData: Codable {
         case isGoogle = "is_google"
         case isApple = "is_apple"
         case profileImage = "profile_image"
+        case transactionDate = "transaction_date"
+        case isSubscribed = "is_subscribed"
     }
 }
 
@@ -141,7 +145,7 @@ struct User: Codable {
     var createdAt, updatedAt: Int?
     var verificationCode, authenticationToken, username: String?
     var memoji: String?
-    var isVerified: Bool?
+    var isVerified, isSubscribed: Bool?
     var deviceType, osVersion, deviceModel, fcmToken: String?
     var forgotPassword: String?
     var deviceUdid: String?
@@ -173,6 +177,24 @@ struct User: Codable {
         case isGoogle = "is_google"
         case isApple = "is_apple"
         case profileImage = "profile_image"
+        case isSubscribed = "is_subscribed"
     }
 }
 
+// MARK: - GetSubscription
+struct GetSubscription: Codable {
+    let id, userID, transactionDate: Int?
+    let transactionAmount, transactionType, transactionIdentifier: String?
+    let createdAt, updatedAt: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userID = "user_id"
+        case transactionDate = "transaction_date"
+        case transactionAmount = "transaction_amount"
+        case transactionType = "transaction_type"
+        case transactionIdentifier = "transaction_identifier"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}

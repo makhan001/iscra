@@ -135,7 +135,6 @@ extension HabitCalenderViewController {
               self.viewMarkasComplete.isHidden = true
           }
         
-        
           if self.viewModel.objHabitDetail?.habitType == "group_habit" {
               self.viewShareHabit.isHidden = false
           } else {
@@ -144,10 +143,6 @@ extension HabitCalenderViewController {
     }
     
     private func updateMarksAsCompleteView() {
-        print("viewModel.arrHabitCalender?.first?.isCompleted is \(viewModel.arrHabitCalender?.first?.isCompleted)")
-        print("viewModel.arrHabitCalender?.first?.habitDay?.toDouble.habitDate is \(viewModel.arrHabitCalender?.first?.habitDay?.toDouble.habitDate)")
-        print("Date().currentHabitDate is \(Date().currentHabitDate)")
-
           if  viewModel.arrHabitCalender?.first?.isCompleted == true && viewModel.arrHabitCalender?.first?.habitDay?.toDouble.habitDate == Date().currentHabitDate {
               self.viewMarkasComplete.isHidden = true
           } else if viewModel.arrHabitCalender?.first?.habitDay?.toDouble.habitDate != Date().currentHabitDate {

@@ -10,10 +10,13 @@ import Foundation
 final class LoginCoordinator: Coordinator<Scenes> {
     
     weak var delegate: CoordinatorDimisser?
-    var landing: LandingCoordinator!
+    
     let controller: LoginViewController = LoginViewController.from(from: .onboarding, with: .login)
     let forgot: ForgotPasswordViewController = ForgotPasswordViewController.from(from: .onboarding, with: .forgot)
     let verification: VerificationViewController = VerificationViewController.from(from: .onboarding, with: .verification)
+    
+    var landing: LandingCoordinator!
+    private var subscription: SubscriptionCoordinator!
 
     override func start() {
         super.start()
@@ -34,8 +37,7 @@ final class LoginCoordinator: Coordinator<Scenes> {
         verification.router = self
         forgot.router = self
     }
-    
-    
+     
     private func startLanding() {
         landing = LandingCoordinator(router: Router())
         add(landing)
@@ -52,6 +54,14 @@ final class LoginCoordinator: Coordinator<Scenes> {
     private func startForgotPassword() {
         self.router.present(forgot, animated: true)
     }
+    
+    private func startSubscription() {
+        subscription = SubscriptionCoordinator(router: Router())
+        add(subscription)
+        subscription.delegate = self
+        subscription.start(sourceScreen: .login)
+        self.router.present(subscription, animated: true)
+    }
 }
 
 extension LoginCoordinator: NextSceneDismisser {
@@ -61,6 +71,7 @@ extension LoginCoordinator: NextSceneDismisser {
         case .landing: startLanding()
         case .verification: startVerification()
         case .forgot: startForgotPassword()
+        case .subscription: startSubscription()
         default: break
         }
     }

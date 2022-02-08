@@ -23,12 +23,12 @@ final class SubscriptionViewModel {
     
     func getProducts() {
         Products.store.requestProducts{ [weak self] success, products in
-            guard let self = self else { return }
+            guard let weakSelf = self else { return }
             if success {
-                self.products = products!
-                self.view?.onAction(.products)
+                weakSelf.products = products!
+                weakSelf.view?.onAction(.products)
             } else {
-                self.view?.onAction(.errorMessage("No products found"))
+                weakSelf.view?.onAction(.errorMessage("No products found"))
             }
         }
     }
@@ -37,6 +37,10 @@ final class SubscriptionViewModel {
         if IAPHelper.canMakePayments() {
             Products.store.buyProduct(product)
         } else {}
+    }
+    
+    func subscription(type:String, amount:String, identifier:String) {
+        provider.subscription(param: UserParams.Subscription(user_id: Int(UserStore.userID ?? "0"), transaction_date: Int(Date().timeIntervalSince1970), transaction_type: type, transaction_amount: amount, transaction_identifier: identifier))
     }
 }
 
@@ -48,7 +52,7 @@ extension SubscriptionViewModel: OnboardingServiceProvierDelegate {
                 self.view?.onAction(.errorMessage(error?.responseData?.message ?? ERROR_MESSAGE))
             } else {
                 if let resp = response as? SuccessResponseModel, resp.code == 200 {
-                    self.view?.onAction(.login("", resp.data?.loginData?.isVerified ?? false))
+                    self.view?.onAction(.subscription)
                 } else {
                     self.view?.onAction(.errorMessage((response as? SuccessResponseModel)?.message ?? ERROR_MESSAGE))
                 }

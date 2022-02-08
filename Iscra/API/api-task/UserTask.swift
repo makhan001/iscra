@@ -109,5 +109,18 @@ final class UserTask {
     func groupHabitMembers<T:Codable>(params: CommunityParams.GroupHabitMembers, responseModel: T.Type, completion: @escaping APIResult<T>) {
         dispatcher.execute(requst: CommunityRequest(type: .groupHabitMembers, params: params), modeling: responseModel, completion: completion)
     }
+    
+    func subscription<T:Codable>(params: UserParams.Subscription, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: AuthRequests(type: .subscription, params: params), modeling: responseModel, completion: completion)
+    }
+    
+    func getSubscription<T:Codable>(params: HabitParams.GetSubscription, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .getSubscription, params: params), modeling: responseModel, completion: completion)
+    }
+        
+    func updateSubscription<T:Codable>(params: HabitParams.UpdateSubscription, responseModel: T.Type, completion: @escaping APIResult<T>) {
+        dispatcher.execute(requst: HabitRequests(type: .updateSubscription, params: params), modeling: responseModel, completion: completion)
+    }
+    
 }
 

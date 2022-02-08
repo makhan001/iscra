@@ -23,7 +23,7 @@ class RootCoordinator {
     func start(window:UIWindow) {
         self.window = window
         if UserStore.token != nil && UserStore.isVerify  == true {
-            if UserStore.userCreateDate != 0, UserStore.userCreateDate.daysDifference > 21 {
+            if UserStore.userCreateDate != 0, UserStore.userCreateDate.daysDifference > 21, UserStore.primeUser != true {
                 subscriptionCoordinator.start(sourceScreen: .login)
                 window.rootViewController = subscriptionCoordinator.toPresentable()
             } else {
@@ -37,4 +37,3 @@ class RootCoordinator {
         window.makeKeyAndVisible()
     }
 }
-

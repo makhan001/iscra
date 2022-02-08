@@ -68,8 +68,11 @@ enum HabitAction {
     case shareHabit
     case friends
     case products
+    case subscription
     case groupHabitDetails
     case groupHabitMembers
+    case getSubscription
+    case updateSubscription
     case isHabitDelete(_ isDelete: Bool, _ msg:String)
     case navigateToGroupImage(_ isNavigate: Bool)
     case requireFields(_ text:String)
@@ -105,6 +108,8 @@ protocol HabitServiceProvidable: AnyObject {
     func markAsComplete(param: HabitParams.MarkAsComplete)
     func groupHabitMembers(param: HabitParams.GroupHabitMembers)
     func groupHabitDetails(param: HabitParams.GroupHabitDetails)
+    func getSubscription(param: HabitParams.GetSubscription)
+    func updateSubscription(param:HabitParams.UpdateSubscription)
 }
 protocol HabitServiceProvierDelegate: AnyObject {
     func completed<T>(for action: HabitAction, with response: T?, with error: APIError?)

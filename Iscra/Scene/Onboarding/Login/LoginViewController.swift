@@ -204,6 +204,8 @@ extension LoginViewController: OnboardingViewRepresentable {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.router?.push(scene: .landing)
             }
+        case .subscription:
+            self.router?.push(scene: .subscription)
         default:
             break
         }

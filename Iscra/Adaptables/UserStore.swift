@@ -24,6 +24,7 @@ struct UserStore {
     static let fcmtoken_key = "fcmtoken"
     static let apns_token_key = "apns_token"
     static let socialLoginKey = "social_login_Id"
+    private static let push_DisableCount = "push_disable_count"
     
     static var isVerify: Bool? {
         return UserDefaults.standard.bool(forKey: is_verify_key)
@@ -59,6 +60,10 @@ struct UserStore {
     
     static var userID:String? {
         return UserDefaults.standard.string(forKey: userIdKey)
+    }
+    
+    static var pushDisableCount: Int? {
+        return UserDefaults.standard.integer(forKey: push_DisableCount)
     }
     
     static var userImage:String? {
@@ -113,6 +118,10 @@ struct UserStore {
         UserDefaults.standard.set(userID, forKey: userIdKey)
     }
     
+    static func save(pushDisableCount:Int?) {
+        UserDefaults.standard.set(pushDisableCount, forKey: push_DisableCount)
+    }
+    
     static func save(userImage:String?) {
         UserDefaults.standard.set(userImage, forKey:userImageKey)
     }
@@ -144,8 +153,6 @@ struct UserStore {
     static func save(userCreateDate:Double) {
         UserDefaults.standard.set(userCreateDate, forKey:user_created_at)
     }
-    
-    
     //    static func save(dialHistory:[DialHistory]) {
     //        UserDefaults.standard.set(try? PropertyListEncoder().encode(dialHistory), forKey:dialHistoryKey)
     //    }

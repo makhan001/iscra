@@ -47,6 +47,7 @@ extension LandingTabBarController {
     private func setup() {
         self.setupItems()
         self.setTabbar()
+        AppDelegate.shared.requestNotificationPermission()
         NotificationCenter.default.addObserver(self, selector: #selector(self.rotateIcon) , name: .RotateTab, object: nil)
         if let newButtonImage = UIImage(named: "tab3") {
             self.addCenterButton(withImage: newButtonImage, highlightImage: newButtonImage)

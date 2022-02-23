@@ -22,5 +22,5 @@ target 'Iscra' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Crashlytics'
   pod 'IQKeyboardManagerSwift'
-  
+  pod 'Firebase/Analytics'
 end

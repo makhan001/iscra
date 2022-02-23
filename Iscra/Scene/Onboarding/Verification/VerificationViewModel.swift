@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 import Foundation
 
 final class VerificationViewModel {
@@ -22,7 +23,6 @@ final class VerificationViewModel {
     init(provider: OnboardingServiceProvidable) {
         self.provider = provider
         self.provider.delegate = self
-        
     }
     
     private func validateUserInput() {
@@ -33,11 +33,19 @@ final class VerificationViewModel {
             view?.onAction(.requireFields("Please enter all charaters for verification"))
         }
     }
+    
     private func resendVerification() {
         self.isResendVerification = true
         self.provider.resendVerification(param: UserParams.ResendVerification())
     }
+    
+    private func AnalyticsForVerification() {
+        Analytics.logEvent("verified_user_count",  parameters: [
+            "is_verified": UserStore.isVerify ?? false,
+        ])
+    }
 }
+
 extension VerificationViewModel: OnboardingServiceProvierDelegate, InputViewDelegate {
     func onAction(action: OnboardingAction, for screen: OnboardingScreenType) {
         switch action {
@@ -59,6 +67,7 @@ extension VerificationViewModel: OnboardingServiceProvierDelegate, InputViewDele
                     
                     if let isVerify =  resp.data?.isVerified {
                         UserStore.save(isVerify: isVerify)
+                        self.AnalyticsForVerification()
                     }
                     self.view?.onAction(.verification(""))
                 } else {

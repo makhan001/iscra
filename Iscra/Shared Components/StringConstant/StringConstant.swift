@@ -92,5 +92,7 @@ class AppConstant: NSObject {
     static let invalidDescription = "Description not more than 140 words"
     static let emptyHabitName = "Habit name can't be empty"
     static let invalidHabitName = "Habit name not more than 30 words"
+    static let notificationPermission = "Notification Permission"
+    static let notificationPermissionMessage = "You may miss some information since your notification are not enabled. Do you want to enable push notification?"
 }
 

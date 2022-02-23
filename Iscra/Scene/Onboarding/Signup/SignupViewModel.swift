@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 import Quickblox
 import Foundation
 import GoogleSignIn
@@ -35,7 +36,7 @@ final class SignupViewModel {
         default: break
         }
     }
-
+    
     private func validateUserInput() {
         if Validation().textValidation(text: email, validationType: .email).0 {
             view?.onAction(.requireFields(Validation().textValidation(text: email, validationType: .email).1))
@@ -84,6 +85,7 @@ final class SignupViewModel {
             UserStore.save(token: response.data?.register?.authenticationToken)
             UserStore.save(userName: response.data?.register?.username?.capitalized)
             UserStore.save(userCreateDate: (response.data?.register?.createdAt ?? 0).toDouble)
+            
         } else {
             UserStore.save(userID: response.data?.user?.id)
             UserStore.save(userEmail: response.data?.user?.email)
@@ -93,6 +95,16 @@ final class SignupViewModel {
             UserStore.save(userCreateDate: (response.data?.user?.createdAt ?? 0).toDouble)
         }
         QBChatLogin.shared.registerQBUser()
+        self.AnalyticsForSignUp()
+        
+    }
+    
+    private func AnalyticsForSignUp() {
+        Analytics.logEvent("registered_user_count", parameters: [
+            "email": UserStore.userEmail ?? email,
+            "username": UserStore.userName ?? username,
+            "is_verified": UserStore.isVerify ?? false,
+        ])
     }
     
     func socialLogin(logintype:SocialLoginType) {

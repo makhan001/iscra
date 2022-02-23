@@ -12,8 +12,8 @@ import GoogleSignIn
 
 final class LoginViewModel {
     
-    var email: String = ""
-    var password: String = ""
+    var email: String = "deepraj@gmail.com"
+    var password: String = "123456"
     var username: String = ""
     var social_id: String = ""
     var socialLoginImageURL: URL?

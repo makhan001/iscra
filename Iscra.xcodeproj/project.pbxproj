@@ -14,6 +14,7 @@
 		04295A2B2758BC60001BF65E /* FetchHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04295A2A2758BC60001BF65E /* FetchHabit.swift */; };
 		042CC9DE2770980A002C23EC /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CC9DD2770980A002C23EC /* CommunityViewModel.swift */; };
 		042CC9E227709BFB002C23EC /* FetchCommunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CC9E127709BFB002C23EC /* FetchCommunity.swift */; };
+		0438958527C4C2280090F51B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0438958427C4C2280090F51B /* AdSupport.framework */; };
 		04397097274B762700898C91 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04397096274B762700898C91 /* VerificationViewModel.swift */; };
 		043B82B4276345500076CCBE /* GroupHabitCalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B82B3276345500076CCBE /* GroupHabitCalenderCoordinator.swift */; };
 		043CF4E827685FB000526FBC /* MyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF4E427685FB000526FBC /* MyAccountTableViewCell.swift */; };
@@ -21,6 +22,7 @@
 		043CF5462768A71300526FBC /* AddMyPictureCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF5452768A71300526FBC /* AddMyPictureCoordinator.swift */; };
 		043CF5492768AAC500526FBC /* WalkthroughCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF5482768AAC500526FBC /* WalkthroughCoordinator.swift */; };
 		043CF54C2768B3B300526FBC /* AddMemojiCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CF54B2768B3B200526FBC /* AddMemojiCoordinator.swift */; };
+		043F550827C4B63600F6CE8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 043F550727C4B63600F6CE8E /* GoogleService-Info.plist */; };
 		0440B9312752050D0096DC2D /* HabitCalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */; };
 		04456E6F277C506800C6E0FE /* CommunityDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04456E6E277C506800C6E0FE /* CommunityDetailCoordinator.swift */; };
 		04456E72277C54AB00C6E0FE /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04456E71277C54AB00C6E0FE /* GroupMembersViewController.swift */; };
@@ -336,6 +338,7 @@
 		04295A2A2758BC60001BF65E /* FetchHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHabit.swift; sourceTree = "<group>"; };
 		042CC9DD2770980A002C23EC /* CommunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		042CC9E127709BFB002C23EC /* FetchCommunity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCommunity.swift; sourceTree = "<group>"; };
+		0438958427C4C2280090F51B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		04397096274B762700898C91 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
 		043B82B3276345500076CCBE /* GroupHabitCalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHabitCalenderCoordinator.swift; sourceTree = "<group>"; };
 		043CF4E427685FB000526FBC /* MyAccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -343,6 +346,7 @@
 		043CF5452768A71300526FBC /* AddMyPictureCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyPictureCoordinator.swift; sourceTree = "<group>"; };
 		043CF5482768AAC500526FBC /* WalkthroughCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughCoordinator.swift; sourceTree = "<group>"; };
 		043CF54B2768B3B200526FBC /* AddMemojiCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemojiCoordinator.swift; sourceTree = "<group>"; };
+		043F550727C4B63600F6CE8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0440B9302752050D0096DC2D /* HabitCalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCalenderCoordinator.swift; sourceTree = "<group>"; };
 		04456E6E277C506800C6E0FE /* CommunityDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailCoordinator.swift; sourceTree = "<group>"; };
 		04456E71277C54AB00C6E0FE /* GroupMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersViewController.swift; sourceTree = "<group>"; };
@@ -660,6 +664,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0438958527C4C2280090F51B /* AdSupport.framework in Frameworks */,
 				CAABE2470B3AFBB4BECAD2A8 /* Pods_Iscra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -743,6 +748,7 @@
 		527A79552898470E2C294946 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0438958427C4C2280090F51B /* AdSupport.framework */,
 				5FBC86FE611626D836826FB5 /* Pods_Iscra.framework */,
 			);
 			name = Frameworks;
@@ -1825,6 +1831,7 @@
 				88E0285F2716F73F00D90BB1 /* Assets.xcassets */,
 				88E028602716F73F00D90BB1 /* LaunchScreen.storyboard */,
 				88E028642716F73F00D90BB1 /* Iscra_Info.plist */,
+				043F550727C4B63600F6CE8E /* GoogleService-Info.plist */,
 				88E0284C2716F73F00D90BB1 /* Mock JSON */,
 			);
 			path = Resources;
@@ -2084,6 +2091,7 @@
 				5FF6CD5D274E6A5A007ADC2F /* AttachmentUploadBar.xib in Resources */,
 				88CA2A5A271EACCA003D590D /* SF-Pro-Display-Black.ttf in Resources */,
 				88CA2A4B271E9F1B003D590D /* LogInMock.json in Resources */,
+				043F550827C4B63600F6CE8E /* GoogleService-Info.plist in Resources */,
 				5FF6CD25274E6A5A007ADC2F /* Dialogs.storyboard in Resources */,
 				5FF6CD42274E6A5A007ADC2F /* Localizable.strings in Resources */,
 				88CA2A55271EACCA003D590D /* SF-Pro-Display-Heavy.ttf in Resources */,

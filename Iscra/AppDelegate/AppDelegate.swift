@@ -7,11 +7,11 @@
 
 import UIKit
 import CoreData
+import Firebase
 import Quickblox
 import GoogleSignIn
 import SVProgressHUD
 import IQKeyboardManagerSwift
-
 
 struct CredentialsConstant {
     static let applicationID:UInt = 94837
@@ -32,7 +32,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.initialConfiguration()
+        self.requestForNotification()
         return true
+    }
+    
+    private func requestForNotification() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.sound]) { (granted, error) in
+            if granted {
+                UserStore.save(pushDisableCount: 0)
+            } else if let userPushCount = UserStore.pushDisableCount {
+                UserStore.save(pushDisableCount: userPushCount + 1)
+            }
+        }
     }
     
     func application(
@@ -52,9 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func initialConfiguration() {
         Thread.sleep(forTimeInterval: 0.0)
+        UNUserNotificationCenter.current().delegate = self
         self.setHUD()
         self.setupQuickBlox()
         self.setNavigationBar()
+        FirebaseApp.configure()
         self.setRootController()
         self.registerForRemoteNotifications()
         IQKeyboardManager.shared.enable = true
@@ -118,6 +131,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
+    //    func applicationDidBecomeActive(_ application: UIApplication) {
+    //        print("applicationDidBecomeActive")
+    //        AppDelegate.shared.requestNotificationPermission()
+    //    }
+    
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -167,6 +185,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //MARK: - UNUserNotificationCenterDelegate
 @available(iOS 13.0, *)
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
@@ -181,9 +202,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         guard let dialogID = userInfo["SA_STR_PUSH_NOTIFICATION_DIALOG_ID".localized] as? String,
               dialogID.isEmpty == false else {
-                  completionHandler()
-                  return
-              }
+            completionHandler()
+            return
+        }
         DispatchQueue.main.async {
             if ChatManager.instance.storage.dialog(withID: dialogID) != nil {
                 // self.rootViewController.dialogID = dialogID
@@ -220,22 +241,83 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         print("Devcie token for apns ==== \(token)")
-//        Messaging.messaging().apnsToken = deviceToken
+        //        Messaging.messaging().apnsToken = deviceToken
         UserStore.save(apnsToken: token)
         
-//        Messaging.messaging().token { token, error in
-//            if let error = error {
-//                print("Error fetching FCM registration token: \(error)")
-//            } else if let token = token {
-//                print("FCM registration token: \(token)")
-//                UserStore.save(fcmtoken: token)
-//            }
-//        }
+        //        Messaging.messaging().token { token, error in
+        //            if let error = error {
+        //                print("Error fetching FCM registration token: \(error)")
+        //            } else if let token = token {
+        //                print("FCM registration token: \(token)")
+        //                UserStore.save(fcmtoken: token)
+        //            }
+        //        }
     }
 }
 
 extension UIApplication {
     static var appVersion: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    }
+}
+
+//MARK: - trigger Local Notification and its Permission
+extension AppDelegate {
+    func requestNotificationPermission() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            if settings.authorizationStatus == .authorized {
+                self.triggerLocalNotification()
+            } else if let pushDisableCount = UserStore.pushDisableCount,
+                       (pushDisableCount <= 2 && pushDisableCount != 0) {
+                self.alertForPermission()
+            }
+        }
+    }
+    
+    private func triggerLocalNotification() {
+        if UserStore.token != nil && UserStore.isVerify  == true {
+            let content = UNMutableNotificationContent()
+            content.title = "Iscra"
+            content.body = "Hey! It’s time to build your new habit. Don’t dream about success, work for it!"
+            
+            var dateComponents = DateComponents()
+             dateComponents.hour = 16
+            dateComponents.minute = 0
+            
+            // Create the request
+            let request = UNNotificationRequest(identifier: "Iscra",content: content, trigger:  UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true))
+            
+            // Schedule the request with the system.
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+    }
+    
+    private func opensSettings() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: nil)
+            }
+        }
+    }
+    
+    private func alertForPermission() {
+        let alertController = UIAlertController(title: AppConstant.notificationPermission, message: AppConstant.notificationPermissionMessage, preferredStyle: .alert)
+        let OpenSettingAction = UIAlertAction(title: "Open settings", style: .default) { (action: UIAlertAction!) in
+            self.opensSettings()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action: UIAlertAction!) in
+            UserStore.save(pushDisableCount: UserStore.pushDisableCount! + 1)
+        }
+        OpenSettingAction.setValue(UIColor.black, forKey: "titleTextColor")
+        alertController.addAction(OpenSettingAction)
+        alertController.addAction(cancelAction)
+        DispatchQueue.main.async {
+            self.window?.rootViewController?.present(alertController, animated: true, completion:nil)
+        }
     }
 }

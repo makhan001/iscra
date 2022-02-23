@@ -7,14 +7,25 @@ PODS:
   - AppAuth/ExternalUserAgent (1.4.0)
   - Firebase (8.8.0):
     - Firebase/Core (= 8.8.0)
+  - Firebase/Analytics (8.8.0):
+    - Firebase/Core
   - Firebase/Core (8.8.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 8.8.0)
   - Firebase/CoreOnly (8.8.0):
     - FirebaseCore (= 8.8.0)
+  - Firebase/Crashlytics (8.8.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 8.8.0)
   - Firebase/Database (8.8.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 8.8.0)
+  - Firebase/Messaging (8.8.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 8.8.0)
+  - Firebase/Storage (8.8.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 8.8.0)
   - FirebaseAnalytics (8.8.0):
     - FirebaseAnalytics/AdIdSupport (= 8.8.0)
     - FirebaseCore (~> 8.0)
@@ -42,6 +53,13 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
     - nanopb (~> 2.30908.0)
+  - FirebaseCrashlytics (8.8.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleDataTransport (~> 9.0)
+    - GoogleUtilities/Environment (~> 7.4)
+    - nanopb (~> 2.30908.0)
+    - PromisesObjC (< 3.0, >= 1.2)
   - FirebaseDatabase (8.8.0):
     - FirebaseCore (~> 8.0)
     - leveldb-library (~> 1.22)
@@ -50,6 +68,18 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (< 3.0, >= 1.2)
+  - FirebaseMessaging (8.8.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleDataTransport (~> 9.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/Reachability (~> 7.4)
+    - GoogleUtilities/UserDefaults (~> 7.4)
+    - nanopb (~> 2.30908.0)
+  - FirebaseStorage (8.8.0):
+    - FirebaseCore (~> 8.0)
+    - GTMSessionFetcher/Core (~> 1.5)
   - FSCalendar (2.8.2)
   - GoogleAppMeasurement (8.8.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.8.0)
@@ -121,7 +151,11 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Firebase
+  - Firebase/Analytics
+  - Firebase/Crashlytics
   - Firebase/Database
+  - Firebase/Messaging
+  - Firebase/Storage
   - FSCalendar
   - GoogleSignIn
   - IQKeyboardManagerSwift
@@ -139,8 +173,11 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseDatabase
     - FirebaseInstallations
+    - FirebaseMessaging
+    - FirebaseStorage
     - FSCalendar
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -165,8 +202,11 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 5506ea8b867d8423485a84b4cd612d279f7b0b8a
   FirebaseCore: 98b29e3828f0a53651c363937a7f7d92a19f1ba2
   FirebaseCoreDiagnostics: fe77f42da6329d6d83d21fd9d621a6b704413bfc
+  FirebaseCrashlytics: 3660c045c8e45cc4276110562a0ef44cf43c8157
   FirebaseDatabase: bc4610ff3a816dcc680c1dbccf7f9f4bd94ac07d
   FirebaseInstallations: 2563cb18a723ef9c6ef18318a49519b75dce613c
+  FirebaseMessaging: 419b5c9d84f294a753c6501d8cfb9ced1ce37304
+  FirebaseStorage: 54ff752ecbd27f1c354c3f5e8c55f6ad5783699b
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   GoogleAppMeasurement: 5ba1164e3c844ba84272555e916d0a6d3d977e91
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
@@ -184,6 +224,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: c0d0e08b135eb94401329947fa6b4db304f30071
+PODFILE CHECKSUM: 9e39e4f793ecab252fc1550cca871bfbc34aa69f
 
 COCOAPODS: 1.11.2

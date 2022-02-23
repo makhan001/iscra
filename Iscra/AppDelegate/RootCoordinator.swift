@@ -35,5 +35,6 @@ class RootCoordinator {
             window.rootViewController = onboardingCoordinator.toPresentable()
         }
         window.makeKeyAndVisible()
+        AppDelegate.shared.requestNotificationPermission()
     }
 }

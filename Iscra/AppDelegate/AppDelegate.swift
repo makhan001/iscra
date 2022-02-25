@@ -10,7 +10,7 @@ import CoreData
 import Firebase
 import Quickblox
 import GoogleSignIn
-import FBSDKCoreKit
+import FacebookCore
 import SVProgressHUD
 import IQKeyboardManagerSwift
 
@@ -32,16 +32,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        ApplicationDelegate.shared.application(application,didFinishLaunchingWithOptions: launchOptions)
         self.initialConfiguration()
         self.requestForNotification()
-        
-        Settings.isAutoLogAppEventsEnabled = true
-        Settings.isAutoInitEnabled = true
-        
-     //   Settings.isAdvertiserTrackingEnabled = false
+
+//        Settings.isAdvertiserTrackingEnabled = false
 //        Settings.shared.isAutoLogAppEventsEnabled = true
 //        AppEvents.shared.activateApp()
+        ApplicationDelegate.shared.application(
+                    application,
+                    didFinishLaunchingWithOptions: launchOptions
+                )
+        
+        Settings.isAutoLogAppEventsEnabled = true
+        Settings.isCodelessDebugLogEnabled = true
+        Settings.setAdvertiserTrackingEnabled(true)
+    
+     //   Settings.isAutoInitEnabled = true
+
         return true
     }
     

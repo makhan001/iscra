@@ -5,6 +5,16 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
+  - FBSDKCoreKit (8.0.0):
+    - FBSDKCoreKit/Basics (= 8.0.0)
+    - FBSDKCoreKit/Core (= 8.0.0)
+  - FBSDKCoreKit/Basics (8.0.0)
+  - FBSDKCoreKit/Core (8.0.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKShareKit (8.0.0):
+    - FBSDKShareKit/Share (= 8.0.0)
+  - FBSDKShareKit/Share (8.0.0):
+    - FBSDKCoreKit (~> 8.0.0)
   - Firebase (8.8.0):
     - Firebase/Core (= 8.8.0)
   - Firebase/Analytics (8.8.0):
@@ -150,6 +160,8 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - FBSDKCoreKit (~> 8.0.0)
+  - FBSDKShareKit (~> 8.0.0)
   - Firebase
   - Firebase/Analytics
   - Firebase/Crashlytics
@@ -169,6 +181,8 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AppAuth
+    - FBSDKCoreKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -198,6 +212,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  FBSDKCoreKit: 9d27fe97a2fa2abe5eeefea8240e837623ab88e0
+  FBSDKShareKit: bf3705fc42b660c3da9f15223db791b3c9c2acde
   Firebase: 629510f1a9ddb235f3a7c5c8ceb23ba887f0f814
   FirebaseAnalytics: 5506ea8b867d8423485a84b4cd612d279f7b0b8a
   FirebaseCore: 98b29e3828f0a53651c363937a7f7d92a19f1ba2
@@ -224,6 +240,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: f59e6e6530f167e97a6e56525c2fc09e541a9604
+PODFILE CHECKSUM: 3cd7caabe1d3469b2e8cf557caa590c87efe2632
 
 COCOAPODS: 1.11.2

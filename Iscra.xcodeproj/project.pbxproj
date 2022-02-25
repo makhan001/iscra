@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -55,8 +55,6 @@
 		04BE940C2750BC1A00503123 /* HabitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE940B2750BC1A00503123 /* HabitProvider.swift */; };
 		04BE940F2750BC9A00503123 /* HabitAdaptables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE940E2750BC9A00503123 /* HabitAdaptables.swift */; };
 		04C99D4A2759FEF5002D5B7F /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C99D492759FEF5002D5B7F /* ForgotPasswordViewModel.swift */; };
-		04D269B027C7765F0090424F /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 04D269AF27C7765F0090424F /* FacebookShare */; };
-		04D269B227C7765F0090424F /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 04D269B127C7765F0090424F /* FacebookCore */; };
 		04D34F29274FB917009763D1 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F28274FB917009763D1 /* MyAccountViewModel.swift */; };
 		04D34F2C274FB999009763D1 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2B274FB999009763D1 /* ChangePasswordViewModel.swift */; };
 		04D34F2F274FBA5D009763D1 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D34F2E274FBA5D009763D1 /* SignupCoordinator.swift */; };
@@ -668,8 +666,6 @@
 			files = (
 				0438958527C4C2280090F51B /* AdSupport.framework in Frameworks */,
 				CAABE2470B3AFBB4BECAD2A8 /* Pods_Iscra.framework in Frameworks */,
-				04D269B027C7765F0090424F /* FacebookShare in Frameworks */,
-				04D269B227C7765F0090424F /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2026,8 +2022,6 @@
 			);
 			name = Iscra;
 			packageProductDependencies = (
-				04D269AF27C7765F0090424F /* FacebookShare */,
-				04D269B127C7765F0090424F /* FacebookCore */,
 			);
 			productName = Iscra;
 			productReference = 88E028302716F70600D90BB1 /* Iscra.app */;
@@ -2058,7 +2052,6 @@
 			);
 			mainGroup = 88E028272716F70600D90BB1;
 			packageReferences = (
-				04D269AE27C7765F0090424F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 88E028312716F70600D90BB1 /* Products */;
 			projectDirPath = "";
@@ -2655,30 +2648,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		04D269AE27C7765F0090424F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.10.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		04D269AF27C7765F0090424F /* FacebookShare */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04D269AE27C7765F0090424F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookShare;
-		};
-		04D269B127C7765F0090424F /* FacebookCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04D269AE27C7765F0090424F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookCore;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		88E0285D2716F73F00D90BB1 /* Iscra.xcdatamodeld */ = {

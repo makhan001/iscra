@@ -10,6 +10,7 @@ import Firebase
 import Quickblox
 import Foundation
 import GoogleSignIn
+import FBSDKCoreKit
 
 final class SignupViewModel {
     
@@ -105,6 +106,7 @@ final class SignupViewModel {
             "username": UserStore.userName ?? username,
             "is_verified": UserStore.isVerify ?? false,
         ])
+        AppEvents.logEvent(AppEvents.Name(rawValue: "Iscra App installs with registered_user_count"))
     }
     
     func socialLogin(logintype:SocialLoginType) {

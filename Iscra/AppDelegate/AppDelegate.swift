@@ -10,9 +10,13 @@ import CoreData
 import Firebase
 import Quickblox
 import GoogleSignIn
-import FacebookCore
 import SVProgressHUD
 import IQKeyboardManagerSwift
+//import FacebookCore
+import FBSDKCoreKit
+import FBSDKShareKit
+import FBLPromises
+
 
 struct CredentialsConstant {
     static let applicationID:UInt = 94837
@@ -34,21 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.initialConfiguration()
         self.requestForNotification()
-
-//        Settings.isAdvertiserTrackingEnabled = false
-//        Settings.shared.isAutoLogAppEventsEnabled = true
-//        AppEvents.shared.activateApp()
         ApplicationDelegate.shared.application(
                     application,
                     didFinishLaunchingWithOptions: launchOptions
                 )
-        
         Settings.isAutoLogAppEventsEnabled = true
         Settings.isCodelessDebugLogEnabled = true
         Settings.setAdvertiserTrackingEnabled(true)
-    
-     //   Settings.isAutoInitEnabled = true
-
+        AppEvents.activateApp()
         return true
     }
     

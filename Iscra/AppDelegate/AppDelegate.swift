@@ -12,6 +12,11 @@ import Quickblox
 import GoogleSignIn
 import SVProgressHUD
 import IQKeyboardManagerSwift
+//import FacebookCore
+import FBSDKCoreKit
+import FBSDKShareKit
+import FBLPromises
+
 
 struct CredentialsConstant {
     static let applicationID:UInt = 94837
@@ -33,6 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.initialConfiguration()
         self.requestForNotification()
+        ApplicationDelegate.shared.application(
+                    application,
+                    didFinishLaunchingWithOptions: launchOptions
+                )
+        Settings.isAutoLogAppEventsEnabled = true
+        Settings.isCodelessDebugLogEnabled = true
+        Settings.setAdvertiserTrackingEnabled(true)
+        AppEvents.activateApp()
         return true
     }
     
@@ -46,20 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(
-        _ app: UIApplication,
-        open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]
-    ) -> Bool {
-        var handled: Bool
-        handled = GIDSignIn.sharedInstance.handle(url)
-        if handled {
-            return true
-        }
-        // Handle other custom URL types.
-        
-        // If not handled by this app, return false.
-        return false
-    }
     
     private func initialConfiguration() {
         Thread.sleep(forTimeInterval: 0.0)

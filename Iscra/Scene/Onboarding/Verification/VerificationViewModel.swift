@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import Foundation
+import FBSDKCoreKit
 
 final class VerificationViewModel {
     
@@ -43,6 +44,8 @@ final class VerificationViewModel {
         Analytics.logEvent("verified_user_count",  parameters: [
             "is_verified": UserStore.isVerify ?? false,
         ])
+        AppEvents.logEvent(AppEvents.Name(rawValue: "Iscra App installs with verified_user_count"))
+
     }
 }
 

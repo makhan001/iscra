@@ -2021,6 +2021,8 @@
 			dependencies = (
 			);
 			name = Iscra;
+			packageProductDependencies = (
+			);
 			productName = Iscra;
 			productReference = 88E028302716F70600D90BB1 /* Iscra.app */;
 			productType = "com.apple.product-type.application";
@@ -2049,6 +2051,8 @@
 				ja,
 			);
 			mainGroup = 88E028272716F70600D90BB1;
+			packageReferences = (
+			);
 			productRefGroup = 88E028312716F70600D90BB1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2579,7 +2583,7 @@
 				CODE_SIGN_ENTITLEMENTS = Iscra/IscraDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7K87V8X3V7;
 				INFOPLIST_FILE = Iscra/Resources/Iscra_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2587,7 +2591,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adilbek.iscra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = Iscra_Development_Profile;
@@ -2605,7 +2609,7 @@
 				CODE_SIGN_ENTITLEMENTS = Iscra/IscraRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7K87V8X3V7;
 				INFOPLIST_FILE = Iscra/Resources/Iscra_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2613,7 +2617,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adilbek.iscra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
